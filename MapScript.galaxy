@@ -7,7 +7,7 @@
 //==================================================================================================
 include "TriggerLibs/NativeLib"
 include "LibGAwX"
-include "Lib34AC21C2"
+include "LibAW2B"
 
 //--------------------------------------------------------------------------------------------------
 // Library Initialization
@@ -15,7 +15,7 @@ include "Lib34AC21C2"
 void InitLibs () {
     libNtve_InitLib();
     libGAwX_InitLib();
-    lib34AC21C2_InitLib();
+    libAW2B_InitLib();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -31,11 +31,13 @@ const string gv_e69588E69E9CE58AA9E6898BE698BEE7A4BAE69687E69CACE782B9 = "\xE7\x
 //--------------------------------------------------------------------------------------------------
 // Global Variables
 //--------------------------------------------------------------------------------------------------
+string gv_gameMode;
 string[6] gv_e69588E69E9CE58AA9E6898BE698BEE7A4BAE69687E69CACE5898DE7BC80;
 
 void InitGlobals () {
     int init_i;
 
+    gv_gameMode = GameAttributeGameValue("[bnet:Ancient Wars II Base/0.0/96942,file:Mods\\AW2B.SC2Mod]2");
     for (init_i = 0; init_i <= 5; init_i += 1) {
         gv_e69588E69E9CE58AA9E6898BE698BEE7A4BAE69687E69CACE5898DE7BC80[init_i] = "";
     }
@@ -137,7 +139,7 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     TriggerExecute(gt_BuidingRegionInizialization, true, false);
     TriggerExecute(gt_PreviewerPointInizialization, true, false);
     TriggerExecute(gt_RoundInitialization, true, false);
-    lib34AC21C2_gf_ModInizialization(lv_debug);
+    libAW2B_gf_ModInizialization(lv_debug);
     autoE8E91B19_g = PlayerGroupActive(); 
     autoE8E91B19_p = 1;
     for ( ; autoE8E91B19_p <= PlayerGroupCount(autoE8E91B19_g) ; autoE8E91B19_p += BoolToInt(lv_player == PlayerGroupPlayer(autoE8E91B19_g, autoE8E91B19_p)) ) {
@@ -148,7 +150,7 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     libGAwX_gf_SetWar3TimeOfDay("13:00:00");
     libGAwX_gf_PauseUnpauseTimeOfDayWar3(true);
     MeleeInitUnits();
-    lib34AC21C2_gf_RoundStartLoop(lv_debug);
+    libAW2B_gf_RoundStartLoop(lv_debug);
     return true;
 }
 
@@ -167,22 +169,22 @@ bool gt_PlayerInizialization_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    lib34AC21C2_gf_UserPlayerSet(1, 0);
-    lib34AC21C2_gf_MirrorPlayerSet(1, 8);
-    lib34AC21C2_gf_UserPlayerSet(2, 1);
-    lib34AC21C2_gf_MirrorPlayerSet(2, 9);
-    lib34AC21C2_gf_UserPlayerSet(3, 2);
-    lib34AC21C2_gf_MirrorPlayerSet(3, 10);
-    lib34AC21C2_gf_UserPlayerSet(4, 3);
-    lib34AC21C2_gf_MirrorPlayerSet(4, 11);
-    lib34AC21C2_gf_UserPlayerSet(5, 4);
-    lib34AC21C2_gf_MirrorPlayerSet(5, 12);
-    lib34AC21C2_gf_UserPlayerSet(6, 5);
-    lib34AC21C2_gf_MirrorPlayerSet(6, 13);
-    lib34AC21C2_gf_UserPlayerSet(7, 6);
-    lib34AC21C2_gf_MirrorPlayerSet(7, 14);
-    lib34AC21C2_gf_UserPlayerSet(8, 7);
-    lib34AC21C2_gf_MirrorPlayerSet(8, 15);
+    libAW2B_gf_UserPlayerSet(1, 0);
+    libAW2B_gf_MirrorPlayerSet(1, 8);
+    libAW2B_gf_UserPlayerSet(2, 1);
+    libAW2B_gf_MirrorPlayerSet(2, 9);
+    libAW2B_gf_UserPlayerSet(3, 2);
+    libAW2B_gf_MirrorPlayerSet(3, 10);
+    libAW2B_gf_UserPlayerSet(4, 3);
+    libAW2B_gf_MirrorPlayerSet(4, 11);
+    libAW2B_gf_UserPlayerSet(5, 4);
+    libAW2B_gf_MirrorPlayerSet(5, 12);
+    libAW2B_gf_UserPlayerSet(6, 5);
+    libAW2B_gf_MirrorPlayerSet(6, 13);
+    libAW2B_gf_UserPlayerSet(7, 6);
+    libAW2B_gf_MirrorPlayerSet(7, 14);
+    libAW2B_gf_UserPlayerSet(8, 7);
+    libAW2B_gf_MirrorPlayerSet(8, 15);
     return true;
 }
 
@@ -197,81 +199,75 @@ void gt_PlayerInizialization_Init () {
 bool gt_VenueInizialization_Func (bool testConds, bool runActions) {
     string auto480E4CF2_val;
 
-    // Variable Declarations
-    string lv_gameValue;
-
-    // Variable Initialization
-    lv_gameValue = GameAttributeGameValue("2");
-
     // Actions
     if (!runActions) {
         return true;
     }
 
-    auto480E4CF2_val = lv_gameValue;
+    auto480E4CF2_val = gv_gameMode;
     if (auto480E4CF2_val == "0001") {
-        lib34AC21C2_gf_VenueInitialSet(RegionFromId(25), 1, 90.0);
-        lib34AC21C2_gf_VenueInitialSet(RegionFromId(27), 2, 270.0);
-        lib34AC21C2_gf_VenueInitialSet(RegionFromId(29), 3, 270.0);
-        lib34AC21C2_gf_VenueInitialSet(RegionFromId(31), 4, 90.0);
-        lib34AC21C2_gf_VenueInitialSet(RegionFromId(33), 5, 0.0);
-        lib34AC21C2_gf_VenueInitialSet(RegionFromId(34), 6, 180.0);
-        lib34AC21C2_gf_VenueInitialSet(RegionFromId(35), 7, 180.0);
-        lib34AC21C2_gf_VenueInitialSet(RegionFromId(36), 8, 0.0);
-        lib34AC21C2_gf_BonusVenueSet(RegionFromId(25), 1, 90.0);
-        lib34AC21C2_gf_BonusVenueSet(RegionFromId(29), 2, 270.0);
-        lib34AC21C2_gf_BonusVenueSet(RegionFromId(33), 3, 0.0);
-        lib34AC21C2_gf_BonusVenueSet(RegionFromId(35), 4, 180.0);
-        lib34AC21C2_gf_BonusVenueSet(RegionFromId(38), 5, 0.0);
-        lib34AC21C2_gf_BonusVenueSet(RegionFromId(39), 6, 180.0);
-        lib34AC21C2_gf_BonusVenueSet(RegionFromId(40), 7, 0.0);
-        lib34AC21C2_gf_BonusVenueSet(RegionFromId(41), 8, 180.0);
-        lib34AC21C2_gf_CreepPointSet(PointFromId(1622943121), 1);
-        lib34AC21C2_gf_CreepPointSet(PointFromId(9096037), 2);
-        lib34AC21C2_gf_CreepPointSet(PointFromId(914766699), 3);
-        lib34AC21C2_gf_CreepPointSet(PointFromId(2024075559), 4);
-        lib34AC21C2_gf_CreepPointSet(PointFromId(1413534366), 5);
-        lib34AC21C2_gf_CreepPointSet(PointFromId(775643380), 6);
-        lib34AC21C2_gf_CreepPointSet(PointFromId(1844541176), 7);
-        lib34AC21C2_gf_CreepPointSet(PointFromId(1335332667), 8);
+        libAW2B_gf_VenueInitialSet(RegionFromId(25), 1, 90.0);
+        libAW2B_gf_VenueInitialSet(RegionFromId(27), 2, 270.0);
+        libAW2B_gf_VenueInitialSet(RegionFromId(29), 3, 270.0);
+        libAW2B_gf_VenueInitialSet(RegionFromId(31), 4, 90.0);
+        libAW2B_gf_VenueInitialSet(RegionFromId(33), 5, 0.0);
+        libAW2B_gf_VenueInitialSet(RegionFromId(34), 6, 180.0);
+        libAW2B_gf_VenueInitialSet(RegionFromId(35), 7, 180.0);
+        libAW2B_gf_VenueInitialSet(RegionFromId(36), 8, 0.0);
+        libAW2B_gf_BonusVenueSet(RegionFromId(25), 1, 90.0);
+        libAW2B_gf_BonusVenueSet(RegionFromId(29), 2, 270.0);
+        libAW2B_gf_BonusVenueSet(RegionFromId(33), 3, 0.0);
+        libAW2B_gf_BonusVenueSet(RegionFromId(35), 4, 180.0);
+        libAW2B_gf_BonusVenueSet(RegionFromId(38), 5, 0.0);
+        libAW2B_gf_BonusVenueSet(RegionFromId(39), 6, 180.0);
+        libAW2B_gf_BonusVenueSet(RegionFromId(40), 7, 0.0);
+        libAW2B_gf_BonusVenueSet(RegionFromId(41), 8, 180.0);
+        libAW2B_gf_CreepPointSet(PointFromId(1622943121), 1);
+        libAW2B_gf_CreepPointSet(PointFromId(9096037), 2);
+        libAW2B_gf_CreepPointSet(PointFromId(914766699), 3);
+        libAW2B_gf_CreepPointSet(PointFromId(2024075559), 4);
+        libAW2B_gf_CreepPointSet(PointFromId(1413534366), 5);
+        libAW2B_gf_CreepPointSet(PointFromId(775643380), 6);
+        libAW2B_gf_CreepPointSet(PointFromId(1844541176), 7);
+        libAW2B_gf_CreepPointSet(PointFromId(1335332667), 8);
     }
     else if (auto480E4CF2_val == "0002") {
-        lib34AC21C2_gf_VenueInitialSet(RegionFromId(25), 1, 90.0);
-        lib34AC21C2_gf_VenueInitialSet(RegionFromId(26), 2, 90.0);
-        lib34AC21C2_gf_PathingBlockerRemove(RegionFromId(26));
-        lib34AC21C2_gf_VenueInitialSet(RegionFromId(27), 3, 270.0);
-        lib34AC21C2_gf_VenueInitialSet(RegionFromId(28), 4, 270.0);
-        lib34AC21C2_gf_PathingBlockerRemove(RegionFromId(28));
-        lib34AC21C2_gf_VenueInitialSet(RegionFromId(29), 5, 270.0);
-        lib34AC21C2_gf_VenueInitialSet(RegionFromId(30), 6, 270.0);
-        lib34AC21C2_gf_PathingBlockerRemove(RegionFromId(30));
-        lib34AC21C2_gf_VenueInitialSet(RegionFromId(31), 7, 90.0);
-        lib34AC21C2_gf_VenueInitialSet(RegionFromId(32), 8, 90.0);
-        lib34AC21C2_gf_PathingBlockerRemove(RegionFromId(32));
-        lib34AC21C2_gf_PathingBlockerRemove(RegionFromId(42));
-        lib34AC21C2_gf_PathingBlockerRemove(RegionFromId(43));
-        lib34AC21C2_gf_PathingBlockerRemove(RegionFromId(44));
-        lib34AC21C2_gf_PathingBlockerRemove(RegionFromId(45));
-        lib34AC21C2_gf_BonusVenueSet(RegionFromId(25), 1, 90.0);
-        lib34AC21C2_gf_BonusVenueSet(RegionFromId(26), 2, 90.0);
-        lib34AC21C2_gf_BonusVenueSet(RegionFromId(29), 3, 270.0);
-        lib34AC21C2_gf_BonusVenueSet(RegionFromId(30), 4, 270.0);
-        lib34AC21C2_gf_BonusVenueSet(RegionFromId(33), 5, 0.0);
-        lib34AC21C2_gf_BonusVenueSet(RegionFromId(42), 6, 0.0);
-        lib34AC21C2_gf_BonusVenueSet(RegionFromId(35), 7, 180.0);
-        lib34AC21C2_gf_BonusVenueSet(RegionFromId(44), 8, 180.0);
-        lib34AC21C2_gf_CreepPointSet(PointFromId(1622943121), 1);
-        lib34AC21C2_gf_CreepPointSet(PointFromId(529173248), 2);
-        lib34AC21C2_gf_CreepPointSet(PointFromId(9096037), 3);
-        lib34AC21C2_gf_CreepPointSet(PointFromId(537789621), 4);
-        lib34AC21C2_gf_CreepPointSet(PointFromId(914766699), 5);
-        lib34AC21C2_gf_CreepPointSet(PointFromId(924364117), 6);
-        lib34AC21C2_gf_CreepPointSet(PointFromId(2024075559), 7);
-        lib34AC21C2_gf_CreepPointSet(PointFromId(478594730), 8);
+        libAW2B_gf_VenueInitialSet(RegionFromId(25), 1, 90.0);
+        libAW2B_gf_VenueInitialSet(RegionFromId(26), 2, 90.0);
+        libAW2B_gf_PathingBlockerRemove(RegionFromId(26));
+        libAW2B_gf_VenueInitialSet(RegionFromId(27), 3, 270.0);
+        libAW2B_gf_VenueInitialSet(RegionFromId(28), 4, 270.0);
+        libAW2B_gf_PathingBlockerRemove(RegionFromId(28));
+        libAW2B_gf_VenueInitialSet(RegionFromId(29), 5, 270.0);
+        libAW2B_gf_VenueInitialSet(RegionFromId(30), 6, 270.0);
+        libAW2B_gf_PathingBlockerRemove(RegionFromId(30));
+        libAW2B_gf_VenueInitialSet(RegionFromId(31), 7, 90.0);
+        libAW2B_gf_VenueInitialSet(RegionFromId(32), 8, 90.0);
+        libAW2B_gf_PathingBlockerRemove(RegionFromId(32));
+        libAW2B_gf_PathingBlockerRemove(RegionFromId(42));
+        libAW2B_gf_PathingBlockerRemove(RegionFromId(43));
+        libAW2B_gf_PathingBlockerRemove(RegionFromId(44));
+        libAW2B_gf_PathingBlockerRemove(RegionFromId(45));
+        libAW2B_gf_BonusVenueSet(RegionFromId(25), 1, 90.0);
+        libAW2B_gf_BonusVenueSet(RegionFromId(26), 2, 90.0);
+        libAW2B_gf_BonusVenueSet(RegionFromId(29), 3, 270.0);
+        libAW2B_gf_BonusVenueSet(RegionFromId(30), 4, 270.0);
+        libAW2B_gf_BonusVenueSet(RegionFromId(33), 5, 0.0);
+        libAW2B_gf_BonusVenueSet(RegionFromId(42), 6, 0.0);
+        libAW2B_gf_BonusVenueSet(RegionFromId(35), 7, 180.0);
+        libAW2B_gf_BonusVenueSet(RegionFromId(44), 8, 180.0);
+        libAW2B_gf_CreepPointSet(PointFromId(1622943121), 1);
+        libAW2B_gf_CreepPointSet(PointFromId(529173248), 2);
+        libAW2B_gf_CreepPointSet(PointFromId(9096037), 3);
+        libAW2B_gf_CreepPointSet(PointFromId(537789621), 4);
+        libAW2B_gf_CreepPointSet(PointFromId(914766699), 5);
+        libAW2B_gf_CreepPointSet(PointFromId(924364117), 6);
+        libAW2B_gf_CreepPointSet(PointFromId(2024075559), 7);
+        libAW2B_gf_CreepPointSet(PointFromId(478594730), 8);
     }
     else {
     }
-    lib34AC21C2_gf_BattlefieldSetAll(RegionFromId(37));
+    libAW2B_gf_BattlefieldSetAll(RegionFromId(37));
     return true;
 }
 
@@ -289,30 +285,30 @@ bool gt_BuidingRegionInizialization_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    lib34AC21C2_gf_BuildingRegionSet(RegionFromId(1), 1, 1);
-    lib34AC21C2_gf_BuildingRegionSet(RegionFromId(2), 1, 2);
-    lib34AC21C2_gf_BuildingRegionSet(RegionFromId(3), 1, 3);
-    lib34AC21C2_gf_BuildingRegionSet(RegionFromId(4), 2, 1);
-    lib34AC21C2_gf_BuildingRegionSet(RegionFromId(5), 2, 2);
-    lib34AC21C2_gf_BuildingRegionSet(RegionFromId(6), 2, 3);
-    lib34AC21C2_gf_BuildingRegionSet(RegionFromId(7), 3, 1);
-    lib34AC21C2_gf_BuildingRegionSet(RegionFromId(8), 3, 2);
-    lib34AC21C2_gf_BuildingRegionSet(RegionFromId(9), 3, 3);
-    lib34AC21C2_gf_BuildingRegionSet(RegionFromId(10), 4, 1);
-    lib34AC21C2_gf_BuildingRegionSet(RegionFromId(11), 4, 2);
-    lib34AC21C2_gf_BuildingRegionSet(RegionFromId(12), 4, 3);
-    lib34AC21C2_gf_BuildingRegionSet(RegionFromId(13), 5, 1);
-    lib34AC21C2_gf_BuildingRegionSet(RegionFromId(14), 5, 2);
-    lib34AC21C2_gf_BuildingRegionSet(RegionFromId(15), 5, 3);
-    lib34AC21C2_gf_BuildingRegionSet(RegionFromId(16), 6, 1);
-    lib34AC21C2_gf_BuildingRegionSet(RegionFromId(17), 6, 2);
-    lib34AC21C2_gf_BuildingRegionSet(RegionFromId(18), 6, 3);
-    lib34AC21C2_gf_BuildingRegionSet(RegionFromId(19), 7, 1);
-    lib34AC21C2_gf_BuildingRegionSet(RegionFromId(20), 7, 2);
-    lib34AC21C2_gf_BuildingRegionSet(RegionFromId(21), 7, 3);
-    lib34AC21C2_gf_BuildingRegionSet(RegionFromId(22), 8, 1);
-    lib34AC21C2_gf_BuildingRegionSet(RegionFromId(23), 8, 2);
-    lib34AC21C2_gf_BuildingRegionSet(RegionFromId(24), 8, 3);
+    libAW2B_gf_BuildingRegionSet(RegionFromId(1), 1, 1);
+    libAW2B_gf_BuildingRegionSet(RegionFromId(2), 1, 2);
+    libAW2B_gf_BuildingRegionSet(RegionFromId(3), 1, 3);
+    libAW2B_gf_BuildingRegionSet(RegionFromId(4), 2, 1);
+    libAW2B_gf_BuildingRegionSet(RegionFromId(5), 2, 2);
+    libAW2B_gf_BuildingRegionSet(RegionFromId(6), 2, 3);
+    libAW2B_gf_BuildingRegionSet(RegionFromId(7), 3, 1);
+    libAW2B_gf_BuildingRegionSet(RegionFromId(8), 3, 2);
+    libAW2B_gf_BuildingRegionSet(RegionFromId(9), 3, 3);
+    libAW2B_gf_BuildingRegionSet(RegionFromId(10), 4, 1);
+    libAW2B_gf_BuildingRegionSet(RegionFromId(11), 4, 2);
+    libAW2B_gf_BuildingRegionSet(RegionFromId(12), 4, 3);
+    libAW2B_gf_BuildingRegionSet(RegionFromId(13), 5, 1);
+    libAW2B_gf_BuildingRegionSet(RegionFromId(14), 5, 2);
+    libAW2B_gf_BuildingRegionSet(RegionFromId(15), 5, 3);
+    libAW2B_gf_BuildingRegionSet(RegionFromId(16), 6, 1);
+    libAW2B_gf_BuildingRegionSet(RegionFromId(17), 6, 2);
+    libAW2B_gf_BuildingRegionSet(RegionFromId(18), 6, 3);
+    libAW2B_gf_BuildingRegionSet(RegionFromId(19), 7, 1);
+    libAW2B_gf_BuildingRegionSet(RegionFromId(20), 7, 2);
+    libAW2B_gf_BuildingRegionSet(RegionFromId(21), 7, 3);
+    libAW2B_gf_BuildingRegionSet(RegionFromId(22), 8, 1);
+    libAW2B_gf_BuildingRegionSet(RegionFromId(23), 8, 2);
+    libAW2B_gf_BuildingRegionSet(RegionFromId(24), 8, 3);
     return true;
 }
 
@@ -330,30 +326,30 @@ bool gt_PreviewerPointInizialization_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    lib34AC21C2_gf_PreviewerRegionSet(RegionFromId(46), 1, 1);
-    lib34AC21C2_gf_PreviewerRegionSet(RegionFromId(47), 1, 2);
-    lib34AC21C2_gf_PreviewerRegionSet(RegionFromId(48), 1, 3);
-    lib34AC21C2_gf_PreviewerRegionSet(RegionFromId(49), 2, 1);
-    lib34AC21C2_gf_PreviewerRegionSet(RegionFromId(50), 2, 2);
-    lib34AC21C2_gf_PreviewerRegionSet(RegionFromId(51), 2, 3);
-    lib34AC21C2_gf_PreviewerRegionSet(RegionFromId(52), 3, 1);
-    lib34AC21C2_gf_PreviewerRegionSet(RegionFromId(53), 3, 2);
-    lib34AC21C2_gf_PreviewerRegionSet(RegionFromId(54), 3, 3);
-    lib34AC21C2_gf_PreviewerRegionSet(RegionFromId(55), 4, 1);
-    lib34AC21C2_gf_PreviewerRegionSet(RegionFromId(56), 4, 2);
-    lib34AC21C2_gf_PreviewerRegionSet(RegionFromId(57), 4, 3);
-    lib34AC21C2_gf_PreviewerRegionSet(RegionFromId(58), 5, 1);
-    lib34AC21C2_gf_PreviewerRegionSet(RegionFromId(59), 5, 2);
-    lib34AC21C2_gf_PreviewerRegionSet(RegionFromId(60), 5, 3);
-    lib34AC21C2_gf_PreviewerRegionSet(RegionFromId(61), 6, 1);
-    lib34AC21C2_gf_PreviewerRegionSet(RegionFromId(62), 6, 2);
-    lib34AC21C2_gf_PreviewerRegionSet(RegionFromId(63), 6, 3);
-    lib34AC21C2_gf_PreviewerRegionSet(RegionFromId(64), 7, 1);
-    lib34AC21C2_gf_PreviewerRegionSet(RegionFromId(65), 7, 2);
-    lib34AC21C2_gf_PreviewerRegionSet(RegionFromId(66), 7, 3);
-    lib34AC21C2_gf_PreviewerRegionSet(RegionFromId(67), 8, 1);
-    lib34AC21C2_gf_PreviewerRegionSet(RegionFromId(68), 8, 2);
-    lib34AC21C2_gf_PreviewerRegionSet(RegionFromId(69), 8, 3);
+    libAW2B_gf_PreviewerRegionSet(RegionFromId(46), 1, 1);
+    libAW2B_gf_PreviewerRegionSet(RegionFromId(47), 1, 2);
+    libAW2B_gf_PreviewerRegionSet(RegionFromId(48), 1, 3);
+    libAW2B_gf_PreviewerRegionSet(RegionFromId(49), 2, 1);
+    libAW2B_gf_PreviewerRegionSet(RegionFromId(50), 2, 2);
+    libAW2B_gf_PreviewerRegionSet(RegionFromId(51), 2, 3);
+    libAW2B_gf_PreviewerRegionSet(RegionFromId(52), 3, 1);
+    libAW2B_gf_PreviewerRegionSet(RegionFromId(53), 3, 2);
+    libAW2B_gf_PreviewerRegionSet(RegionFromId(54), 3, 3);
+    libAW2B_gf_PreviewerRegionSet(RegionFromId(55), 4, 1);
+    libAW2B_gf_PreviewerRegionSet(RegionFromId(56), 4, 2);
+    libAW2B_gf_PreviewerRegionSet(RegionFromId(57), 4, 3);
+    libAW2B_gf_PreviewerRegionSet(RegionFromId(58), 5, 1);
+    libAW2B_gf_PreviewerRegionSet(RegionFromId(59), 5, 2);
+    libAW2B_gf_PreviewerRegionSet(RegionFromId(60), 5, 3);
+    libAW2B_gf_PreviewerRegionSet(RegionFromId(61), 6, 1);
+    libAW2B_gf_PreviewerRegionSet(RegionFromId(62), 6, 2);
+    libAW2B_gf_PreviewerRegionSet(RegionFromId(63), 6, 3);
+    libAW2B_gf_PreviewerRegionSet(RegionFromId(64), 7, 1);
+    libAW2B_gf_PreviewerRegionSet(RegionFromId(65), 7, 2);
+    libAW2B_gf_PreviewerRegionSet(RegionFromId(66), 7, 3);
+    libAW2B_gf_PreviewerRegionSet(RegionFromId(67), 8, 1);
+    libAW2B_gf_PreviewerRegionSet(RegionFromId(68), 8, 2);
+    libAW2B_gf_PreviewerRegionSet(RegionFromId(69), 8, 3);
     return true;
 }
 
@@ -368,44 +364,38 @@ void gt_PreviewerPointInizialization_Init () {
 bool gt_RoundInitialization_Func (bool testConds, bool runActions) {
     string autoB7B0BFE0_val;
 
-    // Variable Declarations
-    string lv_gameValue;
-
-    // Variable Initialization
-    lv_gameValue = GameAttributeGameValue("2");
-
     // Actions
     if (!runActions) {
         return true;
     }
 
-    autoB7B0BFE0_val = lv_gameValue;
+    autoB7B0BFE0_val = gv_gameMode;
     if (autoB7B0BFE0_val == "0001") {
-        lib34AC21C2_gf_RoundGoldSet(1, 750);
-        lib34AC21C2_gf_RoundGoldSet(2, 750);
-        lib34AC21C2_gf_RoundGoldSet(3, 750);
-        lib34AC21C2_gf_BonusRoundSet(true, 3);
-        lib34AC21C2_gf_RoundGoldSet(4, 1500);
-        lib34AC21C2_gf_RoundGoldSet(5, 1500);
-        lib34AC21C2_gf_RoundGoldSet(6, 1500);
-        lib34AC21C2_gf_RoundGoldSet(7, 1500);
-        lib34AC21C2_gf_BonusRoundSet(true, 7);
-        lib34AC21C2_gf_RoundGoldSet(8, 1500);
+        libAW2B_gf_RoundGoldSet(1, 750);
+        libAW2B_gf_RoundGoldSet(2, 750);
+        libAW2B_gf_RoundGoldSet(3, 750);
+        libAW2B_gf_BonusRoundSet(true, 3);
+        libAW2B_gf_RoundGoldSet(4, 1500);
+        libAW2B_gf_RoundGoldSet(5, 1500);
+        libAW2B_gf_RoundGoldSet(6, 1500);
+        libAW2B_gf_RoundGoldSet(7, 1500);
+        libAW2B_gf_BonusRoundSet(true, 7);
+        libAW2B_gf_RoundGoldSet(8, 1500);
     }
     else if (autoB7B0BFE0_val == "0002") {
-        lib34AC21C2_gf_RoundGoldSet(1, 750);
-        lib34AC21C2_gf_RoundGoldSet(2, 750);
-        lib34AC21C2_gf_RoundGoldSet(3, 750);
-        lib34AC21C2_gf_BonusRoundSet(true, 3);
-        lib34AC21C2_gf_RoundGoldSet(4, 1500);
-        lib34AC21C2_gf_RoundGoldSet(5, 1500);
-        lib34AC21C2_gf_RoundGoldSet(6, 1500);
-        lib34AC21C2_gf_BonusRoundSet(true, 6);
-        lib34AC21C2_gf_RoundGoldSet(7, 1500);
+        libAW2B_gf_RoundGoldSet(1, 750);
+        libAW2B_gf_RoundGoldSet(2, 750);
+        libAW2B_gf_RoundGoldSet(3, 750);
+        libAW2B_gf_BonusRoundSet(true, 3);
+        libAW2B_gf_RoundGoldSet(4, 1500);
+        libAW2B_gf_RoundGoldSet(5, 1500);
+        libAW2B_gf_RoundGoldSet(6, 1500);
+        libAW2B_gf_BonusRoundSet(true, 6);
+        libAW2B_gf_RoundGoldSet(7, 1500);
     }
     else {
     }
-    lib34AC21C2_gf_SearchRadiusInFinalRoundSet(60.0);
+    libAW2B_gf_SearchRadiusInFinalRoundSet(60.0);
     return true;
 }
 
