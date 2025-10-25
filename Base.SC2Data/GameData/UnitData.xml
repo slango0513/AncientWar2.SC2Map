@@ -637,12 +637,40 @@
             <LayoutButtons Face="AUim" Type="AbilCmd" AbilCmd="AUim,0" Row="2" Column="0"/>
         </CardLayouts>
     </CUnit>
-    <CUnit id="UndeadPhalanxPlaceholder" parent="War3_Item" defType="">
-        <Collide index="Ground" value="1"/>
-        <Collide index="ForceField" value="1"/>
-        <Footprint value="6x6Phalanx"/>
-        <FogVisibility value="Snapshot"/>
-        <BehaviorArray Link="PhalanxPlaceholder"/>
+    <!--HeroDeathKnight-->
+    <CUnit id="Udea" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="750"/>
+        <KillResource index="gold" value="75"/>
+        <LifeStart value="2000"/>
+        <LifeMax value="2000"/>
+        <Speed value="2"/>
+        <Race value="Undead"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <AbilArray Link="UpgradeToUear"/>
+        <AbilArray Link="AUdc"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Uear" Type="AbilCmd" AbilCmd="UpgradeToUear,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="AUdc" Type="AbilCmd" AbilCmd="AUdc,0" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <!--evil arthas-->
+    <CUnit id="Uear" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="2250"/>
+        <KillResource index="gold" value="75"/>
+        <LifeStart value="2000"/>
+        <LifeMax value="2000"/>
+        <Speed value="2"/>
+        <Race value="Undead"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <AbilArray Link="AUan"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AUan" Type="AbilCmd" AbilCmd="AUan,0" Row="2" Column="0"/>
+        </CardLayouts>
+        <Name value="Uear/Propernames"/>
     </CUnit>
     <!--Archer-->
     <CUnit id="earc" parent="AW2_Army" defType="MEDIUM">
@@ -2529,6 +2557,8 @@
             <LayoutButtons Face="Arpm" Type="AbilCmd" AbilCmd="Arpm,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="ubsp" Type="AbilCmd" AbilCmd="Aave,Execute" Row="2" Column="2"/>
         </CardLayouts>
+        <EnergyStart value="100"/>
+        <EnergyMax value="100"/>
     </CUnit>
     <!--SkeletonWarrior-->
     <CUnit id="uske">
@@ -2563,5 +2593,12 @@
         <SeparationRadius value="0.3125"/>
         <InnerRadius value="0.3125"/>
         <PlaneArray index="Ground" value="1"/>
+    </CUnit>
+    <CUnit id="UndeadPhalanxPlaceholder" parent="War3_Item" defType="">
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Footprint value="6x6Phalanx"/>
+        <FogVisibility value="Snapshot"/>
+        <BehaviorArray Link="PhalanxPlaceholder"/>
     </CUnit>
 </Catalog>

@@ -310,6 +310,18 @@
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
+    <!--deathknight-->
+    <CActorUnit id="Udea" parent="War3_Army" unitSound="HeroDeathKnight" unitName="Udea" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHeroDeathKnight.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnHeroDeathKnight.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroDeathKnight.dds"/>
+        <BarWidth value="92"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="100"/>
+        <WalkAnimMoveSpeed value="2.5"/>
+    </CActorUnit>
     <CActorUnit id="UndeadPhalanxPlaceholder" parent="War3_Item" unitName="UndeadPhalanxPlaceholder">
         <Model value="UndeadPhalanxPlaceholder"/>
         <Scale value="4.000000"/>
@@ -626,6 +638,19 @@
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_HumanLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
+    <!--fleshgolem-->
+    <CActorUnit id="nfgl" parent="War3_Army" unitSound="Abomination" unitName="nfgl" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnFleshGolem.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnFleshGolem.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnFleshGolem.dds"/>
+        <BarWidth value="150"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_UndeadLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
     <CActorUnit id="nflg">
         <BuildModel value="War3_NightElfCaptureFlag"/>
         <PlacementModel value="War3_NightElfCaptureFlag"/>
@@ -668,6 +693,7 @@
     </CActorUnit>
     <!--ghost-->
     <CActorUnit id="ngh1" parent="War3_Army" unitSound="Ghost" unitName="ngh1" defType="NONE">
+        <On Terms="ActorCreation" Send="SetTintColor 120,150,255"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnGhost.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnGhost.dds"/>
@@ -883,6 +909,20 @@
     <CActorUnit id="otbk">
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
     </CActorUnit>
+    <!--abomination-->
+    <CActorUnit id="uabo" parent="War3_Army" unitSound="Abomination" unitName="uabo" defType="LARGE">
+        <AnimBlendTime value="0.300000"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnAbomination.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnAbomination.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnAbomination.dds"/>
+        <BarWidth value="105"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="100"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_AbominationExplosion"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
     <!--banshee-->
     <CActorUnit id="uban" parent="War3_Army" unitSound="Banshee" unitName="uban" defType="NONE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnBanshee.dds"/>
@@ -1005,7 +1045,6 @@
     </CActorUnit>
     <!--sylvanusbanshee-->
     <CActorUnit id="uswb" parent="War3_Army" unitSound="Banshee" unitName="uswb" defType="NONE">
-        <On Terms="ActorCreation" Send="SetTintColor 120,150,255"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnGhost.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnGhost.dds"/>
