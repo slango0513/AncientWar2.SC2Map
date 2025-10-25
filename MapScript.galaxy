@@ -6,6 +6,7 @@
 // 
 //==================================================================================================
 include "TriggerLibs/NativeLib"
+include "LibGAw3"
 include "LibGAwX"
 
 //--------------------------------------------------------------------------------------------------
@@ -94,6 +95,9 @@ unitfilter lib1_gv_creepFilter;
 unitfilter lib1_gv_unitFilter;
 unitfilter lib1_gv_unitAndCreepFilter;
 unitfilter lib1_gv_pathBlockerFilter;
+fixed lib1_gv_adefDamageTaken;
+fixed lib1_gv_adefDeflectChance;
+unitgroup lib1_gv_adefGroup;
 
 // Function Declarations
 string lib1_gf_AttributeGetRace (string lp_attribute);
@@ -207,6 +211,8 @@ trigger lib1_gt_ScoreBoardInizialization;
 trigger lib1_gt_TimerInizialization;
 trigger lib1_gt_PlayerInizialization;
 trigger lib1_gt_Pillage;
+trigger lib1_gt_AdefDefendInitRegister;
+trigger lib1_gt_AdefDefendDamaged;
 
 // Library Initialization
 void lib1_InitVariables ();
@@ -217,6 +223,7 @@ void lib1_InitVariables ();
 // External Library Initialization
 void lib1_InitLibraries () {
     libNtve_InitVariables();
+    libGAw3_InitVariables();
     libGAwX_InitVariables();
 }
 
@@ -255,6 +262,9 @@ void lib1_InitVariables () {
     lib1_gv_unitFilter = UnitFilter(0, 0, (1 << c_targetFilterHover) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterMapBoss - 32)));
     lib1_gv_unitAndCreepFilter = UnitFilter(0, 0, (1 << c_targetFilterHover) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
     lib1_gv_pathBlockerFilter = UnitFilter((1 << c_targetFilterUser1), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
+    lib1_gv_adefDamageTaken = 0.5;
+    lib1_gv_adefDeflectChance = 0.3;
+    lib1_gv_adefGroup = UnitGroupEmpty();
 }
 
 // Functions
@@ -2271,6 +2281,7 @@ void lib1_gf_ModInizialization (bool lp_debug, bool lp_virtualTeam) {
     // Implementation
     TriggerEnable(libGAw3_gt_ChangeOwerFromCreep, false);
     TriggerEnable(libGAw3_gt_ChangeOwerToCreep, false);
+    TriggerEnable(libGAwX_gt_AdefDefendInitRegister, false);
     UISetResourceTradingAllowed(c_resourceTypeMinerals, false);
     UISetResourceTradingAllowed(c_resourceTypeVespene, false);
     UISetResourceTradingAllowed(c_resourceTypeTerrazine, false);
@@ -2401,6 +2412,10 @@ void lib1_gf_TeamMemberSetAndTeamMemberCountSet (bool lp_virtualTeam) {
         autoA8AE8B2B_ai = 1;
         lv_team = 1;
         for ( ; ( (autoA8AE8B2B_ai >= 0 && lv_team <= autoA8AE8B2B_ae) || (autoA8AE8B2B_ai <= 0 && lv_team >= autoA8AE8B2B_ae) ) ; lv_team += autoA8AE8B2B_ai ) {
+            TextExpressionSetToken("Param/Expression/lib_1_65BEA57E", "A", IntToText(PlayerGroupCount(GameAttributePlayersForTeam(lv_team))));
+            TextExpressionSetToken("Param/Expression/lib_1_65BEA57E", "B", IntToText(lv_team));
+            TextExpressionSetToken("Param/Expression/lib_1_65BEA57E", "C", IntToText(PlayerGroupPlayer(lib1_gv_teamGroup[lv_team], 1)));
+            UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, TextExpressionAssemble("Param/Expression/lib_1_65BEA57E"));
             auto2891898C_ae = lib1_gv_teamMemberCount;
             auto2891898C_ai = 1;
             lv_teamMember = 1;
@@ -3618,6 +3633,114 @@ void lib1_gt_Pillage_Init () {
     TriggerAddEventPlayerEffectUsed(lib1_gt_Pillage, c_playerAny, "AsalTriggerNotice");
 }
 
+//--------------------------------------------------------------------------------------------------
+// Trigger: Adef - Defend - Init Register
+//--------------------------------------------------------------------------------------------------
+bool lib1_gt_AdefDefendInitRegister_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_unit;
+
+    // Variable Initialization
+    lv_unit = EventUnit();
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGroupHasUnit(lib1_gv_adefGroup, lv_unit) == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    GAw3_AddEventUnitDamaged(lib1_gt_AdefDefendDamaged, lv_unit, c_unitDamageTypeRanged, c_unitDamageNonFatal, null);
+    UnitGroupAdd(lib1_gv_adefGroup, lv_unit);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib1_gt_AdefDefendInitRegister_Init () {
+    lib1_gt_AdefDefendInitRegister = TriggerCreate("lib1_gt_AdefDefendInitRegister_Func");
+    TriggerAddEventUnitBehaviorChange(lib1_gt_AdefDefendInitRegister, null, "Adef", c_unitBehaviorChangeActivate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Adef - Defend - Damaged
+//--------------------------------------------------------------------------------------------------
+bool lib1_gt_AdefDefendDamaged_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_weapon;
+    string lv_lM;
+    string lv_atkType;
+    fixed lv_triggerDamge;
+    fixed lv_actualDamge;
+    fixed lv_attemptedDamage;
+    unit lv_footman;
+    unit lv_source;
+    unit lv_triggerAttaker;
+
+    // Variable Initialization
+    lv_weapon = ((EventUnitDamageEffect()));
+    lv_lM = (((lv_weapon) + "LM"));
+    lv_atkType = GAw3_WeaponAtkType(lv_weapon);
+    lv_actualDamge = EventUnitDamageAmount();
+    lv_attemptedDamage = EventUnitDamageAbsorbed();
+    lv_footman = EventUnit();
+    lv_source = EventUnitDamageSourceUnit();
+    lv_triggerAttaker = lv_source;
+
+    // Conditions
+    if (testConds) {
+        if (!((lv_actualDamge == 0.0))) {
+            return false;
+        }
+
+        if (!((UnitHasBehavior(lv_footman, "Adef") == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitIsAlive(lv_source) == false)) {
+        lv_triggerAttaker = lv_footman;
+    }
+
+    if (((lv_atkType == "DAMAGE_PIERCE") || (lv_atkType == "DAMAGE_CHAOS") || (lv_atkType == "DAMAGE_MAGIC") || (lv_atkType == "DAMAGE_SIEGE") || (lv_atkType == "spells"))) {
+        TriggerDebugOutput(1, StringExternal("Param/Value/lib_1_F23B4861"), true);
+        if ((RandomFixed(0.0, 1.0) <= lib1_gv_adefDeflectChance)) {
+            UnitCreateEffectUnit(lv_footman, "AdefVisualDummy", lv_footman);
+            if ((lv_source != lv_footman) && (UnitTypeTestFlag(UnitGetType(lv_triggerAttaker), c_unitFlagPreventDefeat) == false)) {
+                if ((CatalogEntryIsValid(c_gameCatalogEffect, lv_lM) == false)) {
+                    lv_lM = ((lv_weapon));
+                }
+
+                UnitCreateEffectUnit(lv_footman, lv_lM, lv_source);
+            }
+
+        }
+        else {
+            lv_triggerDamge = (lv_attemptedDamage * lib1_gv_adefDamageTaken);
+            UnitDamage(lv_triggerAttaker, "TriggerRangedDamge", lv_footman, lv_triggerDamge);
+        }
+    }
+    else {
+        lv_triggerDamge = lv_attemptedDamage;
+        UnitDamage(lv_triggerAttaker, "TriggerRangedDamge", lv_footman, lv_triggerDamge);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib1_gt_AdefDefendDamaged_Init () {
+    lib1_gt_AdefDefendDamaged = TriggerCreate("lib1_gt_AdefDefendDamaged_Func");
+}
+
 void lib1_InitTriggers () {
     lib1_gt_UnitChangeOwner2_Init();
     lib1_gt_UnitDied2_Init();
@@ -3641,6 +3764,8 @@ void lib1_InitTriggers () {
     lib1_gt_TimerInizialization_Init();
     lib1_gt_PlayerInizialization_Init();
     lib1_gt_Pillage_Init();
+    lib1_gt_AdefDefendInitRegister_Init();
+    lib1_gt_AdefDefendDamaged_Init();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3665,6 +3790,7 @@ void lib1_InitLib () {
 //--------------------------------------------------------------------------------------------------
 void InitLibs () {
     libNtve_InitLib();
+    libGAw3_InitLib();
     libGAwX_InitLib();
     lib1_InitLib();
 }
@@ -3777,8 +3903,6 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     int lv_player;
 
     // Variable Initialization
-    lv_debug = true;
-    lv_virturalTeam = true;
 
     // Actions
     if (!runActions) {

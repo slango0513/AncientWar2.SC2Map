@@ -69,6 +69,13 @@
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
+    <!--Demon Hunter - Metamorphosis Buff=BEme-->
+    <CAbilMorph id="AEme">
+        <Cost>
+            <Vital index="Energy" value="0"/>
+            <Cooldown TimeUse="1"/>
+        </Cost>
+    </CAbilMorph>
     <!--Paladin - Devotion Aura Buff=BHad-->
     <CAbilBehavior id="AHad">
         <CmdButtonArray index="On" Requirements="">
@@ -350,8 +357,17 @@
         <InfoArray index="Build9" Unit="uobs">
             <Button DefaultButtonFace="uobs" Requirements="BuildArmy"/>
         </InfoArray>
+        <InfoArray index="Build10" Unit="Udea">
+            <Button DefaultButtonFace="Udea" Requirements="BuildArmy"/>
+        </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
+    <!--Death Knight - Death Coil-->
+    <CAbilEffectTarget id="AUdc">
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+        </Cost>
+    </CAbilEffectTarget>
     <!--Anti-magic Shield (Matrix) Dur=90 HeroDur=90 Buff=Bams,Bam2-->
     <CAbilEffectTarget id="Aam2">
         <CmdButtonArray index="Execute" Requirements="">

@@ -633,6 +633,7 @@
         <Mover value="foot"/>
         <PlaneArray index="Ground" value="1"/>
         <AbilArray Link="AUim"/>
+        <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
             <LayoutButtons Face="AUim" Type="AbilCmd" AbilCmd="AUim,0" Row="2" Column="0"/>
         </CardLayouts>
@@ -644,15 +645,16 @@
         <KillResource index="gold" value="75"/>
         <LifeStart value="2000"/>
         <LifeMax value="2000"/>
-        <Speed value="2"/>
+        <Speed value="3"/>
         <Race value="Undead"/>
-        <Mover value="foot"/>
+        <Mover value="horse"/>
         <PlaneArray index="Ground" value="1"/>
         <AbilArray Link="UpgradeToUear"/>
         <AbilArray Link="AUdc"/>
+        <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Uear" Type="AbilCmd" AbilCmd="UpgradeToUear,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="AUdc" Type="AbilCmd" AbilCmd="AUdc,0" Row="2" Column="0"/>
+            <LayoutButtons Face="AUdc" Type="AbilCmd" AbilCmd="AUdc,Execute" Row="2" Column="0"/>
         </CardLayouts>
     </CUnit>
     <!--evil arthas-->
@@ -662,13 +664,16 @@
         <KillResource index="gold" value="75"/>
         <LifeStart value="2000"/>
         <LifeMax value="2000"/>
-        <Speed value="2"/>
+        <Speed value="3"/>
         <Race value="Undead"/>
-        <Mover value="foot"/>
+        <Mover value="horse"/>
         <PlaneArray index="Ground" value="1"/>
         <AbilArray Link="AUan"/>
+        <AbilArray Link="AUau"/>
+        <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="AUan" Type="AbilCmd" AbilCmd="AUan,0" Row="2" Column="0"/>
+            <LayoutButtons Face="AUan" Type="AbilCmd" AbilCmd="AUan,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="AUau" Type="Passive" Behavior="BUau1" Row="2" Column="1"/>
         </CardLayouts>
         <Name value="Uear/Propernames"/>
     </CUnit>
@@ -1416,6 +1421,7 @@
         <Mover value="foot"/>
         <PlaneArray index="Ground" value="1"/>
         <AbilArray Link="Acn2"/>
+        <BehaviorArray Link="undead"/>
         <BehaviorArray Link="Aap1"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Aap1" Type="Passive" Behavior="Aap1" Row="2" Column="1"/>
@@ -1542,6 +1548,7 @@
         <Race value="Undead"/>
         <Mover value="hover"/>
         <AbilArray Link="Aps2"/>
+        <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Aps2" Type="AbilCmd" AbilCmd="Aps2,Execute" Row="2" Column="0"/>
         </CardLayouts>
@@ -1713,6 +1720,7 @@
         <Mover value="foot"/>
         <PlaneArray index="Ground" value="1"/>
         <AbilArray Link="Aweb"/>
+        <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Aweb" Type="AbilCmd" AbilCmd="Aweb,0" Row="2" Column="0"/>
         </CardLayouts>
@@ -1729,6 +1737,7 @@
         <Mover value="foot"/>
         <PlaneArray index="Ground" value="1"/>
         <AbilArray Link="ACdm"/>
+        <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ACdm" Type="AbilCmd" AbilCmd="ACdm,0" Row="2" Column="0"/>
         </CardLayouts>
@@ -2268,6 +2277,7 @@
         <PlaneArray index="Ground" value="1"/>
         <AbilArray Link="UpgradeTonfgl"/>
         <AbilArray Link="Acn2"/>
+        <BehaviorArray Link="undead"/>
         <BehaviorArray Link="Aap1"/>
         <CardLayouts index="0">
             <LayoutButtons Face="nfgl" Type="AbilCmd" AbilCmd="UpgradeTonfgl,Execute" Row="0" Column="0"/>
@@ -2347,6 +2357,7 @@
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
             <LayoutButtons Face="ugho" Type="AbilCmd" AbilCmd="AUbuArmy,Build3" Row="0" Column="0"/>
             <LayoutButtons Face="uabo" Type="AbilCmd" AbilCmd="AUbuArmy,Build7" Row="0" Column="1"/>
+            <LayoutButtons Face="Udea" Type="AbilCmd" AbilCmd="AUbuArmy,Build10" Row="0" Column="2"/>
         </CardLayouts>
         <CardLayouts CardId="Bui2">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
@@ -2383,6 +2394,7 @@
         <AbilArray Link="UpgradeTouswb"/>
         <AbilArray Link="Acrs"/>
         <AbilArray Link="Aps2"/>
+        <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ngh1" Type="AbilCmd" AbilCmd="UpgradeTongh1,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="uswb" Type="AbilCmd" AbilCmd="UpgradeTouswb,Execute" Row="0" Column="1"/>
@@ -2409,6 +2421,7 @@
         <AbilArray Link="UpgradeTonnwl"/>
         <AbilArray Link="UpgradeTonnwr"/>
         <AbilArray Link="UpgradeToUcrl"/>
+        <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
             <LayoutButtons Face="nnwl" Type="AbilCmd" AbilCmd="UpgradeTonnwl,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="nnwr" Type="AbilCmd" AbilCmd="UpgradeTonnwr,Execute" Row="0" Column="1"/>
@@ -2424,7 +2437,7 @@
     <!--Ghoul-->
     <CUnit id="ugho" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
-        <CostResource index="gold" value="450"/>
+        <CostResource index="gold" value="150"/>
         <KillResource index="gold" value="5"/>
         <LifeStart value="300"/>
         <LifeMax value="300"/>
@@ -2432,6 +2445,7 @@
         <Race value="Undead"/>
         <Mover value="foot"/>
         <AbilArray Link="Acan"/>
+        <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Acan" Type="AbilCmd" AbilCmd="Acan,0" Row="2" Column="0"/>
         </CardLayouts>
@@ -2450,6 +2464,7 @@
         <AbilArray Link="Acri"/>
         <AbilArray Link="Arai"/>
         <AbilArray Link="Auhf"/>
+        <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Acri" Type="AbilCmd" AbilCmd="Acri,0" Row="2" Column="2"/>
             <LayoutButtons Face="Arai" Type="AbilCmd" AbilCmd="Arai,0" Row="2" Column="0"/>
@@ -2477,6 +2492,7 @@
         <AbilArray Link="Acri"/>
         <AbilArray Link="Arai"/>
         <AbilArray Link="Auhf"/>
+        <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Acri" Type="AbilCmd" AbilCmd="Acri,0" Row="2" Column="2"/>
             <LayoutButtons Face="Arai" Type="AbilCmd" AbilCmd="Arai,0" Row="2" Column="0"/>
@@ -2502,6 +2518,7 @@
         <Race value="Undead"/>
         <Mover value="foot"/>
         <PlaneArray index="Ground" value="1"/>
+        <BehaviorArray Link="undead"/>
         <BehaviorArray Link="Apts"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Apts" Type="Passive" Behavior="Apts" Row="2" Column="0"/>
@@ -2522,6 +2539,7 @@
         <AbilArray Link="Acri"/>
         <AbilArray Link="Arai"/>
         <AbilArray Link="Auhf"/>
+        <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
             <LayoutButtons Face="uktn" Type="AbilCmd" AbilCmd="UpgradeTouktn,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="uktg" Type="AbilCmd" AbilCmd="UpgradeTouktg,Execute" Row="0" Column="1"/>
@@ -2552,6 +2570,7 @@
         <AbilArray Link="Arpl"/>
         <AbilArray Link="Arpm"/>
         <AbilArray Link="Aave"/>
+        <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Arpl" Type="AbilCmd" AbilCmd="Arpl,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="Arpm" Type="AbilCmd" AbilCmd="Arpm,Execute" Row="2" Column="1"/>
@@ -2585,6 +2604,7 @@
         <Race value="Undead"/>
         <Mover value="hover"/>
         <AbilArray Link="ANch"/>
+        <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ANch" Type="AbilCmd" AbilCmd="ANch,Execute" Row="2" Column="0"/>
         </CardLayouts>
