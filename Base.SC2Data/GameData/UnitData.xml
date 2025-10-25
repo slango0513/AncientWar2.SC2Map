@@ -29,12 +29,7 @@
         <EffectArray index="Revive" value=""/>
         <PlacementFootprint value="1x1Building"/>
         <FogVisibility value="Snapshot"/>
-    </CUnit>
-    <CUnit id="PhalanxPlaceholder" parent="War3_Item" defType="">
-        <Collide index="Ground" value="1"/>
-        <Collide index="ForceField" value="1"/>
-        <Footprint value="6x6Phalanx"/>
-        <FogVisibility value="Snapshot"/>
+        <LifeArmor value="0"/>
     </CUnit>
     <CUnit id="HumanPhalanxPlaceholder" parent="War3_Item" defType="">
         <Collide index="Ground" value="1"/>
@@ -57,6 +52,10 @@
         <FogVisibility value="Snapshot"/>
         <BehaviorArray Link="PhalanxPlaceholder"/>
     </CUnit>
+    <!-- Unit Pathing Blockers do not perform as well as doodad Pathing Blockers, however, they can be dynamically turned on and off through triggers. -->
+    <CUnit id="PathingBlocker1x1">
+        <Attributes index="wall" value="1"/>
+    </CUnit>
     <CUnit id="UndeadPhalanxPlaceholder" parent="War3_Item" defType="">
         <Collide index="Ground" value="1"/>
         <Collide index="ForceField" value="1"/>
@@ -70,9 +69,9 @@
         <DeathTime value="15"/>
         <LifeStart value="25"/>
         <LifeMax value="25"/>
-        <CostResource index="gold" value="150"/>
+        <CostResource index="gold" value="600"/>
         <CostResource index="lumber" value="0"/>
-        <KillResource index="gold" value="5"/>
+        <KillResource index="gold" value="30"/>
         <FogVisibility value="Snapshot"/>
     </CUnit>
     <!--Wisp-->
@@ -89,10 +88,19 @@
             <LayoutButtons index="8" removed="1"/>
         </CardLayouts>
         <CardLayouts CardId="Bui1">
-            <LayoutButtons Face="earc" Type="AbilCmd" AbilCmd="AEbuUnit,Build3" Row="0" Column="0"/>
+            <LayoutButtons Face="nwat" Type="AbilCmd" AbilCmd="AEbuUnit,Build5" Row="0" Column="0"/>
+            <LayoutButtons Face="nhea" Type="AbilCmd" AbilCmd="AEbuUnit,Build3" Row="0" Column="1"/>
+            <LayoutButtons Face="earc" Type="AbilCmd" AbilCmd="AEbuUnit,Build4" Row="0" Column="2"/>
         </CardLayouts>
+        <AbilArray index="0" Link="move"/>
         <AbilArray index="4" Link="AEbuUnit"/>
+        <AbilArray index="5" removed="1"/>
+        <AbilArray index="6" removed="1"/>
+        <AbilArray index="7" removed="1"/>
+        <AbilArray index="8" removed="1"/>
         <BehaviorArray Link="Worker"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="ForceField" value="0"/>
     </CUnit>
     <!--human flag-->
     <CUnit id="flag">
@@ -106,30 +114,45 @@
         <BehaviorArray Link="CountUnit"/>
         <FlagArray index="Uncommandable" value="0"/>
         <AbilArray Link="RotationSystem"/>
+        <AbilArray Link="Bushido"/>
         <CardLayouts>
             <LayoutButtons Face="RotationSystem" Type="AbilCmd" AbilCmd="RotationSystem,On" Row="0" Column="0"/>
             <LayoutButtons Face="RotationSystemUn" Type="AbilCmd" AbilCmd="RotationSystem,Off" Row="0" Column="0"/>
+            <LayoutButtons Face="Bushido" Type="AbilCmd" AbilCmd="Bushido,On" Row="0" Column="1"/>
+            <LayoutButtons Face="BushidoUn" Type="AbilCmd" AbilCmd="Bushido,Off" Row="0" Column="1"/>
         </CardLayouts>
     </CUnit>
     <!--Footman-->
     <CUnit id="hfoo">
         <PlacementFootprint value="1x1Building"/>
-        <LifeStart value="25"/>
-        <LifeMax value="25"/>
+        <LifeStart value="400"/>
+        <LifeMax value="400"/>
         <DeathTime value="15"/>
         <CostResource index="gold" value="150"/>
         <KillResource index="gold" value="5"/>
         <FogVisibility value="Snapshot"/>
+        <LifeArmor value="0"/>
     </CUnit>
     <!--high elven swordsman-->
     <CUnit id="hhes">
         <PlacementFootprint value="1x1Building"/>
-        <LifeStart value="25"/>
-        <LifeMax value="25"/>
+        <LifeStart value="800"/>
+        <LifeMax value="800"/>
         <DeathTime value="15"/>
         <CostResource index="gold" value="450"/>
         <KillResource index="gold" value="5"/>
         <FogVisibility value="Snapshot"/>
+        <LifeArmor value="0"/>
+    </CUnit>
+    <!--Militia-->
+    <CUnit id="hmil">
+        <AbilArray index="4" removed="1"/>
+        <AbilArray index="5" removed="1"/>
+        <AbilArray index="6" removed="1"/>
+        <AbilArray index="7" removed="1"/>
+        <AbilArray index="8" removed="1"/>
+        <AbilArray index="9" removed="1"/>
+        <AbilArray index="10" removed="1"/>
     </CUnit>
     <!--Peasant-->
     <CUnit id="hpea">
@@ -150,9 +173,17 @@
             <LayoutButtons Face="hfoo" Type="AbilCmd" AbilCmd="AHbuUnit,Build3" Row="0" Column="0"/>
             <LayoutButtons Face="hhes" Type="AbilCmd" AbilCmd="AHbuUnit,Build4" Row="0" Column="1"/>
             <LayoutButtons Face="hsor" Type="AbilCmd" AbilCmd="AHbuUnit,Build5" Row="0" Column="2"/>
+            <LayoutButtons Face="nhea" Type="AbilCmd" AbilCmd="AHbuUnit,Build6" Row="0" Column="3"/>
         </CardLayouts>
+        <AbilArray index="0" Link="move"/>
         <AbilArray index="4" Link="AHbuUnit"/>
+        <AbilArray index="5" removed="1"/>
+        <AbilArray index="6" removed="1"/>
+        <AbilArray index="7" removed="1"/>
+        <AbilArray index="8" removed="1"/>
         <BehaviorArray Link="Worker"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="ForceField" value="0"/>
     </CUnit>
     <!--portal unit-->
     <CUnit id="hprt">
@@ -171,6 +202,7 @@
         <Attributes index="fort" value="0"/>
         <Attributes index="wall" value="1"/>
         <ResourceState value="Raw"/>
+        <MinimapRadius value="0"/>
     </CUnit>
     <!--Sorceress-->
     <CUnit id="hsor">
@@ -201,12 +233,34 @@
         <BehaviorArray Link="War3_PowerfulMob"/>
         <KillResource index="gold" value="350"/>
     </CUnit>
+    <!--high elven archer-->
+    <CUnit id="nhea">
+        <DeathTime value="15"/>
+        <FogVisibility value="Snapshot"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <CostResource index="gold" value="450"/>
+        <CostResource index="lumber" value="0"/>
+        <KillResource index="gold" value="5"/>
+        <PlacementFootprint value="1x1Building"/>
+    </CUnit>
     <!--magnataur warrior-->
     <CUnit id="nmgw">
         <LifeStart value="4500"/>
         <LifeMax value="4500"/>
         <BehaviorArray Link="War3_PowerfulMob"/>
         <KillResource index="gold" value="450"/>
+    </CUnit>
+    <!--watcher-->
+    <CUnit id="nwat">
+        <DeathTime value="15"/>
+        <FogVisibility value="Snapshot"/>
+        <LifeStart value="400"/>
+        <LifeMax value="400"/>
+        <LifeArmor value="0"/>
+        <CostResource index="gold" value="150"/>
+        <KillResource index="gold" value="5"/>
+        <PlacementFootprint value="1x1Building"/>
     </CUnit>
     <!--Orc flag-->
     <CUnit id="oflg">
@@ -223,11 +277,12 @@
     <CUnit id="ogru">
         <PlacementFootprint value="1x1Building"/>
         <DeathTime value="15"/>
-        <LifeStart value="25"/>
-        <LifeMax value="25"/>
+        <LifeStart value="1200"/>
+        <LifeMax value="1200"/>
         <CostResource index="gold" value="150"/>
         <KillResource index="gold" value="15"/>
         <FogVisibility value="Snapshot"/>
+        <LifeArmor value="0"/>
     </CUnit>
     <!--Peon-->
     <CUnit id="opeo">
@@ -253,8 +308,13 @@
         <CardLayouts CardId="Bui1">
             <LayoutButtons Face="ogru" Type="AbilCmd" AbilCmd="AObuUnit,Build3" Row="0" Column="0"/>
         </CardLayouts>
+        <AbilArray index="0" Link="move"/>
         <AbilArray index="4" Link="AObuUnit"/>
+        <AbilArray index="5" removed="1"/>
+        <AbilArray index="6" removed="1"/>
         <BehaviorArray Link="Worker"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="ForceField" value="0"/>
     </CUnit>
     <!--Acolyte-->
     <CUnit id="uaco">
@@ -275,8 +335,15 @@
             <LayoutButtons Face="uban" Type="AbilCmd" AbilCmd="AUbuUnit,Build4" Row="0" Column="1"/>
             <LayoutButtons Face="unec" Type="AbilCmd" AbilCmd="AUbuUnit,Build5" Row="0" Column="2"/>
         </CardLayouts>
+        <AbilArray index="0" Link="move"/>
         <AbilArray index="4" Link="AUbuUnit"/>
+        <AbilArray index="5" removed="1"/>
+        <AbilArray index="6" removed="1"/>
+        <AbilArray index="7" removed="1"/>
+        <AbilArray index="8" removed="1"/>
         <BehaviorArray Link="Worker"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="ForceField" value="0"/>
     </CUnit>
     <!--Banshee-->
     <CUnit id="uban">
@@ -304,9 +371,9 @@
     <CUnit id="ugho">
         <PlacementFootprint value="1x1Building"/>
         <DeathTime value="15"/>
-        <LifeStart value="25"/>
-        <LifeMax value="25"/>
-        <CostResource index="gold" value="150"/>
+        <LifeStart value="400"/>
+        <LifeMax value="400"/>
+        <CostResource index="gold" value="450"/>
         <KillResource index="gold" value="5"/>
         <FogVisibility value="Snapshot"/>
     </CUnit>
@@ -323,8 +390,9 @@
     </CUnit>
     <!--SkeletonWarrior-->
     <CUnit id="uske">
-        <LifeStart value="25"/>
-        <LifeMax value="25"/>
+        <LifeStart value="400"/>
+        <LifeMax value="400"/>
         <FogVisibility value="Snapshot"/>
+        <LifeArmor value="0"/>
     </CUnit>
 </Catalog>

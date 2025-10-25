@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
-    <CRequirementAnd id="AndCountUpgradeBuildPhalanxCompleteOnlyNotCountBehaviorRotationSystemMarkerCompleteOnlyAtUnit">
+    <CRequirementAnd id="AndCountUpgradeBuildPhalanxCompleteOnlyCountBehaviorBushidoMarkerCompleteOnlyAtUnit">
         <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUpgradeBuildPhalanxCompleteOnly"/>
-        <OperandArray value="NotCountBehaviorRotationSystemMarkerCompleteOnlyAtUnit"/>
+        <OperandArray value="CountBehaviorBushidoMarkerCompleteOnlyAtUnit"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndCountUpgradeBuildPhalanxCompleteOnlyCountBehaviorRotationSystemMarkerCompleteOnlyAtUnit">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUpgradeBuildPhalanxCompleteOnly"/>
+        <OperandArray value="CountBehaviorRotationSystemMarkerCompleteOnlyAtUnit"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndCountUpgradeBuildPhalanxCompleteOnlyNotCountBehaviorAlias_PhalanxBuffCompleteOnlyAtUnit">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUpgradeBuildPhalanxCompleteOnly"/>
+        <OperandArray value="NotCountBehaviorAlias_PhalanxBuffCompleteOnlyAtUnit"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndLTCountUnitAlias_PhalanxQueuedOrBetter3CountUpgradeBuildPhalanxCompleteOnly">
         <OperandArray value="LTCountUnitAlias_PhalanxQueuedOrBetter3"/>
@@ -13,6 +23,16 @@
         <OperandArray value="LTCountUnitAlias_PortalQueuedOrBetter2"/>
         <OperandArray value="CountUpgradeBuildPortalCompleteOnly"/>
     </CRequirementAnd>
+    <CRequirementCountBehavior id="CountBehaviorAlias_PhalanxBuffCompleteOnlyAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="Alias_PhalanxBuff" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountBehavior>
+    <CRequirementCountBehavior id="CountBehaviorBushidoMarkerCompleteOnlyAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="BushidoMarker" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorRotationSystemMarkerCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="RotationSystemMarker" State="CompleteOnlyAtUnit"/>
@@ -49,7 +69,8 @@
         <OperandArray index="0" value="CountUnitAlias_PortalQueuedOrBetter"/>
         <OperandArray index="1" value="2"/>
     </CRequirementLT>
-    <CRequirementNot id="NotCountBehaviorRotationSystemMarkerCompleteOnlyAtUnit">
-        <OperandArray index="0" value="CountBehaviorRotationSystemMarkerCompleteOnlyAtUnit"/>
+    <CRequirementNot id="NotCountBehaviorAlias_PhalanxBuffCompleteOnlyAtUnit">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountBehaviorAlias_PhalanxBuffCompleteOnlyAtUnit"/>
     </CRequirementNot>
 </Catalog>

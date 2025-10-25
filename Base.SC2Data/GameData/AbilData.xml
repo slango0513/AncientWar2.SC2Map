@@ -8,8 +8,14 @@
         <InfoArray index="Build2" Unit="hprt">
             <Button DefaultButtonFace="hprt" Requirements="BuildPortal"/>
         </InfoArray>
-        <InfoArray index="Build3" Unit="earc">
+        <InfoArray index="Build3" Unit="nwat">
+            <Button DefaultButtonFace="nhea" Requirements="BuildUnit"/>
+        </InfoArray>
+        <InfoArray index="Build4" Unit="earc">
             <Button DefaultButtonFace="earc" Requirements="BuildUnit"/>
+        </InfoArray>
+        <InfoArray index="Build5" Unit="nwat">
+            <Button DefaultButtonFace="nwat" Requirements="BuildUnit"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
@@ -29,6 +35,9 @@
         </InfoArray>
         <InfoArray index="Build5" Unit="hsor">
             <Button DefaultButtonFace="hsor" Requirements="BuildUnit"/>
+        </InfoArray>
+        <InfoArray index="Build6" Unit="nhea">
+            <Button DefaultButtonFace="nhea" Requirements="BuildUnit"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
@@ -119,8 +128,14 @@
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
     </CAbilEffectInstant>
+    <CAbilBehavior id="Bushido" parent="War3_Toggle">
+        <CmdButtonArray index="On" Requirements="PhalanxBuff"/>
+        <CmdButtonArray index="Off" Requirements="BushidoUn"/>
+        <BehaviorArray value="BushidoMarker"/>
+    </CAbilBehavior>
     <CAbilBehavior id="RotationSystem" parent="War3_Toggle">
-        <CmdButtonArray index="On" Requirements="RotationSystem"/>
+        <CmdButtonArray index="On" Requirements="PhalanxBuff"/>
+        <CmdButtonArray index="Off" Requirements="RotationSystemUn"/>
         <BehaviorArray value="RotationSystemMarker"/>
     </CAbilBehavior>
     <CAbilEffectTarget id="Teleport" parent="War3_EffectTarget">
@@ -133,4 +148,24 @@
         <AutoCastRange value="1.5"/>
         <CmdButtonArray index="Execute" Requirements="Teleport"/>
     </CAbilEffectTarget>
+    <CAbilStop id="stop">
+        <CmdButtonArray index="Stop">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="HoldFire">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cheer">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Dance">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Tease">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="RequestPickup">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilStop>
 </Catalog>
