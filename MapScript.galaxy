@@ -16,6 +16,7 @@ const fixed lib1_gv_minimumPeriod = 0.0625;
 const int lib1_gv_customValuePhalanx = 1;
 const string lib1_gv_unitTypeUserType = "UnitTypeData";
 const string lib1_gv_phalanxUserType = "PhalanxData";
+const string lib1_gv_portalUserType = "PortalData";
 const string lib1_gv_phalanxBuffUserType = "PhalanxBuffData";
 const int lib1_gv_unitMaximumCountPerPhalanx = 72;
 const int lib1_gv_phalanxMaximumCount = 3;
@@ -26,7 +27,7 @@ const int lib1_gv_teamMemberMaximumCount = 2;
 const int lib1_gv_teamMaximumCount = 8;
 const int lib1_gv_playerCount = 8;
 const int lib1_gv_playerMaximumIndex = 15;
-const int lib1_gv_phalanxBehaviorFlag = c_unitBehaviorFlagUser1;
+const int lib1_gv_portalMaximumCount = 2;
 const int lib1_gv_venueGroupMaximumCount = (lib1_gv_teamMaximumCount/2);
 
 // Variable Declarations
@@ -99,7 +100,9 @@ void lib1_gf_PhalanxPlaceholderPositionAll ();
 void lib1_gf_PreviewerRemoveAll ();
 void lib1_gf_UnitPositionAll ();
 void lib1_gf_UnitPosition (unit lp_unit, int lp_phalanx, bool lp_preview);
-void lib1_gf_AIPhalanxPosition (int lp_round);
+void lib1_gf_AIPhalanxAndPortalPositionAll (int lp_round);
+void lib1_gf_AIPhalanxAndPortalPosition (int lp_player, region lp_region, string lp_unitType, string lp_userType, unitfilter lp_unitFilter, int lp_count);
+bool lib1_gf_RegionContainsPointWithOffset (point lp_point, region lp_region, int lp_x, int lp_y);
 void lib1_gf_AIBuilding ();
 void lib1_gf_BattlefieldSetAll (region lp_region);
 void lib1_gf_BattlefieldRevealerEnable (bool lp_option);
@@ -185,9 +188,9 @@ void lib1_InitVariables () {
     lib1_gv_scoreBoard = c_boardNone;
     lib1_gv_uIPlayergroup = PlayerGroupActive();
     lib1_gv_phalanxFilter = UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
-    lib1_gv_portalFilter = UnitFilter((1 << c_targetFilterHover), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
-    lib1_gv_buildingFilter = UnitFilter(0, (1 << (c_targetFilterBenign - 32)), (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
-    lib1_gv_unitFilter = UnitFilter(0, 0, (1 << c_targetFilterHover) | (1 << c_targetFilterWorker) | (1 << c_targetFilterHarvestableResource) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterBenign - 32)));
+    lib1_gv_portalFilter = UnitFilter((1 << c_targetFilterRawResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
+    lib1_gv_buildingFilter = UnitFilter(0, (1 << (c_targetFilterRadar - 32)), (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
+    lib1_gv_unitFilter = UnitFilter(0, 0, (1 << c_targetFilterWorker) | (1 << c_targetFilterRawResource) | (1 << c_targetFilterHarvestableResource) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterRadar - 32)));
     lib1_gv_workerFilter = UnitFilter((1 << c_targetFilterWorker), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
 }
 
@@ -935,39 +938,63 @@ void lib1_gf_UnitPosition (unit lp_unit, int lp_phalanx, bool lp_preview) {
     }
 }
 
-void lib1_gf_AIPhalanxPosition (int lp_round) {
-    int auto1F352671_ae;
-    int auto1F352671_ai;
+void lib1_gf_AIPhalanxAndPortalPositionAll (int lp_round) {
+    int auto2F8E2CB7_ae;
+    int auto2F8E2CB7_ai;
 
     // Variable Declarations
     int lv_venue;
-    point lv_point;
     string lv_unitType;
+
+    // Variable Initialization
+
+    // Implementation
+    auto2F8E2CB7_ae = lib1_gv_venueMaximumCount;
+    auto2F8E2CB7_ai = 1;
+    lv_venue = 1;
+    for ( ; ( (auto2F8E2CB7_ai >= 0 && lv_venue <= auto2F8E2CB7_ae) || (auto2F8E2CB7_ai <= 0 && lv_venue >= auto2F8E2CB7_ae) ) ; lv_venue += auto2F8E2CB7_ai ) {
+        lv_unitType = lib1_gf_RaceGetPhalanxType(PlayerRace(lib1_gv_playerAtVenue[lv_venue][lp_round]));
+        lib1_gf_AIPhalanxAndPortalPosition(lib1_gv_playerAtVenue[lv_venue][lp_round], lib1_gv_venue[lv_venue], lv_unitType, lib1_gv_phalanxUserType, lib1_gv_phalanxFilter, lib1_gv_phalanxMaximumCount);
+        if ((PlayerType(lib1_gv_playerAtVenue[lv_venue][lp_round]) == c_playerTypeComputer)) {
+            lv_unitType = "hprt";
+            lib1_gf_AIPhalanxAndPortalPosition(lib1_gv_playerAtVenue[lv_venue][lp_round], lib1_gv_venue[lv_venue], lv_unitType, lib1_gv_portalUserType, lib1_gv_portalFilter, lib1_gv_portalMaximumCount);
+        }
+
+    }
+}
+
+void lib1_gf_AIPhalanxAndPortalPosition (int lp_player, region lp_region, string lp_unitType, string lp_userType, unitfilter lp_unitFilter, int lp_count) {
+    // Variable Declarations
     string lv_unitTypeID;
     int lv_columnCount;
     int lv_rowCount;
+    point lv_point;
 
     // Variable Initialization
     lv_unitTypeID = "";
 
     // Implementation
-    auto1F352671_ae = lib1_gv_venueMaximumCount;
-    auto1F352671_ai = 1;
-    lv_venue = 1;
-    for ( ; ( (auto1F352671_ai >= 0 && lv_venue <= auto1F352671_ae) || (auto1F352671_ai <= 0 && lv_venue >= auto1F352671_ae) ) ; lv_venue += auto1F352671_ai ) {
-        lv_unitType = lib1_gf_RaceGetPhalanxType(PlayerRace(lib1_gv_playerAtVenue[lv_venue][lp_round]));
-        lv_unitTypeID = (lv_unitType);
-        lv_columnCount = UserDataGetInt(lib1_gv_phalanxUserType, (lv_unitTypeID), "Row", 1);
-        lv_rowCount = UserDataGetInt(lib1_gv_phalanxUserType, (lv_unitTypeID), "Column", 1);
-        while ((UnitGroupCount(UnitGroup(null, lib1_gv_playerAtVenue[lv_venue][lp_round], RegionEntireMap(), lib1_gv_phalanxFilter, 0), c_unitCountAlive) < lib1_gv_phalanxMaximumCount)) {
-            lv_point = RegionRandomPoint(lib1_gv_venue[lv_venue]);
-            libNtve_gf_CreateUnitsWithDefaultFacing(1, lv_unitType, 0, lib1_gv_playerAtVenue[lv_venue][lp_round], lv_point);
-            if ((UnitGetType(UnitLastCreated()) != null) && (RegionContainsPoint(lib1_gv_venue[lv_venue], PointWithOffsetPolar(UnitGetPosition(UnitLastCreated()), (lv_rowCount/2-0.5), (0.0+0))) == true) && (RegionContainsPoint(lib1_gv_venue[lv_venue], PointWithOffsetPolar(UnitGetPosition(UnitLastCreated()), (lv_rowCount/2-0.5), (0.0+180))) == true) && (RegionContainsPoint(lib1_gv_venue[lv_venue], PointWithOffsetPolar(UnitGetPosition(UnitLastCreated()), (lv_columnCount/2-0.5), (0.0+90))) == true) && (RegionContainsPoint(lib1_gv_venue[lv_venue], PointWithOffsetPolar(UnitGetPosition(UnitLastCreated()), (lv_columnCount/2-0.5), (0.0+270))) == true)) {
-            }
-            else {
-                UnitRemove(UnitLastCreated());
-            }
+    lv_unitTypeID = (lp_unitType);
+    lv_columnCount = UserDataGetInt(lp_userType, (lv_unitTypeID), "Row", 1);
+    lv_rowCount = UserDataGetInt(lp_userType, (lv_unitTypeID), "Column", 1);
+    while ((UnitGroupCount(UnitGroup(null, lp_player, lp_region, lp_unitFilter, 0), c_unitCountAlive) < lp_count)) {
+        lv_point = RegionRandomPoint(lp_region);
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, lp_unitType, 0, lp_player, lv_point);
+        if ((UnitGetType(UnitLastCreated()) != null) && (lib1_gf_RegionContainsPointWithOffset(UnitGetPosition(UnitLastCreated()), lp_region, lv_rowCount, lv_columnCount) == true)) {
         }
+        else {
+            UnitRemove(UnitLastCreated());
+        }
+    }
+}
+
+bool lib1_gf_RegionContainsPointWithOffset (point lp_point, region lp_region, int lp_x, int lp_y) {
+    // Implementation
+    if ((RegionContainsPoint(lp_region, PointWithOffsetPolar(lp_point, (lp_x/2-0.5), (0.0+0))) == true) && (RegionContainsPoint(lp_region, PointWithOffsetPolar(lp_point, (lp_x/2-0.5), (0.0+180))) == true) && (RegionContainsPoint(lp_region, PointWithOffsetPolar(lp_point, (lp_y/2-0.5), (0.0+90))) == true) && (RegionContainsPoint(lp_region, PointWithOffsetPolar(lp_point, (lp_y/2-0.5), (0.0+270))) == true)) {
+        return true;
+    }
+    else {
+        return false;
     }
 }
 
@@ -1372,7 +1399,7 @@ void lib1_gf_RoundStart (int lp_round) {
     lib1_gf_PhalanxCounterEnable(true, true);
     lib1_gf_VenueCameraPan(lp_round);
     lib1_gf_TimerSet(10.0);
-    lib1_gf_AIPhalanxPosition(lp_round);
+    lib1_gf_AIPhalanxAndPortalPositionAll(lp_round);
     lib1_gf_PhalanxCounterEnable(false, false);
     lib1_gf_VenueRevealerEnable(lp_round, false);
     lib1_gf_UnitTypeSetAll();
