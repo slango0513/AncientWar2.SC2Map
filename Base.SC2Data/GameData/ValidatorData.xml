@@ -1,11 +1,44 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CValidatorUnitCompareBehaviorCount id="CasterIsNotPreviewer">
+        <Behavior value="Previewer"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitFilters id="CasterNotPassive">
+        <WhichUnit Value="Caster"/>
+        <Filters value="-;Passive"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitFilters id="CasterIsPassive">
+        <WhichUnit Value="Caster"/>
+        <Filters value="Passive;-"/>
+    </CValidatorUnitFilters>
     <CValidatorPlayerRequirement id="CountUnit">
         <Find value="1"/>
         <Value value="CountUnit"/>
     </CValidatorPlayerRequirement>
+    <CValidatorLocationEnumArea id="EnemiesNearby3">
+        <AreaArray Compare="GT" Count="0" Radius="3"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Hover,Missile,Dead,Hidden"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorUnitCompareField id="IsRangedUnit">
+        <Field value="TechAliasArray[0]"/>
+        <Value value="_RangedUnit"/>
+    </CValidatorUnitCompareField>
+    <CValidatorUnitCompareField id="IsMeleeUnit">
+        <Field value="TechAliasArray[0]"/>
+        <Value value="_MeleeUnit"/>
+    </CValidatorUnitCompareField>
     <CValidatorUnitCompareBehaviorCount id="NoPossession">
         <Behavior value="Bpos"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoPolymorph">
+        <Behavior value="Bply"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoInvisibility">
+        <Behavior value="Binv"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="HasInvisibility">
+        <Behavior value="Binv"/>
+        <Compare value="GT"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorLocationEnumArea id="PhalanxMarkerLessThan36">
         <WhichLocation Value="CasterPoint"/>
@@ -23,6 +56,12 @@
         <SearchFilters value="Visible;Neutral,Enemy,Hover,Worker,RawResource,HarvestableResource,Missile,Dead,Hidden,Radar,MapBoss"/>
         <Compare value="Eq"/>
     </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="UnitEqual0">
+        <WhichLocation Value="CasterPoint"/>
+        <AreaArray Radius="500"/>
+        <SearchFilters value="Visible;Neutral,Enemy,Hover,Worker,RawResource,HarvestableResource,Missile,Dead,Hidden,Radar,MapBoss"/>
+        <Compare value="Eq"/>
+    </CValidatorLocationEnumArea>
     <CValidatorUnitCompareBehaviorCount id="HasPhalanxMarker">
         <Compare value="GT"/>
         <Behavior value="PhalanxMarker"/>
@@ -30,7 +69,8 @@
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NoTeleportMarker">
         <Behavior value="TeleportMarker"/>
-        <RequireCasterUnit Effect="Teleport" Value="Target"/>
+        <ExcludeCasterUnit Effect="Teleport" Value="Caster"/>
+        <RequireOriginPlayer Effect="Teleport" Value="Caster"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitType id="IsPortal">
         <Value value="hprt"/>
@@ -51,5 +91,40 @@
     <CValidatorLocationEnumArea id="TacticalDefendThreatSearch" parent="TacticalCloakThreatSearch" unitLink="hfoo">
         <AreaArray index="0" Radius="10" Validator="UnitThreatenshfoo"/>
     </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="TacticalDefendThreatSearchEmpty" parent="TacticalCloakThreatSearchEmpty" unitLink="hfoo">
+        <AreaArray index="0" Radius="10" Validator="UnitThreatenshfoo"/>
+    </CValidatorLocationEnumArea>
     <CValidatorUnitCompareAttackPriority id="UnitThreatenshfoo" parent="ThreatensUnit" unitLink="hfoo"/>
+    <CValidatorCombine id="AIInvisibilityTarget">
+        <Type value="And"/>
+        <CombineArray value="EnemiesNearby3"/>
+        <CombineArray value="IsRangedUnit"/>
+        <CombineArray value="NoInvisibility"/>
+        <CombineArray value="noMarkers"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="AIPolymorphTarget">
+        <Type value="And"/>
+        <CombineArray value="NoPolymorph"/>
+        <CombineArray value="noMarkers"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="AIAttackCaster">
+        <Type value="And"/>
+        <CombineArray value="CasterIsNotAttackingWar3"/>
+        <CombineArray value="CasterNotPassive"/>
+    </CValidatorCombine>
+    <CValidatorUnitFilters id="CasterIsCloaked">
+        <WhichUnit Value="Caster"/>
+        <Filters value="Cloaked;-"/>
+    </CValidatorUnitFilters>
+    <CValidatorCombine id="CasterIsNotAttackingWar3">
+        <CombineArray value="CasterIsAttackingWar3A"/>
+        <CombineArray value="CasterIsAttackingWar3B"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
+    <CValidatorLocationEnumArea id="NoEnemiesNearby15">
+        <AreaArray Count="0" Radius="15"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Hover,Missile,Dead,Hidden"/>
+        <WhichLocation Value="CasterUnitOrPoint"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CValidatorLocationEnumArea>
 </Catalog>

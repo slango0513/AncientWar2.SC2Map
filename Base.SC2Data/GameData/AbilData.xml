@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <!--Cripple (creep) Dur=60 HeroDur=10 Buff=Bcri-->
+    <CAbilEffectTarget id="ACcr">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <!--Abolish Magic (Creep)-->
+    <CAbilEffectTarget id="ACdm">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
     <CAbilBuild id="AEbuUnit" parent="War3_PowerBuild">
         <FlagArray index="IgnoreFood" value="1"/>
         <InfoArray index="Build1" Unit="nflg">
@@ -9,16 +27,25 @@
             <Button DefaultButtonFace="hprt" Requirements="BuildPortal"/>
         </InfoArray>
         <InfoArray index="Build3" Unit="nwat">
-            <Button DefaultButtonFace="nhea" Requirements="BuildUnit"/>
+            <Button DefaultButtonFace="nhea" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build4" Unit="earc">
-            <Button DefaultButtonFace="earc" Requirements="BuildUnit"/>
+            <Button DefaultButtonFace="earc" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build5" Unit="nwat">
-            <Button DefaultButtonFace="nwat" Requirements="BuildUnit"/>
+            <Button DefaultButtonFace="nwat" Requirements="BuildArmy"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
+    <!--Paladin - Devotion Aura Buff=BHad-->
+    <CAbilBehavior id="AHad">
+        <CmdButtonArray index="On" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Off">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilBehavior>
     <CAbilBuild id="AHbuUnit" parent="War3_PowerBuild">
         <FlagArray index="IgnoreFood" value="1"/>
         <InfoArray index="Build1" Unit="flag">
@@ -28,20 +55,47 @@
             <Button DefaultButtonFace="hprt" Requirements="BuildPortal"/>
         </InfoArray>
         <InfoArray index="Build3" Unit="hfoo">
-            <Button DefaultButtonFace="hfoo" Requirements="BuildUnit"/>
+            <Button DefaultButtonFace="hfoo" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build4" Unit="hhes">
-            <Button DefaultButtonFace="hhes" Requirements="BuildUnit"/>
+            <Button DefaultButtonFace="hhes" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build5" Unit="hsor">
-            <Button DefaultButtonFace="hsor" Requirements="BuildUnit"/>
+            <Button DefaultButtonFace="hsor" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build6" Unit="nhea">
-            <Button DefaultButtonFace="nhea" Requirements="BuildUnit"/>
+            <Button DefaultButtonFace="nhea" Requirements="BuildArmy"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
-    <CAbilBuild id="AObuUnit" parent="War3_PowerBuild">
+    <!--Paladin - Divine Shield Buff=BHds-->
+    <CAbilEffectInstant id="AHds">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="AHhb">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <!--Chieftain - Endurance Aura Buff=BOae-->
+    <CAbilBehavior id="AOae">
+        <CmdButtonArray index="On" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Off">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilBehavior>
+    <CAbilBuild id="AObuArmy" parent="War3_PowerBuild">
+        <Name value="AObuUnit/Name"/>
         <FlagArray index="IgnoreFood" value="1"/>
         <InfoArray index="Build1" Unit="oflg">
             <Button DefaultButtonFace="oflg" Requirements="BuildPhalanx"/>
@@ -49,11 +103,182 @@
         <InfoArray index="Build2" Unit="hprt">
             <Button DefaultButtonFace="hprt" Requirements="BuildPortal"/>
         </InfoArray>
-        <InfoArray index="Build3" Unit="ogru">
-            <Button DefaultButtonFace="ogru" Requirements="BuildUnit"/>
+        <InfoArray index="Build3" Unit="nitr">
+            <Button DefaultButtonFace="nitr" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build4" Unit="nftr">
+            <Button DefaultButtonFace="nftr" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build5" Unit="ogru">
+            <Button DefaultButtonFace="ogru" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build6" Unit="nchg">
+            <Button DefaultButtonFace="nchg" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build7" Unit="orai">
+            <Button DefaultButtonFace="orai" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build8" Unit="nchr">
+            <Button DefaultButtonFace="nchr" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build9" Unit="ohun">
+            <Button DefaultButtonFace="ohun" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build10" Unit="otbk">
+            <Button DefaultButtonFace="otbk" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build11" Unit="otau">
+            <Button DefaultButtonFace="otau" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build12" Unit="Otch">
+            <Button DefaultButtonFace="Otch" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build13" Unit="Obla">
+            <Button DefaultButtonFace="Obla" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build14" Unit="Nbbc">
+            <Button DefaultButtonFace="Nbbc" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build15" Unit="okod">
+            <Button DefaultButtonFace="okod" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build16" Unit="nckb">
+            <Button DefaultButtonFace="nckb" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build17" Unit="nckb">
+            <Button DefaultButtonFace="nckb" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build18" Unit="nw2w">
+            <Button DefaultButtonFace="nw2w" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build19" Unit="nchw">
+            <Button DefaultButtonFace="nchw" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build20" Unit="ospw">
+            <Button DefaultButtonFace="ospw" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build21" Unit="oshm">
+            <Button DefaultButtonFace="oshm" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build22" Unit="odoc">
+            <Button DefaultButtonFace="odoc" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build23" Unit="Oshd">
+            <Button DefaultButtonFace="Oshd" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build24" Unit="nitp">
+            <Button DefaultButtonFace="nitp" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build25" Unit="nfsp">
+            <Button DefaultButtonFace="nfsp" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build26" Unit="Ofar">
+            <Button DefaultButtonFace="Ofar" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build27" Unit="Othr">
+            <Button DefaultButtonFace="Othr" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build28" Unit="npn4">
+            <Button DefaultButtonFace="npn4" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build29" Unit="npn5">
+            <Button DefaultButtonFace="npn5" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build30" Unit="npn6">
+            <Button DefaultButtonFace="npn6" Requirements="BuildArmy"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
+    <!--Blade Master - Critical Strike-->
+    <CAbilBehavior id="AOcr">
+        <CmdButtonArray index="On" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Off">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilBehavior>
+    <!--Shadow Hunter - Healing Wave-->
+    <CAbilEffectTarget id="AOhw">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <!--Shadow Hunter - Hex Buff=BOhx-->
+    <CAbilEffectTarget id="AOhx">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <!--Blade Master - Mirror Image Buff=BOmi-->
+    <CAbilEffectInstant id="AOmi">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <!--Chieftain - Reincarnation effect=XOre cast=3-->
+    <CAbilBehavior id="AOre">
+        <CmdButtonArray index="On" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Off">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilBehavior>
+    <!--Chieftain - Shock Wave Buff=BOsh-->
+    <CAbilEffectTarget id="AOsh">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <!--Shadow Hunter - Serpent Ward Buff=BOwd-->
+    <CAbilEffectTarget id="AOsw">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <!--Blade Master - Wind Walk Buff=BOwk-->
+    <CAbilEffectInstant id="AOwk">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <!--Chieftain - War Stomp Buff=BPSE-->
+    <CAbilEffectInstant id="AOws">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <!--Blade Master - Bladestorm Buff=BOww-->
+    <CAbilEffectInstant id="AOww">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
     <CAbilBuild id="AUbuUnit" parent="War3_PowerBuild">
         <FlagArray index="IgnoreFood" value="1"/>
         <InfoArray index="Build1" Unit="uflg">
@@ -63,35 +288,206 @@
             <Button DefaultButtonFace="hprt" Requirements="BuildPortal"/>
         </InfoArray>
         <InfoArray index="Build3" Unit="ugho">
-            <Button DefaultButtonFace="ugho" Requirements="BuildUnit"/>
+            <Button DefaultButtonFace="ugho" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build4" Unit="uban">
-            <Button DefaultButtonFace="uban" Requirements="BuildUnit"/>
+            <Button DefaultButtonFace="uban" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build5" Unit="unec">
-            <Button DefaultButtonFace="unec" Requirements="BuildUnit"/>
+            <Button DefaultButtonFace="unec" Requirements="BuildArmy"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
+    <!--Anti-magic Shield (Matrix) Dur=90 HeroDur=90 Buff=Bams,Bam2-->
+    <CAbilEffectTarget id="Aam2">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <!--Item Abil End-->
+    <!--Orc Abil-->
+    <!--Ancestral Spirit-->
+    <CAbilEffectInstant id="Aast">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
     <CAbilAttack id="Aatk">
-        <CmdButtonArray index="Execute">
+        <CmdButtonArray index="Execute" Requirements="ShowDefaultButton">
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
         <CmdButtonArray index="Towards">
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
-        <CmdButtonArray index="Barrage">
+        <CmdButtonArray index="Barrage" Requirements="ShowDefaultButton">
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
     </CAbilAttack>
+    <CAbilAttack id="AatkTree">
+        <CmdButtonArray index="Execute" Requirements="ShowDefaultButton"/>
+        <CmdButtonArray index="Barrage" Requirements="ShowDefaultButton"/>
+    </CAbilAttack>
+    <!--Bloodlust Dur=60 HeroDur=60 Buff=Bblo-->
+    <CAbilEffectTarget id="Ablo">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <!--Beserk Dur=12 HeroDur=12 Buff=Bbsk-->
+    <CAbilEffectInstant id="Absk">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <!--Cannibalize Dur=33 HeroDur=33-->
+    <CAbilEffectInstant id="Acan">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <!--Corporeal Form Dur=.7-->
+    <CAbilMorph id="Acpf">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilMorph>
+    <CAbilMorph id="AcpfUn">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilMorph>
+    <!--Cripple Dur=60 HeroDur=10 Buff=Bcri-->
+    <CAbilEffectTarget id="Acri">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <!--Curse Dur=120 HeroDur=60 Buff=Bcrs-->
+    <CAbilEffectTarget id="Acrs">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <!--Disenchant(new)-->
+    <CAbilEffectTarget id="Adcn">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <CAbilBehavior id="Adef">
+        <CmdButtonArray index="On" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Off">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilBehavior>
+    <!--Devour Buff=Bdig,Bdvv-->
+    <CAbilTransport id="Adev">
+        <CmdButtonArray index="Load">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="UnloadAll">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="UnloadAt">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="UnloadUnit">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="LoadAll">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilTransport>
+    <!--Ensnare Dur=12 HeroDur=3 Buff=Bena,Beng-->
+    <CAbilEffectTarget id="Aens">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <!--Sentry Ward Dur=600 HeroDur=600 Buff=Beye-->
+    <CAbilEffectTarget id="Aeye">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <!--PlaceUnit value="oeye"/-->
+    </CAbilEffectTarget>
+    <!--Healing Ward Dur=30 HeroDur=30 Buff=Bhwd-->
+    <CAbilEffectTarget id="Ahwd">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <!--PlaceUnit value="ohwd"/-->
+    </CAbilEffectTarget>
+    <!--Invisibility Dur=120 HeroDur=120 Buff=Binv-->
+    <CAbilEffectTarget id="Aivs">
+        <Cost index="0">
+            <Vital index="Energy" value="100"/>
+        </Cost>
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <!--Lightning Shield Dur=20 HeroDur=20 Buff=Blsh,Blsa-->
+    <CAbilEffectTarget id="Alsh">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
     <CAbilMove id="Amov">
-        <CmdButtonArray index="Move">
+        <CmdButtonArray index="Move" Requirements="ShowDefaultButton">
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
-        <CmdButtonArray index="Patrol">
+        <CmdButtonArray index="Patrol" Requirements="ShowDefaultButton">
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
-        <CmdButtonArray index="HoldPos">
+        <CmdButtonArray index="HoldPos" Requirements="ShowDefaultButton">
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
         <CmdButtonArray index="AcquireMove">
@@ -101,6 +497,92 @@
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
     </CAbilMove>
+    <!--Heal (Creep Normal) Buff=Bhea-->
+    <CAbilEffectTarget id="Anh1">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <!--Purge Dur=15 HeroDur=5 Buff=Bprg-->
+    <CAbilEffectTarget id="Apg2">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <!--Spirit Link Dur=75 HeroDur=75 Buff=Bspl-->
+    <CAbilEffectTarget id="Aspl">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <!--Stasis Trap Dur=150 HeroDur=2.5 Buff=Bstt StunBuff=Bsta-->
+    <CAbilEffectTarget id="Asta">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <!--PlaceUnit value="otot"/-->
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Auhf">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <!--Cripple (Warlock) Dur=60 HeroDur=10 Buff=Bcri-->
+    <CAbilEffectTarget id="Scri">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <CAbilStop id="stop">
+        <CmdButtonArray index="Stop" Requirements="ShowDefaultButton">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="HoldFire">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cheer">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Dance">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Tease">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="RequestPickup">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilStop>
+    <!--Polymorph Dur=60 HeroDur=60 Buff=Bply-->
+    <CAbilEffectTarget id="Aply">
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+        </Cost>
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
     <!--Possession (Channeling) Dur=4.5 HeroDur=4.5 Buff=Bpos,Bpoc-->
     <CAbilEffectTarget id="Aps2">
         <Flags index="AutoCast" value="1"/>
@@ -128,6 +610,32 @@
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
     </CAbilEffectInstant>
+    <!--Slow Dur=60 HeroDur=10 Buff=Bslo-->
+    <CAbilEffectTarget id="Aslo">
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+        </Cost>
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <TargetSorts>
+            <SortArray index="0" value="UnitTypeMeleeUnit"/>
+            <SortArray value="TSDistance"/>
+        </TargetSorts>
+        <Range index="0" value="15"/>
+        <AutoCastRange value="15"/>
+        <UninterruptibleArray index="Approach" value="1"/>
+        <UninterruptibleArray index="Prep" value="1"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="Asud" parent="War3_EffectInstant">
+        <CmdButtonArray index="Execute" Requirements="Asud"/>
+    </CAbilEffectInstant>
     <CAbilBehavior id="Bushido" parent="War3_Toggle">
         <CmdButtonArray index="On" Requirements="PhalanxBuff"/>
         <CmdButtonArray index="Off" Requirements="BushidoUn"/>
@@ -141,31 +649,235 @@
     <CAbilEffectTarget id="Teleport" parent="War3_EffectTarget">
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
-        <TargetFilters index="0" value="-;air,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
+        <TargetFilters index="0" value="-;air,wall,Worker,RawResource,tree,Missile,debris,item,structure,ward,dead,invulnerable,Radar,MapBoss"/>
         <Range value="1.5"/>
         <Arc value="360"/>
-        <AutoCastFilters value="Visible;-"/>
+        <AutoCastFilters value="-;-"/>
         <AutoCastRange value="1.5"/>
         <CmdButtonArray index="Execute" Requirements="Teleport"/>
     </CAbilEffectTarget>
-    <CAbilStop id="stop">
-        <CmdButtonArray index="Stop">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
-        <CmdButtonArray index="HoldFire">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
-        <CmdButtonArray index="Cheer">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
-        <CmdButtonArray index="Dance">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
-        <CmdButtonArray index="Tease">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
-        <CmdButtonArray index="RequestPickup">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
-    </CAbilStop>
+    <CAbilMorph id="UpgradeTohhes" parent="War3_Upgrade" toUnit="hhes">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+        <InfoArray index="0" Score="1" Unit="hhes">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToHjai" parent="War3_Upgrade" toUnit="Hjai">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+        <InfoArray index="0" Score="1" Unit="Hjai">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonmed" parent="War3_Upgrade" toUnit="nmed">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+        <InfoArray index="0" Score="1" Unit="nmed">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonftr" parent="War3_Upgrade" toUnit="nftr">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+        <InfoArray index="0" Score="1" Unit="nftr">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToOshd" parent="War3_Upgrade" toUnit="Oshd">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+        <InfoArray index="0" Score="1" Unit="Oshd">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTootbk" parent="War3_Upgrade" toUnit="otbk">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+        <InfoArray index="0" Score="1" Unit="otbk">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonckb" parent="War3_Upgrade" toUnit="nckb">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+        <InfoArray index="0" Score="1" Unit="nckb">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonchr" parent="War3_Upgrade" toUnit="nchr">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+        <InfoArray index="0" Score="1" Unit="nchr">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToOtch" parent="War3_Upgrade" toUnit="Otch">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+        <InfoArray index="0" Score="1" Unit="Otch">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToObla" parent="War3_Upgrade" toUnit="Obla">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+        <InfoArray index="0" Score="1" Unit="Obla">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToNbbc" parent="War3_Upgrade" toUnit="Nbbc">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+        <InfoArray index="0" Score="1" Unit="Nbbc">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToOpgh" parent="War3_Upgrade" toUnit="Opgh">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+        <InfoArray index="0" Score="1" Unit="Opgh">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToOthr" parent="War3_Upgrade" toUnit="Othr">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+        <InfoArray index="0" Score="1" Unit="Othr">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonchg" parent="War3_Upgrade" toUnit="nchg">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+        <InfoArray index="0" Score="1" Unit="nchg">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonchw" parent="War3_Upgrade" toUnit="nchw">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+        <InfoArray index="0" Score="1" Unit="nchw">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonfsp" parent="War3_Upgrade" toUnit="nfsp">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+        <InfoArray index="0" Score="1" Unit="nfsp">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
 </Catalog>

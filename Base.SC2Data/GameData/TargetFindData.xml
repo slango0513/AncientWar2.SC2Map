@@ -4,12 +4,45 @@
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
         <AreaArray Radius="500"/>
         <Abil value="Aatk"/>
-        <SearchFilters value="Visible;Player,Ally,Neutral,Hover,Worker,RawResource,HarvestableResource,Missile,Dead,Invulnerable,Radar"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Hover,Missile,Dead,Invulnerable"/>
+        <CasterValidator value="AIAttackCaster"/>
     </CTargetFindEnumArea>
+    <CTargetFindEnumArea id="Move">
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray Radius="500"/>
+        <Abil value="Amov"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Hover,Missile,Dead,Invulnerable"/>
+    </CTargetFindEnumArea>
+    <CTargetFindOffset id="MoveOffset">
+        <Distance value="-10,-10"/>
+    </CTargetFindOffset>
     <CTargetFindEnumArea id="Possession">
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
         <AreaArray Radius="10"/>
         <Abil value="Aps2"/>
-        <SearchFilters value="Visible;Player,Ally,Neutral,Worker,Missile,Dead,Hidden,Invulnerable,Unstoppable"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Hover,Missile,Dead,Invulnerable,Unstoppable"/>
+    </CTargetFindEnumArea>
+    <CTargetFindEnumArea id="Invisibility">
+        <TargetValidator value="AIInvisibilityTarget"/>
+        <SearchFilters value="-;Neutral,Enemy"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray/>
+        <Abil value="Aivs"/>
+        <ExtendRadius value="10"/>
+        <TargetSorts>
+            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+        </TargetSorts>
+    </CTargetFindEnumArea>
+    <CTargetFindEnumArea id="Polymorph">
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray/>
+        <Abil value="Aply"/>
+        <TargetSorts>
+            <SortArray value="UnitTypeRangedUnit"/>
+            <SortArray value="TSDistance"/>
+        </TargetSorts>
+        <TargetFilters value="Visible;Player,Ally,Neutral,Hover,Missile,Dead,Invulnerable,Unstoppable"/>
+        <TargetValidator value="AIPolymorphTarget"/>
+        <ExtendRadius value="10"/>
     </CTargetFindEnumArea>
 </Catalog>

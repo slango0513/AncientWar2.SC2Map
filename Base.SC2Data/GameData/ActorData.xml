@@ -1,50 +1,255 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
-    <CActorUnit id="HumanPhalanxPlaceholder" parent="War3_Item" unitName="PhalanxPreviewerHuman6x6">
+    <CActorModel id="BushidoMarker" parent="War3_Buff">
+        <On Terms="Behavior.BushidoMarker.On" Send="Create"/>
+        <On Terms="Behavior.BushidoMarker.Off" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="Create EffectSoundOneShot BushidoMarkerCastSound"/>
+        <Scale value="4.000000"/>
+    </CActorModel>
+    <!--jaina-->
+    <CActorUnit id="Hjai" defType="NONE">
+        <On index="82" removed="1"/>
+        <On index="83" removed="1"/>
+        <On index="84" removed="1"/>
+        <On index="85" removed="1"/>
+        <On index="86" removed="1"/>
+        <On index="87" removed="1"/>
+        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-NONE.tga"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+    </CActorUnit>
+    <!--blackrockblademaster-->
+    <CActorUnit id="Nbbc" parent="War3_Army" unitSound="HeroBladeMaster" unitName="Nbbc" defType="NONE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnChaosBlademaster.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnChaosBlademaster.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnChaosBlademaster.dds"/>
+        <BarWidth value="57"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.5"/>
+    </CActorUnit>
+    <!--blademaster-->
+    <CActorUnit id="Obla" parent="War3_Army" unitSound="HeroBladeMaster" unitName="Obla" defType="NONE">
+        <On Terms="Behavior.BOwkExtraDamage.On" Send="AnimGroupApply Slam"/>
+        <On Terms="Behavior.BOwkExtraDamage.Off" Send="AnimGroupRemove Slam"/>
+        <On Terms="Behavior.BOwk1ExtraDamage.On" Send="AnimGroupApply Slam"/>
+        <On Terms="Behavior.BOwk1ExtraDamage.Off" Send="AnimGroupRemove Slam"/>
+        <On Terms="Behavior.BOwk2ExtraDamage.On" Send="AnimGroupApply Slam"/>
+        <On Terms="Behavior.BOwk2ExtraDamage.Off" Send="AnimGroupRemove Slam"/>
+        <On Terms="Behavior.BOwk3ExtraDamage.On" Send="AnimGroupApply Slam"/>
+        <On Terms="Behavior.BOwk3ExtraDamage.Off" Send="AnimGroupRemove Slam"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHeroBlademaster.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnHeroBlademaster.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroBlademaster.dds"/>
+        <BarWidth value="62"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.5"/>
+    </CActorUnit>
+    <!--farseer-->
+    <CActorUnit id="Ofar" parent="War3_Army" unitSound="HeroFarseer" unitName="Ofar" defType="NONE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHeroFarseer.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnHeroFarseer.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroFarseer.dds"/>
+        <BarWidth value="100"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.5"/>
+    </CActorUnit>
+    <!--shadowhunter-->
+    <CActorUnit id="Oshd" parent="War3_Army" unitSound="HeroShadowHunter" unitName="Oshd" defType="NONE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnShadowHunter.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnShadowHunter.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnShadowHunter.dds"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.5"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+    </CActorUnit>
+    <!--taurenchieftain-->
+    <CActorUnit id="Otch" parent="War3_Army" unitSound="HeroTaurenChieftain" unitName="Otch" defType="FORT">
+        <AnimBlendTime value="0.300000"/>
+        <Scale value="1.100000"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHeroTaurenChieftain.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnHeroTaurenChieftain.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroTaurenChieftain.dds"/>
+        <BarWidth value="100"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="100"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--thrall-->
+    <CActorUnit id="Othr" parent="War3_Army" unitSound="Thrall" unitName="Othr" defType="NONE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnThrall.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnThrall.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnThrall.dds"/>
+        <BarWidth value="100"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.5"/>
+    </CActorUnit>
+    <CActorModel id="RotationSystemMarker" parent="War3_Buff">
+        <On Terms="Behavior.RotationSystemMarker.On" Send="Create"/>
+        <On Terms="Behavior.RotationSystemMarker.Off" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="Create EffectSoundOneShot RotationSystemMarkerCastSound"/>
+        <Scale value="2.000000"/>
+    </CActorModel>
+    <CActorModel id="TeleportSpecial" parent="SpecialArt">
+        <On Terms="Effect.Teleport.Start" Send="Create"/>
+        <On Terms="Effect.Teleport.Stop" Send="Create"/>
+        <On Terms="Effect.Teleport.Start" Send="HostSiteOpsSet ::Host $originStationary 1 1"/>
+    </CActorModel>
+    <CActorUnit id="HumanPhalanxPlaceholder" parent="War3_Item" unitName="HumanPhalanxPlaceholder">
         <Model value="HumanPhalanxPlaceholder"/>
         <Scale value="4.000000"/>
-        <BuildModel value="HumanPhalanxPlaceholder"/>
-        <PlacementModel value="HumanPhalanxPlaceholder"/>
     </CActorUnit>
-    <CActorUnit id="NightElfPhalanxPlaceholder" parent="War3_Item" unitName="PhalanxPreviewerNightElf6x6">
+    <CActorUnit id="NightElfPhalanxPlaceholder" parent="War3_Item" unitName="NightElfPhalanxPlaceholder">
         <Model value="NightElfPhalanxPlaceholder"/>
         <Scale value="4.000000"/>
-        <BuildModel value="NightElfPhalanxPlaceholder"/>
-        <PlacementModel value="NightElfPhalanxPlaceholder"/>
     </CActorUnit>
-    <CActorUnit id="OrcPhalanxPlaceholder" parent="War3_Item" unitName="PhalanxPreviewerOrc6x6">
+    <CActorUnit id="OrcPhalanxPlaceholder" parent="War3_Item" unitName="OrcPhalanxPlaceholder">
         <Model value="OrcPhalanxPlaceholder"/>
         <Scale value="4.000000"/>
-        <BuildModel value="OrcPhalanxPlaceholder"/>
-        <PlacementModel value="OrcPhalanxPlaceholder"/>
     </CActorUnit>
-    <CActorUnit id="PathingBlocker1x1">
-        <Model value="Medivac"/>
-    </CActorUnit>
-    <CActorUnit id="UndeadPhalanxPlaceholder" parent="War3_Item" unitName="PhalanxPreviewerUndead6x6">
+    <CActorUnit id="UndeadPhalanxPlaceholder" parent="War3_Item" unitName="UndeadPhalanxPlaceholder">
         <Model value="UndeadPhalanxPlaceholder"/>
         <Scale value="4.000000"/>
-        <BuildModel value="UndeadPhalanxPlaceholder"/>
-        <PlacementModel value="UndeadPhalanxPlaceholder"/>
     </CActorUnit>
     <CActorUnit id="flag">
         <BuildModel value="War3_HumanCaptureFlag"/>
         <PlacementModel value="War3_HumanCaptureFlag"/>
     </CActorUnit>
-    <!--shimmeringportal-->
-    <CActorUnit id="hprt">
-        <Scale value="0.700000"/>
+    <!--chaosgrunt-->
+    <CActorUnit id="nchg">
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+    </CActorUnit>
+    <!--chaoswolfrider-->
+    <CActorUnit id="nchr">
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+    </CActorUnit>
+    <!--chaoswarlock-->
+    <CActorUnit id="nchw" defType="NONE">
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-NONE.tga"/>
+    </CActorUnit>
+    <!--chaoskotobeast-->
+    <CActorUnit id="nckb" defType="NONE">
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-NONE.tga"/>
     </CActorUnit>
     <CActorUnit id="nflg">
         <BuildModel value="War3_NightElfCaptureFlag"/>
         <PlacementModel value="War3_NightElfCaptureFlag"/>
     </CActorUnit>
+    <!--foresttrollshadowpriest-->
+    <CActorUnit id="nfsp">
+        <On index="89" removed="1"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+    </CActorUnit>
+    <!--foresttroll-->
+    <CActorUnit id="nftr" defType="SMALL">
+        <On index="89" removed="1"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-SMALL.tga"/>
+    </CActorUnit>
+    <!--icetrollshadowpriest-->
+    <CActorUnit id="nitp">
+        <On index="89" removed="1"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+    </CActorUnit>
+    <!--icetroll-->
+    <CActorUnit id="nitr" defType="SMALL">
+        <On index="89" removed="1"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-SMALL.tga"/>
+    </CActorUnit>
+    <!--medivh-->
+    <CActorUnit id="nmed" defType="NONE">
+        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-NONE.tga"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+    </CActorUnit>
+    <!--panda4-->
+    <CActorUnit id="npn4" defType="NONE">
+        <Scale value="0.800000"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-NONE.tga"/>
+    </CActorUnit>
+    <!--panda5-->
+    <CActorUnit id="npn5" defType="NONE">
+        <Scale value="0.800000"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-NONE.tga"/>
+    </CActorUnit>
+    <!--panda6-->
+    <CActorUnit id="npn6" defType="FORT">
+        <Scale value="0.900000"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-FORT.tga"/>
+    </CActorUnit>
+    <!--war2warlock-->
+    <CActorUnit id="nw2w" defType="NONE">
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-NONE.tga"/>
+    </CActorUnit>
+    <!--witchdoctor-->
+    <CActorUnit id="odoc">
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+    </CActorUnit>
     <CActorUnit id="oflg">
         <BuildModel value="War3_OrcCaptureFlag"/>
         <PlacementModel value="War3_OrcCaptureFlag"/>
+    </CActorUnit>
+    <!--grunt-->
+    <CActorUnit id="ogru">
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+    </CActorUnit>
+    <!--headhunter-->
+    <CActorUnit id="ohun">
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+    </CActorUnit>
+    <!--kotobeast-->
+    <CActorUnit id="okod">
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+    </CActorUnit>
+    <!--wolfrider-->
+    <CActorUnit id="orai" defType="SMALL">
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-SMALL.tga"/>
+    </CActorUnit>
+    <!--shaman-->
+    <CActorUnit id="oshm">
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+    </CActorUnit>
+    <!--spiritwalkermorph-->
+    <CActorUnit id="ospm">
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+    </CActorUnit>
+    <CActorUnit id="ospw">
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+    </CActorUnit>
+    <!--tauren-->
+    <CActorUnit id="otau" defType="FORT">
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-FORT.tga"/>
+    </CActorUnit>
+    <!--berserker-->
+    <CActorUnit id="otbk">
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
     </CActorUnit>
     <CActorUnit id="uflg">
         <BuildModel value="War3_UndeadCaptureFlag"/>
         <PlacementModel value="War3_UndeadCaptureFlag"/>
     </CActorUnit>
+    <CActorAction id="nitr1" parent="War3_AttackSwapable" WeaponSound="MetalMediumChop"/>
+    <CActorAction id="nftr1" parent="War3_AttackSwapable" WeaponSound="MetalMediumChop"/>
 </Catalog>

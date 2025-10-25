@@ -1,19 +1,98 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
-    <!--HeroPaladin-->
-    <CUnit id="Hpal">
+    <CUnit default="1" id="AW2_Army" parent="War3_Army">
         <DeathTime value="15"/>
+        <DeathRevealRadius value="0"/>
+        <FogVisibility value="Snapshot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <AbilArray Link="Asud"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Asud" Type="AbilCmd" AbilCmd="Asud,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+        <PlacementFootprint value="1x1Army"/>
+        <BehaviorArray index="3" Link="AW2_ArmyNotHostilePlayer"/>
+        <TacticalAIThink value="AIThinkCreep"/>
+    </CUnit>
+    <CUnit default="1" id="AW2_Peon" parent="War3_ArmyBase">
+        <DeathRevealRadius value="0"/>
+        <FlagArray index="peon" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="Larva" value="1"/>
+        <Collide index="ForceField" value="0"/>
+        <BehaviorArray index="3" Link="AW2_Peon"/>
+        <WeaponArray index="0" removed="1"/>
+        <WeaponArray index="1" removed="1"/>
+        <CardLayouts index="0" removed="1"/>
+        <AbilArray index="0" Link="move"/>
+    </CUnit>
+    <CUnit default="1" id="AW2_Phalanx" parent="War3_ArmyBase">
+        <DeathRevealRadius value="0"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="Swarm" value="1"/>
+        <Collide index="ForceField" value="0"/>
+        <AbilArray index="0" Link="RotationSystem"/>
+        <AbilArray index="1" Link="Bushido"/>
+        <AbilArray index="2" removed="1"/>
+        <BehaviorArray index="3" Link="AW2_Phalanx"/>
+        <WeaponArray index="0" removed="1"/>
+        <WeaponArray index="1" removed="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="0">
+                <Face value="RotationSystem"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="RotationSystem,On"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons index="1">
+                <Face value="RotationSystemUn"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="RotationSystem,Off"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons index="2">
+                <Face value="Bushido"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="Bushido,On"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons index="3">
+                <Face value="BushidoUn"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="Bushido,Off"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+        </CardLayouts>
+    </CUnit>
+    <!--jaina-->
+    <CUnit id="Hjai" defType="NONE">
+        <DeathTime value="15"/>
+        <FogVisibility value="Snapshot"/>
         <LifeStart value="25"/>
         <LifeMax value="25"/>
-        <EnergyStart value="5000"/>
-        <EnergyMax value="5000"/>
-        <AbilArray index="4" Link="AHhb"/>
-        <AbilArray index="5" Link="AHds"/>
-        <AbilArray index="6" Link="AHad"/>
-        <AbilArray index="7" Link="AHre"/>
-        <AbilArray index="8" Link="##l5##"/>
-        <AbilArray index="9" Link="Hearthstone"/>
-        <AbilArray index="10" Link="AInv"/>
+        <EnergyStart value="100"/>
+        <EnergyMax value="100"/>
+        <CostResource index="gold" value="450"/>
+        <CostResource index="lumber" value="0"/>
+        <KillResource index="gold" value="5"/>
+        <AbilArray index="4" Link="Asud"/>
+        <AbilArray index="5" Link="Aply"/>
+        <AbilArray index="6" removed="1"/>
+        <AbilArray index="7" removed="1"/>
+        <AbilArray index="8" removed="1"/>
+        <AbilArray index="9" removed="1"/>
+        <AbilArray index="10" removed="1"/>
         <AbilArray index="11" removed="1"/>
         <BehaviorArray index="4" removed="1"/>
         <BehaviorArray index="5" removed="1"/>
@@ -27,53 +106,535 @@
         <EffectArray index="Birth" value=""/>
         <EffectArray index="Death" value=""/>
         <EffectArray index="Revive" value=""/>
-        <PlacementFootprint value="1x1Building"/>
+        <PlacementFootprint value="1x1Army"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5">
+                <Face value="Aply"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="Aply,Execute"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <Row value="2"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons index="6">
+                <Face value="Asud"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="Asud,Execute"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <Row value="2"/>
+            </LayoutButtons>
+            <LayoutButtons index="7" removed="1"/>
+            <LayoutButtons index="8" removed="1"/>
+            <LayoutButtons index="9" removed="1"/>
+            <LayoutButtons index="10" removed="1"/>
+            <LayoutButtons index="11" removed="1"/>
+            <LayoutButtons index="12" removed="1"/>
+            <LayoutButtons index="13" removed="1"/>
+            <LayoutButtons index="14" removed="1"/>
+            <LayoutButtons index="15" removed="1"/>
+            <LayoutButtons index="16" removed="1"/>
+        </CardLayouts>
+        <CardLayouts index="1" removed="1"/>
+        <WeaponArray index="1" removed="1"/>
+        <TechAliasArray value="_RangedUnit"/>
+        <FlagArray index="Hero" value="0"/>
+        <FlagArray index="Resistant" value="0"/>
+        <Attributes index="none" value="1"/>
+        <Attributes index="hero" value="0"/>
+        <LifeArmorName value="ARMOR_NONE"/>
+        <LifeArmorTip value="ARMORTIP_NONE"/>
+    </CUnit>
+    <!--HeroPaladin-->
+    <CUnit id="Hpal">
+        <DeathTime value="15"/>
+        <LifeStart value="400"/>
+        <LifeMax value="400"/>
+        <EnergyMax value="100"/>
+        <AbilArray index="4" Link="Asud"/>
+        <AbilArray index="9" removed="1"/>
+        <AbilArray index="10" removed="1"/>
+        <AbilArray index="11" removed="1"/>
+        <BehaviorArray index="4" removed="1"/>
+        <BehaviorArray index="5" removed="1"/>
+        <BehaviorArray index="6" removed="1"/>
+        <BehaviorArray index="7" removed="1"/>
+        <BehaviorArray index="8" removed="1"/>
+        <BehaviorArray index="9" removed="1"/>
+        <BehaviorArray index="10" removed="1"/>
+        <BehaviorArray index="11" removed="1"/>
+        <EffectArray index="Create" value=""/>
+        <EffectArray index="Birth" value=""/>
+        <EffectArray index="Death" value=""/>
+        <EffectArray index="Revive" value=""/>
+        <PlacementFootprint value="1x1Army"/>
         <FogVisibility value="Snapshot"/>
         <LifeArmor value="0"/>
+        <TechAliasArray index="0" value="_MeleeUnit"/>
+        <FlagArray index="Hero" value="0"/>
+        <FlagArray index="Resistant" value="0"/>
+        <CostResource index="gold" value="600"/>
+        <CostResource index="lumber" value="0"/>
+        <KillResource index="gold" value="5"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5">
+                <Face value="AHhb"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="AHhb,Execute"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <Row value="2"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons index="6">
+                <Face value="AHds"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="AHds,Execute"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <Row value="2"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons index="7">
+                <Face value="AHre"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="AHre,Execute"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <Row value="2"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons index="8">
+                <Face value="AHad1"/>
+                <Type value="Passive"/>
+                <Requirements value="HeroPassiveButtonLevel1"/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value=""/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Row value="2"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons index="9">
+                <Face value="AHad2"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Requirements value="HeroPassiveButtonLevel2"/>
+                <Row value="2"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons index="10">
+                <Face value="AHad3"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Requirements value="HeroPassiveButtonLevel3"/>
+                <Row value="2"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons index="11" Face="Asud" Type="AbilCmd" AbilCmd="Asud,Execute" Row="2" Column="4"/>
+            <LayoutButtons index="12" removed="1"/>
+            <LayoutButtons index="13" removed="1"/>
+            <LayoutButtons index="14" removed="1"/>
+            <LayoutButtons index="15" removed="1"/>
+            <LayoutButtons index="16" removed="1"/>
+        </CardLayouts>
     </CUnit>
-    <CUnit id="PhalanxPreviewerHuman6x6" parent="War3_Item" defType="">
-        <Name value="HumanPhalanxPlaceholder/Name"/>
-        <Description value="HumanPhalanxPlaceholder/Description"/>
-        <FogVisibility value="Snapshot"/>
+    <CUnit id="HumanPhalanxPlaceholder" parent="War3_Item" defType="">
         <Collide index="Ground" value="1"/>
         <Collide index="ForceField" value="1"/>
-        <BehaviorArray Link="PhalanxPlaceholder"/>
         <Footprint value="6x6Phalanx"/>
-    </CUnit>
-    <CUnit id="PhalanxPreviewerNightElf6x6" parent="War3_Item" defType="">
-        <Name value="NightElfPhalanxPlaceholder/Name"/>
-        <Description value="NightElfPhalanxPlaceholder/Description"/>
         <FogVisibility value="Snapshot"/>
+        <BehaviorArray Link="PhalanxPlaceholder"/>
+    </CUnit>
+    <!--blackrock blademaster-->
+    <CUnit id="Nbbc" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="750"/>
+        <KillResource index="gold" value="75"/>
+        <LifeStart value="1621.0002"/>
+        <LifeMax value="1621.0002"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="599.9414"/>
+        <AbilArray Link="AOwk"/>
+        <AbilArray Link="AOcr"/>
+        <AbilArray Link="AOmi"/>
+        <AbilArray Link="AOww"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AOwk" Type="AbilCmd" AbilCmd="AOwk,0" Row="2" Column="0"/>
+            <!--LayoutButtons Face="AOcr" Type="AbilCmd" AbilCmd="AOcr,0" Row="2" Column="2"/-->
+            <LayoutButtons Face="AOmi" Type="AbilCmd" AbilCmd="AOmi,0" Row="2" Column="1"/>
+            <LayoutButtons Face="AOww" Type="AbilCmd" AbilCmd="AOww,0" Row="2" Column="3"/>
+            <LayoutButtons Face="AOcr1" Type="Passive" Requirements="HeroPassiveButtonLevel1" Row="2" Column="2"/>
+            <LayoutButtons Face="AOcr2" Type="Passive" Requirements="HeroPassiveButtonLevel2" Row="2" Column="2"/>
+            <LayoutButtons Face="AOcr3" Type="Passive" Requirements="HeroPassiveButtonLevel3" Row="2" Column="2"/>
+        </CardLayouts>
+        <EnergyStart value="500"/>
+        <EnergyMax value="500"/>
+        <WeaponArray index="1" removed="1"/>
+    </CUnit>
+    <CUnit id="NightElfPhalanxPlaceholder" parent="War3_Item" defType="">
         <Collide index="Ground" value="1"/>
         <Collide index="ForceField" value="1"/>
-        <BehaviorArray Link="PhalanxPlaceholder"/>
         <Footprint value="6x6Phalanx"/>
-    </CUnit>
-    <CUnit id="PhalanxPreviewerOrc6x6" parent="War3_Item" defType="">
-        <Name value="OrcPhalanxPlaceholder/Name"/>
-        <Description value="OrcPhalanxPlaceholder/Description"/>
         <FogVisibility value="Snapshot"/>
+        <BehaviorArray Link="PhalanxPlaceholder"/>
+    </CUnit>
+    <!--HeroBladeMaster-->
+    <CUnit id="Obla" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="750"/>
+        <KillResource index="gold" value="75"/>
+        <LifeStart value="1621.0002"/>
+        <LifeMax value="1621.0002"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="599.9414"/>
+        <AbilArray Link="UpgradeToNbbc"/>
+        <AbilArray Link="AOwk"/>
+        <AbilArray Link="AOcr"/>
+        <AbilArray Link="AOmi"/>
+        <AbilArray Link="AOww"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Nbbc" Type="AbilCmd" AbilCmd="UpgradeToNbbc,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="AOwk" Type="AbilCmd" AbilCmd="AOwk,0" Row="2" Column="0"/>
+            <!--LayoutButtons Face="AOcr" Type="AbilCmd" AbilCmd="AOcr,0" Row="2" Column="2"/-->
+            <LayoutButtons Face="AOmi" Type="AbilCmd" AbilCmd="AOmi,0" Row="2" Column="1"/>
+            <LayoutButtons Face="AOww" Type="AbilCmd" AbilCmd="AOww,0" Row="2" Column="3"/>
+            <LayoutButtons Face="AOcr1" Type="Passive" Requirements="HeroPassiveButtonLevel1" Row="2" Column="2"/>
+            <LayoutButtons Face="AOcr2" Type="Passive" Requirements="HeroPassiveButtonLevel2" Row="2" Column="2"/>
+            <LayoutButtons Face="AOcr3" Type="Passive" Requirements="HeroPassiveButtonLevel3" Row="2" Column="2"/>
+        </CardLayouts>
+        <EnergyStart value="500"/>
+        <EnergyMax value="500"/>
+        <WeaponArray index="1" removed="1"/>
+    </CUnit>
+    <!--HeroFarSeer-->
+    <CUnit id="Ofar" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="750"/>
+        <KillResource index="gold" value="75"/>
+        <LifeStart value="1753"/>
+        <LifeMax value="1753"/>
+        <Speed value="3"/>
+        <Race value="Orc"/>
+        <Mover value="horse"/>
+        <TurningRate value="399.9023"/>
+        <AbilArray Link="UpgradeToOthr"/>
+        <AbilArray Link="AOcl"/>
+        <AbilArray Link="AOfs"/>
+        <AbilArray Link="AOsf"/>
+        <AbilArray Link="AOeq"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Othr" Type="AbilCmd" AbilCmd="UpgradeToOthr,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="AOfs" Type="AbilCmd" AbilCmd="AOfs,0" Row="2" Column="1"/>
+            <LayoutButtons Face="AOsf" Type="AbilCmd" AbilCmd="AOsf,0" Row="2" Column="2"/>
+            <LayoutButtons Face="AOcl" Type="AbilCmd" AbilCmd="AOcl,0" Row="2" Column="0"/>
+            <LayoutButtons Face="AOeq" Type="AbilCmd" AbilCmd="AOeq,0" Row="2" Column="3"/>
+            <LayoutButtons Face="AOcl1" Type="Passive" Requirements="HeroPassiveButtonLevel1" Row="2" Column="2"/>
+            <LayoutButtons Face="AOcl2" Type="Passive" Requirements="HeroPassiveButtonLevel2" Row="2" Column="2"/>
+            <LayoutButtons Face="AOcl3" Type="Passive" Requirements="HeroPassiveButtonLevel3" Row="2" Column="2"/>
+        </CardLayouts>
+        <EnergyStart value="500"/>
+        <EnergyMax value="500"/>
+        <WeaponArray index="1" removed="1"/>
+    </CUnit>
+    <!--grom hellscream-->
+    <CUnit id="Ogrh">
+        <DeathTime value="15"/>
+        <FlagArray index="Hero" value="0"/>
+        <FlagArray index="Resistant" value="0"/>
+        <FogVisibility value="Snapshot"/>
+        <Attributes index="none" value="1"/>
+        <Attributes index="hero" value="0"/>
+        <LifeStart value="1600"/>
+        <LifeMax value="1600"/>
+        <EnergyMax value="100"/>
+        <CostResource index="gold" value="1800"/>
+        <CostResource index="lumber" value="0"/>
+        <KillResource index="gold" value="75"/>
+        <AbilArray index="4" Link="Asud"/>
+        <AbilArray index="9" removed="1"/>
+        <AbilArray index="10" removed="1"/>
+        <AbilArray index="11" removed="1"/>
+        <BehaviorArray index="4" removed="1"/>
+        <BehaviorArray index="5" removed="1"/>
+        <BehaviorArray index="6" removed="1"/>
+        <BehaviorArray index="7" removed="1"/>
+        <BehaviorArray index="8" removed="1"/>
+        <BehaviorArray index="9" removed="1"/>
+        <BehaviorArray index="10" removed="1"/>
+        <BehaviorArray index="11" removed="1"/>
+        <WeaponArray index="1" removed="1"/>
+        <EffectArray index="Create" value=""/>
+        <EffectArray index="Birth" value=""/>
+        <EffectArray index="Death" value=""/>
+        <EffectArray index="Revive" value=""/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5">
+                <Face value="AOwk"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="AOwk,Execute"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <Row value="2"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons index="6">
+                <Face value="AOmi"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="AOmi,Execute"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <Row value="2"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons index="7">
+                <Face value="AOww"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="AOww,Execute"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <Row value="2"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons index="8">
+                <Face value="AOcr1"/>
+                <Type value="Passive"/>
+                <Requirements value="HeroPassiveButtonLevel1"/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value=""/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons index="9" Face="AOcr2" Type="Passive" AbilCmd="" Requirements="HeroPassiveButtonLevel2" Row="2"/>
+            <LayoutButtons index="10">
+                <Face value="AOcr3"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Requirements value="HeroPassiveButtonLevel3"/>
+                <Row value="2"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons index="11" Face="Asud" Type="AbilCmd" AbilCmd="Asud,Execute" Row="2" Column="4"/>
+            <!--LayoutButtons Face="AOcr" Type="AbilCmd" AbilCmd="AOcr,0" Row="2" Column="2"/-->
+            <LayoutButtons index="12" removed="1"/>
+            <LayoutButtons index="13" removed="1"/>
+            <LayoutButtons index="14" removed="1"/>
+            <LayoutButtons index="15" removed="1"/>
+            <LayoutButtons index="16" removed="1"/>
+        </CardLayouts>
+        <PlacementFootprint value="1x1Army"/>
+        <TechAliasArray value="_MeleeUnit"/>
+    </CUnit>
+    <!--possessed grom hellscream-->
+    <CUnit id="Opgh">
+        <DeathTime value="15"/>
+        <FlagArray index="Hero" value="0"/>
+        <FlagArray index="Resistant" value="0"/>
+        <FogVisibility value="Snapshot"/>
+        <Attributes index="none" value="1"/>
+        <Attributes index="hero" value="0"/>
+        <LifeStart value="1600"/>
+        <LifeMax value="1600"/>
+        <EnergyMax value="100"/>
+        <CostResource index="gold" value="1800"/>
+        <CostResource index="lumber" value="0"/>
+        <KillResource index="gold" value="75"/>
+        <AbilArray index="4" Link="Asud"/>
+        <AbilArray index="9" removed="1"/>
+        <AbilArray index="10" removed="1"/>
+        <AbilArray index="11" removed="1"/>
+        <BehaviorArray index="4" removed="1"/>
+        <BehaviorArray index="5" removed="1"/>
+        <BehaviorArray index="6" removed="1"/>
+        <BehaviorArray index="7" removed="1"/>
+        <BehaviorArray index="8" removed="1"/>
+        <BehaviorArray index="9" removed="1"/>
+        <BehaviorArray index="10" removed="1"/>
+        <BehaviorArray index="11" removed="1"/>
+        <WeaponArray index="1" removed="1"/>
+        <EffectArray index="Create" value=""/>
+        <EffectArray index="Birth" value=""/>
+        <EffectArray index="Death" value=""/>
+        <EffectArray index="Revive" value=""/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5">
+                <Face value="AOwk"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="AOwk,Execute"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <Row value="2"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons index="6">
+                <Face value="AOmi"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="AOmi,Execute"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <Row value="2"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons index="7">
+                <Face value="AOww"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="AOww,Execute"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <Row value="2"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons index="8">
+                <Face value="AOcr1"/>
+                <Type value="Passive"/>
+                <Requirements value="HeroPassiveButtonLevel1"/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value=""/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons index="9" Face="AOcr2" Type="Passive" AbilCmd="" Requirements="HeroPassiveButtonLevel2" Row="2"/>
+            <LayoutButtons index="10">
+                <Face value="AOcr3"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Requirements value="HeroPassiveButtonLevel3"/>
+                <Row value="2"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons index="11" Face="Asud" Type="AbilCmd" AbilCmd="Asud,Execute" Row="2" Column="4"/>
+            <!--LayoutButtons Face="AOcr" Type="AbilCmd" AbilCmd="AOcr,0" Row="2" Column="2"/-->
+            <LayoutButtons index="12" removed="1"/>
+            <LayoutButtons index="13" removed="1"/>
+            <LayoutButtons index="14" removed="1"/>
+            <LayoutButtons index="15" removed="1"/>
+            <LayoutButtons index="16" removed="1"/>
+        </CardLayouts>
+        <PlacementFootprint value="1x1Army"/>
+        <TechAliasArray value="_MeleeUnit"/>
+    </CUnit>
+    <CUnit id="OrcPhalanxPlaceholder" parent="War3_Item" defType="">
         <Collide index="Ground" value="1"/>
         <Collide index="ForceField" value="1"/>
-        <BehaviorArray Link="PhalanxPlaceholder"/>
         <Footprint value="6x6Phalanx"/>
+        <FogVisibility value="Snapshot"/>
+        <BehaviorArray Link="PhalanxPlaceholder"/>
+    </CUnit>
+    <!--HeroShadowHunter-->
+    <CUnit id="Oshd" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="1800"/>
+        <KillResource index="gold" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="399.9023"/>
+        <AbilArray Link="AOhw"/>
+        <AbilArray Link="AOhx"/>
+        <AbilArray Link="AOsw"/>
+        <AbilArray Link="AOvd"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AOhw" Type="AbilCmd" AbilCmd="AOhw,0" Row="2" Column="0"/>
+            <LayoutButtons Face="AOhx" Type="AbilCmd" AbilCmd="AOhx,0" Row="2" Column="1"/>
+            <LayoutButtons Face="AOsw" Type="AbilCmd" AbilCmd="AOsw,0" Row="2" Column="2"/>
+            <LayoutButtons Face="AOvd" Type="AbilCmd" AbilCmd="AOvd,0" Row="2" Column="3"/>
+        </CardLayouts>
+        <Radius value="0.3125"/>
+        <MinimapRadius value="0.3125"/>
+        <SeparationRadius value="0.3125"/>
+        <InnerRadius value="0.3125"/>
+        <FlagArray index="AICaster" value="1"/>
+        <FlagArray index="AIPressForwardDisabled" value="1"/>
+        <WeaponArray index="1" removed="1"/>
+    </CUnit>
+    <!--HeroTaurenChieftain-->
+    <CUnit id="Otch" parent="AW2_Army" defType="FORT">
+        <Attributes index="fort" value="1"/>
+        <CostResource index="gold" value="2250"/>
+        <KillResource index="gold" value="75"/>
+        <LifeStart value="2050"/>
+        <LifeMax value="2050"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="399.9023"/>
+        <BehaviorArray Link="tauren"/>
+        <AbilArray Link="AOsh"/>
+        <AbilArray Link="AOae"/>
+        <AbilArray Link="AOre"/>
+        <AbilArray Link="AOws"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AOsh" Type="AbilCmd" AbilCmd="AOsh,0" Row="2" Column="0"/>
+            <!--LayoutButtons Face="AOae" Type="AbilCmd" AbilCmd="AOae,0" Row="2" Column="2"/-->
+            <LayoutButtons Face="AOae1" Type="Passive" Requirements="HeroPassiveButtonLevel1" Row="2" Column="2"/>
+            <LayoutButtons Face="AOae2" Type="Passive" Requirements="HeroPassiveButtonLevel2" Row="2" Column="2"/>
+            <LayoutButtons Face="AOae3" Type="Passive" Requirements="HeroPassiveButtonLevel3" Row="2" Column="2"/>
+            <LayoutButtons>
+                <Face value="AOre"/>
+                <Type value="Passive"/>
+                <Behavior value="AOre"/>
+                <Requirements value="AOreShow"/>
+                <Row value="2"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons Face="AOws" Type="AbilCmd" AbilCmd="AOws,0" Row="2" Column="1"/>
+        </CardLayouts>
+        <Subtitle value="TaurenClass"/>
+        <EnergyStart value="500"/>
+        <EnergyMax value="500"/>
+        <WeaponArray index="1" removed="1"/>
+    </CUnit>
+    <!--thrall-->
+    <CUnit id="Othr" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="2250"/>
+        <KillResource index="gold" value="75"/>
+        <LifeStart value="1753"/>
+        <LifeMax value="1753"/>
+        <Speed value="3"/>
+        <Race value="Orc"/>
+        <Mover value="horse"/>
+        <TurningRate value="399.9023"/>
+        <AbilArray Link="AOcl"/>
+        <AbilArray Link="AOfs"/>
+        <AbilArray Link="AOsf"/>
+        <AbilArray Link="AOeq"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AOfs" Type="AbilCmd" AbilCmd="AOfs,0" Row="2" Column="1"/>
+            <LayoutButtons Face="AOsf" Type="AbilCmd" AbilCmd="AOsf,0" Row="2" Column="2"/>
+            <LayoutButtons Face="AOcl" Type="AbilCmd" AbilCmd="AOcl,0" Row="2" Column="0"/>
+            <LayoutButtons Face="AOeq" Type="AbilCmd" AbilCmd="AOeq,0" Row="2" Column="3"/>
+            <LayoutButtons Face="AOcl1" Type="Passive" Requirements="HeroPassiveButtonLevel1" Row="2" Column="2"/>
+            <LayoutButtons Face="AOcl2" Type="Passive" Requirements="HeroPassiveButtonLevel2" Row="2" Column="2"/>
+            <LayoutButtons Face="AOcl3" Type="Passive" Requirements="HeroPassiveButtonLevel3" Row="2" Column="2"/>
+        </CardLayouts>
+        <EnergyStart value="500"/>
+        <EnergyMax value="500"/>
+        <WeaponArray index="1" removed="1"/>
     </CUnit>
     <!-- Unit Pathing Blockers do not perform as well as doodad Pathing Blockers, however, they can be dynamically turned on and off through triggers. -->
     <CUnit id="PathingBlocker1x1">
         <Attributes index="wall" value="1"/>
     </CUnit>
-    <CUnit id="PhalanxPreviewerUndead6x6" parent="War3_Item" defType="">
-        <Name value="UndeadPhalanxPlaceholder/Name"/>
-        <Description value="UndeadPhalanxPlaceholder/Description"/>
-        <FogVisibility value="Snapshot"/>
+    <CUnit id="UndeadPhalanxPlaceholder" parent="War3_Item" defType="">
         <Collide index="Ground" value="1"/>
         <Collide index="ForceField" value="1"/>
-        <BehaviorArray Link="PhalanxPlaceholder"/>
         <Footprint value="6x6Phalanx"/>
+        <FogVisibility value="Snapshot"/>
+        <BehaviorArray Link="PhalanxPlaceholder"/>
     </CUnit>
     <!--Archer-->
     <CUnit id="earc">
-        <PlacementFootprint value="1x1Building"/>
+        <PlacementFootprint value="1x1Army"/>
         <DeathTime value="15"/>
         <LifeStart value="25"/>
         <LifeMax value="25"/>
@@ -81,6 +642,7 @@
         <CostResource index="lumber" value="0"/>
         <KillResource index="gold" value="30"/>
         <FogVisibility value="Snapshot"/>
+        <TechAliasArray value="_RangedUnit"/>
     </CUnit>
     <!--Wisp-->
     <CUnit id="ewsp">
@@ -106,7 +668,7 @@
         <AbilArray index="6" removed="1"/>
         <AbilArray index="7" removed="1"/>
         <AbilArray index="8" removed="1"/>
-        <BehaviorArray Link="Worker"/>
+        <BehaviorArray Link="AW2_Peon"/>
         <Collide index="Ground" value="0"/>
         <Collide index="ForceField" value="0"/>
     </CUnit>
@@ -117,7 +679,7 @@
         <PlacementFootprint value="6x6Phalanx"/>
         <TechAliasArray value="Alias_Phalanx"/>
         <ResourceState value="tree"/>
-        <BehaviorArray Link="Phalanx"/>
+        <BehaviorArray Link="AW2_Phalanx"/>
         <BehaviorArray Link="CreateReserveUnit36"/>
         <BehaviorArray Link="CountUnit"/>
         <FlagArray index="Uncommandable" value="0"/>
@@ -132,7 +694,7 @@
     </CUnit>
     <!--Footman-->
     <CUnit id="hfoo">
-        <PlacementFootprint value="1x1Building"/>
+        <PlacementFootprint value="1x1Army"/>
         <LifeStart value="400"/>
         <LifeMax value="400"/>
         <DeathTime value="15"/>
@@ -140,10 +702,19 @@
         <KillResource index="gold" value="5"/>
         <FogVisibility value="Snapshot"/>
         <LifeArmor value="0"/>
+        <TechAliasArray value="_MeleeUnit"/>
+        <AbilArray index="5" Link="UpgradeTohhes"/>
+        <AbilArray Link="Asud"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Face="Adef" Type="AbilCmd" AbilCmd="Adef,On" Row="2" Column="0"/>
+            <LayoutButtons index="6" Face="AdefUn" Type="AbilCmd" AbilCmd="Adef,Off" Row="2" Column="0"/>
+            <LayoutButtons Face="hhes" Type="AbilCmd" AbilCmd="UpgradeTohhes,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Asud" Row="2" Column="4"/>
+        </CardLayouts>
     </CUnit>
     <!--high elven swordsman-->
     <CUnit id="hhes">
-        <PlacementFootprint value="1x1Building"/>
+        <PlacementFootprint value="1x1Army"/>
         <LifeStart value="800"/>
         <LifeMax value="800"/>
         <DeathTime value="15"/>
@@ -151,6 +722,12 @@
         <KillResource index="gold" value="5"/>
         <FogVisibility value="Snapshot"/>
         <LifeArmor value="0"/>
+        <TechAliasArray value="_MeleeUnit"/>
+        <AbilArray Link="Asud"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Face="Adef" Type="AbilCmd" AbilCmd="Adef,On" Row="2" Column="0"/>
+            <LayoutButtons Face="Asud" Type="AbilCmd" AbilCmd="Asud,Execute" Row="2" Column="4"/>
+        </CardLayouts>
     </CUnit>
     <!--Militia-->
     <CUnit id="hmil">
@@ -189,7 +766,7 @@
         <AbilArray index="6" removed="1"/>
         <AbilArray index="7" removed="1"/>
         <AbilArray index="8" removed="1"/>
-        <BehaviorArray Link="Worker"/>
+        <BehaviorArray Link="AW2_Peon"/>
         <Collide index="Ground" value="0"/>
         <Collide index="ForceField" value="0"/>
     </CUnit>
@@ -197,6 +774,7 @@
     <CUnit id="hprt">
         <AbilArray Link="Teleport"/>
         <BehaviorArray Link="Portal"/>
+        <BehaviorArray Link="CountUnitPortal"/>
         <CardLayouts>
             <LayoutButtons Face="Teleport" Type="AbilCmd" AbilCmd="Teleport,Execute" Row="0" Column="0"/>
         </CardLayouts>
@@ -211,10 +789,11 @@
         <Attributes index="wall" value="1"/>
         <ResourceState value="Raw"/>
         <MinimapRadius value="0"/>
+        <Facing value="135"/>
     </CUnit>
     <!--Sorceress-->
     <CUnit id="hsor">
-        <PlacementFootprint value="1x1Building"/>
+        <PlacementFootprint value="1x1Army"/>
         <LifeStart value="25"/>
         <LifeMax value="25"/>
         <DeathTime value="15"/>
@@ -222,6 +801,96 @@
         <CostResource index="lumber" value="0"/>
         <KillResource index="gold" value="5"/>
         <FogVisibility value="Snapshot"/>
+        <AbilArray index="4" Link="Asud"/>
+        <AbilArray index="5" Link="UpgradeToHjai"/>
+        <AbilArray index="6" Link="UpgradeTonmed"/>
+        <AbilArray index="7" removed="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Face="Hjai" Type="AbilCmd" AbilCmd="UpgradeToHjai,Execute" Row="0" Column="0"/>
+            <LayoutButtons index="6" Face="nmed" Type="AbilCmd" AbilCmd="UpgradeTonmed,Execute" Row="0" Column="1"/>
+            <LayoutButtons index="7" Face="Asud" Type="AbilCmd" AbilCmd="Asud,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+        <EnergyStart value="100"/>
+        <EnergyMax value="100"/>
+        <EnergyRegenRate value="0"/>
+        <TechAliasArray value="_RangedUnit"/>
+    </CUnit>
+    <!--chaos grunt-->
+    <CUnit id="nchg" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="450"/>
+        <KillResource index="gold" value="15"/>
+        <LifeStart value="673"/>
+        <LifeMax value="673"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="599.9414"/>
+        <BehaviorArray Link="Asal"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Asal" Type="Passive" Behavior="Asal" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <!--ChaosWolfRider-->
+    <CUnit id="nchr" parent="AW2_Army" defType="SMALL">
+        <Attributes index="small" value="1"/>
+        <CostResource index="gold" value="2250"/>
+        <KillResource index="gold" value="75"/>
+        <LifeStart value="1687.5002"/>
+        <LifeMax value="1687.5002"/>
+        <Speed value="3"/>
+        <Race value="Orc"/>
+        <Mover value="horse"/>
+        <TurningRate value="499.9218"/>
+        <AbilArray Link="Aens"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Aens" Type="AbilCmd" AbilCmd="Aens,0" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <!--ChaosWarlock-->
+    <CUnit id="nchw" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="450"/>
+        <KillResource index="gold" value="5"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="599.9414"/>
+        <AbilArray Link="Awfb"/>
+        <AbilArray Link="Suhf"/>
+        <AbilArray Link="Scri"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Awfb" Type="AbilCmd" AbilCmd="Awfb,0" Row="2" Column="0"/>
+            <LayoutButtons Face="Suhf" Type="AbilCmd" AbilCmd="Suhf,0" Row="2" Column="1"/>
+            <LayoutButtons Face="Scri" Type="AbilCmd" AbilCmd="Scri,0" Row="2" Column="2"/>
+        </CardLayouts>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+    </CUnit>
+    <!--Chaos Kodo Beast-->
+    <CUnit id="nckb" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="2250"/>
+        <KillResource index="gold" value="75"/>
+        <LifeStart value="3205"/>
+        <LifeMax value="3205"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="horse"/>
+        <TurningRate value="499.9218"/>
+        <BehaviorArray Link="Aakb"/>
+        <BehaviorArray Link="DevourTactTemp"/>
+        <AbilArray Link="Advc"/>
+        <AbilArray Link="Adev"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Aakb" Type="Passive" Behavior="Aakb" Row="2" Column="1"/>
+            <LayoutButtons Face="Adev" Type="AbilCmd" AbilCmd="Adev,0" Row="2" Column="0"/>
+        </CardLayouts>
+        <FlagArray index="HiddenCargoUI" value="1"/>
     </CUnit>
     <!--NightElf flag-->
     <CUnit id="nflg">
@@ -230,15 +899,64 @@
         <PlacementFootprint value="6x6Phalanx"/>
         <TechAliasArray value="Alias_Phalanx"/>
         <ResourceState value="tree"/>
-        <BehaviorArray Link="Phalanx"/>
+        <BehaviorArray Link="AW2_Phalanx"/>
         <BehaviorArray Link="CreateReserveUnit36"/>
         <BehaviorArray Link="CountUnit"/>
+        <FlagArray index="Uncommandable" value="0"/>
+        <AbilArray Link="RotationSystem"/>
+        <AbilArray Link="Bushido"/>
+        <CardLayouts>
+            <LayoutButtons Face="RotationSystem" Type="AbilCmd" AbilCmd="RotationSystem,On" Row="0" Column="0"/>
+            <LayoutButtons Face="RotationSystemUn" Type="AbilCmd" AbilCmd="RotationSystem,Off" Row="0" Column="0"/>
+            <LayoutButtons Face="Bushido" Type="AbilCmd" AbilCmd="Bushido,On" Row="0" Column="1"/>
+            <LayoutButtons Face="BushidoUn" Type="AbilCmd" AbilCmd="Bushido,Off" Row="0" Column="1"/>
+        </CardLayouts>
+    </CUnit>
+    <!--forest troll shadow priest-->
+    <CUnit id="nfsp" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="900"/>
+        <KillResource index="gold" value="15"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="499.9218"/>
+        <AbilArray Link="Anh1"/>
+        <AbilArray Link="ACdm"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Anh1" Type="AbilCmd" AbilCmd="Anh1,0" Row="2" Column="0"/>
+            <LayoutButtons Face="ACdm" Type="AbilCmd" AbilCmd="ACdm,0" Row="2" Column="1"/>
+        </CardLayouts>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <EnergyMax value="100"/>
+        <EnergyStart value="100"/>
+    </CUnit>
+    <!--ForestTroll-->
+    <CUnit id="nftr" parent="AW2_Army" defType="SMALL">
+        <Attributes index="small" value="1"/>
+        <CostResource index="gold" value="450"/>
+        <KillResource index="gold" value="5"/>
+        <LifeStart value="337.5"/>
+        <LifeMax value="337.5"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="499.9218"/>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
     </CUnit>
     <!--Gnoll Assassin-->
     <CUnit id="ngns">
         <LifeStart value="3500"/>
         <LifeMax value="3500"/>
-        <BehaviorArray Link="War3_PowerfulMob"/>
+        <BehaviorArray Link="Creep"/>
         <KillResource index="gold" value="350"/>
     </CUnit>
     <!--high elven archer-->
@@ -250,14 +968,175 @@
         <CostResource index="gold" value="450"/>
         <CostResource index="lumber" value="0"/>
         <KillResource index="gold" value="5"/>
-        <PlacementFootprint value="1x1Building"/>
+        <PlacementFootprint value="1x1Army"/>
+        <TechAliasArray value="_RangedUnit"/>
+        <AbilArray Link="Asud"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Asud" Type="AbilCmd" AbilCmd="Asud,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <!--ice troll priest-->
+    <CUnit id="nitp" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="300"/>
+        <KillResource index="gold" value="15"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="499.9218"/>
+        <AbilArray Link="UpgradeTonfsp"/>
+        <AbilArray Link="Anh1"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="nfsp" Type="AbilCmd" AbilCmd="UpgradeTonfsp,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Anh1" Type="AbilCmd" AbilCmd="Anh1,0" Row="2" Column="0"/>
+        </CardLayouts>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <EnergyMax value="100"/>
+        <EnergyStart value="100"/>
+    </CUnit>
+    <!--IceTroll-->
+    <CUnit id="nitr" parent="AW2_Army" defType="SMALL">
+        <Attributes index="small" value="1"/>
+        <CostResource index="gold" value="150"/>
+        <KillResource index="gold" value="5"/>
+        <LifeStart value="337.5"/>
+        <LifeMax value="337.5"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="499.9218"/>
+        <AbilArray Link="UpgradeTonftr"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="nftr" Type="AbilCmd" AbilCmd="UpgradeTonftr,Execute" Row="0" Column="0"/>
+        </CardLayouts>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+    </CUnit>
+    <!--medivh-->
+    <CUnit id="nmed" defType="NONE">
+        <DeathTime value="15"/>
+        <FogVisibility value="Snapshot"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <CostResource index="gold" value="450"/>
+        <KillResource index="gold" value="5"/>
+        <AbilArray index="4" Link="Asud"/>
+        <AbilArray Link="Aslo"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Face="Aslo" Type="AbilCmd" AbilCmd="Aslo,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Asud" Type="AbilCmd" AbilCmd="Asud,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+        <PlacementFootprint value="1x1Army"/>
+        <TechAliasArray value="_RangedUnit"/>
+        <Attributes index="none" value="1"/>
+        <Attributes index="large" value="0"/>
+        <LifeArmorName value="ARMOR_NONE"/>
+        <LifeArmorTip value="ARMORTIP_NONE"/>
     </CUnit>
     <!--magnataur warrior-->
     <CUnit id="nmgw">
         <LifeStart value="4500"/>
         <LifeMax value="4500"/>
-        <BehaviorArray Link="War3_PowerfulMob"/>
+        <BehaviorArray Link="Creep"/>
         <KillResource index="gold" value="450"/>
+    </CUnit>
+    <!--Fire pandaren split2-->
+    <CUnit id="npn4" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="2250"/>
+        <KillResource index="gold" value="225"/>
+        <LifeStart value="10621"/>
+        <LifeMax value="10621"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="499.9218"/>
+        <BehaviorArray Link="War3_PowerfulMob"/>
+        <BehaviorArray Link="Apig"/>
+        <BehaviorArray Link="ACrk"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Apig" Type="Passive" Behavior="Apig" Row="2" Column="0"/>
+            <LayoutButtons Face="ACrk" Type="Passive" Behavior="ACrk" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <!--Wind pandaren split2-->
+    <CUnit id="npn5" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="2250"/>
+        <KillResource index="gold" value="225"/>
+        <LifeStart value="10753"/>
+        <LifeMax value="10753"/>
+        <Speed value="3"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="499.9218"/>
+        <BehaviorArray Link="War3_PowerfulMob"/>
+        <BehaviorArray Link="ACrk"/>
+        <AbilArray Link="Adsm"/>
+        <AbilArray Link="ACcy"/>
+        <AbilArray Link="ANwk"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Adsm" Type="AbilCmd" AbilCmd="Adsm,0" Row="2" Column="0"/>
+            <LayoutButtons Face="ACcy" Type="AbilCmd" AbilCmd="ACcy,0" Row="2" Column="1"/>
+            <LayoutButtons Face="ACrk" Type="Passive" Behavior="ACrk" Row="2" Column="4"/>
+            <LayoutButtons Face="ANwk" Type="AbilCmd" AbilCmd="ANwk,0" Row="2" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <!--Earth pandaren split2-->
+    <CUnit id="npn6" parent="AW2_Army" defType="FORT">
+        <Attributes index="fort" value="1"/>
+        <CostResource index="gold" value="2250"/>
+        <KillResource index="gold" value="225"/>
+        <LifeStart value="7675"/>
+        <LifeMax value="7675"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="499.9218"/>
+        <BehaviorArray Link="War3_PowerfulMob"/>
+        <BehaviorArray Link="ACmi"/>
+        <BehaviorArray Link="ACpv"/>
+        <BehaviorArray Link="ACrk"/>
+        <AbilArray Link="ANta"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ACmi" Type="Passive" Behavior="ACmi" Row="2" Column="3"/>
+            <LayoutButtons Face="ACpv" Type="Passive" Behavior="ACpv" Row="2" Column="0"/>
+            <LayoutButtons Face="ANta" Type="AbilCmd" AbilCmd="ANta,0" Row="2" Column="1"/>
+            <LayoutButtons Face="ACrk" Type="Passive" Behavior="ACrk" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <!--War2Warlock-->
+    <CUnit id="nw2w" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="150"/>
+        <KillResource index="gold" value="5"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="599.9414"/>
+        <AbilArray Link="UpgradeTonchw"/>
+        <AbilArray Link="ACfb"/>
+        <AbilArray Link="ACuf"/>
+        <AbilArray Link="ACcr"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="nchw" Type="AbilCmd" AbilCmd="UpgradeTonchw,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="ACfb" Type="AbilCmd" AbilCmd="ACfb,0" Row="2" Column="0"/>
+            <LayoutButtons Face="ACuf" Type="AbilCmd" AbilCmd="ACuf,0" Row="2" Column="1"/>
+            <LayoutButtons Face="ACcr" Type="AbilCmd" AbilCmd="ACcr,0" Row="2" Column="2"/>
+        </CardLayouts>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
     </CUnit>
     <!--watcher-->
     <CUnit id="nwat">
@@ -268,7 +1147,41 @@
         <LifeArmor value="0"/>
         <CostResource index="gold" value="150"/>
         <KillResource index="gold" value="5"/>
-        <PlacementFootprint value="1x1Building"/>
+        <PlacementFootprint value="1x1Army"/>
+        <TechAliasArray value="_MeleeUnit"/>
+        <AbilArray Link="Asud"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Face="ACbl" Type="AbilCmd" AbilCmd="ACbl,255" Row="2" Column="0"/>
+            <LayoutButtons Face="Asud" Type="AbilCmd" AbilCmd="Asud,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <!--WitchDoctor-->
+    <CUnit id="odoc" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="600"/>
+        <KillResource index="gold" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="599.9414"/>
+        <AbilArray Link="UpgradeToOshd"/>
+        <AbilArray Link="Aeye"/>
+        <AbilArray Link="Ahwd"/>
+        <AbilArray Link="Asta"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Oshd" Type="AbilCmd" AbilCmd="UpgradeToOshd,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Aeye" Type="AbilCmd" AbilCmd="Aeye,0" Row="2" Column="0"/>
+            <LayoutButtons Face="Ahwd" Type="AbilCmd" AbilCmd="Ahwd,0" Row="2" Column="2"/>
+            <LayoutButtons Face="Asta" Type="AbilCmd" AbilCmd="Asta,0" Row="2" Column="1"/>
+        </CardLayouts>
+        <Radius value="0.3125"/>
+        <MinimapRadius value="0.3125"/>
+        <SeparationRadius value="0.3125"/>
+        <InnerRadius value="0.3125"/>
+        <FlagArray index="AICaster" value="1"/>
+        <FlagArray index="AIPressForwardDisabled" value="1"/>
     </CUnit>
     <!--Orc flag-->
     <CUnit id="oflg">
@@ -277,52 +1190,330 @@
         <PlacementFootprint value="6x6Phalanx"/>
         <TechAliasArray value="Alias_Phalanx"/>
         <ResourceState value="tree"/>
-        <BehaviorArray Link="Phalanx"/>
+        <BehaviorArray Link="AW2_Phalanx"/>
         <BehaviorArray Link="CreateReserveUnit36"/>
         <BehaviorArray Link="CountUnit"/>
+        <FlagArray index="Uncommandable" value="0"/>
+        <AbilArray Link="RotationSystem"/>
+        <AbilArray Link="Bushido"/>
+        <CardLayouts>
+            <LayoutButtons Face="RotationSystem" Type="AbilCmd" AbilCmd="RotationSystem,On" Row="0" Column="0"/>
+            <LayoutButtons Face="RotationSystemUn" Type="AbilCmd" AbilCmd="RotationSystem,Off" Row="0" Column="0"/>
+            <LayoutButtons Face="Bushido" Type="AbilCmd" AbilCmd="Bushido,On" Row="0" Column="1"/>
+            <LayoutButtons Face="BushidoUn" Type="AbilCmd" AbilCmd="Bushido,Off" Row="0" Column="1"/>
+        </CardLayouts>
     </CUnit>
     <!--Grunt-->
-    <CUnit id="ogru">
-        <PlacementFootprint value="1x1Building"/>
-        <DeathTime value="15"/>
-        <LifeStart value="1200"/>
-        <LifeMax value="1200"/>
+    <CUnit id="ogru" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
         <CostResource index="gold" value="150"/>
         <KillResource index="gold" value="15"/>
-        <FogVisibility value="Snapshot"/>
-        <LifeArmor value="0"/>
+        <LifeStart value="673"/>
+        <LifeMax value="673"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="599.9414"/>
+        <BehaviorArray Link="Asal"/>
+        <AbilArray Link="UpgradeTonchg"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="nchg" Type="AbilCmd" AbilCmd="UpgradeTonchg,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Asal" Type="Passive" Behavior="Asal" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <!--HeadHunter-->
+    <CUnit id="ohun" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
+        <CostResource index="gold" value="150"/>
+        <KillResource index="gold" value="5"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="599.9414"/>
+        <AbilArray Link="UpgradeTootbk"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="otbk" Type="AbilCmd" AbilCmd="UpgradeTootbk,Execute" Row="0" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <!--Healing $ward-->
+    <CUnit id="ohwd">
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+    </CUnit>
+    <!--KodoBeast-->
+    <CUnit id="okod" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="750"/>
+        <KillResource index="gold" value="75"/>
+        <LifeStart value="3205"/>
+        <LifeMax value="3205"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="horse"/>
+        <TurningRate value="499.9218"/>
+        <BehaviorArray Link="Aakb"/>
+        <BehaviorArray Link="DevourTactTemp"/>
+        <AbilArray Link="UpgradeTonckb"/>
+        <AbilArray Link="Advc"/>
+        <AbilArray Link="Adev"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="nckb" Type="AbilCmd" AbilCmd="UpgradeTonckb,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Aakb" Type="Passive" Behavior="Aakb" Row="2" Column="1"/>
+            <LayoutButtons Face="Adev" Type="AbilCmd" AbilCmd="Adev,0" Row="2" Column="0"/>
+        </CardLayouts>
+        <FlagArray index="HiddenCargoUI" value="1"/>
     </CUnit>
     <!--Peon-->
-    <CUnit id="opeo">
-        <CardLayouts index="0">
-            <LayoutButtons index="0" Face="oflg" AbilCmd="AObuUnit,Build1" ShowInGlossary="1" Row="1"/>
-            <LayoutButtons index="1">
-                <Face value="AObuUnit"/>
+    <CUnit id="opeo" parent="AW2_Peon">
+        <CardLayouts CardId="">
+            <LayoutButtons>
+                <Face value="AObu1"/>
                 <Type value="Submenu"/>
                 <AbilCmd value=""/>
+                <Behavior value=""/>
+                <Requirements value="ShowBuildArmy"/>
+                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Bui1"/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
                 <ShowInGlossary value="1"/>
+                <Row value="0"/>
                 <Column value="0"/>
             </LayoutButtons>
-            <LayoutButtons index="2" Face="hprt" AbilCmd="AObuUnit,Build2" ShowInGlossary="1" Row="1" Column="1"/>
-            <LayoutButtons index="3" removed="1"/>
-            <LayoutButtons index="4" removed="1"/>
-            <LayoutButtons index="5" removed="1"/>
-            <LayoutButtons index="6" removed="1"/>
-            <LayoutButtons index="7" removed="1"/>
-            <LayoutButtons index="8" removed="1"/>
-            <LayoutButtons index="9" removed="1"/>
+            <LayoutButtons>
+                <Face value="oflg"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="AObuArmy,Build1"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value=""/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="AObu2"/>
+                <Type value="Submenu"/>
+                <AbilCmd value=""/>
+                <Behavior value=""/>
+                <Requirements value="ShowBuildArmy"/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value="Bui2"/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="hprt"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="AObuArmy,Build2"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value=""/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="AObu3"/>
+                <Type value="Submenu"/>
+                <Requirements value="ShowBuildArmy"/>
+                <SubmenuCardId value="Bui3"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
         </CardLayouts>
         <CardLayouts CardId="Bui1">
-            <LayoutButtons Face="ogru" Type="AbilCmd" AbilCmd="AObuUnit,Build3" Row="0" Column="0"/>
+            <LayoutButtons Face="nitr" Type="AbilCmd" AbilCmd="AObuArmy,Build3" Row="0" Column="0"/>
+            <LayoutButtons Face="ogru" Type="AbilCmd" AbilCmd="AObuArmy,Build5" Row="0" Column="1"/>
+            <LayoutButtons Face="Obla" Type="AbilCmd" AbilCmd="AObuArmy,Build13" Row="0" Column="2"/>
+            <LayoutButtons Face="otau" Type="AbilCmd" AbilCmd="AObuArmy,Build11" Row="0" Column="3"/>
+            <LayoutButtons Face="orai" Type="AbilCmd" AbilCmd="AObuArmy,Build7" Row="0" Column="4"/>
+            <LayoutButtons Face="npn4" Type="AbilCmd" AbilCmd="AObuArmy,Build28" Row="1" Column="2"/>
+            <LayoutButtons Face="npn6" Type="AbilCmd" AbilCmd="AObuArmy,Build30" Row="1" Column="3"/>
+            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
         </CardLayouts>
-        <AbilArray index="0" Link="move"/>
-        <AbilArray index="4" Link="AObuUnit"/>
-        <AbilArray index="5" removed="1"/>
-        <AbilArray index="6" removed="1"/>
-        <BehaviorArray Link="Worker"/>
-        <Collide index="Ground" value="0"/>
-        <Collide index="ForceField" value="0"/>
+        <CardLayouts CardId="Bui2">
+            <LayoutButtons Face="ohun" Type="AbilCmd" AbilCmd="AObuArmy,Build9" Row="0" Column="0"/>
+            <LayoutButtons Face="nw2w" Type="AbilCmd" AbilCmd="AObuArmy,Build18" Row="0" Column="1"/>
+            <LayoutButtons Face="okod" Type="AbilCmd" AbilCmd="AObuArmy,Build15" Row="0" Column="2"/>
+            <LayoutButtons Face="Ofar" Type="AbilCmd" AbilCmd="AObuArmy,Build26" Row="0" Column="3"/>
+            <LayoutButtons Face="npn5" Type="AbilCmd" AbilCmd="AObuArmy,Build29" Row="1" Column="3"/>
+            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
+        </CardLayouts>
+        <CardLayouts CardId="Bui3">
+            <LayoutButtons Face="nitp" Type="AbilCmd" AbilCmd="AObuArmy,Build24" Row="0" Column="0"/>
+            <LayoutButtons Face="odoc" Type="AbilCmd" AbilCmd="AObuArmy,Build22" Row="0" Column="1"/>
+            <LayoutButtons Face="oshm" Type="AbilCmd" AbilCmd="AObuArmy,Build21" Row="0" Column="2"/>
+            <LayoutButtons Face="ospw" Type="AbilCmd" AbilCmd="AObuArmy,Build20" Row="0" Column="3"/>
+            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
+        </CardLayouts>
+        <AbilArray Link="AObuArmy"/>
+        <Speed value="1.4843"/>
+        <Radius value="0.3125"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="599.9414"/>
+        <MinimapRadius value="0.3125"/>
+        <SeparationRadius value="0.3125"/>
+        <InnerRadius value="0.3125"/>
+        <HotkeyCategory value="UI/ORC"/>
+    </CUnit>
+    <!--Raider-->
+    <CUnit id="orai" parent="AW2_Army" defType="SMALL">
+        <Attributes index="small" value="1"/>
+        <CostResource index="gold" value="750"/>
+        <KillResource index="gold" value="75"/>
+        <LifeStart value="1687.5002"/>
+        <LifeMax value="1687.5002"/>
+        <Speed value="3"/>
+        <Race value="Orc"/>
+        <Mover value="horse"/>
+        <TurningRate value="499.9218"/>
+        <AbilArray Link="UpgradeTonchr"/>
+        <AbilArray Link="Aens"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="nchr" Type="AbilCmd" AbilCmd="UpgradeTonchr,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Aens" Type="AbilCmd" AbilCmd="Aens,0" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <!--Shaman-->
+    <CUnit id="oshm" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="600"/>
+        <KillResource index="gold" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="599.9414"/>
+        <AbilArray Link="Ablo"/>
+        <AbilArray Link="Alsh"/>
+        <AbilArray Link="Apg2"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Ablo" Type="AbilCmd" AbilCmd="Ablo,0" Row="2" Column="2"/>
+            <LayoutButtons Face="Alsh" Type="AbilCmd" AbilCmd="Alsh,0" Row="2" Column="1"/>
+            <LayoutButtons Face="Apg2" Type="AbilCmd" AbilCmd="Apg2,0" Row="2" Column="0"/>
+        </CardLayouts>
+        <Radius value="0.3125"/>
+        <MinimapRadius value="0.3125"/>
+        <SeparationRadius value="0.3125"/>
+        <InnerRadius value="0.3125"/>
+        <FlagArray index="AICaster" value="1"/>
+        <FlagArray index="AIPressForwardDisabled" value="1"/>
+    </CUnit>
+    <!--serpent $ward 1-->
+    <CUnit id="osp1">
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+    </CUnit>
+    <!--SpiritwalkerMorph-->
+    <CUnit id="ospm" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="150"/>
+        <KillResource index="gold" value="5"/>
+        <LifeStart value="1825"/>
+        <LifeMax value="1825"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="499.9218"/>
+        <AbilArray Link="Acpf"/>
+        <AbilArray Link="Aspl"/>
+        <AbilArray Link="Adcn"/>
+        <AbilArray Link="Aast"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Acpf" Type="AbilCmd" AbilCmd="Acpf,0" Row="2" Column="3"/>
+            <LayoutButtons Face="Aspl" Type="AbilCmd" AbilCmd="Aspl,0" Row="2" Column="0"/>
+            <LayoutButtons Face="Adcn" Type="AbilCmd" AbilCmd="Adcn,0" Row="2" Column="1"/>
+            <LayoutButtons Face="Aast" Type="AbilCmd" AbilCmd="Aast,0" Row="2" Column="2"/>
+        </CardLayouts>
+        <BehaviorArray Link="tauren"/>
+        <BehaviorArray Link="Aetl"/>
+        <Subtitle value="TaurenClass"/>
+        <EnergyMax value="500"/>
+        <EnergyStart value="500"/>
+        <FlagArray index="AICaster" value="1"/>
+        <FlagArray index="AIPressForwardDisabled" value="1"/>
+        <TacticalAIFilters value="-;-"/>
+        <WeaponArray index="0" Link="ospw1"/>
+        <WeaponArray index="1" Link="ospw2"/>
+    </CUnit>
+    <!--Spiritwalker-->
+    <CUnit id="ospw" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="150"/>
+        <KillResource index="gold" value="5"/>
+        <LifeStart value="1825"/>
+        <LifeMax value="1825"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="499.9218"/>
+        <AbilArray Link="AcpfUn"/>
+        <AbilArray Link="Aspl"/>
+        <AbilArray Link="Adcn"/>
+        <AbilArray Link="Aast"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AcpfUn" Type="AbilCmd" AbilCmd="AcpfUn,0" Row="2" Column="3"/>
+            <LayoutButtons Face="Aspl" Type="AbilCmd" AbilCmd="Aspl,0" Row="2" Column="0"/>
+            <LayoutButtons Face="Adcn" Type="AbilCmd" AbilCmd="Adcn,0" Row="2" Column="1"/>
+            <LayoutButtons Face="Aast" Type="AbilCmd" AbilCmd="Aast,0" Row="2" Column="2"/>
+        </CardLayouts>
+        <BehaviorArray Link="tauren"/>
+        <Subtitle value="TaurenClass"/>
+        <EnergyMax value="500"/>
+        <EnergyStart value="500"/>
+        <FlagArray index="AICaster" value="1"/>
+        <FlagArray index="AIPressForwardDisabled" value="1"/>
+        <TacticalAIFilters value="-;-"/>
+    </CUnit>
+    <!--Tauren-->
+    <CUnit id="otau" parent="AW2_Army" defType="FORT">
+        <Attributes index="fort" value="1"/>
+        <CostResource index="gold" value="750"/>
+        <KillResource index="gold" value="75"/>
+        <LifeStart value="2050"/>
+        <LifeMax value="2050"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="499.9218"/>
+        <BehaviorArray Link="Awar"/>
+        <BehaviorArray Link="tauren"/>
+        <AbilArray Link="UpgradeToOtch"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Otch" Type="AbilCmd" AbilCmd="UpgradeToOtch,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Awar" Type="Passive" Behavior="Awar" Row="2" Column="0"/>
+        </CardLayouts>
+        <Subtitle value="TaurenClass"/>
+    </CUnit>
+    <!--Berserker-->
+    <CUnit id="otbk" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
+        <CostResource index="gold" value="450"/>
+        <KillResource index="gold" value="5"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="599.9414"/>
+        <AbilArray Link="Absk"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Absk" Type="AbilCmd" AbilCmd="Absk,0" Row="2" Column="0"/>
+        </CardLayouts>
     </CUnit>
     <!--Acolyte-->
     <CUnit id="uaco">
@@ -349,7 +1540,7 @@
         <AbilArray index="6" removed="1"/>
         <AbilArray index="7" removed="1"/>
         <AbilArray index="8" removed="1"/>
-        <BehaviorArray Link="Worker"/>
+        <BehaviorArray Link="AW2_Peon"/>
         <Collide index="Ground" value="0"/>
         <Collide index="ForceField" value="0"/>
     </CUnit>
@@ -358,11 +1549,19 @@
         <DeathTime value="15"/>
         <LifeStart value="25"/>
         <LifeMax value="25"/>
-        <PlacementFootprint value="1x1Building"/>
+        <PlacementFootprint value="1x1Army"/>
         <CostResource index="gold" value="150"/>
         <CostResource index="lumber" value="0"/>
         <KillResource index="gold" value="5"/>
         <FogVisibility value="Snapshot"/>
+        <TechAliasArray value="_RangedUnit"/>
+        <AbilArray index="7" Link="Asud"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Face="Aam2" Type="AbilCmd" AbilCmd="Aam2,Execute" Row="2" Column="1"/>
+            <LayoutButtons index="6" Face="Acrs" Type="AbilCmd" AbilCmd="Acrs,Execute" Row="2" Column="0"/>
+            <LayoutButtons index="7" Face="Aps2" Type="AbilCmd" AbilCmd="Aps2,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="Asud" Type="AbilCmd" AbilCmd="Asud,Execute" Row="2" Column="4"/>
+        </CardLayouts>
     </CUnit>
     <!--Undead flag-->
     <CUnit id="uflg">
@@ -371,30 +1570,56 @@
         <PlacementFootprint value="6x6Phalanx"/>
         <TechAliasArray value="Alias_Phalanx"/>
         <ResourceState value="tree"/>
-        <BehaviorArray Link="Phalanx"/>
+        <BehaviorArray Link="AW2_Phalanx"/>
         <BehaviorArray Link="CreateReserveUnit36"/>
         <BehaviorArray Link="CountUnit"/>
+        <FlagArray index="Uncommandable" value="0"/>
+        <AbilArray Link="RotationSystem"/>
+        <AbilArray Link="Bushido"/>
+        <CardLayouts>
+            <LayoutButtons Face="RotationSystem" Type="AbilCmd" AbilCmd="RotationSystem,On" Row="0" Column="0"/>
+            <LayoutButtons Face="RotationSystemUn" Type="AbilCmd" AbilCmd="RotationSystem,Off" Row="0" Column="0"/>
+            <LayoutButtons Face="Bushido" Type="AbilCmd" AbilCmd="Bushido,On" Row="0" Column="1"/>
+            <LayoutButtons Face="BushidoUn" Type="AbilCmd" AbilCmd="Bushido,Off" Row="0" Column="1"/>
+        </CardLayouts>
     </CUnit>
     <!--Ghoul-->
     <CUnit id="ugho">
-        <PlacementFootprint value="1x1Building"/>
+        <PlacementFootprint value="1x1Army"/>
         <DeathTime value="15"/>
         <LifeStart value="400"/>
         <LifeMax value="400"/>
         <CostResource index="gold" value="450"/>
         <KillResource index="gold" value="5"/>
         <FogVisibility value="Snapshot"/>
+        <TechAliasArray value="_MeleeUnit"/>
+        <AbilArray index="5" Link="Asud"/>
+        <AbilArray index="6" removed="1"/>
+        <AbilArray index="7" removed="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Face="Acan" Type="AbilCmd" AbilCmd="Acan,Execute" Row="2" Column="0"/>
+            <LayoutButtons index="6" Face="Asud" Type="AbilCmd" AbilCmd="Asud,Execute" Row="2" Column="4"/>
+            <LayoutButtons index="7" removed="1"/>
+        </CardLayouts>
     </CUnit>
     <!--Necromancer-->
     <CUnit id="unec">
         <DeathTime value="15"/>
         <LifeStart value="25"/>
         <LifeMax value="25"/>
-        <PlacementFootprint value="1x1Building"/>
+        <PlacementFootprint value="1x1Army"/>
         <CostResource index="gold" value="600"/>
         <CostResource index="lumber" value="0"/>
         <KillResource index="gold" value="30"/>
         <FogVisibility value="Snapshot"/>
+        <TechAliasArray value="_RangedUnit"/>
+        <AbilArray index="7" Link="Asud"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Face="Acri" Type="AbilCmd" AbilCmd="Acri,Execute" Row="2" Column="2"/>
+            <LayoutButtons index="6" Face="Arai" Type="AbilCmd" AbilCmd="Arai,Execute" Row="2" Column="0"/>
+            <LayoutButtons index="7" Face="Auhf" Type="AbilCmd" AbilCmd="Auhf,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="Asud" Type="AbilCmd" AbilCmd="Asud,Execute" Row="2" Column="4"/>
+        </CardLayouts>
     </CUnit>
     <!--SkeletonWarrior-->
     <CUnit id="uske">
