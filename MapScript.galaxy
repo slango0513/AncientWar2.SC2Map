@@ -28,6 +28,7 @@ const string gv_phalanxUserType = "PhalanxData";
 const string gv_portalUserType = "PortalData";
 const string gv_phalanxBuffUserType = "PhalanxBuffData";
 const string gv_creepUnitTypeUserType = "CreepUnitTypeData";
+const int gv_itemMaximumCountPerUnit = 6;
 const int gv_unitMaximumCountPerPhalanx = 72;
 const int gv_portalMaximumCount = 2;
 const int gv_phalanxMaximumCount = 3;
@@ -43,10 +44,9 @@ const int gv_venueGroupMaximumCount = (gv_teamMaximumCount/2);
 //--------------------------------------------------------------------------------------------------
 // Global Variables
 //--------------------------------------------------------------------------------------------------
-fixed gv_adefDamageTaken;
-fixed gv_adefDeflectChance;
-fixed gv_adefRadius;
 unitgroup gv_adefGroup;
+unitgroup gv_defendGroup;
+unitgroup gv_amdfGroup;
 int[gv_playerCount + 1] gv_userPlayer;
 int[gv_playerCount + 1] gv_mirrorPlayer;
 int gv_teamCount;
@@ -72,6 +72,7 @@ int[gv_venueMaximumCount + 1][gv_roundMaximumCount + 1] gv_playerAtVenue;
 int[gv_venueMaximumCount + 1][gv_roundMaximumCount + 1] gv_creepPlayerAtVenue;
 int[gv_playerCount + 1] gv_playerAtBuildingRegion;
 string[gv_playerMaximumIndex + 1][gv_phalanxMaximumCount + 1][gv_unitMaximumCountPerPhalanx + 1] gv_unitType;
+string[gv_playerMaximumIndex + 1][gv_phalanxMaximumCount + 1][gv_unitMaximumCountPerPhalanx + 1][gv_itemMaximumCountPerUnit + 1] gv_itemType;
 int[gv_playerMaximumIndex + 1] gv_phalanxIndex;
 actor[gv_playerMaximumIndex + 1][gv_phalanxMaximumCount + 1][gv_unitMaximumCountPerPhalanx + 1] gv_previewModel;
 unit[gv_playerMaximumIndex + 1][gv_phalanxMaximumCount + 1] gv_previewer;
@@ -116,10 +117,9 @@ revealer[gv_venueMaximumCount + 1][gv_playerMaximumIndex + 1] gv_finalVenueRevea
 void InitGlobals () {
     int init_i;
 
-    gv_adefDamageTaken = 0.5;
-    gv_adefDeflectChance = 0.3;
-    gv_adefRadius = 6.0;
     gv_adefGroup = UnitGroupEmpty();
+    gv_defendGroup = UnitGroupEmpty();
+    gv_amdfGroup = UnitGroupEmpty();
     for (init_i = 0; init_i <= gv_teamMaximumCount; init_i += 1) {
         gv_teamGroup[init_i] = PlayerGroupEmpty();
     }
@@ -148,7 +148,6 @@ void InitGlobals () {
 //--------------------------------------------------------------------------------------------------
 // Global Function Declarations
 //--------------------------------------------------------------------------------------------------
-int gf_PlayerGetTeam (int lp_player);
 void gf_ModInizialization (bool lp_debug);
 void gf_RoundStartLoop (bool lp_debug);
 void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug);
@@ -161,6 +160,7 @@ void gf_PlayerAtFinalVenueSet (int lp_round);
 void gf_PlayerCountTest ();
 void gf_GameOverTestNotPassed ();
 void gf_ReserveUnitCreation2 (int lp_player, int lp_phalanx);
+int gf_PlayerGetTeam (int lp_player);
 region gf_IndexGetVenue (int lp_index);
 int gf_IndexGetUserPlayer (int lp_index);
 int gf_UserPlayerGetMirrorPlayer (int lp_player);
@@ -197,8 +197,8 @@ void gf_PhalanxPlaceholderPositionAll ();
 void gf_BuildingRegionSet (region lp_region, int lp_index, int lp_phalanx);
 void gf_PlayerAtBuildingRegionSet ();
 void gf_BuildingRegionRevealerEnable (bool lp_option, bool lp_debug);
-void gf_UnitTypeSetAll ();
 void gf_UnitTypeReset (int lp_player, int lp_phalanx);
+void gf_UnitTypeSetAll ();
 void gf_UnitTypeSet (int lp_buildingRegion, int lp_phalanx);
 void gf_CreepUnitTypeSetAll ();
 void gf_PreviewUpdateAll ();
@@ -255,6 +255,10 @@ trigger gt_PlayerInizialization2;
 trigger gt_Pillage;
 trigger gt_AdefDefendInitRegister;
 trigger gt_AdefDefendDamaged;
+trigger gt_DefendInitRegister;
+trigger gt_DefendDamaged;
+trigger gt_AmdfInitRegister;
+trigger gt_AmdfDamaged;
 trigger gt_UnitChangeOwner2;
 trigger gt_UnitDied2;
 trigger gt_PlayerLeft;
@@ -275,34 +279,11 @@ trigger gt_DebugUnitRemove;
 //--------------------------------------------------------------------------------------------------
 // Global Functions
 //--------------------------------------------------------------------------------------------------
-int gf_PlayerGetTeam (int lp_player) {
-    int auto10973A45_ae;
-    int auto10973A45_ai;
-
-    // Variable Declarations
-    int lv_team;
-    int lv_teamReturn;
-
-    // Variable Initialization
-
-    // Implementation
-    auto10973A45_ae = gv_teamCount;
-    auto10973A45_ai = 1;
-    lv_team = 1;
-    for ( ; ( (auto10973A45_ai >= 0 && lv_team <= auto10973A45_ae) || (auto10973A45_ai <= 0 && lv_team >= auto10973A45_ae) ) ; lv_team += auto10973A45_ai ) {
-        if ((PlayerGroupHasPlayer(gv_teamGroup[lv_team], lp_player) == true)) {
-            lv_teamReturn = lv_team;
-            break;
-        }
-
-    }
-    return lv_teamReturn;
-}
-
 void gf_ModInizialization (bool lp_debug) {
     bool auto0BE103AA_val;
 
     // Implementation
+    TriggerEnable(libGAwX_gt_NonHeroItemDeathDrop, false);
     TriggerEnable(libGAw3_gt_ChangeOwerFromCreep, false);
     TriggerEnable(libGAw3_gt_ChangeOwerToCreep, false);
     TriggerEnable(libGAwX_gt_AdefDefendInitRegister, false);
@@ -310,6 +291,7 @@ void gf_ModInizialization (bool lp_debug) {
     UISetResourceTradingAllowed(c_resourceTypeVespene, false);
     UISetResourceTradingAllowed(c_resourceTypeTerrazine, false);
     UISetResourceTradingAllowed(c_resourceTypeCustom, false);
+    HelpPanelEnableTechGlossaryButton(PlayerGroupAll(), true);
     TriggerExecute(gt_GameAttributeInizialization, true, false);
     if ((lp_debug == true)) {
         gf_DebugEnable(true);
@@ -353,10 +335,6 @@ void gf_RoundStartLoop (bool lp_debug) {
         autoE4112BFC_ai = 1;
         lv_round = 1;
         for ( ; ( (autoE4112BFC_ai >= 0 && lv_round <= autoE4112BFC_ae) || (autoE4112BFC_ai <= 0 && lv_round >= autoE4112BFC_ae) ) ; lv_round += autoE4112BFC_ai ) {
-            if ((lp_debug == true)) {
-                lv_round = 1;
-            }
-
             if ((lv_round == gv_roundCount)) {
                 gf_FinalVenueReplace();
             }
@@ -899,6 +877,30 @@ void gf_ReserveUnitCreation2 (int lp_player, int lp_phalanx) {
         }
 
     }
+}
+
+int gf_PlayerGetTeam (int lp_player) {
+    int auto10973A45_ae;
+    int auto10973A45_ai;
+
+    // Variable Declarations
+    int lv_team;
+    int lv_teamReturn;
+
+    // Variable Initialization
+
+    // Implementation
+    auto10973A45_ae = gv_teamCount;
+    auto10973A45_ai = 1;
+    lv_team = 1;
+    for ( ; ( (auto10973A45_ai >= 0 && lv_team <= auto10973A45_ae) || (auto10973A45_ai <= 0 && lv_team >= auto10973A45_ae) ) ; lv_team += auto10973A45_ai ) {
+        if ((PlayerGroupHasPlayer(gv_teamGroup[lv_team], lp_player) == true)) {
+            lv_teamReturn = lv_team;
+            break;
+        }
+
+    }
+    return lv_teamReturn;
 }
 
 region gf_IndexGetVenue (int lp_index) {
@@ -1752,6 +1754,33 @@ void gf_BuildingRegionRevealerEnable (bool lp_option, bool lp_debug) {
     }
 }
 
+void gf_UnitTypeReset (int lp_player, int lp_phalanx) {
+    int auto4DFE2879_ae;
+    int auto4DFE2879_ai;
+    int auto2E764D3C_ae;
+    int auto2E764D3C_ai;
+
+    // Variable Declarations
+    int lv_unitIndex;
+    int lv_itemIndex;
+
+    // Variable Initialization
+
+    // Implementation
+    auto4DFE2879_ae = gv_unitMaximumCountPerPhalanx;
+    auto4DFE2879_ai = 1;
+    lv_unitIndex = 1;
+    for ( ; ( (auto4DFE2879_ai >= 0 && lv_unitIndex <= auto4DFE2879_ae) || (auto4DFE2879_ai <= 0 && lv_unitIndex >= auto4DFE2879_ae) ) ; lv_unitIndex += auto4DFE2879_ai ) {
+        gv_unitType[lp_player][lp_phalanx][lv_unitIndex] = null;
+        auto2E764D3C_ae = gv_itemMaximumCountPerUnit;
+        auto2E764D3C_ai = 1;
+        lv_itemIndex = 1;
+        for ( ; ( (auto2E764D3C_ai >= 0 && lv_itemIndex <= auto2E764D3C_ae) || (auto2E764D3C_ai <= 0 && lv_itemIndex >= auto2E764D3C_ae) ) ; lv_itemIndex += auto2E764D3C_ai ) {
+            gv_itemType[lp_player][lp_phalanx][lv_unitIndex][lv_itemIndex] = null;
+        }
+    }
+}
+
 void gf_UnitTypeSetAll () {
     int auto05841633_ae;
     int auto05841633_ai;
@@ -1780,24 +1809,6 @@ void gf_UnitTypeSetAll () {
     gf_BuildingScoreUpdate();
 }
 
-void gf_UnitTypeReset (int lp_player, int lp_phalanx) {
-    int auto4DFE2879_ae;
-    int auto4DFE2879_ai;
-
-    // Variable Declarations
-    int lv_unit;
-
-    // Variable Initialization
-
-    // Implementation
-    auto4DFE2879_ae = gv_unitMaximumCountPerPhalanx;
-    auto4DFE2879_ai = 1;
-    lv_unit = 1;
-    for ( ; ( (auto4DFE2879_ai >= 0 && lv_unit <= auto4DFE2879_ae) || (auto4DFE2879_ai <= 0 && lv_unit >= auto4DFE2879_ae) ) ; lv_unit += auto4DFE2879_ai ) {
-        gv_unitType[lp_player][lp_phalanx][lv_unit] = null;
-    }
-}
-
 void gf_UnitTypeSet (int lp_buildingRegion, int lp_phalanx) {
     int autoFDA36F34_ae;
     int autoFDA36F34_ai;
@@ -1807,6 +1818,10 @@ void gf_UnitTypeSet (int lp_buildingRegion, int lp_phalanx) {
     int autoDE6BCDF4_ai;
     int auto7CE0FDBF_ae;
     int auto7CE0FDBF_ai;
+    int auto97451579_ae;
+    int auto97451579_ai;
+    int auto66B75B59_ae;
+    int auto66B75B59_ai;
 
     // Variable Declarations
     region lv_buildingRegion;
@@ -1820,6 +1835,9 @@ void gf_UnitTypeSet (int lp_buildingRegion, int lp_phalanx) {
     int lv_column;
     int lv_row;
     region lv_region;
+    int lv_i;
+    string lv_itemType;
+    int lv_itemIndex;
 
     // Variable Initialization
     lv_buildingRegion = gv_buildingRegion[lp_buildingRegion][lp_phalanx];
@@ -1855,6 +1873,16 @@ void gf_UnitTypeSet (int lp_buildingRegion, int lp_phalanx) {
                                 lv_unitIndex += 1;
                                 gv_unitType[gv_playerAtBuildingRegion[lp_buildingRegion]][lp_phalanx][lv_unitIndex] = lv_unitType;
                                 gv_buildingScore[gv_playerAtBuildingRegion[lp_buildingRegion]] += gf_UnitTypeGetKillGold(lv_unitType);
+                                auto97451579_ae = gv_itemMaximumCountPerUnit;
+                                auto97451579_ai = 1;
+                                lv_itemIndex = 1;
+                                for ( ; ( (auto97451579_ai >= 0 && lv_itemIndex <= auto97451579_ae) || (auto97451579_ai <= 0 && lv_itemIndex >= auto97451579_ae) ) ; lv_itemIndex += auto97451579_ai ) {
+                                    lv_itemType = UnitGetType(UnitInventoryItem(UnitGroupLoopCurrent(), lv_itemIndex));
+                                    if ((lv_itemType != null)) {
+                                        gv_itemType[gv_playerAtBuildingRegion[lp_buildingRegion]][lp_phalanx][lv_unitIndex][lv_itemIndex] = lv_itemType;
+                                    }
+
+                                }
                             }
 
                         }
@@ -1865,6 +1893,16 @@ void gf_UnitTypeSet (int lp_buildingRegion, int lp_phalanx) {
             UnitGroupLoopEnd();
         }
     }
+    lv_unitIndex = 0;
+    if ((gv_unitType[gv_playerAtBuildingRegion[lp_buildingRegion]][lp_phalanx][1] == null)) {
+        auto66B75B59_ae = 6;
+        auto66B75B59_ai = 1;
+        lv_unitIndex = 1;
+        for ( ; ( (auto66B75B59_ai >= 0 && lv_unitIndex <= auto66B75B59_ae) || (auto66B75B59_ai <= 0 && lv_unitIndex >= auto66B75B59_ae) ) ; lv_unitIndex += auto66B75B59_ai ) {
+            gv_unitType[gv_playerAtBuildingRegion[lp_buildingRegion]][lp_phalanx][lv_unitIndex] = "nvil";
+        }
+    }
+
 }
 
 void gf_CreepUnitTypeSetAll () {
@@ -1881,6 +1919,7 @@ void gf_CreepUnitTypeSetAll () {
     string lv_roundID;
     string lv_unitType;
     text lv_description;
+    text lv_descriptionMore;
     string lv_path;
 
     // Variable Initialization
@@ -1904,13 +1943,16 @@ void gf_CreepUnitTypeSetAll () {
                     lv_unitType = UserDataGetUnit(gv_creepUnitTypeUserType, (lv_roundID), "UnitType", lv_index);
                     if ((lv_unitType != null)) {
                         gv_creepUnitType[lv_venue][lv_round] = lv_unitType;
-                        lv_description = UserDataGetText(gv_creepUnitTypeUserType, (lv_roundID), "Description", lv_index);
+                        lv_description = StringExternal(CatalogFieldValueGet(c_gameCatalogUnit, gv_creepUnitType[lv_venue][lv_round], "Description", gv_playerAtVenue[lv_venue][lv_round]));
+                        lv_descriptionMore = UserDataGetText(gv_creepUnitTypeUserType, (lv_roundID), "Description", lv_index);
                         lv_path = CatalogFieldValueGet(c_gameCatalogActor, (lv_unitType), "UnitIcon", gv_playerAtVenue[lv_venue][lv_round]);
                         TextExpressionSetToken("Param/Expression/0E472FCC", "A", IntToText(lv_round));
                         TextExpressionSetToken("Param/Expression/0E472FCC", "B", UnitTypeGetName(lv_unitType));
+                        TextExpressionSetToken("Param/Expression/4CA5E705", "A", lv_description);
+                        TextExpressionSetToken("Param/Expression/4CA5E705", "B", lv_descriptionMore);
                         TextExpressionSetToken("Param/Expression/CEBDBACC", "A", IntToText(lv_round));
                         TextExpressionSetToken("Param/Expression/CEBDBACC", "B", UnitTypeGetName(lv_unitType));
-                        HelpPanelAddTip(PlayerGroupSingle(gv_playerAtVenue[lv_venue][lv_round]), TextExpressionAssemble("Param/Expression/0E472FCC"), lv_description, TextExpressionAssemble("Param/Expression/CEBDBACC"), (lv_path));
+                        HelpPanelAddTip(PlayerGroupSingle(gv_playerAtVenue[lv_venue][lv_round]), TextExpressionAssemble("Param/Expression/0E472FCC"), TextExpressionAssemble("Param/Expression/4CA5E705"), TextExpressionAssemble("Param/Expression/CEBDBACC"), (lv_path));
                     }
 
                 }
@@ -2161,6 +2203,8 @@ void gf_UnitOrPreviewModelPosition (unit lp_unit, bool lp_preview) {
     int auto74174689_ai;
     int auto92AF0421_ae;
     int auto92AF0421_ai;
+    int autoD8519147_ae;
+    int autoD8519147_ai;
 
     // Variable Declarations
     int lv_player;
@@ -2175,8 +2219,10 @@ void gf_UnitOrPreviewModelPosition (unit lp_unit, bool lp_preview) {
     point lv_pointInitial;
     point lv_pointColumn;
     point lv_pointRow;
-    int lv_index;
+    int lv_unitIndex;
     string lv_unitType;
+    int lv_itemIndex;
+    string lv_itemType;
 
     // Variable Initialization
     lv_player = UnitGetOwner(lp_unit);
@@ -2194,7 +2240,7 @@ void gf_UnitOrPreviewModelPosition (unit lp_unit, bool lp_preview) {
     lv_columnCount = UserDataGetInt(gv_phalanxUserType, (lv_unitTypeID), "Row", 1);
     lv_rowCount = UserDataGetInt(gv_phalanxUserType, (lv_unitTypeID), "Column", 1);
     lv_pointInitial = PointWithOffsetPolar(PointWithOffsetPolar(lv_position, (lv_rowCount/2-0.5), PointGetFacing(lv_position)), (lv_columnCount/2-0.5), (UnitGetFacing(lp_unit)+90));
-    lv_index = 0;
+    lv_unitIndex = 0;
     auto74174689_ae = lv_columnCount;
     auto74174689_ai = 1;
     lv_column = 1;
@@ -2205,15 +2251,25 @@ void gf_UnitOrPreviewModelPosition (unit lp_unit, bool lp_preview) {
         lv_row = 1;
         for ( ; ( (auto92AF0421_ai >= 0 && lv_row <= auto92AF0421_ae) || (auto92AF0421_ai <= 0 && lv_row >= auto92AF0421_ae) ) ; lv_row += auto92AF0421_ai ) {
             lv_pointRow = PointWithOffsetPolar(lv_pointColumn, (lv_row-1), (UnitGetFacing(lp_unit)-90));
-            lv_index += 1;
-            lv_unitType = gv_unitType[lv_player][lv_phalanx][lv_index];
+            lv_unitIndex += 1;
+            lv_unitType = gv_unitType[lv_player][lv_phalanx][lv_unitIndex];
             if ((lv_unitType != null)) {
                 if ((lp_preview == true)) {
                     gf_PreviewModelCreate(lv_playerUnitCreated, lv_pointRow, lv_unitType, lp_unit);
-                    gv_previewModel[lv_player][lv_phalanx][lv_index] = libNtve_gf_ActorLastCreated();
+                    gv_previewModel[lv_player][lv_phalanx][lv_unitIndex] = libNtve_gf_ActorLastCreated();
                 }
                 else {
                     gf_UnitCreate(lv_playerUnitCreated, lv_pointRow, lv_unitType, lp_unit);
+                    autoD8519147_ae = gv_itemMaximumCountPerUnit;
+                    autoD8519147_ai = 1;
+                    lv_itemIndex = 1;
+                    for ( ; ( (autoD8519147_ai >= 0 && lv_itemIndex <= autoD8519147_ae) || (autoD8519147_ai <= 0 && lv_itemIndex >= autoD8519147_ae) ) ; lv_itemIndex += autoD8519147_ai ) {
+                        lv_itemType = gv_itemType[lv_player][lv_phalanx][lv_unitIndex][lv_itemIndex];
+                        if ((lv_itemType != null)) {
+                            UnitInventoryCreate(UnitLastCreated(), lv_itemType);
+                        }
+
+                    }
                 }
             }
 
@@ -2498,19 +2554,34 @@ void gf_ReserveUnitCreationEnable (bool lp_option) {
 }
 
 void gf_ReserveUnitCreation (unit lp_unit, int lp_player, int lp_phalanx) {
+    int autoF86C1014_ae;
+    int autoF86C1014_ai;
+
     // Variable Declarations
     string lv_unitType;
-    int lv_index;
+    int lv_unitIndex;
+    string lv_itemType;
+    int lv_itemIndex;
 
     // Variable Initialization
 
     // Implementation
-    lv_index = (gf_UnitTypeGetPhalanxCapacity(UnitGetType(lp_unit))+gv_reserveUnitIndex[lp_player][lp_phalanx]);
-    if ((lv_index < gv_unitMaximumCountPerPhalanx)) {
+    lv_unitIndex = (gf_UnitTypeGetPhalanxCapacity(UnitGetType(lp_unit))+gv_reserveUnitIndex[lp_player][lp_phalanx]);
+    if ((lv_unitIndex < gv_unitMaximumCountPerPhalanx)) {
         gv_reserveUnitIndex[lp_player][lp_phalanx] += 1;
-        lv_unitType = gv_unitType[lp_player][lp_phalanx][lv_index];
+        lv_unitType = gv_unitType[lp_player][lp_phalanx][lv_unitIndex];
         if ((lv_unitType != null)) {
             gf_UnitCreate(gf_UserPlayerGetMirrorPlayer(lp_player), UnitGetPosition(lp_unit), lv_unitType, lp_unit);
+            autoF86C1014_ae = gv_itemMaximumCountPerUnit;
+            autoF86C1014_ai = 1;
+            lv_itemIndex = 1;
+            for ( ; ( (autoF86C1014_ai >= 0 && lv_itemIndex <= autoF86C1014_ae) || (autoF86C1014_ai <= 0 && lv_itemIndex >= autoF86C1014_ae) ) ; lv_itemIndex += autoF86C1014_ai ) {
+                lv_itemType = gv_itemType[lp_player][lp_phalanx][lv_unitIndex][lv_itemIndex];
+                if ((lv_itemType != null)) {
+                    UnitInventoryCreate(UnitLastCreated(), lv_itemType);
+                }
+
+            }
         }
 
     }
@@ -2675,7 +2746,7 @@ void gf_StartLocationCameraPan () {
     auto1B6851A4_ai = 1;
     lv_player = 1;
     for ( ; ( (auto1B6851A4_ai >= 0 && lv_player <= auto1B6851A4_ae) || (auto1B6851A4_ai <= 0 && lv_player >= auto1B6851A4_ae) ) ; lv_player += auto1B6851A4_ai ) {
-        CameraPan(gf_IndexGetUserPlayer(lv_player), PlayerStartLocation(gf_IndexGetUserPlayer(lv_player)), 0.0, -1, 10.0, false);
+        CameraPan(gf_IndexGetUserPlayer(lv_player), PlayerStartLocation(gf_IndexGetUserPlayer(lv_player)), 0.5, -1, 10.0, false);
     }
 }
 
@@ -2694,7 +2765,7 @@ void gf_VenueCameraPan (int lp_round) {
     lv_venue = 1;
     for ( ; ( (auto4C5A125F_ai >= 0 && lv_venue <= auto4C5A125F_ae) || (auto4C5A125F_ai <= 0 && lv_venue >= auto4C5A125F_ae) ) ; lv_venue += auto4C5A125F_ai ) {
         if ((gv_playerAtVenue[lv_venue][lp_round] != -1)) {
-            CameraPan(gv_playerAtVenue[lv_venue][lp_round], RegionGetCenter(gv_venue[lv_venue]), 0.0, -1, 10.0, false);
+            CameraPan(gv_playerAtVenue[lv_venue][lp_round], RegionGetCenter(gv_venue[lv_venue]), 0.5, -1, 10.0, false);
         }
 
     }
@@ -2852,7 +2923,6 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     int lv_player;
 
     // Variable Initialization
-    lv_debug = true;
 
     // Actions
     if (!runActions) {
@@ -2872,6 +2942,7 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
         lv_player = PlayerGroupPlayer(autoE8E91B19_g, autoE8E91B19_p);
         VisRevealArea(lv_player, RegionFromId(70), 0.0625, false);
         VisRevealArea(lv_player, RegionFromId(71), 0.0625, false);
+        libGAwX_gf_SetPlayerUIRace(lv_player, "Human");
     }
     libGAwX_gf_SetWar3TimeOfDay("13:00:00");
     libGAwX_gf_PauseUnpauseTimeOfDayWar3(true);
@@ -2968,20 +3039,16 @@ bool gt_VenueInizialization_Func (bool testConds, bool runActions) {
     else if (auto480E4CF2_val == "0002") {
         gf_VenueInitialSet(RegionFromId(25), 1, 90.0);
         gf_VenueInitialSet(RegionFromId(26), 2, 90.0);
-        gf_PathingBlockerRemove(RegionFromId(26));
         gf_VenueInitialSet(RegionFromId(27), 3, 270.0);
         gf_VenueInitialSet(RegionFromId(28), 4, 270.0);
-        gf_PathingBlockerRemove(RegionFromId(28));
         gf_VenueInitialSet(RegionFromId(29), 5, 270.0);
         gf_VenueInitialSet(RegionFromId(30), 6, 270.0);
-        gf_PathingBlockerRemove(RegionFromId(30));
         gf_VenueInitialSet(RegionFromId(31), 7, 90.0);
         gf_VenueInitialSet(RegionFromId(32), 8, 90.0);
-        gf_PathingBlockerRemove(RegionFromId(32));
-        gf_PathingBlockerRemove(RegionFromId(42));
-        gf_PathingBlockerRemove(RegionFromId(43));
-        gf_PathingBlockerRemove(RegionFromId(44));
-        gf_PathingBlockerRemove(RegionFromId(45));
+        gf_PathingBlockerRemove(RegionFromId(78));
+        gf_PathingBlockerRemove(RegionFromId(79));
+        gf_PathingBlockerRemove(RegionFromId(80));
+        gf_PathingBlockerRemove(RegionFromId(81));
         gf_BonusVenueSet(RegionFromId(25), 1, 90.0);
         gf_BonusVenueSet(RegionFromId(26), 2, 90.0);
         gf_BonusVenueSet(RegionFromId(29), 3, 270.0);
@@ -3450,9 +3517,14 @@ bool gt_AdefDefendDamaged_Func (bool testConds, bool runActions) {
     fixed lv_triggerDamge;
     fixed lv_actualDamge;
     fixed lv_attemptedDamage;
-    unit lv_footman;
+    unit lv_unit;
     unit lv_source;
     unit lv_triggerAttaker;
+    string lv_behavior;
+    string lv_instance;
+    fixed lv_deflectChance;
+    fixed lv_damageTaken;
+    string lv_deflectedEffect;
     unit lv_target;
     unit lv_u;
 
@@ -3462,9 +3534,14 @@ bool gt_AdefDefendDamaged_Func (bool testConds, bool runActions) {
     lv_atkType = GAw3_WeaponAtkType(lv_weapon);
     lv_actualDamge = EventUnitDamageAmount();
     lv_attemptedDamage = EventUnitDamageAbsorbed();
-    lv_footman = EventUnit();
+    lv_unit = EventUnit();
     lv_source = EventUnitDamageSourceUnit();
     lv_triggerAttaker = lv_source;
+    lv_behavior = "Adef";
+    lv_instance = ((lv_behavior));
+    lv_deflectChance = UserDataGetFixed("AbilityDataDefendElunesGrace", lv_instance, "Chance To Deflect (Piercing)", 1);
+    lv_damageTaken = UserDataGetFixed("AbilityDataDefendElunesGrace", lv_instance, "Damage Taken (Piercing)", 1);
+    lv_deflectedEffect = UserDataGetGameLink("AbilityDataDefendElunesGrace", lv_instance, "Deflect Effect", 1);
 
     // Conditions
     if (testConds) {
@@ -3472,7 +3549,7 @@ bool gt_AdefDefendDamaged_Func (bool testConds, bool runActions) {
             return false;
         }
 
-        if (!((UnitHasBehavior(lv_footman, "Adef") == true))) {
+        if (!((UnitHasBehavior(lv_unit, lv_behavior) == true))) {
             return false;
         }
     }
@@ -3483,18 +3560,18 @@ bool gt_AdefDefendDamaged_Func (bool testConds, bool runActions) {
     }
 
     if ((UnitIsAlive(lv_source) == false)) {
-        lv_triggerAttaker = lv_footman;
+        lv_triggerAttaker = lv_unit;
     }
 
     if ((gf_EffectAttackType(EventUnitDamageEffect()) == "DAMAGE_PIERCE")) {
-        if ((RandomFixed(0.0, 1.0) <= gv_adefDeflectChance)) {
-            UnitCreateEffectUnit(lv_footman, "AdefVisualDummy", lv_footman);
-            if ((lv_source != lv_footman) && (UnitTypeTestFlag(UnitGetType(lv_triggerAttaker), c_unitFlagPreventDefeat) == false)) {
+        if ((RandomFixed(0.0, 1.0) <= lv_deflectChance)) {
+            UnitCreateEffectUnit(lv_unit, lv_deflectedEffect, lv_unit);
+            if ((lv_source != lv_unit) && (UnitTypeTestFlag(UnitGetType(lv_triggerAttaker), c_unitFlagPreventDefeat) == false)) {
                 if ((CatalogEntryIsValid(c_gameCatalogEffect, lv_lM) == false)) {
                     lv_lM = ((lv_weapon));
                 }
 
-                autoD63BAD8F_g = UnitGroup(null, UnitGetOwner(lv_source), RegionCircle(UnitGetPosition(lv_footman), gv_adefRadius), gv_unitAndCreepFilter, 0);
+                autoD63BAD8F_g = UnitGroup(null, UnitGetOwner(lv_source), RegionCircle(UnitGetPosition(lv_unit), 6.0), gv_unitAndCreepFilter, 0);
                 autoD63BAD8F_u = 1;
                 for ( ; autoD63BAD8F_u <= UnitGroupCount(autoD63BAD8F_g, c_unitCountAll) ; autoD63BAD8F_u += BoolToInt(lv_u == UnitGroupUnit(autoD63BAD8F_g, autoD63BAD8F_u)) ) {
                     lv_u = UnitGroupUnit(autoD63BAD8F_g, autoD63BAD8F_u);
@@ -3503,18 +3580,18 @@ bool gt_AdefDefendDamaged_Func (bool testConds, bool runActions) {
                     }
 
                 }
-                UnitCreateEffectUnit(lv_footman, lv_lM, lv_target);
+                UnitCreateEffectUnit(lv_unit, lv_lM, lv_target);
             }
 
         }
         else {
-            lv_triggerDamge = (lv_attemptedDamage * gv_adefDamageTaken);
-            UnitDamage(lv_triggerAttaker, "TriggerRangedDamge", lv_footman, lv_triggerDamge);
+            lv_triggerDamge = (lv_attemptedDamage * lv_damageTaken);
+            UnitDamage(lv_triggerAttaker, "TriggerRangedDamge", lv_unit, lv_triggerDamge);
         }
     }
     else {
         lv_triggerDamge = lv_attemptedDamage;
-        UnitDamage(lv_triggerAttaker, "TriggerRangedDamge", lv_footman, lv_triggerDamge);
+        UnitDamage(lv_triggerAttaker, "TriggerRangedDamge", lv_unit, lv_triggerDamge);
     }
     return true;
 }
@@ -3522,6 +3599,268 @@ bool gt_AdefDefendDamaged_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void gt_AdefDefendDamaged_Init () {
     gt_AdefDefendDamaged = TriggerCreate("gt_AdefDefendDamaged_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Defend - Init - Register
+//--------------------------------------------------------------------------------------------------
+bool gt_DefendInitRegister_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_unit;
+
+    // Variable Initialization
+    lv_unit = EventUnit();
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGroupHasUnit(gv_defendGroup, lv_unit) == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    GAw3_AddEventUnitDamaged(gt_DefendDamaged, lv_unit, c_unitDamageTypeRanged, c_unitDamageNonFatal, null);
+    UnitGroupAdd(gv_defendGroup, lv_unit);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_DefendInitRegister_Init () {
+    gt_DefendInitRegister = TriggerCreate("gt_DefendInitRegister_Func");
+    TriggerAddEventUnitBehaviorChange(gt_DefendInitRegister, null, "Defend", c_unitBehaviorChangeActivate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Defend - Damaged
+//--------------------------------------------------------------------------------------------------
+bool gt_DefendDamaged_Func (bool testConds, bool runActions) {
+    unitgroup auto903769C0_g;
+    int auto903769C0_u;
+
+    // Variable Declarations
+    string lv_weapon;
+    string lv_lM;
+    string lv_atkType;
+    fixed lv_triggerDamge;
+    fixed lv_actualDamge;
+    fixed lv_attemptedDamage;
+    unit lv_unit;
+    unit lv_source;
+    unit lv_triggerAttaker;
+    string lv_behavior;
+    string lv_instance;
+    fixed lv_deflectChance;
+    fixed lv_damageTaken;
+    string lv_deflectedEffect;
+    unit lv_target;
+    unit lv_u;
+
+    // Variable Initialization
+    lv_weapon = ((EventUnitDamageEffect()));
+    lv_lM = (((lv_weapon) + "LM"));
+    lv_atkType = GAw3_WeaponAtkType(lv_weapon);
+    lv_actualDamge = EventUnitDamageAmount();
+    lv_attemptedDamage = EventUnitDamageAbsorbed();
+    lv_unit = EventUnit();
+    lv_source = EventUnitDamageSourceUnit();
+    lv_triggerAttaker = lv_source;
+    lv_behavior = "Defend";
+    lv_instance = ((lv_behavior));
+    lv_deflectChance = UserDataGetFixed("AbilityDataDefendElunesGrace", lv_instance, "Chance To Deflect (Piercing)", 1);
+    lv_damageTaken = UserDataGetFixed("AbilityDataDefendElunesGrace", lv_instance, "Damage Taken (Piercing)", 1);
+    lv_deflectedEffect = UserDataGetGameLink("AbilityDataDefendElunesGrace", lv_instance, "Deflect Effect", 1);
+
+    // Conditions
+    if (testConds) {
+        if (!((lv_actualDamge == 0.0))) {
+            return false;
+        }
+
+        if (!((UnitHasBehavior(lv_unit, lv_behavior) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitIsAlive(lv_source) == false)) {
+        lv_triggerAttaker = lv_unit;
+    }
+
+    if ((gf_EffectAttackType(EventUnitDamageEffect()) == "DAMAGE_PIERCE")) {
+        if ((RandomFixed(0.0, 1.0) <= lv_deflectChance)) {
+            UnitCreateEffectUnit(lv_unit, lv_deflectedEffect, lv_unit);
+            if ((lv_source != lv_unit) && (UnitTypeTestFlag(UnitGetType(lv_triggerAttaker), c_unitFlagPreventDefeat) == false)) {
+                if ((CatalogEntryIsValid(c_gameCatalogEffect, lv_lM) == false)) {
+                    lv_lM = ((lv_weapon));
+                }
+
+                auto903769C0_g = UnitGroup(null, UnitGetOwner(lv_source), RegionCircle(UnitGetPosition(lv_unit), 6.0), gv_unitAndCreepFilter, 0);
+                auto903769C0_u = 1;
+                for ( ; auto903769C0_u <= UnitGroupCount(auto903769C0_g, c_unitCountAll) ; auto903769C0_u += BoolToInt(lv_u == UnitGroupUnit(auto903769C0_g, auto903769C0_u)) ) {
+                    lv_u = UnitGroupUnit(auto903769C0_g, auto903769C0_u);
+                    if ((UnitGetPropertyFixed(lv_u, c_unitPropLife, c_unitPropCurrent) >= UnitGetPropertyFixed(lv_target, c_unitPropLife, c_unitPropCurrent))) {
+                        lv_target = lv_u;
+                    }
+
+                }
+                UnitCreateEffectUnit(lv_unit, lv_lM, lv_target);
+            }
+
+        }
+        else {
+            lv_triggerDamge = (lv_attemptedDamage * lv_damageTaken);
+            UnitDamage(lv_triggerAttaker, "TriggerRangedDamge", lv_unit, lv_triggerDamge);
+        }
+    }
+    else {
+        lv_triggerDamge = lv_attemptedDamage;
+        UnitDamage(lv_triggerAttaker, "TriggerRangedDamge", lv_unit, lv_triggerDamge);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_DefendDamaged_Init () {
+    gt_DefendDamaged = TriggerCreate("gt_DefendDamaged_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Amdf - Init - Register
+//--------------------------------------------------------------------------------------------------
+bool gt_AmdfInitRegister_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_unit;
+
+    // Variable Initialization
+    lv_unit = EventUnit();
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGroupHasUnit(gv_amdfGroup, lv_unit) == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    GAw3_AddEventUnitDamaged(gt_AmdfDamaged, lv_unit, c_unitDamageTypeRanged, c_unitDamageNonFatal, null);
+    UnitGroupAdd(gv_amdfGroup, lv_unit);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_AmdfInitRegister_Init () {
+    gt_AmdfInitRegister = TriggerCreate("gt_AmdfInitRegister_Func");
+    TriggerAddEventUnitBehaviorChange(gt_AmdfInitRegister, null, "Amdf", c_unitBehaviorChangeActivate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Amdf - Damaged
+//--------------------------------------------------------------------------------------------------
+bool gt_AmdfDamaged_Func (bool testConds, bool runActions) {
+    unitgroup autoED0135C4_g;
+    int autoED0135C4_u;
+
+    // Variable Declarations
+    string lv_weapon;
+    string lv_lM;
+    string lv_atkType;
+    fixed lv_triggerDamge;
+    fixed lv_actualDamge;
+    fixed lv_attemptedDamage;
+    unit lv_unit;
+    unit lv_source;
+    unit lv_triggerAttaker;
+    string lv_behavior;
+    string lv_instance;
+    fixed lv_deflectChance;
+    fixed lv_damageTaken;
+    string lv_deflectedEffect;
+    unit lv_target;
+    unit lv_u;
+
+    // Variable Initialization
+    lv_weapon = ((EventUnitDamageEffect()));
+    lv_lM = (((lv_weapon) + "LM"));
+    lv_atkType = GAw3_WeaponAtkType(lv_weapon);
+    lv_actualDamge = EventUnitDamageAmount();
+    lv_attemptedDamage = EventUnitDamageAbsorbed();
+    lv_unit = EventUnit();
+    lv_source = EventUnitDamageSourceUnit();
+    lv_triggerAttaker = lv_source;
+    lv_behavior = "Amdf";
+    lv_instance = ((lv_behavior));
+    lv_deflectChance = UserDataGetFixed("AbilityDataDefendElunesGrace", lv_instance, "Chance To Deflect (Magic)", 1);
+    lv_damageTaken = UserDataGetFixed("AbilityDataDefendElunesGrace", lv_instance, "Damage Taken (Magic)", 1);
+    lv_deflectedEffect = UserDataGetGameLink("AbilityDataDefendElunesGrace", lv_instance, "Deflect Effect", 1);
+
+    // Conditions
+    if (testConds) {
+        if (!((lv_actualDamge == 0.0))) {
+            return false;
+        }
+
+        if (!((UnitHasBehavior(lv_unit, lv_behavior) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitIsAlive(lv_source) == false)) {
+        lv_triggerAttaker = lv_unit;
+    }
+
+    if ((gf_EffectAttackType(EventUnitDamageEffect()) == "DAMAGE_MAGIC")) {
+        if ((RandomFixed(0.0, 1.0) <= lv_deflectChance)) {
+            UnitCreateEffectUnit(lv_unit, lv_deflectedEffect, lv_unit);
+            if ((lv_source != lv_unit) && (UnitTypeTestFlag(UnitGetType(lv_triggerAttaker), c_unitFlagPreventDefeat) == false)) {
+                if ((CatalogEntryIsValid(c_gameCatalogEffect, lv_lM) == false)) {
+                    lv_lM = ((lv_weapon));
+                }
+
+                autoED0135C4_g = UnitGroup(null, UnitGetOwner(lv_source), RegionCircle(UnitGetPosition(lv_unit), 6.0), gv_unitAndCreepFilter, 0);
+                autoED0135C4_u = 1;
+                for ( ; autoED0135C4_u <= UnitGroupCount(autoED0135C4_g, c_unitCountAll) ; autoED0135C4_u += BoolToInt(lv_u == UnitGroupUnit(autoED0135C4_g, autoED0135C4_u)) ) {
+                    lv_u = UnitGroupUnit(autoED0135C4_g, autoED0135C4_u);
+                    if ((UnitGetPropertyFixed(lv_u, c_unitPropLife, c_unitPropCurrent) >= UnitGetPropertyFixed(lv_target, c_unitPropLife, c_unitPropCurrent))) {
+                        lv_target = lv_u;
+                    }
+
+                }
+                UnitCreateEffectUnit(lv_unit, lv_lM, lv_target);
+            }
+
+        }
+        else {
+            lv_triggerDamge = (lv_attemptedDamage * lv_damageTaken);
+            UnitDamage(lv_triggerAttaker, "TriggerRangedDamge", lv_unit, lv_triggerDamge);
+        }
+    }
+    else {
+        lv_triggerDamge = lv_attemptedDamage;
+        UnitDamage(lv_triggerAttaker, "TriggerRangedDamge", lv_unit, lv_triggerDamge);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_AmdfDamaged_Init () {
+    gt_AmdfDamaged = TriggerCreate("gt_AmdfDamaged_Func");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3855,7 +4194,7 @@ bool gt_IssueOrderPeriodic_Func (bool testConds, bool runActions) {
         lv_targetUnitgroup = UnitGroupAlliance(UnitGetOwner(lv_unit), c_unitAllianceEnemy, lv_region, gv_unitAndCreepFilter, 0);
         while ((UnitGroupCount(lv_targetUnitgroup, c_unitCountAlive) > 0)) {
             lv_targetUnit = UnitGroupClosestToPoint(lv_targetUnitgroup, UnitGetPosition(lv_unit));
-            if (true) {
+            if ((UnitCanAttackTarget(lv_unit, lv_targetUnit) == true)) {
                 lv_targetPoint = UnitGetPosition(lv_targetUnit);
                 break;
             }
@@ -3864,17 +4203,7 @@ bool gt_IssueOrderPeriodic_Func (bool testConds, bool runActions) {
             }
         }
         if ((lv_targetPoint != null)) {
-            lv_range = UnitWeaponRange(lv_unit, 1);
-            if ((lv_range > 3.9062)) {
-                lv_radius = (UnitWeaponRange(lv_unit, 1)+UnitGetPropertyFixed(lv_unit, c_unitPropRadius, c_unitPropNormal)+UnitGetPropertyFixed(lv_targetUnit, c_unitPropRadius, c_unitPropNormal));
-            }
-            else {
-                lv_radius = (3.9062+UnitGetPropertyFixed(lv_unit, c_unitPropRadius, c_unitPropNormal)+UnitGetPropertyFixed(lv_targetUnit, c_unitPropRadius, c_unitPropNormal));
-            }
-            if ((RegionContainsPoint(RegionCircle(lv_targetPoint, lv_radius), UnitGetPosition(lv_unit)) == false)) {
-                UnitIssueOrder(lv_unit, OrderTargetingPoint(AbilityCommand("Amov", 3), libNtve_gf_PointOffsetTowardsPoint(lv_targetPoint, UnitWeaponRange(lv_unit, 1), UnitGetPosition(lv_unit))), c_orderQueueReplace);
-            }
-
+            UnitIssueOrder(lv_unit, OrderTargetingPoint(AbilityCommand("Amov", 3), lv_targetPoint), c_orderQueueReplace);
         }
         else {
             UnitIssueOrder(lv_unit, Order(AbilityCommand("stop", 0)), c_orderQueueReplace);
@@ -4142,6 +4471,10 @@ void InitTriggers () {
     gt_Pillage_Init();
     gt_AdefDefendInitRegister_Init();
     gt_AdefDefendDamaged_Init();
+    gt_DefendInitRegister_Init();
+    gt_DefendDamaged_Init();
+    gt_AmdfInitRegister_Init();
+    gt_AmdfDamaged_Init();
     gt_UnitChangeOwner2_Init();
     gt_UnitDied2_Init();
     gt_PlayerLeft_Init();

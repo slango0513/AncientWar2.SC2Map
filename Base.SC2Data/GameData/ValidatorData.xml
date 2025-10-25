@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CValidatorCombine id="AttackingOrInCombatWar3AndCasterLifeLT90Percent">
+        <Type value="And"/>
+        <CombineArray value="AttackingOrInCombatWar3"/>
+        <CombineArray value="CasterLifeLT90Percent"/>
+    </CValidatorCombine>
     <CValidatorUnitCompareBehaviorCount id="CasterIsNotPreviewer">
         <Behavior value="Previewer"/>
     </CValidatorUnitCompareBehaviorCount>
@@ -90,29 +95,33 @@
         <Filters value="-;MapBoss"/>
     </CValidatorUnitFilters>
     <CValidatorLocationEnumArea id="TacticalDefendThreatSearch" parent="TacticalCloakThreatSearch" unitLink="hfoo">
-        <AreaArray index="0" Radius="10" Validator="UnitThreatenshfoo"/>
+        <AreaArray index="0" Radius="7.5" Validator="UnitThreatenshfoo"/>
     </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="TacticalDefendThreatSearchEmpty" parent="TacticalCloakThreatSearchEmpty" unitLink="hfoo">
-        <AreaArray index="0" Radius="10" Validator="UnitThreatenshfoo"/>
+        <AreaArray index="0" Radius="7.5" Validator="UnitThreatenshfoo"/>
     </CValidatorLocationEnumArea>
     <CValidatorUnitCompareAttackPriority id="UnitThreatenshfoo" parent="ThreatensUnit" unitLink="hfoo"/>
     <CValidatorUnitCompareAttackPriority id="UnitThreatensnbel" parent="ThreatensUnit" unitLink="nbel"/>
     <CValidatorLocationEnumArea id="TacticalMagicDefendThreatSearch" parent="TacticalCloakThreatSearch" unitLink="nbel">
-        <AreaArray index="0" Radius="10" Validator="UnitThreatensnbel"/>
+        <AreaArray index="0" Radius="7.5" Validator="UnitThreatensnbel"/>
     </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="TacticalMagicDefendThreatSearchEmpty" parent="TacticalCloakThreatSearchEmpty" unitLink="nbel">
-        <AreaArray index="0" Radius="10" Validator="UnitThreatensnbel"/>
+        <AreaArray index="0" Radius="7.5" Validator="UnitThreatensnbel"/>
     </CValidatorLocationEnumArea>
     <CValidatorCombine id="AIInvisibilityTarget">
         <Type value="And"/>
         <CombineArray value="EnemiesNearby3"/>
-        <CombineArray value="IsRangedUnit"/>
         <CombineArray value="NoInvisibility"/>
         <CombineArray value="noMarkers"/>
     </CValidatorCombine>
     <CValidatorCombine id="AIPolymorphTarget">
         <Type value="And"/>
         <CombineArray value="NoPolymorph"/>
+        <CombineArray value="noMarkers"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="AISlowTarget">
+        <Type value="And"/>
+        <CombineArray value="NoSlow"/>
         <CombineArray value="noMarkers"/>
     </CValidatorCombine>
     <CValidatorCombine id="AIDoomTarget">

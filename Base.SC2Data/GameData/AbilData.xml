@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CAbilInventory default="1" id="AW2_UnitInventory" parent="War3_Inventory">
+        <CmdButtonArray index="Drop" Requirements="BuildArmy"/>
+    </CAbilInventory>
     <CAbilBehavior default="1" id="AW2_Toggle" parent="War3_Passive">
         <Flags index="AutoCast" value="0"/>
         <Flags index="AutoCastOn" value="0"/>
@@ -61,6 +64,10 @@
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
     </CAbilEffectTarget>
+    <CAbilBehavior id="ACnr" parent="War3_HeroAura">
+        <CmdButtonArray index="On" Requirements="ACnr"/>
+        <BehaviorArray value="ACnr"/>
+    </CAbilBehavior>
     <CAbilBuild id="AEbuArmy" parent="War3_PowerBuild">
         <Name value="AEbuUnit/Name"/>
         <FlagArray index="IgnoreFood" value="1"/>
@@ -118,8 +125,8 @@
         <InfoArray index="Build1" Unit="flag">
             <Button DefaultButtonFace="flag" Requirements="BuildPhalanx"/>
         </InfoArray>
-        <InfoArray index="Build2" Unit="hfoo">
-            <Button DefaultButtonFace="hfoo" Requirements="BuildArmy"/>
+        <InfoArray index="Build2" Unit="hmil">
+            <Button DefaultButtonFace="hmil" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build3" Unit="hfoo">
             <Button DefaultButtonFace="hfoo" Requirements="BuildArmy"/>
@@ -127,8 +134,8 @@
         <InfoArray index="Build4" Unit="hsor">
             <Button DefaultButtonFace="hsor" Requirements="BuildArmy"/>
         </InfoArray>
-        <InfoArray index="Build5" Unit="nhea">
-            <Button DefaultButtonFace="nhea" Requirements="BuildArmy"/>
+        <InfoArray index="Build5" Unit="hspt">
+            <Button DefaultButtonFace="hspt" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build6" Unit="Hpal">
             <Button DefaultButtonFace="Hpal" Requirements="BuildArmy"/>
@@ -148,19 +155,23 @@
         <InfoArray index="Build11" Unit="hrif">
             <Button DefaultButtonFace="hrif" Requirements="BuildArmy"/>
         </InfoArray>
-        <InfoArray index="Build12" Unit="hspt">
-            <Button DefaultButtonFace="hspt" Requirements="BuildArmy"/>
+        <InfoArray index="Build12" Unit="hrtt">
+            <Button DefaultButtonFace="hrtt" Requirements="BuildArmyFinal"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
     <!--Paladin - Divine Shield Buff=BHds-->
-    <CAbilEffectInstant id="AHds">
-        <CmdButtonArray index="Execute" Requirements="">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
-        <CmdButtonArray index="Cancel">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
+    <CAbilEffectInstant id="AHds" parent="AW2_EffectInstant">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
+        <Cost index="0">
+            <Vital index="Energy" value="30"/>
+            <Cooldown Location="Unit" TimeUse="60"/>
+        </Cost>
+        <PrepTime value="0.5"/>
+        <!--FinishTime value="1.67"/-->
+        <Alignment value="Positive"/>
+        <Effect index="0" value="BHds1"/>
+        <Flags index="Transient" value="1"/>
     </CAbilEffectInstant>
     <CAbilEffectTarget id="AHhb" parent="AW2_EffectTarget">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
@@ -183,6 +194,16 @@
         <PrepTime value="0.5"/>
         <CastOutroTime value="1.67"/>
         <Alignment value="Positive"/>
+    </CAbilEffectInstant>
+    <!--Arch Mage - Water Elemental Buff=BHwe-->
+    <CAbilEffectInstant id="AHwe" parent="AW2_EffectInstant">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="60"/>
+        </Cost>
+        <PrepTime value="0.3"/>
+        <CastOutroTime value="2.4"/>
+        <Effect index="0" value="hwat"/>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="AIpv" parent="War3_EffectInstant">
         <CmdButtonArray index="Execute" Requirements="">
@@ -329,16 +350,16 @@
         </CmdButtonArray>
     </CAbilEffectInstant>
     <!--Chieftain - Shock Wave Buff=BOsh-->
-    <CAbilEffectTarget id="AOsh">
-        <CmdButtonArray index="Execute" Requirements="">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
-        <CmdButtonArray index="Cancel">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
+    <CAbilEffectTarget id="AOsh" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Orc,AbilityorEffectType:Units"/>
         <Cost index="0">
-            <Vital index="Energy" value="25"/>
+            <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
+        <Range value="5.4687"/>
+        <PrepTime value="0.47"/>
+        <FinishTime value="0.8"/>
+        <Effect index="0" value="AOshTarget"/>
+        <Alignment value="Negative"/>
     </CAbilEffectTarget>
     <!--Shadow Hunter - Serpent Ward Buff=BOwd-->
     <CAbilEffectTarget id="AOsw">
@@ -425,6 +446,10 @@
         <CastOutroTime value="1.008"/>
         <Effect index="0" value="AUdcMissile"/>
     </CAbilEffectTarget>
+    <CAbilInteract id="Aall">
+        <Range value="2"/>
+        <AutoCastRange value="2"/>
+    </CAbilInteract>
     <!--Anti-magic Shield (Matrix) Dur=90 HeroDur=90 Buff=Bams,Bam2-->
     <CAbilEffectTarget id="Aam2">
         <CmdButtonArray index="Execute" Requirements="">
@@ -529,6 +554,90 @@
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <BehaviorArray value="Adef"/>
     </CAbilBehavior>
+    <CAbilEffectTarget id="Ahea" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
+        <Cost index="0">
+            <Vital index="Energy" value="3"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </Cost>
+        <Range value="5"/>
+        <PrepTime value="0.5"/>
+        <CastOutroTime value="0.67"/>
+        <TargetFilters index="0" value="-;enemies,mechanical,ancient,wall,tree,Missile,debris,item,structure,ward,dead"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Flags index="Smart" value="1"/>
+        <AutoCastRange value="7.5"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSLife"/>
+        </TargetSorts>
+        <Alignment value="Positive"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastValidatorArray value="HealingAutoCastTargetFilter"/>
+        <Marker>
+            <MismatchFlags index="CasterUnit" value="1"/>
+        </Marker>
+        <UseMarkerArray index="Approach" value="0"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+    </CAbilEffectTarget>
+    <CAbilInventory id="Aihn" parent="AW2_UnitInventory">
+        <InfoArray/>
+        <InfoArray/>
+    </CAbilInventory>
+    <CAbilEffectTarget id="Ainf" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
+        <Cost index="0">
+            <Vital index="Energy" value="30"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </Cost>
+        <Range value="5"/>
+        <AutoCastRange value="7.5"/>
+        <PrepTime value="0.5"/>
+        <CastOutroTime value="0.67"/>
+        <TargetFilters index="0" value="-;enemies,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="Smart" value="1"/>
+        <Flags index="TransientPreferred" value="1"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
+        <Alignment value="Positive"/>
+        <Effect index="0" value="Binf"/>
+        <AutoCastValidatorArray value="TargetIsAttacking"/>
+        <AutoCastValidatorArray value="NoInnerFire"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+    </CAbilEffectTarget>
+    <!--Spell Steal-->
+    <CAbilEffectTarget id="Asps" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Unit"/>
+        <TargetFilters index="0" value="-;wall,tree,debris,item,structure,ward,dead"/>
+        <Cost index="0">
+            <Vital index="Energy" value="10"/>
+            <Cooldown Location="Unit" TimeUse="3"/>
+        </Cost>
+        <AutoCastRange value="4.5"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Range value="4.5"/>
+        <PrepTime value="0.3"/>
+        <CastOutroTime value="0.51"/>
+        <AutoCastFilters value="Visible;Neutral"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+    </CAbilEffectTarget>
+    <CAbilBehavior id="Defend" parent="AW2_Toggle">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
+        <BehaviorArray value="Defend"/>
+    </CAbilBehavior>
     <!--Ensnare Dur=12 HeroDur=3 Buff=Bena,Beng-->
     <CAbilEffectTarget id="Aens">
         <CmdButtonArray index="Execute" Requirements="">
@@ -552,16 +661,16 @@
         <!--PlaceUnit value="ohwd"/-->
     </CAbilEffectTarget>
     <!--Invisibility Dur=120 HeroDur=120 Buff=Binv-->
-    <CAbilEffectTarget id="Aivs">
+    <CAbilEffectTarget id="Aivs" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Unit"/>
+        <TargetFilters index="0" value="-;self,enemies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
+        <Range value="2.3437"/>
+        <PrepTime value="0.45"/>
+        <CastOutroTime value="1.08"/>
+        <Alignment value="Positive"/>
         <Cost index="0">
-            <Vital index="Energy" value="100"/>
+            <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
-        <CmdButtonArray index="Execute" Requirements="">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
-        <CmdButtonArray index="Cancel">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
     </CAbilEffectTarget>
     <!--Lightning Shield Dur=20 HeroDur=20 Buff=Blsh,Blsa-->
     <CAbilEffectTarget id="Alsh">
@@ -651,9 +760,45 @@
         <FinishTime value="0.8"/>
         <Effect index="0" value="AOws1Search"/>
     </CAbilEffectInstant>
-    <CAbilBehavior id="MultiShot" parent="War3_Passive">
-        <CmdButtonArray index="On" Requirements="MultiShot"/>
+    <CAbilBehavior id="Multishot" parent="War3_Passive">
+        <CmdButtonArray index="On" Requirements="Multishot"/>
     </CAbilBehavior>
+    <CAbilTrain id="Purchasefrhg" parent="War3_MakeItem" unit="frhg">
+        <InfoArray index="Train1">
+            <Charge CountMax="1" CountStart="1"/>
+            <Button Requirements="BuildArmy"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilTrain id="Purchasegcel" parent="War3_MakeItem" unit="gcel">
+        <InfoArray index="Train1">
+            <Charge CountMax="3" CountStart="3"/>
+            <Button Requirements="BuildArmy"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilTrain id="Purchaseocor" parent="War3_MakeItem" unit="ocor">
+        <InfoArray index="Train1">
+            <Charge CountMax="1" CountStart="1"/>
+            <Button Requirements="BuildArmy"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilTrain id="Purchaseofir" parent="War3_MakeItem" unit="ofir">
+        <InfoArray index="Train1">
+            <Charge CountMax="1" CountStart="1"/>
+            <Button Requirements="BuildArmy"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilTrain id="Purchaseoli2" parent="War3_MakeItem" unit="oli2">
+        <InfoArray index="Train1">
+            <Charge CountMax="1" CountStart="1"/>
+            <Button Requirements="BuildArmy"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilTrain id="Purchaseoven" parent="War3_MakeItem" unit="oven">
+        <InfoArray index="Train1">
+            <Charge CountMax="1" CountStart="1"/>
+            <Button Requirements="BuildArmy"/>
+        </InfoArray>
+    </CAbilTrain>
     <CAbilStop id="stop">
         <CmdButtonArray index="Stop" Requirements="ShowDefaultButton">
             <Flags index="IgnoreUser" value="1"/>
@@ -675,16 +820,17 @@
         </CmdButtonArray>
     </CAbilStop>
     <!--Polymorph Dur=60 HeroDur=60 Buff=Bply-->
-    <CAbilEffectTarget id="Aply">
+    <CAbilEffectTarget id="Aply" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Unit"/>
+        <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity,hero"/>
         <Cost index="0">
-            <Vital index="Energy" value="0"/>
+            <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
-        <CmdButtonArray index="Execute" Requirements="">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
-        <CmdButtonArray index="Cancel">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
+        <Range value="7.5"/>
+        <PrepTime value="0.45"/>
+        <CastOutroTime value="1.08"/>
+        <Alignment value="Negative"/>
+        <Effect index="0" value="Bply"/>
     </CAbilEffectTarget>
     <!--Possession (Channeling) Dur=4.5 HeroDur=4.5 Buff=Bpos,Bpoc-->
     <CAbilEffectTarget id="Aps2">
@@ -730,30 +876,22 @@
         </TargetSorts>
     </CAbilEffectInstant>
     <!--Slow Dur=60 HeroDur=10 Buff=Bslo-->
-    <CAbilEffectTarget id="Aslo">
+    <CAbilEffectTarget id="Aslo" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Unit"/>
+        <TargetFilters index="0" value="-;player,allies,neutral,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <Cost index="0">
-            <Vital index="Energy" value="0"/>
+            <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
-        <CmdButtonArray index="Execute" Requirements="">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
-        <CmdButtonArray index="Cancel">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
-        <TargetSorts>
-            <SortArray index="0" value="UnitTypeMeleeUnit"/>
-            <SortArray value="TSDistance"/>
-        </TargetSorts>
-        <Range index="0" value="15"/>
-        <AutoCastRange value="15"/>
-        <UninterruptibleArray index="Approach" value="1"/>
-        <UninterruptibleArray index="Prep" value="1"/>
-        <UninterruptibleArray index="Cast" value="1"/>
-        <UninterruptibleArray index="Channel" value="1"/>
-        <UninterruptibleArray index="Finish" value="1"/>
+        <Range value="7.5"/>
+        <PrepTime value="0.45"/>
+        <CastOutroTime value="1.08"/>
+        <Alignment value="Negative"/>
+        <Effect index="0" value="Bslo"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="Asud" parent="War3_EffectInstant">
-        <CmdButtonArray index="Execute" Requirements="Asud"/>
+        <CmdButtonArray index="Execute" Requirements="Asud">
+            <Flags index="ShowInGlossary" value="0"/>
+        </CmdButtonArray>
     </CAbilEffectInstant>
     <CAbilBehavior id="Bushido" parent="War3_Toggle">
         <CmdButtonArray index="On" Requirements="PhalanxBuff"/>
@@ -800,6 +938,9 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeTonmed" parent="AW2_Upgrade" toUnit="nmed">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToBloodElfSorceress" parent="AW2_Upgrade" toUnit="BloodElfSorceress">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToHamg" parent="AW2_Upgrade" toUnit="Hamg">

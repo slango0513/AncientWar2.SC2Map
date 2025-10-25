@@ -49,12 +49,24 @@
         <AreaArray/>
         <Abil value="Aply"/>
         <TargetSorts>
-            <SortArray value="UnitTypeRangedUnit"/>
+            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
             <SortArray value="TSDistance"/>
         </TargetSorts>
         <TargetFilters value="Visible;Player,Ally,Neutral,Hover,Missile,Dead,Invulnerable,Unstoppable"/>
         <TargetValidator value="AIPolymorphTarget"/>
-        <ExtendRadius value="10"/>
+        <ExtendRadius value="9"/>
+    </CTargetFindEnumArea>
+    <CTargetFindEnumArea id="Slow">
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray/>
+        <Abil value="Aslo"/>
+        <TargetSorts>
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSDistance"/>
+        </TargetSorts>
+        <TargetFilters value="Visible;Player,Ally,Neutral,Hover,Missile,Dead,Invulnerable,Unstoppable"/>
+        <TargetValidator value="AISlowTarget"/>
+        <ExtendRadius value="9"/>
     </CTargetFindEnumArea>
     <CTargetFindEnumArea id="SentryWard"/>
     <CTargetFindEnumArea id="Doom">

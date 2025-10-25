@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
     <CUser default="1" id="AW2_User"/>
+    <CUser id="AbilityDataDefendElunesGrace">
+        <Instances index="1" Id="Adef">
+            <Fixed index="0" Fixed="0.2998">
+                <Field Id="Chance To Deflect (Piercing)"/>
+            </Fixed>
+            <Fixed index="1" removed="1"/>
+        </Instances>
+        <Instances Id="Defend">
+            <Fixed Fixed="0.5">
+                <Field Id="Damage Taken (Piercing)"/>
+            </Fixed>
+            <GameLink GameLink="DefendVisualDummy">
+                <Field Id="Deflect Effect"/>
+            </GameLink>
+            <GameLink GameLink="Defend">
+                <Field Id="Behavior"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="Amdf">
+            <Fixed Fixed="0.2998">
+                <Field Id="Chance To Deflect (Magic)"/>
+            </Fixed>
+            <GameLink GameLink="Amdf">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <GameLink GameLink="AmdfVisualDummy">
+                <Field Id="Deflect Effect"/>
+            </GameLink>
+        </Instances>
+    </CUser>
+    <CUser id="AbilityDataThornsAuraThornyShield">
+        <Instances index="4" Id="ANth">
+            <Fixed index="0" Fixed="1"/>
+        </Instances>
+        <Instances index="5" Id="ANt2">
+            <Fixed index="0" Fixed="2"/>
+        </Instances>
+    </CUser>
     <CUser id="CreepUnitTypeData">
         <Fields Id="UnitType" Type="Unit" Count="16"/>
         <Fields Id="Description" Type="Text" Count="16"/>
@@ -12,27 +50,57 @@
             <Text Text="UserData/CreepUnitTypeData/3_Description_001">
                 <Field Id="Description" Index="1"/>
             </Text>
+            <Text Text="UserData/CreepUnitTypeData/3_Description_002">
+                <Field Id="Description" Index="2"/>
+            </Text>
             <Unit Unit="nmgw">
                 <Field Id="UnitType"/>
             </Unit>
             <Unit Unit="ngns">
                 <Field Id="UnitType" Index="1"/>
             </Unit>
+            <Unit Unit="ntrt">
+                <Field Id="UnitType" Index="2"/>
+            </Unit>
         </Instances>
         <Instances Id="6">
             <Text Text="UserData/CreepUnitTypeData/6_Description">
                 <Field Id="Description"/>
             </Text>
+            <Text Text="UserData/CreepUnitTypeData/6_Description_001">
+                <Field Id="Description" Index="1"/>
+            </Text>
+            <Text Text="UserData/CreepUnitTypeData/6_Description_002">
+                <Field Id="Description" Index="2"/>
+            </Text>
             <Unit Unit="nmgd">
                 <Field Id="UnitType"/>
+            </Unit>
+            <Unit Unit="ngnv">
+                <Field Id="UnitType" Index="1"/>
+            </Unit>
+            <Unit Unit="ntrd">
+                <Field Id="UnitType" Index="2"/>
             </Unit>
         </Instances>
         <Instances Id="7">
             <Text Text="UserData/CreepUnitTypeData/7_Description">
                 <Field Id="Description"/>
             </Text>
+            <Text Text="UserData/CreepUnitTypeData/7_Description_001">
+                <Field Id="Description" Index="1"/>
+            </Text>
+            <Text Text="UserData/CreepUnitTypeData/7_Description_002">
+                <Field Id="Description" Index="2"/>
+            </Text>
             <Unit Unit="nmgd">
                 <Field Id="UnitType"/>
+            </Unit>
+            <Unit Unit="ngnv">
+                <Field Id="UnitType" Index="1"/>
+            </Unit>
+            <Unit Unit="ntrd">
+                <Field Id="UnitType" Index="2"/>
             </Unit>
         </Instances>
     </CUser>
@@ -111,6 +179,14 @@
         <Fields Id="UnitType" Type="Unit" Count="16"/>
         <Fields Id="Count" Type="Int" Count="16"/>
         <Instances Id="[Default]"/>
+        <Instances Id="hmil">
+            <Int Int="12">
+                <Field Id="Count"/>
+            </Int>
+            <Unit Unit="hmil">
+                <Field Id="UnitType"/>
+            </Unit>
+        </Instances>
         <Instances Id="hfoo">
             <Int Int="3">
                 <Field Id="Count"/>
@@ -211,6 +287,20 @@
             </Int>
             <Unit Unit="hsor">
                 <Field Id="UnitType"/>
+            </Unit>
+        </Instances>
+        <Instances Id="BloodElfSorceress">
+            <Int Int="3">
+                <Field Id="Count" Index="1"/>
+            </Int>
+            <Int Int="6">
+                <Field Id="Count"/>
+            </Int>
+            <Unit Unit="hsor">
+                <Field Id="UnitType"/>
+            </Unit>
+            <Unit Unit="BloodElfSorceress">
+                <Field Id="UnitType" Index="1"/>
             </Unit>
         </Instances>
         <Instances Id="Hjai">
@@ -664,7 +754,7 @@
             <Int Int="1">
                 <Field Id="Count" Index="1"/>
             </Int>
-            <Unit Unit="hkni">
+            <Unit Unit="hkn2">
                 <Field Id="UnitType"/>
             </Unit>
             <Unit Unit="Hlgr">
@@ -700,7 +790,7 @@
             <Int Int="1">
                 <Field Id="Count" Index="1"/>
             </Int>
-            <Unit Unit="nhym">
+            <Unit Unit="nhy2">
                 <Field Id="UnitType"/>
             </Unit>
             <Unit Unit="Hamg">
@@ -787,6 +877,14 @@
             </Unit>
             <Unit Unit="hgyr">
                 <Field Id="UnitType" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="hrtt">
+            <Int Int="1">
+                <Field Id="Count"/>
+            </Int>
+            <Unit Unit="hrtt">
+                <Field Id="UnitType"/>
             </Unit>
         </Instances>
         <Instances Id="edoc">

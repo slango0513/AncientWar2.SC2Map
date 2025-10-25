@@ -18,8 +18,8 @@
         <Array value="Adev"/>
     </CTacticalSet-->
     <CTacticalSet id="hfoo">
-        <Array value="Adef"/>
-        <Array value="AdefUn"/>
+        <Array value="Defend"/>
+        <Array value="DefendUn"/>
     </CTacticalSet>
     <CTacticalSet id="hhes">
         <Array value="Adef"/>
@@ -33,16 +33,26 @@
         <Array value="Amdf"/>
         <Array value="AmdfUn"/>
     </CTacticalSet>
+    <CTacticalSet id="nbld">
+        <Array value="AOsh"/>
+    </CTacticalSet>
     <CTacticalSet id="Hpal">
         <Array value="AHhb"/>
     </CTacticalSet>
     <CTacticalSet id="Hhkl">
-        <Array value="AHhb"/>
+        <Array value="AHds"/>
     </CTacticalSet>
     <CTacticalSet id="Huth">
         <Array value="AHre"/>
     </CTacticalSet>
     <CTacticalSet id="hsor"/>
+    <CTacticalSet id="BloodElfSorceress">
+        <Array value="Aslo"/>
+    </CTacticalSet>
+    <CTacticalSet id="Hamg"/>
+    <CTacticalSet id="Hgam">
+        <Array value="AHwe"/>
+    </CTacticalSet>
     <CTacticalOrder id="Aivs" parent="War3_Tact">
         <TargetFind value="Invisibility"/>
         <Retreat value="1"/>
@@ -52,6 +62,12 @@
     </CTacticalSet>
     <CTacticalOrder id="Aply" parent="War3_Tact">
         <TargetFind value="Polymorph"/>
+    </CTacticalOrder>
+    <CTacticalOrder id="Aslo" parent="War3_Tact">
+        <TargetFind value="Slow"/>
+    </CTacticalOrder>
+    <CTacticalOrder id="AHwe" parent="War3_Tact">
+        <Validator value="AttackingOrInCombatWar3"/>
     </CTacticalOrder>
     <CTacticalSet id="nmed"/>
     <CTacticalSet id="nhea"/>
@@ -101,6 +117,14 @@
         <TargetFind value="Move"/>
         <AbilCmdIndex value="3"/>
     </CTacticalOrder>
+    <CTacticalOrder id="Defend" parent="War3_Tact">
+        <Validator value="TacticalDefendThreatSearch"/>
+    </CTacticalOrder>
+    <CTacticalOrder id="DefendUn" parent="War3_Tact">
+        <Validator value="TacticalDefendThreatSearchEmpty"/>
+        <Abil value="Defend"/>
+        <AbilCmdIndex value="1"/>
+    </CTacticalOrder>
     <CTacticalOrder id="Adef" parent="War3_Tact">
         <Validator value="TacticalDefendThreatSearch"/>
     </CTacticalOrder>
@@ -149,6 +173,9 @@
     </CTacticalOrder>
     <CTacticalOrder id="AHhb" parent="War3_Tact">
         <TargetFind value="HolyLight"/>
+    </CTacticalOrder>
+    <CTacticalOrder id="AHds" parent="War3_Tact">
+        <Validator value="AttackingOrInCombatWar3AndCasterLifeLT90Percent"/>
     </CTacticalOrder>
     <CTacticalOrder id="AHre" parent="War3_Tact">
         <Validator value="AttackingOrInCombatWar3"/>

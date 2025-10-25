@@ -1,28 +1,87 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
-    <const id="summoned" path="SDamageResponse.TargetFilters" value="Summoned"/>
-    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
     <const id="hero" path="SDamageResponse.TargetFilters" value="Resistant"/>
-    <const id="allies" path="SDamageResponse.TargetFilters" value="Ally"/>
+    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
+    <const id="summoned" path="SDamageResponse.TargetFilters" value="Summoned"/>
     <const id="air" path="SDamageResponse.TargetFilters" value="Air"/>
-    <const id="tree" path="SDamageResponse.TargetFilters" value="HarvestableResource"/>
+    <const id="allies" path="SDamageResponse.TargetFilters" value="Ally"/>
     <const id="item" path="SDamageResponse.TargetFilters" value="Item"/>
-    <const id="player" path="SDamageResponse.TargetFilters" value="Player"/>
+    <const id="tree" path="SDamageResponse.TargetFilters" value="HarvestableResource"/>
     <const id="ancient" path="SDamageResponse.TargetFilters" value="Psionic"/>
-    <const id="enemies" path="SDamageResponse.TargetFilters" value="Enemy"/>
+    <const id="player" path="SDamageResponse.TargetFilters" value="Player"/>
     <const id="structure" path="SDamageResponse.TargetFilters" value="PreventDefeat"/>
-    <const id="self" path="SDamageResponse.TargetFilters" value="Self"/>
-    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="enemies" path="SDamageResponse.TargetFilters" value="Enemy"/>
     <const id="mechanical" path="SDamageResponse.TargetFilters" value="Mechanical"/>
-    <const id="neutral" path="SDamageResponse.TargetFilters" value="Neutral"/>
+    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="self" path="SDamageResponse.TargetFilters" value="Self"/>
     <const id="ground" path="SDamageResponse.TargetFilters" value="Ground"/>
+    <const id="neutral" path="SDamageResponse.TargetFilters" value="Neutral"/>
     <const id="wall" path="SDamageResponse.TargetFilters" value="Hover"/>
     <const id="dead" path="SDamageResponse.TargetFilters" value="Dead"/>
     <const id="ethereal" path="SDamageResponse.TargetFilters" value="Stasis"/>
-    <const id="invulnerable" path="SDamageResponse.TargetFilters" value="Invulnerable"/>
     <const id="debris" path="SDamageResponse.TargetFilters" value="Destructible"/>
+    <const id="invulnerable" path="SDamageResponse.TargetFilters" value="Invulnerable"/>
+    <CBehaviorBuff default="1" id="AW2_Item" parent="War3_Passive">
+        <EditorCategories value="Race:Other,AbilityorEffectType:Item"/>
+        <MaxStackCount value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff default="1" id="AW2_SphereItem" parent="War3_Sphere">
+        <EditorCategories value="Race:Other,AbilityorEffectType:Item"/>
+        <DamageResponse TargetFilters="-;Structure,wall,tree,debris,item,dead,invulnerable">
+            <Cost>
+                <Cooldown Link="War3_Sphere" Location="Unit" TimeUse="0.0625"/>
+            </Cost>
+        </DamageResponse>
+        <MaxStackCount value="0"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="ACsp">
         <RemoveValidatorArray value="CasterIsNotCreep"/>
+    </CBehaviorBuff>
+    <!--Orb of Corruption Dur=5 HeroDur=5 Buff=BIcb-->
+    <CBehaviorBuff id="AIcb" parent="AW2_SphereItem">
+        <DamageResponse Handled="BIcb" TargetFilters="-;wall,tree,debris,item,structure,dead,invulnerable"/>
+        <Modification>
+            <DamageDealtScaled index="Melee" value="12"/>
+            <DamageDealtScaled index="Ranged" value="12"/>
+        </Modification>
+    </CBehaviorBuff>
+    <!--DefenseBonus (+5)-->
+    <CBehaviorBuff id="AId5" parent="AW2_Item">
+        <Modification LifeArmorBonus="5"/>
+    </CBehaviorBuff>
+    <!--Creep Abil End-->
+    <!--Item Abil Start-->
+    <!--Orb of Fire-->
+    <CBehaviorBuff id="AIfb" parent="AW2_SphereItem">
+        <Modification>
+            <DamageDealtScaled index="Melee" value="12"/>
+            <DamageDealtScaled index="Ranged" value="12"/>
+        </Modification>
+    </CBehaviorBuff>
+    <!--Orb of Lightning-->
+    <CBehaviorBuff id="AIll" parent="AW2_SphereItem">
+        <Modification>
+            <DamageDealtScaled index="Melee" value="12"/>
+            <DamageDealtScaled index="Ranged" value="12"/>
+        </Modification>
+    </CBehaviorBuff>
+    <!--Orb of Venom-->
+    <CBehaviorBuff id="AIpb" parent="AW2_SphereItem">
+        <Modification>
+            <DamageDealtScaled index="Melee" value="12"/>
+            <DamageDealtScaled index="Ranged" value="12"/>
+        </Modification>
+        <DamageResponse Handled="" TargetFilters="-;mechanical,Structure,wall,tree,debris,item,ward,dead,invulnerable"/>
+    </CBehaviorBuff>
+    <!--Attack Speed Increase(greater)-->
+    <CBehaviorBuff id="AIs2" parent="AW2_Item">
+        <Modification AttackSpeedMultiplier="1.5"/>
+    </CBehaviorBuff>
+    <!--hero stat bonus,carry End-->
+    <!--temporary attack speed increase,carry-->
+    <!--Attack Speed Increase-->
+    <CBehaviorBuff id="AIsx" parent="AW2_Item">
+        <Modification AttackSpeedMultiplier="1.25"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AW2_ArmyNotHostilePlayer" parent="War3_Passive">
         <Requirements value="AW2_ArmyNotHostilePlayer"/>
@@ -52,7 +111,6 @@
             <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
             <AbilClassDisableArray index="CAbilHarvest" value="1"/>
             <AbilClassDisableArray index="CAbilInteract" value="1"/>
-            <AbilClassDisableArray index="CAbilInventory" value="1"/>
             <AbilClassDisableArray index="CAbilLearn" value="1"/>
             <AbilClassDisableArray index="CAbilMerge" value="1"/>
             <AbilClassDisableArray index="CAbilMergeable" value="1"/>
@@ -81,6 +139,67 @@
             <StateFlags index="Untargetable" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="Adef">
+        <Modification MoveSpeedMultiplier="0.5"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Afsh">
+        <Requirements value=""/>
+    </CBehaviorBuff>
+    <!--Orb of Venom (Poison Attack) Dur=6 HeroDur=6 Buff=BIpb,BIpd-->
+    <CBehaviorBuff id="Apo2" parent="AW2_SphereItem">
+        <DamageResponse TargetFilters="-;mechanical,Structure,wall,tree,debris,item,ward,dead,invulnerable"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Aroc">
+        <Requirements value=""/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BCnr">
+        <MaxStackCountPerCaster value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BHab1">
+        <MaxStackCount value="0"/>
+        <MaxStackCountPerCaster value="1"/>
+        <Modification>
+            <VitalRegenArray index="Energy" value="0.5"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BHad1">
+        <Modification LifeArmorBonus="5"/>
+        <MaxStackCount value="0"/>
+        <MaxStackCountPerCaster value="1"/>
+    </CBehaviorBuff>
+    <!--Corruption-->
+    <CBehaviorBuff id="BIcb">
+        <Modification LifeArmorBonus="-10"/>
+    </CBehaviorBuff>
+    <!--InnerFire-->
+    <CBehaviorBuff id="Binf">
+        <Modification LifeArmorBonus="10">
+            <DamageDealtFraction index="Melee" value="0.5"/>
+            <DamageDealtFraction index="Ranged" value="0.5"/>
+        </Modification>
+    </CBehaviorBuff>
+    <!--Polymorph-->
+    <CBehaviorBuff id="Bply">
+        <Duration value="15"/>
+        <DurationOverride index="0" Duration="15">
+            <ValidatorArray index="0" value="Hero"/>
+        </DurationOverride>
+    </CBehaviorBuff>
+    <!--Slow-->
+    <CBehaviorBuff id="Bslo">
+        <Duration value="15"/>
+        <Modification MoveSpeedMultiplier="0.5" AttackSpeedMultiplier="0.5"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Defend" parent="War3_Passive">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
+        <Modification MoveSpeedMultiplier="0.5"/>
+        <DamageResponse Chance="1" ModifyFraction="0">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Melee" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <ExcludeEffectArray value="TriggerRangedDamge"/>
+        </DamageResponse>
+    </CBehaviorBuff>
     <CBehaviorBuff id="Aetl">
         <Modification>
             <StateFlags index="SuppressAttack" value="0"/>
@@ -91,8 +210,16 @@
             <Kind index="Splash" value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
-    <CBehaviorBuff id="Amdf">
-        <DamageResponse ModifyFraction="0"/>
+    <CBehaviorBuff id="Amdf" parent="War3_Passive">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
+        <Requirements value="Amdf"/>
+        <Modification MoveSpeedMultiplier="0.5"/>
+        <DamageResponse Chance="1" ModifyFraction="0">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Melee" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <ExcludeEffectArray value="TriggerRangedDamge"/>
+        </DamageResponse>
     </CBehaviorBuff>
     <!--Pillage-->
     <CBehaviorBuff id="Asal">
@@ -252,8 +379,6 @@
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="AW2_Creep" parent="War3_Passive">
-        <Name value="Creep/Name"/>
-        <Requirements value="AW2_Creep"/>
         <Modification SightMaximum="0">
             <StateFlags index="UnitAttrOnMapBoss" value="1"/>
         </Modification>
@@ -342,5 +467,11 @@
             </VitalDamageLeechArray>
         </Modification>
         <Duration value="0.0625"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ntrd" parent="War3_Passive">
+        <DamageResponse Chance="1" Fatal="1" Handled="ntrt"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ntrt" parent="War3_Passive">
+        <DamageResponse Chance="1" Fatal="1" Handled="ntrs"/>
     </CBehaviorBuff>
 </Catalog>
