@@ -19,6 +19,9 @@
         <AttributeFactor index="hero" value="0"/>
     </CEffectDamage>
     <CEffectDamage default="1" id="AW2_ChaosDamage" parent="War3_ChaosDamage"/>
+    <CEffectDamage id="AOeqDamage">
+        <ValidatorArray index="0" removed="1"/>
+    </CEffectDamage>
     <CEffectSet id="AposControlSet">
         <EffectArray index="1" removed="1"/>
     </CEffectSet>
@@ -44,6 +47,9 @@
         <Flags index="Kill" value="1"/>
         <Death value="Remove"/>
     </CEffectDamage>
+    <CEffectApplyBehavior id="BIpv" parent="War3_ApplyBuff">
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
     <CEffectDamage id="CountUnitRemove">
         <Flags index="Kill" value="1"/>
         <Flags index="NoBehaviorResponse" value="1"/>
@@ -76,7 +82,7 @@
         <Amount value="24"/>
         <Random value="0"/>
     </CEffectDamage>
-    <CEffectDamage id="Nbbc1" parent="AW2_SiegeDamage">
+    <CEffectDamage id="Nbbc1" parent="AW2_ChaosDamage">
         <Kind value="Melee"/>
         <Amount value="72"/>
     </CEffectDamage>
@@ -85,6 +91,14 @@
         <Amount value="72"/>
     </CEffectDamage>
     <CEffectDamage id="Ofar1" parent="AW2_MagicDamage">
+        <Amount value="72"/>
+    </CEffectDamage>
+    <CEffectDamage id="Ogrh1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="72"/>
+    </CEffectDamage>
+    <CEffectDamage id="Opgh1" parent="AW2_ChaosDamage">
+        <Kind value="Melee"/>
         <Amount value="72"/>
     </CEffectDamage>
     <CEffectDamage id="Oshd1" parent="AW2_MagicDamage">

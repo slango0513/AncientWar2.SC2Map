@@ -125,4 +125,12 @@
         <WhichLocation Value="CasterUnitOrPoint"/>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CValidatorLocationEnumArea>
+    <CValidatorUnitBehaviorState id="IsCloaked">
+        <Enabled value="1"/>
+        <BehaviorState value="Cloak"/>
+    </CValidatorUnitBehaviorState>
+    <CValidatorCombine id="IsCloakedOrHallucination">
+        <CombineArray value="IsCloaked"/>
+        <CombineArray value="IsHallucinationAny"/>
+    </CValidatorCombine>
 </Catalog>

@@ -3143,7 +3143,7 @@ bool lib1_gt_IssueOrderPeriodic_Func (bool testConds, bool runActions) {
             }
         }
         if ((lv_targetPoint != null)) {
-            if ((RegionContainsPoint(RegionCircle(lv_targetPoint, UnitWeaponRange(lv_unit, 1)), UnitGetPosition(lv_unit)) == false)) {
+            if ((RegionContainsPoint(RegionCircle(lv_targetPoint, (UnitWeaponRange(lv_unit, 1)+UnitGetPropertyFixed(lv_unit, c_unitPropRadius, c_unitPropNormal)+UnitGetPropertyFixed(lv_targetUnit, c_unitPropRadius, c_unitPropNormal))), UnitGetPosition(lv_unit)) == false)) {
                 UnitIssueOrder(lv_unit, OrderTargetingPoint(AbilityCommand("Amov", 3), libNtve_gf_PointOffsetTowardsPoint(lv_targetPoint, UnitWeaponRange(lv_unit, 1), UnitGetPosition(lv_unit))), c_orderQueueReplace);
             }
 
@@ -3744,6 +3744,7 @@ trigger gt_VenueInizialization;
 trigger gt_BuidingRegionInizialization;
 trigger gt_PreviewerPointInizialization;
 trigger gt_RoundInitialization;
+trigger gt_AOcrMultiplierW1;
 trigger gt_E69588E69E9CE58AA9E6898BE8A7A6E58F91E599A8E58AA8E4BD9C;
 trigger gt_E69588E69E9CE58AA9E6898BE5889DE5A78BE58C96;
 
@@ -3821,6 +3822,7 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    TriggerEnable(libGAwX_gt_AOmiMarker, false);
     TriggerExecute(gt_PlayerInizialization, true, false);
     TriggerExecute(gt_VenueInizialization, true, false);
     TriggerExecute(gt_BuidingRegionInizialization, true, false);
@@ -4105,6 +4107,39 @@ void gt_RoundInitialization_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: AOcr - Multiplier W1
+//--------------------------------------------------------------------------------------------------
+bool gt_AOcrMultiplierW1_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_caster;
+    unit lv_target;
+    int lv_level;
+    fixed lv_multiplier;
+    fixed lv_multiplied;
+
+    // Variable Initialization
+    lv_caster = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+    lv_target = EventPlayerEffectUsedUnit(c_effectUnitTarget);
+    lv_level = UnitAbilityGetLevel(lv_caster, libGAwX_gv_aOcrAbilLink);
+    lv_multiplier = (libGAwX_gv_aOcrMultiplierBase + (lv_level * libGAwX_gv_aOcrExtraMultiplierPerLevel));
+    lv_multiplied = libGAwX_gf_FireWeaponEffectOnUnitWithMultiplier(lv_caster, lv_target, 1, lv_multiplier);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerDebugOutput(1, StringExternal("Param/Value/5C3804D1"), true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_AOcrMultiplierW1_Init () {
+    gt_AOcrMultiplierW1 = TriggerCreate("gt_AOcrMultiplierW1_Func");
+    TriggerAddEventPlayerEffectUsed(gt_AOcrMultiplierW1, c_playerAny, "W1CritTriggerNotice");
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: ???????????? - ???????????????
 //--------------------------------------------------------------------------------------------------
 bool gt_E69588E69E9CE58AA9E6898BE8A7A6E58F91E599A8E58AA8E4BD9C_Func (bool testConds, bool runActions) {
@@ -4199,6 +4234,7 @@ void InitTriggers () {
     gt_BuidingRegionInizialization_Init();
     gt_PreviewerPointInizialization_Init();
     gt_RoundInitialization_Init();
+    gt_AOcrMultiplierW1_Init();
     gt_E69588E69E9CE58AA9E6898BE8A7A6E58F91E599A8E58AA8E4BD9C_Init();
     gt_E69588E69E9CE58AA9E6898BE5889DE5A78BE58C96_Init();
 }

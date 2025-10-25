@@ -85,6 +85,9 @@
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
     </CAbilEffectTarget>
+    <CAbilEffectInstant id="AIpv" parent="War3_EffectInstant">
+        <CmdButtonArray index="Execute" Requirements="AIpv"/>
+    </CAbilEffectInstant>
     <!--Chieftain - Endurance Aura Buff=BOae-->
     <CAbilBehavior id="AOae">
         <CmdButtonArray index="On" Requirements="">
@@ -105,53 +108,29 @@
         <InfoArray index="Build3" Unit="nftt">
             <Button DefaultButtonFace="nftt" Requirements="BuildArmy"/>
         </InfoArray>
-        <InfoArray index="Build4" Unit="nftb">
-            <Button DefaultButtonFace="nftb" Requirements="BuildArmy"/>
-        </InfoArray>
         <InfoArray index="Build5" Unit="ogru">
             <Button DefaultButtonFace="ogru" Requirements="BuildArmy"/>
-        </InfoArray>
-        <InfoArray index="Build6" Unit="nchg">
-            <Button DefaultButtonFace="nchg" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build7" Unit="orai">
             <Button DefaultButtonFace="orai" Requirements="BuildArmy"/>
         </InfoArray>
-        <InfoArray index="Build8" Unit="nchr">
-            <Button DefaultButtonFace="nchr" Requirements="BuildArmy"/>
-        </InfoArray>
         <InfoArray index="Build9" Unit="ohun">
             <Button DefaultButtonFace="ohun" Requirements="BuildArmy"/>
-        </InfoArray>
-        <InfoArray index="Build10" Unit="otbk">
-            <Button DefaultButtonFace="otbk" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build11" Unit="otau">
             <Button DefaultButtonFace="otau" Requirements="BuildArmy"/>
         </InfoArray>
-        <InfoArray index="Build12" Unit="Otch">
-            <Button DefaultButtonFace="Otch" Requirements="BuildArmy"/>
-        </InfoArray>
         <InfoArray index="Build13" Unit="Obla">
             <Button DefaultButtonFace="Obla" Requirements="BuildArmy"/>
         </InfoArray>
-        <InfoArray index="Build14" Unit="Nbbc">
-            <Button DefaultButtonFace="Nbbc" Requirements="BuildArmy"/>
+        <InfoArray index="Build14" Unit="Ogrh">
+            <Button DefaultButtonFace="Ogrh" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build15" Unit="okod">
             <Button DefaultButtonFace="okod" Requirements="BuildArmy"/>
         </InfoArray>
-        <InfoArray index="Build16" Unit="nckb">
-            <Button DefaultButtonFace="nckb" Requirements="BuildArmy"/>
-        </InfoArray>
-        <InfoArray index="Build17" Unit="nckb">
-            <Button DefaultButtonFace="nckb" Requirements="BuildArmy"/>
-        </InfoArray>
         <InfoArray index="Build18" Unit="nw2w">
             <Button DefaultButtonFace="nw2w" Requirements="BuildArmy"/>
-        </InfoArray>
-        <InfoArray index="Build19" Unit="nchw">
-            <Button DefaultButtonFace="nchw" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build20" Unit="ospw">
             <Button DefaultButtonFace="ospw" Requirements="BuildArmy"/>
@@ -162,20 +141,11 @@
         <InfoArray index="Build22" Unit="odoc">
             <Button DefaultButtonFace="odoc" Requirements="BuildArmy"/>
         </InfoArray>
-        <InfoArray index="Build23" Unit="Oshd">
-            <Button DefaultButtonFace="Oshd" Requirements="BuildArmy"/>
-        </InfoArray>
         <InfoArray index="Build24" Unit="nitp">
             <Button DefaultButtonFace="nitp" Requirements="BuildArmy"/>
         </InfoArray>
-        <InfoArray index="Build25" Unit="nfsp">
-            <Button DefaultButtonFace="nfsp" Requirements="BuildArmy"/>
-        </InfoArray>
         <InfoArray index="Build26" Unit="Ofar">
             <Button DefaultButtonFace="Ofar" Requirements="BuildArmy"/>
-        </InfoArray>
-        <InfoArray index="Build27" Unit="Othr">
-            <Button DefaultButtonFace="Othr" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build28" Unit="npn4">
             <Button DefaultButtonFace="npn4" Requirements="BuildArmy"/>
@@ -207,6 +177,14 @@
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
     </CAbilBehavior>
+    <!--Farseer - Earthquake Buff=BOeq,BOea effect=XOeq-->
+    <CAbilEffectTarget id="AOeq">
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </Cost>
+        <CmdButtonArray index="Execute" Requirements=""/>
+    </CAbilEffectTarget>
     <!--Shadow Hunter - Healing Wave-->
     <CAbilEffectTarget id="AOhw">
         <CmdButtonArray index="Execute" Requirements="">
@@ -227,7 +205,7 @@
     </CAbilEffectTarget>
     <!--Blade Master - Mirror Image Buff=BOmi-->
     <CAbilEffectInstant id="AOmi">
-        <CmdButtonArray index="Execute" Requirements="">
+        <CmdButtonArray index="Execute" DefaultButtonFace="" Requirements="">
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
         <CmdButtonArray index="Cancel">
@@ -804,20 +782,6 @@
     <CAbilMorph id="UpgradeToOtch" parent="War3_Upgrade" toUnit="Otch">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
         <InfoArray index="0" Score="1" Unit="Otch">
-            <SectionArray index="Abils">
-                <DurationArray index="Delay" value="0"/>
-            </SectionArray>
-            <SectionArray index="Actor">
-                <DurationArray index="Duration" value="0"/>
-            </SectionArray>
-            <SectionArray index="Stats">
-                <DurationArray index="Delay" value="0"/>
-            </SectionArray>
-        </InfoArray>
-    </CAbilMorph>
-    <CAbilMorph id="UpgradeToObla" parent="War3_Upgrade" toUnit="Obla">
-        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
-        <InfoArray index="0" Score="1" Unit="Obla">
             <SectionArray index="Abils">
                 <DurationArray index="Delay" value="0"/>
             </SectionArray>
