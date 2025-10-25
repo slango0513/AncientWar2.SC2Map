@@ -1,18 +1,87 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
-    <CAbilBuild id="AEbu">
-        <InfoArray index="Build11" Unit="nflg">
-            <Button DefaultButtonFace="nflg"/>
+    <CAbilBuild id="AEbuUnit" parent="War3_PowerBuild">
+        <FlagArray index="IgnoreFood" value="1"/>
+        <InfoArray index="Build1" Unit="nflg">
+            <Button DefaultButtonFace="nflg" Requirements="ShowBuildPhalanx"/>
+        </InfoArray>
+        <InfoArray index="Build2" Unit="earc">
+            <Button DefaultButtonFace="earc" Requirements="BuildUnit"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
-    <CAbilBuild id="AHbu">
+    <CAbilBuild id="AHbuUnit" parent="War3_PowerBuild">
+        <FlagArray index="IgnoreFood" value="1"/>
+        <InfoArray index="Build1" Unit="flag">
+            <Button DefaultButtonFace="flag" Requirements="BuildPhalanx"/>
+        </InfoArray>
+        <InfoArray index="Build2" Unit="hprt">
+            <Button DefaultButtonFace="hprt" Requirements="BuildPortal"/>
+        </InfoArray>
+        <InfoArray index="Build3" Unit="hfoo">
+            <Button DefaultButtonFace="hfoo" Requirements="BuildUnit"/>
+        </InfoArray>
+        <InfoArray index="Build4" Unit="hhes">
+            <Button DefaultButtonFace="hhes" Requirements="BuildUnit"/>
+        </InfoArray>
+        <InfoArray index="Build5" Unit="hsor">
+            <Button DefaultButtonFace="hsor" Requirements="BuildUnit"/>
+        </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
-    <CAbilBuild id="AObu">
+    <CAbilBuild id="AObuUnit" parent="War3_PowerBuild">
+        <FlagArray index="IgnoreFood" value="1"/>
+        <InfoArray index="Build1" Unit="oflg">
+            <Button DefaultButtonFace="oflg" Requirements="ShowBuildPhalanx"/>
+        </InfoArray>
+        <InfoArray index="Build2" Unit="ogru">
+            <Button DefaultButtonFace="ogru" Requirements="BuildUnit"/>
+        </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
-    <CAbilBuild id="AUbu">
+    <CAbilBuild id="AUbuUnit" parent="War3_PowerBuild">
+        <FlagArray index="IgnoreFood" value="1"/>
+        <InfoArray index="Build1" Unit="uflg">
+            <Button DefaultButtonFace="uflg" Requirements="ShowBuildPhalanx"/>
+        </InfoArray>
+        <InfoArray index="Build2" Unit="hprt">
+            <Button DefaultButtonFace="hprt" Requirements="BuildPortal"/>
+        </InfoArray>
+        <InfoArray index="Build3" Unit="ugho">
+            <Button DefaultButtonFace="ugho" Requirements="BuildUnit"/>
+        </InfoArray>
+        <InfoArray index="Build4" Unit="uban">
+            <Button DefaultButtonFace="uban" Requirements="BuildUnit"/>
+        </InfoArray>
+        <InfoArray index="Build5" Unit="unec">
+            <Button DefaultButtonFace="unec" Requirements="BuildUnit"/>
+        </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
+    <!--Possession (Channeling) Dur=4.5 HeroDur=4.5 Buff=Bpos,Bpoc-->
+    <CAbilEffectTarget id="Aps2">
+        <Flags index="AutoCast" value="1"/>
+        <Cost index="0">
+            <Vital index="Energy" value="1"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </Cost>
+        <AutoCastRange value="4.6875"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastValidatorArray value="NoPossession"/>
+        <CmdButtonArray index="Execute" Requirements=""/>
+    </CAbilEffectTarget>
+    <!--Raise Dead Dur=40 HeroDur=40 Buff=Brai-->
+    <CAbilEffectInstant id="Arai">
+        <Flags index="AutoCastOn" value="1"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="Teleport" parent="War3_EffectTarget">
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <TargetFilters index="0" value="-;air,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
+        <Range value="1.5"/>
+        <Arc value="360"/>
+        <AutoCastFilters value="Visible;-"/>
+        <AutoCastRange value="1.5"/>
+        <CmdButtonArray index="Execute" Requirements="Teleport"/>
+    </CAbilEffectTarget>
 </Catalog>

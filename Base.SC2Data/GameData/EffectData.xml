@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CEffectSet id="AposControlSet">
+        <EffectArray index="1" removed="1"/>
+    </CEffectSet>
+    <CEffectSet id="AposMissileImpactSet">
+        <EffectArray value="AposRemove"/>
+        <ValidatorArray value="CasterAndTargetNotDead"/>
+    </CEffectSet>
+    <CEffectSet id="Aps2ControlSet">
+        <EffectArray index="1" removed="1"/>
+    </CEffectSet>
+    <CEffectSet id="Aps2MissileImpactSet">
+        <ValidatorArray value="CasterAndTargetNotDead"/>
+        <EffectArray value="PhalanxMarker"/>
+        <EffectArray value="Aps2Remove"/>
+    </CEffectSet>
+    <CEffectDamage id="Aps2Remove">
+        <ImpactLocation Effect="Aps2" Value="SourceUnit"/>
+        <Flags index="Kill" value="1"/>
+        <Death value="Remove"/>
+    </CEffectDamage>
+    <CEffectDamage id="AposRemove">
+        <ImpactLocation Effect="Apos" Value="SourceUnit"/>
+        <Flags index="Kill" value="1"/>
+        <Death value="Remove"/>
+    </CEffectDamage>
+    <CEffectSet id="CreateReserveUnitTriggerNotice"/>
+    <CEffectDamage id="Hpal1">
+        <AreaArray Radius="5" Bonus="24" Fraction="1"/>
+        <SearchFilters value="Visible;player,allies,dead,Hidden,invulnerable"/>
+    </CEffectDamage>
+    <CEffectSet id="PhalanxMarker">
+        <EffectArray value="PhalanxMarkerRemove"/>
+        <EffectArray value="PhalanxMarkerCopy"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="PhalanxMarkerRemove">
+        <BehaviorLink value="PhalanxMarker"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectTransferBehavior id="PhalanxMarkerCopy">
+        <LaunchUnit Value="Caster"/>
+        <ImpactUnit Value="Target"/>
+        <Behavior value="PhalanxMarker"/>
+        <Count value="1"/>
+        <Copy value="1"/>
+    </CEffectTransferBehavior>
+    <CEffectEnumArea id="Teleport">
+        <ValidatorArray value="NoTeleportMarker"/>
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactLocation Value="CasterUnitOrPoint"/>
+        <ExcludeArray/>
+        <SearchFilters value="invulnerable;allies,neutral,enemies,air,wall,tree,Missile,debris,item,structure,ward,dead,immunity"/>
+        <AreaArray Radius="500" Effect="TeleportSet"/>
+        <MinCount value="1"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="TeleportMarker" parent="War3_ApplyBuff">
+        <WhichUnit Effect="Teleport"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="TeleportSet">
+        <EffectArray value="TeleportTarget"/>
+        <EffectArray value="TeleportMarker"/>
+    </CEffectSet>
+    <CEffectTeleport id="TeleportTarget">
+        <ValidatorArray value="IsPortal"/>
+        <WhichUnit Effect="Teleport"/>
+        <TargetLocation Effect="TeleportTarget" Value="TargetUnit"/>
+        <SourceLocation Effect="Teleport" Value="TargetUnit"/>
+        <TeleportFlags index="TestCliff" value="1"/>
+    </CEffectTeleport>
+</Catalog>

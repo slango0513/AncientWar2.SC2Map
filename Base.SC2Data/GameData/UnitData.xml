@@ -1,48 +1,259 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <!--HeroPaladin-->
+    <CUnit id="Hpal">
+        <DeathTime value="15"/>
+        <LifeStart value="10000"/>
+        <LifeMax value="10000"/>
+        <EnergyStart value="5000"/>
+        <EnergyMax value="5000"/>
+        <AbilArray index="4" Link="AHhb"/>
+        <AbilArray index="5" Link="AHds"/>
+        <AbilArray index="6" Link="AHad"/>
+        <AbilArray index="7" Link="AHre"/>
+        <AbilArray index="8" Link="##l5##"/>
+        <AbilArray index="9" Link="Hearthstone"/>
+        <AbilArray index="10" Link="AInv"/>
+        <AbilArray index="11" removed="1"/>
+        <BehaviorArray index="4" removed="1"/>
+        <BehaviorArray index="5" removed="1"/>
+        <BehaviorArray index="6" removed="1"/>
+        <BehaviorArray index="7" removed="1"/>
+        <BehaviorArray index="8" removed="1"/>
+        <BehaviorArray index="9" removed="1"/>
+        <BehaviorArray index="10" removed="1"/>
+        <BehaviorArray index="11" removed="1"/>
+        <EffectArray index="Create" value=""/>
+        <EffectArray index="Birth" value=""/>
+        <EffectArray index="Death" value=""/>
+        <EffectArray index="Revive" value=""/>
+    </CUnit>
+    <CUnit id="PhalanxPlaceholder" parent="War3_Item" defType="">
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Footprint value="6x6Phalanx"/>
+    </CUnit>
+    <CUnit id="HumanPhalanxPlaceholder" parent="War3_Item" defType="">
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Footprint value="6x6Phalanx"/>
+    </CUnit>
+    <CUnit id="NightElfPhalanxPlaceholder" parent="War3_Item" defType="">
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Footprint value="6x6Phalanx"/>
+    </CUnit>
+    <CUnit id="OrcPhalanxPlaceholder" parent="War3_Item" defType="">
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Footprint value="6x6Phalanx"/>
+    </CUnit>
+    <CUnit id="UndeadPhalanxPlaceholder" parent="War3_Item" defType="">
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Footprint value="6x6Phalanx"/>
+    </CUnit>
+    <!--Archer-->
+    <CUnit id="earc">
+        <PlacementFootprint value="1x1Building"/>
+        <DeathTime value="15"/>
+    </CUnit>
     <!--Wisp-->
     <CUnit id="ewsp">
         <CardLayouts index="0">
-            <LayoutButtons index="6" Face="Adtn" Type="AbilCmd" AbilCmd="Adtn,Execute" Row="2" Column="1"/>
-            <LayoutButtons index="7" Face="Aren" Type="AbilCmd" AbilCmd="Aren,Execute" Row="1" Column="1"/>
-            <LayoutButtons index="8" Face="Awha" Type="AbilCmd" AbilCmd="Awha,Gather" Row="1" Column="3"/>
-            <LayoutButtons Face="nflg" Type="AbilCmd" AbilCmd="AEbu,Build11" Row="2" Column="2"/>
+            <LayoutButtons index="0" Face="AEbuUnit" Type="Submenu" AbilCmd="" SubmenuCardId="Bui1" ShowInGlossary="1"/>
+            <LayoutButtons index="1" Face="nflg" AbilCmd="AEbuUnit,Build1" ShowInGlossary="1" Row="1" Column="0"/>
+            <LayoutButtons index="2" removed="1"/>
+            <LayoutButtons index="3" removed="1"/>
+            <LayoutButtons index="4" removed="1"/>
+            <LayoutButtons index="5" removed="1"/>
+            <LayoutButtons index="6" removed="1"/>
+            <LayoutButtons index="7" removed="1"/>
+            <LayoutButtons index="8" removed="1"/>
         </CardLayouts>
+        <CardLayouts CardId="Bui1">
+            <LayoutButtons Face="earc" Type="AbilCmd" AbilCmd="AEbuUnit,Build2" Row="0" Column="0"/>
+        </CardLayouts>
+        <AbilArray index="4" Link="AEbuUnit"/>
+        <BehaviorArray Link="Worker"/>
     </CUnit>
     <!--human flag-->
     <CUnit id="flag">
-        <FlagArray index="Untargetable" value="1"/>
-        <FlagArray index="Invulnerable" value="1"/>
-        <Collide index="Structure" value="0"/>
         <CostResource index="gold" value="0"/>
         <Footprint value="6x6Phalanx"/>
         <PlacementFootprint value="6x6Phalanx"/>
+        <TechAliasArray value="Alias_Phalanx"/>
+        <ResourceState value="tree"/>
+        <BehaviorArray Link="Phalanx"/>
+        <BehaviorArray Link="CreateReserveUnit36"/>
+    </CUnit>
+    <!--Footman-->
+    <CUnit id="hfoo">
+        <PlacementFootprint value="1x1Building"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <DeathTime value="15"/>
+    </CUnit>
+    <!--high elven swordsman-->
+    <CUnit id="hhes">
+        <PlacementFootprint value="1x1Building"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <DeathTime value="15"/>
+    </CUnit>
+    <!--Peasant-->
+    <CUnit id="hpea">
+        <CardLayouts index="0">
+            <LayoutButtons index="0" Face="AHbuUnit" Type="Submenu" AbilCmd="" SubmenuCardId="Bui1" ShowInGlossary="1"/>
+            <LayoutButtons index="1" Face="flag" AbilCmd="AHbuUnit,Build1" ShowInGlossary="1" Row="1" Column="0"/>
+            <LayoutButtons index="2" Face="hprt" AbilCmd="AHbuUnit,Build2" ShowInGlossary="1" Row="1" Column="1"/>
+            <LayoutButtons index="3" removed="1"/>
+            <LayoutButtons index="4" removed="1"/>
+            <LayoutButtons index="5" removed="1"/>
+            <LayoutButtons index="6" removed="1"/>
+            <LayoutButtons index="7" removed="1"/>
+            <LayoutButtons index="8" removed="1"/>
+            <LayoutButtons index="9" removed="1"/>
+            <LayoutButtons index="10" removed="1"/>
+        </CardLayouts>
+        <CardLayouts CardId="Bui1">
+            <LayoutButtons Face="hfoo" Type="AbilCmd" AbilCmd="AHbuUnit,Build3" Row="0" Column="0"/>
+            <LayoutButtons Face="hhes" Type="AbilCmd" AbilCmd="AHbuUnit,Build4" Row="0" Column="1"/>
+            <LayoutButtons Face="hsor" Type="AbilCmd" AbilCmd="AHbuUnit,Build5" Row="0" Column="2"/>
+        </CardLayouts>
+        <AbilArray index="4" Link="AHbuUnit"/>
+        <BehaviorArray Link="Worker"/>
+    </CUnit>
+    <!--portal unit-->
+    <CUnit id="hprt">
+        <AbilArray Link="Teleport"/>
+        <BehaviorArray Link="Portal"/>
+        <CardLayouts>
+            <LayoutButtons Face="Teleport" Type="AbilCmd" AbilCmd="Teleport,Execute" Row="0" Column="0"/>
+        </CardLayouts>
+        <Footprint value="3x3Portal"/>
+        <PlacementFootprint value="3x3Portal"/>
+        <TechAliasArray value="Alias_Portal"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="Structure" value="1"/>
+        <Collide index="ForceField" value="0"/>
+        <Collide index="CreepTumor" value="1"/>
+        <Attributes index="fort" value="0"/>
+        <Attributes index="wall" value="1"/>
+    </CUnit>
+    <!--Sorceress-->
+    <CUnit id="hsor">
+        <PlacementFootprint value="1x1Building"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <DeathTime value="15"/>
     </CUnit>
     <!--NightElf flag-->
     <CUnit id="nflg">
-        <FlagArray index="Untargetable" value="1"/>
-        <FlagArray index="Invulnerable" value="1"/>
-        <Collide index="Structure" value="0"/>
         <CostResource index="gold" value="0"/>
         <Footprint value="6x6Phalanx"/>
         <PlacementFootprint value="6x6Phalanx"/>
+        <TechAliasArray value="Alias_Phalanx"/>
+        <ResourceState value="tree"/>
+        <BehaviorArray Link="Phalanx"/>
+        <BehaviorArray Link="CreateReserveUnit36"/>
     </CUnit>
     <!--Orc flag-->
     <CUnit id="oflg">
-        <FlagArray index="Untargetable" value="1"/>
-        <FlagArray index="Invulnerable" value="1"/>
-        <Collide index="Structure" value="0"/>
         <CostResource index="gold" value="0"/>
         <Footprint value="6x6Phalanx"/>
         <PlacementFootprint value="6x6Phalanx"/>
+        <TechAliasArray value="Alias_Phalanx"/>
+        <ResourceState value="tree"/>
+        <BehaviorArray Link="Phalanx"/>
+        <BehaviorArray Link="CreateReserveUnit36"/>
+    </CUnit>
+    <!--Grunt-->
+    <CUnit id="ogru">
+        <PlacementFootprint value="1x1Building"/>
+        <DeathTime value="15"/>
+    </CUnit>
+    <!--Peon-->
+    <CUnit id="opeo">
+        <CardLayouts index="0">
+            <LayoutButtons index="0" Face="oflg" AbilCmd="AObuUnit,Build1" ShowInGlossary="1" Row="1"/>
+            <LayoutButtons index="1">
+                <Face value="AObuUnit"/>
+                <Type value="Submenu"/>
+                <AbilCmd value=""/>
+                <SubmenuCardId value="Bui1"/>
+                <ShowInGlossary value="1"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons index="2" removed="1"/>
+            <LayoutButtons index="3" removed="1"/>
+            <LayoutButtons index="4" removed="1"/>
+            <LayoutButtons index="5" removed="1"/>
+            <LayoutButtons index="6" removed="1"/>
+            <LayoutButtons index="7" removed="1"/>
+            <LayoutButtons index="8" removed="1"/>
+            <LayoutButtons index="9" removed="1"/>
+        </CardLayouts>
+        <CardLayouts CardId="Bui1">
+            <LayoutButtons Face="ogru" Type="AbilCmd" AbilCmd="AObuUnit,Build2" Row="0" Column="0"/>
+        </CardLayouts>
+        <AbilArray index="4" Link="AObuUnit"/>
+        <BehaviorArray Link="Worker"/>
+    </CUnit>
+    <!--Acolyte-->
+    <CUnit id="uaco">
+        <CardLayouts index="0">
+            <LayoutButtons index="0" Face="AUbuUnit" Type="Submenu" AbilCmd="" SubmenuCardId="Bui1" ShowInGlossary="1"/>
+            <LayoutButtons index="1" Face="uflg" AbilCmd="AUbuUnit,Build1" ShowInGlossary="1" Row="1" Column="0"/>
+            <LayoutButtons index="2" Face="hprt" AbilCmd="AUbuUnit,Build2" ShowInGlossary="1" Row="1" Column="1"/>
+            <LayoutButtons index="3" removed="1"/>
+            <LayoutButtons index="4" removed="1"/>
+            <LayoutButtons index="5" removed="1"/>
+            <LayoutButtons index="6" removed="1"/>
+            <LayoutButtons index="7" removed="1"/>
+            <LayoutButtons index="8" removed="1"/>
+            <LayoutButtons index="9" removed="1"/>
+        </CardLayouts>
+        <CardLayouts CardId="Bui1">
+            <LayoutButtons Face="ugho" Type="AbilCmd" AbilCmd="AUbuUnit,Build3" Row="0" Column="0"/>
+            <LayoutButtons Face="uban" Type="AbilCmd" AbilCmd="AUbuUnit,Build4" Row="0" Column="1"/>
+            <LayoutButtons Face="unec" Type="AbilCmd" AbilCmd="AUbuUnit,Build5" Row="0" Column="2"/>
+        </CardLayouts>
+        <AbilArray index="4" Link="AUbuUnit"/>
+        <BehaviorArray Link="Worker"/>
+    </CUnit>
+    <!--Banshee-->
+    <CUnit id="uban">
+        <DeathTime value="15"/>
+        <LifeStart value="100000"/>
+        <LifeMax value="100000"/>
+        <PlacementFootprint value="1x1Building"/>
     </CUnit>
     <!--Undead flag-->
     <CUnit id="uflg">
-        <FlagArray index="Untargetable" value="1"/>
-        <FlagArray index="Invulnerable" value="1"/>
-        <Collide index="Structure" value="0"/>
         <CostResource index="gold" value="0"/>
         <Footprint value="6x6Phalanx"/>
         <PlacementFootprint value="6x6Phalanx"/>
+        <TechAliasArray value="Alias_Phalanx"/>
+        <ResourceState value="tree"/>
+        <BehaviorArray Link="Phalanx"/>
+        <BehaviorArray Link="CreateReserveUnit36"/>
+    </CUnit>
+    <!--Ghoul-->
+    <CUnit id="ugho">
+        <PlacementFootprint value="1x1Building"/>
+        <DeathTime value="15"/>
+    </CUnit>
+    <!--Necromancer-->
+    <CUnit id="unec">
+        <DeathTime value="15"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <PlacementFootprint value="1x1Building"/>
+    </CUnit>
+    <!--SkeletonWarrior-->
+    <CUnit id="uske">
+        <LifeStart value="1"/>
+        <LifeMax value="1"/>
     </CUnit>
 </Catalog>
