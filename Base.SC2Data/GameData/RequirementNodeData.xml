@@ -1,47 +1,43 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
     <CRequirementAnd id="AndLTCountUnitAlias_PhalanxQueuedOrBetter3CountUpgradeBuildPhalanxCompleteOnly">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="LTCountUnitAlias_PhalanxQueuedOrBetter3"/>
         <OperandArray value="CountUpgradeBuildPhalanxCompleteOnly"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndLTCountUnitAlias_PortalQueuedOrBetter2CountUpgradeBuildPortalCompleteOnly">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="LTCountUnitAlias_PortalQueuedOrBetter2"/>
         <OperandArray value="CountUpgradeBuildPortalCompleteOnly"/>
     </CRequirementAnd>
     <CRequirementCountUnit id="CountUnitAlias_PhalanxQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="Alias_Phalanx" State="QueuedOrBetter"/>
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitAlias_PortalQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="Alias_Portal" State="QueuedOrBetter"/>
     </CRequirementCountUnit>
     <CRequirementCountUpgrade id="CountUpgradeBuildPhalanxCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="BuildPhalanx" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeBuildPortalCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="BuildPortal" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeBuildUnitCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="BuildUnit" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
-    <CRequirementLT id="LTCountUnitAlias_PhalanxQueuedOrBetter3">
+    <CRequirementCountUpgrade id="CountUpgradeCountUnitCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
         <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="CountUnit" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementLT id="LTCountUnitAlias_PhalanxQueuedOrBetter3">
         <OperandArray index="0" value="CountUnitAlias_PhalanxQueuedOrBetter"/>
         <OperandArray index="1" value="3"/>
     </CRequirementLT>
     <CRequirementLT id="LTCountUnitAlias_PortalQueuedOrBetter2">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUnitAlias_PortalQueuedOrBetter"/>
         <OperandArray index="1" value="2"/>
     </CRequirementLT>

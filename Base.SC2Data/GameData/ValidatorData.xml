@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CValidatorPlayerRequirement id="CountUnit">
+        <Find value="1"/>
+        <Value value="CountUnit"/>
+    </CValidatorPlayerRequirement>
     <CValidatorUnitCompareBehaviorCount id="NoPossession">
         <Behavior value="Bpos"/>
     </CValidatorUnitCompareBehaviorCount>
@@ -11,7 +15,18 @@
             <Radius value="500"/>
             <Validator value="HasPhalanxMarker"/>
         </AreaArray>
-        <SearchFilters value="Visible;Neutral,Enemy,Dead,Hidden"/>
+        <SearchFilters value="Visible;Neutral,Enemy,Worker,HarvestableResource,Stasis,Dead,Hidden,Benign"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="PhalanxMarkerEqual0">
+        <WhichLocation Value="CasterPoint"/>
+        <AreaArray Radius="500" Validator="HasPhalanxMarker"/>
+        <SearchFilters value="Visible;Neutral,Enemy,Worker,HarvestableResource,Stasis,Dead,Hidden,Benign"/>
+        <Compare value="Eq"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="UnitEqual0">
+        <WhichLocation Value="CasterPoint"/>
+        <AreaArray Count="0" Radius="500"/>
+        <SearchFilters value="Visible;Neutral,Enemy,Worker,HarvestableResource,Stasis,Dead,Hidden,Benign"/>
     </CValidatorLocationEnumArea>
     <CValidatorUnitCompareBehaviorCount id="HasPhalanxMarker">
         <Compare value="GT"/>

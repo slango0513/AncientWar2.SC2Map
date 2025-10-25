@@ -9,14 +9,14 @@ include "TriggerLibs/NativeLib"
 include "LibGAwX"
 
 //--------------------------------------------------------------------------------------------------
-// Library: Wars
+// Library: Ancient Wars II
 //--------------------------------------------------------------------------------------------------
 // Constants
 const fixed lib1_gv_minimumPeriod = 0.0625;
 const int lib1_gv_customValuePhalanx = 1;
 const string lib1_gv_unitTypeUserType = "UnitTypeData";
 const string lib1_gv_phalanxUserType = "PhalanxData";
-const int lib1_gv_unitMaximumCountPerPhalanx = 500;
+const int lib1_gv_unitMaximumCountPerPhalanx = 72;
 const int lib1_gv_phalanxMaximumCount = 3;
 const int lib1_gv_venueMaximumCount = 8;
 const int lib1_gv_roundMaximumCount = 7;
@@ -27,7 +27,6 @@ const int lib1_gv_playerCount = 8;
 const int lib1_gv_playerMaximumIndex = 15;
 
 // Variable Declarations
-bool lib1_gv_debugUI;
 int lib1_gv_teamCount;
 int lib1_gv_teamMemberCount;
 int lib1_gv_teamRoundCount;
@@ -51,12 +50,12 @@ revealer[lib1_gv_playerMaximumIndex + 1] lib1_gv_battlefieldRevealer;
 region lib1_gv_battlefield;
 timer lib1_gv_timer;
 int lib1_gv_timerWindow;
+int[lib1_gv_playerMaximumIndex + 1][lib1_gv_phalanxMaximumCount + 1] lib1_gv_reserveUnitIndex;
+bool lib1_gv_debug;
 playergroup lib1_gv_uIPlayergroup;
 unitfilter lib1_gv_phalanxFilter;
 unitfilter lib1_gv_portalFilter;
 unitfilter lib1_gv_buildingFilter;
-int[lib1_gv_playerMaximumIndex + 1][lib1_gv_phalanxMaximumCount + 1] lib1_gv_reserveUnitIndex;
-bool lib1_gv_debug;
 
 // Function Declarations
 void lib1_gf_ReserveUnitCreation2 (int lp_player, int lp_phalanx);
@@ -67,7 +66,6 @@ int lib1_gf_MirrorPlayerGetUserPlayer (int lp_player);
 string lib1_gf_RaceGetPhalanxType (string lp_race);
 int lib1_gf_UnitTypeGetPhalanxCapacity (string lp_unitType);
 fixed lib1_gf_PointGetVenueFacing (point lp_point);
-string lib1_gf_AttributeGetRace (string lp_attribute);
 void lib1_gf_TeamAlianceSet (int lp_option);
 void lib1_gf_VenueSet (region lp_region, int lp_index, fixed lp_facing);
 void lib1_gf_BuildingRegionSet (region lp_region, int lp_index, int lp_phalanx);
@@ -100,8 +98,9 @@ void lib1_gf_UnitCreate (int lp_player, point lp_point, string lp_unitType, unit
 void lib1_gf_PreviewModelCreate (int lp_player, point lp_point, string lp_unitType, unit lp_unit);
 void lib1_gf_RoundStartLoop ();
 void lib1_gf_RoundStart (int lp_round);
-void lib1_gf_TeamDebug (string lp_gameValue);
+void lib1_gf_DebugTeamSet ();
 void lib1_gf_DebugEnable (bool lp_option);
+void lib1_gf_Inizialization (bool lp_debug);
 
 // Trigger Declarations
 trigger lib1_gt_UnitChangeOwner2;
@@ -112,7 +111,6 @@ trigger lib1_gt_DebugKeyPressed;
 trigger lib1_gt_CreateReserveUnit;
 trigger lib1_gt_BuildingCreated;
 trigger lib1_gt_PhalanxCreated;
-trigger lib1_gt_ModInizialization;
 trigger lib1_gt_GameModeInizialization;
 trigger lib1_gt_AllianceInizialization;
 trigger lib1_gt_TeamInizialization;
@@ -123,7 +121,7 @@ trigger lib1_gt_TimerInizialization;
 void lib1_InitVariables ();
 
 //--------------------------------------------------------------------------------------------------
-// Library: Wars
+// Library: Ancient Wars II
 //--------------------------------------------------------------------------------------------------
 // External Library Initialization
 void lib1_InitLibraries () {
@@ -306,26 +304,6 @@ fixed lib1_gf_PointGetVenueFacing (point lp_point) {
 
     }
     return lv_facing;
-}
-
-string lib1_gf_AttributeGetRace (string lp_attribute) {
-    // Variable Declarations
-    string lv_userDataType;
-    string lv_race;
-    int lv_index;
-    int lv_count;
-
-    // Variable Initialization
-    lv_userDataType = "RaceAttributeMapping";
-    lv_race = UserDataGetGameLink(lv_userDataType, (lp_attribute), "Race", 1);
-    lv_count = UserDataInstanceCount(lv_userDataType);
-
-    // Implementation
-    if ((lv_race == null)) {
-        lv_race = UserDataGetGameLink(lv_userDataType, UserDataInstance(lv_userDataType, RandomInt(1, lv_count)), "Race", 1);
-    }
-
-    return lv_race;
 }
 
 void lib1_gf_TeamAlianceSet (int lp_option) {
@@ -516,6 +494,7 @@ void lib1_gf_BuildingRegionRevealerEnable (bool lp_option) {
             libNtve_gf_SetUpgradeLevelForPlayer(lib1_gv_playerAtBuildingRegion[lv_buildingRegion], "BuildUnit", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(lib1_gv_playerAtBuildingRegion[lv_buildingRegion], "BuildPhalanx", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(lib1_gv_playerAtBuildingRegion[lv_buildingRegion], "BuildPortal", 0);
+            libNtve_gf_SetUpgradeLevelForPlayer(lib1_gv_playerAtBuildingRegion[lv_buildingRegion], "CountUnit", 0);
         }
         auto1482F0A2_ae = lib1_gv_phalanxMaximumCount;
         auto1482F0A2_ai = 1;
@@ -549,6 +528,7 @@ void lib1_gf_VenueRevealerEnable (int lp_round, bool lp_option) {
             libNtve_gf_SetUpgradeLevelForPlayer(lib1_gv_playerAtVenue[lv_venue][lp_round], "BuildUnit", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(lib1_gv_playerAtVenue[lv_venue][lp_round], "BuildPhalanx", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(lib1_gv_playerAtVenue[lv_venue][lp_round], "BuildPortal", 0);
+            libNtve_gf_SetUpgradeLevelForPlayer(lib1_gv_playerAtVenue[lv_venue][lp_round], "CountUnit", 0);
         }
         VisRevealerEnable(lib1_gv_venueRevealer[lv_venue][lib1_gv_playerAtVenue[lv_venue][lp_round]], lp_option);
     }
@@ -635,11 +615,6 @@ void lib1_gf_UnitTypeSet (int lp_buildingRegion, int lp_phalanx) {
                             lv_unitType = UserDataGetUnit(lib1_gv_unitTypeUserType, (lv_unitTypeID), "UnitType", lv_index);
                             lv_unitIndex += 1;
                             lib1_gv_unitType[lib1_gv_playerAtBuildingRegion[lp_buildingRegion]][lp_phalanx][lv_unitIndex] = lv_unitType;
-                            TextExpressionSetToken("Param/Expression/lib_1_5F1A6DDB", "A", IntToText(lib1_gv_playerAtBuildingRegion[lp_buildingRegion]));
-                            TextExpressionSetToken("Param/Expression/lib_1_5F1A6DDB", "E", IntToText(lp_phalanx));
-                            TextExpressionSetToken("Param/Expression/lib_1_5F1A6DDB", "C", UnitTypeGetName(lib1_gv_unitType[lib1_gv_playerAtBuildingRegion[lp_buildingRegion]][lp_phalanx][lv_unitIndex]));
-                            TextExpressionSetToken("Param/Expression/lib_1_5F1A6DDB", "D", IntToText(lv_unitIndex));
-                            TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_1_5F1A6DDB"), true);
                         }
 
                     }
@@ -947,6 +922,7 @@ void lib1_gf_BattlefieldRevealerEnable (bool lp_option) {
             libNtve_gf_SetUpgradeLevelForPlayer(lib1_gf_IndexGetUserPlayer(lv_player), "BuildUnit", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(lib1_gf_IndexGetUserPlayer(lv_player), "BuildPhalanx", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(lib1_gf_IndexGetUserPlayer(lv_player), "BuildPortal", 0);
+            libNtve_gf_SetUpgradeLevelForPlayer(lib1_gf_IndexGetUserPlayer(lv_player), "CountUnit", 0);
         }
 
         VisRevealerEnable(lib1_gv_battlefieldRevealer[lib1_gf_IndexGetUserPlayer(lv_player)], lp_option);
@@ -1092,7 +1068,29 @@ void lib1_gf_ReserveUnitIndexResetAll () {
 }
 
 void lib1_gf_ReserveUnitCreationEnable (bool lp_option) {
+    int autoFB493DB7_ae;
+    int autoFB493DB7_ai;
+
+    // Variable Declarations
+    int lv_player;
+
+    // Variable Initialization
+
     // Implementation
+    autoFB493DB7_ae = lib1_gv_playerCount;
+    autoFB493DB7_ai = 1;
+    lv_player = 1;
+    for ( ; ( (autoFB493DB7_ai >= 0 && lv_player <= autoFB493DB7_ae) || (autoFB493DB7_ai <= 0 && lv_player >= autoFB493DB7_ae) ) ; lv_player += autoFB493DB7_ai ) {
+        if ((lp_option == true)) {
+            libNtve_gf_SetUpgradeLevelForPlayer(lib1_gf_IndexGetUserPlayer(lv_player), "CountUnit", 1);
+        }
+        else {
+            libNtve_gf_SetUpgradeLevelForPlayer(lib1_gf_IndexGetUserPlayer(lv_player), "BuildUnit", 0);
+            libNtve_gf_SetUpgradeLevelForPlayer(lib1_gf_IndexGetUserPlayer(lv_player), "BuildPhalanx", 0);
+            libNtve_gf_SetUpgradeLevelForPlayer(lib1_gf_IndexGetUserPlayer(lv_player), "BuildPortal", 0);
+            libNtve_gf_SetUpgradeLevelForPlayer(lib1_gf_IndexGetUserPlayer(lv_player), "CountUnit", 0);
+        }
+    }
     TriggerEnable(lib1_gt_CreateReserveUnit, lp_option);
 }
 
@@ -1108,19 +1106,6 @@ void lib1_gf_ReserveUnitCreation (unit lp_unit, int lp_player, int lp_phalanx) {
     if ((lv_index < lib1_gv_unitMaximumCountPerPhalanx)) {
         lib1_gv_reserveUnitIndex[lp_player][lp_phalanx] += 1;
         lv_unitType = lib1_gv_unitType[lp_player][lp_phalanx][lv_index];
-        TextExpressionSetToken("Param/Expression/lib_1_EDFBFFC0", "A", IntToText(lib1_gv_reserveUnitIndex[0][1]));
-        TextExpressionSetToken("Param/Expression/lib_1_EDFBFFC0", "B", IntToText(lib1_gv_reserveUnitIndex[1][1]));
-        TextExpressionSetToken("Param/Expression/lib_1_EDFBFFC0", "C", IntToText(lib1_gv_reserveUnitIndex[2][1]));
-        TextExpressionSetToken("Param/Expression/lib_1_EDFBFFC0", "D", IntToText(lib1_gv_reserveUnitIndex[3][1]));
-        TextExpressionSetToken("Param/Expression/lib_1_EDFBFFC0", "E", IntToText(lib1_gv_reserveUnitIndex[4][1]));
-        TextExpressionSetToken("Param/Expression/lib_1_EDFBFFC0", "F", IntToText(lib1_gv_reserveUnitIndex[5][1]));
-        TextExpressionSetToken("Param/Expression/lib_1_EDFBFFC0", "G", IntToText(lib1_gv_reserveUnitIndex[6][1]));
-        TextExpressionSetToken("Param/Expression/lib_1_EDFBFFC0", "H", IntToText(lib1_gv_reserveUnitIndex[7][1]));
-        UIDisplayMessage(PlayerGroupAll(), c_messageAreaDirective, TextExpressionAssemble("Param/Expression/lib_1_EDFBFFC0"));
-        TextExpressionSetToken("Param/Expression/lib_1_2790D751", "A", IntToText(lp_phalanx));
-        TextExpressionSetToken("Param/Expression/lib_1_2790D751", "B", UnitTypeGetName(lv_unitType));
-        TextExpressionSetToken("Param/Expression/lib_1_2790D751", "C", IntToText(lv_index));
-        UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, TextExpressionAssemble("Param/Expression/lib_1_2790D751"));
         if ((lv_unitType != null)) {
             lib1_gf_UnitCreate(lib1_gf_UserPlayerGetMirrorPlayer(lp_player), UnitGetPosition(lp_unit), lv_unitType, lp_unit);
         }
@@ -1185,7 +1170,9 @@ void lib1_gf_RoundStart (int lp_round) {
     lib1_gf_ReserveUnitCreationEnable(false);
 }
 
-void lib1_gf_TeamDebug (string lp_gameValue) {
+void lib1_gf_DebugTeamSet () {
+    int autoA2E44120_ae;
+    int autoA2E44120_ai;
     string autoEFD468EB_val;
     int auto3EF77B1F_ae;
     int auto3EF77B1F_ai;
@@ -1199,8 +1186,14 @@ void lib1_gf_TeamDebug (string lp_gameValue) {
     // Variable Initialization
 
     // Implementation
-    lib1_gv_debugUI = true;
-    autoEFD468EB_val = lp_gameValue;
+    autoA2E44120_ae = lib1_gv_teamCount;
+    autoA2E44120_ai = 1;
+    lv_team = 1;
+    for ( ; ( (autoA2E44120_ai >= 0 && lv_team <= autoA2E44120_ae) || (autoA2E44120_ai <= 0 && lv_team >= autoA2E44120_ae) ) ; lv_team += autoA2E44120_ai ) {
+        PlayerGroupClear(lib1_gv_teamGroup[lv_team]);
+    }
+    lv_team = 0;
+    autoEFD468EB_val = GameAttributeGameValue("2");
     if (autoEFD468EB_val == "0001") {
         auto3EF77B1F_ae = lib1_gv_playerCount;
         auto3EF77B1F_ai = 1;
@@ -1240,6 +1233,18 @@ void lib1_gf_DebugEnable (bool lp_option) {
     TriggerEnable(lib1_gt_DebugKeyPressed, true);
 }
 
+void lib1_gf_Inizialization (bool lp_debug) {
+    // Implementation
+    TriggerEnable(libGAw3_gt_ChangeOwerFromCreep, false);
+    TriggerEnable(libGAw3_gt_ChangeOwerToCreep, false);
+    TriggerExecute(lib1_gt_GameModeInizialization, true, false);
+    lib1_gf_DebugEnable(lp_debug);
+    TriggerExecute(lib1_gt_AllianceInizialization, true, false);
+    TriggerExecute(lib1_gt_TeamInizialization, true, false);
+    TriggerExecute(lib1_gt_PlayerInizialization, true, false);
+    TriggerExecute(lib1_gt_TimerInizialization, true, false);
+}
+
 // Triggers
 //--------------------------------------------------------------------------------------------------
 // Trigger: UnitChangeOwner2
@@ -1261,9 +1266,6 @@ bool lib1_gt_UnitChangeOwner2_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    TextExpressionSetToken("Param/Expression/lib_1_F9FEB4F1", "A", UnitTypeGetName(UnitGetType(EventUnit())));
-    TextExpressionSetToken("Param/Expression/lib_1_F9FEB4F1", "B", IntToText(EventUnitOwnerOld()));
-    TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_1_F9FEB4F1"), lib1_gv_debugUI);
     lib1_gf_ReserveUnitCreation2(EventUnitOwnerOld(), FixedToInt(UnitGetCustomValue(EventUnit(), lib1_gv_customValuePhalanx)));
     return true;
 }
@@ -1295,9 +1297,6 @@ bool lib1_gt_UnitDied2_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    TextExpressionSetToken("Param/Expression/lib_1_FA28BA03", "A", UnitTypeGetName(UnitGetType(EventUnit())));
-    TextExpressionSetToken("Param/Expression/lib_1_FA28BA03", "B", IntToText(EventPlayer()));
-    TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_1_FA28BA03"), lib1_gv_debugUI);
     lib1_gf_ReserveUnitCreation2(EventPlayer(), FixedToInt(UnitGetCustomValue(EventUnit(), lib1_gv_customValuePhalanx)));
     return true;
 }
@@ -1355,6 +1354,12 @@ void lib1_gt_DebugControlPressed_Init () {
 bool lib1_gt_DebugKeyPressed_Func (bool testConds, bool runActions) {
     int auto27CBA15A_val;
 
+    // Variable Declarations
+    int lv_player;
+
+    // Variable Initialization
+    lv_player = EventPlayer();
+
     // Conditions
     if (testConds) {
         if (!((lib1_gv_debug == true))) {
@@ -1369,10 +1374,12 @@ bool lib1_gt_DebugKeyPressed_Func (bool testConds, bool runActions) {
 
     auto27CBA15A_val = EventKeyPressed();
     if (auto27CBA15A_val == c_keyF7) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "hpea", c_unitCreateIgnorePlacement, EventPlayer(), PlayerStartLocation(EventPlayer()));
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "ewsp", c_unitCreateIgnorePlacement, EventPlayer(), PlayerStartLocation(EventPlayer()));
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "opeo", c_unitCreateIgnorePlacement, EventPlayer(), PlayerStartLocation(EventPlayer()));
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "uaco", c_unitCreateIgnorePlacement, EventPlayer(), PlayerStartLocation(EventPlayer()));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "hpea", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "ewsp", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "opeo", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "uaco", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
+        PlayerModifyPropertyInt(lv_player, c_playerPropTerrazine, c_playerPropOperSetTo, 1000000000);
+        PlayerModifyPropertyInt(lv_player, c_playerPropCustom, c_playerPropOperSetTo, 1000000000);
     }
     else {
     }
@@ -1483,10 +1490,6 @@ bool lib1_gt_PhalanxCreated_Func (bool testConds, bool runActions) {
         lib1_gv_phalanxCount[lv_player] += 1;
         UnitSetCustomValue(EventUnitCreatedUnit(), lib1_gv_customValuePhalanx, lib1_gv_phalanxCount[lv_player]);
         UnitSetFacing(EventUnitCreatedUnit(), lib1_gf_PointGetVenueFacing(UnitGetPosition(EventUnitCreatedUnit())), 0.0);
-        TextExpressionSetToken("Param/Expression/lib_1_2DAE34E5", "A", UnitTypeGetName(UnitGetType(EventUnitCreatedUnit())));
-        TextExpressionSetToken("Param/Expression/lib_1_2DAE34E5", "B", IntToText(lv_player));
-        TextExpressionSetToken("Param/Expression/lib_1_2DAE34E5", "C", IntToText(lib1_gv_phalanxCount[lv_player]));
-        TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_1_2DAE34E5"), lib1_gv_debugUI);
     }
 
     return true;
@@ -1497,37 +1500,6 @@ void lib1_gt_PhalanxCreated_Init () {
     lib1_gt_PhalanxCreated = TriggerCreate("lib1_gt_PhalanxCreated_Func");
     TriggerEnable(lib1_gt_PhalanxCreated, false);
     TriggerAddEventUnitCreated(lib1_gt_PhalanxCreated, null, null, null);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: ModInizialization
-//--------------------------------------------------------------------------------------------------
-bool lib1_gt_ModInizialization_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_player;
-
-    // Variable Initialization
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    TriggerEnable(libGAw3_gt_ChangeOwerFromCreep, false);
-    TriggerEnable(libGAw3_gt_ChangeOwerToCreep, false);
-    lib1_gf_TeamDebug(GameAttributeGameValue("2"));
-    TriggerExecute(lib1_gt_GameModeInizialization, true, false);
-    TriggerExecute(lib1_gt_AllianceInizialization, true, false);
-    TriggerExecute(lib1_gt_TeamInizialization, true, false);
-    TriggerExecute(lib1_gt_PlayerInizialization, true, false);
-    TriggerExecute(lib1_gt_TimerInizialization, true, false);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib1_gt_ModInizialization_Init () {
-    lib1_gt_ModInizialization = TriggerCreate("lib1_gt_ModInizialization_Func");
-    TriggerAddEventMapInit(lib1_gt_ModInizialization);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1596,7 +1568,10 @@ bool lib1_gt_AllianceInizialization_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    if ((lib1_gv_debugUI == false)) {
+    if ((lib1_gv_debug == true)) {
+        lib1_gf_DebugTeamSet();
+    }
+    else {
         auto55B2E47B_ae = lib1_gv_teamCount;
         auto55B2E47B_ai = 1;
         lv_team = 1;
@@ -1605,12 +1580,11 @@ bool lib1_gt_AllianceInizialization_Func (bool testConds, bool runActions) {
             auto61D319F4_ai = 1;
             lv_teamMember = 1;
             for ( ; ( (auto61D319F4_ai >= 0 && lv_teamMember <= auto61D319F4_ae) || (auto61D319F4_ai <= 0 && lv_teamMember >= auto61D319F4_ae) ) ; lv_teamMember += auto61D319F4_ai ) {
-                PlayerGroupAdd(lib1_gv_teamGroup[lv_teamMember], PlayerGroupPlayer(GameAttributePlayersForTeam(lv_team), lv_teamMember));
-                PlayerGroupAdd(lib1_gv_mirrorTeamGroup[lv_teamMember], lib1_gf_UserPlayerGetMirrorPlayer(PlayerGroupPlayer(GameAttributePlayersForTeam(lv_team), lv_teamMember)));
+                PlayerGroupAdd(lib1_gv_teamGroup[lv_team], PlayerGroupPlayer(GameAttributePlayersForTeam(lv_team), lv_teamMember));
+                PlayerGroupAdd(lib1_gv_mirrorTeamGroup[lv_team], lib1_gf_UserPlayerGetMirrorPlayer(PlayerGroupPlayer(GameAttributePlayersForTeam(lv_team), lv_teamMember)));
             }
         }
     }
-
     lib1_gf_TeamAlianceSet(libNtve_ge_AllianceSetting_AllyWithSharedVision);
     auto37AC6879_ae = lib1_gv_teamCount;
     auto37AC6879_ai = 1;
@@ -1730,7 +1704,7 @@ bool lib1_gt_TeamInizialization_Func (bool testConds, bool runActions) {
         TextExpressionSetToken("Param/Expression/lib_1_E2BCA4DE", "F", IntToText(lib1_gv_teamAtVenue[6][lv_round]));
         TextExpressionSetToken("Param/Expression/lib_1_E2BCA4DE", "G", IntToText(lib1_gv_teamAtVenue[7][lv_round]));
         TextExpressionSetToken("Param/Expression/lib_1_E2BCA4DE", "H", IntToText(lib1_gv_teamAtVenue[8][lv_round]));
-        TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_1_E2BCA4DE"), lib1_gv_debugUI);
+        TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_1_E2BCA4DE"), true);
     }
     return true;
 }
@@ -1820,7 +1794,7 @@ bool lib1_gt_PlayerInizialization_Func (bool testConds, bool runActions) {
         TextExpressionSetToken("Param/Expression/lib_1_41A8720E", "F", IntToText(lib1_gv_playerAtVenue[6][lv_round]));
         TextExpressionSetToken("Param/Expression/lib_1_41A8720E", "G", IntToText(lib1_gv_playerAtVenue[7][lv_round]));
         TextExpressionSetToken("Param/Expression/lib_1_41A8720E", "H", IntToText(lib1_gv_playerAtVenue[8][lv_round]));
-        TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_1_41A8720E"), lib1_gv_debugUI);
+        TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_1_41A8720E"), true);
     }
     return true;
 }
@@ -1859,7 +1833,6 @@ void lib1_InitTriggers () {
     lib1_gt_CreateReserveUnit_Init();
     lib1_gt_BuildingCreated_Init();
     lib1_gt_PhalanxCreated_Init();
-    lib1_gt_ModInizialization_Init();
     lib1_gt_GameModeInizialization_Init();
     lib1_gt_AllianceInizialization_Init();
     lib1_gt_TeamInizialization_Init();
@@ -1932,19 +1905,17 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    lib1_gf_DebugEnable(true);
+    lib1_gf_Inizialization(true);
     auto5A128C8B_ae = lib1_gv_playerCount;
     auto5A128C8B_ai = 1;
     lv_player = 1;
     for ( ; ( (auto5A128C8B_ai >= 0 && lv_player <= auto5A128C8B_ae) || (auto5A128C8B_ai <= 0 && lv_player >= auto5A128C8B_ae) ) ; lv_player += auto5A128C8B_ai ) {
-        libGAwX_gf_SetPlayerUIRace(lv_player, libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue("[bnet:War3 Extra (GA)/0.0/60618,file:Mods\\WarCraft\\WarCraftDataAbil.SC2Mod]1", lv_player)));
+        libGAwX_gf_SetPlayerUIRace(lib1_gf_IndexGetUserPlayer(lv_player), libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue("[bnet:War3 Extra (GA)/0.0/60618,file:Mods\\WarCraft\\WarCraftDataAbil.SC2Mod]1", lib1_gf_IndexGetUserPlayer(lv_player))));
     }
     libGAwX_gf_SetWar3TimeOfDay("12:00:00");
     libGAwX_gf_PauseUnpauseTimeOfDayWar3(true);
     MeleeInitUnits();
     MeleeInitAI();
-    PlayerModifyPropertyInt(2, c_playerPropTerrazine, c_playerPropOperSetTo, 999999);
-    PlayerModifyPropertyInt(2, c_playerPropCustom, c_playerPropOperSetTo, 999999);
     TriggerExecute(gt_VenueInizialization, true, false);
     TriggerExecute(gt_BuidingRegionInizialization, true, false);
     TriggerExecute(gt_PreviewerPointInizialization, true, false);
@@ -1952,7 +1923,7 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     auto50526CA8_ai = 1;
     lv_player = 1;
     for ( ; ( (auto50526CA8_ai >= 0 && lv_player <= auto50526CA8_ae) || (auto50526CA8_ai <= 0 && lv_player >= auto50526CA8_ae) ) ; lv_player += auto50526CA8_ai ) {
-        TechTreeRequirementsEnable(lib1_gf_IndexGetUserPlayer(lib1_gf_UserPlayerGetMirrorPlayer(lv_player)), false);
+        TechTreeRequirementsEnable(lib1_gf_UserPlayerGetMirrorPlayer(lib1_gf_IndexGetUserPlayer(lv_player)), false);
     }
     lib1_gf_PlayerSet();
     lib1_gf_ValidRegionFillHidden();
@@ -1985,14 +1956,14 @@ bool gt_VenueInizialization_Func (bool testConds, bool runActions) {
 
     auto480E4CF2_val = lv_gameValue;
     if (auto480E4CF2_val == "0001") {
-        lib1_gf_VenueSet(RegionFromId(25), 1, 0);
-        lib1_gf_VenueSet(RegionFromId(27), 2, 0);
-        lib1_gf_VenueSet(RegionFromId(29), 3, 0);
-        lib1_gf_VenueSet(RegionFromId(31), 4, 0);
-        lib1_gf_VenueSet(RegionFromId(33), 5, 0);
-        lib1_gf_VenueSet(RegionFromId(34), 6, 0);
-        lib1_gf_VenueSet(RegionFromId(35), 7, 0);
-        lib1_gf_VenueSet(RegionFromId(36), 8, 0);
+        lib1_gf_VenueSet(RegionFromId(25), 1, 90.0);
+        lib1_gf_VenueSet(RegionFromId(27), 2, 270.0);
+        lib1_gf_VenueSet(RegionFromId(29), 3, 270.0);
+        lib1_gf_VenueSet(RegionFromId(31), 4, 90.0);
+        lib1_gf_VenueSet(RegionFromId(33), 5, 0.0);
+        lib1_gf_VenueSet(RegionFromId(34), 6, 180.0);
+        lib1_gf_VenueSet(RegionFromId(35), 7, 180.0);
+        lib1_gf_VenueSet(RegionFromId(36), 8, 0.0);
     }
     else if (auto480E4CF2_val == "0002") {
         lib1_gf_VenueSet(RegionFromId(25), 1, 90.0);
@@ -2181,7 +2152,7 @@ bool gt_RoundRandomization_Func (bool testConds, bool runActions) {
     TextExpressionSetToken("Param/Expression/303F886F", "L", IntToText(lv_roundRandomized[6]));
     TextExpressionSetToken("Param/Expression/303F886F", "M", IntToText(7));
     TextExpressionSetToken("Param/Expression/303F886F", "N", IntToText(lv_roundRandomized[7]));
-    TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/303F886F"), lib1_gv_debugUI);
+    TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/303F886F"), true);
     return true;
 }
 

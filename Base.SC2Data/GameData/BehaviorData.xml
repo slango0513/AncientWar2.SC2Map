@@ -4,7 +4,15 @@
         <Requirements value="CreateReserveUnit36"/>
         <Period value="0.0625"/>
         <PeriodicEffect value="CreateReserveUnitTriggerNotice"/>
+        <DisableValidatorArray value="CountUnit"/>
         <DisableValidatorArray value="PhalanxMarkerLessThan36"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CountUnit" parent="War3_Passive">
+        <Requirements value="CountUnit"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="CountUnitTriggerNotice"/>
+        <DisableValidatorArray value="CountUnit"/>
+        <DisableValidatorArray value="PhalanxMarkerEqual0"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="CreepUnitTriggerNotice">
         <DisableValidatorArray index="0" value="NotHostilePlayer"/>
@@ -56,9 +64,9 @@
         <Requirements value="Phalanx"/>
         <Modification>
             <StateFlags index="Invulnerable" value="1"/>
-            <StateFlags index="Unselectable" value="1"/>
             <StateFlags index="Untargetable" value="1"/>
         </Modification>
+        <Period value="0.0625"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="PhalanxMarker" parent="War3_Passive">
         <Requirements value="PhalanxMarker"/>
