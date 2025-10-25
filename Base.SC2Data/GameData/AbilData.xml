@@ -3,9 +3,12 @@
     <CAbilBuild id="AEbuUnit" parent="War3_PowerBuild">
         <FlagArray index="IgnoreFood" value="1"/>
         <InfoArray index="Build1" Unit="nflg">
-            <Button DefaultButtonFace="nflg" Requirements="ShowBuildPhalanx"/>
+            <Button DefaultButtonFace="nflg" Requirements="BuildPhalanx"/>
         </InfoArray>
-        <InfoArray index="Build2" Unit="earc">
+        <InfoArray index="Build2" Unit="hprt">
+            <Button DefaultButtonFace="hprt" Requirements="BuildPortal"/>
+        </InfoArray>
+        <InfoArray index="Build3" Unit="earc">
             <Button DefaultButtonFace="earc" Requirements="BuildUnit"/>
         </InfoArray>
         <Range value="500"/>
@@ -32,9 +35,12 @@
     <CAbilBuild id="AObuUnit" parent="War3_PowerBuild">
         <FlagArray index="IgnoreFood" value="1"/>
         <InfoArray index="Build1" Unit="oflg">
-            <Button DefaultButtonFace="oflg" Requirements="ShowBuildPhalanx"/>
+            <Button DefaultButtonFace="oflg" Requirements="BuildPhalanx"/>
         </InfoArray>
-        <InfoArray index="Build2" Unit="ogru">
+        <InfoArray index="Build2" Unit="hprt">
+            <Button DefaultButtonFace="hprt" Requirements="BuildPortal"/>
+        </InfoArray>
+        <InfoArray index="Build3" Unit="ogru">
             <Button DefaultButtonFace="ogru" Requirements="BuildUnit"/>
         </InfoArray>
         <Range value="500"/>
@@ -42,7 +48,7 @@
     <CAbilBuild id="AUbuUnit" parent="War3_PowerBuild">
         <FlagArray index="IgnoreFood" value="1"/>
         <InfoArray index="Build1" Unit="uflg">
-            <Button DefaultButtonFace="uflg" Requirements="ShowBuildPhalanx"/>
+            <Button DefaultButtonFace="uflg" Requirements="BuildPhalanx"/>
         </InfoArray>
         <InfoArray index="Build2" Unit="hprt">
             <Button DefaultButtonFace="hprt" Requirements="BuildPortal"/>
@@ -74,6 +80,10 @@
     <CAbilEffectInstant id="Arai">
         <Flags index="AutoCastOn" value="1"/>
     </CAbilEffectInstant>
+    <CAbilBehavior id="RotationSystem" parent="War3_Toggle">
+        <CmdButtonArray index="On" Requirements="RotationSystem"/>
+        <BehaviorArray value="RotationSystemMarker"/>
+    </CAbilBehavior>
     <CAbilEffectTarget id="Teleport" parent="War3_EffectTarget">
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>

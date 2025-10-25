@@ -8,6 +8,11 @@
         <OperandArray value="LTCountUnitAlias_PortalQueuedOrBetter2"/>
         <OperandArray value="CountUpgradeBuildPortalCompleteOnly"/>
     </CRequirementAnd>
+    <CRequirementCountBehavior id="CountBehaviorRotationSystemMarkerCompleteOnlyAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="RotationSystemMarker" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountBehavior>
     <CRequirementCountUnit id="CountUnitAlias_PhalanxQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="Alias_Phalanx" State="QueuedOrBetter"/>
@@ -30,7 +35,6 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeCountUnitCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="CountUnit" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementLT id="LTCountUnitAlias_PhalanxQueuedOrBetter3">
@@ -41,4 +45,8 @@
         <OperandArray index="0" value="CountUnitAlias_PortalQueuedOrBetter"/>
         <OperandArray index="1" value="2"/>
     </CRequirementLT>
+    <CRequirementNot id="NotCountBehaviorRotationSystemMarkerCompleteOnlyAtUnit">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountBehaviorRotationSystemMarkerCompleteOnlyAtUnit"/>
+    </CRequirementNot>
 </Catalog>
