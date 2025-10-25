@@ -12,6 +12,12 @@
         <PlacementFootprint value="1x1Army"/>
         <BehaviorArray index="3" Link="AW2_ArmyNotHostilePlayer"/>
         <TacticalAIThink value="AIThinkCreep"/>
+        <LifeArmorFormula>
+            <NegativeArmorMultiplier value="-1"/>
+            <NegativeDamageBase value="1"/>
+            <PositiveArmorMultiplier value="1"/>
+            <PositiveDamageRatio value="0"/>
+        </LifeArmorFormula>
     </CUnit>
     <CUnit default="1" id="AW2_Peon" parent="War3_ArmyBase">
         <DeathRevealRadius value="0"/>
@@ -38,6 +44,7 @@
         <AbilArray index="1" Link="Bushido"/>
         <AbilArray index="2" removed="1"/>
         <BehaviorArray index="3" Link="AW2_Phalanx"/>
+        <BehaviorArray Link="CountUnit"/>
         <WeaponArray index="0" removed="1"/>
         <WeaponArray index="1" removed="1"/>
         <CardLayouts index="0">
@@ -73,6 +80,31 @@
                 <Row value="0"/>
                 <Column value="1"/>
             </LayoutButtons>
+        </CardLayouts>
+        <ResourceState value="tree"/>
+        <TechAliasArray value="Alias_Phalanx"/>
+    </CUnit>
+    <CUnit default="1" id="AW2_Portal" parent="War3_ArmyBase">
+        <DeathRevealRadius value="0"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="Swarm" value="1"/>
+        <Collide index="ForceField" value="0"/>
+        <AbilArray index="0" Link="Teleport"/>
+        <AbilArray index="1" removed="1"/>
+        <AbilArray index="2" removed="1"/>
+        <BehaviorArray index="3" Link="AW2_Phalanx"/>
+        <BehaviorArray Link="CountPhalanx"/>
+        <WeaponArray index="0" removed="1"/>
+        <WeaponArray index="1" removed="1"/>
+        <TechAliasArray value="Alias_Portal"/>
+        <ResourceState value="Raw"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="0" removed="1"/>
+            <LayoutButtons index="1" removed="1"/>
+            <LayoutButtons index="2" removed="1"/>
+            <LayoutButtons index="3" removed="1"/>
         </CardLayouts>
     </CUnit>
     <!--jaina-->
@@ -248,12 +280,12 @@
         <BehaviorArray Link="PhalanxPlaceholder"/>
     </CUnit>
     <!--blackrock blademaster-->
-    <CUnit id="Nbbc" parent="AW2_Army" defType="NONE">
-        <Attributes index="none" value="1"/>
+    <CUnit id="Nbbc" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
         <CostResource index="gold" value="750"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="1621.0002"/>
-        <LifeMax value="1621.0002"/>
+        <LifeStart value="1600"/>
+        <LifeMax value="1600"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
@@ -283,12 +315,12 @@
         <BehaviorArray Link="PhalanxPlaceholder"/>
     </CUnit>
     <!--HeroBladeMaster-->
-    <CUnit id="Obla" parent="AW2_Army" defType="NONE">
-        <Attributes index="none" value="1"/>
+    <CUnit id="Obla" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
         <CostResource index="gold" value="750"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="1621.0002"/>
-        <LifeMax value="1621.0002"/>
+        <LifeStart value="1600"/>
+        <LifeMax value="1600"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
@@ -561,8 +593,8 @@
         <Attributes index="fort" value="1"/>
         <CostResource index="gold" value="2250"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="2050"/>
-        <LifeMax value="2050"/>
+        <LifeStart value="1600"/>
+        <LifeMax value="1600"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
@@ -623,7 +655,7 @@
     </CUnit>
     <!-- Unit Pathing Blockers do not perform as well as doodad Pathing Blockers, however, they can be dynamically turned on and off through triggers. -->
     <CUnit id="PathingBlocker1x1">
-        <Attributes index="wall" value="1"/>
+        <BehaviorArray Link="AW2_PathingBlocker"/>
     </CUnit>
     <CUnit id="UndeadPhalanxPlaceholder" parent="War3_Item" defType="">
         <Collide index="Ground" value="1"/>
@@ -673,24 +705,10 @@
         <Collide index="ForceField" value="0"/>
     </CUnit>
     <!--human flag-->
-    <CUnit id="flag">
-        <CostResource index="gold" value="0"/>
+    <CUnit id="flag" parent="AW2_Phalanx">
+        <BehaviorArray Link="CreateReserveUnit36"/>
         <Footprint value="6x6Phalanx"/>
         <PlacementFootprint value="6x6Phalanx"/>
-        <TechAliasArray value="Alias_Phalanx"/>
-        <ResourceState value="tree"/>
-        <BehaviorArray Link="AW2_Phalanx"/>
-        <BehaviorArray Link="CreateReserveUnit36"/>
-        <BehaviorArray Link="CountUnit"/>
-        <FlagArray index="Uncommandable" value="0"/>
-        <AbilArray Link="RotationSystem"/>
-        <AbilArray Link="Bushido"/>
-        <CardLayouts>
-            <LayoutButtons Face="RotationSystem" Type="AbilCmd" AbilCmd="RotationSystem,On" Row="0" Column="0"/>
-            <LayoutButtons Face="RotationSystemUn" Type="AbilCmd" AbilCmd="RotationSystem,Off" Row="0" Column="0"/>
-            <LayoutButtons Face="Bushido" Type="AbilCmd" AbilCmd="Bushido,On" Row="0" Column="1"/>
-            <LayoutButtons Face="BushidoUn" Type="AbilCmd" AbilCmd="Bushido,Off" Row="0" Column="1"/>
-        </CardLayouts>
     </CUnit>
     <!--Footman-->
     <CUnit id="hfoo">
@@ -771,25 +789,11 @@
         <Collide index="ForceField" value="0"/>
     </CUnit>
     <!--portal unit-->
-    <CUnit id="hprt">
-        <AbilArray Link="Teleport"/>
-        <BehaviorArray Link="Portal"/>
-        <BehaviorArray Link="CountUnitPortal"/>
-        <CardLayouts>
-            <LayoutButtons Face="Teleport" Type="AbilCmd" AbilCmd="Teleport,Execute" Row="0" Column="0"/>
-        </CardLayouts>
+    <CUnit id="hprt" parent="AW2_Portal">
         <Footprint value="3x3Portal"/>
         <PlacementFootprint value="3x3Portal"/>
-        <TechAliasArray value="Alias_Portal"/>
-        <Collide index="Ground" value="0"/>
-        <Collide index="Structure" value="1"/>
-        <Collide index="ForceField" value="0"/>
-        <Collide index="CreepTumor" value="1"/>
-        <Attributes index="fort" value="0"/>
-        <Attributes index="wall" value="1"/>
-        <ResourceState value="Raw"/>
-        <MinimapRadius value="0"/>
         <Facing value="135"/>
+        <FlagArray index="Turnable" value="0"/>
     </CUnit>
     <!--Sorceress-->
     <CUnit id="hsor">
@@ -820,8 +824,8 @@
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="450"/>
         <KillResource index="gold" value="15"/>
-        <LifeStart value="673"/>
-        <LifeMax value="673"/>
+        <LifeStart value="800"/>
+        <LifeMax value="800"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
@@ -830,14 +834,15 @@
         <CardLayouts index="0">
             <LayoutButtons Face="Asal" Type="Passive" Behavior="Asal" Row="2" Column="0"/>
         </CardLayouts>
+        <LifeArmor value="6"/>
     </CUnit>
     <!--ChaosWolfRider-->
     <CUnit id="nchr" parent="AW2_Army" defType="SMALL">
         <Attributes index="small" value="1"/>
         <CostResource index="gold" value="2250"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="1687.5002"/>
-        <LifeMax value="1687.5002"/>
+        <LifeStart value="1600"/>
+        <LifeMax value="1600"/>
         <Speed value="3"/>
         <Race value="Orc"/>
         <Mover value="horse"/>
@@ -846,6 +851,7 @@
         <CardLayouts index="0">
             <LayoutButtons Face="Aens" Type="AbilCmd" AbilCmd="Aens,0" Row="2" Column="0"/>
         </CardLayouts>
+        <LifeArmor value="6"/>
     </CUnit>
     <!--ChaosWarlock-->
     <CUnit id="nchw" parent="AW2_Army" defType="NONE">
@@ -893,24 +899,10 @@
         <FlagArray index="HiddenCargoUI" value="1"/>
     </CUnit>
     <!--NightElf flag-->
-    <CUnit id="nflg">
-        <CostResource index="gold" value="0"/>
+    <CUnit id="nflg" parent="AW2_Phalanx">
+        <BehaviorArray Link="CreateReserveUnit36"/>
         <Footprint value="6x6Phalanx"/>
         <PlacementFootprint value="6x6Phalanx"/>
-        <TechAliasArray value="Alias_Phalanx"/>
-        <ResourceState value="tree"/>
-        <BehaviorArray Link="AW2_Phalanx"/>
-        <BehaviorArray Link="CreateReserveUnit36"/>
-        <BehaviorArray Link="CountUnit"/>
-        <FlagArray index="Uncommandable" value="0"/>
-        <AbilArray Link="RotationSystem"/>
-        <AbilArray Link="Bushido"/>
-        <CardLayouts>
-            <LayoutButtons Face="RotationSystem" Type="AbilCmd" AbilCmd="RotationSystem,On" Row="0" Column="0"/>
-            <LayoutButtons Face="RotationSystemUn" Type="AbilCmd" AbilCmd="RotationSystem,Off" Row="0" Column="0"/>
-            <LayoutButtons Face="Bushido" Type="AbilCmd" AbilCmd="Bushido,On" Row="0" Column="1"/>
-            <LayoutButtons Face="BushidoUn" Type="AbilCmd" AbilCmd="Bushido,Off" Row="0" Column="1"/>
-        </CardLayouts>
     </CUnit>
     <!--forest troll shadow priest-->
     <CUnit id="nfsp" parent="AW2_Army" defType="NONE">
@@ -937,12 +929,12 @@
         <EnergyStart value="100"/>
     </CUnit>
     <!--ForestTroll-->
-    <CUnit id="nftr" parent="AW2_Army" defType="SMALL">
-        <Attributes index="small" value="1"/>
+    <CUnit id="nftr" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
         <CostResource index="gold" value="450"/>
         <KillResource index="gold" value="5"/>
-        <LifeStart value="337.5"/>
-        <LifeMax value="337.5"/>
+        <LifeStart value="250"/>
+        <LifeMax value="250"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
@@ -1000,12 +992,12 @@
         <EnergyStart value="100"/>
     </CUnit>
     <!--IceTroll-->
-    <CUnit id="nitr" parent="AW2_Army" defType="SMALL">
-        <Attributes index="small" value="1"/>
+    <CUnit id="nitr" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
         <CostResource index="gold" value="150"/>
         <KillResource index="gold" value="5"/>
-        <LifeStart value="337.5"/>
-        <LifeMax value="337.5"/>
+        <LifeStart value="250"/>
+        <LifeMax value="250"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
@@ -1184,32 +1176,18 @@
         <FlagArray index="AIPressForwardDisabled" value="1"/>
     </CUnit>
     <!--Orc flag-->
-    <CUnit id="oflg">
-        <CostResource index="gold" value="0"/>
+    <CUnit id="oflg" parent="AW2_Phalanx">
+        <BehaviorArray Link="CreateReserveUnit36"/>
         <Footprint value="6x6Phalanx"/>
         <PlacementFootprint value="6x6Phalanx"/>
-        <TechAliasArray value="Alias_Phalanx"/>
-        <ResourceState value="tree"/>
-        <BehaviorArray Link="AW2_Phalanx"/>
-        <BehaviorArray Link="CreateReserveUnit36"/>
-        <BehaviorArray Link="CountUnit"/>
-        <FlagArray index="Uncommandable" value="0"/>
-        <AbilArray Link="RotationSystem"/>
-        <AbilArray Link="Bushido"/>
-        <CardLayouts>
-            <LayoutButtons Face="RotationSystem" Type="AbilCmd" AbilCmd="RotationSystem,On" Row="0" Column="0"/>
-            <LayoutButtons Face="RotationSystemUn" Type="AbilCmd" AbilCmd="RotationSystem,Off" Row="0" Column="0"/>
-            <LayoutButtons Face="Bushido" Type="AbilCmd" AbilCmd="Bushido,On" Row="0" Column="1"/>
-            <LayoutButtons Face="BushidoUn" Type="AbilCmd" AbilCmd="Bushido,Off" Row="0" Column="1"/>
-        </CardLayouts>
     </CUnit>
     <!--Grunt-->
     <CUnit id="ogru" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="150"/>
         <KillResource index="gold" value="15"/>
-        <LifeStart value="673"/>
-        <LifeMax value="673"/>
+        <LifeStart value="800"/>
+        <LifeMax value="800"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
@@ -1220,6 +1198,7 @@
             <LayoutButtons Face="nchg" Type="AbilCmd" AbilCmd="UpgradeTonchg,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="Asal" Type="Passive" Behavior="Asal" Row="2" Column="0"/>
         </CardLayouts>
+        <LifeArmor value="6"/>
     </CUnit>
     <!--HeadHunter-->
     <CUnit id="ohun" parent="AW2_Army" defType="MEDIUM">
@@ -1374,8 +1353,8 @@
         <Attributes index="small" value="1"/>
         <CostResource index="gold" value="750"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="1687.5002"/>
-        <LifeMax value="1687.5002"/>
+        <LifeStart value="1600"/>
+        <LifeMax value="1600"/>
         <Speed value="3"/>
         <Race value="Orc"/>
         <Mover value="horse"/>
@@ -1386,14 +1365,15 @@
             <LayoutButtons Face="nchr" Type="AbilCmd" AbilCmd="UpgradeTonchr,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="Aens" Type="AbilCmd" AbilCmd="Aens,0" Row="2" Column="0"/>
         </CardLayouts>
+        <LifeArmor value="6"/>
     </CUnit>
     <!--Shaman-->
     <CUnit id="oshm" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
         <CostResource index="gold" value="600"/>
         <KillResource index="gold" value="30"/>
-        <LifeStart value="25"/>
-        <LifeMax value="25"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
@@ -1421,8 +1401,8 @@
     <!--SpiritwalkerMorph-->
     <CUnit id="ospm" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
-        <CostResource index="gold" value="150"/>
-        <KillResource index="gold" value="5"/>
+        <CostResource index="gold" value="600"/>
+        <KillResource index="gold" value="30"/>
         <LifeStart value="1825"/>
         <LifeMax value="1825"/>
         <Speed value="2"/>
@@ -1453,23 +1433,25 @@
     <!--Spiritwalker-->
     <CUnit id="ospw" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
-        <CostResource index="gold" value="150"/>
-        <KillResource index="gold" value="5"/>
+        <CostResource index="gold" value="600"/>
+        <KillResource index="gold" value="30"/>
         <LifeStart value="1825"/>
         <LifeMax value="1825"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
         <TurningRate value="499.9218"/>
+        <AbilArray Link="UpgradeToospm"/>
         <AbilArray Link="AcpfUn"/>
         <AbilArray Link="Aspl"/>
         <AbilArray Link="Adcn"/>
         <AbilArray Link="Aast"/>
         <CardLayouts index="0">
             <LayoutButtons Face="AcpfUn" Type="AbilCmd" AbilCmd="AcpfUn,0" Row="2" Column="3"/>
-            <LayoutButtons Face="Aspl" Type="AbilCmd" AbilCmd="Aspl,0" Row="2" Column="0"/>
-            <LayoutButtons Face="Adcn" Type="AbilCmd" AbilCmd="Adcn,0" Row="2" Column="1"/>
-            <LayoutButtons Face="Aast" Type="AbilCmd" AbilCmd="Aast,0" Row="2" Column="2"/>
+            <LayoutButtons Face="ospm" Type="AbilCmd" AbilCmd="UpgradeToospm,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Aspl" Type="AbilCmd" AbilCmd="Aspl,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Adcn" Type="AbilCmd" AbilCmd="Adcn,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="Aast" Type="AbilCmd" AbilCmd="Aast,Execute" Row="2" Column="2"/>
         </CardLayouts>
         <BehaviorArray Link="tauren"/>
         <Subtitle value="TaurenClass"/>
@@ -1484,8 +1466,8 @@
         <Attributes index="fort" value="1"/>
         <CostResource index="gold" value="750"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="2050"/>
-        <LifeMax value="2050"/>
+        <LifeStart value="1600"/>
+        <LifeMax value="1600"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
@@ -1564,24 +1546,10 @@
         </CardLayouts>
     </CUnit>
     <!--Undead flag-->
-    <CUnit id="uflg">
-        <CostResource index="gold" value="0"/>
+    <CUnit id="uflg" parent="AW2_Phalanx">
+        <BehaviorArray Link="CreateReserveUnit36"/>
         <Footprint value="6x6Phalanx"/>
         <PlacementFootprint value="6x6Phalanx"/>
-        <TechAliasArray value="Alias_Phalanx"/>
-        <ResourceState value="tree"/>
-        <BehaviorArray Link="AW2_Phalanx"/>
-        <BehaviorArray Link="CreateReserveUnit36"/>
-        <BehaviorArray Link="CountUnit"/>
-        <FlagArray index="Uncommandable" value="0"/>
-        <AbilArray Link="RotationSystem"/>
-        <AbilArray Link="Bushido"/>
-        <CardLayouts>
-            <LayoutButtons Face="RotationSystem" Type="AbilCmd" AbilCmd="RotationSystem,On" Row="0" Column="0"/>
-            <LayoutButtons Face="RotationSystemUn" Type="AbilCmd" AbilCmd="RotationSystem,Off" Row="0" Column="0"/>
-            <LayoutButtons Face="Bushido" Type="AbilCmd" AbilCmd="Bushido,On" Row="0" Column="1"/>
-            <LayoutButtons Face="BushidoUn" Type="AbilCmd" AbilCmd="Bushido,Off" Row="0" Column="1"/>
-        </CardLayouts>
     </CUnit>
     <!--Ghoul-->
     <CUnit id="ugho">

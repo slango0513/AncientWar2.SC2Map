@@ -51,8 +51,12 @@
     </CEffectDamage>
     <CEffectSet id="CountUnitTriggerNotice">
         <EffectArray value="KillCaster"/>
+        <ValidatorArray value="CountUnit"/>
+        <ValidatorArray value="PhalanxMarkerEqual0"/>
     </CEffectSet>
-    <CEffectSet id="CountUnitPortalTriggerNotice">
+    <CEffectSet id="CountPhalanxTriggerNotice">
+        <ValidatorArray value="CountUnit"/>
+        <ValidatorArray value="DontHavePhalanx"/>
         <EffectArray value="KillCaster"/>
     </CEffectSet>
     <CEffectSet id="CreateReserveUnitTriggerNotice"/>
@@ -74,11 +78,11 @@
     </CEffectDamage>
     <CEffectDamage id="Nbbc1" parent="AW2_SiegeDamage">
         <Kind value="Melee"/>
-        <Amount value="72"/>
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="Obla1" parent="AW2_SiegeDamage">
         <Kind value="Melee"/>
-        <Amount value="72"/>
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="Ofar1" parent="AW2_MagicDamage">
         <Amount value="72"/>
@@ -88,7 +92,7 @@
     </CEffectDamage>
     <CEffectDamage id="Otch1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
-        <Amount value="72"/>
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="Othr1" parent="AW2_MagicDamage">
         <Amount value="72"/>
@@ -102,11 +106,11 @@
     </CEffectDamage>
     <CEffectDamage id="nchg1" parent="AW2_ChaosDamage">
         <Kind value="Melee"/>
-        <Amount value="24"/>
+        <Amount value="36"/>
     </CEffectDamage>
     <CEffectDamage id="nchr1" parent="AW2_ChaosDamage">
         <Kind value="Melee"/>
-        <Amount value="72"/>
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="nchw1" parent="AW2_ChaosDamage">
         <Amount value="24"/>
@@ -119,14 +123,14 @@
     </CEffectDamage>
     <CEffectDamage id="nftr1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
-        <Amount value="6"/>
+        <Amount value="12"/>
     </CEffectDamage>
     <CEffectDamage id="nitp1" parent="AW2_MagicDamage">
         <Amount value="12"/>
     </CEffectDamage>
     <CEffectDamage id="nitr1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
-        <Amount value="6"/>
+        <Amount value="12"/>
     </CEffectDamage>
     <CEffectDamage id="nmed1">
         <AttributeFactor index="small" value="0.25"/>
@@ -222,7 +226,7 @@
         <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="ogru1" parent="AW2_NormalDamage">
-        <Amount value="24"/>
+        <Amount value="36"/>
         <Kind value="Melee"/>
     </CEffectDamage>
     <CEffectDamage id="ohun1" parent="AW2_PierceDamage">
@@ -232,17 +236,18 @@
         <Amount value="72"/>
     </CEffectDamage>
     <CEffectDamage id="orai1" parent="AW2_SiegeDamage">
-        <Amount value="72"/>
+        <Amount value="96"/>
         <Kind value="Melee"/>
     </CEffectDamage>
     <CEffectDamage id="oshm1" parent="AW2_MagicDamage">
-        <Amount value="96"/>
+        <Amount value="48"/>
+        <Kind value="Melee"/>
     </CEffectDamage>
     <CEffectDamage id="ospw1" parent="AW2_MagicDamage">
         <Amount value="12"/>
     </CEffectDamage>
     <CEffectDamage id="otau1" parent="AW2_NormalDamage">
-        <Amount value="72"/>
+        <Amount value="96"/>
         <Kind value="Melee"/>
     </CEffectDamage>
     <CEffectDamage id="otbk1" parent="AW2_PierceDamage">

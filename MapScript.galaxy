@@ -89,7 +89,6 @@ unitfilter lib1_gv_portalFilter;
 unitfilter lib1_gv_buildingFilter;
 unitfilter lib1_gv_creepFilter;
 unitfilter lib1_gv_unitFilter;
-unitfilter lib1_gv_phalanxPlaceholderFilter;
 unitfilter lib1_gv_pathBlockerFilter;
 unit[lib1_gv_playerMaximumIndex + 1][lib1_gv_phalanxMaximumCount + 1] lib1_gv_phalanx;
 string[lib1_gv_playerMaximumIndex + 1][lib1_gv_phalanxMaximumCount + 1] lib1_gv_phalanxBuff;
@@ -112,7 +111,7 @@ bool lib1_gf_IsFinalRound (int lp_round);
 void lib1_gf_RoundGoldSet (int lp_round, int lp_value);
 void lib1_gf_BonusRoundSet (bool lp_on, int lp_round);
 void lib1_gf_GoldAdd (int lp_round);
-void lib1_gf_BlockerRemove (region lp_region);
+void lib1_gf_PathingBlockerRemove (region lp_region);
 void lib1_gf_ValidRegionFillHidden ();
 void lib1_gf_BattlefieldSetAll (region lp_region);
 void lib1_gf_BattlefieldRevealerEnable (bool lp_option);
@@ -250,8 +249,7 @@ void lib1_InitVariables () {
     lib1_gv_buildingFilter = UnitFilter(0, (1 << (c_targetFilterRadar - 32)), (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
     lib1_gv_creepFilter = UnitFilter(0, (1 << (c_targetFilterMapBoss - 32)), (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
     lib1_gv_unitFilter = UnitFilter(0, 0, (1 << c_targetFilterHover) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterMapBoss - 32)));
-    lib1_gv_phalanxPlaceholderFilter = UnitFilter((1 << c_targetFilterHover), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
-    lib1_gv_pathBlockerFilter = UnitFilter((1 << c_targetFilterHover), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
+    lib1_gv_pathBlockerFilter = UnitFilter((1 << c_targetFilterUser1), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
 }
 
 // Functions
@@ -529,19 +527,17 @@ void lib1_gf_GoldAdd (int lp_round) {
     }
 }
 
-void lib1_gf_BlockerRemove (region lp_region) {
+void lib1_gf_PathingBlockerRemove (region lp_region) {
     unitgroup auto58E65E03_g;
     int auto58E65E03_u;
 
     // Variable Declarations
     unit lv_unit;
-    string lv_unitType;
 
     // Variable Initialization
-    lv_unitType = "PathingBlocker1x1";
 
     // Implementation
-    auto58E65E03_g = UnitGroup(lv_unitType, c_playerAny, lp_region, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    auto58E65E03_g = UnitGroup(null, c_playerAny, lp_region, lib1_gv_pathBlockerFilter, 0);
     auto58E65E03_u = 1;
     for ( ; auto58E65E03_u <= UnitGroupCount(auto58E65E03_g, c_unitCountAll) ; auto58E65E03_u += BoolToInt(lv_unit == UnitGroupUnit(auto58E65E03_g, auto58E65E03_u)) ) {
         lv_unit = UnitGroupUnit(auto58E65E03_g, auto58E65E03_u);
@@ -2988,7 +2984,6 @@ bool lib1_gt_PortalCreated_Func (bool testConds, bool runActions) {
     }
 
     if ((UnitIsValid(EventUnitCreatedUnit()) == true) && (UnitFilterMatch(EventUnitCreatedUnit(), lv_player, lib1_gv_portalFilter) == true)) {
-        libNtve_gf_SendActorMessageToUnit(EventUnitCreatedUnit(), libNtve_gf_SetTintColor(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lv_player, false)), 1.0, 0.0));
     }
 
     return true;
@@ -3550,6 +3545,7 @@ bool lib1_gt_PlayerInizialization_Func (bool testConds, bool runActions) {
             PlayerGroupAdd(lib1_gv_aIGroup, lib1_gf_IndexGetUserPlayer(lv_player));
         }
 
+        libGAwX_gf_SetPlayerUIRace(lib1_gf_IndexGetUserPlayer(lv_player), "Orc");
     }
     libGAwX_gf_SetPlayerUIRace(0, "Orc");
     auto63073FE8_ae = lib1_gv_playerCount;
@@ -3749,6 +3745,8 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     libGAwX_gf_SetWar3TimeOfDay("13:00:00");
     libGAwX_gf_PauseUnpauseTimeOfDayWar3(true);
     MeleeInitUnits();
+    gf_E69588E69E9CE58AA9E6898BE6B3A8E5868CE4BA8BE4BBB6(0, "CountPhalanxTriggerNotice");
+    gf_E69588E69E9CE58AA9E6898BE6B3A8E5868CE4BA8BE4BBB6(0, "CountUnitTriggerNotice");
     lib1_gf_RoundStartLoop(lv_debug);
     return true;
 }
@@ -3839,20 +3837,20 @@ bool gt_VenueInizialization_Func (bool testConds, bool runActions) {
     else if (auto480E4CF2_val == "0002") {
         lib1_gf_VenueInitialSet(RegionFromId(25), 1, 90.0);
         lib1_gf_VenueInitialSet(RegionFromId(26), 2, 90.0);
-        lib1_gf_BlockerRemove(RegionFromId(26));
+        lib1_gf_PathingBlockerRemove(RegionFromId(26));
         lib1_gf_VenueInitialSet(RegionFromId(27), 3, 270.0);
         lib1_gf_VenueInitialSet(RegionFromId(28), 4, 270.0);
-        lib1_gf_BlockerRemove(RegionFromId(28));
+        lib1_gf_PathingBlockerRemove(RegionFromId(28));
         lib1_gf_VenueInitialSet(RegionFromId(29), 5, 270.0);
         lib1_gf_VenueInitialSet(RegionFromId(30), 6, 270.0);
-        lib1_gf_BlockerRemove(RegionFromId(30));
+        lib1_gf_PathingBlockerRemove(RegionFromId(30));
         lib1_gf_VenueInitialSet(RegionFromId(31), 7, 90.0);
         lib1_gf_VenueInitialSet(RegionFromId(32), 8, 90.0);
-        lib1_gf_BlockerRemove(RegionFromId(32));
-        lib1_gf_BlockerRemove(RegionFromId(42));
-        lib1_gf_BlockerRemove(RegionFromId(43));
-        lib1_gf_BlockerRemove(RegionFromId(44));
-        lib1_gf_BlockerRemove(RegionFromId(45));
+        lib1_gf_PathingBlockerRemove(RegionFromId(32));
+        lib1_gf_PathingBlockerRemove(RegionFromId(42));
+        lib1_gf_PathingBlockerRemove(RegionFromId(43));
+        lib1_gf_PathingBlockerRemove(RegionFromId(44));
+        lib1_gf_PathingBlockerRemove(RegionFromId(45));
         lib1_gf_BonusVenueSet(RegionFromId(25), 1, 90.0);
         lib1_gf_BonusVenueSet(RegionFromId(26), 2, 90.0);
         lib1_gf_BonusVenueSet(RegionFromId(29), 3, 270.0);

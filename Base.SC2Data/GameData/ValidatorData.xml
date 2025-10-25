@@ -48,20 +48,18 @@
             <Radius value="500"/>
             <Validator value="HasPhalanxMarker"/>
         </AreaArray>
-        <SearchFilters value="Visible;Neutral,Enemy,Hover,Worker,RawResource,HarvestableResource,Missile,Dead,Hidden,Radar,MapBoss"/>
+        <SearchFilters value="Visible;Player,Neutral,Enemy,Hover,Missile,Dead,Hidden,MapBoss"/>
     </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="PhalanxMarkerEqual0">
         <WhichLocation Value="CasterPoint"/>
         <AreaArray Radius="500" Validator="HasPhalanxMarker"/>
-        <SearchFilters value="Visible;Neutral,Enemy,Hover,Worker,RawResource,HarvestableResource,Missile,Dead,Hidden,Radar,MapBoss"/>
+        <SearchFilters value="Visible;Player,Neutral,Enemy,Hover,Missile,Dead,Hidden,MapBoss"/>
         <Compare value="Eq"/>
     </CValidatorLocationEnumArea>
-    <CValidatorLocationEnumArea id="UnitEqual0">
-        <WhichLocation Value="CasterPoint"/>
-        <AreaArray Radius="500"/>
-        <SearchFilters value="Visible;Neutral,Enemy,Hover,Worker,RawResource,HarvestableResource,Missile,Dead,Hidden,Radar,MapBoss"/>
-        <Compare value="Eq"/>
-    </CValidatorLocationEnumArea>
+    <CValidatorPlayerRequirement id="DontHavePhalanx">
+        <Find value="1"/>
+        <Value value="DontHavePhalanx"/>
+    </CValidatorPlayerRequirement>
     <CValidatorUnitCompareBehaviorCount id="HasPhalanxMarker">
         <Compare value="GT"/>
         <Behavior value="PhalanxMarker"/>

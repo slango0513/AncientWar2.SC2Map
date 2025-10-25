@@ -105,9 +105,8 @@
             <Item Type="Variable" Library="1" Id="B4CE6A29"/>
             <Item Type="Variable" Library="1" Id="2D27C0CE"/>
             <Item Type="Variable" Library="1" Id="9026387E"/>
-            <Item Type="Variable" Library="1" Id="717EBEB2"/>
-            <Item Type="Variable" Library="1" Id="5C787ABF"/>
             <Item Type="Variable" Library="1" Id="41922B8F"/>
+            <Item Type="Variable" Library="1" Id="5C787ABF"/>
             <Item Type="Variable" Library="1" Id="2454D789"/>
             <Item Type="Variable" Library="1" Id="E9EE6F69"/>
             <Item Type="Variable" Library="1" Id="6EC7A68B"/>
@@ -838,32 +837,7 @@
             <Value>-;Hover,Missile,Dead,Hidden,MapBoss</Value>
             <ValueType Type="unitfilter"/>
         </Element>
-        <Element Type="Variable" Id="717EBEB2">
-            <Disabled/>
-            <VariableType>
-                <Type Value="unitfilter"/>
-                <Constant/>
-            </VariableType>
-            <Value Type="Param" Library="1" Id="11B81838"/>
-        </Element>
-        <Element Type="Param" Id="11B81838">
-            <Value>-;Hover,Worker,RawResource,HarvestableResource,Missile,Dead,Hidden,Radar,MapBoss</Value>
-            <ValueType Type="unitfilter"/>
-        </Element>
-        <Element Type="Variable" Id="5C787ABF">
-            <NotYetImplemented/>
-            <VariableType>
-                <Type Value="unitfilter"/>
-                <Constant/>
-            </VariableType>
-            <Value Type="Param" Library="1" Id="8DF999CF"/>
-        </Element>
-        <Element Type="Param" Id="8DF999CF">
-            <Value>Hover;Missile,Dead,Hidden</Value>
-            <ValueType Type="unitfilter"/>
-        </Element>
         <Element Type="Variable" Id="41922B8F">
-            <NotYetImplemented/>
             <VariableType>
                 <Type Value="unitfilter"/>
                 <Constant/>
@@ -871,6 +845,18 @@
             <Value Type="Param" Library="1" Id="3C12C73F"/>
         </Element>
         <Element Type="Param" Id="3C12C73F">
+            <Value>User1;Missile,Dead,Hidden</Value>
+            <ValueType Type="unitfilter"/>
+        </Element>
+        <Element Type="Variable" Id="5C787ABF">
+            <Disabled/>
+            <VariableType>
+                <Type Value="unitfilter"/>
+                <Constant/>
+            </VariableType>
+            <Value Type="Param" Library="1" Id="8DF999CF"/>
+        </Element>
+        <Element Type="Param" Id="8DF999CF">
             <Value>Hover;Missile,Dead,Hidden</Value>
             <ValueType Type="unitfilter"/>
         </Element>
@@ -3714,7 +3700,6 @@
             <FlagAction/>
             <Parameter Type="ParamDef" Library="1" Id="2E9DE9D1"/>
             <Variable Type="Variable" Library="1" Id="D0603770"/>
-            <Variable Type="Variable" Library="1" Id="931ACA7F"/>
             <FunctionCall Type="FunctionCall" Library="1" Id="58E65E03"/>
         </Element>
         <Element Type="ParamDef" Id="2E9DE9D1">
@@ -3734,18 +3719,6 @@
         </Element>
         <Element Type="Param" Id="D5103872">
             <Preset Type="PresetValue" Library="Ntve" Id="D6EA4D09"/>
-        </Element>
-        <Element Type="Variable" Id="931ACA7F">
-            <VariableType>
-                <Type Value="gamelink"/>
-                <GameType Value="Unit"/>
-            </VariableType>
-            <Value Type="Param" Library="1" Id="63C3227D"/>
-        </Element>
-        <Element Type="Param" Id="63C3227D">
-            <Value>PathingBlocker1x1</Value>
-            <ValueType Type="gamelink"/>
-            <ValueGameType Type="Unit"/>
         </Element>
         <Element Type="FunctionCall" Id="58E65E03">
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000327"/>
@@ -3767,7 +3740,7 @@
         </Element>
         <Element Type="Param" Id="AE25473F">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="00000691"/>
-            <Variable Type="Variable" Library="1" Id="931ACA7F"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000231"/>
         </Element>
         <Element Type="Param" Id="D6282728">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="00000692"/>
@@ -3779,8 +3752,7 @@
         </Element>
         <Element Type="Param" Id="9DB08D37">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="00000695"/>
-            <Value>-;Missile,Dead,Hidden</Value>
-            <ValueType Type="unitfilter"/>
+            <Variable Type="Variable" Library="1" Id="41922B8F"/>
         </Element>
         <Element Type="Param" Id="9362BA59">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="00000694"/>
@@ -12376,6 +12348,7 @@
             <FunctionCall Type="FunctionCall" Library="1" Id="4AC055CE"/>
         </Element>
         <Element Type="FunctionCall" Id="14A720B5">
+            <Disabled/>
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="E1552C18"/>
             <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
             <Parameter Type="Param" Library="1" Id="8750EF91"/>
@@ -27893,6 +27866,7 @@
             <FunctionCall Type="FunctionCall" Library="1" Id="950E68E2"/>
             <FunctionCall Type="FunctionCall" Library="1" Id="0301E04A"/>
             <FunctionCall Type="FunctionCall" Library="1" Id="CC348AFF"/>
+            <FunctionCall Type="FunctionCall" Library="1" Id="C0CA9DEE"/>
         </Element>
         <Element Type="Param" Id="83DB797A">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="F13E2CDE"/>
@@ -28232,6 +28206,30 @@
             <ParameterDef Type="ParamDef" Library="Ntve" Id="F4B91B76"/>
             <Variable Type="Variable" Library="1" Id="2766E9FE"/>
         </Element>
+        <Element Type="FunctionCall" Id="C0CA9DEE">
+            <FunctionDef Type="FunctionDef" Library="GAwX" Id="BE281257"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="DAF49931"/>
+            <Parameter Type="Param" Library="1" Id="9C93CCEB"/>
+            <Parameter Type="Param" Library="1" Id="102FF861"/>
+        </Element>
+        <Element Type="Param" Id="9C93CCEB">
+            <ParameterDef Type="ParamDef" Library="GAwX" Id="716300AB"/>
+            <FunctionCall Type="FunctionCall" Library="1" Id="02650EF8"/>
+        </Element>
+        <Element Type="FunctionCall" Id="02650EF8">
+            <FunctionDef Type="FunctionDef" Library="1" Id="D4124A64"/>
+            <Parameter Type="Param" Library="1" Id="352A446F"/>
+        </Element>
+        <Element Type="Param" Id="352A446F">
+            <ParameterDef Type="ParamDef" Library="1" Id="A41E6151"/>
+            <Variable Type="Variable" Library="1" Id="47FCA551"/>
+        </Element>
+        <Element Type="Param" Id="102FF861">
+            <ParameterDef Type="ParamDef" Library="GAwX" Id="514F410F"/>
+            <Value>Orc</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="Race"/>
+        </Element>
         <Element Type="FunctionCall" Id="34B10081">
             <FunctionDef Type="FunctionDef" Library="GAwX" Id="BE281257"/>
             <Parameter Type="Param" Library="1" Id="0356F5C7"/>
@@ -28384,6 +28382,8 @@
         <Action Type="FunctionCall" Id="4822564E"/>
         <Action Type="FunctionCall" Id="69A03050"/>
         <Action Type="FunctionCall" Id="A892969E"/>
+        <Action Type="FunctionCall" Id="F2727B5D"/>
+        <Action Type="FunctionCall" Id="04D0CE39"/>
         <Action Type="FunctionCall" Id="923F5343"/>
     </Element>
     <Element Type="Variable" Id="856C04F2">
@@ -28637,6 +28637,38 @@
     <Element Type="Param" Id="E0C79AE2">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="F3D874FB"/>
         <Preset Type="PresetValue" Library="Ntve" Id="3597DB0C"/>
+    </Element>
+    <Element Type="FunctionCall" Id="F2727B5D">
+        <FunctionDef Type="FunctionDef" Id="23CFEC66"/>
+        <Parameter Type="Param" Id="DDABCE51"/>
+        <Parameter Type="Param" Id="0180DA8F"/>
+    </Element>
+    <Element Type="Param" Id="DDABCE51">
+        <ParameterDef Type="ParamDef" Id="6553AA1D"/>
+        <Value>0</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="Param" Id="0180DA8F">
+        <ParameterDef Type="ParamDef" Id="9883C225"/>
+        <Value>CountPhalanxTriggerNotice</Value>
+        <ValueType Type="gamelink"/>
+        <ValueGameType Type="Effect"/>
+    </Element>
+    <Element Type="FunctionCall" Id="04D0CE39">
+        <FunctionDef Type="FunctionDef" Id="23CFEC66"/>
+        <Parameter Type="Param" Id="A42E9C19"/>
+        <Parameter Type="Param" Id="9C0F9498"/>
+    </Element>
+    <Element Type="Param" Id="A42E9C19">
+        <ParameterDef Type="ParamDef" Id="6553AA1D"/>
+        <Value>0</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="Param" Id="9C0F9498">
+        <ParameterDef Type="ParamDef" Id="9883C225"/>
+        <Value>CountUnitTriggerNotice</Value>
+        <ValueType Type="gamelink"/>
+        <ValueGameType Type="Effect"/>
     </Element>
     <Element Type="FunctionCall" Id="923F5343">
         <FunctionDef Type="FunctionDef" Library="1" Id="77E34B4C"/>

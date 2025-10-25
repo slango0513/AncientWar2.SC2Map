@@ -8,7 +8,7 @@
         <RemoveValidatorArray value="NotHostilePlayer"/>
         <RemoveValidatorArray value="CasterIsNotWorker"/>
         <RemoveValidatorArray value="CasterIsNotCreep"/>
-        <Modification SightMaximum="0">
+        <Modification>
             <ModifyFlags index="SuppressMoving" value="1"/>
             <ModifyFlags index="SuppressTurning" value="1"/>
             <StateFlags index="Invulnerable" value="1"/>
@@ -52,6 +52,23 @@
             <AbilLinkEnableArray value="Asud"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="AW2_PathingBlocker" parent="War3_Passive">
+        <Modification>
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="UnitAttrOnHover" value="1"/>
+            <StateFlags index="UnitAttrOnUser1" value="1"/>
+            <StateFlags index="Untargetable" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Aetl">
+        <Modification>
+            <StateFlags index="SuppressAttack" value="0"/>
+            <AbilClassDisableArray index="CAbilAttack" value="0"/>
+        </Modification>
+        <DamageResponse>
+            <Kind index="Melee" value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
     <!--Pillage-->
     <CBehaviorBuff id="Asal">
         <Requirements value=""/>
@@ -76,17 +93,18 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="CountUnit" parent="War3_Passive">
         <Requirements value="CountUnit"/>
-        <Period value="0.0625"/>
+        <Period value="5"/>
         <PeriodicEffect value="CountUnitTriggerNotice"/>
         <DisableValidatorArray value="CountUnit"/>
         <DisableValidatorArray value="PhalanxMarkerEqual0"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="CountUnitPortal" parent="War3_Passive">
-        <Requirements value="CountUnitPortal"/>
-        <Period value="0.0625"/>
-        <PeriodicEffect value="CountUnitPortalTriggerNotice"/>
+    <CBehaviorBuff id="CountPhalanx" parent="War3_Passive">
+        <Name value="CountUnitPortal/Name"/>
+        <Requirements value="CountPhalanx"/>
         <DisableValidatorArray value="CountUnit"/>
-        <DisableValidatorArray value="UnitEqual0"/>
+        <DisableValidatorArray value="DontHavePhalanx"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="CountPhalanxTriggerNotice"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Building" parent="War3_Passive">
         <Requirements value="Building"/>
@@ -150,8 +168,7 @@
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="AW2_Phalanx" parent="War3_Passive">
-        <Requirements value="AW2_Phalanx"/>
-        <Modification SightMaximum="0">
+        <Modification>
             <StateFlags index="Invulnerable" value="1"/>
             <StateFlags index="UnitAttrOnHover" value="1"/>
             <StateFlags index="Untargetable" value="1"/>
@@ -160,12 +177,11 @@
     <CBehaviorBuff id="PhalanxMarker" parent="War3_Passive">
         <Requirements value="PhalanxMarker"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="Portal" parent="War3_Passive">
-        <Requirements value="Portal"/>
+    <CBehaviorBuff id="AW2_Portal" parent="War3_Passive">
+        <Requirements value="AW2_Portal"/>
         <Modification SightMaximum="0">
             <StateFlags index="Invulnerable" value="1"/>
             <StateFlags index="UnitAttrOnHover" value="1"/>
-            <StateFlags index="Unselectable" value="1"/>
             <StateFlags index="Untargetable" value="1"/>
         </Modification>
     </CBehaviorBuff>
@@ -214,9 +230,8 @@
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="AW2_Peon" parent="War3_Passive">
-        <Name value="AW2_Worker/Name"/>
-        <Requirements value="AW2_Peon"/>
         <Modification>
+            <StateFlags index="Invulnerable" value="1"/>
             <StateFlags index="UnitAttrOnHover" value="1"/>
         </Modification>
     </CBehaviorBuff>

@@ -97,6 +97,8 @@
     <!--ChaosWarlock-->
     <CWeaponLegacy id="nchw1">
         <Period value="3"/>
+        <MinScanRange value="5"/>
+        <Range value="5"/>
     </CWeaponLegacy>
     <!--ChaosKodoBeast-->
     <CWeaponLegacy id="nckb1">
@@ -120,7 +122,7 @@
         <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
         <Range value="0.7031"/>
         <Period value="3"/>
-        <DamagePoint value="0.5"/>
+        <DamagePoint value="0.3"/>
         <Effect value="nftr1CreatePersistent"/>
         <DisplayAttackCount value="2"/>
     </CWeaponLegacy>
@@ -142,7 +144,7 @@
         <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
         <Range value="0.7031"/>
         <Period value="3"/>
-        <DamagePoint value="0.5"/>
+        <DamagePoint value="0.3"/>
         <Effect value="nitr1CreatePersistent"/>
         <DisplayAttackCount value="2"/>
     </CWeaponLegacy>
@@ -183,9 +185,7 @@
     <!--War2 Warlock-->
     <CWeaponLegacy id="nw2w1" parent="missile" atkType="MAGIC">
         <Effect value="nw2w1LM"/>
-        <MinScanRange value="4.6875"/>
         <TargetFilters value="Visible;wall,tree,Missile,dead,invulnerable,immunity"/>
-        <Range value="4.6875"/>
         <RangeSlop value="1.9531"/>
         <Period value="3"/>
         <DamagePoint value="0.43"/>
@@ -197,6 +197,12 @@
     </CWeaponLegacy>
     <!--Grunt-->
     <CWeaponLegacy id="ogru1">
+        <Period value="3"/>
+    </CWeaponLegacy>
+    <!--HeadHunter-->
+    <CWeaponLegacy id="ohun1">
+        <MinScanRange value="6"/>
+        <Range value="6"/>
         <Period value="3"/>
     </CWeaponLegacy>
     <!--KodoBeast-->
@@ -214,8 +220,14 @@
         <DamagePoint value="0.5"/>
     </CWeaponLegacy>
     <!--Shaman-->
-    <CWeaponLegacy id="oshm1">
-        <Period value="3"/>
+    <CWeaponLegacy id="oshm1" parent="normal" atkType="MAGIC">
+        <EditorCategories value="Race:Orc"/>
+        <MinScanRange value="3.9062"/>
+        <TargetFilters value="Visible;air,wall,tree,Missile,dead,invulnerable,immunity"/>
+        <Range value="0.7031"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.43"/>
     </CWeaponLegacy>
     <!--Spiritwalker-->
     <CWeaponLegacy id="ospw1">
@@ -228,5 +240,7 @@
     <!--Berserker-->
     <CWeaponLegacy id="otbk1">
         <Period value="3"/>
+        <MinScanRange value="6"/>
+        <Range value="6"/>
     </CWeaponLegacy>
 </Catalog>

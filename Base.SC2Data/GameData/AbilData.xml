@@ -365,15 +365,9 @@
         <CmdButtonArray index="Execute" Requirements="">
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
-        <CmdButtonArray index="Cancel">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
     </CAbilMorph>
     <CAbilMorph id="AcpfUn">
         <CmdButtonArray index="Execute" Requirements="">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
-        <CmdButtonArray index="Cancel">
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
     </CAbilMorph>
@@ -701,6 +695,20 @@
     <CAbilMorph id="UpgradeTonftr" parent="War3_Upgrade" toUnit="nftr">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
         <InfoArray index="0" Score="1" Unit="nftr">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToospm" parent="War3_Upgrade" toUnit="ospm">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+        <InfoArray index="0" Score="1" Unit="ospm">
             <SectionArray index="Abils">
                 <DurationArray index="Delay" value="0"/>
             </SectionArray>

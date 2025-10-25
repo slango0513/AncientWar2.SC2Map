@@ -18,7 +18,7 @@
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
     </CActorUnit>
     <!--blackrockblademaster-->
-    <CActorUnit id="Nbbc" parent="War3_Army" unitSound="HeroBladeMaster" unitName="Nbbc" defType="NONE">
+    <CActorUnit id="Nbbc" parent="War3_Army" unitSound="HeroBladeMaster" unitName="Nbbc" defType="MEDIUM">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnChaosBlademaster.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnChaosBlademaster.dds"/>
@@ -30,7 +30,7 @@
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
     <!--blademaster-->
-    <CActorUnit id="Obla" parent="War3_Army" unitSound="HeroBladeMaster" unitName="Obla" defType="NONE">
+    <CActorUnit id="Obla" parent="War3_Army" unitSound="HeroBladeMaster" unitName="Obla" defType="MEDIUM">
         <On Terms="Behavior.BOwkExtraDamage.On" Send="AnimGroupApply Slam"/>
         <On Terms="Behavior.BOwkExtraDamage.Off" Send="AnimGroupRemove Slam"/>
         <On Terms="Behavior.BOwk1ExtraDamage.On" Send="AnimGroupApply Slam"/>
@@ -129,6 +129,12 @@
         <BuildModel value="War3_HumanCaptureFlag"/>
         <PlacementModel value="War3_HumanCaptureFlag"/>
     </CActorUnit>
+    <!--shimmeringportal-->
+    <CActorUnit id="hprt">
+        <On Terms="ActorCreation" Send="Create War3_HeroGlow"/>
+        <On Terms="ActorCreation" Send="MinimapIcon Assets\Textures\UI\MiniMap\MiniMap-Entrance.tga"/>
+        <StatusBarFlags index="Custom" value="0"/>
+    </CActorUnit>
     <!--chaosgrunt-->
     <CActorUnit id="nchg">
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
@@ -157,10 +163,10 @@
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
     </CActorUnit>
     <!--foresttroll-->
-    <CActorUnit id="nftr" defType="SMALL">
+    <CActorUnit id="nftr" defType="MEDIUM">
         <On index="89" removed="1"/>
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
-        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-SMALL.tga"/>
+        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-MEDIUM.tga"/>
     </CActorUnit>
     <!--icetrollshadowpriest-->
     <CActorUnit id="nitp">
@@ -168,10 +174,10 @@
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
     </CActorUnit>
     <!--icetroll-->
-    <CActorUnit id="nitr" defType="SMALL">
+    <CActorUnit id="nitr" defType="MEDIUM">
         <On index="89" removed="1"/>
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
-        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-SMALL.tga"/>
+        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-MEDIUM.tga"/>
     </CActorUnit>
     <!--medivh-->
     <CActorUnit id="nmed" defType="NONE">
@@ -252,4 +258,5 @@
     </CActorUnit>
     <CActorAction id="nitr1" parent="War3_AttackSwapable" WeaponSound="MetalMediumChop"/>
     <CActorAction id="nftr1" parent="War3_AttackSwapable" WeaponSound="MetalMediumChop"/>
+    <CActorAction id="oshm1" parent="War3_AttackSwapable"/>
 </Catalog>
