@@ -4,7 +4,6 @@
         <DeathTime value="15"/>
         <DeathRevealRadius value="0"/>
         <FogVisibility value="Snapshot"/>
-        <PlaneArray index="Ground" value="1"/>
         <AbilArray Link="Asud"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Asud" Type="AbilCmd" AbilCmd="Asud,Execute" Row="2" Column="4"/>
@@ -12,6 +11,12 @@
         <PlacementFootprint value="1x1Army"/>
         <BehaviorArray index="3" Link="AW2_ArmyNotHostilePlayer"/>
         <TacticalAIThink value="AIThinkCreep"/>
+        <LifeArmorFormula>
+            <NegativeArmorMultiplier value="-1"/>
+            <NegativeDamageBase value="1"/>
+            <PositiveArmorMultiplier value="1"/>
+            <PositiveDamageRatio value="0"/>
+        </LifeArmorFormula>
     </CUnit>
     <CUnit default="1" id="AW2_Creep" parent="War3_Army">
         <DeathRevealRadius value="0"/>
@@ -107,6 +112,94 @@
             <LayoutButtons index="3" removed="1"/>
         </CardLayouts>
     </CUnit>
+    <!--furion-->
+    <CUnit id="Efur" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="450"/>
+        <KillResource index="gold" value="5"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="NightElf"/>
+        <Mover value="foot"/>
+        <Radius value="0.3125"/>
+        <MinimapRadius value="0.3125"/>
+        <SeparationRadius value="0.3125"/>
+        <InnerRadius value="0.3125"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Name value="Efur/Propernames"/>
+    </CUnit>
+    <!--HeroKeeperoftheGrove-->
+    <CUnit id="Ekee" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="600"/>
+        <KillResource index="gold" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="NightElf"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <AbilArray Link="AEer"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AEer" Type="AbilCmd" AbilCmd="AEer,0" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <!--HeroKeeperoftheGrove ghost-->
+    <CUnit id="Ekgg" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="1800"/>
+        <KillResource index="gold" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="NightElf"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <AbilArray Link="AEah"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AEah1" Type="Passive" Requirements="HeroPassiveButtonLevel1" Row="2" Column="2"/>
+            <LayoutButtons Face="AEah2" Type="Passive" Requirements="HeroPassiveButtonLevel2" Row="2" Column="2"/>
+            <LayoutButtons Face="AEah3" Type="Passive" Requirements="HeroPassiveButtonLevel3" Row="2" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <!--Mal'furion no stag-->
+    <CUnit id="Emns" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="450"/>
+        <KillResource index="gold" value="5"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="NightElf"/>
+        <Mover value="foot"/>
+        <Radius value="0.3125"/>
+        <MinimapRadius value="0.3125"/>
+        <SeparationRadius value="0.3125"/>
+        <InnerRadius value="0.3125"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Name value="Emns/Propernames"/>
+    </CUnit>
+    <!--HeroMoonPriestess-->
+    <CUnit id="Emoo" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="2250"/>
+        <KillResource index="gold" value="75"/>
+        <LifeStart value="1600"/>
+        <LifeMax value="1600"/>
+        <Speed value="2"/>
+        <Race value="NightElf"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <AbilArray Link="AHfaAugment"/>
+        <AbilArray Link="AHfaAugment2"/>
+        <AbilArray Link="AHfaAugment3"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AHfa" Type="AbilCmd" AbilCmd="AHfaAugment,0" Row="2" Column="1"/>
+            <LayoutButtons Face="AHfa2" Type="AbilCmd" AbilCmd="AHfaAugment2,0" Row="2" Column="1"/>
+            <LayoutButtons Face="AHfa3" Type="AbilCmd" AbilCmd="AHfaAugment3,0" Row="2" Column="1"/>
+        </CardLayouts>
+    </CUnit>
     <!--CUnit id="AttackGroundTargetDummy" parent="SMSET">-->
     <!--        <Mob value="Classic"/>-->
     <!--        <Race value="Neut"/>-->
@@ -140,6 +233,7 @@
         <Speed value="3"/>
         <Race value="Human"/>
         <Mover value="horse"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--ghostly archmage-->
     <CUnit id="Hgam" parent="AW2_Army" defType="NONE">
@@ -151,6 +245,7 @@
         <Speed value="3"/>
         <Race value="Human"/>
         <Mover value="horse"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--Halahk the Lifebringer-->
     <CUnit id="Hhkl" parent="AW2_Army" defType="LARGE">
@@ -169,6 +264,7 @@
         <EnergyStart value="100"/>
         <EnergyMax value="100"/>
         <Name value="Hhkl/Propernames"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--jaina-->
     <CUnit id="Hjai" parent="AW2_Army" defType="NONE">
@@ -189,6 +285,7 @@
         <MinimapRadius value="0.3125"/>
         <SeparationRadius value="0.3125"/>
         <InnerRadius value="0.3125"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--Lord Garithos-->
     <CUnit id="Hlgr" parent="AW2_Army" defType="LARGE">
@@ -208,6 +305,7 @@
             <LayoutButtons Face="AHad3" Type="Passive" Requirements="HeroPassiveButtonLevel3" Row="2" Column="2"/>
         </CardLayouts>
         <Name value="Hlgr/Propernames"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--muradin bronzebeard-->
     <CUnit id="Hmbr">
@@ -233,6 +331,7 @@
         </CardLayouts>
         <EnergyStart value="100"/>
         <EnergyMax value="100"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--uther-->
     <CUnit id="Huth" parent="AW2_Army" defType="LARGE">
@@ -251,6 +350,7 @@
         <EnergyStart value="100"/>
         <EnergyMax value="100"/>
         <Name value="Huth/Propernames"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--sylvanus windrunner-->
     <CUnit id="Hvwd" parent="AW2_Army" defType="MEDIUM">
@@ -269,6 +369,7 @@
             <LayoutButtons Face="AEar3" Type="Passive" Requirements="HeroPassiveButtonLevel3" Row="2" Column="2"/>
         </CardLayouts>
         <Name value="Hvwd/Propernames"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--blackrock blademaster-->
     <CUnit id="Nbbc" parent="AW2_Army" defType="LARGE">
@@ -289,6 +390,28 @@
         <EnergyStart value="500"/>
         <EnergyMax value="500"/>
         <WeaponArray index="1" removed="1"/>
+        <PlaneArray index="Ground" value="1"/>
+    </CUnit>
+    <!--HeroBansheeRanger-->
+    <CUnit id="Nbrn" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
+        <CostResource index="gold" value="1800"/>
+        <KillResource index="gold" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="NightElf"/>
+        <Mover value="foot"/>
+        <BehaviorArray Link="Aegr"/>
+        <AbilArray Link="ANbaAugment"/>
+        <AbilArray Link="ANbaAugment2"/>
+        <AbilArray Link="ANbaAugment3"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ANba" Type="AbilCmd" AbilCmd="ANbaAugment,0" Row="2" Column="1"/>
+            <LayoutButtons Face="ANba2" Type="AbilCmd" AbilCmd="ANbaAugment2,0" Row="2" Column="1"/>
+            <LayoutButtons Face="ANba3" Type="AbilCmd" AbilCmd="ANbaAugment3,0" Row="2" Column="1"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <CUnit id="NightElfPhalanxPlaceholder" parent="War3_Item" defType="">
         <Collide index="Ground" value="1"/>
@@ -315,6 +438,7 @@
             <LayoutButtons Face="npn5" Type="AbilCmd" AbilCmd="UpgradeTonpn5,Execute" Row="0" Column="1"/>
             <LayoutButtons Face="npn6" Type="AbilCmd" AbilCmd="UpgradeTonpn6,Execute" Row="0" Column="2"/>
         </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--HeroBladeMaster-->
     <CUnit id="Obla" parent="AW2_Army" defType="MEDIUM">
@@ -337,6 +461,7 @@
         <EnergyStart value="500"/>
         <EnergyMax value="500"/>
         <WeaponArray index="1" removed="1"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--HeroFarSeer-->
     <CUnit id="Ofar" parent="AW2_Army" defType="NONE">
@@ -357,6 +482,7 @@
         <EnergyStart value="100"/>
         <EnergyMax value="100"/>
         <WeaponArray index="1" removed="1"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--grom hellscream-->
     <CUnit id="Ogrh" parent="AW2_Army" defType="LARGE">
@@ -379,6 +505,7 @@
         <EnergyStart value="500"/>
         <EnergyMax value="500"/>
         <WeaponArray index="1" removed="1"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--possessed grom hellscream-->
     <CUnit id="Opgh" parent="AW2_Army" defType="LARGE">
@@ -399,6 +526,7 @@
         <EnergyStart value="500"/>
         <EnergyMax value="500"/>
         <WeaponArray index="1" removed="1"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <CUnit id="OrcPhalanxPlaceholder" parent="War3_Item" defType="">
         <Collide index="Ground" value="1"/>
@@ -432,6 +560,7 @@
         <WeaponArray index="1" removed="1"/>
         <EnergyStart value="100"/>
         <EnergyMax value="100"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--HeroTaurenChieftain-->
     <CUnit id="Otch" parent="AW2_Army" defType="FORT">
@@ -456,6 +585,7 @@
         <EnergyStart value="100"/>
         <EnergyMax value="100"/>
         <WeaponArray index="1" removed="1"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--thrall-->
     <CUnit id="Othr" parent="AW2_Army" defType="NONE">
@@ -476,6 +606,7 @@
         <EnergyStart value="100"/>
         <EnergyMax value="100"/>
         <WeaponArray index="1" removed="1"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!-- Unit Pathing Blockers do not perform as well as doodad Pathing Blockers, however, they can be dynamically turned on and off through triggers. -->
     <CUnit id="PathingBlocker1x1">
@@ -489,6 +620,22 @@
         <BehaviorArray Link="AW2_PathingBlocker"/>
         <Footprint value="PathingBlocker16x16"/>
         <PlacementFootprint value="PathingBlocker16x16"/>
+    </CUnit>
+    <!--HeroCryptLord-->
+    <CUnit id="Ucrl" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
+        <CostResource index="gold" value="1800"/>
+        <KillResource index="gold" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Undead"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <AbilArray Link="AUim"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AUim" Type="AbilCmd" AbilCmd="AUim,0" Row="2" Column="0"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="UndeadPhalanxPlaceholder" parent="War3_Item" defType="">
         <Collide index="Ground" value="1"/>
@@ -507,10 +654,155 @@
         <Speed value="2"/>
         <Race value="NightElf"/>
         <Mover value="foot"/>
+        <AbilArray Link="UpgradeToeshd"/>
+        <AbilArray Link="UpgradeToNbrn"/>
+        <BehaviorArray Link="Aegr"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="eshd" Type="AbilCmd" AbilCmd="UpgradeToeshd,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Nbrn" Type="AbilCmd" AbilCmd="UpgradeToNbrn,Execute" Row="0" Column="1"/>
+            <LayoutButtons Face="Aegr" Type="Passive" Behavior="Aegr" Row="2" Column="0"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+    </CUnit>
+    <!--Glaive Thrower-->
+    <CUnit id="ebal" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="600"/>
+        <KillResource index="gold" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="NightElf"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <BehaviorArray Link="Aimp"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Aimp" Type="Passive" Behavior="Aimp" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <!--DruidoftheClawMorph-->
+    <CUnit id="edcm" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="2250"/>
+        <KillResource index="gold" value="75"/>
+        <LifeStart value="1600"/>
+        <LifeMax value="1600"/>
+        <Speed value="2"/>
+        <Race value="NightElf"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <AbilArray Link="Abrf"/>
+        <AbilArray Link="Arej"/>
+        <AbilArray Link="Aroa"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Abrf" Type="AbilCmd" AbilCmd="Abrf,0" Row="2" Column="3"/>
+            <LayoutButtons Face="Arej" Type="AbilCmd" AbilCmd="Arej,0" Row="2" Column="1"/>
+            <LayoutButtons Face="Aroa" Type="AbilCmd" AbilCmd="Aroa,0" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <!--DruidoftheClaw-->
+    <CUnit id="edoc" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="750"/>
+        <KillResource index="gold" value="75"/>
+        <LifeStart value="1200"/>
+        <LifeMax value="1200"/>
+        <Speed value="2"/>
+        <Race value="NightElf"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <AbilArray Link="UpgradeToedcm"/>
+        <AbilArray Link="Abrf"/>
+        <AbilArray Link="Arej"/>
+        <AbilArray Link="Aroa"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="edcm" Type="AbilCmd" AbilCmd="UpgradeToedcm,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Abrf" Type="AbilCmd" AbilCmd="Abrf,0" Row="2" Column="3"/>
+            <LayoutButtons Face="Arej" Type="AbilCmd" AbilCmd="Arej,0" Row="2" Column="1"/>
+            <LayoutButtons Face="Aroa" Type="AbilCmd" AbilCmd="Aroa,0" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <!--DruidoftheTalon-->
+    <CUnit id="edot" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="150"/>
+        <KillResource index="gold" value="5"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="NightElf"/>
+        <Mover value="foot"/>
+        <Radius value="0.3125"/>
+        <MinimapRadius value="0.3125"/>
+        <SeparationRadius value="0.3125"/>
+        <InnerRadius value="0.3125"/>
+        <PlaneArray index="Ground" value="1"/>
+        <AbilArray Link="UpgradeToEfur"/>
+        <AbilArray Link="UpgradeToEmns"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Efur" Type="AbilCmd" AbilCmd="UpgradeToEfur,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Emns" Type="AbilCmd" AbilCmd="UpgradeToEmns,Execute" Row="0" Column="1"/>
+        </CardLayouts>
+    </CUnit>
+    <!--Dryad-->
+    <CUnit id="edry" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="600"/>
+        <KillResource index="gold" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="NightElf"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <AbilArray Link="UpgradeToEkee"/>
+        <AbilArray Link="UpgradeToEkgg"/>
+        <BehaviorArray Link="Aspo"/>
+        <BehaviorArray Link="Amim"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Ekee" Type="AbilCmd" AbilCmd="UpgradeToEkee,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Ekgg" Type="AbilCmd" AbilCmd="UpgradeToEkgg,Execute" Row="0" Column="1"/>
+            <LayoutButtons Face="Aspo" Type="Passive" Behavior="Aspo" Row="2" Column="0"/>
+            <LayoutButtons Face="Amim" Type="Passive" Behavior="Amim" Row="2" Column="1"/>
+        </CardLayouts>
+    </CUnit>
+    <!--faerie dragon-->
+    <CUnit id="efdr">
+        <Food value="1"/>
+    </CUnit>
+    <!--Huntress-->
+    <CUnit id="esen" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="750"/>
+        <KillResource index="gold" value="75"/>
+        <LifeStart value="1600"/>
+        <LifeMax value="1600"/>
+        <Speed value="2"/>
+        <Race value="NightElf"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <AbilArray Link="UpgradeToEmoo"/>
+        <BehaviorArray Link="Amgl"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Emoo" Type="AbilCmd" AbilCmd="UpgradeToEmoo,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Amgl" Type="Passive" Behavior="Amgl" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <!--shandris-->
+    <CUnit id="eshd" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
+        <CostResource index="gold" value="1800"/>
+        <KillResource index="gold" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="NightElf"/>
+        <Mover value="foot"/>
         <BehaviorArray Link="Aegr"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Aegr" Type="Passive" Behavior="Aegr" Row="2" Column="0"/>
         </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--Wisp-->
     <CUnit id="ewsp" parent="AW2_Peon">
@@ -583,10 +875,16 @@
         <CardLayouts CardId="Bui1">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
             <LayoutButtons Face="nwat" Type="AbilCmd" AbilCmd="AEbuArmy,Build5" Row="0" Column="0"/>
+            <LayoutButtons Face="edoc" Type="AbilCmd" AbilCmd="AEbuArmy,Build6" Row="0" Column="1"/>
+            <LayoutButtons Face="esen" Type="AbilCmd" AbilCmd="AEbuArmy,Build7" Row="0" Column="2"/>
         </CardLayouts>
         <CardLayouts CardId="Bui2">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
-            <LayoutButtons Face="nhea" Type="AbilCmd" AbilCmd="AEbuArmy,Build3" Row="0" Column="0"/>
+            <LayoutButtons Face="edot" Type="AbilCmd" AbilCmd="AEbuArmy,Build8" Row="0" Column="0"/>
+            <LayoutButtons Face="nhea" Type="AbilCmd" AbilCmd="AEbuArmy,Build3" Row="0" Column="1"/>
+            <LayoutButtons Face="earc" Type="AbilCmd" AbilCmd="AEbuArmy,Build4" Row="0" Column="2"/>
+            <LayoutButtons Face="edry" Type="AbilCmd" AbilCmd="AEbuArmy,Build9" Row="0" Column="3"/>
+            <LayoutButtons Face="ebal" Type="AbilCmd" AbilCmd="AEbuArmy,Build10" Row="0" Column="4"/>
         </CardLayouts>
         <CardLayouts CardId="Bui3">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
@@ -635,6 +933,7 @@
         <MinimapRadius value="0.375"/>
         <SeparationRadius value="0.375"/>
         <InnerRadius value="0.375"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--GryphonRider-->
     <CUnit id="hgry">
@@ -653,7 +952,6 @@
         <Race value="Human"/>
         <Mover value="fly"/>
         <Height value="2.1875"/>
-        <PlaneArray index="Ground" value="0"/>
         <PlaneArray index="Air" value="1"/>
         <Collide index="Ground" value="0"/>
         <Collide index="ForceField" value="0"/>
@@ -676,7 +974,6 @@
         </CardLayouts>
         <WeaponArray index="0" Link="hgyr1"/>
         <WeaponArray index="1" Link="hgyr2"/>
-        <PlaneArray index="Ground" value="0"/>
         <PlaneArray index="Air" value="1"/>
         <Collide index="Ground" value="0"/>
         <Collide index="ForceField" value="0"/>
@@ -701,6 +998,7 @@
         <MinimapRadius value="0.375"/>
         <SeparationRadius value="0.375"/>
         <InnerRadius value="0.375"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--Knight-->
     <CUnit id="hkni" parent="AW2_Army" defType="SMALL">
@@ -718,6 +1016,7 @@
             <LayoutButtons Face="Hlgr" Type="AbilCmd" AbilCmd="UpgradeToHlgr,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="nbld" Type="AbilCmd" AbilCmd="UpgradeTonbld,Execute" Row="0" Column="1"/>
         </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--Militia-->
     <CUnit id="hmil">
@@ -749,6 +1048,7 @@
         <MinimapRadius value="0.3125"/>
         <SeparationRadius value="0.3125"/>
         <InnerRadius value="0.3125"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--MortarTeam-->
     <CUnit id="hmtm" parent="AW2_Army" defType="LARGE">
@@ -760,6 +1060,7 @@
         <Speed value="2"/>
         <Race value="Human"/>
         <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--Peasant-->
     <CUnit id="hpea" parent="AW2_Peon">
@@ -876,6 +1177,7 @@
         <Speed value="2"/>
         <Race value="Human"/>
         <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--Sorceress-->
     <CUnit id="hsor" parent="AW2_Army" defType="NONE">
@@ -897,6 +1199,7 @@
         <MinimapRadius value="0.3125"/>
         <SeparationRadius value="0.3125"/>
         <InnerRadius value="0.3125"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--Blood Elf Spell Breaker-->
     <CUnit id="hspt" parent="AW2_Army" defType="MEDIUM">
@@ -924,6 +1227,7 @@
         <MinimapRadius value="0.375"/>
         <SeparationRadius value="0.375"/>
         <InnerRadius value="0.375"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--blood elf lieutenant-->
     <CUnit id="nbel" parent="AW2_Army" defType="LARGE">
@@ -944,6 +1248,7 @@
         <MinimapRadius value="0.375"/>
         <SeparationRadius value="0.375"/>
         <InnerRadius value="0.375"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--bandit lord-->
     <CUnit id="nbld" parent="AW2_Army" defType="SMALL">
@@ -955,6 +1260,7 @@
         <Speed value="3"/>
         <Race value="Human"/>
         <Mover value="horse"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--chaos grunt-->
     <CUnit id="nchg" parent="AW2_Army" defType="LARGE">
@@ -970,6 +1276,7 @@
         <CardLayouts index="0">
             <LayoutButtons Face="Asal" Type="Passive" Behavior="Asal" Row="2" Column="0"/>
         </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--ChaosWolfRider-->
     <CUnit id="nchr" parent="AW2_Army" defType="SMALL">
@@ -987,6 +1294,7 @@
             <LayoutButtons Face="Aens" Type="AbilCmd" AbilCmd="Aens,0" Row="2" Column="0"/>
             <LayoutButtons Face="AIpv" Type="AbilCmd" AbilCmd="AIpv,0" Row="2" Column="1"/>
         </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--ChaosWarlock-->
     <CUnit id="nchw" parent="AW2_Army" defType="NONE">
@@ -1002,6 +1310,7 @@
         <MinimapRadius value="0.375"/>
         <SeparationRadius value="0.375"/>
         <InnerRadius value="0.375"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--Chaos Kodo Beast-->
     <CUnit id="nckb" parent="AW2_Army" defType="MEDIUM">
@@ -1019,6 +1328,7 @@
             <LayoutButtons Face="AOae3" Type="Passive" Requirements="HeroPassiveButtonLevel3" Row="2" Column="0"/>
             <LayoutButtons Face="AOae1" Type="Passive" Requirements="HeroPassiveButtonLevel1" Row="2" Column="0"/>
         </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--dark troll shadow priest-->
     <CUnit id="ndtp" parent="AW2_Army" defType="NONE">
@@ -1040,6 +1350,7 @@
         <InnerRadius value="0.375"/>
         <EnergyMax value="100"/>
         <EnergyStart value="100"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--emissary-->
     <CUnit id="nemi" parent="AW2_Army" defType="NONE">
@@ -1063,6 +1374,7 @@
         <MinimapRadius value="0.3125"/>
         <SeparationRadius value="0.3125"/>
         <InnerRadius value="0.3125"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--NightElf flag-->
     <CUnit id="nflg" parent="AW2_Phalanx">
@@ -1090,6 +1402,7 @@
         <InnerRadius value="0.375"/>
         <EnergyMax value="100"/>
         <EnergyStart value="100"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--forest troll shadow priest-->
     <CUnit id="nfsp" parent="AW2_Army" defType="NONE">
@@ -1113,6 +1426,7 @@
         <InnerRadius value="0.375"/>
         <EnergyMax value="100"/>
         <EnergyStart value="100"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--forest troll berserker-->
     <CUnit id="nftb" parent="AW2_Army" defType="MEDIUM">
@@ -1132,6 +1446,7 @@
         <MinimapRadius value="0.375"/>
         <SeparationRadius value="0.375"/>
         <InnerRadius value="0.375"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--ForestTroll-->
     <CUnit id="nftr" parent="AW2_Army" defType="MEDIUM">
@@ -1147,6 +1462,7 @@
         <MinimapRadius value="0.375"/>
         <SeparationRadius value="0.375"/>
         <InnerRadius value="0.375"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--ForestTrollTrapper-->
     <CUnit id="nftt" parent="AW2_Army" defType="MEDIUM">
@@ -1167,6 +1483,27 @@
         <MinimapRadius value="0.375"/>
         <SeparationRadius value="0.375"/>
         <InnerRadius value="0.375"/>
+        <PlaneArray index="Ground" value="1"/>
+    </CUnit>
+    <!--ghost-->
+    <CUnit id="ngh1" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="600"/>
+        <KillResource index="gold" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Undead"/>
+        <Mover value="hover"/>
+        <AbilArray Link="Aps2"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Aps2" Type="AbilCmd" AbilCmd="Aps2,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <Radius value="0.3125"/>
+        <MinimapRadius value="0.3125"/>
+        <SeparationRadius value="0.3125"/>
+        <InnerRadius value="0.3125"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--Gnoll Assassin-->
     <CUnit id="ngns" parent="AW2_Creep" defType="MEDIUM">
@@ -1197,6 +1534,7 @@
         <CardLayouts index="0">
             <LayoutButtons Face="Hvwd" Type="AbilCmd" AbilCmd="UpgradeToHvwd,Execute" Row="0" Column="0"/>
         </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--hydromancer-->
     <CUnit id="nhym" parent="AW2_Army" defType="NONE">
@@ -1214,6 +1552,7 @@
             <LayoutButtons Face="Hamg" Type="AbilCmd" AbilCmd="UpgradeToHamg,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="Hgam" Type="AbilCmd" AbilCmd="UpgradeToHgam,Execute" Row="0" Column="1"/>
         </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--ice troll priest-->
     <CUnit id="nitp" parent="AW2_Army" defType="NONE">
@@ -1239,6 +1578,7 @@
         <InnerRadius value="0.375"/>
         <EnergyMax value="100"/>
         <EnergyStart value="100"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--IceTroll-->
     <CUnit id="nitr" parent="AW2_Army" defType="MEDIUM">
@@ -1258,6 +1598,7 @@
         <MinimapRadius value="0.375"/>
         <SeparationRadius value="0.375"/>
         <InnerRadius value="0.375"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--medivh-->
     <CUnit id="nmed" parent="AW2_Army" defType="NONE">
@@ -1277,6 +1618,7 @@
         <MinimapRadius value="0.3125"/>
         <SeparationRadius value="0.3125"/>
         <InnerRadius value="0.3125"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--magnataur destroyer-->
     <CUnit id="nmgd" parent="AW2_Creep" defType="LARGE">
@@ -1313,6 +1655,38 @@
             <LayoutButtons Face="ACmi" Type="Passive" Behavior="ACmi" Row="2" Column="1"/>
         </CardLayouts>
     </CUnit>
+    <!--nerubian webspinner-->
+    <CUnit id="nnwl" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
+        <CostResource index="gold" value="1800"/>
+        <KillResource index="gold" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Undead"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <AbilArray Link="Aweb"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Aweb" Type="AbilCmd" AbilCmd="Aweb,0" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <!--nerubian seer-->
+    <CUnit id="nnwr" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
+        <CostResource index="gold" value="1800"/>
+        <KillResource index="gold" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Undead"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <AbilArray Link="ACdm"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ACdm" Type="AbilCmd" AbilCmd="ACdm,0" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
     <!--Fire pandaren split2-->
     <CUnit id="npn4" parent="AW2_Army" defType="MEDIUM">
         <Attributes index="medium" value="1"/>
@@ -1336,6 +1710,7 @@
         </CardLayouts>
         <EnergyStart value="100"/>
         <EnergyMax value="100"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--Wind pandaren split2-->
     <CUnit id="npn5" parent="AW2_Army" defType="NONE">
@@ -1360,6 +1735,7 @@
         </CardLayouts>
         <EnergyStart value="100"/>
         <EnergyMax value="100"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--Earth pandaren split2-->
     <CUnit id="npn6" parent="AW2_Army" defType="FORT">
@@ -1384,6 +1760,7 @@
         </CardLayouts>
         <EnergyStart value="100"/>
         <EnergyMax value="100"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--War2Warlock-->
     <CUnit id="nw2w" parent="AW2_Army" defType="NONE">
@@ -1403,6 +1780,7 @@
         <MinimapRadius value="0.375"/>
         <SeparationRadius value="0.375"/>
         <InnerRadius value="0.375"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--watcher-->
     <CUnit id="nwat" parent="AW2_Army" defType="SMALL">
@@ -1418,6 +1796,7 @@
         <MinimapRadius value="0.375"/>
         <SeparationRadius value="0.375"/>
         <InnerRadius value="0.375"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--dragon hawk-->
     <CUnit id="nws1">
@@ -1447,6 +1826,7 @@
         <FlagArray index="AIPressForwardDisabled" value="1"/>
         <EnergyStart value="100"/>
         <EnergyMax value="100"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--Orc flag-->
     <CUnit id="oflg" parent="AW2_Phalanx">
@@ -1470,6 +1850,7 @@
             <LayoutButtons Face="nchg" Type="AbilCmd" AbilCmd="UpgradeTonchg,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="Asal" Type="Passive" Behavior="Asal" Row="2" Column="0"/>
         </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--HeadHunter-->
     <CUnit id="ohun" parent="AW2_Army" defType="MEDIUM">
@@ -1485,6 +1866,7 @@
         <CardLayouts index="0">
             <LayoutButtons Face="otbk" Type="AbilCmd" AbilCmd="UpgradeTootbk,Execute" Row="0" Column="0"/>
         </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--Healing $ward-->
     <CUnit id="ohwd" parent="War3_Sationary" defType="NONE">
@@ -1519,6 +1901,7 @@
             <LayoutButtons Face="Aakb" Type="Passive" Behavior="Aakb" Row="2" Column="0"/>
         </CardLayouts>
         <FlagArray index="HiddenCargoUI" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--Peon-->
     <CUnit id="opeo" parent="AW2_Peon">
@@ -1642,6 +2025,7 @@
             <LayoutButtons Face="Aens" Type="AbilCmd" AbilCmd="Aens,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="AIpv" Type="AbilCmd" AbilCmd="AIpv,Execute" Row="2" Column="1"/>
         </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--Shaman-->
     <CUnit id="oshm" parent="AW2_Army" defType="NONE">
@@ -1667,6 +2051,7 @@
         <FlagArray index="AIPressForwardDisabled" value="1"/>
         <EnergyStart value="100"/>
         <EnergyMax value="100"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <CUnit id="oshmEtherealForm" parent="AW2_Army" defType="NONE">
         <Race value="Orc"/>
@@ -1695,6 +2080,7 @@
         <MinimapRadius value="0.3125"/>
         <EnergyStart value="100"/>
         <EnergyMax value="100"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--serpent $ward 1-->
     <CUnit id="osp1" parent="War3_Sationary" defType="NONE">
@@ -1742,6 +2128,7 @@
         <TacticalAIFilters value="-;-"/>
         <WeaponArray index="0" Link="ospw1"/>
         <WeaponArray index="1" Link="ospw2"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--Spiritwalker-->
     <CUnit id="ospw" parent="AW2_Army" defType="NONE">
@@ -1766,6 +2153,7 @@
         <FlagArray index="AICaster" value="1"/>
         <FlagArray index="AIPressForwardDisabled" value="1"/>
         <TacticalAIFilters value="-;-"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--spirit wolf level 1-->
     <CUnit id="osw1" parent="AW2_Army" defType="SMALL">
@@ -1783,6 +2171,7 @@
         <MinimapRadius value="0.3125"/>
         <SeparationRadius value="0.3125"/>
         <InnerRadius value="0.3125"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--Tauren-->
     <CUnit id="otau" parent="AW2_Army" defType="FORT">
@@ -1802,6 +2191,7 @@
             <LayoutButtons Face="Awar" Type="Passive" Behavior="Awar" Row="2" Column="0"/>
         </CardLayouts>
         <Subtitle value="TaurenClass"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--Berserker-->
     <CUnit id="otbk" parent="AW2_Army" defType="MEDIUM">
@@ -1816,6 +2206,25 @@
         <AbilArray Link="Absk"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Absk" Type="AbilCmd" AbilCmd="Absk,0" Row="2" Column="0"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+    </CUnit>
+    <!--Abomination-->
+    <CUnit id="uabo" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="750"/>
+        <KillResource index="gold" value="75"/>
+        <LifeStart value="2000"/>
+        <LifeMax value="2000"/>
+        <Speed value="2"/>
+        <Race value="Undead"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <AbilArray Link="Acn2"/>
+        <BehaviorArray Link="Aap1"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Aap1" Type="Passive" Behavior="Aap1" Row="2" Column="1"/>
+            <LayoutButtons Face="Acn2" Type="AbilCmd" AbilCmd="Acn2,0" Row="2" Column="0"/>
         </CardLayouts>
     </CUnit>
     <!--Acolyte-->
@@ -1889,14 +2298,17 @@
         <CardLayouts CardId="Bui1">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
             <LayoutButtons Face="ugho" Type="AbilCmd" AbilCmd="AUbuArmy,Build3" Row="0" Column="0"/>
+            <LayoutButtons Face="uabo" Type="AbilCmd" AbilCmd="AUbuArmy,Build7" Row="0" Column="1"/>
         </CardLayouts>
         <CardLayouts CardId="Bui2">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
-            <LayoutButtons Face="uban" Type="AbilCmd" AbilCmd="AUbuArmy,Build4" Row="0" Column="0"/>
+            <LayoutButtons Face="ucry" Type="AbilCmd" AbilCmd="AUbuArmy,Build6" Row="0" Column="0"/>
+            <LayoutButtons Face="umtw" Type="AbilCmd" AbilCmd="AUbuArmy,Build8" Row="0" Column="1"/>
         </CardLayouts>
         <CardLayouts CardId="Bui3">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
             <LayoutButtons Face="unec" Type="AbilCmd" AbilCmd="AUbuArmy,Build5" Row="0" Column="0"/>
+            <LayoutButtons Face="uban" Type="AbilCmd" AbilCmd="AUbuArmy,Build4" Row="0" Column="1"/>
         </CardLayouts>
         <AbilArray Link="AUbuArmy"/>
         <Speed value="1.7187"/>
@@ -1918,9 +2330,13 @@
         <Speed value="2"/>
         <Race value="Undead"/>
         <Mover value="hover"/>
+        <AbilArray Link="UpgradeTongh1"/>
+        <AbilArray Link="UpgradeTouswb"/>
         <AbilArray Link="Acrs"/>
         <AbilArray Link="Aps2"/>
         <CardLayouts index="0">
+            <LayoutButtons Face="ngh1" Type="AbilCmd" AbilCmd="UpgradeTongh1,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="uswb" Type="AbilCmd" AbilCmd="UpgradeTouswb,Execute" Row="0" Column="1"/>
             <LayoutButtons Face="Aps2" Type="AbilCmd" AbilCmd="Aps2,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="Acrs" Type="AbilCmd" AbilCmd="Acrs,Execute" Row="2" Column="0"/>
         </CardLayouts>
@@ -1928,6 +2344,27 @@
         <MinimapRadius value="0.3125"/>
         <SeparationRadius value="0.3125"/>
         <InnerRadius value="0.3125"/>
+        <PlaneArray index="Ground" value="1"/>
+    </CUnit>
+    <!--CryptFiend-->
+    <CUnit id="ucry" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
+        <CostResource index="gold" value="600"/>
+        <KillResource index="gold" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Undead"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <AbilArray Link="UpgradeTonnwl"/>
+        <AbilArray Link="UpgradeTonnwr"/>
+        <AbilArray Link="UpgradeToUcrl"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="nnwl" Type="AbilCmd" AbilCmd="UpgradeTonnwl,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="nnwr" Type="AbilCmd" AbilCmd="UpgradeTonnwr,Execute" Row="0" Column="1"/>
+            <LayoutButtons Face="Ucrl" Type="AbilCmd" AbilCmd="UpgradeToUcrl,Execute" Row="0" Column="2"/>
+        </CardLayouts>
     </CUnit>
     <!--Undead flag-->
     <CUnit id="uflg" parent="AW2_Phalanx">
@@ -1949,11 +2386,12 @@
         <CardLayouts index="0">
             <LayoutButtons Face="Acan" Type="AbilCmd" AbilCmd="Acan,0" Row="2" Column="0"/>
         </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
-    <!--Necromancer-->
-    <CUnit id="unec" parent="AW2_Army" defType="NONE">
+    <!--kelthuzad ghost-->
+    <CUnit id="uktg" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
-        <CostResource index="gold" value="600"/>
+        <CostResource index="gold" value="1800"/>
         <KillResource index="gold" value="30"/>
         <LifeStart value="25"/>
         <LifeMax value="25"/>
@@ -1974,6 +2412,79 @@
         <InnerRadius value="0.3125"/>
         <EnergyStart value="100"/>
         <EnergyMax value="100"/>
+        <PlaneArray index="Ground" value="1"/>
+    </CUnit>
+    <!--kelthuzadnecro-->
+    <CUnit id="uktn" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="1800"/>
+        <KillResource index="gold" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Undead"/>
+        <Mover value="foot"/>
+        <AbilArray Link="Acri"/>
+        <AbilArray Link="Arai"/>
+        <AbilArray Link="Auhf"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Acri" Type="AbilCmd" AbilCmd="Acri,0" Row="2" Column="2"/>
+            <LayoutButtons Face="Arai" Type="AbilCmd" AbilCmd="Arai,0" Row="2" Column="0"/>
+            <LayoutButtons Face="Auhf" Type="AbilCmd" AbilCmd="Auhf,0" Row="2" Column="1"/>
+        </CardLayouts>
+        <Radius value="0.3125"/>
+        <MinimapRadius value="0.3125"/>
+        <SeparationRadius value="0.3125"/>
+        <InnerRadius value="0.3125"/>
+        <EnergyStart value="100"/>
+        <EnergyMax value="100"/>
+        <PlaneArray index="Ground" value="1"/>
+    </CUnit>
+    <!--MeatWagon-->
+    <CUnit id="umtw" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="600"/>
+        <KillResource index="gold" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Undead"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <BehaviorArray Link="Apts"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Apts" Type="Passive" Behavior="Apts" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <!--Necromancer-->
+    <CUnit id="unec" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="600"/>
+        <KillResource index="gold" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Undead"/>
+        <Mover value="foot"/>
+        <AbilArray Link="UpgradeTouktn"/>
+        <AbilArray Link="UpgradeTouktg"/>
+        <AbilArray Link="Acri"/>
+        <AbilArray Link="Arai"/>
+        <AbilArray Link="Auhf"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="uktn" Type="AbilCmd" AbilCmd="UpgradeTouktn,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="uktg" Type="AbilCmd" AbilCmd="UpgradeTouktg,Execute" Row="0" Column="1"/>
+            <LayoutButtons Face="Acri" Type="AbilCmd" AbilCmd="Acri,0" Row="2" Column="2"/>
+            <LayoutButtons Face="Arai" Type="AbilCmd" AbilCmd="Arai,0" Row="2" Column="0"/>
+            <LayoutButtons Face="Auhf" Type="AbilCmd" AbilCmd="Auhf,0" Row="2" Column="1"/>
+        </CardLayouts>
+        <Radius value="0.3125"/>
+        <MinimapRadius value="0.3125"/>
+        <SeparationRadius value="0.3125"/>
+        <InnerRadius value="0.3125"/>
+        <EnergyStart value="100"/>
+        <EnergyMax value="100"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--SkeletonWarrior-->
     <CUnit id="uske">
@@ -1988,5 +2499,25 @@
         <Footprint value="6x6Phalanx"/>
         <FogVisibility value="Snapshot"/>
         <BehaviorArray Link="PhalanxPlaceholder"/>
+    </CUnit>
+    <!--sylvanus banshee-->
+    <CUnit id="uswb" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="600"/>
+        <KillResource index="gold" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Undead"/>
+        <Mover value="hover"/>
+        <AbilArray Link="ANch"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ANch" Type="AbilCmd" AbilCmd="ANch,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <Radius value="0.3125"/>
+        <MinimapRadius value="0.3125"/>
+        <SeparationRadius value="0.3125"/>
+        <InnerRadius value="0.3125"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
 </Catalog>
