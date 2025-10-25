@@ -177,10 +177,10 @@ void lib1_gf_ScoreBoardSetName (int lp_round, bool lp_bonusRound);
 void lib1_gf_BuildingScoreUpdate ();
 void lib1_gf_DebugEnable (bool lp_option);
 int lib1_gf_PlayerGetTeam (int lp_player);
-void lib1_gf_ModInizialization (bool lp_debug, bool lp_virtualTeam);
+void lib1_gf_ModInizialization (bool lp_debug);
 void lib1_gf_RoundStartLoop (bool lp_debug);
 void lib1_gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug);
-void lib1_gf_TeamMemberSetAndTeamMemberCountSet (bool lp_virtualTeam);
+void lib1_gf_TeamMemberSetAndTeamMemberCountSet ();
 void lib1_gf_TeamRoundRandomize ();
 void lib1_gf_VenueGroupRandomize ();
 void lib1_gf_TeamAtVenueSet (bool lp_debug);
@@ -2275,7 +2275,7 @@ int lib1_gf_PlayerGetTeam (int lp_player) {
     return lv_teamReturn;
 }
 
-void lib1_gf_ModInizialization (bool lp_debug, bool lp_virtualTeam) {
+void lib1_gf_ModInizialization (bool lp_debug) {
     bool auto7DC92087_val;
 
     // Implementation
@@ -2293,7 +2293,7 @@ void lib1_gf_ModInizialization (bool lp_debug, bool lp_virtualTeam) {
     else {
         lib1_gf_DebugEnable(false);
     }
-    lib1_gf_TeamMemberSetAndTeamMemberCountSet(lp_virtualTeam);
+    lib1_gf_TeamMemberSetAndTeamMemberCountSet();
     lib1_gf_PlayerCountTest();
     auto7DC92087_val = lib1_gv_testPassed;
     if (auto7DC92087_val == false) {
@@ -2388,38 +2388,54 @@ void lib1_gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug) {
     Wait(2.0, c_timeGame);
 }
 
-void lib1_gf_TeamMemberSetAndTeamMemberCountSet (bool lp_virtualTeam) {
-    int autoA8AE8B2B_ae;
-    int autoA8AE8B2B_ai;
-    int auto2891898C_ae;
-    int auto2891898C_ai;
-    string autoEFD468EB_val;
-    int auto3EF77B1F_ae;
-    int auto3EF77B1F_ai;
-    int auto77151E02_ae;
-    int auto77151E02_ai;
+void lib1_gf_TeamMemberSetAndTeamMemberCountSet () {
+    int auto4B5992D7_ae;
+    int auto4B5992D7_ai;
+    int auto2F9E2B41_ae;
+    int auto2F9E2B41_ai;
+    int autoA1866674_ae;
+    int autoA1866674_ai;
+    int auto6F033C08_ae;
+    int auto6F033C08_ai;
+    int autoC2C3710D_ae;
+    int autoC2C3710D_ai;
+    int auto91344C0A_ae;
+    int auto91344C0A_ai;
 
     // Variable Declarations
     int lv_player;
     int lv_team;
     int lv_teamMember;
+    bool lv_virtualTeam;
 
     // Variable Initialization
 
     // Implementation
-    if ((lp_virtualTeam == false)) {
-        autoA8AE8B2B_ae = lib1_gv_teamCount;
-        autoA8AE8B2B_ai = 1;
+    auto4B5992D7_ae = lib1_gv_teamCount;
+    auto4B5992D7_ai = 1;
+    lv_team = 1;
+    for ( ; ( (auto4B5992D7_ai >= 0 && lv_team <= auto4B5992D7_ae) || (auto4B5992D7_ai <= 0 && lv_team >= auto4B5992D7_ae) ) ; lv_team += auto4B5992D7_ai ) {
+        auto2F9E2B41_ae = lib1_gv_teamMemberCount;
+        auto2F9E2B41_ai = 1;
+        lv_teamMember = 1;
+        for ( ; ( (auto2F9E2B41_ai >= 0 && lv_teamMember <= auto2F9E2B41_ae) || (auto2F9E2B41_ai <= 0 && lv_teamMember >= auto2F9E2B41_ae) ) ; lv_teamMember += auto2F9E2B41_ai ) {
+            if ((PlayerGroupPlayer(GameAttributePlayersForTeam(lv_team), lv_teamMember) == -1)) {
+                lv_virtualTeam = true;
+            }
+
+        }
+    }
+    lv_team = 0;
+    lv_teamMember = 0;
+    if ((lv_virtualTeam == false)) {
+        autoA1866674_ae = lib1_gv_teamCount;
+        autoA1866674_ai = 1;
         lv_team = 1;
-        for ( ; ( (autoA8AE8B2B_ai >= 0 && lv_team <= autoA8AE8B2B_ae) || (autoA8AE8B2B_ai <= 0 && lv_team >= autoA8AE8B2B_ae) ) ; lv_team += autoA8AE8B2B_ai ) {
-            TextExpressionSetToken("Param/Expression/lib_1_65BEA57E", "A", IntToText(PlayerGroupCount(GameAttributePlayersForTeam(lv_team))));
-            TextExpressionSetToken("Param/Expression/lib_1_65BEA57E", "B", IntToText(lv_team));
-            TextExpressionSetToken("Param/Expression/lib_1_65BEA57E", "C", IntToText(PlayerGroupPlayer(lib1_gv_teamGroup[lv_team], 1)));
-            UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, TextExpressionAssemble("Param/Expression/lib_1_65BEA57E"));
-            auto2891898C_ae = lib1_gv_teamMemberCount;
-            auto2891898C_ai = 1;
+        for ( ; ( (autoA1866674_ai >= 0 && lv_team <= autoA1866674_ae) || (autoA1866674_ai <= 0 && lv_team >= autoA1866674_ae) ) ; lv_team += autoA1866674_ai ) {
+            auto6F033C08_ae = lib1_gv_teamMemberCount;
+            auto6F033C08_ai = 1;
             lv_teamMember = 1;
-            for ( ; ( (auto2891898C_ai >= 0 && lv_teamMember <= auto2891898C_ae) || (auto2891898C_ai <= 0 && lv_teamMember >= auto2891898C_ae) ) ; lv_teamMember += auto2891898C_ai ) {
+            for ( ; ( (auto6F033C08_ai >= 0 && lv_teamMember <= auto6F033C08_ae) || (auto6F033C08_ai <= 0 && lv_teamMember >= auto6F033C08_ae) ) ; lv_teamMember += auto6F033C08_ai ) {
                 if ((PlayerGroupCount(GameAttributePlayersForTeam(lv_team)) == lib1_gv_teamMemberCount)) {
                     PlayerGroupAdd(lib1_gv_teamGroup[lv_team], PlayerGroupPlayer(GameAttributePlayersForTeam(lv_team), lv_teamMember));
                     PlayerGroupAdd(lib1_gv_mirrorTeamGroup[lv_team], lib1_gf_UserPlayerGetMirrorPlayer(PlayerGroupPlayer(GameAttributePlayersForTeam(lv_team), lv_teamMember)));
@@ -2431,31 +2447,18 @@ void lib1_gf_TeamMemberSetAndTeamMemberCountSet (bool lp_virtualTeam) {
         }
     }
     else {
-        autoEFD468EB_val = GameAttributeGameValue("2");
-        if (autoEFD468EB_val == "0001") {
-            auto3EF77B1F_ae = lib1_gv_playerCount;
-            auto3EF77B1F_ai = 1;
-            lv_player = 1;
-            for ( ; ( (auto3EF77B1F_ai >= 0 && lv_player <= auto3EF77B1F_ae) || (auto3EF77B1F_ai <= 0 && lv_player >= auto3EF77B1F_ae) ) ; lv_player += auto3EF77B1F_ai ) {
-                lv_team += 1;
+        autoC2C3710D_ae = lib1_gv_teamCount;
+        autoC2C3710D_ai = 1;
+        lv_team = 1;
+        for ( ; ( (autoC2C3710D_ai >= 0 && lv_team <= autoC2C3710D_ae) || (autoC2C3710D_ai <= 0 && lv_team >= autoC2C3710D_ae) ) ; lv_team += autoC2C3710D_ai ) {
+            auto91344C0A_ae = lib1_gv_teamMemberCount;
+            auto91344C0A_ai = 1;
+            lv_teamMember = 1;
+            for ( ; ( (auto91344C0A_ai >= 0 && lv_teamMember <= auto91344C0A_ae) || (auto91344C0A_ai <= 0 && lv_teamMember >= auto91344C0A_ae) ) ; lv_teamMember += auto91344C0A_ai ) {
+                lv_player += 1;
                 PlayerGroupAdd(lib1_gv_teamGroup[lv_team], lib1_gf_IndexGetUserPlayer(lv_player));
                 PlayerGroupAdd(lib1_gv_mirrorTeamGroup[lv_team], lib1_gf_UserPlayerGetMirrorPlayer(lib1_gf_IndexGetUserPlayer(lv_player)));
             }
-        }
-        else if (autoEFD468EB_val == "0002") {
-            auto77151E02_ae = lib1_gv_playerCount;
-            auto77151E02_ai = 1;
-            lv_player = 1;
-            for ( ; ( (auto77151E02_ai >= 0 && lv_player <= auto77151E02_ae) || (auto77151E02_ai <= 0 && lv_player >= auto77151E02_ae) ) ; lv_player += auto77151E02_ai ) {
-                if ((ModI(lv_player, 2) == 1)) {
-                    lv_team += 1;
-                }
-
-                PlayerGroupAdd(lib1_gv_teamGroup[lv_team], lib1_gf_IndexGetUserPlayer(lv_player));
-                PlayerGroupAdd(lib1_gv_mirrorTeamGroup[lv_team], lib1_gf_UserPlayerGetMirrorPlayer(lib1_gf_IndexGetUserPlayer(lv_player)));
-            }
-        }
-        else {
         }
     }
 }
@@ -3899,7 +3902,6 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
 
     // Variable Declarations
     bool lv_debug;
-    bool lv_virturalTeam;
     int lv_player;
 
     // Variable Initialization
@@ -3915,7 +3917,7 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     TriggerExecute(gt_BuidingRegionInizialization, true, false);
     TriggerExecute(gt_PreviewerPointInizialization, true, false);
     TriggerExecute(gt_RoundInitialization, true, false);
-    lib1_gf_ModInizialization(lv_debug, lv_virturalTeam);
+    lib1_gf_ModInizialization(lv_debug);
     autoE8E91B19_g = PlayerGroupActive(); 
     autoE8E91B19_p = 1;
     for ( ; autoE8E91B19_p <= PlayerGroupCount(autoE8E91B19_g) ; autoE8E91B19_p += BoolToInt(lv_player == PlayerGroupPlayer(autoE8E91B19_g, autoE8E91B19_p)) ) {
