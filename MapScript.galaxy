@@ -191,6 +191,7 @@ trigger lib1_gt_PhalanxCreated;
 trigger lib1_gt_PortalCreated;
 trigger lib1_gt_PhalanxBuffChange;
 trigger lib1_gt_CreateReserveUnit;
+trigger lib1_gt_IssueOrderPeriodic;
 trigger lib1_gt_CountUnit;
 trigger lib1_gt_CountUnitControl;
 trigger lib1_gt_UnitDied;
@@ -1698,17 +1699,27 @@ void lib1_gf_AIPhalanxAndPortalPosition (int lp_player, region lp_region, string
 void lib1_gf_AIBuildingPosition () {
     int auto412300F4_ae;
     int auto412300F4_ai;
+    int auto87C984D6_ae;
+    int auto87C984D6_ai;
+    unitgroup auto040EE3CE_g;
+    int auto040EE3CE_u;
+    int auto08F44081_ae;
+    int auto08F44081_ai;
     unitgroup auto9A50E66A_g;
     int auto9A50E66A_u;
     string auto32DBD560_val;
 
     // Variable Declarations
     int lv_buildingRegion;
+    unit lv_worker;
     unit lv_unit;
-    string lv_ability;
+    string lv_buildAbility;
     abilcmd lv_abilityCommand;
     point lv_point;
     order lv_order;
+    int lv_phalanx;
+    int lv_index;
+    string lv_ability;
 
     // Variable Initialization
 
@@ -1718,30 +1729,50 @@ void lib1_gf_AIBuildingPosition () {
     lv_buildingRegion = 1;
     for ( ; ( (auto412300F4_ai >= 0 && lv_buildingRegion <= auto412300F4_ae) || (auto412300F4_ai <= 0 && lv_buildingRegion >= auto412300F4_ae) ) ; lv_buildingRegion += auto412300F4_ai ) {
         if ((PlayerGroupHasPlayer(lib1_gv_aIGroup, lib1_gv_playerAtBuildingRegion[lv_buildingRegion]) == true)) {
+            auto87C984D6_ae = lib1_gv_phalanxMaximumCount;
+            auto87C984D6_ai = 1;
+            lv_phalanx = 1;
+            for ( ; ( (auto87C984D6_ai >= 0 && lv_phalanx <= auto87C984D6_ae) || (auto87C984D6_ai <= 0 && lv_phalanx >= auto87C984D6_ae) ) ; lv_phalanx += auto87C984D6_ai ) {
+                auto040EE3CE_g = UnitGroup(null, lib1_gv_playerAtBuildingRegion[lv_buildingRegion], lib1_gv_buildingRegion[lv_buildingRegion][lv_phalanx], lib1_gv_buildingFilter, 0);
+                auto040EE3CE_u = 1;
+                for ( ; auto040EE3CE_u <= UnitGroupCount(auto040EE3CE_g, c_unitCountAll) ; auto040EE3CE_u += BoolToInt(lv_unit == UnitGroupUnit(auto040EE3CE_g, auto040EE3CE_u)) ) {
+                    lv_unit = UnitGroupUnit(auto040EE3CE_g, auto040EE3CE_u);
+                    auto08F44081_ae = UnitAbilityCount(lv_unit);
+                    auto08F44081_ai = 1;
+                    lv_index = 1;
+                    for ( ; ( (auto08F44081_ai >= 0 && lv_index <= auto08F44081_ae) || (auto08F44081_ai <= 0 && lv_index >= auto08F44081_ae) ) ; lv_index += auto08F44081_ai ) {
+                        lv_ability = UnitAbilityGet(lv_unit, lv_index);
+                        if ((AbilityClass(lv_ability) == c_classIdCAbilMorph)) {
+                            UnitIssueOrder(lv_unit, Order(AbilityCommand(lv_ability, 0)), c_orderQueueReplace);
+                        }
+
+                    }
+                }
+            }
             auto9A50E66A_g = UnitGroup(null, lib1_gv_playerAtBuildingRegion[lv_buildingRegion], null, lib1_gv_workerFilter, 0);
             auto9A50E66A_u = 1;
-            for ( ; auto9A50E66A_u <= UnitGroupCount(auto9A50E66A_g, c_unitCountAll) ; auto9A50E66A_u += BoolToInt(lv_unit == UnitGroupUnit(auto9A50E66A_g, auto9A50E66A_u)) ) {
-                lv_unit = UnitGroupUnit(auto9A50E66A_g, auto9A50E66A_u);
-                auto32DBD560_val = UnitGetType(lv_unit);
+            for ( ; auto9A50E66A_u <= UnitGroupCount(auto9A50E66A_g, c_unitCountAll) ; auto9A50E66A_u += BoolToInt(lv_worker == UnitGroupUnit(auto9A50E66A_g, auto9A50E66A_u)) ) {
+                lv_worker = UnitGroupUnit(auto9A50E66A_g, auto9A50E66A_u);
+                auto32DBD560_val = UnitGetType(lv_worker);
                 if (auto32DBD560_val == "hpea") {
-                    lv_ability = "AHbuUnit";
+                    lv_buildAbility = "AHbuUnit";
                 }
                 else if (auto32DBD560_val == "ewsp") {
-                    lv_ability = "AEbuUnit";
+                    lv_buildAbility = "AEbuUnit";
                 }
                 else if (auto32DBD560_val == "opeo") {
-                    lv_ability = "AObuArmy";
+                    lv_buildAbility = "AObuArmy";
                 }
                 else if (auto32DBD560_val == "uaco") {
-                    lv_ability = "AUbuUnit";
+                    lv_buildAbility = "AUbuUnit";
                 }
                 else {
                 }
                 while ((PlayerGetPropertyInt(lib1_gv_playerAtBuildingRegion[lv_buildingRegion], c_playerPropTerrazine) >= 150)) {
-                    lv_abilityCommand = AbilityCommand(lv_ability, RandomInt(0, 29));
+                    lv_abilityCommand = AbilityCommand(lv_buildAbility, RandomInt(0, 29));
                     lv_point = RegionRandomPoint(lib1_gv_buildingRegion[lv_buildingRegion][RandomInt(1, lib1_gv_phalanxMaximumCount)]);
                     lv_order = OrderTargetingPoint(lv_abilityCommand, lv_point);
-                    UnitIssueOrder(lv_unit, lv_order, c_orderQueueReplace);
+                    UnitIssueOrder(lv_worker, lv_order, c_orderQueueReplace);
                 }
             }
         }
@@ -1815,6 +1846,7 @@ void lib1_gf_ReserveUnitCreationEnable (bool lp_option) {
     }
     TriggerEnable(lib1_gt_CreateReserveUnit, lp_option);
     TriggerEnable(lib1_gt_UnitDied, lp_option);
+    TriggerEnable(lib1_gt_IssueOrderPeriodic, lp_option);
 }
 
 void lib1_gf_ReserveUnitCreation (unit lp_unit, int lp_player, int lp_phalanx) {
@@ -3072,6 +3104,65 @@ void lib1_gt_CreateReserveUnit_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: IssueOrderPeriodic
+//--------------------------------------------------------------------------------------------------
+bool lib1_gt_IssueOrderPeriodic_Func (bool testConds, bool runActions) {
+    unitgroup auto06A29299_g;
+    int auto06A29299_u;
+
+    // Variable Declarations
+    unit lv_unit;
+    unit lv_targetUnit;
+    unitgroup lv_targetUnitgroup;
+    point lv_targetPoint;
+
+    // Variable Initialization
+    lv_targetUnitgroup = UnitGroupEmpty();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto06A29299_g = UnitGroup(null, c_playerAny, lib1_gv_battlefield, lib1_gv_unitFilter, 0);
+    auto06A29299_u = 1;
+    for ( ; auto06A29299_u <= UnitGroupCount(auto06A29299_g, c_unitCountAll) ; auto06A29299_u += BoolToInt(lv_unit == UnitGroupUnit(auto06A29299_g, auto06A29299_u)) ) {
+        lv_unit = UnitGroupUnit(auto06A29299_g, auto06A29299_u);
+        lv_targetUnit = null;
+        lv_targetPoint = null;
+        UnitGroupClear(lv_targetUnitgroup);
+        lv_targetUnitgroup = UnitGroupAlliance(UnitGetOwner(lv_unit), c_unitAllianceEnemy, lib1_gv_battlefield, lib1_gv_unitFilter, 0);
+        while ((UnitGroupCount(lv_targetUnitgroup, c_unitCountAlive) > 0)) {
+            lv_targetUnit = UnitGroupClosestToPoint(lv_targetUnitgroup, UnitGetPosition(lv_unit));
+            if (true) {
+                lv_targetPoint = UnitGetPosition(lv_targetUnit);
+                break;
+            }
+            else {
+                UnitGroupRemove(lv_targetUnitgroup, lv_targetUnit);
+            }
+        }
+        if ((lv_targetPoint != null)) {
+            if ((RegionContainsPoint(RegionCircle(lv_targetPoint, UnitWeaponRange(lv_unit, 1)), UnitGetPosition(lv_unit)) == false)) {
+                UnitIssueOrder(lv_unit, OrderTargetingPoint(AbilityCommand("Amov", 3), libNtve_gf_PointOffsetTowardsPoint(lv_targetPoint, UnitWeaponRange(lv_unit, 1), UnitGetPosition(lv_unit))), c_orderQueueReplace);
+            }
+
+        }
+        else {
+            UnitIssueOrder(lv_unit, Order(AbilityCommand("stop", 0)), c_orderQueueReplace);
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib1_gt_IssueOrderPeriodic_Init () {
+    lib1_gt_IssueOrderPeriodic = TriggerCreate("lib1_gt_IssueOrderPeriodic_Func");
+    TriggerEnable(lib1_gt_IssueOrderPeriodic, false);
+    TriggerAddEventTimePeriodic(lib1_gt_IssueOrderPeriodic, 0.5, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: CountUnit
 //--------------------------------------------------------------------------------------------------
 bool lib1_gt_CountUnit_Func (bool testConds, bool runActions) {
@@ -3573,6 +3664,7 @@ void lib1_InitTriggers () {
     lib1_gt_PortalCreated_Init();
     lib1_gt_PhalanxBuffChange_Init();
     lib1_gt_CreateReserveUnit_Init();
+    lib1_gt_IssueOrderPeriodic_Init();
     lib1_gt_CountUnit_Init();
     lib1_gt_CountUnitControl_Init();
     lib1_gt_UnitDied_Init();

@@ -149,7 +149,13 @@
         <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-NONE.tga"/>
     </CActorUnit>
     <!--chaoskotobeast-->
-    <CActorUnit id="nckb" defType="NONE">
+    <CActorUnit id="nckb" defType="MEDIUM">
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-MEDIUM.tga"/>
+    </CActorUnit>
+    <!--darktrollshadowpriest-->
+    <CActorUnit id="ndtp" defType="NONE">
+        <Scale value="1.000000"/>
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
         <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-NONE.tga"/>
     </CActorUnit>
@@ -157,8 +163,21 @@
         <BuildModel value="War3_NightElfCaptureFlag"/>
         <PlacementModel value="War3_NightElfCaptureFlag"/>
     </CActorUnit>
+    <!--foresttrollhighpriest-->
+    <CActorUnit id="nfsh" defType="NONE">
+        <On index="89" removed="1"/>
+        <Scale value="1.000000"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-NONE.tga"/>
+    </CActorUnit>
     <!--foresttrollshadowpriest-->
-    <CActorUnit id="nfsp">
+    <CActorUnit id="nfsp" defType="NONE">
+        <On index="89" removed="1"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-NONE.tga"/>
+    </CActorUnit>
+    <!--foresttrollberserker-->
+    <CActorUnit id="nftb">
         <On index="89" removed="1"/>
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
     </CActorUnit>
@@ -168,10 +187,16 @@
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
         <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-MEDIUM.tga"/>
     </CActorUnit>
+    <!--foresttrolltrapper-->
+    <CActorUnit id="nftt">
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+    </CActorUnit>
     <!--icetrollshadowpriest-->
-    <CActorUnit id="nitp">
+    <CActorUnit id="nitp" defType="NONE">
         <On index="89" removed="1"/>
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <Scale value="1.000000"/>
+        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-NONE.tga"/>
     </CActorUnit>
     <!--icetroll-->
     <CActorUnit id="nitr" defType="MEDIUM">
@@ -224,8 +249,9 @@
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
     </CActorUnit>
     <!--kotobeast-->
-    <CActorUnit id="okod">
+    <CActorUnit id="okod" defType="MEDIUM">
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-MEDIUM.tga"/>
     </CActorUnit>
     <!--wolfrider-->
     <CActorUnit id="orai" defType="SMALL">
@@ -235,6 +261,20 @@
     <!--shaman-->
     <CActorUnit id="oshm">
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+    </CActorUnit>
+    <CActorUnit id="oshmEtherealForm" parent="War3_Army" unitSound="Shaman" unitName="oshmEtherealForm" defType="NONE">
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+        <BarOffset value="60"/>
+        <BarWidth value="57"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnShaman.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnShaman.dds"/>
+        <HighlightSubTooltip value="UI/LEVEL2"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnShaman.dds"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.300000 0.000000 spiritwalkermorph"/>
     </CActorUnit>
     <!--spiritwalkermorph-->
     <CActorUnit id="ospm">

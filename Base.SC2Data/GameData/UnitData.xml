@@ -12,12 +12,6 @@
         <PlacementFootprint value="1x1Army"/>
         <BehaviorArray index="3" Link="AW2_ArmyNotHostilePlayer"/>
         <TacticalAIThink value="AIThinkCreep"/>
-        <LifeArmorFormula>
-            <NegativeArmorMultiplier value="-1"/>
-            <NegativeDamageBase value="1"/>
-            <PositiveArmorMultiplier value="1"/>
-            <PositiveDamageRatio value="0"/>
-        </LifeArmorFormula>
     </CUnit>
     <CUnit default="1" id="AW2_Peon" parent="War3_ArmyBase">
         <DeathRevealRadius value="0"/>
@@ -284,8 +278,8 @@
         <Attributes index="medium" value="1"/>
         <CostResource index="gold" value="750"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="1600"/>
-        <LifeMax value="1600"/>
+        <LifeStart value="1222"/>
+        <LifeMax value="1222"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
@@ -314,13 +308,33 @@
         <FogVisibility value="Snapshot"/>
         <BehaviorArray Link="PhalanxPlaceholder"/>
     </CUnit>
+    <!--Sinjo Stormstout-->
+    <CUnit id="Nsjs" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="750"/>
+        <KillResource index="gold" value="75"/>
+        <LifeStart value="1600"/>
+        <LifeMax value="1600"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="599.9414"/>
+        <AbilArray Link="UpgradeTonpn4"/>
+        <AbilArray Link="UpgradeTonpn5"/>
+        <AbilArray Link="UpgradeTonpn6"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="npn4" Type="AbilCmd" AbilCmd="UpgradeTonpn4,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="npn5" Type="AbilCmd" AbilCmd="UpgradeTonpn5,Execute" Row="0" Column="1"/>
+            <LayoutButtons Face="npn6" Type="AbilCmd" AbilCmd="UpgradeTonpn6,Execute" Row="0" Column="2"/>
+        </CardLayouts>
+    </CUnit>
     <!--HeroBladeMaster-->
     <CUnit id="Obla" parent="AW2_Army" defType="MEDIUM">
         <Attributes index="medium" value="1"/>
         <CostResource index="gold" value="750"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="1600"/>
-        <LifeMax value="1600"/>
+        <LifeStart value="1222"/>
+        <LifeMax value="1222"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
@@ -564,8 +578,8 @@
         <Attributes index="none" value="1"/>
         <CostResource index="gold" value="1800"/>
         <KillResource index="gold" value="30"/>
-        <LifeStart value="25"/>
-        <LifeMax value="25"/>
+        <LifeStart value="65"/>
+        <LifeMax value="65"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
@@ -593,8 +607,8 @@
         <Attributes index="fort" value="1"/>
         <CostResource index="gold" value="2250"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="1600"/>
-        <LifeMax value="1600"/>
+        <LifeStart value="1105"/>
+        <LifeMax value="1105"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
@@ -824,8 +838,8 @@
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="450"/>
         <KillResource index="gold" value="15"/>
-        <LifeStart value="800"/>
-        <LifeMax value="800"/>
+        <LifeStart value="673"/>
+        <LifeMax value="673"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
@@ -834,15 +848,14 @@
         <CardLayouts index="0">
             <LayoutButtons Face="Asal" Type="Passive" Behavior="Asal" Row="2" Column="0"/>
         </CardLayouts>
-        <LifeArmor value="6"/>
     </CUnit>
     <!--ChaosWolfRider-->
     <CUnit id="nchr" parent="AW2_Army" defType="SMALL">
         <Attributes index="small" value="1"/>
         <CostResource index="gold" value="2250"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="1600"/>
-        <LifeMax value="1600"/>
+        <LifeStart value="1686.5"/>
+        <LifeMax value="1686.5"/>
         <Speed value="3"/>
         <Race value="Orc"/>
         <Mover value="horse"/>
@@ -851,15 +864,14 @@
         <CardLayouts index="0">
             <LayoutButtons Face="Aens" Type="AbilCmd" AbilCmd="Aens,0" Row="2" Column="0"/>
         </CardLayouts>
-        <LifeArmor value="6"/>
     </CUnit>
     <!--ChaosWarlock-->
     <CUnit id="nchw" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
         <CostResource index="gold" value="450"/>
         <KillResource index="gold" value="5"/>
-        <LifeStart value="25"/>
-        <LifeMax value="25"/>
+        <LifeStart value="73"/>
+        <LifeMax value="73"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
@@ -878,12 +890,12 @@
         <InnerRadius value="0.375"/>
     </CUnit>
     <!--Chaos Kodo Beast-->
-    <CUnit id="nckb" parent="AW2_Army" defType="NONE">
-        <Attributes index="none" value="1"/>
+    <CUnit id="nckb" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
         <CostResource index="gold" value="2250"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="3205"/>
-        <LifeMax value="3205"/>
+        <LifeStart value="1321"/>
+        <LifeMax value="1321"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="horse"/>
@@ -898,11 +910,59 @@
         </CardLayouts>
         <FlagArray index="HiddenCargoUI" value="1"/>
     </CUnit>
+    <!--dark troll shadow priest-->
+    <CUnit id="ndtp" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="900"/>
+        <KillResource index="gold" value="15"/>
+        <LifeStart value="65"/>
+        <LifeMax value="65"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="499.9218"/>
+        <AbilArray Link="Anh1"/>
+        <AbilArray Link="ACd2"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Anh2" Type="AbilCmd" AbilCmd="Anh1,0" Row="2" Column="0"/>
+            <LayoutButtons Face="ACd2" Type="AbilCmd" AbilCmd="ACd2,0" Row="2" Column="1"/>
+        </CardLayouts>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <EnergyMax value="100"/>
+        <EnergyStart value="100"/>
+    </CUnit>
     <!--NightElf flag-->
     <CUnit id="nflg" parent="AW2_Phalanx">
         <BehaviorArray Link="CreateReserveUnit36"/>
         <Footprint value="6x6Phalanx"/>
         <PlacementFootprint value="6x6Phalanx"/>
+    </CUnit>
+    <!--forest troll high priest-->
+    <CUnit id="nfsh" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="900"/>
+        <KillResource index="gold" value="15"/>
+        <LifeStart value="65"/>
+        <LifeMax value="65"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="499.9218"/>
+        <AbilArray Link="Anh2"/>
+        <AbilArray Link="ACif"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Anh2" Type="AbilCmd" AbilCmd="Anh2,0" Row="2" Column="0"/>
+            <LayoutButtons Face="ACif" Type="AbilCmd" AbilCmd="ACif,0" Row="2" Column="2"/>
+        </CardLayouts>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <EnergyMax value="100"/>
+        <EnergyStart value="100"/>
     </CUnit>
     <!--forest troll shadow priest-->
     <CUnit id="nfsp" parent="AW2_Army" defType="NONE">
@@ -928,6 +988,22 @@
         <EnergyMax value="100"/>
         <EnergyStart value="100"/>
     </CUnit>
+    <!--forest troll berserker-->
+    <CUnit id="nftb" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
+        <CostResource index="gold" value="450"/>
+        <KillResource index="gold" value="5"/>
+        <LifeStart value="61"/>
+        <LifeMax value="61"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="499.9218"/>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+    </CUnit>
     <!--ForestTroll-->
     <CUnit id="nftr" parent="AW2_Army" defType="MEDIUM">
         <Attributes index="medium" value="1"/>
@@ -939,6 +1015,28 @@
         <Race value="Orc"/>
         <Mover value="foot"/>
         <TurningRate value="499.9218"/>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+    </CUnit>
+    <!--ForestTrollTrapper-->
+    <CUnit id="nftt" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
+        <CostResource index="gold" value="150"/>
+        <KillResource index="gold" value="5"/>
+        <LifeStart value="61"/>
+        <LifeMax value="61"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <TurningRate value="499.9218"/>
+        <AbilArray Link="UpgradeTonftb"/>
+        <AbilArray Link="ACen"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="nftb" Type="AbilCmd" AbilCmd="UpgradeTonftb,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="ACen" Type="AbilCmd" AbilCmd="ACen,0" Row="2" Column="0"/>
+        </CardLayouts>
         <Radius value="0.375"/>
         <MinimapRadius value="0.375"/>
         <SeparationRadius value="0.375"/>
@@ -972,16 +1070,18 @@
         <Attributes index="none" value="1"/>
         <CostResource index="gold" value="300"/>
         <KillResource index="gold" value="15"/>
-        <LifeStart value="25"/>
-        <LifeMax value="25"/>
+        <LifeStart value="65"/>
+        <LifeMax value="65"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
         <TurningRate value="499.9218"/>
-        <AbilArray Link="UpgradeTonfsp"/>
+        <AbilArray Link="UpgradeTonfsh"/>
+        <AbilArray Link="UpgradeTondtp"/>
         <AbilArray Link="Anh1"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="nfsp" Type="AbilCmd" AbilCmd="UpgradeTonfsp,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="nfsh" Type="AbilCmd" AbilCmd="UpgradeTonfsh,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="ndtp" Type="AbilCmd" AbilCmd="UpgradeTondtp,Execute" Row="0" Column="1"/>
             <LayoutButtons Face="Anh1" Type="AbilCmd" AbilCmd="Anh1,0" Row="2" Column="0"/>
         </CardLayouts>
         <Radius value="0.375"/>
@@ -1109,8 +1209,8 @@
         <Attributes index="none" value="1"/>
         <CostResource index="gold" value="150"/>
         <KillResource index="gold" value="5"/>
-        <LifeStart value="25"/>
-        <LifeMax value="25"/>
+        <LifeStart value="73"/>
+        <LifeMax value="73"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
@@ -1152,8 +1252,8 @@
         <Attributes index="none" value="1"/>
         <CostResource index="gold" value="600"/>
         <KillResource index="gold" value="30"/>
-        <LifeStart value="25"/>
-        <LifeMax value="25"/>
+        <LifeStart value="65"/>
+        <LifeMax value="65"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
@@ -1186,8 +1286,8 @@
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="150"/>
         <KillResource index="gold" value="15"/>
-        <LifeStart value="800"/>
-        <LifeMax value="800"/>
+        <LifeStart value="673"/>
+        <LifeMax value="673"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
@@ -1198,15 +1298,14 @@
             <LayoutButtons Face="nchg" Type="AbilCmd" AbilCmd="UpgradeTonchg,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="Asal" Type="Passive" Behavior="Asal" Row="2" Column="0"/>
         </CardLayouts>
-        <LifeArmor value="6"/>
     </CUnit>
     <!--HeadHunter-->
     <CUnit id="ohun" parent="AW2_Army" defType="MEDIUM">
         <Attributes index="medium" value="1"/>
         <CostResource index="gold" value="150"/>
         <KillResource index="gold" value="5"/>
-        <LifeStart value="25"/>
-        <LifeMax value="25"/>
+        <LifeStart value="52"/>
+        <LifeMax value="52"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
@@ -1222,12 +1321,12 @@
         <LifeMax value="25"/>
     </CUnit>
     <!--KodoBeast-->
-    <CUnit id="okod" parent="AW2_Army" defType="NONE">
-        <Attributes index="none" value="1"/>
+    <CUnit id="okod" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
         <CostResource index="gold" value="750"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="3205"/>
-        <LifeMax value="3205"/>
+        <LifeStart value="1321"/>
+        <LifeMax value="1321"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="horse"/>
@@ -1313,22 +1412,22 @@
             </LayoutButtons>
         </CardLayouts>
         <CardLayouts CardId="Bui1">
-            <LayoutButtons Face="nitr" Type="AbilCmd" AbilCmd="AObuArmy,Build3" Row="0" Column="0"/>
-            <LayoutButtons Face="ogru" Type="AbilCmd" AbilCmd="AObuArmy,Build5" Row="0" Column="1"/>
-            <LayoutButtons Face="Obla" Type="AbilCmd" AbilCmd="AObuArmy,Build13" Row="0" Column="2"/>
-            <LayoutButtons Face="otau" Type="AbilCmd" AbilCmd="AObuArmy,Build11" Row="0" Column="3"/>
-            <LayoutButtons Face="orai" Type="AbilCmd" AbilCmd="AObuArmy,Build7" Row="0" Column="4"/>
-            <LayoutButtons Face="npn4" Type="AbilCmd" AbilCmd="AObuArmy,Build28" Row="1" Column="2"/>
-            <LayoutButtons Face="npn6" Type="AbilCmd" AbilCmd="AObuArmy,Build30" Row="1" Column="3"/>
+            <LayoutButtons Face="ogru" Type="AbilCmd" AbilCmd="AObuArmy,Build5" Row="0" Column="0"/>
+            <LayoutButtons Face="Obla" Type="AbilCmd" AbilCmd="AObuArmy,Build13" Row="0" Column="1"/>
+            <LayoutButtons Face="otau" Type="AbilCmd" AbilCmd="AObuArmy,Build11" Row="0" Column="2"/>
+            <LayoutButtons Face="orai" Type="AbilCmd" AbilCmd="AObuArmy,Build7" Row="0" Column="3"/>
+            <LayoutButtons Face="npn6" Type="AbilCmd" AbilCmd="AObuArmy,Build30" Row="1" Column="2"/>
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
+            <LayoutButtons Face="npn4" Type="AbilCmd" AbilCmd="AObuArmy,Build28" Row="1" Column="1"/>
         </CardLayouts>
         <CardLayouts CardId="Bui2">
-            <LayoutButtons Face="ohun" Type="AbilCmd" AbilCmd="AObuArmy,Build9" Row="0" Column="0"/>
-            <LayoutButtons Face="nw2w" Type="AbilCmd" AbilCmd="AObuArmy,Build18" Row="0" Column="1"/>
-            <LayoutButtons Face="okod" Type="AbilCmd" AbilCmd="AObuArmy,Build15" Row="0" Column="2"/>
-            <LayoutButtons Face="Ofar" Type="AbilCmd" AbilCmd="AObuArmy,Build26" Row="0" Column="3"/>
+            <LayoutButtons Face="nftt" Type="AbilCmd" AbilCmd="AObuArmy,Build3" Row="0" Column="0"/>
+            <LayoutButtons Face="ohun" Type="AbilCmd" AbilCmd="AObuArmy,Build9" Row="0" Column="1"/>
+            <LayoutButtons Face="nw2w" Type="AbilCmd" AbilCmd="AObuArmy,Build18" Row="0" Column="2"/>
+            <LayoutButtons Face="okod" Type="AbilCmd" AbilCmd="AObuArmy,Build15" Row="0" Column="3"/>
             <LayoutButtons Face="npn5" Type="AbilCmd" AbilCmd="AObuArmy,Build29" Row="1" Column="3"/>
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
+            <LayoutButtons Face="Ofar" Type="AbilCmd" AbilCmd="AObuArmy,Build26" Row="0" Column="4"/>
         </CardLayouts>
         <CardLayouts CardId="Bui3">
             <LayoutButtons Face="nitp" Type="AbilCmd" AbilCmd="AObuArmy,Build24" Row="0" Column="0"/>
@@ -1353,8 +1452,8 @@
         <Attributes index="small" value="1"/>
         <CostResource index="gold" value="750"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="1600"/>
-        <LifeMax value="1600"/>
+        <LifeStart value="1686.5"/>
+        <LifeMax value="1686.5"/>
         <Speed value="3"/>
         <Race value="Orc"/>
         <Mover value="horse"/>
@@ -1365,26 +1464,27 @@
             <LayoutButtons Face="nchr" Type="AbilCmd" AbilCmd="UpgradeTonchr,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="Aens" Type="AbilCmd" AbilCmd="Aens,0" Row="2" Column="0"/>
         </CardLayouts>
-        <LifeArmor value="6"/>
     </CUnit>
     <!--Shaman-->
     <CUnit id="oshm" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
         <CostResource index="gold" value="600"/>
         <KillResource index="gold" value="30"/>
-        <LifeStart value="600"/>
-        <LifeMax value="600"/>
+        <LifeStart value="1069"/>
+        <LifeMax value="1069"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
         <TurningRate value="599.9414"/>
+        <AbilArray Link="UpgradeTooshmEtherealForm"/>
         <AbilArray Link="Ablo"/>
         <AbilArray Link="Alsh"/>
         <AbilArray Link="Apg2"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="Ablo" Type="AbilCmd" AbilCmd="Ablo,0" Row="2" Column="2"/>
-            <LayoutButtons Face="Alsh" Type="AbilCmd" AbilCmd="Alsh,0" Row="2" Column="1"/>
-            <LayoutButtons Face="Apg2" Type="AbilCmd" AbilCmd="Apg2,0" Row="2" Column="0"/>
+            <LayoutButtons Face="oshmEtherealForm" Type="AbilCmd" AbilCmd="UpgradeTooshmEtherealForm,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Ablo" Type="AbilCmd" AbilCmd="Ablo,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="Alsh" Type="AbilCmd" AbilCmd="Alsh,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="Apg2" Type="AbilCmd" AbilCmd="Apg2,Execute" Row="2" Column="0"/>
         </CardLayouts>
         <Radius value="0.3125"/>
         <MinimapRadius value="0.3125"/>
@@ -1392,6 +1492,34 @@
         <InnerRadius value="0.3125"/>
         <FlagArray index="AICaster" value="1"/>
         <FlagArray index="AIPressForwardDisabled" value="1"/>
+    </CUnit>
+    <CUnit id="oshmEtherealForm" parent="AW2_Army" defType="NONE">
+        <Race value="Orc"/>
+        <FlagArray index="AICaster" value="1"/>
+        <FlagArray index="AIPressForwardDisabled" value="1"/>
+        <Attributes index="none" value="1"/>
+        <LifeStart value="1069"/>
+        <LifeMax value="1069"/>
+        <Mover value="foot"/>
+        <Speed value="2"/>
+        <TurningRate value="599.9414"/>
+        <CostResource index="gold" value="1800"/>
+        <KillResource index="gold" value="30"/>
+        <AbilArray Link="Ablo"/>
+        <AbilArray Link="Alsh"/>
+        <AbilArray Link="Apg2"/>
+        <BehaviorArray Link="Aetl"/>
+        <WeaponArray index="0" Link="oshm1"/>
+        <WeaponArray index="1" Link="oshm2"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Ablo" Type="AbilCmd" AbilCmd="Ablo,0" Row="2" Column="2"/>
+            <LayoutButtons Face="Alsh" Type="AbilCmd" AbilCmd="Alsh,0" Row="2" Column="1"/>
+            <LayoutButtons Face="Apg2" Type="AbilCmd" AbilCmd="Apg2,0" Row="2" Column="0"/>
+        </CardLayouts>
+        <Radius value="0.3125"/>
+        <SeparationRadius value="0.3125"/>
+        <InnerRadius value="0.3125"/>
+        <MinimapRadius value="0.3125"/>
     </CUnit>
     <!--serpent $ward 1-->
     <CUnit id="osp1">
@@ -1401,10 +1529,10 @@
     <!--SpiritwalkerMorph-->
     <CUnit id="ospm" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
-        <CostResource index="gold" value="600"/>
+        <CostResource index="gold" value="1800"/>
         <KillResource index="gold" value="30"/>
-        <LifeStart value="1825"/>
-        <LifeMax value="1825"/>
+        <LifeStart value="565"/>
+        <LifeMax value="565"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
@@ -1435,8 +1563,8 @@
         <Attributes index="none" value="1"/>
         <CostResource index="gold" value="600"/>
         <KillResource index="gold" value="30"/>
-        <LifeStart value="1825"/>
-        <LifeMax value="1825"/>
+        <LifeStart value="565"/>
+        <LifeMax value="565"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
@@ -1466,8 +1594,8 @@
         <Attributes index="fort" value="1"/>
         <CostResource index="gold" value="750"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="1600"/>
-        <LifeMax value="1600"/>
+        <LifeStart value="1105"/>
+        <LifeMax value="1105"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
@@ -1486,8 +1614,8 @@
         <Attributes index="medium" value="1"/>
         <CostResource index="gold" value="450"/>
         <KillResource index="gold" value="5"/>
-        <LifeStart value="25"/>
-        <LifeMax value="25"/>
+        <LifeStart value="52"/>
+        <LifeMax value="52"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
