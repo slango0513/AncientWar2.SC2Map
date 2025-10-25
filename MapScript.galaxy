@@ -2,7 +2,7 @@
 // 
 // Generated Map Script
 // 
-// Name:   ????????????II
+// Name:   ?????????
 // 
 //==================================================================================================
 include "TriggerLibs/NativeLib"
@@ -14,7 +14,7 @@ include "LibGAwX"
 // Constants
 const fixed lib1_gv_minimumPeriod = 0.0625;
 const int lib1_gv_customValuePhalanx = 1;
-const string lib1_gv_unitTypeUserType = "UnitTypeData";
+const string lib1_gv_unitTypeUserType = "ArmyTypeData";
 const string lib1_gv_phalanxUserType = "PhalanxData";
 const string lib1_gv_portalUserType = "PortalData";
 const string lib1_gv_phalanxBuffUserType = "PhalanxBuffData";
@@ -82,6 +82,9 @@ int[lib1_gv_venueMaximumCount + 1][lib1_gv_roundMaximumCount + 1] lib1_gv_player
 int lib1_gv_round;
 int lib1_gv_finalRoundCount;
 bool lib1_gv_testPassed;
+fixed lib1_gv_searchRadiusInFinalRound;
+unit[lib1_gv_playerMaximumIndex + 1][lib1_gv_phalanxMaximumCount + 1] lib1_gv_phalanx;
+string[lib1_gv_playerMaximumIndex + 1][lib1_gv_phalanxMaximumCount + 1] lib1_gv_phalanxBuff;
 playergroup lib1_gv_uIPlayergroup;
 unitfilter lib1_gv_workerFilter;
 unitfilter lib1_gv_phalanxFilter;
@@ -91,9 +94,6 @@ unitfilter lib1_gv_creepFilter;
 unitfilter lib1_gv_unitFilter;
 unitfilter lib1_gv_unitAndCreepFilter;
 unitfilter lib1_gv_pathBlockerFilter;
-unit[lib1_gv_playerMaximumIndex + 1][lib1_gv_phalanxMaximumCount + 1] lib1_gv_phalanx;
-string[lib1_gv_playerMaximumIndex + 1][lib1_gv_phalanxMaximumCount + 1] lib1_gv_phalanxBuff;
-fixed lib1_gv_searchRadiusInFinalRound;
 
 // Function Declarations
 string lib1_gf_AttributeGetRace (string lp_attribute);
@@ -142,9 +142,9 @@ void lib1_gf_PreviewerRemoveAll ();
 void lib1_gf_PreviewerAtBuildingRegionPositionAll ();
 void lib1_gf_PreviewEnable (bool lp_option);
 void lib1_gf_PreviewModelCreate (int lp_player, point lp_point, string lp_unitType, unit lp_unit);
+bool lib1_gf_BehaviorIsPhalanxBuff (string lp_behavior);
 void lib1_gf_PhalanxCounterEnable (bool lp_reset, bool lp_option);
 void lib1_gf_PhalanxBuffSet (unit lp_unit, bool lp_preview);
-bool lib1_gf_BehaviorIsPhalanxBuff (string lp_behavior);
 void lib1_gf_UnitPositionAll ();
 void lib1_gf_UnitOrPreviewModelPosition (unit lp_unit, bool lp_preview);
 void lib1_gf_CreepPosition (int lp_round);
@@ -167,7 +167,7 @@ void lib1_gf_PlayerAtFinalVenueSet (int lp_round);
 void lib1_gf_StartLocationCameraPan ();
 void lib1_gf_VenueCameraPan (int lp_round);
 void lib1_gf_KillScoreAndKillGoldAdd (int lp_player, string lp_unitType);
-void lib1_gf_KillScoreUpdate (int lp_round);
+void lib1_gf_KillScoreUpdate ();
 void lib1_gf_ScoreBoardRowColorUpdate (int lp_round);
 void lib1_gf_ScoreBoardSetName (int lp_round, bool lp_bonusRound);
 void lib1_gf_BuildingScoreUpdate ();
@@ -1404,6 +1404,30 @@ void lib1_gf_PreviewModelCreate (int lp_player, point lp_point, string lp_unitTy
     ActorSend(libNtve_gf_ActorLastCreated(), libNtve_gf_SetTeamColor(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false))));
 }
 
+bool lib1_gf_BehaviorIsPhalanxBuff (string lp_behavior) {
+    int autoA6AD30DE_ae;
+    int autoA6AD30DE_ai;
+
+    // Variable Declarations
+    int lv_index;
+    bool lv_isPhalanxBuff;
+
+    // Variable Initialization
+
+    // Implementation
+    autoA6AD30DE_ae = UserDataInstanceCount(lib1_gv_phalanxBuffUserType);
+    autoA6AD30DE_ai = 1;
+    lv_index = 1;
+    for ( ; ( (autoA6AD30DE_ai >= 0 && lv_index <= autoA6AD30DE_ae) || (autoA6AD30DE_ai <= 0 && lv_index >= autoA6AD30DE_ae) ) ; lv_index += autoA6AD30DE_ai ) {
+        if (((lp_behavior) == (UserDataInstance(lib1_gv_phalanxBuffUserType, lv_index)))) {
+            lv_isPhalanxBuff = true;
+            break;
+        }
+
+    }
+    return lv_isPhalanxBuff;
+}
+
 void lib1_gf_PhalanxCounterEnable (bool lp_reset, bool lp_option) {
     int autoA2A0DD48_ae;
     int autoA2A0DD48_ai;
@@ -1453,30 +1477,6 @@ void lib1_gf_PhalanxBuffSet (unit lp_unit, bool lp_preview) {
 
     lv_ability = UserDataGetGameLink(lib1_gv_phalanxBuffUserType, ((lv_behavior)), "Ability", 1);
     UnitIssueOrder(lp_unit, Order(AbilityCommand(lv_ability, 0)), c_orderQueueReplace);
-}
-
-bool lib1_gf_BehaviorIsPhalanxBuff (string lp_behavior) {
-    int autoA6AD30DE_ae;
-    int autoA6AD30DE_ai;
-
-    // Variable Declarations
-    int lv_index;
-    bool lv_isPhalanxBuff;
-
-    // Variable Initialization
-
-    // Implementation
-    autoA6AD30DE_ae = UserDataInstanceCount(lib1_gv_phalanxBuffUserType);
-    autoA6AD30DE_ai = 1;
-    lv_index = 1;
-    for ( ; ( (autoA6AD30DE_ai >= 0 && lv_index <= autoA6AD30DE_ae) || (autoA6AD30DE_ai <= 0 && lv_index >= autoA6AD30DE_ae) ) ; lv_index += autoA6AD30DE_ai ) {
-        if (((lp_behavior) == (UserDataInstance(lib1_gv_phalanxBuffUserType, lv_index)))) {
-            lv_isPhalanxBuff = true;
-            break;
-        }
-
-    }
-    return lv_isPhalanxBuff;
 }
 
 void lib1_gf_UnitPositionAll () {
@@ -1759,16 +1759,16 @@ void lib1_gf_AIBuildingPosition () {
                 lv_worker = UnitGroupUnit(auto9A50E66A_g, auto9A50E66A_u);
                 auto32DBD560_val = UnitGetType(lv_worker);
                 if (auto32DBD560_val == "hpea") {
-                    lv_buildAbility = "AHbuUnit";
+                    lv_buildAbility = "AHbuArmy";
                 }
                 else if (auto32DBD560_val == "ewsp") {
-                    lv_buildAbility = "AEbuUnit";
+                    lv_buildAbility = "AEbuArmy";
                 }
                 else if (auto32DBD560_val == "opeo") {
                     lv_buildAbility = "AObuArmy";
                 }
                 else if (auto32DBD560_val == "uaco") {
-                    lv_buildAbility = "AUbuUnit";
+                    lv_buildAbility = "AUbuArmy";
                 }
                 else {
                 }
@@ -2105,10 +2105,10 @@ void lib1_gf_KillScoreAndKillGoldAdd (int lp_player, string lp_unitType) {
     // Implementation
     PlayerModifyPropertyInt(lp_player, c_playerPropTerrazine, c_playerPropOperAdd, lib1_gf_UnitTypeGetKillGold(lp_unitType));
     lib1_gv_killScore[lp_player] += lib1_gf_UnitTypeGetKillGold(lp_unitType);
-    lib1_gf_KillScoreUpdate(0);
+    lib1_gf_KillScoreUpdate();
 }
 
-void lib1_gf_KillScoreUpdate (int lp_round) {
+void lib1_gf_KillScoreUpdate () {
     int auto8535A57B_ae;
     int auto8535A57B_ai;
     int autoB96E9090_ae;
@@ -2319,7 +2319,7 @@ void lib1_gf_RoundStartLoop (bool lp_debug) {
         lv_round = 1;
         for ( ; ( (auto6F7FF55B_ai >= 0 && lv_round <= auto6F7FF55B_ae) || (auto6F7FF55B_ai <= 0 && lv_round >= auto6F7FF55B_ae) ) ; lv_round += auto6F7FF55B_ai ) {
             if ((lp_debug == true)) {
-                lv_round = 8;
+                lv_round = 1;
             }
 
             lib1_gf_VenueInitialReplace();
@@ -2491,21 +2491,6 @@ void lib1_gf_TeamRoundRandomize () {
 
         }
     }
-    TextExpressionSetToken("Param/Expression/lib_1_F3A84076", "A", IntToText(1));
-    TextExpressionSetToken("Param/Expression/lib_1_F3A84076", "B", IntToText(lv_roundRandomized[1]));
-    TextExpressionSetToken("Param/Expression/lib_1_F3A84076", "C", IntToText(2));
-    TextExpressionSetToken("Param/Expression/lib_1_F3A84076", "D", IntToText(lv_roundRandomized[2]));
-    TextExpressionSetToken("Param/Expression/lib_1_F3A84076", "E", IntToText(3));
-    TextExpressionSetToken("Param/Expression/lib_1_F3A84076", "F", IntToText(lv_roundRandomized[3]));
-    TextExpressionSetToken("Param/Expression/lib_1_F3A84076", "G", IntToText(4));
-    TextExpressionSetToken("Param/Expression/lib_1_F3A84076", "H", IntToText(lv_roundRandomized[4]));
-    TextExpressionSetToken("Param/Expression/lib_1_F3A84076", "I", IntToText(5));
-    TextExpressionSetToken("Param/Expression/lib_1_F3A84076", "J", IntToText(lv_roundRandomized[5]));
-    TextExpressionSetToken("Param/Expression/lib_1_F3A84076", "K", IntToText(6));
-    TextExpressionSetToken("Param/Expression/lib_1_F3A84076", "L", IntToText(lv_roundRandomized[6]));
-    TextExpressionSetToken("Param/Expression/lib_1_F3A84076", "M", IntToText(7));
-    TextExpressionSetToken("Param/Expression/lib_1_F3A84076", "N", IntToText(lv_roundRandomized[7]));
-    TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_1_F3A84076"), true);
 }
 
 void lib1_gf_VenueGroupRandomize () {
@@ -2569,15 +2554,6 @@ void lib1_gf_VenueGroupRandomize () {
             }
         }
     }
-    TextExpressionSetToken("Param/Expression/lib_1_5D741B7E", "A", IntToText(1));
-    TextExpressionSetToken("Param/Expression/lib_1_5D741B7E", "B", IntToText(lib1_gv_venueGroupRandomized[1][1]));
-    TextExpressionSetToken("Param/Expression/lib_1_5D741B7E", "C", IntToText(2));
-    TextExpressionSetToken("Param/Expression/lib_1_5D741B7E", "D", IntToText(lib1_gv_venueGroupRandomized[2][1]));
-    TextExpressionSetToken("Param/Expression/lib_1_5D741B7E", "E", IntToText(3));
-    TextExpressionSetToken("Param/Expression/lib_1_5D741B7E", "F", IntToText(lib1_gv_venueGroupRandomized[3][1]));
-    TextExpressionSetToken("Param/Expression/lib_1_5D741B7E", "G", IntToText(4));
-    TextExpressionSetToken("Param/Expression/lib_1_5D741B7E", "H", IntToText(lib1_gv_venueGroupRandomized[4][1]));
-    TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_1_5D741B7E"), true);
 }
 
 void lib1_gf_TeamAtVenueSet (bool lp_debug) {
@@ -2589,8 +2565,6 @@ void lib1_gf_TeamAtVenueSet (bool lp_debug) {
     int auto6CB868D8_ai;
     int autoA511D45B_ae;
     int autoA511D45B_ai;
-    int auto59DD60BD_ae;
-    int auto59DD60BD_ai;
 
     // Variable Declarations
     int lv_team;
@@ -2664,20 +2638,6 @@ void lib1_gf_TeamAtVenueSet (bool lp_debug) {
         }
         lv_cycle -= 1;
     }
-    auto59DD60BD_ae = lib1_gv_teamRoundCount;
-    auto59DD60BD_ai = 1;
-    lv_round = 1;
-    for ( ; ( (auto59DD60BD_ai >= 0 && lv_round <= auto59DD60BD_ae) || (auto59DD60BD_ai <= 0 && lv_round >= auto59DD60BD_ae) ) ; lv_round += auto59DD60BD_ai ) {
-        TextExpressionSetToken("Param/Expression/lib_1_A3EE931C", "A", IntToText(lib1_gv_teamAtVenue[1][lv_round]));
-        TextExpressionSetToken("Param/Expression/lib_1_A3EE931C", "B", IntToText(lib1_gv_teamAtVenue[2][lv_round]));
-        TextExpressionSetToken("Param/Expression/lib_1_A3EE931C", "C", IntToText(lib1_gv_teamAtVenue[3][lv_round]));
-        TextExpressionSetToken("Param/Expression/lib_1_A3EE931C", "D", IntToText(lib1_gv_teamAtVenue[4][lv_round]));
-        TextExpressionSetToken("Param/Expression/lib_1_A3EE931C", "E", IntToText(lib1_gv_teamAtVenue[5][lv_round]));
-        TextExpressionSetToken("Param/Expression/lib_1_A3EE931C", "F", IntToText(lib1_gv_teamAtVenue[6][lv_round]));
-        TextExpressionSetToken("Param/Expression/lib_1_A3EE931C", "G", IntToText(lib1_gv_teamAtVenue[7][lv_round]));
-        TextExpressionSetToken("Param/Expression/lib_1_A3EE931C", "H", IntToText(lib1_gv_teamAtVenue[8][lv_round]));
-        TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_1_A3EE931C"), true);
-    }
 }
 
 void lib1_gf_PlayerAtVenueSet (bool lp_debug) {
@@ -2745,25 +2705,7 @@ void lib1_gf_PlayerAtVenueSet (bool lp_debug) {
     auto17A42559_ai = 1;
     lv_round = 1;
     for ( ; ( (auto17A42559_ai >= 0 && lv_round <= auto17A42559_ae) || (auto17A42559_ai <= 0 && lv_round >= auto17A42559_ae) ) ; lv_round += auto17A42559_ai ) {
-        TextExpressionSetToken("Param/Expression/lib_1_9952560A", "A", IntToText(lib1_gv_playerAtVenue[1][lv_round]));
-        TextExpressionSetToken("Param/Expression/lib_1_9952560A", "B", IntToText(lib1_gv_playerAtVenue[2][lv_round]));
-        TextExpressionSetToken("Param/Expression/lib_1_9952560A", "C", IntToText(lib1_gv_playerAtVenue[3][lv_round]));
-        TextExpressionSetToken("Param/Expression/lib_1_9952560A", "D", IntToText(lib1_gv_playerAtVenue[4][lv_round]));
-        TextExpressionSetToken("Param/Expression/lib_1_9952560A", "E", IntToText(lib1_gv_playerAtVenue[5][lv_round]));
-        TextExpressionSetToken("Param/Expression/lib_1_9952560A", "F", IntToText(lib1_gv_playerAtVenue[6][lv_round]));
-        TextExpressionSetToken("Param/Expression/lib_1_9952560A", "G", IntToText(lib1_gv_playerAtVenue[7][lv_round]));
-        TextExpressionSetToken("Param/Expression/lib_1_9952560A", "H", IntToText(lib1_gv_playerAtVenue[8][lv_round]));
-        TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_1_9952560A"), true);
         if ((lib1_gv_bonusRoundIsOn[lv_round] == true)) {
-            TextExpressionSetToken("Param/Expression/lib_1_5B5B8C5A", "A", IntToText(lib1_gv_creepPlayerAtVenue[1][lv_round]));
-            TextExpressionSetToken("Param/Expression/lib_1_5B5B8C5A", "B", IntToText(lib1_gv_creepPlayerAtVenue[2][lv_round]));
-            TextExpressionSetToken("Param/Expression/lib_1_5B5B8C5A", "C", IntToText(lib1_gv_creepPlayerAtVenue[3][lv_round]));
-            TextExpressionSetToken("Param/Expression/lib_1_5B5B8C5A", "D", IntToText(lib1_gv_creepPlayerAtVenue[4][lv_round]));
-            TextExpressionSetToken("Param/Expression/lib_1_5B5B8C5A", "E", IntToText(lib1_gv_creepPlayerAtVenue[5][lv_round]));
-            TextExpressionSetToken("Param/Expression/lib_1_5B5B8C5A", "F", IntToText(lib1_gv_creepPlayerAtVenue[6][lv_round]));
-            TextExpressionSetToken("Param/Expression/lib_1_5B5B8C5A", "G", IntToText(lib1_gv_creepPlayerAtVenue[7][lv_round]));
-            TextExpressionSetToken("Param/Expression/lib_1_5B5B8C5A", "H", IntToText(lib1_gv_creepPlayerAtVenue[8][lv_round]));
-            TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_1_5B5B8C5A"), true);
         }
 
     }
@@ -3184,7 +3126,7 @@ bool lib1_gt_IssueOrderPeriodic_Func (bool testConds, bool runActions) {
 void lib1_gt_IssueOrderPeriodic_Init () {
     lib1_gt_IssueOrderPeriodic = TriggerCreate("lib1_gt_IssueOrderPeriodic_Func");
     TriggerEnable(lib1_gt_IssueOrderPeriodic, false);
-    TriggerAddEventTimePeriodic(lib1_gt_IssueOrderPeriodic, 0.5, c_timeGame);
+    TriggerAddEventTimePeriodic(lib1_gt_IssueOrderPeriodic, 2.0, c_timeGame);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3578,7 +3520,7 @@ bool lib1_gt_ScoreBoardInizialization_Func (bool testConds, bool runActions) {
     }
     libNtve_gf_ShowHideLeaderboard(lib1_gv_scoreBoard, true, lib1_gv_uIPlayergroup);
     lib1_gf_BuildingScoreUpdate();
-    lib1_gf_KillScoreUpdate(0);
+    lib1_gf_KillScoreUpdate();
     return true;
 }
 
@@ -3634,7 +3576,6 @@ bool lib1_gt_PlayerInizialization_Func (bool testConds, bool runActions) {
         PlayerSetState(lib1_gf_IndexGetUserPlayer(lv_player), c_playerStateFoodIgnored, true);
         PlayerSetState(lib1_gf_IndexGetUserPlayer(lv_player), c_playerStateShowWorldTip, true);
         PlayerOptionOverride(lib1_gf_IndexGetUserPlayer(lv_player), "simplecommandcard", "0");
-        PlayerOptionOverride(lib1_gf_IndexGetUserPlayer(lv_player), "displayunitstatus", "All");
         PlayerOptionOverride(lib1_gf_IndexGetUserPlayer(lv_player), "buildgridhint", "1");
         PlayerOptionOverride(lib1_gf_IndexGetUserPlayer(lv_player), "gametooltips", "1");
         PlayerOptionOverride(lib1_gf_IndexGetUserPlayer(lv_player), "selectuncontrolable", "1");
@@ -3642,7 +3583,6 @@ bool lib1_gt_PlayerInizialization_Func (bool testConds, bool runActions) {
             PlayerGroupAdd(lib1_gv_aIGroup, lib1_gf_IndexGetUserPlayer(lv_player));
         }
 
-        libGAwX_gf_SetPlayerUIRace(lib1_gf_IndexGetUserPlayer(lv_player), "Orc");
     }
     auto63073FE8_ae = lib1_gv_playerCount;
     auto63073FE8_ai = 1;
@@ -3837,6 +3777,8 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     int lv_player;
 
     // Variable Initialization
+    lv_debug = true;
+    lv_virturalTeam = true;
 
     // Actions
     if (!runActions) {
@@ -3860,8 +3802,6 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     libGAwX_gf_SetWar3TimeOfDay("13:00:00");
     libGAwX_gf_PauseUnpauseTimeOfDayWar3(true);
     MeleeInitUnits();
-    gf_E69588E69E9CE58AA9E6898BE6B3A8E5868CE4BA8BE4BBB6(0, "CountPhalanxTriggerNotice");
-    gf_E69588E69E9CE58AA9E6898BE6B3A8E5868CE4BA8BE4BBB6(0, "CountUnitTriggerNotice");
     lib1_gf_RoundStartLoop(lv_debug);
     return true;
 }

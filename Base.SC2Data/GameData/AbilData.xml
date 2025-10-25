@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CAbilMorph default="1" id="AW2_Upgrade" parent="War3_Upgrade">
+        <InfoArray index="0" Score="1" Unit="##toUnit##">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
     <!--Abolish Magic (Creep, 1,2 pos)-->
     <CAbilEffectTarget id="ACd2">
         <Cost index="0">
@@ -21,7 +34,8 @@
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
     </CAbilEffectTarget>
-    <CAbilBuild id="AEbuUnit" parent="War3_PowerBuild">
+    <CAbilBuild id="AEbuArmy" parent="War3_PowerBuild">
+        <Name value="AEbuUnit/Name"/>
         <FlagArray index="IgnoreFood" value="1"/>
         <InfoArray index="Build1" Unit="nflg">
             <Button DefaultButtonFace="nflg" Requirements="BuildPhalanx"/>
@@ -29,7 +43,7 @@
         <InfoArray index="Build2" Unit="hprt">
             <Button DefaultButtonFace="hprt" Requirements="BuildPortal"/>
         </InfoArray>
-        <InfoArray index="Build3" Unit="nwat">
+        <InfoArray index="Build3" Unit="nhea">
             <Button DefaultButtonFace="nhea" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build4" Unit="earc">
@@ -49,7 +63,8 @@
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
     </CAbilBehavior>
-    <CAbilBuild id="AHbuUnit" parent="War3_PowerBuild">
+    <CAbilBuild id="AHbuArmy" parent="War3_PowerBuild">
+        <Name value="AHbuUnit/Name"/>
         <FlagArray index="IgnoreFood" value="1"/>
         <InfoArray index="Build1" Unit="flag">
             <Button DefaultButtonFace="flag" Requirements="BuildPhalanx"/>
@@ -60,14 +75,35 @@
         <InfoArray index="Build3" Unit="hfoo">
             <Button DefaultButtonFace="hfoo" Requirements="BuildArmy"/>
         </InfoArray>
-        <InfoArray index="Build4" Unit="hhes">
-            <Button DefaultButtonFace="hhes" Requirements="BuildArmy"/>
-        </InfoArray>
-        <InfoArray index="Build5" Unit="hsor">
+        <InfoArray index="Build4" Unit="hsor">
             <Button DefaultButtonFace="hsor" Requirements="BuildArmy"/>
         </InfoArray>
-        <InfoArray index="Build6" Unit="nhea">
+        <InfoArray index="Build5" Unit="nhea">
             <Button DefaultButtonFace="nhea" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build6" Unit="Hpal">
+            <Button DefaultButtonFace="Hpal" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build7" Unit="hkni">
+            <Button DefaultButtonFace="hkni" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build8" Unit="nhym">
+            <Button DefaultButtonFace="nhym" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build9" Unit="nemi">
+            <Button DefaultButtonFace="nemi" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build10" Unit="hmtm">
+            <Button DefaultButtonFace="hmtm" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build11" Unit="hrif">
+            <Button DefaultButtonFace="hrif" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build12" Unit="hspt">
+            <Button DefaultButtonFace="hspt" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build13" Unit="Gyrocopter">
+            <Button DefaultButtonFace="Gyrocopter" Requirements="BuildArmy"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
@@ -88,6 +124,13 @@
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
     </CAbilEffectTarget>
+    <!--Paladin - Resurrection-->
+    <CAbilEffectInstant id="AHre">
+        <Cost index="0">
+            <Vital index="Energy" value="100"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </Cost>
+    </CAbilEffectInstant>
     <CAbilEffectInstant id="AIpv" parent="War3_EffectInstant">
         <CmdButtonArray index="Execute" Requirements="">
             <Flags index="IgnoreUser" value="1"/>
@@ -265,7 +308,8 @@
             <Vital index="Energy" value="25"/>
         </Cost>
     </CAbilEffectInstant>
-    <CAbilBuild id="AUbuUnit" parent="War3_PowerBuild">
+    <CAbilBuild id="AUbuArmy" parent="War3_PowerBuild">
+        <Name value="AUbuUnit/Name"/>
         <FlagArray index="IgnoreFood" value="1"/>
         <InfoArray index="Build1" Unit="uflg">
             <Button DefaultButtonFace="uflg" Requirements="BuildPhalanx"/>
@@ -606,47 +650,44 @@
         <AutoCastRange value="1.5"/>
         <CmdButtonArray index="Execute" Requirements="Teleport"/>
     </CAbilEffectTarget>
-    <CAbilMorph id="UpgradeTohhes" parent="War3_Upgrade" toUnit="hhes">
+    <CAbilMorph id="UpgradeTohhes" parent="AW2_Upgrade" toUnit="hhes">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
-        <InfoArray index="0" Score="1" Unit="hhes">
-            <SectionArray index="Abils">
-                <DurationArray index="Delay" value="0"/>
-            </SectionArray>
-            <SectionArray index="Actor">
-                <DurationArray index="Duration" value="0"/>
-            </SectionArray>
-            <SectionArray index="Stats">
-                <DurationArray index="Delay" value="0"/>
-            </SectionArray>
-        </InfoArray>
     </CAbilMorph>
-    <CAbilMorph id="UpgradeToHjai" parent="War3_Upgrade" toUnit="Hjai">
+    <CAbilMorph id="UpgradeTonbel" parent="AW2_Upgrade" toUnit="nbel">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
-        <InfoArray index="0" Score="1" Unit="Hjai">
-            <SectionArray index="Abils">
-                <DurationArray index="Delay" value="0"/>
-            </SectionArray>
-            <SectionArray index="Actor">
-                <DurationArray index="Duration" value="0"/>
-            </SectionArray>
-            <SectionArray index="Stats">
-                <DurationArray index="Delay" value="0"/>
-            </SectionArray>
-        </InfoArray>
     </CAbilMorph>
-    <CAbilMorph id="UpgradeTonmed" parent="War3_Upgrade" toUnit="nmed">
+    <CAbilMorph id="UpgradeTonbld" parent="AW2_Upgrade" toUnit="nbld">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
-        <InfoArray index="0" Score="1" Unit="nmed">
-            <SectionArray index="Abils">
-                <DurationArray index="Delay" value="0"/>
-            </SectionArray>
-            <SectionArray index="Actor">
-                <DurationArray index="Duration" value="0"/>
-            </SectionArray>
-            <SectionArray index="Stats">
-                <DurationArray index="Delay" value="0"/>
-            </SectionArray>
-        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToHlgr" parent="AW2_Upgrade" toUnit="Hlgr">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToHvwd" parent="AW2_Upgrade" toUnit="Hvwd">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToHhkl" parent="AW2_Upgrade" toUnit="Hhkl">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToHuth" parent="AW2_Upgrade" toUnit="Huth">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToHjai" parent="AW2_Upgrade" toUnit="Hjai">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonmed" parent="AW2_Upgrade" toUnit="nmed">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToHamg" parent="AW2_Upgrade" toUnit="Hamg">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToHgam" parent="AW2_Upgrade" toUnit="Hgam">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTohmpr" parent="AW2_Upgrade" toUnit="hmpr">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTohgyr" parent="AW2_Upgrade" toUnit="hgyr">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeTonftr" parent="War3_Upgrade" toUnit="nftr">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
