@@ -33,6 +33,9 @@
     <CValidatorUnitCompareBehaviorCount id="NoPolymorph">
         <Behavior value="Bply"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoDoom">
+        <Behavior value="BNdo"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NoInvisibility">
         <Behavior value="Binv"/>
     </CValidatorUnitCompareBehaviorCount>
@@ -93,6 +96,13 @@
         <AreaArray index="0" Radius="10" Validator="UnitThreatenshfoo"/>
     </CValidatorLocationEnumArea>
     <CValidatorUnitCompareAttackPriority id="UnitThreatenshfoo" parent="ThreatensUnit" unitLink="hfoo"/>
+    <CValidatorUnitCompareAttackPriority id="UnitThreatensnbel" parent="ThreatensUnit" unitLink="nbel"/>
+    <CValidatorLocationEnumArea id="TacticalMagicDefendThreatSearch" parent="TacticalCloakThreatSearch" unitLink="nbel">
+        <AreaArray index="0" Radius="10" Validator="UnitThreatensnbel"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="TacticalMagicDefendThreatSearchEmpty" parent="TacticalCloakThreatSearchEmpty" unitLink="nbel">
+        <AreaArray index="0" Radius="10" Validator="UnitThreatensnbel"/>
+    </CValidatorLocationEnumArea>
     <CValidatorCombine id="AIInvisibilityTarget">
         <Type value="And"/>
         <CombineArray value="EnemiesNearby3"/>
@@ -103,6 +113,31 @@
     <CValidatorCombine id="AIPolymorphTarget">
         <Type value="And"/>
         <CombineArray value="NoPolymorph"/>
+        <CombineArray value="noMarkers"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="AIDoomTarget">
+        <Type value="And"/>
+        <CombineArray value="NoDoom"/>
+        <CombineArray value="noMarkers"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="AIHolyLightHealTarget">
+        <Type value="And"/>
+        <CombineArray value="AHhbHealTarget"/>
+        <CombineArray value="noMarkers"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="AIHolyLightDamageTarget">
+        <Type value="And"/>
+        <CombineArray value="AHhbDamageTarget"/>
+        <CombineArray value="noMarkers"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="AIDeathCoilHealTarget">
+        <Type value="And"/>
+        <CombineArray value="AUdcHealTarget"/>
+        <CombineArray value="noMarkers"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="AIDeathCoilDamageTarget">
+        <Type value="And"/>
+        <CombineArray value="AUdcDamageTarget"/>
         <CombineArray value="noMarkers"/>
     </CValidatorCombine>
     <CValidatorCombine id="AIAttackCaster">

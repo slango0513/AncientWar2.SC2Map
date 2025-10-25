@@ -57,4 +57,68 @@
         <ExtendRadius value="10"/>
     </CTargetFindEnumArea>
     <CTargetFindEnumArea id="SentryWard"/>
+    <CTargetFindEnumArea id="Doom">
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray/>
+        <Abil value="ANdo"/>
+        <TargetSorts>
+            <SortArray value="TSLife"/>
+            <SortArray value="TSDistance"/>
+        </TargetSorts>
+        <TargetFilters value="Visible;Player,Ally,Neutral,Hover,Missile,Dead,Invulnerable,Unstoppable"/>
+        <TargetValidator value="AIDoomTarget"/>
+        <ExtendRadius value="10"/>
+    </CTargetFindEnumArea>
+    <CTargetFindSet id="HolyLight">
+        <Array value="HolyLightHeal"/>
+        <Array value="HolyLightDamage"/>
+    </CTargetFindSet>
+    <CTargetFindSet id="DeathCoil">
+        <Array value="DeathCoilHeal"/>
+        <Array value="DeathCoilDamage"/>
+    </CTargetFindSet>
+    <CTargetFindEnumArea id="HolyLightHeal">
+        <TargetFilters value="Visible;Neutral,Enemy,Hover,Missile,Dead,Invulnerable,Unstoppable"/>
+        <TargetValidator value="AIHolyLightHealTarget"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray/>
+        <Abil value="AHhb"/>
+        <ExtendRadius value="10"/>
+        <TargetSorts>
+            <SortArray value="TSLife"/>
+        </TargetSorts>
+    </CTargetFindEnumArea>
+    <CTargetFindEnumArea id="HolyLightDamage">
+        <TargetFilters value="Visible;Player,Ally,Hover,Missile,Dead,Invulnerable,Unstoppable"/>
+        <TargetValidator value="AIHolyLightDamageTarget"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray/>
+        <Abil value="AHhb"/>
+        <ExtendRadius value="10"/>
+        <TargetSorts>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
+    </CTargetFindEnumArea>
+    <CTargetFindEnumArea id="DeathCoilHeal">
+        <TargetFilters value="Visible;Neutral,Enemy,Hover,Missile,Dead,Invulnerable,Unstoppable"/>
+        <TargetValidator value="AIDeathCoilHealTarget"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray/>
+        <Abil value="AUdc"/>
+        <ExtendRadius value="10"/>
+        <TargetSorts>
+            <SortArray value="TSLife"/>
+        </TargetSorts>
+    </CTargetFindEnumArea>
+    <CTargetFindEnumArea id="DeathCoilDamage">
+        <TargetFilters value="Visible;Player,Ally,Hover,Missile,Dead,Invulnerable,Unstoppable"/>
+        <TargetValidator value="AIDeathCoilDamageTarget"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray/>
+        <Abil value="AUdc"/>
+        <ExtendRadius value="10"/>
+        <TargetSorts>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
+    </CTargetFindEnumArea>
 </Catalog>

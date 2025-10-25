@@ -224,8 +224,8 @@
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="2250"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="1200"/>
-        <LifeMax value="1200"/>
+        <LifeStart value="1600"/>
+        <LifeMax value="1600"/>
         <Speed value="2"/>
         <Race value="Human"/>
         <Mover value="foot"/>
@@ -233,8 +233,8 @@
         <CardLayouts index="0">
             <LayoutButtons Face="AHre" Type="AbilCmd" AbilCmd="AHre,Execute" Row="2" Column="0"/>
         </CardLayouts>
-        <EnergyStart value="100"/>
-        <EnergyMax value="100"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
         <Name value="Hhkl/Propernames"/>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
@@ -288,21 +288,21 @@
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="750"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="1200"/>
-        <LifeMax value="1200"/>
+        <LifeStart value="1600"/>
+        <LifeMax value="1600"/>
         <Speed value="2"/>
         <Race value="Human"/>
         <Mover value="foot"/>
         <AbilArray Link="UpgradeToHhkl"/>
         <AbilArray Link="UpgradeToHuth"/>
-        <AbilArray Link="AHre"/>
+        <AbilArray Link="AHhb"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Hhkl" Type="AbilCmd" AbilCmd="UpgradeToHhkl,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="Huth" Type="AbilCmd" AbilCmd="UpgradeToHuth,Execute" Row="0" Column="1"/>
-            <LayoutButtons Face="AHre" Type="AbilCmd" AbilCmd="AHre,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="AHhb" Type="AbilCmd" AbilCmd="AHhb,Execute" Row="2" Column="0"/>
         </CardLayouts>
-        <EnergyStart value="100"/>
-        <EnergyMax value="100"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--uther-->
@@ -310,17 +310,21 @@
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="2250"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="1200"/>
-        <LifeMax value="1200"/>
+        <LifeStart value="1600"/>
+        <LifeMax value="1600"/>
         <Speed value="2"/>
         <Race value="Human"/>
         <Mover value="foot"/>
         <AbilArray Link="AHre"/>
+        <AbilArray Link="AHad"/>
         <CardLayouts index="0">
             <LayoutButtons Face="AHre" Type="AbilCmd" AbilCmd="AHre,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="AHad1" Type="Passive" Requirements="HeroPassiveButtonLevel1" Row="2" Column="1"/>
+            <LayoutButtons Face="AHad2" Type="Passive" Requirements="HeroPassiveButtonLevel2" Row="2" Column="1"/>
+            <LayoutButtons Face="AHad3" Type="Passive" Requirements="HeroPassiveButtonLevel3" Row="2" Column="1"/>
         </CardLayouts>
-        <EnergyStart value="100"/>
-        <EnergyMax value="100"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
         <Name value="Huth/Propernames"/>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
@@ -628,6 +632,8 @@
             <LayoutButtons Face="Uear" Type="AbilCmd" AbilCmd="UpgradeToUear,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="AUdc" Type="AbilCmd" AbilCmd="AUdc,Execute" Row="2" Column="0"/>
         </CardLayouts>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
     </CUnit>
     <!--evil arthas-->
     <CUnit id="Uear" parent="AW2_Army" defType="LARGE">
@@ -648,6 +654,8 @@
             <LayoutButtons Face="AUau" Type="Passive" Behavior="BUau1" Row="2" Column="1"/>
         </CardLayouts>
         <Name value="Uear/Propernames"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
     </CUnit>
     <!--Archer-->
     <CUnit id="earc" parent="AW2_Army" defType="MEDIUM">
@@ -856,24 +864,16 @@
                 <Column value="1"/>
             </LayoutButtons>
             <LayoutButtons>
-                <Face value="hprt"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="AEbuArmy,Build2"/>
+                <Face value="AEbu3"/>
+                <Type value="Submenu"/>
+                <AbilCmd value=""/>
                 <Behavior value=""/>
-                <Requirements value=""/>
+                <Requirements value="ShowBuildArmy"/>
                 <SubmenuAbilState value=""/>
-                <SubmenuCardId value=""/>
+                <SubmenuCardId value="Bui3"/>
                 <SubmenuFullSubCmdValidation value="0"/>
                 <SubmenuIsSticky value="0"/>
                 <ShowInGlossary value="1"/>
-                <Row value="0"/>
-                <Column value="1"/>
-            </LayoutButtons>
-            <LayoutButtons>
-                <Face value="AEbu3"/>
-                <Type value="Submenu"/>
-                <Requirements value="ShowBuildArmy"/>
-                <SubmenuCardId value="Bui3"/>
                 <Row value="0"/>
                 <Column value="2"/>
             </LayoutButtons>
@@ -1114,24 +1114,16 @@
                 <Column value="1"/>
             </LayoutButtons>
             <LayoutButtons>
-                <Face value="hprt"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="AHbuArmy,Build2"/>
+                <Face value="AHbu3"/>
+                <Type value="Submenu"/>
+                <AbilCmd value=""/>
                 <Behavior value=""/>
-                <Requirements value=""/>
+                <Requirements value="ShowBuildArmy"/>
                 <SubmenuAbilState value=""/>
-                <SubmenuCardId value=""/>
+                <SubmenuCardId value="Bui3"/>
                 <SubmenuFullSubCmdValidation value="0"/>
                 <SubmenuIsSticky value="0"/>
                 <ShowInGlossary value="1"/>
-                <Row value="0"/>
-                <Column value="1"/>
-            </LayoutButtons>
-            <LayoutButtons>
-                <Face value="AHbu3"/>
-                <Type value="Submenu"/>
-                <Requirements value="ShowBuildArmy"/>
-                <SubmenuCardId value="Bui3"/>
                 <Row value="0"/>
                 <Column value="2"/>
             </LayoutButtons>
@@ -1218,12 +1210,13 @@
         <Mover value="foot"/>
         <AbilArray Link="Asps"/>
         <AbilArray Link="Acmg"/>
-        <BehaviorArray Link="Amim"/>
+        <AbilArray Link="Amdf"/>
         <BehaviorArray Link="Afbk"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="Asps" Type="AbilCmd" AbilCmd="Asps,0" Row="2" Column="0"/>
-            <LayoutButtons Face="Acmg" Type="AbilCmd" AbilCmd="Acmg,0" Row="2" Column="1"/>
-            <LayoutButtons Face="Amim" Type="Passive" Behavior="Amim" Row="2" Column="2"/>
+            <LayoutButtons Face="Asps" Type="AbilCmd" AbilCmd="Asps,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Acmg" Type="AbilCmd" AbilCmd="Acmg,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="Amdf" Type="AbilCmd" AbilCmd="Amdf,On" Row="2" Column="2"/>
+            <LayoutButtons Face="AmdfUn" Type="AbilCmd" AbilCmd="Amdf,Off" Row="2" Column="2"/>
             <LayoutButtons Face="Afbk" Type="Passive" Behavior="Afbk" Row="2" Column="3"/>
         </CardLayouts>
         <EnergyStart value="100"/>
@@ -1233,6 +1226,22 @@
         <SeparationRadius value="0.375"/>
         <InnerRadius value="0.375"/>
         <PlaneArray index="Ground" value="1"/>
+    </CUnit>
+    <!--doom guard (summoned)-->
+    <CUnit id="nba2" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <LifeStart value="2000"/>
+        <LifeMax value="2000"/>
+        <Speed value="2"/>
+        <Race value="Human"/>
+        <Mover value="foot"/>
+        <AbilArray Link="Awrs"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Awrs" Type="AbilCmd" AbilCmd="Awrs,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
     </CUnit>
     <!--blood elf lieutenant-->
     <CUnit id="nbel" parent="AW2_Army" defType="LARGE">
@@ -1244,10 +1253,10 @@
         <Speed value="2"/>
         <Race value="Human"/>
         <Mover value="foot"/>
-        <AbilArray Link="Adef"/>
+        <AbilArray Link="Amdf"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="Adef" Type="AbilCmd" AbilCmd="Adef,On" Row="2" Column="0"/>
-            <LayoutButtons Face="AdefUn" Type="AbilCmd" AbilCmd="Adef,Off" Row="2" Column="0"/>
+            <LayoutButtons Face="Amdf" Type="AbilCmd" AbilCmd="Amdf,On" Row="2" Column="0"/>
+            <LayoutButtons Face="AmdfUn" Type="AbilCmd" AbilCmd="Amdf,Off" Row="2" Column="0"/>
         </CardLayouts>
         <Radius value="0.375"/>
         <MinimapRadius value="0.375"/>
@@ -1976,24 +1985,16 @@
                 <Column value="1"/>
             </LayoutButtons>
             <LayoutButtons>
-                <Face value="hprt"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="AObuArmy,Build2"/>
+                <Face value="AObu3"/>
+                <Type value="Submenu"/>
+                <AbilCmd value=""/>
                 <Behavior value=""/>
-                <Requirements value=""/>
+                <Requirements value="ShowBuildArmy"/>
                 <SubmenuAbilState value=""/>
-                <SubmenuCardId value=""/>
+                <SubmenuCardId value="Bui3"/>
                 <SubmenuFullSubCmdValidation value="0"/>
                 <SubmenuIsSticky value="0"/>
                 <ShowInGlossary value="1"/>
-                <Row value="0"/>
-                <Column value="1"/>
-            </LayoutButtons>
-            <LayoutButtons>
-                <Face value="AObu3"/>
-                <Type value="Submenu"/>
-                <Requirements value="ShowBuildArmy"/>
-                <SubmenuCardId value="Bui3"/>
                 <Row value="0"/>
                 <Column value="2"/>
             </LayoutButtons>
@@ -2303,24 +2304,16 @@
                 <Column value="1"/>
             </LayoutButtons>
             <LayoutButtons>
-                <Face value="hprt"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="AUbuArmy,Build2"/>
+                <Face value="AUbu3"/>
+                <Type value="Submenu"/>
+                <AbilCmd value=""/>
                 <Behavior value=""/>
-                <Requirements value=""/>
+                <Requirements value="ShowBuildArmy"/>
                 <SubmenuAbilState value=""/>
-                <SubmenuCardId value=""/>
+                <SubmenuCardId value="Bui3"/>
                 <SubmenuFullSubCmdValidation value="0"/>
                 <SubmenuIsSticky value="0"/>
                 <ShowInGlossary value="1"/>
-                <Row value="0"/>
-                <Column value="1"/>
-            </LayoutButtons>
-            <LayoutButtons>
-                <Face value="AUbu3"/>
-                <Type value="Submenu"/>
-                <Requirements value="ShowBuildArmy"/>
-                <SubmenuCardId value="Bui3"/>
                 <Row value="0"/>
                 <Column value="2"/>
             </LayoutButtons>
@@ -2378,6 +2371,36 @@
         <SeparationRadius value="0.3125"/>
         <InnerRadius value="0.3125"/>
         <PlaneArray index="Ground" value="1"/>
+    </CUnit>
+    <!--destroyer-->
+    <CUnit id="ubsp" parent="AW2_Army" defType="SMALL">
+        <Attributes index="small" value="1"/>
+        <CostResource index="gold" value="600"/>
+        <KillResource index="gold" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Undead"/>
+        <Mover value="fly"/>
+        <PlaneArray index="Air" value="1"/>
+        <AbilArray Link="Advm"/>
+        <AbilArray Link="Afak"/>
+        <AbilArray Link="Aave"/>
+        <AbilArray Link="Aabs"/>
+        <BehaviorArray Link="undead"/>
+        <BehaviorArray Link="AfakUnitRegister"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Advm" Type="AbilCmd" AbilCmd="Advm,0" Row="2" Column="0"/>
+            <LayoutButtons Face="Afak" Type="AbilCmd" AbilCmd="Afak,0" Row="2" Column="1"/>
+            <LayoutButtons Face="Aave" Type="AbilCmd" AbilCmd="Aave,0" Row="2" Column="3"/>
+            <LayoutButtons Face="Aabs" Type="AbilCmd" AbilCmd="Aabs,0" Row="2" Column="2"/>
+        </CardLayouts>
+        <EnergyStart value="100"/>
+        <EnergyMax value="100"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="ForceField" value="0"/>
+        <Collide index="Flying" value="1"/>
+        <Height value="1.875"/>
     </CUnit>
     <!--CryptFiend-->
     <CUnit id="ucry" parent="AW2_Army" defType="MEDIUM">
@@ -2446,8 +2469,8 @@
         <MinimapRadius value="0.3125"/>
         <SeparationRadius value="0.3125"/>
         <InnerRadius value="0.3125"/>
-        <EnergyStart value="100"/>
-        <EnergyMax value="100"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
         <PlaneArray index="Ground" value="1"/>
         <WeaponArray index="0" Link="uktn1"/>
     </CUnit>
@@ -2461,21 +2484,17 @@
         <Speed value="2"/>
         <Race value="Undead"/>
         <Mover value="foot"/>
-        <AbilArray Link="Acri"/>
-        <AbilArray Link="Arai"/>
-        <AbilArray Link="Auhf"/>
+        <AbilArray Link="ANdo"/>
         <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="Acri" Type="AbilCmd" AbilCmd="Acri,0" Row="2" Column="2"/>
-            <LayoutButtons Face="Arai" Type="AbilCmd" AbilCmd="Arai,0" Row="2" Column="0"/>
-            <LayoutButtons Face="Auhf" Type="AbilCmd" AbilCmd="Auhf,0" Row="2" Column="1"/>
+            <LayoutButtons Face="ANdo" Type="AbilCmd" AbilCmd="ANdo,0" Row="2" Column="0"/>
         </CardLayouts>
         <Radius value="0.3125"/>
         <MinimapRadius value="0.3125"/>
         <SeparationRadius value="0.3125"/>
         <InnerRadius value="0.3125"/>
-        <EnergyStart value="100"/>
-        <EnergyMax value="100"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--MeatWagon-->
@@ -2523,15 +2542,15 @@
         <MinimapRadius value="0.3125"/>
         <SeparationRadius value="0.3125"/>
         <InnerRadius value="0.3125"/>
-        <EnergyStart value="100"/>
-        <EnergyMax value="100"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--Obsidian Statue-->
     <CUnit id="uobs" parent="AW2_Army" defType="LARGE">
         <Attributes index="mechanical" value="1"/>
         <Attributes index="large" value="1"/>
-        <CostResource index="gold" value="600"/>
+        <CostResource index="gold" value="60"/>
         <KillResource index="gold" value="30"/>
         <LifeStart value="25"/>
         <LifeMax value="25"/>
@@ -2552,11 +2571,18 @@
         <EnergyMax value="100"/>
     </CUnit>
     <!--SkeletonWarrior-->
-    <CUnit id="uske">
-        <LifeStart value="400"/>
-        <LifeMax value="400"/>
-        <FogVisibility value="Snapshot"/>
-        <LifeArmor value="0"/>
+    <CUnit id="uske" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <LifeStart value="300"/>
+        <LifeMax value="300"/>
+        <Speed value="2"/>
+        <Race value="Undead"/>
+        <Mover value="foot"/>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <CUnit id="HumanPhalanxPlaceholder" parent="War3_Item" defType="">
         <Collide index="Ground" value="1"/>
