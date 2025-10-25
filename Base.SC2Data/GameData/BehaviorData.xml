@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CBehaviorBuff id="ACsp">
+        <RemoveValidatorArray value="CasterIsNotCreep"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="CreateReserveUnit36" parent="War3_Passive">
         <Requirements value="CreateReserveUnit36"/>
         <Period value="0.0625"/>
@@ -14,10 +17,11 @@
         <DisableValidatorArray value="CountUnit"/>
         <DisableValidatorArray value="PhalanxMarkerEqual0"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="CreepUnitTriggerNotice">
-        <DisableValidatorArray index="0" value="NotHostilePlayer"/>
+    <CBehaviorBuff id="Building" parent="War3_Passive">
+        <Requirements value="Building"/>
+        <DisableValidatorArray value="NotHostilePlayer"/>
         <DisableValidatorArray value="CasterIsNotWorker"/>
-        <RemoveValidatorArray index="0" value="NotHostilePlayer"/>
+        <RemoveValidatorArray value="NotHostilePlayer"/>
         <RemoveValidatorArray value="CasterIsNotWorker"/>
         <Modification SightMaximum="0">
             <StateFlags index="Invulnerable" value="1"/>
@@ -60,6 +64,57 @@
             <AbilClassDisableArray index="CAbilWarpTrain" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="CreepUnitTriggerNotice">
+        <DisableValidatorArray index="0" value="NotHostilePlayer"/>
+        <DisableValidatorArray value="CasterIsNotWorker"/>
+        <DisableValidatorArray value="CasterIsNotCreep"/>
+        <RemoveValidatorArray index="0" value="NotHostilePlayer"/>
+        <RemoveValidatorArray value="CasterIsNotWorker"/>
+        <RemoveValidatorArray value="CasterIsNotCreep"/>
+        <Modification SightMaximum="0">
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="Radar" value="1"/>
+            <AbilClassDisableArray index="CAbil" value="1"/>
+            <AbilClassDisableArray index="CAbilProgress" value="1"/>
+            <AbilClassDisableArray index="CAbilEffect" value="1"/>
+            <AbilClassDisableArray index="CAbilQueueable" value="1"/>
+            <AbilClassDisableArray index="CAbilRedirect" value="1"/>
+            <AbilClassDisableArray index="CAbilArmMagazine" value="1"/>
+            <AbilClassDisableArray index="CAbilAttack" value="1"/>
+            <AbilClassDisableArray index="CAbilAugment" value="1"/>
+            <AbilClassDisableArray index="CAbilBattery" value="1"/>
+            <AbilClassDisableArray index="CAbilBeacon" value="1"/>
+            <AbilClassDisableArray index="CAbilBehavior" value="1"/>
+            <AbilClassDisableArray index="CAbilBuild" value="1"/>
+            <AbilClassDisableArray index="CAbilBuildable" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectInstant" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
+            <AbilClassDisableArray index="CAbilHarvest" value="1"/>
+            <AbilClassDisableArray index="CAbilInteract" value="1"/>
+            <AbilClassDisableArray index="CAbilInventory" value="1"/>
+            <AbilClassDisableArray index="CAbilLearn" value="1"/>
+            <AbilClassDisableArray index="CAbilMerge" value="1"/>
+            <AbilClassDisableArray index="CAbilMergeable" value="1"/>
+            <AbilClassDisableArray index="CAbilMorph" value="1"/>
+            <AbilClassDisableArray index="CAbilMorphPlacement" value="1"/>
+            <AbilClassDisableArray index="CAbilMove" value="1"/>
+            <AbilClassDisableArray index="CAbilQueue" value="1"/>
+            <AbilClassDisableArray index="CAbilRally" value="1"/>
+            <AbilClassDisableArray index="CAbilRedirectInstant" value="1"/>
+            <AbilClassDisableArray index="CAbilRedirectTarget" value="1"/>
+            <AbilClassDisableArray index="CAbilResearch" value="1"/>
+            <AbilClassDisableArray index="CAbilRevive" value="1"/>
+            <AbilClassDisableArray index="CAbilSpecialize" value="1"/>
+            <AbilClassDisableArray index="CAbilStop" value="1"/>
+            <AbilClassDisableArray index="CAbilTrain" value="1"/>
+            <AbilClassDisableArray index="CAbilTransport" value="1"/>
+            <AbilClassDisableArray index="CAbilWarpable" value="1"/>
+            <AbilClassDisableArray index="CAbilWarpTrain" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MagnataurRun">
+        <RemoveValidatorArray value="CasterIsNotCreep"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="Phalanx" parent="War3_Passive">
         <Requirements value="Phalanx"/>
         <Modification>
@@ -82,6 +137,7 @@
         <Requirements value="PhalanxPlaceholder"/>
         <Modification>
             <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="UnitAttrOnHover" value="1"/>
             <StateFlags index="Unselectable" value="1"/>
             <StateFlags index="Untargetable" value="1"/>
         </Modification>
@@ -96,6 +152,12 @@
         <InfoFlags index="Hidden" value="0"/>
         <Requirements value="TeleportMarker"/>
         <Duration value="5"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="War3_PowerfulMob">
+        <RemoveValidatorArray index="0" removed="1"/>
+        <Modification>
+            <StateFlags index="UnitAttrOnMapBoss" value="1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="War3_Unit">
         <Modification>

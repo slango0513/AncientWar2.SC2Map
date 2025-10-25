@@ -15,18 +15,13 @@
             <Radius value="500"/>
             <Validator value="HasPhalanxMarker"/>
         </AreaArray>
-        <SearchFilters value="Visible;Neutral,Enemy,Worker,HarvestableResource,Stasis,Dead,Hidden,Benign"/>
+        <SearchFilters value="Visible;Neutral,Enemy,Hover,Worker,RawResource,HarvestableResource,Missile,Dead,Hidden,Radar,MapBoss"/>
     </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="PhalanxMarkerEqual0">
         <WhichLocation Value="CasterPoint"/>
         <AreaArray Radius="500" Validator="HasPhalanxMarker"/>
-        <SearchFilters value="Visible;Neutral,Enemy,Worker,HarvestableResource,Stasis,Dead,Hidden,Benign"/>
+        <SearchFilters value="Visible;Neutral,Enemy,Hover,Worker,RawResource,HarvestableResource,Missile,Dead,Hidden,Radar,MapBoss"/>
         <Compare value="Eq"/>
-    </CValidatorLocationEnumArea>
-    <CValidatorLocationEnumArea id="UnitEqual0">
-        <WhichLocation Value="CasterPoint"/>
-        <AreaArray Count="0" Radius="500"/>
-        <SearchFilters value="Visible;Neutral,Enemy,Worker,HarvestableResource,Stasis,Dead,Hidden,Benign"/>
     </CValidatorLocationEnumArea>
     <CValidatorUnitCompareBehaviorCount id="HasPhalanxMarker">
         <Compare value="GT"/>
@@ -48,6 +43,10 @@
     <CValidatorUnitFilters id="CasterIsNotWorker">
         <WhichUnit Value="Caster"/>
         <Filters value="-;Worker"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitFilters id="CasterIsNotCreep">
+        <WhichUnit Value="Caster"/>
+        <Filters value="-;MapBoss"/>
     </CValidatorUnitFilters>
     <CValidatorLocationEnumArea id="TacticalDefendThreatSearch" parent="TacticalCloakThreatSearch" unitLink="hfoo">
         <AreaArray index="0" Radius="10" Validator="UnitThreatenshfoo"/>

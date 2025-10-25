@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CUser id="CreepUnitTypeData">
+        <Fields Id="UnitType" Type="Unit" Count="16"/>
+        <Fields Id="ArmorType" Type="Text" Count="16"/>
+        <Fields Id="WeaponType" Type="Text" Count="16"/>
+        <Fields Id="Ability" Type="Text" Count="16"/>
+        <Instances Id="[Default]"/>
+        <Instances Id="Table">
+            <Text Text="UserData/CreepUnitTypeData/Table_ArmorType">
+                <Field Id="ArmorType"/>
+            </Text>
+            <Text Text="UserData/CreepUnitTypeData/Table_WeaponType">
+                <Field Id="WeaponType"/>
+            </Text>
+            <Text Text="UserData/CreepUnitTypeData/Table_WeaponType_001">
+                <Field Id="WeaponType" Index="1"/>
+            </Text>
+            <Text Text="UserData/CreepUnitTypeData/Table_ArmorType_001">
+                <Field Id="ArmorType" Index="1"/>
+            </Text>
+            <Text Text="UserData/CreepUnitTypeData/Table_Ability">
+                <Field Id="Ability"/>
+            </Text>
+            <Text Text="UserData/CreepUnitTypeData/Table_Ability_001">
+                <Field Id="Ability" Index="1"/>
+            </Text>
+            <Unit Unit="nmgw">
+                <Field Id="UnitType"/>
+            </Unit>
+            <Unit Unit="ngns">
+                <Field Id="UnitType" Index="1"/>
+            </Unit>
+        </Instances>
+    </CUser>
     <CUser id="PhalanxBuffData">
         <Fields Id="Behavior" Type="GameLink" GameLinkType="Behavior"/>
         <Instances Id="[Default]"/>

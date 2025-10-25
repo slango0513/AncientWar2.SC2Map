@@ -64,6 +64,34 @@
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
+    <CAbilAttack id="Aatk">
+        <CmdButtonArray index="Execute">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Towards">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Barrage">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilAttack>
+    <CAbilMove id="Amov">
+        <CmdButtonArray index="Move">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Patrol">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="HoldPos">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="AcquireMove">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Turn">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilMove>
     <!--Possession (Channeling) Dur=4.5 HeroDur=4.5 Buff=Bpos,Bpoc-->
     <CAbilEffectTarget id="Aps2">
         <Flags index="AutoCast" value="1"/>
@@ -74,11 +102,22 @@
         <AutoCastRange value="4.6875"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="NoPossession"/>
-        <CmdButtonArray index="Execute" Requirements=""/>
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
     </CAbilEffectTarget>
     <!--Raise Dead Dur=40 HeroDur=40 Buff=Brai-->
     <CAbilEffectInstant id="Arai">
         <Flags index="AutoCastOn" value="1"/>
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
     </CAbilEffectInstant>
     <CAbilBehavior id="RotationSystem" parent="War3_Toggle">
         <CmdButtonArray index="On" Requirements="RotationSystem"/>
