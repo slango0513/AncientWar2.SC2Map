@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CRequirementAnd id="AndCountUpgradeBuildPhalanxCompleteOnlyNotCountBehaviorRotationSystemMarkerCompleteOnlyAtUnit">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUpgradeBuildPhalanxCompleteOnly"/>
+        <OperandArray value="NotCountBehaviorRotationSystemMarkerCompleteOnlyAtUnit"/>
+    </CRequirementAnd>
     <CRequirementAnd id="AndLTCountUnitAlias_PhalanxQueuedOrBetter3CountUpgradeBuildPhalanxCompleteOnly">
         <OperandArray value="LTCountUnitAlias_PhalanxQueuedOrBetter3"/>
         <OperandArray value="CountUpgradeBuildPhalanxCompleteOnly"/>
@@ -10,7 +15,6 @@
     </CRequirementAnd>
     <CRequirementCountBehavior id="CountBehaviorRotationSystemMarkerCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="RotationSystemMarker" State="CompleteOnlyAtUnit"/>
     </CRequirementCountBehavior>
     <CRequirementCountUnit id="CountUnitAlias_PhalanxQueuedOrBetter">
@@ -46,7 +50,6 @@
         <OperandArray index="1" value="2"/>
     </CRequirementLT>
     <CRequirementNot id="NotCountBehaviorRotationSystemMarkerCompleteOnlyAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountBehaviorRotationSystemMarkerCompleteOnlyAtUnit"/>
     </CRequirementNot>
 </Catalog>
