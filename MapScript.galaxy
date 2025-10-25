@@ -89,9 +89,11 @@ unitfilter lib1_gv_portalFilter;
 unitfilter lib1_gv_buildingFilter;
 unitfilter lib1_gv_creepFilter;
 unitfilter lib1_gv_unitFilter;
+unitfilter lib1_gv_unitAndCreepFilter;
 unitfilter lib1_gv_pathBlockerFilter;
 unit[lib1_gv_playerMaximumIndex + 1][lib1_gv_phalanxMaximumCount + 1] lib1_gv_phalanx;
 string[lib1_gv_playerMaximumIndex + 1][lib1_gv_phalanxMaximumCount + 1] lib1_gv_phalanxBuff;
+fixed lib1_gv_searchRadiusInFinalRound;
 
 // Function Declarations
 string lib1_gf_AttributeGetRace (string lp_attribute);
@@ -155,6 +157,7 @@ void lib1_gf_TimerSet (fixed lp_duration, bool lp_debug);
 void lib1_gf_ReserveUnitIndexResetAll ();
 void lib1_gf_ReserveUnitCreationEnable (bool lp_option);
 void lib1_gf_ReserveUnitCreation (unit lp_unit, int lp_player, int lp_phalanx);
+void lib1_gf_SearchRadiusInFinalRoundSet (fixed lp_radius);
 bool lib1_gf_PlayerIsAlive (int lp_player, int lp_round);
 void lib1_gf_CountUnitEnable (bool lp_option);
 void lib1_gf_CountUnit (int lp_team, bool lp_wait);
@@ -195,7 +198,6 @@ trigger lib1_gt_IssueOrderPeriodic;
 trigger lib1_gt_CountUnit;
 trigger lib1_gt_CountUnitControl;
 trigger lib1_gt_UnitDied;
-trigger lib1_gt_CreatedUnitSetTooltipable;
 trigger lib1_gt_DebugControlPressed;
 trigger lib1_gt_DebugKeyPressed;
 trigger lib1_gt_DebugUnitRemove;
@@ -204,6 +206,7 @@ trigger lib1_gt_AllianceInizialization;
 trigger lib1_gt_ScoreBoardInizialization;
 trigger lib1_gt_TimerInizialization;
 trigger lib1_gt_PlayerInizialization;
+trigger lib1_gt_Pillage;
 
 // Library Initialization
 void lib1_InitVariables ();
@@ -250,6 +253,7 @@ void lib1_InitVariables () {
     lib1_gv_buildingFilter = UnitFilter(0, (1 << (c_targetFilterRadar - 32)), (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
     lib1_gv_creepFilter = UnitFilter(0, (1 << (c_targetFilterMapBoss - 32)), (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
     lib1_gv_unitFilter = UnitFilter(0, 0, (1 << c_targetFilterHover) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterMapBoss - 32)));
+    lib1_gv_unitAndCreepFilter = UnitFilter(0, 0, (1 << c_targetFilterHover) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
     lib1_gv_pathBlockerFilter = UnitFilter((1 << c_targetFilterUser1), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
 }
 
@@ -1060,9 +1064,16 @@ void lib1_gf_BuildingRegionRevealerEnable (bool lp_option, bool lp_debug) {
     for ( ; ( (autoD23F07EB_ai >= 0 && lv_buildingRegion <= autoD23F07EB_ae) || (autoD23F07EB_ai <= 0 && lv_buildingRegion >= autoD23F07EB_ae) ) ; lv_buildingRegion += autoD23F07EB_ai ) {
         if ((lp_option == true)) {
             libNtve_gf_SetUpgradeLevelForPlayer(lib1_gv_playerAtBuildingRegion[lv_buildingRegion], "BuildArmy", 1);
+            if ((lib1_gv_round > (lib1_gv_roundCount-lib1_gv_finalRoundCount))) {
+                libNtve_gf_SetUpgradeLevelForPlayer(lib1_gv_playerAtBuildingRegion[lv_buildingRegion], "BuildArmyFinal", 1);
+            }
+            else {
+                libNtve_gf_SetUpgradeLevelForPlayer(lib1_gv_playerAtBuildingRegion[lv_buildingRegion], "BuildArmyFinal", 0);
+            }
         }
         else {
             libNtve_gf_SetUpgradeLevelForPlayer(lib1_gv_playerAtBuildingRegion[lv_buildingRegion], "BuildArmy", 0);
+            libNtve_gf_SetUpgradeLevelForPlayer(lib1_gv_playerAtBuildingRegion[lv_buildingRegion], "BuildArmyFinal", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(lib1_gv_playerAtBuildingRegion[lv_buildingRegion], "BuildPhalanx", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(lib1_gv_playerAtBuildingRegion[lv_buildingRegion], "BuildPortal", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(lib1_gv_playerAtBuildingRegion[lv_buildingRegion], "CountUnit", 0);
@@ -1220,9 +1231,7 @@ void lib1_gf_CreepUnitTypeSetAll () {
     int lv_index;
     string lv_roundID;
     string lv_unitType;
-    text lv_armorType;
-    text lv_weaponType;
-    text lv_ability;
+    text lv_description;
     string lv_path;
 
     // Variable Initialization
@@ -1246,18 +1255,13 @@ void lib1_gf_CreepUnitTypeSetAll () {
                     lv_unitType = UserDataGetUnit(lib1_gv_creepUnitTypeUserType, (lv_roundID), "UnitType", lv_index);
                     if ((lv_unitType != null)) {
                         lib1_gv_creepUnitType[lv_venue][lv_round] = lv_unitType;
-                        lv_armorType = UserDataGetText(lib1_gv_creepUnitTypeUserType, (lv_roundID), "ArmorType", lv_index);
-                        lv_weaponType = UserDataGetText(lib1_gv_creepUnitTypeUserType, (lv_roundID), "WeaponType", lv_index);
-                        lv_ability = UserDataGetText(lib1_gv_creepUnitTypeUserType, (lv_roundID), "Ability", lv_index);
+                        lv_description = UserDataGetText(lib1_gv_creepUnitTypeUserType, (lv_roundID), "Description", lv_index);
                         lv_path = CatalogFieldValueGet(c_gameCatalogActor, (lv_unitType), "UnitIcon", lib1_gv_playerAtVenue[lv_venue][lv_round]);
                         TextExpressionSetToken("Param/Expression/lib_1_8F546C01", "A", IntToText(lv_round));
                         TextExpressionSetToken("Param/Expression/lib_1_8F546C01", "B", UnitTypeGetName(lv_unitType));
-                        TextExpressionSetToken("Param/Expression/lib_1_759ED69E", "A", lv_armorType);
-                        TextExpressionSetToken("Param/Expression/lib_1_759ED69E", "B", lv_weaponType);
-                        TextExpressionSetToken("Param/Expression/lib_1_759ED69E", "C", lv_ability);
                         TextExpressionSetToken("Param/Expression/lib_1_7E1601E0", "A", IntToText(lv_round));
                         TextExpressionSetToken("Param/Expression/lib_1_7E1601E0", "B", UnitTypeGetName(lv_unitType));
-                        HelpPanelAddTip(PlayerGroupSingle(lib1_gv_playerAtVenue[lv_venue][lv_round]), TextExpressionAssemble("Param/Expression/lib_1_8F546C01"), TextExpressionAssemble("Param/Expression/lib_1_759ED69E"), TextExpressionAssemble("Param/Expression/lib_1_7E1601E0"), (lv_path));
+                        HelpPanelAddTip(PlayerGroupSingle(lib1_gv_playerAtVenue[lv_venue][lv_round]), TextExpressionAssemble("Param/Expression/lib_1_8F546C01"), lv_description, TextExpressionAssemble("Param/Expression/lib_1_7E1601E0"), (lv_path));
                     }
 
                 }
@@ -1869,6 +1873,11 @@ void lib1_gf_ReserveUnitCreation (unit lp_unit, int lp_player, int lp_phalanx) {
 
 }
 
+void lib1_gf_SearchRadiusInFinalRoundSet (fixed lp_radius) {
+    // Implementation
+    lib1_gv_searchRadiusInFinalRound = lp_radius;
+}
+
 bool lib1_gf_PlayerIsAlive (int lp_player, int lp_round) {
     int auto45FE1244_ae;
     int auto45FE1244_ai;
@@ -2310,7 +2319,7 @@ void lib1_gf_RoundStartLoop (bool lp_debug) {
         lv_round = 1;
         for ( ; ( (auto6F7FF55B_ai >= 0 && lv_round <= auto6F7FF55B_ae) || (auto6F7FF55B_ai <= 0 && lv_round >= auto6F7FF55B_ae) ) ; lv_round += auto6F7FF55B_ai ) {
             if ((lp_debug == true)) {
-                lv_round = 1;
+                lv_round = 8;
             }
 
             lib1_gf_VenueInitialReplace();
@@ -3115,6 +3124,9 @@ bool lib1_gt_IssueOrderPeriodic_Func (bool testConds, bool runActions) {
     unit lv_targetUnit;
     unitgroup lv_targetUnitgroup;
     point lv_targetPoint;
+    fixed lv_range;
+    fixed lv_radius;
+    region lv_region;
 
     // Variable Initialization
     lv_targetUnitgroup = UnitGroupEmpty();
@@ -3131,7 +3143,13 @@ bool lib1_gt_IssueOrderPeriodic_Func (bool testConds, bool runActions) {
         lv_targetUnit = null;
         lv_targetPoint = null;
         UnitGroupClear(lv_targetUnitgroup);
-        lv_targetUnitgroup = UnitGroupAlliance(UnitGetOwner(lv_unit), c_unitAllianceEnemy, lib1_gv_battlefield, lib1_gv_unitFilter, 0);
+        if ((lib1_gv_round > (lib1_gv_roundCount-lib1_gv_finalRoundCount))) {
+            lv_region = RegionCircle(UnitGetPosition(lv_unit), lib1_gv_searchRadiusInFinalRound);
+        }
+        else {
+            lv_region = lib1_gv_battlefield;
+        }
+        lv_targetUnitgroup = UnitGroupAlliance(UnitGetOwner(lv_unit), c_unitAllianceEnemy, lv_region, lib1_gv_unitAndCreepFilter, 0);
         while ((UnitGroupCount(lv_targetUnitgroup, c_unitCountAlive) > 0)) {
             lv_targetUnit = UnitGroupClosestToPoint(lv_targetUnitgroup, UnitGetPosition(lv_unit));
             if (true) {
@@ -3143,7 +3161,14 @@ bool lib1_gt_IssueOrderPeriodic_Func (bool testConds, bool runActions) {
             }
         }
         if ((lv_targetPoint != null)) {
-            if ((RegionContainsPoint(RegionCircle(lv_targetPoint, (UnitWeaponRange(lv_unit, 1)+UnitGetPropertyFixed(lv_unit, c_unitPropRadius, c_unitPropNormal)+UnitGetPropertyFixed(lv_targetUnit, c_unitPropRadius, c_unitPropNormal))), UnitGetPosition(lv_unit)) == false)) {
+            lv_range = UnitWeaponRange(lv_unit, 1);
+            if ((lv_range > 3.9062)) {
+                lv_radius = (UnitWeaponRange(lv_unit, 1)+UnitGetPropertyFixed(lv_unit, c_unitPropRadius, c_unitPropNormal)+UnitGetPropertyFixed(lv_targetUnit, c_unitPropRadius, c_unitPropNormal));
+            }
+            else {
+                lv_radius = (3.9062+UnitGetPropertyFixed(lv_unit, c_unitPropRadius, c_unitPropNormal)+UnitGetPropertyFixed(lv_targetUnit, c_unitPropRadius, c_unitPropNormal));
+            }
+            if ((RegionContainsPoint(RegionCircle(lv_targetPoint, lv_radius), UnitGetPosition(lv_unit)) == false)) {
                 UnitIssueOrder(lv_unit, OrderTargetingPoint(AbilityCommand("Amov", 3), libNtve_gf_PointOffsetTowardsPoint(lv_targetPoint, UnitWeaponRange(lv_unit, 1), UnitGetPosition(lv_unit))), c_orderQueueReplace);
             }
 
@@ -3317,25 +3342,6 @@ void lib1_gt_UnitDied_Init () {
     lib1_gt_UnitDied = TriggerCreate("lib1_gt_UnitDied_Func");
     TriggerEnable(lib1_gt_UnitDied, false);
     TriggerAddEventUnitDied(lib1_gt_UnitDied, null);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: CreatedUnitSetTooltipable
-//--------------------------------------------------------------------------------------------------
-bool lib1_gt_CreatedUnitSetTooltipable_Func (bool testConds, bool runActions) {
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UnitSetState(EventUnitCreatedUnit(), c_unitStateTooltipable, true);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib1_gt_CreatedUnitSetTooltipable_Init () {
-    lib1_gt_CreatedUnitSetTooltipable = TriggerCreate("lib1_gt_CreatedUnitSetTooltipable_Func");
-    TriggerAddEventUnitCreated(lib1_gt_CreatedUnitSetTooltipable, null, null, null);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3638,7 +3644,6 @@ bool lib1_gt_PlayerInizialization_Func (bool testConds, bool runActions) {
 
         libGAwX_gf_SetPlayerUIRace(lib1_gf_IndexGetUserPlayer(lv_player), "Orc");
     }
-    libGAwX_gf_SetPlayerUIRace(0, "Orc");
     auto63073FE8_ae = lib1_gv_playerCount;
     auto63073FE8_ai = 1;
     lv_player = 1;
@@ -3652,6 +3657,25 @@ bool lib1_gt_PlayerInizialization_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void lib1_gt_PlayerInizialization_Init () {
     lib1_gt_PlayerInizialization = TriggerCreate("lib1_gt_PlayerInizialization_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Pillage
+//--------------------------------------------------------------------------------------------------
+bool lib1_gt_Pillage_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    PlayerModifyPropertyInt(lib1_gf_MirrorPlayerGetUserPlayer(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster)), c_playerPropTerrazine, c_playerPropOperSubtract, CatalogFieldValueGetAsInt(c_gameCatalogBehavior, "Asal", "DamageResponse.Cost.Resource[" + IntToString(2) + "]", lib1_gf_MirrorPlayerGetUserPlayer(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster))));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib1_gt_Pillage_Init () {
+    lib1_gt_Pillage = TriggerCreate("lib1_gt_Pillage_Func");
+    TriggerAddEventPlayerEffectUsed(lib1_gt_Pillage, c_playerAny, "AsalTriggerNotice");
 }
 
 void lib1_InitTriggers () {
@@ -3668,7 +3692,6 @@ void lib1_InitTriggers () {
     lib1_gt_CountUnit_Init();
     lib1_gt_CountUnitControl_Init();
     lib1_gt_UnitDied_Init();
-    lib1_gt_CreatedUnitSetTooltipable_Init();
     lib1_gt_DebugControlPressed_Init();
     lib1_gt_DebugKeyPressed_Init();
     lib1_gt_DebugUnitRemove_Init();
@@ -3677,6 +3700,7 @@ void lib1_InitTriggers () {
     lib1_gt_ScoreBoardInizialization_Init();
     lib1_gt_TimerInizialization_Init();
     lib1_gt_PlayerInizialization_Init();
+    lib1_gt_Pillage_Init();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3744,7 +3768,6 @@ trigger gt_VenueInizialization;
 trigger gt_BuidingRegionInizialization;
 trigger gt_PreviewerPointInizialization;
 trigger gt_RoundInitialization;
-trigger gt_AOcrMultiplierW1;
 trigger gt_E69588E69E9CE58AA9E6898BE8A7A6E58F91E599A8E58AA8E4BD9C;
 trigger gt_E69588E69E9CE58AA9E6898BE5889DE5A78BE58C96;
 
@@ -3814,8 +3837,6 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     int lv_player;
 
     // Variable Initialization
-    lv_debug = true;
-    lv_virturalTeam = true;
 
     // Actions
     if (!runActions) {
@@ -4074,69 +4095,37 @@ bool gt_RoundInitialization_Func (bool testConds, bool runActions) {
 
     autoB7B0BFE0_val = lv_gameValue;
     if (autoB7B0BFE0_val == "0001") {
-        lib1_gf_BonusRoundSet(true, 3);
-        lib1_gf_BonusRoundSet(true, 7);
         lib1_gf_RoundGoldSet(1, 750);
         lib1_gf_RoundGoldSet(2, 750);
-        lib1_gf_RoundGoldSet(3, 1500);
+        lib1_gf_RoundGoldSet(3, 750);
+        lib1_gf_BonusRoundSet(true, 3);
         lib1_gf_RoundGoldSet(4, 1500);
-        lib1_gf_RoundGoldSet(5, 2250);
-        lib1_gf_RoundGoldSet(6, 2250);
-        lib1_gf_RoundGoldSet(7, 3000);
-        lib1_gf_RoundGoldSet(8, 600);
+        lib1_gf_RoundGoldSet(5, 1500);
+        lib1_gf_RoundGoldSet(6, 1500);
+        lib1_gf_RoundGoldSet(7, 1500);
+        lib1_gf_BonusRoundSet(true, 7);
+        lib1_gf_RoundGoldSet(8, 1500);
     }
     else if (autoB7B0BFE0_val == "0002") {
-        lib1_gf_BonusRoundSet(true, 3);
-        lib1_gf_BonusRoundSet(true, 6);
         lib1_gf_RoundGoldSet(1, 750);
         lib1_gf_RoundGoldSet(2, 750);
-        lib1_gf_RoundGoldSet(3, 1500);
+        lib1_gf_RoundGoldSet(3, 750);
+        lib1_gf_BonusRoundSet(true, 3);
         lib1_gf_RoundGoldSet(4, 1500);
-        lib1_gf_RoundGoldSet(5, 2250);
-        lib1_gf_RoundGoldSet(6, 2250);
-        lib1_gf_RoundGoldSet(7, 600);
+        lib1_gf_RoundGoldSet(5, 1500);
+        lib1_gf_RoundGoldSet(6, 1500);
+        lib1_gf_BonusRoundSet(true, 6);
+        lib1_gf_RoundGoldSet(7, 1500);
     }
     else {
     }
+    lib1_gf_SearchRadiusInFinalRoundSet(60.0);
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
 void gt_RoundInitialization_Init () {
     gt_RoundInitialization = TriggerCreate("gt_RoundInitialization_Func");
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: AOcr - Multiplier W1
-//--------------------------------------------------------------------------------------------------
-bool gt_AOcrMultiplierW1_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    unit lv_caster;
-    unit lv_target;
-    int lv_level;
-    fixed lv_multiplier;
-    fixed lv_multiplied;
-
-    // Variable Initialization
-    lv_caster = EventPlayerEffectUsedUnit(c_effectUnitCaster);
-    lv_target = EventPlayerEffectUsedUnit(c_effectUnitTarget);
-    lv_level = UnitAbilityGetLevel(lv_caster, libGAwX_gv_aOcrAbilLink);
-    lv_multiplier = (libGAwX_gv_aOcrMultiplierBase + (lv_level * libGAwX_gv_aOcrExtraMultiplierPerLevel));
-    lv_multiplied = libGAwX_gf_FireWeaponEffectOnUnitWithMultiplier(lv_caster, lv_target, 1, lv_multiplier);
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    TriggerDebugOutput(1, StringExternal("Param/Value/5C3804D1"), true);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_AOcrMultiplierW1_Init () {
-    gt_AOcrMultiplierW1 = TriggerCreate("gt_AOcrMultiplierW1_Func");
-    TriggerAddEventPlayerEffectUsed(gt_AOcrMultiplierW1, c_playerAny, "W1CritTriggerNotice");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4234,7 +4223,6 @@ void InitTriggers () {
     gt_BuidingRegionInizialization_Init();
     gt_PreviewerPointInizialization_Init();
     gt_RoundInitialization_Init();
-    gt_AOcrMultiplierW1_Init();
     gt_E69588E69E9CE58AA9E6898BE8A7A6E58F91E599A8E58AA8E4BD9C_Init();
     gt_E69588E69E9CE58AA9E6898BE5889DE5A78BE58C96_Init();
 }

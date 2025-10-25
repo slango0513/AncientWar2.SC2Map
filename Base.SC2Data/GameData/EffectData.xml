@@ -22,6 +22,33 @@
     <CEffectDamage id="AOeqDamage">
         <ValidatorArray index="0" removed="1"/>
     </CEffectDamage>
+    <CEffectSet id="AIpv">
+        <EffectArray value="BIpv"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="AIpvLeech" parent="War3_ApplyBuff">
+        <WhichUnit Value="Source"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="AOshDamage1">
+        <Amount value="100"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="AOws1Dur">
+        <Duration value="6"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AOws1HeroDur">
+        <Duration value="4"/>
+    </CEffectApplyBehavior>
+    <CEffectCreateHealer id="Anh1Heal">
+        <RechargeVitalRate value="50"/>
+    </CEffectCreateHealer>
+    <CEffectCreateHealer id="Anh2Heal">
+        <RechargeVitalRate value="100"/>
+    </CEffectCreateHealer>
+    <CEffectModifyUnit id="AoarHealTick">
+        <VitalArray index="Life" ChangeFraction="0.01"/>
+    </CEffectModifyUnit>
+    <CEffectDamage id="ApigDPS">
+        <Amount value="25"/>
+    </CEffectDamage>
     <CEffectSet id="AposControlSet">
         <EffectArray index="1" removed="1"/>
     </CEffectSet>
@@ -47,9 +74,16 @@
         <Flags index="Kill" value="1"/>
         <Death value="Remove"/>
     </CEffectDamage>
+    <CEffectSet id="AsalTriggerNotice"/>
     <CEffectApplyBehavior id="BIpv" parent="War3_ApplyBuff">
         <WhichUnit Value="Caster"/>
     </CEffectApplyBehavior>
+    <CEffectDamage id="BlshDPS">
+        <Amount value="10"/>
+    </CEffectDamage>
+    <CEffectDamage id="BpsiDPS">
+        <Amount value="100"/>
+    </CEffectDamage>
     <CEffectDamage id="CountUnitRemove">
         <Flags index="Kill" value="1"/>
         <Flags index="NoBehaviorResponse" value="1"/>
@@ -66,9 +100,6 @@
         <EffectArray value="KillCaster"/>
     </CEffectSet>
     <CEffectSet id="CreateReserveUnitTriggerNotice"/>
-    <CEffectCreatePersistent id="CritterFlee">
-        <ValidatorArray value="CasterIsPassive"/>
-    </CEffectCreatePersistent>
     <CEffectIssueOrder id="CritterFleeIssueOrder">
         <Abil value="Amov"/>
     </CEffectIssueOrder>
@@ -84,22 +115,22 @@
     </CEffectDamage>
     <CEffectDamage id="Nbbc1" parent="AW2_ChaosDamage">
         <Kind value="Melee"/>
-        <Amount value="72"/>
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="Obla1" parent="AW2_SiegeDamage">
         <Kind value="Melee"/>
-        <Amount value="72"/>
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="Ofar1" parent="AW2_MagicDamage">
         <Amount value="72"/>
     </CEffectDamage>
     <CEffectDamage id="Ogrh1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
-        <Amount value="72"/>
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="Opgh1" parent="AW2_ChaosDamage">
         <Kind value="Melee"/>
-        <Amount value="72"/>
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="Oshd1" parent="AW2_MagicDamage">
         <Amount value="24"/>
@@ -150,6 +181,9 @@
     </CEffectDamage>
     <CEffectDamage id="nftt1" parent="AW2_NormalDamage">
         <Amount value="24"/>
+    </CEffectDamage>
+    <CEffectDamage id="ngns1" parent="AW2_PierceDamage">
+        <Amount value="144"/>
     </CEffectDamage>
     <CEffectDamage id="nitp1" parent="AW2_MagicDamage">
         <Amount value="12"/>
@@ -216,6 +250,17 @@
             <Resource index="Custom" value="-0.8"/>
         </SalvageFactor>
     </CEffectModifyUnit>
+    <CEffectDamage id="nmgd1" parent="AW2_ChaosDamage">
+        <Kind value="Melee"/>
+        <Amount value="576"/>
+    </CEffectDamage>
+    <CEffectDamage id="nmgd2" parent="AW2_ChaosDamage">
+        <Amount value="576"/>
+    </CEffectDamage>
+    <CEffectDamage id="nmgw1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="144"/>
+    </CEffectDamage>
     <CEffectDamage id="npn41" parent="AW2_SiegeDamage">
         <Kind value="Melee"/>
         <Amount value="72"/>
@@ -225,7 +270,7 @@
     </CEffectDamage>
     <CEffectDamage id="npn61" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
-        <Amount value="72"/>
+        <Amount value="144"/>
     </CEffectDamage>
     <CEffectDamage id="nw2w1" parent="AW2_MagicDamage">
         <Amount value="24"/>
@@ -269,8 +314,15 @@
         <Amount value="24"/>
         <Kind value="Melee"/>
     </CEffectDamage>
+    <CEffectDamage id="osp11" parent="AW2_PierceDamage">
+        <Amount value="48"/>
+    </CEffectDamage>
     <CEffectDamage id="ospw1" parent="AW2_MagicDamage">
-        <Amount value="72"/>
+        <Amount value="48"/>
+    </CEffectDamage>
+    <CEffectDamage id="osw11" parent="AW2_PierceDamage">
+        <Kind value="Melee"/>
+        <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="otau1" parent="AW2_NormalDamage">
         <Amount value="144"/>

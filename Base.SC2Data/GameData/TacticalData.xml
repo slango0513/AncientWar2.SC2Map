@@ -4,12 +4,12 @@
     <CTacticalSet id="Oshd">
         <Array index="0" value="AOsw"/>
         <Array index="1" value="AOhx"/>
-        <Array index="2" value="Aatk"/>
+        <Array index="2" removed="1"/>
     </CTacticalSet>
     <CTacticalSet id="Otch">
         <Array index="0" value="AOsh"/>
         <Array index="1" value="AOws"/>
-        <Array index="2" value="Aatk"/>
+        <Array index="2" removed="1"/>
     </CTacticalSet>
     <!--CTacticalSet id="okod">
         <Array value="Adev"/>
@@ -40,8 +40,17 @@
     <CTacticalSet id="earc"/>
     <CTacticalSet id="odoc"/>
     <CTacticalSet id="ogru"/>
-    <CTacticalSet id="orai"/>
-    <CTacticalSet id="oshm"/>
+    <CTacticalSet id="orai">
+        <Array value="AIpv"/>
+    </CTacticalSet>
+    <CTacticalSet id="oshm">
+        <Array index="0" value="Apg2"/>
+        <Array index="1" removed="1"/>
+    </CTacticalSet>
+    <CTacticalSet id="oshmEtherealForm">
+        <Array value="Alsh"/>
+        <Array value="Apg2"/>
+    </CTacticalSet>
     <CTacticalSet id="ospm"/>
     <CTacticalSet id="ospw"/>
     <CTacticalSet id="otbk"/>
@@ -72,23 +81,36 @@
     <CTacticalOrder id="AOmi" parent="War3_Tact">
         <Validator value="AttackingOrInCombatWar3"/>
     </CTacticalOrder>
+    <CTacticalOrder id="AIpv" parent="War3_Tact">
+        <Validator value="AttackingOrInCombatWar3"/>
+    </CTacticalOrder>
+    <CTacticalOrder id="ANta" parent="War3_Tact">
+        <Validator value="AttackingOrInCombatWar3"/>
+    </CTacticalOrder>
+    <CTacticalOrder id="AOcl" parent="War3_Tact">
+        <TargetFind value="ChainLightning"/>
+    </CTacticalOrder>
+    <CTacticalOrder id="AOfs" parent="War3_Tact">
+        <TargetFind value="FarSight"/>
+    </CTacticalOrder>
+    <CTacticalOrder id="AOsf" parent="War3_Tact">
+        <TargetFind value="AttackingOrInCombatWar3"/>
+    </CTacticalOrder>
     <CTacticalSet id="ohun"/>
     <CTacticalSet id="okod"/>
     <CTacticalSet id="nckb"/>
-    <CTacticalSet id="nchr"/>
+    <CTacticalSet id="nchr">
+        <Array value="AIpv"/>
+    </CTacticalSet>
     <CTacticalSet id="otau"/>
     <CTacticalSet id="Obla">
-        <Array value="AOmi"/>
+        <Array value="AIpv"/>
     </CTacticalSet>
     <CTacticalSet id="Nbbc">
-        <Array value="AOmi"/>
+        <Array value="AIpv"/>
     </CTacticalSet>
-    <CTacticalSet id="Ogrh">
-        <Array value="AOmi"/>
-    </CTacticalSet>
-    <CTacticalSet id="Opgh">
-        <Array value="AOmi"/>
-    </CTacticalSet>
+    <CTacticalSet id="Ogrh"/>
+    <CTacticalSet id="Opgh"/>
     <CTacticalSet id="nchg"/>
     <CTacticalSet id="nw2w"/>
     <CTacticalSet id="nchw"/>
@@ -97,14 +119,24 @@
     <CTacticalSet id="nitr"/>
     <CTacticalSet id="nftr"/>
     <CTacticalSet id="Ofar">
-        <Array index="0" removed="1"/>
+        <Array index="0" value="AOsf"/>
         <Array index="1" removed="1"/>
     </CTacticalSet>
-    <CTacticalSet id="Othr"/>
-    <CTacticalSet id="npn4"/>
-    <CTacticalSet id="npn5"/>
-    <CTacticalSet id="npn6">
+    <CTacticalSet id="Othr">
+        <Array value="AOfs"/>
+        <Array value="AOsf"/>
+    </CTacticalSet>
+    <CTacticalSet id="npn4">
+        <Array value="AIpv"/>
+    </CTacticalSet>
+    <CTacticalSet id="npn5">
+        <Array value="AOcl"/>
+        <Array value="Alsh"/>
         <Array value="AOeq"/>
+    </CTacticalSet>
+    <CTacticalSet id="npn6">
+        <Array value="Aast"/>
+        <Array value="ANta"/>
     </CTacticalSet>
     <CTacticalSet id="nftb">
         <Array value="ACen"/>

@@ -2,6 +2,9 @@
 AEbuUnit/Ubertip=打开一个你所能建造的建筑物的列表。
 AHbuUnit/Tip=建造建筑物
 AHbuUnit/Ubertip=能显示出当前你所能建造的建筑物。
+AIpv/Tip=吸血药水
+AIpv/Ubertip=增加<d ref="Behavior,BIpv,Modification.DamageDealtUnscaled[Melee]"/>点攻击力，且在攻击的同时生命吸取。<n/>持续<d ref="Behavior,BIpv,Duration"/>秒。
+AOae/Ubertip=增加周围单位<d ref="Behavior,BOae1,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度和<d ref="Behavior,BOae1,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度。<n/>最多叠加<d ref="Behavior,BOae1,MaxStackCount"/>层。
 AObu1/Tip=建造近战部队
 AObu1/Ubertip=能显示出当前你所能建造的近战单位。
 AObu2/Tip=建造远程部队
@@ -12,38 +15,56 @@ AObuArmy/Name=AObuArmy
 AObuUnit/Name=AObuArmy
 AObuUnit/Tip=建造建筑物
 AObuUnit/Ubertip=能显示出当前你所能建造的建筑物。
+AOhx/Ubertip=让目标单位在<d ref="Effect,ANhx1Dur,Duration"/>秒内变成一只随机的小动物。
+AOsf/Ubertip=召唤出2条幽魂之狼来为你战斗。每头狼具有<d ref="Unit,osw1,LifeMax"/>点生命值和<d ref="Effect,osw11,Amount"/>点的攻击力。<n/>持续<d ref="Behavior,BOsf,Duration"/>秒。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+AOsh/Ubertip=能发出一道向前的能量波，对一条线上的敌方地面单位造成<d ref="Effect,AOshDamage1,Amount"/>点的伤害。
+AOsw/Ubertip=召唤出一个固定不动的毒蛇守卫来为暗影猎手攻击。守卫具有<d ref="Unit,osp1,LifeStart"/>点生命值并对魔法免疫。攻击力为<d ref="Effect,osp11,Amount"/>点。<n/>持续<d ref="Behavior,BOwd,Duration"/>秒。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+AOws/Ubertip=重击地面，对周围的地面单位造成<d ref="Effect,AOwsDamage1,Amount"/>点的伤害并在<d ref="Effect,AOws1Dur,Duration"/>秒内使其处于昏晕状态。
 AUbuUnit/Tip=建造建筑物
 AUbuUnit/Ubertip=打开一个你所能建造的建筑物的列表。
 AW2_Army/Name=AW2_Army
+Aakb/Ubertip=能增加周围友方单位<d ref="Behavior,Bakb,Modification.DamageDealtFraction[Melee] * 100" precision="1"/>%的攻击力。<n/>最多叠加<d ref="Behavior,Bakb,MaxStackCount"/>层。
 Abil/Name/AmovWorker=AmovWorker
 Abil/Name/Asud=Asud
 Abil/Name/Bushido=武士道
 Abil/Name/CreateReserveUnit=CreateReserveUnit
 Abil/Name/Teleport=Teleport
+Ablo/Ubertip=增加一个友方单位<d ref="Behavior,Bblo,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度和<d ref="Behavior,Bblo,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度。<n/>持续<d ref="Behavior,Bblo,Duration"/>秒。
+Aetl/Ubertip=处于灵体形态的单位对物理攻击免疫，但是魔法能对其造成额外的伤害。
+Ahwd/Ubertip=召唤出一个固定的结界，以每秒<d ref="Effect,AoarHealTick,VitalArray[Life].ChangeFraction * 100"/>%的速度恢复周围友方非机械单位的生命值。<n/>持续<d ref="Behavior,Bhwd,Duration"/>秒。
 Aivs/Ubertip=使目标单位处于隐形，但是一旦其攻击或者使用魔法则会显露原形。<n/>持续<d ref="Behavior,Binv,Duration"/>秒。
+Alsh/Ubertip=在目标单位周围形成一个带电护盾，能对其周围的单位造成每秒<d ref="Effect,BlshDPS,Amount"/>点的伤害。<n/>持续<d ref="Behavior,Blsh,Duration"/>秒。
+Anh1/Ubertip=治疗一个友方的非机械受伤单位，恢复其<d ref="Effect,Anh1Heal,RechargeVitalRate"/>的生命值。
+Anh2/Ubertip=治疗一个友方的非机械受伤单位，恢复其<d ref="Effect,Anh2Heal,RechargeVitalRate"/>的生命值。
+Apig/Ubertip=烧伤附近的敌人，造成每秒<d ref="Effect,ApigDPS,Amount"/>点伤害。
+Asal/Ubertip=攻击敌方单位来掠取资源。
+Aspl/Ubertip=链接<d ref="Behavior,Bspl,MaxStackCount"/>个单位在一起。所有被灵魂连接作用的单位都可以将其50%受到的伤害转移到其他单位身上。<n/>持续<d ref="Behavior,Bspl,Duration"/>秒。
 Asud/Ubertip=出卖单位，返还<d ref="-Effect,Asud,SalvageFactor.Resource[Terrazine]*100"/>%的资源。
 Attribute002/Name=游戏属性 (AW2)
 Attribute002/Value001/Name=混战
 Attribute002/Value002/Name=2V2V2V2
+BIpv/Buffubertip=该单位喝了吸血药水；它的攻击力提高，并获得了吸血能力。
 Behavior/Name/AW2_ArmyUser=AW2_ArmyUser
 Behavior/Name/AW2_PathingBlocker=AW2_PathingBlocker
 Behavior/Name/Building=Building
 Behavior/Name/PhalanxMarker=PhalanxMarker
-Bushido/Buffubertip=武士道。
+Bushido/Buffubertip=该单位遵循武士道，因此攻击力得到了加强。
 Bushido/Name=武士道
 Bushido/Tip=激活武士道
-Bushido/Ubertip=激活该战术制度，使方阵内所有单位遵循武士道，当生命值低于<d ref="Validator,CasterLifeLT50Percent,Value * 100"/>%时脱离到稍后的位置。
+Bushido/Ubertip=激活该战术制度，使方阵内所有单位遵循武士道，在生命值低于<d ref="Validator,CasterLifeLT50Percent,Value * 100"/>%时增加<d ref="Behavior,Bushido,Modification.DamageDealtFraction[Melee] * 100"/>%的攻击力。
 BushidoUn/Tip=关闭武士道
 BushidoUn/Ubertip=关闭武士道。
 DAMAGE_MAIC=类型：<c val="ffcc00">穿刺</c>
 DOCSTR_0000=选择编组9
 DOCSTR_0001=BracketOpen
 DOCSTR_0002=BracketOpen
-DocInfo/DescLong=古代战争II。
+DocInfo/DescLong=XXXXII～
 DocInfo/DescShort=任意
-DocInfo/Name=古代战争II
+DocInfo/Name=风筝误
+Effect/Name/AIpv=AIpv
 Effect/Name/AW2_NormalDamage=AW2_NormalDamage
 Effect/Name/Aps2Remove=Aps2Remove
+Effect/Name/AsalTriggerNotice=AsalTriggerNotice
 Effect/Name/BIpv=BIpv
 Effect/Name/CountPhalanxTriggerNotice=CountPhalanxTriggerNotice
 Effect/Name/CountUnitRemove=CountUnitRemove
@@ -79,14 +100,23 @@ MapInfo/Team04/Name=E
 MapInfo/Team05/Name=F
 MapInfo/Team06/Name=G
 MapInfo/Team07/Name=H
+MultiShot/Tip=多重射击
 Nbbc/Tip=升级到剑圣
+Nbbc/Ubertip=价值：<c val="ffffff"><d ref="Unit,Nbbc,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">中甲</c><n/>生命：<c val="ffffff"><d ref="Unit,Nbbc,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,Nbbc,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,Nbbc,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">混乱</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,Nbbc1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,Nbbc1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,Nbbc1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">吸血药水</c><n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Obla/Tip=训练剑圣
+Obla/Ubertip=价值：<c val="ffffff"><d ref="Unit,Obla,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">中甲</c><n/>生命：<c val="ffffff"><d ref="Unit,Obla,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,Obla,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,Obla,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">攻城</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,Obla1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,Obla1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,Obla1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">吸血药水</c><n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Ofar/Tip=训练先知
+Ofar/Ubertip=价值：<c val="ffffff"><d ref="Unit,Ofar,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">无甲</c><n/>生命：<c val="ffffff"><d ref="Unit,Ofar,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,Ofar,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,Ofar,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">魔法</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,Ofar1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,Ofar1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,Ofar1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">野性幽魂</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 Ogrh/Tip=训练剑圣
+Ogrh/Ubertip=价值：<c val="ffffff"><d ref="Unit,Ogrh,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">重甲</c><n/>生命：<c val="ffffff"><d ref="Unit,Ogrh,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,Ogrh,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,Ogrh,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">普通</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,Ogrh1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,Ogrh1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,Ogrh1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">掠夺</c><n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Opgh/Tip=升级到剑圣
+Opgh/Ubertip=价值：<c val="ffffff"><d ref="Unit,Opgh,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">重甲</c><n/>生命：<c val="ffffff"><d ref="Unit,Opgh,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,Opgh,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,Opgh,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">混乱</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,Opgh1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,Opgh1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,Opgh1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">掠夺</c><n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Oshd/Tip=升级到暗影猎手
+Oshd/Ubertip=价值：<c val="ffffff"><d ref="Unit,Oshd,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">无甲</c><n/>生命：<c val="ffffff"><d ref="Unit,Oshd,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,Oshd,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,Oshd,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">魔法</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,Oshd1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,Oshd1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,Oshd1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">妖术</c>、<c val="ffffff">毒蛇守卫</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 Otch/Tip=升级到牛头人酋长
+Otch/Ubertip=价值：<c val="ffffff"><d ref="Unit,Otch,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">城墙</c><n/>生命：<c val="ffffff"><d ref="Unit,Otch,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,Otch,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,Otch,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">普通</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,Otch1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,Otch1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,Otch1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">震荡波</c>、<c val="ffffff">战争践踏</c>、<c val="ffffff">复生</c><n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Othr/Tip=升级到先知
+Othr/Ubertip=价值：<c val="ffffff"><d ref="Unit,Othr,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">无甲</c><n/>生命：<c val="ffffff"><d ref="Unit,Othr,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,Othr,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,Othr,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">魔法</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,Othr1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,Othr1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,Othr1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">野性幽魂</c>、<c val="ffffff">视界术</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 Param/Expression/lib_1_0F947D52=PlxB=~A~ P=~B~ Plx=~C~
 Param/Expression/lib_1_14BD110B=奖励回合<c val="FFFF00">~A~</c>
 Param/Expression/lib_1_262B7A1B=需要共~A~名用户或电脑玩家，每个队伍需要~B~名玩家，游戏将在~C~秒后结束。
@@ -98,7 +128,6 @@ Param/Expression/lib_1_5B5B8C5A=CreepPlayerC ~A~ vs ~B~, ~C~ vs ~D~, ~E~ vs ~F~,
 Param/Expression/lib_1_5D741B7E=GroupR ~A~ = ~B~, ~C~ = ~D~, ~E~ = ~F~, ~G~ = ~H~
 Param/Expression/lib_1_6267754B=~A~~B~
 Param/Expression/lib_1_65BEA57E=TMC=~A~ T=~B~
-Param/Expression/lib_1_759ED69E=护甲类型：<c val="FFFF00">~A~</c><n/>武器类型：<c val="FFFF00">~B~</c><n/>技能：<c val="FFFF00">~C~</c>
 Param/Expression/lib_1_7E1601E0=奖励回合<c val="FFFF00">~A~</c>：<c val="FFFF00">~B~</c>
 Param/Expression/lib_1_823AC4A3=~A~现在由电脑接管。
 Param/Expression/lib_1_8F546C01=奖励回合<c val="FFFF00">~A~</c>：<c val="FFFF00">~B~</c>
@@ -110,7 +139,6 @@ Param/Expression/lib_1_BCFC7BBB=决赛
 Param/Expression/lib_1_D4AF70A0=Deact PlxB=~A~ P=~B~ Plx=~C~
 Param/Expression/lib_1_D87F11EA=回合<c val="FFFF00">~A~</c>
 Param/Expression/lib_1_F3A84076=RoundR ~A~ = ~B~, ~C~ = ~D~, ~E~ = ~F~, ~G~ = ~H~, ~I~ = ~J~, ~K~ = ~L~, ~M~ = ~N~
-Param/Value/5C3804D1=阿1 
 Param/Value/lib_1_408BD03E=在整场比赛获胜！
 Param/Value/lib_1_41051894=玩家
 Param/Value/lib_1_4649C5C8=建造奖励
@@ -118,7 +146,7 @@ Param/Value/lib_1_AA74521D=计分板
 Param/Value/lib_1_BDBF7D65=在本回合获胜。
 Param/Value/lib_1_C0134725=剩余时间
 Param/Value/lib_1_FB3A39A5=击杀奖励
-RotationSystem/Buffubertip=该单位在生命值较低时会脱离到稍后的位置。
+RotationSystem/Buffubertip=该单位遵循轮换制，在生命值较低时会脱离到稍后的位置。
 RotationSystem/Name=轮换制
 RotationSystem/Tip=激活轮换制
 RotationSystem/Ubertip=激活该战术制度，使方阵内所有单位遵循轮换制，在生命值低于<d ref="Validator,CasterLifeLT50Percent,Value * 100"/>%时会脱离到稍后的位置。
@@ -128,6 +156,7 @@ RotationSystemUn/Tip=关闭轮换制
 RotationSystemUn/Ubertip=关闭轮换制。
 Teleport/Name=传送
 Teleport/Tip=传送
+Unit/Name/PathingBlocker16x16=动态路径障碍物 16x16
 Upgrade/Name/BuildArmy=建造部队
 Upgrade/Name/BuildArmyFinal=建造部队(决赛)
 Upgrade/Name/BuildPhalanx=建造阵型
@@ -138,9 +167,27 @@ UserData/CreepData/Creep_WeaponType=普通
 UserData/CreepUnitTypeData/3_Ability=魔法防护
 UserData/CreepUnitTypeData/3_Ability_001=浸毒长矛
 UserData/CreepUnitTypeData/3_ArmorType=重甲
-UserData/CreepUnitTypeData/3_ArmorType_001=中甲
+UserData/CreepUnitTypeData/3_ArmorType_001=奖励：<c val="ffffff"><d ref="Unit,ngns,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">无甲</c><n/>生命：<c val="ffffff"><d ref="Unit,ngns,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,ngns,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,ngns,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">魔法</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,ngns1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,ngns1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,ngns1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">浸毒武器</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+UserData/CreepUnitTypeData/3_Description=奖励：<c val="ffffff"><d ref="Unit,nmgw,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">重甲</c><n/>生命：<c val="ffffff"><d ref="Unit,nmgw,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,nmgw,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,nmgw,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">普通</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,nmgw1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,nmgw1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,nmgw1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">分裂攻击</c>、<c val="ffffff">魔法防护</c><n/><n/><c val="ffcc00">能攻击地面单位。</c>
+UserData/CreepUnitTypeData/3_Description_001=奖励：<c val="ffffff"><d ref="Unit,ngns,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">中甲</c><n/>生命：<c val="ffffff"><d ref="Unit,ngns,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,ngns,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,ngns,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">穿刺</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,ngns1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,ngns1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,ngns1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">浸毒武器</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 UserData/CreepUnitTypeData/3_WeaponType=普通
 UserData/CreepUnitTypeData/3_WeaponType_001=穿刺
+UserData/CreepUnitTypeData/6_Ability=魔法防护
+UserData/CreepUnitTypeData/6_Ability_001=浸毒长矛
+UserData/CreepUnitTypeData/6_ArmorType=重甲
+UserData/CreepUnitTypeData/6_ArmorType_001=中甲
+UserData/CreepUnitTypeData/6_Description=奖励：<c val="ffffff"><d ref="Unit,nmgd,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">重甲</c><n/>生命：<c val="ffffff"><d ref="Unit,nmgd,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,nmgd,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,nmgd,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">混乱</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,nmgd1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,nmgd1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,nmgd1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">分裂攻击</c>、<c val="ffffff">魔法防护</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+UserData/CreepUnitTypeData/6_Description_001=中甲
+UserData/CreepUnitTypeData/6_WeaponType=普通
+UserData/CreepUnitTypeData/6_WeaponType_001=穿刺
+UserData/CreepUnitTypeData/7_Ability=魔法防护
+UserData/CreepUnitTypeData/7_Ability_001=浸毒长矛
+UserData/CreepUnitTypeData/7_ArmorType=重甲
+UserData/CreepUnitTypeData/7_ArmorType_001=中甲
+UserData/CreepUnitTypeData/7_Description=价值：<c val="ffffff"><d ref="Unit,nmgd,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">重甲</c><n/>生命：<c val="ffffff"><d ref="Unit,nmgd,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,nmgd,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,nmgd,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">混乱</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,nmgd1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,nmgd1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,nmgd1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">分裂攻击</c>、<c val="ffffff">魔法防护</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+UserData/CreepUnitTypeData/7_Description_001=中甲
+UserData/CreepUnitTypeData/7_WeaponType=普通
+UserData/CreepUnitTypeData/7_WeaponType_001=穿刺
 UserData/CreepUnitTypeData/Table_Ability=魔法防护
 UserData/CreepUnitTypeData/Table_Ability_001=浸毒长矛
 UserData/CreepUnitTypeData/Table_ArmorType=重甲
@@ -153,21 +200,45 @@ Variant002/ModeDesc=4组2人小队的争斗。
 Variant002/ModeName=双打
 e_unitAttributeStructure=城墙
 nchg/Tip=升级到混乱兽人步兵
+nchg/Ubertip=价值：<c val="ffffff"><d ref="Unit,nchg,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">重甲</c><n/>生命：<c val="ffffff"><d ref="Unit,nchg,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,nchg,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,nchg,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">混乱</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,nchg1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,nchg1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,nchg1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">掠夺</c><n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nchr/Tip=升级到混乱狼骑兵
+nchr/Ubertip=价值：<c val="ffffff"><d ref="Unit,nchr,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">轻甲</c><n/>生命：<c val="ffffff"><d ref="Unit,nchr,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,nchr,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,nchr,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">混乱</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,nchr1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,nchr1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,nchr1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">诱捕</c>、<c val="ffffff">吸血药水</c><n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nchw/Tip=升级到混乱兽人术士
+nchw/Ubertip=价值：<c val="ffffff"><d ref="Unit,nchw,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">无甲</c><n/>生命：<c val="ffffff"><d ref="Unit,nchw,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,nchw,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,nchw,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">混乱</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,nchw1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,nchw1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,nchw1,Period" precision="1"/></c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nckb/Tip=升级到混乱兽人科多兽
+nckb/Ubertip=价值：<c val="ffffff"><d ref="Unit,nckb,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">中甲</c><n/>生命：<c val="ffffff"><d ref="Unit,nckb,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,nckb,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,nckb,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">混乱</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,nckb1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,nckb1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,nckb1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">耐久光环</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ndtp/Tip=升级到黑暗巨魔暗影牧师
+ndtp/Ubertip=价值：<c val="ffffff"><d ref="Unit,ndtp,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">无甲</c><n/>生命：<c val="ffffff"><d ref="Unit,ndtp,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,ndtp,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,ndtp,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">魔法</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,ndtp1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,ndtp1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,ndtp1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">驱散魔法</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nfsh/Tip=升级到森林巨魔高阶牧师
+nfsh/Ubertip=价值：<c val="ffffff"><d ref="Unit,nfsh,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">无甲</c><n/>生命：<c val="ffffff"><d ref="Unit,nfsh,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,nfsh,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,nfsh,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">魔法</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,nfsh1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,nfsh1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,nfsh1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">治疗术</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nfsp/Tip=升级到森林巨魔暗影牧师
 nftb/Tip=升级到森林巨魔狂战士
+nftb/Ubertip=价值：<c val="ffffff"><d ref="Unit,nftb,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">中甲</c><n/>生命：<c val="ffffff"><d ref="Unit,nftb,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,nftb,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,nftb,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">普通</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,nftb1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,nftb1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,nftb1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">诱捕</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nftr/Tip=升级到森林巨魔
 nftt/Tip=训练森林巨魔捕兽者
+nftt/Ubertip=价值：<c val="ffffff"><d ref="Unit,nftt,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">中甲</c><n/>生命：<c val="ffffff"><d ref="Unit,nftt,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,nftt,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,nftt,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">普通</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,nftt1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,nftt1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,nftt1,Period" precision="1"/></c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nhea/Name=高等精灵弓箭手
 nitp/Tip=训练冰霜巨魔牧师
+nitp/Ubertip=价值：<c val="ffffff"><d ref="Unit,nitp,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">无甲</c><n/>生命：<c val="ffffff"><d ref="Unit,nitp,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,nitp,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,nitp,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">魔法</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,nitp1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,nitp1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,nitp1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">治疗术</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+npn4/Ubertip=价值：<c val="ffffff"><d ref="Unit,npn4,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">中甲</c><n/>生命：<c val="ffffff"><d ref="Unit,npn4,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,npn4,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,npn4,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">攻城</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,npn41,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,npn41,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,npn41,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">永久的献祭</c>、<c val="ffffff">吸血药水</c>、<c val="ffffff">嗜血</c>、<c val="ffffff">抗性皮肤</c><n/><n/><c val="ffcc00">能攻击地面单位。</c>
+npn5/Ubertip=价值：<c val="ffffff"><d ref="Unit,npn5,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">无甲</c><n/>生命：<c val="ffffff"><d ref="Unit,npn5,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,npn5,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,npn5,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">魔法</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,npn51,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,npn51,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,npn51,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">闪电链</c>、<c val="ffffff">闪电之盾</c>、<c val="ffffff">地震</c>、<c val="ffffff">抗性皮肤</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+npn6/Ubertip=价值：<c val="ffffff"><d ref="Unit,npn6,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">城墙</c><n/>生命：<c val="ffffff"><d ref="Unit,npn6,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,npn6,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,npn6,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">普通</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,npn61,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,npn61,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,npn61,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">粉碎</c>、<c val="ffffff">嘲讽</c>、<c val="ffffff">先祖之魂</c>、<c val="ffffff">魔法防护</c><n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nw2w/Tip=训练兽人术士
+nw2w/Ubertip=价值：<c val="ffffff"><d ref="Unit,nw2w,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">无甲</c><n/>生命：<c val="ffffff"><d ref="Unit,nw2w,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,nw2w,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,nw2w,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">魔法</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,nw2w1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,nw2w1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,nw2w1,Period" precision="1"/></c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+odoc/Ubertip=价值：<c val="ffffff"><d ref="Unit,odoc,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">无甲</c><n/>生命：<c val="ffffff"><d ref="Unit,odoc,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,odoc,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,odoc,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">魔法</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,odoc1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,odoc1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,odoc1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">治疗结界</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 oflg/Tip=放置兽人旗帜
+ogru/Ubertip=价值：<c val="ffffff"><d ref="Unit,ogru,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">重甲</c><n/>生命：<c val="ffffff"><d ref="Unit,ogru,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,ogru,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,ogru,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">普通</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,ogru1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,ogru1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,ogru1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">掠夺</c><n/><n/><c val="ffcc00">能攻击地面单位。</c>
+ohun/Ubertip=价值：<c val="ffffff"><d ref="Unit,ohun,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">中甲</c><n/>生命：<c val="ffffff"><d ref="Unit,ohun,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,ohun,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,ohun,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">穿刺</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,ohun1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,ohun1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,ohun1,Period" precision="1"/></c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+okod/Ubertip=价值：<c val="ffffff"><d ref="Unit,okod,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">中甲</c><n/>生命：<c val="ffffff"><d ref="Unit,okod,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,okod,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,okod,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">普通</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,okod1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,okod1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,okod1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">战鼓</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+orai/Ubertip=价值：<c val="ffffff"><d ref="Unit,orai,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">轻甲</c><n/>生命：<c val="ffffff"><d ref="Unit,orai,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,orai,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,orai,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">攻城</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,orai1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,orai1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,orai1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">诱捕</c>、<c val="ffffff">吸血药水</c><n/><n/><c val="ffcc00">能攻击地面单位。</c>
 oshm/Tip=训练萨满 
+oshm/Ubertip=价值：<c val="ffffff"><d ref="Unit,oshm,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">无甲</c><n/>生命：<c val="ffffff"><d ref="Unit,oshm,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,oshm,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,oshm,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">魔法</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,oshm1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,oshm1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,oshm1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">净化术</c><n/><n/><c val="ffcc00">能攻击地面单位。</c>
 oshmEtherealForm/Name=萨满
 oshmEtherealForm/Tip=升级到萨满
+oshmEtherealForm/Ubertip=价值：<c val="ffffff"><d ref="Unit,oshmEtherealForm,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">无甲</c><n/>生命：<c val="ffffff"><d ref="Unit,oshmEtherealForm,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,oshmEtherealForm,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,oshmEtherealForm,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">魔法</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,oshm1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,oshm1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,oshm1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">净化术</c>、<c val="ffffff">闪电之盾</c>、<c val="ffffff">灵体形态</c><n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ospm/Tip=升级到灵魂行者
+ospm/Ubertip=价值：<c val="ffffff"><d ref="Unit,ospm,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">无甲</c><n/>生命：<c val="ffffff"><d ref="Unit,ospm,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,ospm,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,ospm,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">魔法</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,ospw1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,ospw1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,ospw1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">灵魂连接</c>、<c val="ffffff">消魔</c>、<c val="ffffff">灵体形态</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+ospw/Ubertip=价值：<c val="ffffff"><d ref="Unit,ospw,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">无甲</c><n/>生命：<c val="ffffff"><d ref="Unit,ospw,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,ospw,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,ospw,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">魔法</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,ospw1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,ospw1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,ospw1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">灵魂连接</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+otau/Ubertip=价值：<c val="ffffff"><d ref="Unit,otau,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">城墙</c><n/>生命：<c val="ffffff"><d ref="Unit,otau,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,otau,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,otau,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">普通</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,otau1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,otau1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,otau1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">粉碎</c><n/><n/><c val="ffcc00">能攻击地面单位。</c>
 otbk/Tip=升级到巨魔狂战士
+otbk/Ubertip=价值：<c val="ffffff"><d ref="Unit,otbk,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">中甲</c><n/>生命：<c val="ffffff"><d ref="Unit,otbk,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,otbk,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,otbk,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">穿刺</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,otbk1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,otbk1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,otbk1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">狂暴</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CActorUnit id="PathingBlocker16x16" parent="PathingBlocker" unitName="PathingBlocker16x16"/>
     <CActorModel id="BushidoMarker" parent="War3_Buff">
         <On Terms="Behavior.BushidoMarker.On" Send="Create"/>
         <On Terms="Behavior.BushidoMarker.Off" Send="Destroy"/>
         <On Terms="ActorCreation" Send="Create EffectSoundOneShot BushidoMarkerCastSound"/>
-        <Scale value="4.000000"/>
+        <Scale value="2.000000"/>
     </CActorModel>
     <!--jaina-->
     <CActorUnit id="Hjai" defType="NONE">
@@ -233,11 +234,19 @@
         <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-NONE.tga"/>
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
     </CActorUnit>
+    <!--magnataurdestroyer-->
+    <CActorUnit id="nmgd">
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+    </CActorUnit>
+    <!--magnataurwarrior-->
+    <CActorUnit id="nmgw">
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+    </CActorUnit>
     <!--panda4-->
-    <CActorUnit id="npn4" defType="NONE">
+    <CActorUnit id="npn4" defType="MEDIUM">
         <Scale value="0.800000"/>
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
-        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-NONE.tga"/>
+        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-MEDIUM.tga"/>
     </CActorUnit>
     <!--panda5-->
     <CActorUnit id="npn5" defType="NONE">
@@ -272,6 +281,10 @@
     <CActorUnit id="ohun">
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
     </CActorUnit>
+    <!--healingward-->
+    <CActorUnit id="ohwd" defType="NONE">
+        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-NONE.tga"/>
+    </CActorUnit>
     <!--kotobeast-->
     <CActorUnit id="okod" defType="MEDIUM">
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
@@ -304,12 +317,22 @@
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnShaman.dds"/>
         <On Terms="ActorCreation" Send="SetOpacity 0.300000 0.000000 spiritwalkermorph"/>
     </CActorUnit>
+    <!--serpentward1-->
+    <CActorUnit id="osp1" defType="NONE">
+        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-NONE.tga"/>
+    </CActorUnit>
     <!--spiritwalkermorph-->
     <CActorUnit id="ospm">
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
     </CActorUnit>
     <CActorUnit id="ospw">
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+    </CActorUnit>
+    <!--spiritwolf1-->
+    <CActorUnit id="osw1" defType="SMALL">
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-SMALL.tga"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.300000 0.000000 spiritwalkermorph"/>
     </CActorUnit>
     <!--tauren-->
     <CActorUnit id="otau" defType="FORT">
