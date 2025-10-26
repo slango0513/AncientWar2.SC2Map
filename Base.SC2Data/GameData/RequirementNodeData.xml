@@ -8,6 +8,11 @@
         <OperandArray value="LTCountUnitAlias_PhalanxQueuedOrBetter3"/>
         <OperandArray value="CountUpgradeBuildPhalanxCompleteOnly"/>
     </CRequirementAnd>
+    <CRequirementAnd id="AndLTCountUnitAlias_PhalanxQueuedOrBetter3CountUpgradeBuildPhalanxFinalCompleteOnly">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="LTCountUnitAlias_PhalanxQueuedOrBetter3"/>
+        <OperandArray value="CountUpgradeBuildPhalanxFinalCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementAnd id="AndLTCountUnitAlias_PortalQueuedOrBetter2CountUpgradeBuildPortalCompleteOnly">
         <OperandArray value="LTCountUnitAlias_PortalQueuedOrBetter2"/>
         <OperandArray value="CountUpgradeBuildPortalCompleteOnly"/>
@@ -60,6 +65,11 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="BuildPhalanx" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeBuildPhalanxFinalCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="BuildPhalanxFinal" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeBuildPortalCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="BuildPortal" State="CompleteOnly"/>
@@ -70,7 +80,6 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeTideCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="Tide" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementEq id="EqCountBehaviorAW2_BuildingCompleteOnlyAtUnit0">

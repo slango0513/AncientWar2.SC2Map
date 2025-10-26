@@ -83,6 +83,8 @@
             <LayoutButtons index="2" removed="1"/>
             <LayoutButtons index="3" removed="1"/>
         </CardLayouts>
+        <Footprint value="##id##"/>
+        <PlacementFootprint value="##id##"/>
     </CUnit>
     <CUnit default="1" id="AW2_Portal" parent="War3_ArmyBase">
         <DeathRevealRadius value="0"/>
@@ -570,14 +572,14 @@
         <Collide index="Ground" value="1"/>
         <Collide index="ForceField" value="1"/>
         <BehaviorArray Link="Previewer"/>
-        <Footprint value="6x6Phalanx"/>
+        <Footprint value="flag"/>
     </CUnit>
     <CUnit id="NagaPreviewer" parent="War3_Item" defType="">
         <FogVisibility value="Snapshot"/>
         <Collide index="Ground" value="1"/>
         <Collide index="ForceField" value="1"/>
         <BehaviorArray Link="Previewer"/>
-        <Footprint value="6x6Phalanx"/>
+        <Footprint value="flag"/>
     </CUnit>
     <!--Magtheridon-->
     <CUnit id="Nmag" parent="AW2_Army" defType="LARGE">
@@ -831,7 +833,7 @@
         <Collide index="Ground" value="1"/>
         <Collide index="ForceField" value="1"/>
         <BehaviorArray Link="Previewer"/>
-        <Footprint value="6x6Phalanx"/>
+        <Footprint value="flag"/>
     </CUnit>
     <!--HeroShadowHunter-->
     <CUnit id="Oshd" parent="AW2_Army" defType="NONE">
@@ -1264,9 +1266,9 @@
                 <Column value="1"/>
             </LayoutButtons>
             <LayoutButtons>
-                <Face value="Anei"/>
+                <Face value="nfl2"/>
                 <Type value="AbilCmd"/>
-                <AbilCmd value="Aall,Designate"/>
+                <AbilCmd value="AEbu,Build2"/>
                 <Behavior value=""/>
                 <Requirements value=""/>
                 <SubmenuAbilState value=""/>
@@ -1274,9 +1276,10 @@
                 <SubmenuFullSubCmdValidation value="0"/>
                 <SubmenuIsSticky value="0"/>
                 <ShowInGlossary value="1"/>
-                <Row value="2"/>
-                <Column value="4"/>
+                <Row value="0"/>
+                <Column value="1"/>
             </LayoutButtons>
+            <LayoutButtons Face="Anei" Type="AbilCmd" AbilCmd="Aall,Designate" Row="2" Column="4"/>
             <LayoutButtons Face="ANgl" Type="AbilCmd" AbilCmd="ANgl,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="ANlg" Type="AbilCmd" AbilCmd="ANlg,Execute" Row="2" Column="1"/>
         </CardLayouts>
@@ -1329,8 +1332,12 @@
     <!--human flag-->
     <CUnit id="flag" parent="AW2_Phalanx">
         <BehaviorArray Link="CreateReserveUnit36"/>
-        <Footprint value="6x6Phalanx"/>
-        <PlacementFootprint value="6x6Phalanx"/>
+    </CUnit>
+    <CUnit id="fla2" parent="AW2_Phalanx">
+        <BehaviorArray Link="CreateReserveUnit90"/>
+    </CUnit>
+    <CUnit id="fla3" parent="AW2_Phalanx">
+        <BehaviorArray Link="CreateReserveUnit90"/>
     </CUnit>
     <!--Firehand Gauntlets-->
     <CUnit id="frhg" parent="AW2_Item">
@@ -1624,9 +1631,9 @@
                 <Column value="1"/>
             </LayoutButtons>
             <LayoutButtons>
-                <Face value="Anei"/>
+                <Face value="fla2"/>
                 <Type value="AbilCmd"/>
-                <AbilCmd value="Aall,Designate"/>
+                <AbilCmd value="AHbu,Build2"/>
                 <Behavior value=""/>
                 <Requirements value=""/>
                 <SubmenuAbilState value=""/>
@@ -1634,15 +1641,16 @@
                 <SubmenuFullSubCmdValidation value="0"/>
                 <SubmenuIsSticky value="0"/>
                 <ShowInGlossary value="1"/>
-                <Row value="2"/>
-                <Column value="4"/>
+                <Row value="0"/>
+                <Column value="1"/>
             </LayoutButtons>
+            <LayoutButtons Face="Anei" Type="AbilCmd" AbilCmd="Aall,Designate" Row="2" Column="4"/>
             <LayoutButtons Face="ANgl" Type="AbilCmd" AbilCmd="ANgl,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="ANlg" Type="AbilCmd" AbilCmd="ANlg,Execute" Row="2" Column="1"/>
         </CardLayouts>
         <CardLayouts CardId="Buil">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
-            <LayoutButtons Face="hmil" Type="AbilCmd" AbilCmd="AHbu,Build2" Row="0" Column="0"/>
+            <LayoutButtons Face="hmil" Type="AbilCmd" AbilCmd="AHbu,Build13" Row="0" Column="0"/>
             <LayoutButtons Face="hfoo" Type="AbilCmd" AbilCmd="AHbu,Build3" Row="0" Column="1"/>
             <LayoutButtons Face="hkni" Type="AbilCmd" AbilCmd="AHbu,Build7" Row="0" Column="2"/>
             <LayoutButtons Face="Hpal" Type="AbilCmd" AbilCmd="AHbu,Build6" Row="0" Column="3"/>
@@ -1706,6 +1714,9 @@
         <Race value="Human"/>
         <Mover value="foot"/>
         <AbilArray Link="Aihn"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Ahra" Type="Passive" Row="2" Column="0"/>
+        </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/HumanUnits"/>
         <GlossaryStrongArray value="hkni"/>
@@ -2080,8 +2091,9 @@
     <!--NightElf flag-->
     <CUnit id="nflg" parent="AW2_Phalanx">
         <BehaviorArray Link="CreateReserveUnit36"/>
-        <Footprint value="6x6Phalanx"/>
-        <PlacementFootprint value="6x6Phalanx"/>
+    </CUnit>
+    <CUnit id="nfl2" parent="AW2_Phalanx">
+        <BehaviorArray Link="CreateReserveUnit90"/>
     </CUnit>
     <!--forest troll high priest-->
     <CUnit id="nfsh" parent="AW2_Army" defType="NONE">
@@ -2641,9 +2653,9 @@
                 <Column value="1"/>
             </LayoutButtons>
             <LayoutButtons>
-                <Face value="Anei"/>
+                <Face value="NagaFlag2"/>
                 <Type value="AbilCmd"/>
-                <AbilCmd value="Aall,Designate"/>
+                <AbilCmd value="AGbu,Build2"/>
                 <Behavior value=""/>
                 <Requirements value=""/>
                 <SubmenuAbilState value=""/>
@@ -2651,20 +2663,22 @@
                 <SubmenuFullSubCmdValidation value="0"/>
                 <SubmenuIsSticky value="0"/>
                 <ShowInGlossary value="1"/>
-                <Row value="2"/>
-                <Column value="4"/>
+                <Row value="0"/>
+                <Column value="1"/>
             </LayoutButtons>
+            <LayoutButtons Face="Anei" Type="AbilCmd" AbilCmd="Aall,Designate" Row="2" Column="4"/>
             <LayoutButtons Face="ANgl" Type="AbilCmd" AbilCmd="ANgl,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="ANlg" Type="AbilCmd" AbilCmd="ANlg,Execute" Row="2" Column="1"/>
         </CardLayouts>
         <CardLayouts CardId="Buil">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
-            <LayoutButtons Face="nnmg" Type="AbilCmd" AbilCmd="AGbu,Build2" Row="0" Column="0"/>
+            <LayoutButtons Face="nnmg" Type="AbilCmd" AbilCmd="AGbu,Build8" Row="0" Column="0"/>
             <LayoutButtons Face="nlpr" Type="AbilCmd" AbilCmd="AGbu,Build5" Row="0" Column="1"/>
             <LayoutButtons Face="nmyr" Type="AbilCmd" AbilCmd="AGbu,Build3" Row="0" Column="2"/>
-            <LayoutButtons Face="nsnp" Type="AbilCmd" AbilCmd="AGbu,Build7" Row="1" Column="0"/>
+            <LayoutButtons Face="nmsc" Type="AbilCmd" AbilCmd="AGbu,Build9" Row="1" Column="0"/>
             <LayoutButtons Face="ntrs" Type="AbilCmd" AbilCmd="AGbu,Build6" Row="0" Column="3"/>
-            <LayoutButtons Face="nnsw" Type="AbilCmd" AbilCmd="AGbu,Build4" Row="1" Column="1"/>
+            <LayoutButtons Face="nsnp" Type="AbilCmd" AbilCmd="AGbu,Build7" Row="1" Column="1"/>
+            <LayoutButtons Face="nnsw" Type="AbilCmd" AbilCmd="AGbu,Build4" Row="2" Column="0"/>
         </CardLayouts>
         <CardLayouts CardId="Purc">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
@@ -2714,6 +2728,21 @@
         <AbilArray Link="NagaInventory"/>
         <BehaviorArray Link="naga"/>
         <BehaviorArray Link="MurgulReaverSwim"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/NagaUnits"/>
+    </CUnit>
+    <!--mur'gul shadowcaster-->
+    <CUnit id="nmsc" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="45"/>
+        <KillResource index="Custom" value="5"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Naga"/>
+        <Mover value="amph"/>
+        <BehaviorArray Link="naga"/>
+        <BehaviorArray Link="MurgulShadowcasterSwim"/>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
     </CUnit>
@@ -3060,18 +3089,21 @@
         <Race value="Naga"/>
         <Mover value="amph"/>
         <AbilArray Link="NagaInventory"/>
+        <AbilArray Link="UpgradeTozhyd"/>
         <AbilArray Link="Asb3"/>
         <BehaviorArray Link="naga"/>
         <BehaviorArray Link="NagaSnapDragonSwim"/>
         <BehaviorArray Link="OrderSubmerge3"/>
         <BehaviorArray Link="Aspo"/>
         <CardLayouts index="0">
+            <LayoutButtons Face="zhyd" Type="AbilCmd" AbilCmd="UpgradeTozhyd,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="Aspo" Type="Passive" Behavior="Aspo" Row="2" Column="1"/>
             <LayoutButtons Face="Asb3" Type="AbilCmd" AbilCmd="Asb3,Execute" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
     </CUnit>
+    <CUnit id="zhyd1LM" parent="War3_Missile"/>
     <!--night elf assassin-->
     <CUnit id="nssn" parent="AW2_Army" defType="SMALL">
         <Attributes index="small" value="1"/>
@@ -3341,8 +3373,9 @@
     <!--Orc flag-->
     <CUnit id="oflg" parent="AW2_Phalanx">
         <BehaviorArray Link="CreateReserveUnit36"/>
-        <Footprint value="6x6Phalanx"/>
-        <PlacementFootprint value="6x6Phalanx"/>
+    </CUnit>
+    <CUnit id="ofl2" parent="AW2_Phalanx">
+        <BehaviorArray Link="CreateReserveUnit90"/>
     </CUnit>
     <!--Orb of Frost-->
     <CUnit id="ofro" parent="AW2_Item">
@@ -3510,9 +3543,9 @@
                 <Column value="1"/>
             </LayoutButtons>
             <LayoutButtons>
-                <Face value="Anei"/>
+                <Face value="ofl2"/>
                 <Type value="AbilCmd"/>
-                <AbilCmd value="Aall,Designate"/>
+                <AbilCmd value="AObu,Build2"/>
                 <Behavior value=""/>
                 <Requirements value=""/>
                 <SubmenuAbilState value=""/>
@@ -3520,9 +3553,10 @@
                 <SubmenuFullSubCmdValidation value="0"/>
                 <SubmenuIsSticky value="0"/>
                 <ShowInGlossary value="1"/>
-                <Row value="2"/>
-                <Column value="4"/>
+                <Row value="0"/>
+                <Column value="1"/>
             </LayoutButtons>
+            <LayoutButtons Face="Anei" Type="AbilCmd" AbilCmd="Aall,Designate" Row="2" Column="4"/>
             <LayoutButtons Face="ANgl" Type="AbilCmd" AbilCmd="ANgl,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="ANlg" Type="AbilCmd" AbilCmd="ANlg,Execute" Row="2" Column="1"/>
         </CardLayouts>
@@ -3946,9 +3980,9 @@
                 <Column value="1"/>
             </LayoutButtons>
             <LayoutButtons>
-                <Face value="Anei"/>
+                <Face value="ufl2"/>
                 <Type value="AbilCmd"/>
-                <AbilCmd value="Aall,Designate"/>
+                <AbilCmd value="AUbu,Build2"/>
                 <Behavior value=""/>
                 <Requirements value=""/>
                 <SubmenuAbilState value=""/>
@@ -3956,15 +3990,16 @@
                 <SubmenuFullSubCmdValidation value="0"/>
                 <SubmenuIsSticky value="0"/>
                 <ShowInGlossary value="1"/>
-                <Row value="2"/>
-                <Column value="4"/>
+                <Row value="0"/>
+                <Column value="1"/>
             </LayoutButtons>
+            <LayoutButtons Face="Anei" Type="AbilCmd" AbilCmd="Aall,Designate" Row="2" Column="4"/>
             <LayoutButtons Face="ANgl" Type="AbilCmd" AbilCmd="ANgl,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="ANlg" Type="AbilCmd" AbilCmd="ANlg,Execute" Row="2" Column="1"/>
         </CardLayouts>
         <CardLayouts CardId="Buil">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
-            <LayoutButtons Face="ugho" Type="AbilCmd" AbilCmd="AUbu,Build2" Row="0" Column="0"/>
+            <LayoutButtons Face="ugho" Type="AbilCmd" AbilCmd="AUbu,Build12" Row="0" Column="0"/>
             <LayoutButtons Face="uabo" Type="AbilCmd" AbilCmd="AUbu,Build7" Row="0" Column="1"/>
             <LayoutButtons Face="Udea" Type="AbilCmd" AbilCmd="AUbu,Build10" Row="0" Column="2"/>
             <LayoutButtons Face="Nplh" Type="AbilCmd" AbilCmd="AUbu,Build11" Row="0" Column="3"/>
@@ -4094,13 +4129,15 @@
     <!--Undead flag-->
     <CUnit id="uflg" parent="AW2_Phalanx">
         <BehaviorArray Link="CreateReserveUnit36"/>
-        <Footprint value="6x6Phalanx"/>
-        <PlacementFootprint value="6x6Phalanx"/>
+    </CUnit>
+    <CUnit id="ufl2" parent="AW2_Phalanx">
+        <BehaviorArray Link="CreateReserveUnit90"/>
     </CUnit>
     <CUnit id="NagaFlag" parent="AW2_Phalanx">
         <BehaviorArray Link="CreateReserveUnit36"/>
-        <Footprint value="6x6Phalanx"/>
-        <PlacementFootprint value="6x6Phalanx"/>
+    </CUnit>
+    <CUnit id="NagaFlag2" parent="AW2_Phalanx">
+        <BehaviorArray Link="CreateReserveUnit90"/>
     </CUnit>
     <!--Gargoyle-->
     <CUnit id="ugar">
@@ -4318,7 +4355,7 @@
         <Collide index="Ground" value="1"/>
         <Collide index="ForceField" value="1"/>
         <BehaviorArray Link="Previewer"/>
-        <Footprint value="6x6Phalanx"/>
+        <Footprint value="flag"/>
     </CUnit>
     <!--sylvanus banshee-->
     <CUnit id="uswb" parent="AW2_Army" defType="NONE">
@@ -4348,6 +4385,40 @@
         <Collide index="Ground" value="1"/>
         <Collide index="ForceField" value="1"/>
         <BehaviorArray Link="Previewer"/>
-        <Footprint value="6x6Phalanx"/>
+        <Footprint value="flag"/>
+    </CUnit>
+    <!--chaos space Sorc-->
+    <CUnit id="zcso" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
+        <CostResource index="gold" value="180"/>
+        <KillResource index="Custom" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Human"/>
+        <Mover value="foot"/>
+        <AbilArray Link="Aihn"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/HumanUnits"/>
+    </CUnit>
+    <!--hydralisk-->
+    <CUnit id="zhyd" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
+        <CostResource index="gold" value="180"/>
+        <KillResource index="Custom" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Naga"/>
+        <Mover value="amph"/>
+        <AbilArray Link="NagaInventory"/>
+        <BehaviorArray Link="naga"/>
+        <BehaviorArray Link="Aspo"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Aspo" Type="Passive" Behavior="Aspo" Row="2" Column="1"/>
+            <LayoutButtons Face="Multishot" Type="Passive" Row="2" Column="0"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/NagaUnits"/>
     </CUnit>
 </Catalog>

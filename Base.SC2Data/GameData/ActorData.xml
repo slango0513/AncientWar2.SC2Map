@@ -175,6 +175,25 @@
     <CActorMissile id="nft31LM" parent="War3_MissileSwapable" unitName="nft31LM"/>
     <CActorAction id="nlp21" parent="War3_AttackSwapable" WeaponSound="MetalMediumChop"/>
     <CActorAction id="nltc1" parent="War3_AttackSwapable" WeaponSound="MetalMediumChop"/>
+    <!--murgulshadowcaster-->
+    <CActorUnit id="nmsc" parent="War3_Army" unitSound="Murloc" unitName="nmsc" defType="NONE">
+        <On Terms="Behavior.MurgulShadowcasterSwim.On" Send="AnimGroupApply Swim"/>
+        <On Terms="Behavior.MurgulShadowcasterSwim.Off" Send="AnimGroupRemove Swim"/>
+        <On Terms="Behavior.MurgulShadowcasterSwim.On" Send="SetWalkAnimMoveSpeed 3.5"/>
+        <On Terms="Behavior.MurgulShadowcasterSwim.Off" Send="SetWalkAnimMoveSpeed 2.1093"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnMurgulShadowCaster.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnMurgulShadowCaster.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnMurgulShadowCaster.dds"/>
+        <BarWidth value="75"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonSmallDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <CActorAction id="zhyd1" parent="War3_AttackMissileSwapable"/>
+    <CActorMissile id="zhyd1LM" parent="War3_MissileSwapable" unitName="zhyd1LM"/>
     <CActorAction id="nss21" parent="War3_AttackSwapable" WeaponSound="MetalLightSlice"/>
     <CActorUnit id="Hamg" parent="War3_Army" unitSound="HeroArchMage" unitName="Hamg" defType="NONE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHeroArchMage.dds"/>
@@ -672,6 +691,18 @@
         <BuildModel value="War3_HumanCaptureFlag"/>
         <PlacementModel value="War3_HumanCaptureFlag"/>
     </CActorUnit>
+    <CActorUnit id="fla2" parent="War3_Item" unitName="fla2" art="Assets\Textures\BTN\Renee_war3_btnHumanCaptureFlag.dds">
+        <Model value="War3_HumanCaptureFlag"/>
+        <PortraitModel value="War3_HumanCaptureFlag"/>
+        <BuildModel value="War3_HumanCaptureFlag"/>
+        <PlacementModel value="War3_HumanCaptureFlag"/>
+    </CActorUnit>
+    <CActorUnit id="fla3" parent="War3_Item" unitName="fla3" art="Assets\Textures\BTN\Renee_war3_btnHumanCaptureFlag.dds">
+        <Model value="War3_HumanCaptureFlag"/>
+        <PortraitModel value="War3_HumanCaptureFlag"/>
+        <BuildModel value="War3_HumanCaptureFlag"/>
+        <PlacementModel value="War3_HumanCaptureFlag"/>
+    </CActorUnit>
     <!--footman-->
     <CActorUnit id="hfoo" parent="War3_Army" unitSound="Footman" unitName="hfoo" defType="LARGE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnFootman.dds"/>
@@ -1045,7 +1076,19 @@
         <BuildModel value="War3_NightElfCaptureFlag"/>
         <PlacementModel value="War3_NightElfCaptureFlag"/>
     </CActorUnit>
+    <CActorUnit id="nfl2" parent="War3_Item" unitName="nfl2" art="Assets\Textures\BTN\Renee_war3_btnNightElfCaptureFlag.dds">
+        <Model value="War3_NightElfCaptureFlag"/>
+        <PortraitModel value="War3_NightElfCaptureFlag"/>
+        <BuildModel value="War3_NightElfCaptureFlag"/>
+        <PlacementModel value="War3_NightElfCaptureFlag"/>
+    </CActorUnit>
     <CActorUnit id="NagaFlag" parent="War3_Item" unitName="NagaFlag" art="Assets\Textures\BTN\Renee_war3_btnNightElfCaptureFlag.dds">
+        <Model value="War3_NagaCaptureFlag"/>
+        <PortraitModel value="War3_NagaCaptureFlag"/>
+        <BuildModel value="War3_NagaCaptureFlag"/>
+        <PlacementModel value="War3_NagaCaptureFlag"/>
+    </CActorUnit>
+    <CActorUnit id="NagaFlag2" parent="War3_Item" unitName="NagaFlag2" art="Assets\Textures\BTN\Renee_war3_btnNightElfCaptureFlag.dds">
         <Model value="War3_NagaCaptureFlag"/>
         <PortraitModel value="War3_NagaCaptureFlag"/>
         <BuildModel value="War3_NagaCaptureFlag"/>
@@ -1769,6 +1812,12 @@
         <BuildModel value="War3_OrcCaptureFlag"/>
         <PlacementModel value="War3_OrcCaptureFlag"/>
     </CActorUnit>
+    <CActorUnit id="ofl2" parent="War3_Item" unitName="ofl2" art="Assets\Textures\BTN\Renee_war3_btnOrcCaptureFlag.dds">
+        <Model value="War3_OrcCaptureFlag"/>
+        <PortraitModel value="War3_OrcCaptureFlag"/>
+        <BuildModel value="War3_OrcCaptureFlag"/>
+        <PlacementModel value="War3_OrcCaptureFlag"/>
+    </CActorUnit>
     <!--grunt-->
     <CActorUnit id="ogru" parent="War3_Army" unitSound="Grunt" unitName="ogru" defType="LARGE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnGrunt.dds"/>
@@ -2066,6 +2115,12 @@
         <BuildModel value="War3_UndeadCaptureFlag"/>
         <PlacementModel value="War3_UndeadCaptureFlag"/>
     </CActorUnit>
+    <CActorUnit id="ufl2" parent="War3_Item" unitName="ufl2" art="Assets\Textures\BTN\Renee_war3_btnUndeadCaptureFlag.dds">
+        <Model value="War3_UndeadCaptureFlag"/>
+        <PortraitModel value="War3_UndeadCaptureFlag"/>
+        <BuildModel value="War3_UndeadCaptureFlag"/>
+        <PlacementModel value="War3_UndeadCaptureFlag"/>
+    </CActorUnit>
     <CActorAction id="nitr1" parent="War3_AttackSwapable" WeaponSound="MetalMediumChop"/>
     <CActorAction id="nftr1" parent="War3_AttackSwapable" WeaponSound="MetalMediumChop"/>
     <CActorAction id="oshm1" parent="War3_AttackSwapable"/>
@@ -2206,4 +2261,27 @@
         <On Terms="Abil.CallTide.SourcePrepStart" Send="Create"/>
         <On Terms="Abil.CallTide.SourcePrepStop" Send="AnimBracketStop BSD"/>
     </CActorModel>
+    <!--chaosspaceorc-->
+    <CActorUnit id="zcso" parent="War3_Army" unitSound="ChaosSpaceOrc" unitName="zcso" defType="MEDIUM">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnChaosSpaceOrc.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnChaosSpaceOrc.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnChaosSpaceOrc.dds"/>
+        <BarWidth value="50"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--hydralisk-->
+    <CActorUnit id="zhyd" parent="War3_Army" unitSound="Hydralisk" unitName="zhyd" defType="MEDIUM">
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHydralisk.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnHydralisk.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHydralisk.dds"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
 </Catalog>

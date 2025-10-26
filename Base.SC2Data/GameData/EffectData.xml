@@ -677,6 +677,7 @@
     </CEffectDamage>
     <CEffectDamage id="hrif1" parent="AW2_PierceDamage">
         <Amount value="48"/>
+        <ArmorReduction value="0"/>
     </CEffectDamage>
     <CEffectDamage id="hrtt1" parent="AW2_SiegeDamage">
         <Amount value="96"/>
@@ -976,6 +977,9 @@
         <Kind value="Melee"/>
         <Amount value="12"/>
     </CEffectDamage>
+    <CEffectDamage id="nmsc1" parent="AW2_MagicDamage">
+        <Amount value="24"/>
+    </CEffectDamage>
     <CEffectDamage id="nmyr1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
         <Amount value="192"/>
@@ -1015,6 +1019,7 @@
         <Kind value="Melee"/>
         <Amount value="24"/>
     </CEffectDamage>
+    <CEffectLaunchMissile id="zhyd1LM" parent="War3_Missile" weaponid="zhyd1"/>
     <CEffectSet id="nsnp1MultishotSet">
         <EffectArray value="nsnp1LM"/>
         <EffectArray value="nsnp1Multishot"/>
@@ -1224,4 +1229,26 @@
     <CEffectCreateUnit id="ngnv" parent="AW2_CreateCreepUnit"/>
     <CEffectCreateUnit id="ngns" parent="AW2_CreateCreepUnit"/>
     <CEffectCreateUnit id="ngnw" parent="AW2_CreateCreepUnit"/>
+    <CEffectDamage id="zcso1" parent="AW2_PierceDamage">
+        <Amount value="48"/>
+    </CEffectDamage>
+    <CEffectSet id="zhyd1MultishotSet">
+        <EffectArray value="zhyd1LM"/>
+        <EffectArray value="zhyd1Multishot"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="zhyd1Multishot" parent="AW2_Multishot">
+        <PeriodCount value="3"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <Marker Link="Effect/zhyd1LM"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="zhyd1MultishotSearch" parent="AW2_MultishotSearch">
+        <AreaArray index="0" MaxCount="1" Radius="8" Effect="zhyd1LM"/>
+        <SearchFilters value="Visible;player,allies,neutral,wall,tree,Missile,item,ethereal,dead,Hidden,invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectDamage id="zhyd1" parent="AW2_PierceDamage">
+        <Amount value="12"/>
+    </CEffectDamage>
 </Catalog>

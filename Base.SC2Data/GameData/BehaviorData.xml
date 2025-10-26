@@ -707,9 +707,16 @@
         <DisableValidatorArray value="CountUnit"/>
         <DisableValidatorArray value="PhalanxMarkerLessThan36"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="CreateReserveUnit90" parent="War3_Passive">
+        <Requirements value="CreateReserveUnit90"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="CreateReserveUnitTriggerNotice"/>
+        <DisableValidatorArray value="CountUnit"/>
+        <DisableValidatorArray value="PhalanxMarkerLessThan90"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="CountUnit" parent="War3_Passive">
         <Requirements value="CountUnit"/>
-        <Period value="5"/>
+        <Period value="6"/>
         <PeriodicEffect value="CountUnitTriggerNotice"/>
         <DisableValidatorArray value="CountUnit"/>
         <DisableValidatorArray value="PhalanxMarkerEqual0"/>
@@ -1006,6 +1013,10 @@
         <Modification Height="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="NagaSnapDragonSwim" parent="AW2_UnitSwim">
+        <EditorCategories value="Race:Naga,AbilityorEffectType:Units"/>
+        <Modification Height="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MurgulShadowcasterSwim" parent="AW2_UnitSwim">
         <EditorCategories value="Race:Naga,AbilityorEffectType:Units"/>
         <Modification Height="1"/>
     </CBehaviorBuff>

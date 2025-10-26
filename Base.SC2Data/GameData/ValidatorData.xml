@@ -202,6 +202,16 @@
         </AreaArray>
         <SearchFilters value="Visible;Ally,Neutral,Enemy,Hover,Missile,Dead,Hidden,MapBoss"/>
     </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="PhalanxMarkerLessThan90">
+        <WhichLocation Value="CasterPoint"/>
+        <AreaArray>
+            <Compare value="LT"/>
+            <Count value="90"/>
+            <Radius value="500"/>
+            <Validator value="HasPhalanxMarker"/>
+        </AreaArray>
+        <SearchFilters value="Visible;Ally,Neutral,Enemy,Hover,Missile,Dead,Hidden,MapBoss"/>
+    </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="PhalanxMarkerEqual0">
         <WhichLocation Value="CasterPoint"/>
         <AreaArray Radius="500" Validator="HasPhalanxMarker"/>

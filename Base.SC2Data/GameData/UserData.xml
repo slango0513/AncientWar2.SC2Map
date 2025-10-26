@@ -137,6 +137,54 @@
                 <Field Id="Row"/>
             </Int>
         </Instances>
+        <Instances Id="fla2">
+            <Int Int="15">
+                <Field Id="Column"/>
+            </Int>
+            <Int Int="6">
+                <Field Id="Row"/>
+            </Int>
+        </Instances>
+        <Instances Id="nfl2">
+            <Int Int="6">
+                <Field Id="Row"/>
+            </Int>
+            <Int Int="15">
+                <Field Id="Column"/>
+            </Int>
+        </Instances>
+        <Instances Id="ofl2">
+            <Int Int="15">
+                <Field Id="Column"/>
+            </Int>
+            <Int Int="6">
+                <Field Id="Row"/>
+            </Int>
+        </Instances>
+        <Instances Id="ufl2">
+            <Int Int="15">
+                <Field Id="Column"/>
+            </Int>
+            <Int Int="6">
+                <Field Id="Row"/>
+            </Int>
+        </Instances>
+        <Instances Id="NagaFlag2">
+            <Int Int="6">
+                <Field Id="Row"/>
+            </Int>
+            <Int Int="15">
+                <Field Id="Column"/>
+            </Int>
+        </Instances>
+        <Instances Id="fla3">
+            <Int Int="9">
+                <Field Id="Row"/>
+            </Int>
+            <Int Int="6">
+                <Field Id="Column"/>
+            </Int>
+        </Instances>
     </CUser>
     <CUser id="PortalData">
         <Fields Id="Column" Type="Int"/>
@@ -1495,6 +1543,42 @@
                 <Field Id="UnitType" Index="1"/>
             </Unit>
         </Instances>
+        <Instances Id="zhyd">
+            <Int Int="4">
+                <Field Id="Count"/>
+            </Int>
+            <Int Int="2">
+                <Field Id="Count" Index="1"/>
+            </Int>
+            <Unit Unit="nsnp">
+                <Field Id="UnitType"/>
+            </Unit>
+            <Unit Unit="zhyd">
+                <Field Id="UnitType" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="zcso">
+            <Int Int="4">
+                <Field Id="Count"/>
+            </Int>
+            <Int Int="2">
+                <Field Id="Count" Index="1"/>
+            </Int>
+            <Unit Unit="zcso">
+                <Field Id="UnitType" Index="1"/>
+            </Unit>
+            <Unit Unit="hrif">
+                <Field Id="UnitType"/>
+            </Unit>
+        </Instances>
+        <Instances Id="nmsc">
+            <Int Int="12">
+                <Field Id="Count"/>
+            </Int>
+            <Unit Unit="nmsc">
+                <Field Id="UnitType"/>
+            </Unit>
+        </Instances>
     </CUser>
     <CUser id="RaceAttributeMapping">
         <Instances index="1" Id="0002">
@@ -1524,13 +1608,16 @@
         </Instances>
     </CUser>
     <CUser id="RaceUnitTypeMapping">
-        <Fields Id="Phalanx" Type="Unit"/>
+        <Fields Id="Phalanx" Type="Unit" Count="2"/>
         <Fields Id="Previewer" Type="Unit"/>
-        <Fields Id="Command" Type="AbilCmd"/>
+        <Fields Id="Command" Type="AbilCmd" Count="2"/>
         <Instances Id="[Default]"/>
         <Instances Id="Human">
             <AbilCmd Abil="AHbu">
                 <Field Id="Command"/>
+            </AbilCmd>
+            <AbilCmd Abil="AHbu" Cmd="1">
+                <Field Id="Command" Index="1"/>
             </AbilCmd>
             <Unit Unit="flag">
                 <Field Id="Phalanx"/>
@@ -1538,10 +1625,16 @@
             <Unit Unit="HumanPreviewer">
                 <Field Id="Previewer"/>
             </Unit>
+            <Unit Unit="fla2">
+                <Field Id="Phalanx" Index="1"/>
+            </Unit>
         </Instances>
         <Instances Id="Orc">
             <AbilCmd Abil="AObu">
                 <Field Id="Command"/>
+            </AbilCmd>
+            <AbilCmd Abil="AObu" Cmd="1">
+                <Field Id="Command" Index="1"/>
             </AbilCmd>
             <Unit Unit="OrcPreviewer">
                 <Field Id="Previewer"/>
@@ -1549,10 +1642,16 @@
             <Unit Unit="oflg">
                 <Field Id="Phalanx"/>
             </Unit>
+            <Unit Unit="ofl2">
+                <Field Id="Phalanx" Index="1"/>
+            </Unit>
         </Instances>
         <Instances Id="NightElf">
             <AbilCmd Abil="AEbu">
                 <Field Id="Command"/>
+            </AbilCmd>
+            <AbilCmd Abil="AEbu" Cmd="1">
+                <Field Id="Command" Index="1"/>
             </AbilCmd>
             <Unit Unit="nflg">
                 <Field Id="Phalanx"/>
@@ -1560,10 +1659,16 @@
             <Unit Unit="NightElfPreviewer">
                 <Field Id="Previewer"/>
             </Unit>
+            <Unit Unit="nfl2">
+                <Field Id="Phalanx" Index="1"/>
+            </Unit>
         </Instances>
         <Instances Id="Undead">
             <AbilCmd Abil="AUbu">
                 <Field Id="Command"/>
+            </AbilCmd>
+            <AbilCmd Abil="AUbu" Cmd="1">
+                <Field Id="Command" Index="1"/>
             </AbilCmd>
             <Unit Unit="UndeadPreviewer">
                 <Field Id="Previewer"/>
@@ -1571,16 +1676,25 @@
             <Unit Unit="uflg">
                 <Field Id="Phalanx"/>
             </Unit>
+            <Unit Unit="ufl2">
+                <Field Id="Phalanx" Index="1"/>
+            </Unit>
         </Instances>
         <Instances Id="Naga">
             <AbilCmd Abil="AGbu">
                 <Field Id="Command"/>
+            </AbilCmd>
+            <AbilCmd Abil="AGbu" Cmd="1">
+                <Field Id="Command" Index="1"/>
             </AbilCmd>
             <Unit Unit="NagaFlag">
                 <Field Id="Phalanx"/>
             </Unit>
             <Unit Unit="NagaPreviewer">
                 <Field Id="Previewer"/>
+            </Unit>
+            <Unit Unit="NagaFlag2">
+                <Field Id="Phalanx" Index="1"/>
             </Unit>
         </Instances>
     </CUser>

@@ -173,7 +173,7 @@
         <AutoCastRange value="12"/>
         <AutoCastValidatorArray value="NoBNpaACpa"/>
         <AutoCastValidatorArray value="noMarkers"/>
-        <AutoCastValidatorArray value="EnemiesNearby6"/>
+        <AutoCastValidatorArray value="EnemiesNearby7"/>
         <!--AutoCastValidatorArray value="Threatens"/-->
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
@@ -205,8 +205,8 @@
         <InfoArray index="Build1" Unit="nflg">
             <Button DefaultButtonFace="nflg" Requirements="BuildPhalanx"/>
         </InfoArray>
-        <InfoArray index="Build2" Unit="nhea">
-            <Button DefaultButtonFace="nhea" Requirements="BuildArmy"/>
+        <InfoArray index="Build2" Unit="nfl2">
+            <Button DefaultButtonFace="nfl2" Requirements="BuildPhalanxFinal"/>
         </InfoArray>
         <InfoArray index="Build3" Unit="nhea">
             <Button DefaultButtonFace="nhea" Requirements="BuildArmy"/>
@@ -272,8 +272,8 @@
         <InfoArray index="Build1" Unit="NagaFlag">
             <Button DefaultButtonFace="NagaFlag" Requirements="BuildPhalanx"/>
         </InfoArray>
-        <InfoArray index="Build2" Unit="nnmg">
-            <Button DefaultButtonFace="nnmg" Requirements="BuildArmy"/>
+        <InfoArray index="Build2" Unit="NagaFlag2">
+            <Button DefaultButtonFace="NagaFlag2" Requirements="BuildPhalanxFinal"/>
         </InfoArray>
         <InfoArray index="Build3" Unit="nmyr">
             <Button DefaultButtonFace="nmyr" Requirements="BuildArmy"/>
@@ -289,6 +289,12 @@
         </InfoArray>
         <InfoArray index="Build7" Unit="nsnp">
             <Button DefaultButtonFace="nsnp" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build8" Unit="nnmg">
+            <Button DefaultButtonFace="nnmg" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build9" Unit="nmsc">
+            <Button DefaultButtonFace="nmsc" Requirements="BuildArmy"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
@@ -306,8 +312,8 @@
         <InfoArray index="Build1" Unit="flag">
             <Button DefaultButtonFace="flag" Requirements="BuildPhalanx"/>
         </InfoArray>
-        <InfoArray index="Build2" Unit="hmil">
-            <Button DefaultButtonFace="hmil" Requirements="BuildArmy"/>
+        <InfoArray index="Build2" Unit="fla2">
+            <Button DefaultButtonFace="fla2" Requirements="BuildPhalanxFinal"/>
         </InfoArray>
         <InfoArray index="Build3" Unit="hfoo">
             <Button DefaultButtonFace="hfoo" Requirements="BuildArmy"/>
@@ -338,6 +344,9 @@
         </InfoArray>
         <InfoArray index="Build12" Unit="hrtt">
             <Button DefaultButtonFace="hrtt" Requirements="BuildArmyFinal"/>
+        </InfoArray>
+        <InfoArray index="Build13" Unit="hmil">
+            <Button DefaultButtonFace="hmil" Requirements="BuildArmy"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
@@ -730,6 +739,9 @@
         <InfoArray index="Build1" Unit="oflg">
             <Button DefaultButtonFace="oflg" Requirements="BuildPhalanx"/>
         </InfoArray>
+        <InfoArray index="Build2" Unit="ofl2">
+            <Button DefaultButtonFace="ofl2" Requirements="BuildPhalanxFinal"/>
+        </InfoArray>
         <InfoArray index="Build3" Unit="nftt">
             <Button DefaultButtonFace="nftt" Requirements="BuildArmy"/>
         </InfoArray>
@@ -896,8 +908,8 @@
         <InfoArray index="Build1" Unit="uflg">
             <Button DefaultButtonFace="uflg" Requirements="BuildPhalanx"/>
         </InfoArray>
-        <InfoArray index="Build2" Unit="ugho">
-            <Button DefaultButtonFace="ugho" Requirements="BuildArmy"/>
+        <InfoArray index="Build2" Unit="ufl2">
+            <Button DefaultButtonFace="ufl2" Requirements="BuildPhalanxFinal"/>
         </InfoArray>
         <InfoArray index="Build3" Unit="ndrv">
             <Button DefaultButtonFace="ndrv" Requirements="BuildArmy"/>
@@ -925,6 +937,9 @@
         </InfoArray>
         <InfoArray index="Build11" Unit="Nplh">
             <Button DefaultButtonFace="Nplh" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build12" Unit="ugho">
+            <Button DefaultButtonFace="ugho" Requirements="BuildArmy"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
@@ -2098,6 +2113,12 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToenec" parent="AW2_Upgrade" toUnit="enec">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTozhyd" parent="AW2_Upgrade" toUnit="zhyd">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTozcso" parent="AW2_Upgrade" toUnit="zcso">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
 </Catalog>

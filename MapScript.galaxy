@@ -44,7 +44,7 @@ const string gv_portalUserType = "PortalData";
 const string gv_phalanxBuffUserType = "PhalanxBuffData";
 const string gv_creepUnitTypeUserType = "CreepUnitTypeData";
 const int gv_itemMaximumCountPerUnit = 6;
-const int gv_unitMaximumCountPerPhalanx = 72;
+const int gv_unitMaximumCountPerPhalanx = 1296;
 const int gv_portalMaximumCount = 2;
 const int gv_phalanxMaximumCount = 3;
 const int gv_venueMaximumCount = 8;
@@ -1125,9 +1125,14 @@ abilcmd gf_RaceGetBuildPhalanxCommand (string lp_race) {
     abilcmd lv_command;
 
     // Variable Initialization
-    lv_command = UserDataGetAbilCmd(gv_raceUnitTypeUserType, ((lp_race)), "Command", 1);
 
     // Implementation
+    if ((gf_IsFinalRound(gv_round) == false)) {
+        lv_command = UserDataGetAbilCmd(gv_raceUnitTypeUserType, ((lp_race)), "Command", 1);
+    }
+    else {
+        lv_command = UserDataGetAbilCmd(gv_raceUnitTypeUserType, ((lp_race)), "Command", 2);
+    }
     return lv_command;
 }
 
@@ -1136,9 +1141,14 @@ string gf_RaceGetPhalanxType (string lp_race) {
     string lv_unitType;
 
     // Variable Initialization
-    lv_unitType = UserDataGetUnit(gv_raceUnitTypeUserType, ((lp_race)), "Phalanx", 1);
 
     // Implementation
+    if ((gf_IsFinalRound(gv_round) == false)) {
+        lv_unitType = UserDataGetUnit(gv_raceUnitTypeUserType, ((lp_race)), "Phalanx", 1);
+    }
+    else {
+        lv_unitType = UserDataGetUnit(gv_raceUnitTypeUserType, ((lp_race)), "Phalanx", 2);
+    }
     return lv_unitType;
 }
 
@@ -1420,7 +1430,9 @@ void gf_BattlefieldRevealerEnable (bool lp_option) {
     for ( ; ( (autoFCF92D67_ai >= 0 && lv_player <= autoFCF92D67_ae) || (autoFCF92D67_ai <= 0 && lv_player >= autoFCF92D67_ae) ) ; lv_player += autoFCF92D67_ai ) {
         if ((lp_option == true)) {
             libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "BuildArmy", 0);
+            libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "BuildArmyFinal", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "BuildPhalanx", 0);
+            libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "BuildPhalanxFinal", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "BuildPortal", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "CountUnit", 0);
         }
@@ -1600,11 +1612,18 @@ void gf_VenueRevealerEnable (int lp_round, bool lp_option) {
         if ((gv_playerAtVenue[lv_venue][lp_round] != -1)) {
             if ((lp_option == true)) {
                 libNtve_gf_SetUpgradeLevelForPlayer(gv_playerAtVenue[lv_venue][lp_round], "BuildPhalanx", 1);
+                if ((gf_IsFinalRound(lp_round) == true)) {
+                    libNtve_gf_SetUpgradeLevelForPlayer(gv_playerAtVenue[lv_venue][lp_round], "BuildPhalanxFinal", 1);
+                }
+                else {
+                    libNtve_gf_SetUpgradeLevelForPlayer(gv_playerAtVenue[lv_venue][lp_round], "BuildPhalanxFinal", 0);
+                }
                 libNtve_gf_SetUpgradeLevelForPlayer(gv_playerAtVenue[lv_venue][lp_round], "BuildPortal", 1);
             }
             else {
                 libNtve_gf_SetUpgradeLevelForPlayer(gv_playerAtVenue[lv_venue][lp_round], "BuildArmy", 0);
                 libNtve_gf_SetUpgradeLevelForPlayer(gv_playerAtVenue[lv_venue][lp_round], "BuildPhalanx", 0);
+                libNtve_gf_SetUpgradeLevelForPlayer(gv_playerAtVenue[lv_venue][lp_round], "BuildPhalanxFinal", 0);
                 libNtve_gf_SetUpgradeLevelForPlayer(gv_playerAtVenue[lv_venue][lp_round], "BuildPortal", 0);
                 libNtve_gf_SetUpgradeLevelForPlayer(gv_playerAtVenue[lv_venue][lp_round], "CountUnit", 0);
             }
@@ -1886,7 +1905,7 @@ void gf_BuildingRegionRevealerEnable (bool lp_option, bool lp_debug) {
     for ( ; ( (auto801F26F4_ai >= 0 && lv_buildingRegion <= auto801F26F4_ae) || (auto801F26F4_ai <= 0 && lv_buildingRegion >= auto801F26F4_ae) ) ; lv_buildingRegion += auto801F26F4_ai ) {
         if ((lp_option == true)) {
             libNtve_gf_SetUpgradeLevelForPlayer(gv_playerAtBuildingRegion[lv_buildingRegion], "BuildArmy", 1);
-            if ((gv_round > (gv_roundCount-gv_finalRoundCount))) {
+            if ((gf_IsFinalRound(gv_round) == true)) {
                 libNtve_gf_SetUpgradeLevelForPlayer(gv_playerAtBuildingRegion[lv_buildingRegion], "BuildArmyFinal", 1);
             }
             else {
@@ -1897,6 +1916,7 @@ void gf_BuildingRegionRevealerEnable (bool lp_option, bool lp_debug) {
             libNtve_gf_SetUpgradeLevelForPlayer(gv_playerAtBuildingRegion[lv_buildingRegion], "BuildArmy", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(gv_playerAtBuildingRegion[lv_buildingRegion], "BuildArmyFinal", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(gv_playerAtBuildingRegion[lv_buildingRegion], "BuildPhalanx", 0);
+            libNtve_gf_SetUpgradeLevelForPlayer(gv_playerAtBuildingRegion[lv_buildingRegion], "BuildPhalanxFinal", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(gv_playerAtBuildingRegion[lv_buildingRegion], "BuildPortal", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(gv_playerAtBuildingRegion[lv_buildingRegion], "CountUnit", 0);
         }
@@ -2375,8 +2395,10 @@ void gf_UnitOrPreviewModelPosition (unit lp_unit, bool lp_preview) {
     int lv_phalanx;
     int lv_column;
     int lv_columnCount;
+    fixed lv_columOffset;
     int lv_row;
     int lv_rowCount;
+    fixed lv_rowOffset;
     point lv_pointInitial;
     point lv_pointColumn;
     point lv_pointRow;
@@ -2392,9 +2414,27 @@ void gf_UnitOrPreviewModelPosition (unit lp_unit, bool lp_preview) {
     lv_phalanx = FixedToInt(UnitGetCustomValue(lp_unit, gv_customValuePhalanx));
 
     // Implementation
-    lv_columnCount = UserDataGetInt(gv_phalanxUserType, (lv_unitTypeID), "Row", 1);
-    lv_rowCount = UserDataGetInt(gv_phalanxUserType, (lv_unitTypeID), "Column", 1);
-    lv_pointInitial = PointWithOffsetPolar(PointWithOffsetPolar(lv_position, (lv_rowCount/2-0.5), PointGetFacing(lv_position)), (lv_columnCount/2-0.5), (UnitGetFacing(lp_unit)+90));
+    if (((PointGetFacing(lv_position) == 0.0) || (PointGetFacing(lv_position) == 180.0))) {
+        lv_columnCount = UserDataGetInt(gv_phalanxUserType, (lv_unitTypeID), "Column", 1);
+        lv_rowCount = UserDataGetInt(gv_phalanxUserType, (lv_unitTypeID), "Row", 1);
+    }
+    else if (((PointGetFacing(lv_position) == 90.0) || (PointGetFacing(lv_position) == 270.0) || (PointGetFacing(lv_position) == -90.0))) {
+        lv_columnCount = UserDataGetInt(gv_phalanxUserType, (lv_unitTypeID), "Row", 1);
+        lv_rowCount = UserDataGetInt(gv_phalanxUserType, (lv_unitTypeID), "Column", 1);
+    }
+    if ((ModI(lv_columnCount, 2) == 1)) {
+        lv_columOffset = 0.0;
+    }
+    else {
+        lv_columOffset = 0.5;
+    }
+    if ((ModI(lv_rowCount, 2) == 1)) {
+        lv_rowOffset = 0.0;
+    }
+    else {
+        lv_rowOffset = 0.5;
+    }
+    lv_pointInitial = PointWithOffsetPolar(PointWithOffsetPolar(lv_position, (lv_columnCount/2-lv_columOffset), PointGetFacing(lv_position)), (lv_rowCount/2-lv_rowOffset), (UnitGetFacing(lp_unit)+90));
     lv_unitIndex = 0;
     auto74174689_ae = lv_columnCount;
     auto74174689_ai = 1;
@@ -2542,12 +2582,12 @@ void gf_AIPhalanxAndPortalPosition (int lp_player, region lp_region, string lp_u
 
     // Implementation
     lv_unitTypeID = (lp_unitType);
-    lv_columnCount = UserDataGetInt(lp_userType, (lv_unitTypeID), "Row", 1);
-    lv_rowCount = UserDataGetInt(lp_userType, (lv_unitTypeID), "Column", 1);
+    lv_columnCount = UserDataGetInt(lp_userType, (lv_unitTypeID), "Column", 1);
+    lv_rowCount = UserDataGetInt(lp_userType, (lv_unitTypeID), "Row", 1);
     while ((UnitGroupCount(UnitGroup(null, lp_player, lp_region, lp_unitFilter, 0), c_unitCountAlive) < lp_count)) {
         lv_point = RegionRandomPoint(lp_region);
         libNtve_gf_CreateUnitsWithDefaultFacing(1, lp_unitType, 0, lp_player, lv_point);
-        if ((UnitGetType(UnitLastCreated()) != null) && (gf_RegionContainsPointWithOffset(UnitGetPosition(UnitLastCreated()), lp_region, lv_rowCount, lv_columnCount) == true)) {
+        if ((UnitGetType(UnitLastCreated()) != null) && (gf_RegionContainsPointWithOffset(UnitGetPosition(UnitLastCreated()), lp_region, lv_columnCount, lv_rowCount) == true)) {
         }
         else {
             UnitRemove(UnitLastCreated());
@@ -2683,7 +2723,9 @@ void gf_ReserveUnitCreationEnable (bool lp_option) {
         }
         else {
             libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "BuildArmy", 0);
+            libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "BuildArmyFinal", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "BuildPhalanx", 0);
+            libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "BuildPhalanxFinal", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "BuildPortal", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "CountUnit", 0);
         }
@@ -3324,8 +3366,8 @@ bool gt_VenueInizialization_Func (bool testConds, bool runActions) {
         gf_BonusVenueSet(RegionFromId(39), 6, 180.0);
         gf_BonusVenueSet(RegionFromId(40), 7, 0.0);
         gf_BonusVenueSet(RegionFromId(41), 8, 180.0);
-        gf_FinalVenueSet(RegionFromId(76), 1, 0.0);
-        gf_FinalVenueSet(RegionFromId(77), 2, 180.0);
+        gf_FinalVenueSet(RegionFromId(72), 1, 0.0);
+        gf_FinalVenueSet(RegionFromId(73), 2, 180.0);
         gf_CreepPointSet(PointFromId(1622943121), 1);
         gf_CreepPointSet(PointFromId(9096037), 2);
         gf_CreepPointSet(PointFromId(914766699), 3);
@@ -3507,7 +3549,7 @@ bool gt_RoundInitialization_Func (bool testConds, bool runActions) {
     }
     else {
     }
-    gf_SearchRadiusInFinalRoundSet(60.0);
+    gf_SearchRadiusInFinalRoundSet(115.0);
     return true;
 }
 
