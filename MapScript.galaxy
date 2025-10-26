@@ -370,6 +370,7 @@ trigger gt_PhalanxBuffChange;
 trigger gt_CreateReserveUnit;
 trigger gt_IssueOrderPeriodic;
 trigger gt_TideAddRemoveSwimmingPeriodic;
+trigger gt_AutoCastAlwaysOnEnable;
 trigger gt_CountUnit;
 trigger gt_CountUnitControl;
 trigger gt_UnitDied;
@@ -432,13 +433,13 @@ void gf_ModInizialization (bool lp_debug) {
 }
 
 void gf_RoundStartLoop (bool lp_debug) {
-    int auto5B8794E9_ae;
-    int auto5B8794E9_ai;
     int autoE4112BFC_ae;
     int autoE4112BFC_ai;
 
     // Variable Declarations
     int lv_round;
+    bool lv_finalRound;
+    bool lv_bonusRound;
 
     // Variable Initialization
 
@@ -447,26 +448,43 @@ void gf_RoundStartLoop (bool lp_debug) {
         gf_AddTip();
         gf_AddInfoAtBuildRegion(false);
         if ((lp_debug == true)) {
-            auto5B8794E9_ae = gv_roundCount;
-            auto5B8794E9_ai = 1;
-            lv_round = 1;
-            for ( ; ( (auto5B8794E9_ai >= 0 && lv_round <= auto5B8794E9_ae) || (auto5B8794E9_ai <= 0 && lv_round >= auto5B8794E9_ae) ) ; lv_round += auto5B8794E9_ai ) {
-                lv_round = 1;
-                gv_dreamDisabled = false;
-                if ((gf_IsFinalRound(lv_round) == true)) {
-                    gv_dreamDisabled = true;
-                    gf_FinalVenueReplace();
+            while (true) {
+                if ((lv_finalRound == true)) {
+                    lv_round = 8;
+                    gv_dreamDisabled = false;
+                    if ((gf_IsFinalRound(lv_round) == true)) {
+                        gv_dreamDisabled = true;
+                        gf_FinalVenueReplace();
+                    }
+                    else {
+                        gf_VenueInitialReplace();
+                    }
+                    gf_RoundStart(lv_round, false, lp_debug);
                 }
                 else {
-                    gf_VenueInitialReplace();
-                }
-                gf_RoundStart(lv_round, false, lp_debug);
-                if ((gv_bonusRoundIsOn[lv_round] == true)) {
-                    gv_dreamDisabled = true;
-                    gf_BonusVenueReplace();
-                    gf_RoundStart(lv_round, true, lp_debug);
-                }
+                    if ((lv_bonusRound == true)) {
+                        lv_round = 7;
+                        gv_dreamDisabled = false;
+                        if ((gv_bonusRoundIsOn[lv_round] == true)) {
+                            gv_dreamDisabled = true;
+                            gf_BonusVenueReplace();
+                            gf_RoundStart(lv_round, true, lp_debug);
+                        }
 
+                    }
+                    else {
+                        lv_round = 1;
+                        gv_dreamDisabled = false;
+                        if ((gf_IsFinalRound(lv_round) == true)) {
+                            gv_dreamDisabled = true;
+                            gf_FinalVenueReplace();
+                        }
+                        else {
+                            gf_VenueInitialReplace();
+                        }
+                        gf_RoundStart(lv_round, false, lp_debug);
+                    }
+                }
             }
         }
         else {
@@ -3118,6 +3136,7 @@ void gf_ReserveUnitCreationEnable (bool lp_option) {
     TriggerEnable(gt_CreateReserveUnit, lp_option);
     TriggerEnable(gt_UnitDied, lp_option);
     TriggerEnable(gt_TideAddRemoveSwimmingPeriodic, lp_option);
+    TriggerEnable(gt_AutoCastAlwaysOnEnable, lp_option);
     if ((lp_option == true)) {
         Wait(gv_minimumPeriod, c_timeGame);
         gf_IssueOrderAll(false);
@@ -5607,6 +5626,35 @@ void gt_TideAddRemoveSwimmingPeriodic_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: AutoCastAlwaysOnEnable
+//--------------------------------------------------------------------------------------------------
+bool gt_AutoCastAlwaysOnEnable_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_unit;
+
+    // Variable Initialization
+    lv_unit = EventUnit();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitFilterMatch(lv_unit, UnitGetOwner(lv_unit), gv_unitFilter) == true)) {
+        UnitIssueOrder(lv_unit, OrderSetAutoCast(EventUnitAbility(), true), c_orderQueueReplace);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_AutoCastAlwaysOnEnable_Init () {
+    gt_AutoCastAlwaysOnEnable = TriggerCreate("gt_AutoCastAlwaysOnEnable_Func");
+    TriggerEnable(gt_AutoCastAlwaysOnEnable, false);
+    TriggerAddEventUnitAbilityAutoCastChange(gt_AutoCastAlwaysOnEnable, null, null, c_unitAbilAutoCastChangeAll, false);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: CountUnit
 //--------------------------------------------------------------------------------------------------
 bool gt_CountUnit_Func (bool testConds, bool runActions) {
@@ -5989,6 +6037,7 @@ void InitTriggers () {
     gt_CreateReserveUnit_Init();
     gt_IssueOrderPeriodic_Init();
     gt_TideAddRemoveSwimmingPeriodic_Init();
+    gt_AutoCastAlwaysOnEnable_Init();
     gt_CountUnit_Init();
     gt_CountUnitControl_Init();
     gt_UnitDied_Init();

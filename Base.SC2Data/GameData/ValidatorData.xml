@@ -140,8 +140,16 @@
         <Find value="1"/>
         <Value value="HasDebuff"/>
     </CValidatorPlayerRequirement>
-    <CValidatorUnitCompareBehaviorCount id="NoTaunt">
+    <CValidatorCombine id="NoTaunt">
+        <Type value="And"/>
+        <CombineArray value="NoBtau"/>
+        <CombineArray value="NoBNta"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="NoBtau">
         <Behavior value="Btau"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoBNta">
+        <Behavior value="BNta"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NoCloudOfFog">
         <Behavior value="Bclf"/>
@@ -314,6 +322,16 @@
         <Field value="KillResource[Custom]"/>
         <Value value="135"/>
         <Compare value="LE"/>
+    </CValidatorUnitCompareField>
+    <CValidatorUnitCompareField id="KillResourceCustomGE225">
+        <Field value="KillResource[Custom]"/>
+        <Value value="225"/>
+        <Compare value="GE"/>
+    </CValidatorUnitCompareField>
+    <CValidatorUnitCompareField id="KillResourceCustomGE150">
+        <Field value="KillResource[Custom]"/>
+        <Value value="150"/>
+        <Compare value="GE"/>
     </CValidatorUnitCompareField>
     <CValidatorUnitCompareField id="KillResourceCustomGT0">
         <Field value="KillResource[Custom]"/>
@@ -622,5 +640,8 @@
     <CValidatorUnitCompareBehaviorCount id="HasNoBOwkOrderAttackTargetMarker">
         <Behavior value="BOwkOrderAttackTargetMarker"/>
         <RequireOriginPlayer Value="Caster"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="IsNotNonDamager">
+        <Behavior value="nondamager"/>
     </CValidatorUnitCompareBehaviorCount>
 </Catalog>

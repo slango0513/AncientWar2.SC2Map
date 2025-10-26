@@ -355,6 +355,7 @@
         <AutoCastValidatorArray value="NoBloodlust"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby2"/>
+        <AutoCastValidatorArray value="IsNotNonDamager"/>
         <AutoCastFilters value="Visible;Neutral,Enemy"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
@@ -529,7 +530,7 @@
         </Cost>
         <CastOutroTime value="3"/>
         <Effect index="0" value="AtauSearch"/>
-        <AutoCastValidatorArray value="EnemiesNearby2"/>
+        <AutoCastValidatorArray index="0" value="EnemiesNearby2"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilEffectTarget id="StellarFlare" parent="AW2_EffectTarget">
@@ -1894,13 +1895,12 @@
     </CAbilEffectTarget>
     <!--Taunt(Creep)-->
     <CAbilEffectInstant id="ANta" parent="AW2_EffectInstant">
-        <EditorCategories value="Race:Goblin,AbilityorEffectType:Unit"/>
         <Cost index="0">
             <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
         <CastOutroTime value="3"/>
-        <Effect index="0" value="AtauSearch"/>
-        <AutoCastValidatorArray value="EnemiesNearby2"/>
+        <Effect index="0" value="ANtaSearch"/>
+        <AutoCastValidatorArray index="0" value="EnemiesNearby2"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilBuild id="AObu" parent="War3_PowerBuild">
@@ -2181,6 +2181,9 @@
     <CAbilBehavior id="EfficiencyAura" parent="War3_HeroAura">
         <BehaviorArray value="EfficiencyAuraCaster"/>
     </CAbilBehavior>
+    <CAbilBehavior id="InhibitionAura" parent="War3_HeroAura">
+        <BehaviorArray value="InhibitionAuraCaster"/>
+    </CAbilBehavior>
     <CAbilBehavior id="HumidityAura" parent="War3_HeroAura">
         <BehaviorArray value="HumidityAuraCaster"/>
     </CAbilBehavior>
@@ -2276,6 +2279,7 @@
         <AutoCastValidatorArray value="NoBloodlust"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby7"/>
+        <AutoCastValidatorArray value="IsNotNonDamager"/>
         <Effect index="0" value="Bblo"/>
         <AutoCastFilters value="Visible;Neutral,Enemy"/>
         <TargetSorts RequestCount="1">
@@ -2888,6 +2892,7 @@
         <AutoCastValidatorArray value="NoUnholyFrenzy"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby7"/>
+        <AutoCastValidatorArray value="IsNotNonDamager"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSKillResourceCustomLargestFirst"/>
             <SortArray value="TSLifeLargestFirst"/>
@@ -2910,6 +2915,7 @@
         <AutoCastValidatorArray value="NoUnholyFrenzy"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby7"/>
+        <AutoCastValidatorArray value="IsNotNonDamager"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSKillResourceCustomLargestFirst"/>
             <SortArray value="TSLifeLargestFirst"/>
@@ -3600,6 +3606,18 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeTonsgh" parent="AW2_Upgrade" toUnit="nsgh">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToogrk" parent="AW2_Upgrade" toUnit="ogrk">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToonzg" parent="AW2_Upgrade" toUnit="onzg">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToKargathBladefist" parent="AW2_Upgrade" toUnit="KargathBladefist">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToBlackrockClan" parent="AW2_Upgrade" toUnit="BlackrockClan">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
 </Catalog>

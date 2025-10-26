@@ -143,6 +143,7 @@
         <FogVisibility value="Snapshot"/>
         <BehaviorArray index="3" Link="AW2_Creep"/>
         <BehaviorArray Link="War3_PowerfulMob"/>
+        <BehaviorArray Link="Fury"/>
         <LifeArmorFormula>
             <NegativeArmorMultiplier value="-1"/>
             <NegativeDamageBase value="1"/>
@@ -1821,7 +1822,6 @@
         <AbilArray Link="NagaInventory"/>
         <AbilArray Link="Awrh"/>
         <AbilArray Link="Aspy"/>
-        <AbilArray Link="HumidityAura"/>
         <BehaviorArray Link="AncientHydraSwim"/>
         <BehaviorArray Link="War3_PowerfulMob"/>
         <BehaviorArray Link="Aspo"/>
@@ -1830,7 +1830,6 @@
             <LayoutButtons Face="Aspo" Type="Passive" Behavior="Aspo" Row="2" Column="0"/>
             <LayoutButtons Face="Aspy" Type="Passive" Behavior="Aspy" Row="2" Column="1"/>
             <LayoutButtons Face="Awrh" Type="AbilCmd" AbilCmd="Awrh,Execute" Row="2" Column="2"/>
-            <LayoutButtons Face="HumidityAuraCaster" Type="Passive" Behavior="HumidityAuraCaster" Row="2" Column="3"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
@@ -1941,7 +1940,6 @@
         <Mover value="amph"/>
         <AbilArray Link="UpgradeTonsgh"/>
         <AbilArray Link="NagaInventory"/>
-        <AbilArray Link="Atau"/>
         <BehaviorArray Link="naga"/>
         <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="SeaGiantSwim"/>
@@ -1950,7 +1948,6 @@
             <LayoutButtons Face="nsgh" Type="AbilCmd" AbilCmd="UpgradeTonsgh,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
             <LayoutButtons Face="ACpv" Type="Passive" Behavior="ACpv" Row="2" Column="1"/>
-            <LayoutButtons Face="Atau" Type="AbilCmd" AbilCmd="Atau,Execute" Row="2" Column="2"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
@@ -3348,14 +3345,14 @@
         <Mover value="amph"/>
         <AbilArray Link="DragonInventory"/>
         <AbilArray Link="ACbf"/>
-        <AbilArray Link="AHad"/>
+        <AbilArray Link="HumidityAura"/>
         <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="BlueDragonSpawnOverseerRun"/>
         <BehaviorArray Link="dragon"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
             <LayoutButtons Face="ACbf" Type="AbilCmd" AbilCmd="ACbf,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="AHad1" Type="Passive" Behavior="AHad" Row="2" Column="2"/>
+            <LayoutButtons Face="HumidityAuraCaster" Type="Passive" Behavior="HumidityAuraCaster" Row="2" Column="2"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/DragonUnits"/>
@@ -3666,6 +3663,10 @@
         <Mover value="foot"/>
         <GlossaryCategory value="Unit/Category/ChaosOrcUnits"/>
         <AbilArray Link="ChaosOrcInventory"/>
+        <AbilArray Link="UpgradeToKargathBladefist"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="KargathBladefist" Type="AbilCmd" AbilCmd="UpgradeToKargathBladefist,Execute" Row="0" Column="0"/>
+        </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--ChaosWolfRider-->
@@ -3680,12 +3681,47 @@
         <Mover value="horse"/>
         <GlossaryCategory value="Unit/Category/ChaosOrcUnits"/>
         <AbilArray Link="ChaosOrcInventory"/>
+        <AbilArray Link="UpgradeToBlackrockClan"/>
         <AbilArray Link="Aens"/>
         <CardLayouts index="0">
+            <LayoutButtons Face="BlackrockClan" Type="AbilCmd" AbilCmd="UpgradeToBlackrockClan,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="Aens" Type="AbilCmd" AbilCmd="Aens,0" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <LifeArmor value="10"/>
+    </CUnit>
+    <CUnit id="BlackrockClan" parent="AW2_Army" defType="SMALL">
+        <Race value="ChaosOrc"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Attributes index="small" value="1"/>
+        <LifeStart value="1500"/>
+        <LifeMax value="1500"/>
+        <LifeArmor value="10"/>
+        <Mover value="horse"/>
+        <Speed value="3"/>
+        <CostResource index="gold" value="225"/>
+        <KillResource index="Custom" value="75"/>
+        <AbilArray Link="ChaosOrcInventory"/>
+        <AbilArray Link="Aens"/>
+        <AbilArray Link="InhibitionAura"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Aens" Type="AbilCmd" AbilCmd="Aens,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="InhibitionAuraCaster" Type="Passive" Behavior="InhibitionAuraCaster" Row="2" Column="1"/>
+        </CardLayouts>
+        <GlossaryCategory value="Unit/Category/ChaosOrcUnits"/>
+    </CUnit>
+    <CUnit id="KargathBladefist" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="45"/>
+        <KillResource index="Custom" value="15"/>
+        <LifeStart value="750"/>
+        <LifeMax value="750"/>
+        <Speed value="2"/>
+        <Race value="ChaosOrc"/>
+        <Mover value="foot"/>
+        <GlossaryCategory value="Unit/Category/ChaosOrcUnits"/>
+        <AbilArray Link="ChaosOrcInventory"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--ChaosWarlock-->
     <CUnit id="nchw" parent="AW2_Army" defType="NONE">
@@ -3730,6 +3766,7 @@
             <LayoutButtons Face="AUav" Type="Passive" Behavior="BUav1" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
+        <BehaviorArray Link="nondamager"/>
     </CUnit>
     <!--Chaos Peon-->
     <CUnit id="ncpn" parent="AW2_Peon">
@@ -4822,8 +4859,8 @@
         <Attributes index="fort" value="1"/>
         <CostResource index="gold" value="225"/>
         <KillResource index="Custom" value="225"/>
-        <LifeStart value="750"/>
-        <LifeMax value="750"/>
+        <LifeStart value="450"/>
+        <LifeMax value="450"/>
         <Speed value="2"/>
         <Race value="Demon"/>
         <Mover value="foot"/>
@@ -4859,8 +4896,8 @@
         <Attributes index="fort" value="1"/>
         <CostResource index="gold" value="75"/>
         <KillResource index="Custom" value="75"/>
-        <LifeStart value="250"/>
-        <LifeMax value="250"/>
+        <LifeStart value="150"/>
+        <LifeMax value="150"/>
         <Speed value="2"/>
         <Race value="Demon"/>
         <Mover value="foot"/>
@@ -5948,12 +5985,45 @@
         <Race value="Demon"/>
     </CUnit>
     <!--Gar'thok-->
-    <CUnit id="ogrk">
-        <Food value="1"/>
+    <CUnit id="ogrk" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="45"/>
+        <KillResource index="Custom" value="15"/>
+        <LifeStart value="750"/>
+        <LifeMax value="750"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <GlossaryCategory value="Unit/Category/OrcUnits"/>
+        <AbilArray Link="Aion"/>
+        <BehaviorArray Link="Asal"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Asal" Type="Passive" Behavior="Asal" Row="2" Column="0"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--nazgrel-->
-    <CUnit id="onzg">
-        <Food value="1"/>
+    <CUnit id="onzg" parent="AW2_Army" defType="SMALL">
+        <Attributes index="small" value="1"/>
+        <CostResource index="gold" value="225"/>
+        <KillResource index="Custom" value="75"/>
+        <LifeStart value="1500"/>
+        <LifeMax value="1500"/>
+        <Speed value="3"/>
+        <Race value="Orc"/>
+        <Mover value="horse"/>
+        <GlossaryCategory value="Unit/Category/OrcUnits"/>
+        <AbilArray Link="Aion"/>
+        <AbilArray Link="Aens"/>
+        <AbilArray Link="InhibitionAura"/>
+        <BehaviorArray Link="Asal"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Asal" Type="Passive" Behavior="Asal" Row="2" Column="0"/>
+            <LayoutButtons Face="Aens" Type="AbilCmd" AbilCmd="Aens,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="InhibitionAuraCaster" Type="Passive" Behavior="InhibitionAuraCaster" Row="2" Column="2"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+        <LifeArmor value="10"/>
     </CUnit>
     <!--vol'jin-->
     <CUnit id="ovlj" parent="AW2_Army" defType="NONE">
@@ -6407,8 +6477,10 @@
         <Mover value="foot"/>
         <GlossaryCategory value="Unit/Category/OrcUnits"/>
         <AbilArray Link="Aion"/>
+        <AbilArray Link="UpgradeToogrk"/>
         <BehaviorArray Link="Asal"/>
         <CardLayouts index="0">
+            <LayoutButtons Face="ogrk" Type="AbilCmd" AbilCmd="UpgradeToogrk,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="Asal" Type="Passive" Behavior="Asal" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
@@ -6481,6 +6553,7 @@
             <LayoutButtons Face="Aakb" Type="Passive" Behavior="Aakb" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
+        <BehaviorArray Link="nondamager"/>
     </CUnit>
     <!--Orb of Lightning-->
     <CUnit id="oli2" parent="AW2_Item">
@@ -6578,9 +6651,11 @@
         <Mover value="horse"/>
         <GlossaryCategory value="Unit/Category/OrcUnits"/>
         <AbilArray Link="Aion"/>
+        <AbilArray Link="UpgradeToonzg"/>
         <AbilArray Link="Aens"/>
         <BehaviorArray Link="Asal"/>
         <CardLayouts index="0">
+            <LayoutButtons Face="onzg" Type="AbilCmd" AbilCmd="UpgradeToonzg,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="Asal" Type="Passive" Behavior="Asal" Row="2" Column="0"/>
             <LayoutButtons Face="Aens" Type="AbilCmd" AbilCmd="Aens,0" Row="2" Column="1"/>
         </CardLayouts>

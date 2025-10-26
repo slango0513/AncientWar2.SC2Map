@@ -74,7 +74,7 @@ ANr4Un/Tip=恢复到修补匠形态
 ANr4Un/Ubertip=恢复到原先的修补匠形态，不再得到机器人地精的那些附加属性。
 ANrf/Ubertip=召唤数波火焰之雨从天而降，每阵火雨会造成<d ref="Effect,ANrfDamage1,Amount"/>点的伤害。<n/>持续<d ref="Effect,ANrf1,PeriodCount + 1"/>波。
 ANrg/Ubertip=让修补匠变成一个机器人地精，具有以下的一些属性。<n/><n/>- <d ref="Behavior,ANrg,Modification.VitalMaxArray[Life]"/>点额外生命值和<d ref="Behavior,ANrg,Modification.LifeArmorBonus"/>点额外护甲。<n/>-修补匠变成机器人了，这个会让他对于大多数的进攻魔法和少数有益魔法免疫。
-ANta/Ubertip=最近的<d ref="Effect,AtauSearch,MaxCount"/>个单位会强迫攻击这个单位。<n/>持续<d ref="Behavior,Btau,Duration"/>秒。
+ANta/Ubertip=最近的<d ref="Effect,ANtaSearch,MaxCount"/>个单位会强迫攻击这个单位。<n/>持续<d ref="Behavior,Btau,Duration"/>秒。
 ANth/Ubertip=海龟身上的针形尖刺能将敌人50%的攻击力化为对敌人的伤害。
 ANtm/Ubertip=立刻杀死某个单位，然后将其变成木材，补充到你的国库中。<n/>点金术不能被用在英雄和高于等级5的野外生物上。
 ANto/Ubertip=纳迦海巫每次攻击时召唤一股强劲龙卷风，可以减慢敌人单位移动速度，随机将敌地面单位抛入空中，并对敌人造成伤害。
@@ -156,7 +156,7 @@ Ahea/Ubertip=治疗一个友方的非机械受伤单位，恢复其<d ref="Effec
 Ahr3/Ubertip=从杀死的单位上采集木材资源。每次杀死敌人能获得2倍的额外木材。
 Ahra/Tip=黑火药
 Ahra/Ubertip=增加矮人火枪手100%的护甲穿透。
-Ahwd/Ubertip=召唤出一个固定的结界，以每秒<d ref="Effect,AoarHealTick,VitalArray[Life].ChangeFraction * 100"/>%的速度恢复周围友方非机械单位的生命值。<n/>持续<d ref="Behavior,Bhwd,Duration"/>秒。
+Ahwd/Ubertip=召唤出一个固定的结界，以每秒<d ref="Effect,AoarHealTick,VitalArray[Life].ChangeFraction * 100" precision="1"/>%的速度恢复周围友方非机械单位的生命值。<n/>持续<d ref="Behavior,Bhwd,Duration"/>秒。
 Aimp/Ubertip=使得投刃车发射出去的剑刃能刺穿敌人而伤害到站在后面的其他单位。
 Ainf/Ubertip=增加目标友方单位<d ref="Behavior,Binf,Modification.DamageDealtFraction[Melee] * 100"/>%的攻击力和<d ref="Behavior,Binf,Modification.LifeArmorBonus"/>的防御力。<n/>持续<d ref="Behavior,Binf,Duration"/>秒。
 Aivs/Ubertip=使目标单位处于隐形，但是一旦其攻击或者使用魔法则会显露原形。<n/>持续<d ref="Behavior,Binv,Duration"/>秒。
@@ -245,6 +245,8 @@ BIpv/Buffubertip=该单位喝了吸血药水，获得了吸血能力。
 BNdo/Buffubertip=该单位被恶魔附身；它将无法施法直至死亡，一个恶魔将会从他的尸体上诞生。末日降临无法被驱散或取消。
 BNdp/Buffubertip=从空间之门中会走出各种各样的恶魔。
 BNdp/Name=空间之门
+BNta/Buffubertip=这个单位被嘲讽过了，现在暂时对此免疫。
+BNta/Name=嘲讽
 Babr/Buffubertip=该单位处在荒芜光环的作用之下，因此其冷却速度加快了。
 Bbs2/Buffubertip=该单位处于狂暴状态，因此攻击速度得到了加强，但是同时伤害也会降低。
 Bbs2/Name=狂暴
@@ -257,6 +259,9 @@ Behavior/Name/Building=Building
 Behavior/Name/EfficiencyAura=效率光环
 Behavior/Name/PhalanxMarker=PhalanxMarker
 Behavior/Name/UnknownBehavior2=未知行为
+BlackrockClan/Name=雷德·黑手
+BlackrockClan/Tip=雷德·黑手
+BlackrockClan/Ubertip=高速骑兵，具有诱捕和抑制光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 BloodElfFlag/Name=血精灵旗帜
 BloodElfFlag/Tip=放置血精灵旗帜
 BloodElfFlag/Ubertip=放置血精灵旗帜。
@@ -420,6 +425,24 @@ DocInfo/PatchNote050=格罗姆·地狱咆哮获得新技能剑刃风暴，不再
 DocInfo/PatchNote051=恶魔：
 DocInfo/PatchNote052=加入新单位恶魔猎手。
 DocInfo/PatchNote053=魅魔类单位的价格降低1/6。
+DocInfo/PatchNote054=修复奖励单位存活3分钟后消失的漏洞，并且奖励单位现在会在3分钟后狂怒。
+DocInfo/PatchNote055=修复能够手动开启或关闭单位技能自动施放的漏洞。
+DocInfo/PatchNote056=兽人：
+DocInfo/PatchNote057=加入新单位加索克和纳兹格雷尔。
+DocInfo/PatchNote058=掠夺获得的木材增加到3。
+DocInfo/PatchNote059=纳迦：
+DocInfo/PatchNote060=上古多头蛇不再拥有技能潮湿光环。
+DocInfo/PatchNote061=海巨人不再拥有技能嘲讽。
+DocInfo/PatchNote062=粉碎的生命值恢复增加到75%。
+DocInfo/PatchNote063=远古猎歌现在只对精英单位有效，并且在原来的基础上新增法术攻击力加成。
+DocInfo/PatchNote064=地精：
+DocInfo/PatchNote065=嘲讽的单位数量减少到6个。
+DocInfo/PatchNote066=混乱兽人：
+DocInfo/PatchNote067=加入新单位卡加斯·刃拳和雷德·黑手。
+DocInfo/PatchNote068=龙：
+DocInfo/PatchNote069=蓝色龙人监军获得新技能潮湿光环，潮湿光环的每秒生命值恢复加成降低到0.75%。
+DocInfo/PatchNote070=恶魔：
+DocInfo/PatchNote071=地狱机器类单位的生命值降低40%。
 DraeneiFlag/Name=德莱尼旗帜
 DraeneiFlag/Tip=放置德莱尼旗帜
 DraeneiFlag/Ubertip=放置德莱尼旗帜。
@@ -524,6 +547,8 @@ FrostAura/Buffubertip=该单位被冻住了。
 FrostAura/Name=凛风光环
 FrostAuraCaster/Tip=凛风光环
 FrostAuraCaster/Ubertip=能冻住周围非龙族单位，使其不能移动。
+Fury/Buffubertip=即将狂怒。
+Fury/Name=狂怒
 GoblinFlag/Name=地精旗帜
 GoblinFlag/Tip=放置地精旗帜
 GoblinFlag/Ubertip=放置地精旗帜。
@@ -559,13 +584,20 @@ HumanPhalanxPlaceholder/Name=HumanPreviewer
 HumidityAura/Buffubertip=加快生命值恢复速度。
 HumidityAura/Name=潮湿光环
 HumidityAuraCaster/Tip=潮湿光环
-HumidityAuraCaster/Ubertip=能以每秒<d ref="Effect,HumidityAuraHealTick,VitalArray[Life].ChangeFraction * 100"/>%的速度恢复周围友方两栖单位的生命值。
+HumidityAuraCaster/Ubertip=能以每秒<d ref="Effect,HumidityAuraHealTick,VitalArray[Life].ChangeFraction * 100" precision="2"/>%的速度恢复周围友方两栖单位的生命值。
 Huth/Tip=升级到乌瑟尔
 Huth/Ubertip=重型的近战单位，能施放复活术。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Hvwd/Name=游侠
 Hvwd/Tip=升级到希尔瓦娜斯·风行者
 Hvwd/Ubertip=远程攻击单位，精于远程部队加强。拥有强击光环技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c> 
+InhibitionAura/Buffubertip=该单位对魔法免疫。
+InhibitionAura/Name=抑制光环
+InhibitionAuraCaster/Tip=抑制光环
+InhibitionAuraCaster/Ubertip=能让周围友方骑兵单位对所有魔法免疫。
 InventoryNaga/Name=NagaInventory
+KargathBladefist/Name=卡加斯·刃拳
+KargathBladefist/Tip=卡加斯·刃拳
+KargathBladefist/Ubertip=基本的兽人地面单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 MapInfo/Player00/Name=中立
 MapInfo/Player01/Name=玩家1
 MapInfo/Player02/Name=玩家2
@@ -739,10 +771,10 @@ SeaElemental/Name=海元素
 Sleep/Name=睡眠
 Sleep/Tip=睡眠
 Sleep/Ubertip=在<d ref="Effect,AUsl1Dur,Duration"/>秒内使最多<d ref="Effect,SleepSearch,MaxCount"/>个非龙族单位处于睡眠状态。该单位被攻击以后会自动醒来。
-SongOfAncientHunting/Buffubertip=该单位处在远古猎歌的作用之下，因此其攻击力得到了加强，攻击速度也加快了。
+SongOfAncientHunting/Buffubertip=该单位处在远古猎歌的作用之下，因此其攻击力和法术攻击力得到了加强，攻击速度也加快了。
 SongOfAncientHunting/Name=远古猎歌
 SongOfAncientHuntingCaster/Tip=远古猎歌
-SongOfAncientHuntingCaster/Ubertip=能增加周围友方两栖单位<d ref="Behavior,SongOfAncientHunting,Modification.DamageDealtFraction[Melee] * 100" precision="1"/>%的攻击力和<d ref="Behavior,SongOfAncientHunting,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度
+SongOfAncientHuntingCaster/Ubertip=能增加周围友方精英单位<d ref="Behavior,SongOfAncientHunting,Modification.DamageDealtFraction[Melee] * 100" precision="1"/>%的攻击力，<d ref="Behavior,SongOfAncientHunting,Modification.DamageDealtFraction[Spell] * 100" precision="1"/>%的法术攻击力和<d ref="Behavior,SongOfAncientHunting,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度。
 SoulBurn/Name=灵魂燃烧
 SoulBurn/Tip=灵魂燃烧
 SoulBurn/Ubertip=让最多<d ref="Effect,SoulBurnSearch,MaxCount"/>个单位处于烈焰的包围之中，对其造成每秒<d ref="Effect,BNsoDPS1,Amount"/>点的伤害，让其不能施放魔法，并减少其<d ref="-Behavior,BNso,Modification.DamageDealtFraction[Melee] * 100"/>%的攻击力。<n/>持续<d ref="Effect,ANso1Dur,Duration"/>秒。
@@ -939,11 +971,11 @@ nadr/Ubertip=<c val="ffcc00">精英</c><n/>远程攻击飞行单位，具有抗�
 nadw/Tip=训练蓝色雏龙
 nadw/Ubertip=远程攻击飞行单位，具有抗性皮肤和冰霜呼吸技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nahy/Tip=训练上古多头蛇
-nahy/Ubertip=远程攻击两栖单位，具有迟缓毒药、战争践踏和潮湿光环这三项技能。当该单位被杀死的时候，许多小点的多头蛇会从其尸体中冒出来。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+nahy/Ubertip=远程攻击两栖单位，具有迟缓毒药和战争践踏这两项技能。当该单位被杀死的时候，许多小点的多头蛇会从其尸体中冒出来。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nbal/Ubertip=重型的近战单位，具有火焰之雨技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nbda/Ubertip=远程攻击型魔法施放单位，具有抗性皮肤和冰霜新星。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nbdo/Tip=升级到蓝龙人监军
-nbdo/Ubertip=<c val="ffcc00">精英</c><n/>近战型的魔法施放单位，具有抗性皮肤、冰霜呼吸和虔诚光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+nbdo/Ubertip=<c val="ffcc00">精英</c><n/>近战型的魔法施放单位，具有抗性皮肤、冰霜呼吸和潮湿光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nbdr/Tip=训练黑色雏龙
 nbdr/Ubertip=重型的远程攻击飞行单位，能有效地抵抗敌人的空中单位。具有抗性皮肤技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nbds/Tip=升级到蓝色龙人巫师
@@ -1106,7 +1138,7 @@ nser/Ubertip=<c val="ffcc00">世界精英</c><n/>耐萨里奥的守护者，具�
 nsgh/Tip=训练打猎海巨人
 nsgh/Ubertip=近战两栖单位，具有抗性皮肤、粉碎和远古猎歌技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nsgn/Tip=训练海巨人
-nsgn/Ubertip=近战两栖单位，具有抗性皮肤、粉碎和嘲讽技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+nsgn/Ubertip=近战两栖单位，具有抗性皮肤和粉碎技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nsnp/Tip=训练海龙
 nsnp/Ubertip=远程攻击单位，有着毒性攻击，可以缓慢和伤害敌单位。拥有潜水技能，可以隐藏在水中。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nss2/Name=暗夜精灵刺客
@@ -1141,6 +1173,7 @@ ofl2/Ubertip=放置兽人旗帜(决赛)。
 oflg/Tip=放置兽人旗帜
 oflg/Ubertip=放置兽人旗帜。
 ofro/Ubertip=能让攻击带有<d ref="Behavior,AIob,Modification.DamageDealtScaled[Melee]"/>点冷冻伤害，还能在<d ref="Behavior,Bfro,Duration"/>秒内减慢敌人的进攻和移动速度。
+ogrk/Ubertip=基本的兽人地面单位，具有掠夺技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ogru/Ubertip=基本的兽人地面单位，具有掠夺技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ohu2/Name=巨魔猎头者
 ohun/Ubertip=基本的远程攻击单位。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c> 
@@ -1148,6 +1181,7 @@ okod/Ubertip=一种笨重的战争野兽，由一个兽人鼓手驾驭。拥有�
 oli2/Ubertip=能增加<d ref="Behavior,AIll,Modification.DamageDealtScaled[Melee]"/>点攻击力。还能驱散魔法和在3秒内减慢敌人的移动速度。<n/><c val="ffcc00">对召唤单位能造成 150点伤害。
 omtg/Tip=升级到马索格
 omtg/Ubertip=高速骑兵，具有命令光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+onzg/Ubertip=高速骑兵，具有掠夺、诱捕和抑制光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 orai/Ubertip=高速骑兵，具有掠夺和诱捕技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 oshm/Tip=训练萨满 
 oshm/Ubertip=魔法单位，能施放嗜血。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
