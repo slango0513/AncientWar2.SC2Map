@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
-    <const id="hero" path="SDamageResponse.TargetFilters" value="Resistant"/>
-    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
     <const id="summoned" path="SDamageResponse.TargetFilters" value="Summoned"/>
-    <const id="air" path="SDamageResponse.TargetFilters" value="Air"/>
+    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
+    <const id="hero" path="SDamageResponse.TargetFilters" value="Resistant"/>
     <const id="allies" path="SDamageResponse.TargetFilters" value="Ally"/>
-    <const id="item" path="SDamageResponse.TargetFilters" value="Item"/>
+    <const id="air" path="SDamageResponse.TargetFilters" value="Air"/>
     <const id="tree" path="SDamageResponse.TargetFilters" value="HarvestableResource"/>
-    <const id="ancient" path="SDamageResponse.TargetFilters" value="Psionic"/>
+    <const id="item" path="SDamageResponse.TargetFilters" value="Item"/>
     <const id="player" path="SDamageResponse.TargetFilters" value="Player"/>
-    <const id="structure" path="SDamageResponse.TargetFilters" value="PreventDefeat"/>
+    <const id="ancient" path="SDamageResponse.TargetFilters" value="Psionic"/>
     <const id="enemies" path="SDamageResponse.TargetFilters" value="Enemy"/>
-    <const id="mechanical" path="SDamageResponse.TargetFilters" value="Mechanical"/>
-    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="structure" path="SDamageResponse.TargetFilters" value="PreventDefeat"/>
     <const id="self" path="SDamageResponse.TargetFilters" value="Self"/>
-    <const id="ground" path="SDamageResponse.TargetFilters" value="Ground"/>
+    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="mechanical" path="SDamageResponse.TargetFilters" value="Mechanical"/>
     <const id="neutral" path="SDamageResponse.TargetFilters" value="Neutral"/>
+    <const id="ground" path="SDamageResponse.TargetFilters" value="Ground"/>
     <const id="wall" path="SDamageResponse.TargetFilters" value="Hover"/>
     <const id="dead" path="SDamageResponse.TargetFilters" value="Dead"/>
     <const id="ethereal" path="SDamageResponse.TargetFilters" value="Stasis"/>
-    <const id="debris" path="SDamageResponse.TargetFilters" value="Destructible"/>
     <const id="invulnerable" path="SDamageResponse.TargetFilters" value="Invulnerable"/>
+    <const id="debris" path="SDamageResponse.TargetFilters" value="Destructible"/>
     <CBehaviorBuff default="1" id="AW2_TimeLife" parent="War3_Passive">
         <DisplayDuration index="Self" value="1"/>
         <DisplayDuration index="Ally" value="1"/>
@@ -45,6 +45,23 @@
             </Cost>
         </DamageResponse>
         <MaxStackCount value="0"/>
+    </CBehaviorBuff>
+    <!--Frost Attack (1,2) Dur=5 HeroDur=5 Buff=Bfro-->
+    <CBehaviorBuff id="Afr2">
+        <Requirements value=""/>
+    </CBehaviorBuff>
+    <!--Frost Attack Dur=5 HeroDur=5 Buff=Bfro-->
+    <CBehaviorBuff id="Afra">
+        <DamageResponse Handled="AfraSearch"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DarkAttack" parent="War3_Sphere">
+        <EditorCategories value="Race:Draenei,AbilityorEffectType:Unit"/>
+        <DamageResponse Handled="ushd" TargetFilters="-;Structure,wall,tree,debris,item,ward,dead,invulnerable"/>
+    </CBehaviorBuff>
+    <!--Frost Breath Dur=10 HeroDur=10 Buff=Bfro-->
+    <CBehaviorBuff id="Afrb">
+        <Requirements value=""/>
+        <DamageResponse Handled="AfrbSearch"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="TowerRecoverTimmer180" parent="AW2_TimeLife">
         <Name value="TowerTimeLife/Name"/>
@@ -72,6 +89,13 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="AEev1">
         <DamageResponse Chance="0.33"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ACev" parent="War3_Passive">
+        <EditorCategories value="Race:Draenei,AbilityorEffectType:Units"/>
+        <DamageResponse Chance="0.33" Handled="AEevMissDummy" ModifyFraction="0">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Splash" value="0"/>
+        </DamageResponse>
     </CBehaviorBuff>
     <!--MaxManaBonus (Most)-->
     <CBehaviorBuff id="AIbm" parent="AW2_Item">
@@ -449,6 +473,13 @@
             <StateFlags index="Cloak" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="DraeniStalkerInvisibility" parent="War3_Passive">
+        <EditorCategories value="Race:Draenei,AbilityorEffectType:Unit"/>
+        <Duration value="30"/>
+        <Modification>
+            <StateFlags index="Cloak" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
     <!--temporary max mana bonus,carry End-->
     <!--Regen Life-->
     <CBehaviorBuff id="Arel" parent="AW2_Item">
@@ -511,7 +542,12 @@
         </Modification>
         <PeriodCount value="1"/>
         <PeriodicEffect value="BOwkOrderAttackSearch"/>
-        <DamageResponse Chance="1" ModifyFraction="0"/>
+        <DamageResponse Chance="1" ModifyFraction="0">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Melee" value="0"/>
+            <Kind index="Ranged" value="0"/>
+            <Kind index="NoProc" value="0"/>
+        </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="BOwk1ExtraDamage">
         <Modification>
@@ -602,6 +638,10 @@
         <EditorCategories value="Race:Dragon,AbilityorEffectType:Unit"/>
         <Requirements value="BreathOfFireCaster"/>
         <DamageResponse Handled="BreathOfFire" TargetFilters="-;Structure,wall,tree,debris,item,ward,dead,invulnerable"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FlameAttackCaster" parent="War3_Sphere">
+        <EditorCategories value="Race:Draenei,AbilityorEffectType:Unit"/>
+        <DamageResponse Handled="FlameAttack" TargetFilters="-;Structure,wall,tree,debris,item,ward,dead,invulnerable"/>
     </CBehaviorBuff>
     <!--Freezing Breath Dur=5 HeroDur=5 Buff=Bfrz-->
     <CBehaviorBuff id="Afrz">
@@ -1344,6 +1384,19 @@
         </DurationOverride>
         <Period value="1"/>
         <PeriodicEffect value="BreathOfFireDPS"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FlameAttack" parent="War3_Buff">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnfirebolt.dds"/>
+        <BehaviorCategories index="User1" value="1"/>
+        <EditorCategories value="Race:Draenei,AbilityorEffectType:Units"/>
+        <TechAliasArray value="_Debuff"/>
+        <Duration value="10"/>
+        <DurationOverride index="0" Duration="5">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Period value="1"/>
+        <PeriodicEffect value="FlameAttackDPS"/>
     </CBehaviorBuff>
     <!--HealingWard-->
     <CBehaviorBuff id="Bhwd">

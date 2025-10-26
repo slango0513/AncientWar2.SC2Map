@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CActorSimple id="WindWalk" parent="War3_AbilSoundOnly" effectsound="WindWalk"/>
     <CActorModel id="AgydSpecial1" parent="SpecialArt"/>
     <CActorModel id="AgydSpecial2" parent="SpecialArt"/>
     <CActorModel id="AgydSpecial3" parent="SpecialArt"/>
@@ -61,6 +62,7 @@
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
     <!--antonidus-->
+    <!--akama-->
     <CActorUnit id="Hant" parent="War3_Army" unitSound="HeroArchMage" unitName="Hant" defType="NONE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHeroArchMage.dds"/>
         <GroupIcon>
@@ -70,6 +72,19 @@
         <SoundArray index="Movement" value="HumanHeroArchMageMovement"/>
         <BarWidth value="75"/>
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.5"/>
+    </CActorUnit>
+    <!--akama-->
+    <CActorUnit id="Naka" parent="War3_Army" unitSound="Akama" unitName="Naka" defType="SMALL">
+        <!--On Terms="ActorCreation" Send="Create "/-->
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnDranaiAkama.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnDranaiAkama.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnDranaiAkama.dds"/>
+        <BarWidth value="87"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
@@ -136,6 +151,7 @@
         <On Terms="ActorDestruction" Target="_Unit" Send="ClearTintColor 0.000000 Frost"/>
     </CActorModel>
     <CActorModel id="BreathOfFire" parent="War3_Buff"/>
+    <CActorModel id="FlameAttack" parent="War3_Buff"/>
     <CActorSimple id="Suhf" parent="War3_SimpleCastAnim"/>
     <CActorModel id="Bsds" parent="War3_Buff">
         <HostSiteOps Ops="$overhead"/>
@@ -423,6 +439,52 @@
         <On Terms="Abil.ACrf.SourceChannelStop" Send="AnimClear SpellLoop"/>
     </CActorUnit>
     <CActorAction id="BlackrockClan1" parent="War3_AttackSwapable" WeaponSound="MetalMediumSlice"/>
+    <!--bouldertower-->
+    <CActorUnit id="nbt1" parent="War3_Building" unitSound="ElvenGuardTower" unitName="nbt1" defType="FORT">
+        <!--MinimapIcon value="Assets\Textures\UI\MiniMap\minimap-neutralbuilding.tga"/-->
+        <On Terms="ActorCreation" Send="Create UBR_HSMA"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply StageSecond,Ready {} {} Instant"/>
+        <On Terms="UnitPortrait.*.Configure" Target="::PortraitGameSelf" Send="AnimGroupApply StageSecond {} {} Instant"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnRockTower.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnRockTower.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnRockTower.dds"/>
+        <BarWidth value="125"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <BarOffset value="120"/>
+        <DeathArray index="Cancel" AnimProps="Birth" ModelLink="War3_HCancelDeath"/>
+    </CActorUnit>
+    <!--bouldertowerupgrade-->
+    <CActorUnit id="nbt2" parent="War3_Building" unitSound="ElvenGuardTower" unitName="nbt2" defType="FORT">
+        <!--MinimapIcon value="Assets\Textures\UI\MiniMap\minimap-neutralbuilding.tga"/-->
+        <On Terms="ActorCreation" Send="Create UBR_HSMA"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply Upgrade,StageSecond,Ready {} {} Instant"/>
+        <On Terms="UnitPortrait.*.Configure" Target="::PortraitGameSelf" Send="AnimGroupApply Upgrade,StageSecond {} {} Instant"/>
+        <On Terms="ActorCreation" Send="AnimGroupRemove Portrait"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnAdvancedRockTower.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnAdvancedRockTower.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnAdvancedRockTower.dds"/>
+        <BarWidth value="125"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <BarOffset value="120"/>
+        <DeathArray index="Cancel" AnimProps="Birth" ModelLink="War3_HCancelDeath"/>
+    </CActorUnit>
+    <!--demolisherdraenei-->
+    <CActorUnit id="ncat" parent="War3_Army" unitSound="Catapult" unitName="ncat" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnCatapult.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnCatapult.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnCatapult.dds"/>
+        <SoundArray index="Movement" value="CatapultMovement"/>
+        <BarWidth value="137"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="1.7187"/>
+    </CActorUnit>
     <!--darkportalsw-->
     <CActorUnit id="ndkw" parent="War3_Building" unitSound="DarkPortal" unitName="ndkw" defType="FORT">
         <MinimapUseSelfColor value="0"/>
@@ -468,6 +530,58 @@
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
+    <!--draeneidisciple-->
+    <CActorUnit id="ndrm" parent="War3_Army" unitSound="Draenei" unitName="ndrm" defType="NONE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnDranaiMage.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnDranaiMage.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnDranaiMage.dds"/>
+        <BarWidth value="42"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_HumanLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--draeneiprotector-->
+    <CActorUnit id="ndrp" parent="War3_Army" unitSound="Draenei" unitName="ndrp" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnDranai.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnDranai.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnDranai.dds"/>
+        <BarWidth value="47"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_HumanLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--draeneiseer-->
+    <CActorUnit id="ndrs" parent="War3_Army" unitSound="Draenei" unitName="ndrs" defType="NONE">
+        <On Terms="ActorCreation" Send="SetTintColor 255,255,140"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnDranaiMage.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnDranaiMage.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnDranaiMage.dds"/>
+        <BarWidth value="62"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_HumanLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--draeneistalker-->
+    <CActorUnit id="ndrt" parent="War3_Army" unitSound="Draenei" unitName="ndrt" defType="SMALL">
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnDranai.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnDranai.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnDranai.dds"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_HumanLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
     <!--coldtower-->
     <CActorUnit id="ndt1" parent="War3_Building" unitSound="ElvenGuardTower" unitName="ndt1" defType="FORT">
         <!--MinimapIcon value="Assets\Textures\UI\MiniMap\minimap-neutralbuilding.tga"/-->
@@ -496,9 +610,35 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnAdvancedFrostTower.dds"/>
         <BarWidth value="125"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
         <BarOffset value="120"/>
         <DeathArray index="Cancel" AnimProps="Birth" ModelLink="War3_HCancelDeath"/>
+    </CActorUnit>
+    <!--earthfurytower-->
+    <CActorUnit id="negf" parent="War3_Building" unitSound="ElvenGuardTower" unitName="negf" defType="FORT">
+        <!--MinimapIcon value="Assets\Textures\UI\MiniMap\minimap-neutralbuilding.tga"/-->
+        <On Terms="ActorCreation" Send="Create UBR_HSMA"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnElvenGuardTower.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnElvenGuardTower.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnElvenGuardTower.dds"/>
+        <BarWidth value="125"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <BarOffset value="120"/>
+    </CActorUnit>
+    <!--skyfurytower-->
+    <CActorUnit id="negm" parent="War3_Building" unitSound="ElvenGuardTower" unitName="negm" defType="FORT">
+        <!--MinimapIcon value="Assets\Textures\UI\MiniMap\minimap-neutralbuilding.tga"/-->
+        <On Terms="ActorCreation" Send="Create UBR_HSMA"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnElvenGuardTower.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnElvenGuardTower.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnElvenGuardTower.dds"/>
+        <BarWidth value="125"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <BarOffset value="120"/>
     </CActorUnit>
     <!--eredarwarlock-->
     <CActorUnit id="nerw" parent="War3_Army" unitSound="PitLord" unitName="nerw" defType="NONE">
@@ -523,6 +663,22 @@
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnEnergyTower.dds"/>
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnEnergyTower.dds"/>
+        <BarWidth value="125"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <BarOffset value="120"/>
+        <DeathArray index="Cancel" AnimProps="Birth" ModelLink="War3_HCancelDeath"/>
+    </CActorUnit>
+    <!--energytowerupgrade-->
+    <CActorUnit id="net2" parent="War3_Building" unitSound="ElvenGuardTower" unitName="net2" defType="FORT">
+        <!--MinimapIcon value="Assets\Textures\UI\MiniMap\minimap-neutralbuilding.tga"/-->
+        <On Terms="ActorCreation" Send="Create UBR_HSMA"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply Upgrade,StageFirst,Ready {} {} Instant"/>
+        <On Terms="UnitPortrait.*.Configure" Target="::PortraitGameSelf" Send="AnimGroupApply Upgrade,StageFirst {} {} Instant"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnAdvancedEnergyTower.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnAdvancedEnergyTower.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnAdvancedEnergyTower.dds"/>
         <BarWidth value="125"/>
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
         <BarOffset value="120"/>
@@ -553,6 +709,38 @@
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.5"/>
+    </CActorUnit>
+    <!--flametower-->
+    <CActorUnit id="nft1" parent="War3_Building" unitSound="ElvenGuardTower" unitName="nft1" defType="FORT">
+        <!--MinimapIcon value="Assets\Textures\UI\MiniMap\minimap-neutralbuilding.tga"/-->
+        <On Terms="ActorCreation" Send="Create UBR_HSMA"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply StageThird,Ready {} {} Instant"/>
+        <On Terms="UnitPortrait.*.Configure" Target="::PortraitGameSelf" Send="AnimGroupApply StageThird {} {} Instant"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnFlameTower.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnFlameTower.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnFlameTower.dds"/>
+        <BarWidth value="125"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
+        <BarOffset value="120"/>
+        <DeathArray index="Cancel" AnimProps="Birth" ModelLink="War3_HCancelDeath"/>
+    </CActorUnit>
+    <!--flametowerupgrade-->
+    <CActorUnit id="nft2" parent="War3_Building" unitSound="ElvenGuardTower" unitName="nft2" defType="FORT">
+        <!--MinimapIcon value="Assets\Textures\UI\MiniMap\minimap-neutralbuilding.tga"/-->
+        <On Terms="ActorCreation" Send="Create UBR_HSMA"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply Upgrade,StageThird,Ready {} {} Instant"/>
+        <On Terms="UnitPortrait.*.Configure" Target="::PortraitGameSelf" Send="AnimGroupApply Upgrade,StageThird {} {} Instant"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnAdvancedFlameTower.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnAdvancedFlameTower.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnAdvancedFlameTower.dds"/>
+        <BarWidth value="125"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <BarOffset value="120"/>
+        <DeathArray index="Cancel" AnimProps="Birth" ModelLink="War3_HCancelDeath"/>
     </CActorUnit>
     <!--hydra-->
     <CActorUnit id="nhyd" parent="War3_Army" unitSound="AzureDragon" unitName="nhyd" defType="LARGE">
@@ -707,6 +895,38 @@
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
         <WalkAnimMoveSpeed value="1.5625"/>
     </CActorUnit>
+    <!--deathtower-->
+    <CActorUnit id="ntt1" parent="War3_Building" unitSound="ElvenGuardTower" unitName="ntt1" defType="FORT">
+        <!--MinimapIcon value="Assets\Textures\UI\MiniMap\minimap-neutralbuilding.tga"/-->
+        <On Terms="ActorCreation" Send="Create UBR_HSMA"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply StageFifth,Ready {} {} Instant"/>
+        <On Terms="UnitPortrait.*.Configure" Target="::PortraitGameSelf" Send="AnimGroupApply StageFifth {} {} Instant"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnDeathTower.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnDeathTower.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnDeathTower.dds"/>
+        <BarWidth value="125"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <BarOffset value="120"/>
+        <DeathArray index="Cancel" AnimProps="Birth" ModelLink="War3_HCancelDeath"/>
+    </CActorUnit>
+    <!--deathtowerupgrade-->
+    <CActorUnit id="ntx2" parent="War3_Building" unitSound="ElvenGuardTower" unitName="ntx2" defType="FORT">
+        <!--MinimapIcon value="Assets\Textures\UI\MiniMap\minimap-neutralbuilding.tga"/-->
+        <On Terms="ActorCreation" Send="Create UBR_HSMA"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply Upgrade,StageFifth,Ready {} {} Instant"/>
+        <On Terms="UnitPortrait.*.Configure" Target="::PortraitGameSelf" Send="AnimGroupApply Upgrade,StageFifth {} {} Instant"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnAdvancedDeathTower.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnAdvancedDeathTower.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnAdvancedDeathTower.dds"/>
+        <BarWidth value="125"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <BarOffset value="120"/>
+        <DeathArray index="Cancel" AnimProps="Birth" ModelLink="War3_HCancelDeath"/>
+    </CActorUnit>
     <!--darkwizard-->
     <CActorUnit id="nwzd" parent="War3_Army" unitSound="HeroArchMage" unitName="nwzd" defType="NONE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnBanditMage.dds"/>
@@ -737,6 +957,32 @@
     <CActorMissile id="nzep2LM" parent="War3_MissileSwapable" unitName="nzep2LM"/>
     <CActorMissile id="ChaosOrcShaman1LM" parent="War3_MissileSwapable" unitName="ChaosOrcShaman1LM"/>
     <CActorAction id="KargathBladefist1" parent="War3_AttackSwapable" WeaponSound="MetalMediumChop"/>
+    <!--garthok-->
+    <CActorUnit id="ogrk" parent="War3_Army" unitSound="Grunt" unitName="ogrk" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnGrunt.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnGrunt.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnGrunt.dds"/>
+        <BarWidth value="50"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--nazgrel-->
+    <CActorUnit id="onzg" parent="War3_Army" unitSound="Nazgrel" unitName="onzg" defType="SMALL">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnRaider.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnRaider.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnRaider.dds"/>
+        <BarWidth value="80"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.7343"/>
+    </CActorUnit>
     <!--trollbatrider-->
     <CActorUnit id="otbr" parent="War3_Army" unitSound="TrollBatrider" unitName="otbr" defType="SMALL">
         <DeathArray index="Normal" AnimProps="Death"/>
@@ -1837,6 +2083,20 @@
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
         <BarOffset value="60"/>
     </CActorUnit>
+    <!--shade-->
+    <CActorUnit id="ushd" parent="War3_Army" unitSound="Shade" unitName="ushd" defType="MEDIUM">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnShade.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnShade.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnShade.dds"/>
+        <BarWidth value="50"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.7343"/>
+        <WalkAnimTimeScalingAsFlyer value="1"/>
+    </CActorUnit>
+    <CActorAction id="ushd1" parent="War3_AttackSwapable" WeaponSound="MetalMediumSlice"/>
     <CActorAction id="zhyd1" parent="War3_AttackMissileSwapable"/>
     <CActorMissile id="zhyd1LM" parent="War3_MissileSwapable" unitName="zhyd1LM"/>
     <CActorAction id="nss21" parent="War3_AttackSwapable" WeaponSound="MetalLightSlice"/>

@@ -248,15 +248,43 @@
     <CAbilEffectTarget id="ANso">
         <CastOutroTime index="0" value="1"/>
     </CAbilEffectTarget>
+    <!--Shadow Hunter - Healing Wave-->
+    <CAbilEffectTarget id="AOhw" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Draenei,AbilityorEffectType:Unit"/>
+        <TargetFilters index="0" value="-;neutral,enemies,mechanical,wall,tree,debris,item,structure,ward,dead"/>
+        <Cost index="0">
+            <Vital index="Energy" value="10"/>
+            <Cooldown Location="Unit" TimeUse="5"/>
+        </Cost>
+        <Range value="7"/>
+        <PrepTime value="0.3"/>
+        <CastOutroTime value="1.07"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSLife"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
+        </TargetSorts>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
+        <AutoCastRange value="7"/>
+        <AutoCastValidatorArray index="1" removed="1"/>
+    </CAbilEffectTarget>
     <!--Blade Master - Wind Walk Buff=BOwk-->
     <CAbilEffectInstant id="AOwk" parent="AW2_EffectInstant">
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="20"/>
+            <Cooldown Location="Unit" TimeUse="15"/>
         </Cost>
         <Effect index="0" value="AOwk1"/>
         <PreEffectBehavior Behavior="" Count="0"/>
         <AutoCastFilters value="Self,Visible;Ally,Neutral,Enemy"/>
-        <AutoCastValidatorArray value="GroundEnemiesNearby2"/>
+        <AutoCastValidatorArray index="0" value="GroundEnemiesNearby3"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="WindWalk" parent="AW2_EffectInstant">
+        <Effect index="0" value="AOwk1"/>
+        <PreEffectBehavior Behavior="" Count="0"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="20"/>
+        </Cost>
+        <AutoCastFilters value="Self,Visible;Ally,Neutral,Enemy"/>
+        <AutoCastValidatorArray index="0" value="GroundEnemiesNearby3"/>
     </CAbilEffectInstant>
     <!--Blade Master - Bladestorm Buff=BOww-->
     <CAbilEffectInstant id="AOww" parent="AW2_EffectInstant">
@@ -289,6 +317,12 @@
             <Charge CountMax="1" CountStart="1" CountUse="1"/>
         </Cost>
         <BehaviorArray value="GoblinLandMineInvisibility"/>
+    </CAbilBehavior>
+    <CAbilBehavior id="DraeniStalkerInvisibility" parent="AW2_Passive">
+        <Cost>
+            <Charge CountMax="1" CountStart="1" CountUse="1"/>
+        </Cost>
+        <BehaviorArray value="DraeniStalkerInvisibility"/>
     </CAbilBehavior>
     <CAbilBehavior id="HonorShieldCaster" parent="AW2_Passive">
         <BehaviorArray value="HonorShieldCaster"/>
@@ -494,7 +528,7 @@
         <PrepTime value="1"/>
         <CastOutroTime value="2.4"/>
         <Effect index="0" value="ndkw"/>
-        <AutoCastValidatorArray index="0" value="EnemiesNearby8"/>
+        <AutoCastValidatorArray index="0" value="EnemiesNearby12"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <!--Dreadlord - Inferno Buff=BNin-->
@@ -1324,14 +1358,35 @@
         <InfoArray index="Build2" Unit="DraeneiFlag2">
             <Button DefaultButtonFace="DraeneiFlag2" Requirements="BuildPhalanxFinal"/>
         </InfoArray>
-        <InfoArray index="Build3" Unit="nnmg">
-            <Button DefaultButtonFace="nnmg" Requirements="BuildArmy"/>
+        <InfoArray index="Build3" Unit="ndrp">
+            <Button DefaultButtonFace="ndrp" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build4" Unit="nskk">
             <Button DefaultButtonFace="nskk" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build5" Unit="ndt1">
             <Button DefaultButtonFace="ndt1" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build6" Unit="nbt1">
+            <Button DefaultButtonFace="nbt1" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build7" Unit="nft1">
+            <Button DefaultButtonFace="nft1" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build8" Unit="net1">
+            <Button DefaultButtonFace="net1" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build9" Unit="ntt1">
+            <Button DefaultButtonFace="ntt1" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build12" Unit="ncat">
+            <Button DefaultButtonFace="ncat" Requirements="BuildArmyFinal"/>
+        </InfoArray>
+        <InfoArray index="Build13" Unit="ndrm">
+            <Button DefaultButtonFace="ndrm" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build14" Unit="ndrt">
+            <Button DefaultButtonFace="ndrt" Requirements="BuildArmy"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
@@ -1459,7 +1514,11 @@
     </CAbilEffectInstant>
     <CAbilAugment id="AHfaAugment" parent="AW2_AttackAugment">
         <Name value="AHfa/Name"/>
-        <EditorCategories value="Race:NightElf,AbilityorEffectType:Units"/>
+        <Cost>
+            <Vital index="Energy" value="6"/>
+        </Cost>
+        <AutoCastFilters value="Visible;Player,Ally,Hover,HarvestableResource,Destructible,Item,PreventDefeat,Buried,Invulnerable,Unstoppable"/>
+        <EditorCategories value="Race:Draenei,AbilityorEffectType:Units"/>
     </CAbilAugment>
     <CAbilEffectTarget id="AHhb" parent="AW2_EffectTarget">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
@@ -3017,6 +3076,18 @@
     <CAbilMorph id="UpgradeTondt2" parent="AW2_Upgrade" toUnit="ndt2">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
+    <CAbilMorph id="UpgradeTonbt2" parent="AW2_Upgrade" toUnit="nbt2">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonft2" parent="AW2_Upgrade" toUnit="nft2">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonet2" parent="AW2_Upgrade" toUnit="net2">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTontx2" parent="AW2_Upgrade" toUnit="ntx2">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
     <CAbilTrain id="ndkwTrain" parent="War3_Train">
         <InfoArray index="Train1" Time="15">
             <Button DefaultButtonFace="ninf">
@@ -3646,6 +3717,12 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToBlackrockClan" parent="AW2_Upgrade" toUnit="BlackrockClan">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTondrs" parent="AW2_Upgrade" toUnit="ndrs">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToNaka" parent="AW2_Upgrade" toUnit="Naka">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
 </Catalog>

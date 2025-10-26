@@ -6,6 +6,7 @@ ACce/Ubertip=该生物强大的力量使得他目标周围的单位也受到<d r
 ACcr/Ubertip=减慢目标单位<d ref="-Behavior,Bcri,Modification.DamageDealtFraction[Melee] * 100"/>%的攻击力并减慢其<d ref="1 - Behavior,Bcri,Modification.MoveSpeedMultiplier * 100"/>%的移动速度和<d ref="1 - Behavior,Bcri,Modification.AttackSpeedMultiplier * 100"/>%的攻击速度。<n/>持续<d ref="Behavior,Bcri,Duration"/>秒。
 ACcv/Ubertip=发射出一道巨大的能量波，对一线上的敌人造成<d ref="Effect,ACcvDamage,Amount"/>点的伤害。
 ACen/Ubertip=将敌方的某个空中单位捕获到地面能动弹。被诱捕的空中单位能像地面单位一样遭到攻击。<n/>持续<d ref="Behavior,Bena,Duration"/>秒。
+ACev/Ubertip=给予<d ref="Behavior,AEev1,DamageResponse.Chance * 100"/>%的几率躲避敌人的攻击。
 ACfn/Ubertip=冲击目标单位群，造成<d ref="Effect,AUfnDamage1,Amount"/>点常规伤害和<d ref="Effect,AUfnDamage1,Amount + Effect,AUfnDamage1,AreaArray[0].Bonus"/>点新星伤害。并在<d ref="Effect,AUfn1Dur,Duration"/>秒内减慢他们的攻击和移动速度。
 ACnr/Tip=生命恢复光环
 ACnr/Ubertip=能加快周围友方单位每秒<d ref="Effect,ACnrHealTick,VitalArray[Life].Change"/>点的生命值恢复速度。
@@ -91,6 +92,7 @@ AObuUnit/Tip=建造建筑物
 AObuUnit/Ubertip=能显示出当前你所能建造的建筑物。
 AOcr/Ubertip=给予<d ref="Behavior,AOcr,Modification.CriticalAttackChanceScaledBonus * 100"/>%的概率使得剑圣的攻击能立刻杀死目标。
 AOfs/Ubertip=能在<d ref="Effect,AOfs1,ExpireDelay"/>秒内驱散目标区域内的战争迷雾。也能看到隐形单位。
+AOhw/Ubertip=召唤出一道能跳跃3次的治疗能量波，对首个目标能恢复300点的生命值。每次跳跃都会削弱治疗波的治疗能力。
 AOhx/Ubertip=让目标单位在<d ref="Effect,ANhx1Dur,Duration"/>秒内变成一只随机的小动物。
 AOmi/Ubertip=制造出1个幻象来迷惑敌人。同时也会驱逐掉剑圣身上所有的魔法效果。<n/>持续<d ref="Behavior,BOmi,Duration"/>秒。
 AOre/Ubertip=当牛头人酋长被杀时，它就会自动复活。复生有<d ref="Behavior,AOre,Modification.DeathResponse.Cost.Cooldown.TimeUse"/>秒的冷却时间。
@@ -109,6 +111,7 @@ AUbu3/Tip=建造法术部队
 AUbuUnit/Name=AUbuArmy
 AUbuUnit/Tip=建造建筑物
 AUbuUnit/Ubertip=打开一个你所能建造的建筑物的列表。
+AUdc/Ubertip=能恢复友方某个亡灵单位<d ref="Effect,AUdcHeal1,RechargeVitalRate"/>点的生命值或者对敌人的某个单位造成一半数值的伤害。
 AUdd/Ubertip=能以每秒<d ref="Effect,BUddDamage,VitalFractionMax[Life] * 100"/>%的速度来消耗有效范围内一切单位和建筑物的生命值。<n/>持续<d ref="Abil,AUdd,CastOutroTime[0]"/>秒。<n/>不能被使用在强大的单位身上。
 AUfa/Ubertip=使目标身上具有一层霜冻保护。这保护层能增加<d ref="Behavior,BUfa1,Modification.LifeArmorBonus"/>点护甲值并使近战攻击该目标的敌人在<d ref="Behavior,Bfro,Duration"/>秒内减速。<n/>持续<d ref="Behavior,BUfa1,Duration"/>秒。
 AUfn/Ubertip=对敌人造成<d ref="Effect,AUfnDamage1,Amount"/>点的常规伤害和<d ref="Effect,AUfnDamage1,Amount + Effect,AUfnDamage1,AreaArray[0].Bonus"/>的新星伤害。所具有的冰冻效果能在<d ref="Effect,AUfn1Dur,Duration"/>秒内减慢敌人的移动和进攻速度。
@@ -223,6 +226,8 @@ Attribute003/Value008/Name=血精灵
 Attribute003/Value009/Name=混乱兽人
 Attribute003/Value010/Name=龙(精英)
 Attribute003/Value011/Name=恶魔(精英)
+Attribute003/Value012/Name=德莱尼
+
 Attribute004/Name=第二种族 (AW2)
 Attribute004/Value001/Name=随机(双种族模式可用)
 Attribute004/Value002/Name=人类
@@ -235,6 +240,8 @@ Attribute004/Value008/Name=血精灵
 Attribute004/Value009/Name=混乱兽人
 Attribute004/Value010/Name=龙(精英)
 Attribute004/Value011/Name=恶魔(精英)
+Attribute004/Value012/Name=德莱尼
+
 Auco/Ubertip=制造出一次强力爆炸，对目标敌方空中单位造成<d ref="Effect,AucoDamage,Amount"/>点伤害，对周围敌空中单位造成<d ref="Effect,AucoDamage,Amount * Effect,AucoDamage,AreaArray[0].Fraction + Effect,AucoDamage,AreaArray[0].Bonus"/>点伤害。
 Auhf/Ubertip=增加目标单位<d ref="Behavior,Buhf,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度，但是每秒也会消耗目标<d ref="Effect,BuhfDPS,Amount"/>点的生命值。<n/>持续<d ref="Behavior,Buhf,Duration"/>秒。
 Aven/Ubertip=能造成每秒<d ref="Effect,BpsdDPS,Amount"/>点的毒性伤害。<n/>持续<d ref="Behavior,Bpoi,Duration"/>秒。
@@ -276,6 +283,8 @@ BloodElfFlag2/Ubertip=放置血精灵旗帜(决赛)。
 BloodElfSorceress/Name=血精灵女巫
 BloodElfSorceress/Tip=升级到血精灵女巫
 BloodElfSorceress/Ubertip=基本的远程攻击单位，能施放减速术。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+BoulderAttack/Tip=巨石攻击
+BoulderAttack/Ubertip=巨石之塔能对区域内非建筑单位造成大量伤害。<n/><n/><c val="ffcc00">可能误伤友军。</c>
 BreathOfFire/Buffubertip=该单位正受到火焰的灼伤，不断受到伤害。
 BreathOfFire/Name=火焰吐息
 BreathOfFireCaster/Tip=火焰吐息
@@ -372,6 +381,8 @@ DOCSTR_0002=BracketOpen
 DOCSTR_0003=星灵单位
 DOCSTR_0004=星灵单位
 DOCSTR_0005=[新手]混战
+DarkAttack/Tip=黑暗攻击
+DarkAttack/Ubertip=死亡之塔能向目标发射一只具有<d ref="Unit,ushd,LifeStart"/>点生命值的阴影，能看见其他的隐形单位。
 Defend/Name=防御
 Defend/Tip=防御
 Defend/Ubertip=激活后只会受到10%的穿刺攻击伤害。如果防御状态被激活，移动速度会变成<d ref="Behavior,Defend,Modification.MoveSpeedMultiplier * 100"/>%的常规速度。
@@ -463,26 +474,32 @@ DocInfo/PatchNote075=龙：
 DocInfo/PatchNote076=蓝色龙人监军获得新技能潮湿光环，潮湿光环的每秒生命值恢复加成降低到0.75%。
 DocInfo/PatchNote077=魅魔类单位获得新技能Prêt-à-porter。
 DocInfo/PatchNote078=地狱机器类单位的生命值降低40%。
-DocInfo/PatchNote079=为电脑加入难度选项。
-DocInfo/PatchNote080=调整地形，尝试解决布阵僵化的问题。
-DocInfo/PatchNote081=修复复生导致游戏不能继续的漏洞。
-DocInfo/PatchNote082=防御塔类建筑现在到期后会回收木材。具有攻击力的防御塔期限增加到3分钟。
-DocInfo/PatchNote083=人类：
-DocInfo/PatchNote084=防御塔的射程增加到12。
-DocInfo/PatchNote085=亡灵：
-DocInfo/PatchNote086=绞肉车获得新技能创建尸体，伤害降低到24。
-DocInfo/PatchNote087=疾病之云的伤害提高到10。
-DocInfo/PatchNote088=地精：
-DocInfo/PatchNote089=采集获得的额外木材量减少到140%。
-DocInfo/PatchNote090=血精灵：
-DocInfo/PatchNote091=凤凰蛋的孵化时间增加到45秒，生命值减少到25点。
-DocInfo/PatchNote092=凤凰的护甲类型现在是神圣，并且凤凰火焰经过重新设计。
+DocInfo/PatchNote079=完成种族德莱尼。
+DocInfo/PatchNote080=为电脑加入难度选项。
+DocInfo/PatchNote081=调整地形，尝试解决布阵僵化的问题。
+DocInfo/PatchNote082=修复复生导致游戏不能继续的漏洞。
+DocInfo/PatchNote083=防御塔类建筑现在到期后会回收木材。具有攻击力的防御塔期限增加到3分钟。
+DocInfo/PatchNote084=人类：
+DocInfo/PatchNote085=圣光术的效果提高50%。
+DocInfo/PatchNote086=防御塔的射程增加到12。
+DocInfo/PatchNote087=亡灵：
+DocInfo/PatchNote088=死亡缠绕的效果提高50%。
+DocInfo/PatchNote089=绞肉车获得新技能创建尸体，伤害降低到24。
+DocInfo/PatchNote090=疾病之云的伤害提高到10。
+DocInfo/PatchNote091=地精：
+DocInfo/PatchNote092=采集获得的额外木材量减少到140%。
+DocInfo/PatchNote093=血精灵：
+DocInfo/PatchNote094=凤凰蛋的孵化时间增加到45秒，生命值减少到25点。
+DocInfo/PatchNote095=凤凰的护甲类型现在是神圣，并且凤凰火焰经过重新设计。
 DraeneiFlag/Name=德莱尼旗帜
 DraeneiFlag/Tip=放置德莱尼旗帜
 DraeneiFlag/Ubertip=放置德莱尼旗帜。
 DraeneiFlag2/Name=德莱尼旗帜
 DraeneiFlag2/Tip=放置德莱尼旗帜(决赛)
 DraeneiFlag2/Ubertip=放置德莱尼旗帜(决赛)。
+DraeniStalkerInvisibility/Name=隐形
+DraeniStalkerInvisibility/Tip=隐形
+DraeniStalkerInvisibility/Ubertip=使德莱尼追踪者隐形。<n/>持续<d ref="Behavior,DraeniStalkerInvisibility,Duration"/>秒。
 DragonFlag/Name=龙旗帜
 DragonFlag/Tip=放置龙旗帜
 DragonFlag/Ubertip=放置龙旗帜。
@@ -506,6 +523,7 @@ Effect/Name/AIpv=AIpv
 Effect/Name/ANrcCreatePersistent=ANrcCreatePersistent
 Effect/Name/AW2_NormalDamage=AW2_NormalDamage
 Effect/Name/AabrSearch=AabrSearch
+Effect/Name/AfraSearch=AfraSearch
 Effect/Name/Alit=Alit
 Effect/Name/Aps2Remove=Aps2Remove
 Effect/Name/AsalTriggerNotice=AsalTriggerNotice
@@ -579,6 +597,9 @@ FelDriveAura/Buffubertip=该单位处在邪能驱动光环的作用之下，因�
 FelDriveAura/Name=邪能驱动光环
 FelDriveAuraCaster/Tip=邪能驱动光环
 FelDriveAuraCaster/Ubertip=增加周围机械单位<d ref="Behavior,FelDriveAura,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度和<d ref="Behavior,FelDriveAura,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度。
+FlameAttack/Name=火焰攻击
+FlameAttackCaster/Tip=火焰攻击
+FlameAttackCaster/Ubertip=每次攻击带有火焰效果，在<d ref="Behavior,FlameAttack,Duration"/>秒内持续受到每秒<d ref="Effect,FlameAttackDPS,Amount"/>点的伤害。
 FrostAura/Buffubertip=该单位被冻住了。
 FrostAura/Name=凛风光环
 FrostAuraCaster/Tip=凛风光环
@@ -677,6 +698,8 @@ NagaFlag/Ubertip=放置纳迦旗帜。
 NagaFlag2/Name=纳迦旗帜
 NagaFlag2/Tip=放置纳迦旗帜(决赛)
 NagaFlag2/Ubertip=放置纳迦旗帜(决赛)。
+Naka/Tip=升级到阿卡玛
+Naka/Ubertip=敏捷系单位，精于速杀落单的单位。具有疾风步、闪避和诱捕技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Nalc/Tip=训练炼金师
 Nalc/Ubertip=重型的近战单位，具有抗性皮肤和生化暴走技能。<n/><n/><c val="ffcc00">攻击地面单位。</c>
 Nalm/Propernames=拉泽尔·拿破仑
@@ -940,6 +963,9 @@ Weapon/Name/ngl31=咔嘣！
 Weapon/Name/nglm1=咔嘣！
 Weapon/Name/ngs22=咔嘣！
 Weapon/Name/ngsp2=咔嘣！
+WindWalk/Name=疾风步
+WindWalk/Tip=疾风步
+WindWalk/Ubertip=使得德莱尼追踪者在<d ref="Behavior,BOwk1,Duration"/>秒内隐形并增加<d ref="Behavior,BOwk1,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度。如果此时德莱尼追踪者进行攻击的话，那么就不再隐形，但是攻击力会增加<d ref="Behavior,BOwk1ExtraDamage,Modification.DamageDealtUnscaled[Melee]"/>点。
 arsh/Ubertip=减少所受的70%远程伤害。并增加<d ref="Behavior,AId0,Modification.LifeArmorBonus"/>点护甲值。
 blba/Ubertip=提高周围单位<d ref="Behavior,BHadI,Modification.LifeArmorBonus"/>点护甲值。增加<d ref="Behavior,AId7,Modification.LifeArmorBonus"/>点护甲值。
 bspd/Ubertip=能增加<d ref="Behavior,AIms,Modification.MoveSpeedBonus * 100"/>%的移动速度。
@@ -1032,12 +1058,15 @@ nbdw/Ubertip=近战型的魔法施放单位，具有抗性皮肤和冰霜呼吸�
 nbel/Ubertip=精灵战士，被训练来消灭法师。拥有魔法防御技能，有效地抵抗敌人的魔法型攻击。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nbld/Tip=升级到强盗头子
 nbld/Ubertip=高速骑兵，具有震荡波技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+nbt1/Ubertip=防守型建筑物，投掷出能造成溅射伤害的巨石，擅长于对付地面单位，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+nbt2/Ubertip=防守型建筑物，擅长于对付地面单位，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nbwm/Tip=升级到黑龙
 nbwm/Ubertip=<c val="ffcc00">精英</c><n/>重型的远程攻击飞行单位，能有效地抵抗敌人的空中单位。具有抗性皮肤技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nbzd/Tip=升级到青铜龙
 nbzd/Ubertip=<c val="ffcc00">精英</c><n/>远程攻击飞行单位，具有抗性皮肤和永恒光环技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nbzw/Tip=训练青铜雏龙
 nbzw/Ubertip=远程攻击飞行单位，具有抗性皮肤技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+ncat/Ubertip=远程攻城武器，具有燃烧之油技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ncg3/Name=发条地精
 nchg/Tip=训练混乱兽人步兵
 nchg/Ubertip=基本的兽人地面单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
@@ -1053,8 +1082,18 @@ ndqs/Tip=升级到苦难女王
 ndqs/Ubertip=近战型的魔法施放单位，具有抗性皮肤和受难技能，还能施放魅惑。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ndqt/Tip=训练邪恶诱惑者
 ndqv/Tip=升级到邪恶折磨者
+ndrm/Tip=训练德莱尼追随者
+ndrm/Ubertip=魔法单位，能施放治疗术。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+ndrp/Tip=训练德莱尼保卫者
+ndrp/Ubertip=基本的地面单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+ndrs/Tip=升级到德莱尼先知
+ndrs/Ubertip=魔法单位，能施放治疗波。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+ndrt/Tip=训练德莱尼追踪者
+ndrt/Ubertip=敏捷系单位，精于速杀落单的单位。具有疾风步和闪避技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ndrv/Tip=训练深渊亡魂
 ndrv/Ubertip=防御型单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+ndt1/Ubertip=防守型建筑物，射出冰片进行攻击，擅长于减慢敌人的速度，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+ndt2/Ubertip=防守型建筑物，擅长于减慢敌人的速度，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ndtb/Tip=升级到黑暗巨魔狂战士
 ndtb/Ubertip=远程攻击单位。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ndth/Tip=升级到黑暗巨魔高阶牧师
@@ -1070,6 +1109,8 @@ nemi/Tip=训练使者
 nemi/Ubertip=魔法单位，能施放治疗术。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nerw/Tip=训练埃瑞达术士
 nerw/Ubertip=<c val="ffcc00">精英</c><n/>远程攻击型魔法施放单位，具有抗性皮肤技能，还可以施放痛苦之指。<n/><n/><c val="ffcc00">攻击地面和空中单位。</c>
+net1/Ubertip=防守型建筑物，射出能量之箭，擅长于对付敌人的空中单位，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+net2/Ubertip=防守型建筑物，擅长于对付敌人的空中单位，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nfac/Tip=建造口袋工厂
 nfacTimeLife/Name=nfacTimeLife
 nfgl/Tip=升级到血肉傀儡
@@ -1086,6 +1127,8 @@ nfov/Ubertip=基本的恶魔地面单位，具有残废术技能。<n/><n/><c va
 nfsh/Tip=升级到森林巨魔高阶牧师
 nfsh/Ubertip=魔法单位，能施放治疗术。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nfsp/Tip=升级到森林巨魔暗影牧师
+nft1/Ubertip=防守型建筑物，能射出灼热的火焰。擅长于毁灭靠近的敌人。对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+nft2/Ubertip=防守型建筑物，擅长于毁灭靠近的敌人，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nft3/Name=森林巨魔捕兽者
 nftb/Tip=升级到森林巨魔狂战士
 nftb/Ubertip=远程攻击单位，拥有狂暴技能，增加了攻击速度但是也因此而降低伤害。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
@@ -1189,6 +1232,7 @@ nsgh/Ubertip=近战两栖单位，具有抗性皮肤、粉碎和远古猎歌技�
 nsgn/Tip=训练海巨人
 nsgn/Ubertip=近战两栖单位，具有抗性皮肤和粉碎技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nskk/Tip=训练小蜥蜴
+nskk/Ubertip=呼唤小蜥蜴的灵魂来拯救你。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nsnp/Tip=训练海龙
 nsnp/Ubertip=远程攻击单位，有着毒性攻击，可以缓慢和伤害敌单位。拥有潜水技能，可以隐藏在水中。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nss2/Name=暗夜精灵刺客
@@ -1204,6 +1248,8 @@ ntrs/Tip=训练海龟
 ntrs/Ubertip=防御型单位，拥有硬化皮肤，可以减少所受的伤害。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ntrt/Tip=升级到巨型海龟
 ntrt/Ubertip=防御型单位，身上的尖刺外壳能对周围敌人的近战单位造成伤害。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+ntt1/Ubertip=防守型建筑物，射出致命的能量箭，擅长于实施大规模的伤害，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+ntx2/Ubertip=防守型建筑物，射出致命的能量箭，擅长于实施大规模的伤害，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nw2w/Tip=训练兽人术士
 nwat/Tip=训练哨兵
 nwat/Ubertip=基本的地面单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
