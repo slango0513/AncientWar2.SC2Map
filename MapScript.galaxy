@@ -489,7 +489,12 @@ void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug) {
     gf_VenueRevealerEnable(lp_round, true);
     gf_PhalanxCounterEnable(true, true);
     gf_VenueCameraPan(lp_round);
-    gf_TimerSet((20.0), lp_debug);
+    if ((gf_IsFinalRound(lp_round) == true)) {
+        gf_TimerSet((30.0), lp_debug);
+    }
+    else {
+        gf_TimerSet((20.0), lp_debug);
+    }
     gf_AIPhalanxAndPortalPositionAll(lp_round);
     gf_PhalanxCounterEnable(false, false);
     gf_AIPhalanxBuffSetAll(lp_round);
