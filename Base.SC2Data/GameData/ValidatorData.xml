@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CValidatorUnitCompareSpeed id="HeroPitLordRun">
+        <Value value="2.25"/>
+    </CValidatorUnitCompareSpeed>
+    <CValidatorUnitCompareBehaviorCount id="IsNotNaga">
+        <Behavior value="naga"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="IsNaga">
+        <Compare value="GT"/>
+        <Behavior value="naga"/>
+        <ResultFailed value="Error,Errors/Targetnaga"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareSpeed id="KodoRun">
+        <Value value="2.25"/>
+    </CValidatorUnitCompareSpeed>
     <CValidatorCombine id="NotAttackingAndNotInCombatWar3">
         <CombineArray value="CasterIsAttackingWar3"/>
         <CombineArray value="CasterInCombat"/>
@@ -206,4 +220,8 @@
         <CombineArray value="IsCloaked"/>
         <CombineArray value="IsHallucinationAny"/>
     </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="HasSwimmingNaga">
+        <Compare value="GT"/>
+        <Behavior value="SwimmingNaga"/>
+    </CValidatorUnitCompareBehaviorCount>
 </Catalog>

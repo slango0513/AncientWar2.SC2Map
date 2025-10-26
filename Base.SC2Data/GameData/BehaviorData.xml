@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
-    <const id="summoned" path="SDamageResponse.TargetFilters" value="Summoned"/>
-    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
     <const id="hero" path="SDamageResponse.TargetFilters" value="Resistant"/>
-    <const id="allies" path="SDamageResponse.TargetFilters" value="Ally"/>
+    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
+    <const id="summoned" path="SDamageResponse.TargetFilters" value="Summoned"/>
     <const id="air" path="SDamageResponse.TargetFilters" value="Air"/>
-    <const id="tree" path="SDamageResponse.TargetFilters" value="HarvestableResource"/>
+    <const id="allies" path="SDamageResponse.TargetFilters" value="Ally"/>
     <const id="item" path="SDamageResponse.TargetFilters" value="Item"/>
-    <const id="player" path="SDamageResponse.TargetFilters" value="Player"/>
+    <const id="tree" path="SDamageResponse.TargetFilters" value="HarvestableResource"/>
     <const id="ancient" path="SDamageResponse.TargetFilters" value="Psionic"/>
-    <const id="enemies" path="SDamageResponse.TargetFilters" value="Enemy"/>
+    <const id="player" path="SDamageResponse.TargetFilters" value="Player"/>
     <const id="structure" path="SDamageResponse.TargetFilters" value="PreventDefeat"/>
-    <const id="self" path="SDamageResponse.TargetFilters" value="Self"/>
-    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="enemies" path="SDamageResponse.TargetFilters" value="Enemy"/>
     <const id="mechanical" path="SDamageResponse.TargetFilters" value="Mechanical"/>
-    <const id="neutral" path="SDamageResponse.TargetFilters" value="Neutral"/>
+    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="self" path="SDamageResponse.TargetFilters" value="Self"/>
     <const id="ground" path="SDamageResponse.TargetFilters" value="Ground"/>
+    <const id="neutral" path="SDamageResponse.TargetFilters" value="Neutral"/>
     <const id="wall" path="SDamageResponse.TargetFilters" value="Hover"/>
     <const id="dead" path="SDamageResponse.TargetFilters" value="Dead"/>
     <const id="ethereal" path="SDamageResponse.TargetFilters" value="Stasis"/>
-    <const id="invulnerable" path="SDamageResponse.TargetFilters" value="Invulnerable"/>
     <const id="debris" path="SDamageResponse.TargetFilters" value="Destructible"/>
+    <const id="invulnerable" path="SDamageResponse.TargetFilters" value="Invulnerable"/>
+    <CBehaviorBuff default="1" id="AW2_UnitSwim">
+        <DisableValidatorArray value="HasSwimmingNaga"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff default="1" id="AW2_Item" parent="War3_Passive">
         <EditorCategories value="Race:Other,AbilityorEffectType:Item"/>
         <MaxStackCount value="0"/>
@@ -180,6 +185,17 @@
             <StateFlags index="Untargetable" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="Aabr" parent="War3_AuraCaster">
+        <Requirements value="Aabr"/>
+    </CBehaviorBuff>
+    <!--Aura - Plague (Abomination) Buff=Bapl-->
+    <CBehaviorBuff id="Aap1">
+        <Requirements value=""/>
+    </CBehaviorBuff>
+    <!--Aura - Plague (Plague Ward) Buff=Bapl,Bplg-->
+    <CBehaviorBuff id="Aap2">
+        <Requirements value=""/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="Adef">
         <Modification MoveSpeedMultiplier="0.5"/>
     </CBehaviorBuff>
@@ -216,6 +232,19 @@
     <CBehaviorBuff id="BIcb">
         <Modification LifeArmorBonus="-10"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="BNht1">
+        <Modification>
+            <DamageDealtFraction index="Melee" value="-0.5"/>
+            <DamageDealtFraction index="Ranged" value="-0.5"/>
+        </Modification>
+        <Duration value="30"/>
+        <DurationOverride index="0" Duration="30">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BNms1">
+        <Modification EnergyDamageRatioBonus="5"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="BUau1">
         <MaxStackCount value="0"/>
         <MaxStackCountPerCaster value="1"/>
@@ -229,6 +258,14 @@
         <DamageResponse>
             <Kind index="Ranged" value="0"/>
         </DamageResponse>
+    </CBehaviorBuff>
+    <!--AuraBlightRegen-->
+    <CBehaviorBuff id="Babr">
+        <MaxStackCount value="0"/>
+        <MaxStackCountPerCaster value="1"/>
+        <Modification>
+            <RateMultiplierArray index="Cooldown" value="1.25"/>
+        </Modification>
     </CBehaviorBuff>
     <!--Cripple-->
     <CBehaviorBuff id="Bcri">
@@ -518,6 +555,26 @@
             <DamageDealtFraction index="Ranged" value="0.25"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="Swimming" parent="War3_Buff">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnsummonwaterelemental.dds"/>
+        <Modification MoveSpeedMaximum="1" AttackSpeedMultiplier="0.75"/>
+        <Duration value="2"/>
+        <DurationOverride index="0" Duration="2">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Alignment value="Negative"/>
+        <RemoveValidatorArray value="IsNotNaga"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SwimmingNaga" parent="War3_Buff">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnsummonwaterelemental.dds"/>
+        <Duration value="2"/>
+        <DurationOverride index="0" Duration="2">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Modification MoveSpeedMinimum="3" AttackSpeedMultiplier="1.25"/>
+        <RemoveValidatorArray value="IsNaga"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="TeleportMarker" parent="War3_Passive">
         <Requirements value="TeleportMarker"/>
     </CBehaviorBuff>
@@ -574,5 +631,15 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="ngnw" parent="War3_Passive">
         <DamageResponse Chance="1" Fatal="1" Handled="ngno"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NagaMyrmidoSwim" parent="AW2_UnitSwim">
+        <Modification Height="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NagaRoyalGuardSwim" parent="AW2_UnitSwim">
+        <Modification Height="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="naga" parent="War3_UnitClass"/>
+    <CBehaviorBuff id="undead">
+        <SortIndex value="1"/>
     </CBehaviorBuff>
 </Catalog>

@@ -205,6 +205,64 @@
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
+    <!--magtheridon-->
+    <CActorUnit id="Nmag" parent="War3_Army" unitSound="PitLord" unitName="Nmag" defType="LARGE">
+        <On Terms="Behavior.HeroPitLordRun.On" Send="AnimGroupApply Fast"/>
+        <On Terms="Behavior.HeroPitLordRun.Off" Send="AnimGroupRemove Fast"/>
+        <On Terms="Behavior.HeroPitLordRun.On" Send="SetWalkAnimMoveSpeed 3.5"/>
+        <On Terms="Behavior.HeroPitLordRun.Off" Send="SetWalkAnimMoveSpeed 2.1093"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnPitLord.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnPitLord.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnPitLord.dds"/>
+        <BarWidth value="150"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="90"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--mannoroth-->
+    <CActorUnit id="Nman" parent="War3_Army" unitSound="PitLord" unitName="Nman" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnMannoroth.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnMannoroth.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnMannoroth.dds"/>
+        <BarWidth value="150"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="90"/>
+        <WalkAnimMoveSpeed value="1.9531"/>
+    </CActorUnit>
+    <!--seawitch-->
+    <CActorUnit id="Nngs" parent="War3_Army" unitSound="SeaWitch" unitName="Nngs" defType="NONE">
+        <On Terms="StatusOn.*.ForceChannel" Send="AnimPlay channel Spell AssetDrivenLooping"/>
+        <On Terms="AnimDone.*.Complete; AnimName channel; IsStatus ForceChannel 1" Send="AnimPlay channel Spell AssetDrivenLooping"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnNagaSeaWitch.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnNagaSeaWitch.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnNagaSeaWitch.dds"/>
+        <BarWidth value="100"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="120"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--pitlord-->
+    <CActorUnit id="Nplh" parent="War3_Army" unitSound="HeroPitLord" unitName="Nplh" defType="LARGE">
+        <On Terms="Behavior.HeroPitLordRun.On" Send="AnimGroupApply Fast"/>
+        <On Terms="Behavior.HeroPitLordRun.Off" Send="AnimGroupRemove Fast"/>
+        <On Terms="Behavior.HeroPitLordRun.On" Send="SetWalkAnimMoveSpeed 3.5"/>
+        <On Terms="Behavior.HeroPitLordRun.Off" Send="SetWalkAnimMoveSpeed 2.1093"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnPitLord.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnPitLord.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnPitLord.dds"/>
+        <BarWidth value="125"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="100"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
     <!--blademaster-->
     <CActorUnit id="Obla" parent="War3_Army" unitSound="HeroBladeMaster" unitName="Obla" defType="MEDIUM">
         <On Terms="Behavior.BOwkExtraDamage.On" Send="AnimGroupApply Slam"/>
@@ -978,6 +1036,45 @@
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
         <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-MEDIUM.tga"/>
     </CActorUnit>
+    <!--lobstrokktidallord-->
+    <CActorUnit id="nlkl" parent="War3_Army" unitSound="Lobstrokk" unitName="nlkl" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnLobstrokkGreen.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnLobstrokkGreen.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnLobstrokkGreen.dds"/>
+        <BarWidth value="125"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonSmallDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--lobstrokkprawn-->
+    <CActorUnit id="nlpr" parent="War3_Army" unitSound="Lobstrokk" unitName="nlpr" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnLobstrokkRed.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnLobstrokkRed.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnLobstrokkRed.dds"/>
+        <BarWidth value="70"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonSmallDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--lobstrokktidecaller-->
+    <CActorUnit id="nltc" parent="War3_Army" unitSound="Lobstrokk" unitName="nltc" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnLobstrokkBlue.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnLobstrokkBlue.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnLobstrokkBlue.dds"/>
+        <BarWidth value="75"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonSmallDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
     <!--medivh-->
     <CActorUnit id="nmed" parent="War3_Army" unitSound="Medivh" unitName="nmed" defType="NONE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnMedivh.dds"/>
@@ -1029,6 +1126,113 @@
         <BarOffset value="100"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.3437"/>
+    </CActorUnit>
+    <!--nagamyrmidon-->
+    <CActorUnit id="nmyr" parent="War3_Army" unitSound="NagaMyrmidon" unitName="nmyr" defType="LARGE">
+        <On Terms="Behavior.NagaMyrmidoSwim.On" Send="AnimGroupApply Swim"/>
+        <On Terms="Behavior.NagaMyrmidoSwim.Off" Send="AnimGroupRemove Swim"/>
+        <On Terms="Behavior.NagaMyrmidoSwim.On" Send="SetWalkAnimMoveSpeed 3.5"/>
+        <On Terms="Behavior.NagaMyrmidoSwim.Off" Send="SetWalkAnimMoveSpeed 2.1093"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnNagaMyrmidon.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnNagaMyrmidon.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnNagaMyrmidon.dds"/>
+        <BarWidth value="87"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--nagamyrmidonmorph-->
+    <CActorUnit id="nmys" parent="War3_Army" unitSound="NagaMyrmidon" unitName="nmys" defType="LARGE">
+        <On Terms="Behavior.NagaMyrmidoSwim.On" Send="AnimGroupApply Swim"/>
+        <On Terms="Behavior.NagaMyrmidoSwim.Off" Send="AnimGroupRemove Swim"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply Alternate {} {} Instant"/>
+        <On Terms="UnitPortrait.*.Configure" Target="::PortraitGameSelf" Send="AnimGroupApply Alternate {} {} Instant"/>
+        <EditorModel value="War3_ClickHelper"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnNagaMyrmidon.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnNagaMyrmidon.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnNagaMyrmidon.dds"/>
+        <BarWidth value="87"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="100"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
+    </CActorUnit>
+    <!--nagamurgul-->
+    <CActorUnit id="nnmg" parent="War3_Army" unitSound="Murloc" unitName="nnmg" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnMurgulTideWarrior.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnMurgulTideWarrior.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnMurgulTideWarrior.dds"/>
+        <BarWidth value="57"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="0"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonSmallDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--nagaroyalguard-->
+    <CActorUnit id="nnrg" parent="War3_Army" unitSound="NagaRoyalGuard" unitName="nnrg" defType="LARGE">
+        <On Terms="Behavior.NagaRoyalGuardSwim.On" Send="AnimGroupApply Swim"/>
+        <On Terms="Behavior.NagaRoyalGuardSwim.Off" Send="AnimGroupRemove Swim"/>
+        <On Terms="Behavior.NagaRoyalGuardSwim.On" Send="SetWalkAnimMoveSpeed 3.5"/>
+        <On Terms="Behavior.NagaRoyalGuardSwim.Off" Send="SetWalkAnimMoveSpeed 2.5"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnNagaMyrmidonRoyalGuard.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnNagaMyrmidonRoyalGuard.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnNagaMyrmidonRoyalGuard.dds"/>
+        <BarWidth value="112"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.5"/>
+    </CActorUnit>
+    <!--nagaroyalguardmorph-->
+    <CActorUnit id="nnrs" parent="War3_Army" unitSound="NagaRoyalGuard" unitName="nnrs" defType="LARGE">
+        <On Terms="Behavior.NagaRoyalGuardSwim.On" Send="AnimGroupApply Swim"/>
+        <On Terms="Behavior.NagaRoyalGuardSwim.Off" Send="AnimGroupRemove Swim"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply Alternate {} {} Instant"/>
+        <On Terms="UnitPortrait.*.Configure" Target="::PortraitGameSelf" Send="AnimGroupApply Alternate {} {} Instant"/>
+        <EditorModel value="War3_ClickHelper"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnNagaMyrmidonRoyalGuard.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnNagaMyrmidonRoyalGuard.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnNagaMyrmidonRoyalGuard.dds"/>
+        <BarWidth value="112"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="100"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
+    </CActorUnit>
+    <!--summoner-->
+    <CActorUnit id="nnsu" parent="War3_Army" unitSound="NagaSiren" unitName="nnsu" defType="NONE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnNagaSummoner.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnNagaSummoner.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnNagaSummoner.dds"/>
+        <BarWidth value="50"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="160"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--siren-->
+    <CActorUnit id="nnsw" parent="War3_Army" unitSound="NagaSiren" unitName="nnsw" defType="NONE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnSeaWitch.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnSeaWitch.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnSeaWitch.dds"/>
+        <BarWidth value="50"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="100"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <!--nerubianwebspinner-->
     <CActorUnit id="nnwl" parent="War3_Army" unitSound="Nerubian" unitName="nnwl" defType="MEDIUM">
@@ -1423,4 +1627,10 @@
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_UndeadLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
+    <CActorModel id="AabrTarget">
+        <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="Behavior.Aabr.On" Send="Create"/>
+        <On Terms="Behavior.Aabr.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachHarnessSoft SOpShadow" HoldRotation="1"/>
+    </CActorModel>
 </Catalog>

@@ -18,8 +18,14 @@ AHds/Ubertip=在<d ref="Effect,BHds1,Duration"/>秒内使得圣骑士对所有�
 AHhb/Ubertip=圣光术能治疗友方单位<d ref="Effect,AHhbHeal1,RechargeVitalRate"/>点的生命值或者对敌方的亡灵单位造成一半的伤害。
 AHre/Ubertip=复活周围<d ref="Effect,AHre,MaxCount"/>个友方单位。
 AHwe/Ubertip=召唤出一个具有<d ref="Unit,hwat,LifeStart"/>生命值的水元素来帮大魔法师进行战斗。攻击力为<d ref="Effect,hwat1,Amount"/>点。<n/>持续</c><d ref="Behavior,BHwe,Duration"/>秒。<n/><n/><c val="ffcc00">能攻击地面和空中单位。
+AIct/Tip=变更昼夜
+AIct/Ubertip=变更昼夜。
 AIpv/Tip=吸血药水
 AIpv/Ubertip=增加<d ref="Behavior,BIpv,Modification.DamageDealtUnscaled[Melee]"/>点攻击力，且在攻击的同时生命吸取。<n/>持续<d ref="Behavior,BIpv,Duration"/>秒。
+ANdo/Ubertip=使一个目标遭到恶魔附身。被折磨的单位无法施放任何魔法直至死亡。在它死亡后，一个巨大的恶魔将从他的尸体上诞生。末日降临无法被驱散或取消。
+ANht/Ubertip=深渊领主发出恐怖的嚎叫，使周围敌人在恐惧中战栗，减少他们的伤害<d ref="-Behavior,BNht1,Modification.DamageDealtFraction[Melee] * 100"/>%，持续<d ref="Behavior,BNht1,Duration"/>秒。
+ANms/Ubertip=激活一个护盾，护盾会消耗法力值来吸收伤害，每一点法力值吸收<d ref="Behavior,BNms1,Modification.EnergyDamageRatioBonus"/>点伤害。
+ANrf/Ubertip=召唤数波火焰之雨从天而降，每阵火雨会造成<d ref="Effect,ANrfDamage1,Amount"/>点的伤害。<n/>持续<d ref="Effect,ANrf1,PeriodCount + 1"/>波。
 ANth/Ubertip=海龟身上的针形尖刺能将敌人50%的攻击力化为对敌人的伤害。
 AOae/Ubertip=增加周围单位<d ref="Behavior,BOae1,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度和<d ref="Behavior,BOae1,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度。<n/>最多叠加<d ref="Behavior,BOae1,MaxStackCount"/>层。
 AObu1/Tip=建造近战部队
@@ -46,6 +52,7 @@ AUbuUnit/Ubertip=打开一个你所能建造的建筑物的列表。
 AUfa/Ubertip=使目标身上具有一层霜冻保护。这保护层能增加<d ref="Behavior,BUfa1,Modification.LifeArmorBonus"/>点护甲值并使近战攻击该目标的敌人在<d ref="Behavior,Bfro,Duration"/>秒内减速。<n/>持续<d ref="Behavior,BUfa1,Duration"/>秒。
 AUim/Ubertip=地穴领主每次攻击时以巨爪震击地面，射出一道直线形尖刺波，造成伤害，并将其轨迹上的敌地面单位抛入空中，使他们晕眩<d ref="Effect,AUim1Dur,Duration"/>秒。
 AW2_Army/Name=AW2_Army
+Aabr/Ubertip=让周围亡灵族友方单位加快其<d ref="Behavior,Babr,Modification.RateMultiplierArray[Cooldown] - 1 * 100"/>%的冷却速度。不能和荒芜一起发挥作用。
 Aakb/Ubertip=能增加周围友方单位<d ref="Behavior,Bakb,Modification.DamageDealtFraction[Melee] * 100" precision="1"/>%的攻击力。<n/>最多叠加<d ref="Behavior,Bakb,MaxStackCount"/>层。
 Aapl/Ubertip=用疾病来感染周围的敌人。疾病之云每秒能对敌人造成<d ref="Effect,BaplDPS,Amount"/>点的伤害。<n/>持续<d ref="Behavior,Bapl,Duration"/>秒。
 Abil/Name/AmovWorker=AmovWorker
@@ -85,7 +92,10 @@ Attribute002/Value001/Name=混战
 Attribute002/Value002/Name=2V2V2V2
 Auhf/Ubertip=增加目标单位<d ref="Behavior,Buhf,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度，但是每秒也会消耗目标<d ref="Effect,BuhfDPS,Amount"/>点的生命值。<n/>持续<d ref="Behavior,Buhf,Duration"/>秒。
 Aweb/Ubertip=将目标单位用一张网来捕获到地面，从而地面上的单位可以对其进行攻击。<n/>持续<d ref="Behavior,Bwea,Duration"/>秒。
+Awrs/Ubertip=重击地面，对周围的地面单位造成<d ref="Effect,AOwsDamage1,Amount"/>点的伤害并使其昏迷<d ref="Effect,AOws1Dur,Duration"/>秒。
 BIpv/Buffubertip=该单位喝了吸血药水；它的攻击力提高，并获得了吸血能力。
+BNdo/Buffubertip=该单位被恶魔附身；它将无法施法直至死亡，一个恶魔将会从他的尸体上诞生。末日降临无法被驱散或取消。
+Babr/Buffubertip=该单位处在荒芜光环的作用之下，因此其冷却速度加快了。
 Behavior/Name/AW2_ArmyUser=AW2_ArmyUser
 Behavior/Name/AW2_PathingBlocker=AW2_PathingBlocker
 Behavior/Name/Building=Building
@@ -99,6 +109,9 @@ Bushido/Tip=激活武士道
 Bushido/Ubertip=激活该战术制度，使方阵内所有单位遵循武士道，在生命值低于<d ref="Validator,CasterLifeLT50Percent,Value * 100"/>%时增加<d ref="Behavior,Bushido,Modification.DamageDealtFraction[Melee] * 100"/>%的攻击力。
 BushidoUn/Tip=关闭武士道
 BushidoUn/Ubertip=关闭武士道。
+CallTide/Name=召潮
+CallTide/Tip=召潮
+CallTide/Ubertip=召潮。
 CmdPurchaseHuman/Tip=出售物品
 CmdPurchaseHuman/Ubertip=能显示出当前你所能购买的物品。
 CmdPurchaseNightElf/Tip=出售物品
@@ -113,7 +126,6 @@ DOCSTR_0001=BracketOpen
 DOCSTR_0002=BracketOpen
 DOCSTR_0003=星灵单位
 DOCSTR_0004=星灵单位
-Defend/Name=防御
 Defend/Tip=防御
 Defend/Ubertip=激活后只会受到50%的穿刺攻击伤害。如果防御状态被激活，移动速度会变成<d ref="Behavior,Defend,Modification.MoveSpeedMultiplier * 100"/>%的常规速度。
 DefendUn/Tip=停止防御
@@ -124,9 +136,11 @@ DocInfo/PatchNote001=完成种族人类。
 DocInfo/PatchNote002=完成种族亡灵。
 Effect/Name/AIpv=AIpv
 Effect/Name/AW2_NormalDamage=AW2_NormalDamage
+Effect/Name/AabrSearch=AabrSearch
 Effect/Name/Aps2Remove=Aps2Remove
 Effect/Name/AsalTriggerNotice=AsalTriggerNotice
 Effect/Name/BIpv=BIpv
+Effect/Name/Babr=Babr
 Effect/Name/CountPhalanxTriggerNotice=CountPhalanxTriggerNotice
 Effect/Name/CountUnitRemove=CountUnitRemove
 Effect/Name/CountUnitTriggerNotice=CountUnitTriggerNotice
@@ -203,6 +217,14 @@ Nbbc/Ubertip=价值：<c val="ffffff"><d ref="Unit,Nbbc,KillResource[2]"/></c><n
 Nbrn/Tip=升级到黑暗游侠
 Nbrn/Ubertip=远程攻击单位。拥有艾露恩的赐福技能。还能施放黑暗箭。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c> 
 NightElfPhalanxPlaceholder/Name=NightElfPreviewer
+Nmag/Tip=升级到玛瑟里顿
+Nmag/Ubertip=重型的近战单位，具有荒芜光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+Nman/Propernames=玛诺洛斯
+Nman/Tip=升级到玛诺洛斯
+Nman/Ubertip=重型的近战单位，善于恐吓敌人。能施放恐惧嚎叫。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+Nngs/Tip=升级到纳迦海巫
+Nplh/Tip=训练深渊领主
+Nplh/Ubertip=重型的近战单位，具有分裂攻击技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Obla/Tip=训练剑圣
 Obla/Ubertip=价值：<c val="ffffff"><d ref="Unit,Obla,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">中甲</c><n/>生命：<c val="ffffff"><d ref="Unit,Obla,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,Obla,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,Obla,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">攻城</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,Obla1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,Obla1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,Obla1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">吸血药水</c><n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Ofar/Tip=训练先知
@@ -243,6 +265,7 @@ Param/Expression/E9329EDD=PlayerC ~A~ vs ~B~, ~C~ vs ~D~, ~E~ vs ~F~, ~G~ vs ~H~
 Param/Expression/EA367955=第~I~回合：~A~ vs ~B~，~C~ vs ~D~，~E~ vs ~F~，~G~ vs ~H~。
 Param/Expression/F33720A6=回合<c val="FFFF00">~A~</c>
 Param/Expression/F3F549EF=~A~~B~
+Param/Expression/FC66627E=PathCost=~A~ Distance=~B~
 Param/Value/317E0CA0=在整场比赛获胜！
 Param/Value/44054E35=
 Param/Value/58BD0FA7=计分板
@@ -250,6 +273,7 @@ Param/Value/5F942B70=剩余时间
 Param/Value/87E4737D=击杀奖励
 Param/Value/A4868C6E=建造奖励
 Param/Value/C201E5C3=玩家
+Param/Value/CC4C1E4D=潮汐
 Param/Value/EE8A9ECA= vs 
 Param/Value/F4A0DF83=在本回合获胜。
 RotationSystem/Buffubertip=该单位遵循轮换制，在生命值较低时会脱离到稍后的位置。
@@ -260,6 +284,10 @@ RotationSystemOn/Name=RotationSystemPhalanx
 RotationSystemPhalanx/Name=RotationSystemMarker
 RotationSystemUn/Tip=关闭轮换制
 RotationSystemUn/Ubertip=关闭轮换制。
+Swimming/Buffubertip=该单位正在游泳，其最大移动速度和攻击速度都会下降。
+Swimming/Name=游泳
+SwimmingNaga/Buffubertip=该单位正在游泳，其最小移动速度和攻击速度都会提高。
+SwimmingNaga/Name=游泳
 Teleport/Name=传送
 Teleport/Tip=传送
 Ucrl/Tip=升级到地穴领主
@@ -386,10 +414,15 @@ nhy2/Name=水占师
 nhym/Ubertip=灵活的远程攻击单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nitp/Tip=训练冰霜巨魔牧师
 nitp/Ubertip=价值：<c val="ffffff"><d ref="Unit,nitp,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">无甲</c><n/>生命：<c val="ffffff"><d ref="Unit,nitp,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,nitp,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,nitp,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">魔法</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,nitp1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,nitp1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,nitp1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">治疗术</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+nlkl/Tip=升级到龙虾人潮汐领主
+nlpr/Tip=训练龙虾人
+nltc/Tip=升级到龙虾人召潮者
 nmed/Tip=升级到麦迪文
 nmgd/Ubertip=重型的近战单位，具有分裂攻击技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nmgr/Ubertip=重型的近战单位，具有分裂攻击技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nmgw/Ubertip=重型的近战单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+nnrg/Tip=升级到纳迦皇家卫兵
+nnsu/Tip=升级到召唤者
 nnwl/Tip=升级到尼拉布织网者
 nnwl/Ubertip=远程攻击单位，能将一个目标空中单位固定在地面上。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nnwr/Tip=升级到尼拉布先知
