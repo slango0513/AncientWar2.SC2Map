@@ -69,6 +69,18 @@
         <ExtendRadius value="9"/>
     </CTargetFindEnumArea>
     <CTargetFindEnumArea id="SentryWard"/>
+    <CTargetFindEnumArea id="UnholyFrenzy">
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray/>
+        <Abil value="Auhf"/>
+        <TargetSorts>
+            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSDistance"/>
+        </TargetSorts>
+        <TargetFilters value="Visible;Neutral,Enemy,Hover,Missile,Dead,Invulnerable,Unstoppable"/>
+        <TargetValidator value="AIUnholyFrenzyTarget"/>
+    </CTargetFindEnumArea>
     <CTargetFindEnumArea id="Doom">
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
         <AreaArray/>
@@ -79,7 +91,6 @@
         </TargetSorts>
         <TargetFilters value="Visible;Player,Ally,Neutral,Hover,Missile,Dead,Invulnerable,Unstoppable"/>
         <TargetValidator value="AIDoomTarget"/>
-        <ExtendRadius value="10"/>
     </CTargetFindEnumArea>
     <CTargetFindSet id="HolyLight">
         <Array value="HolyLightHeal"/>

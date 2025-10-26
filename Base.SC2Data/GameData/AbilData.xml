@@ -224,7 +224,7 @@
             <Vital index="Energy" value="60"/>
             <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
-        <Range value="5.0781"/>
+        <Range value="15"/>
         <PrepTime value="0.75"/>
         <CastOutroTime value="0.51"/>
         <Effect index="0" value="BNdo"/>
@@ -407,8 +407,8 @@
         <InfoArray index="Build2" Unit="ugho">
             <Button DefaultButtonFace="ugho" Requirements="BuildArmy"/>
         </InfoArray>
-        <InfoArray index="Build3" Unit="ugho">
-            <Button DefaultButtonFace="ugho" Requirements="BuildArmy"/>
+        <InfoArray index="Build3" Unit="ndrv">
+            <Button DefaultButtonFace="ndrv" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build4" Unit="uban">
             <Button DefaultButtonFace="uban" Requirements="BuildArmy"/>
@@ -617,6 +617,10 @@
         <AutoCastValidatorArray value="NoInnerFire"/>
         <AutoCastValidatorArray value="noMarkers"/>
     </CAbilEffectTarget>
+    <CAbilInventory id="Aiun" parent="AW2_UnitInventory">
+        <InfoArray/>
+        <InfoArray/>
+    </CAbilInventory>
     <!--Spell Steal-->
     <CAbilEffectTarget id="Asps" parent="AW2_EffectTarget">
         <EditorCategories value="Race:Human,AbilityorEffectType:Unit"/>
@@ -740,13 +744,17 @@
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="Auhf">
-        <CmdButtonArray index="Execute" Requirements="">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
-        <CmdButtonArray index="Cancel">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
+    <CAbilEffectTarget id="Auhf" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
+        <TargetFilters index="0" value="-;mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
+        <Cost index="0">
+            <Vital index="Energy" value="15"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </Cost>
+        <Range value="9"/>
+        <PrepTime value="0.5"/>
+        <CastOutroTime value="0.5"/>
+        <Effect index="0" value="Buhf"/>
     </CAbilEffectTarget>
     <!--War Stomp (creep) Dur=3 HeroDur=2 Buff=BPSE-->
     <CAbilEffectInstant id="Awrs" parent="AW2_EffectInstant">
@@ -855,15 +863,15 @@
         </CmdButtonArray>
         <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
         <Cost index="0">
-            <Vital index="Energy" value="10"/>
+            <Vital index="Energy" value="15"/>
             <Cooldown Location="Unit" TimeUse="20"/>
         </Cost>
-        <Range value="4.6875"/>
+        <Range value="9"/>
         <PrepTime value="0.5"/>
         <FinishTime value="0.5"/>
         <Alignment value="Positive"/>
         <AutoCastFilters value="Visible;-"/>
-        <AutoCastRange value="4.6875"/>
+        <AutoCastRange value="9"/>
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
         <Flags index="WaitToSpend" value="1"/>
@@ -1312,6 +1320,9 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToUear" parent="AW2_Upgrade" toUnit="Uear">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonrvd" parent="AW2_Upgrade" toUnit="nrvd">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
 </Catalog>

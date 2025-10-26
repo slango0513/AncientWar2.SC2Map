@@ -32,11 +32,19 @@
         <Field value="TechAliasArray[0]"/>
         <Value value="_MeleeUnit"/>
     </CValidatorUnitCompareField>
+    <CValidatorUnitCompareField id="KillResourceTerrazineGE5">
+        <Field value="KillResource[Terrazine]"/>
+        <Value value="5"/>
+        <Compare value="GE"/>
+    </CValidatorUnitCompareField>
     <CValidatorUnitCompareBehaviorCount id="NoPossession">
         <Behavior value="Bpos"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NoPolymorph">
         <Behavior value="Bply"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoUnholyFrenzy">
+        <Behavior value="Buhf"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NoDoom">
         <Behavior value="BNdo"/>
@@ -122,6 +130,13 @@
     <CValidatorCombine id="AISlowTarget">
         <Type value="And"/>
         <CombineArray value="NoSlow"/>
+        <CombineArray value="noMarkers"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="AIUnholyFrenzyTarget">
+        <Type value="And"/>
+        <CombineArray value="TargetLifeGE200"/>
+        <CombineArray value="KillResourceTerrazineGE5"/>
+        <CombineArray value="NoUnholyFrenzy"/>
         <CombineArray value="noMarkers"/>
     </CValidatorCombine>
     <CValidatorCombine id="AIDoomTarget">

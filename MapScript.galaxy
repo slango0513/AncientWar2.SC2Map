@@ -1708,7 +1708,7 @@ void gf_BuildingRegionRevealerEnable (bool lp_option, bool lp_debug) {
     // Variable Initialization
 
     // Implementation
-    gf_TeamAlianceSet(libNtve_ge_AllianceSetting_AllyWithSharedVision);
+    gf_TeamAlianceSet(libNtve_ge_AllianceSetting_Ally);
     auto801F26F4_ae = gv_playerCount;
     auto801F26F4_ai = 1;
     lv_buildingRegion = 1;
@@ -2566,7 +2566,7 @@ void gf_ReserveUnitCreation (unit lp_unit, int lp_player, int lp_phalanx) {
     // Variable Initialization
 
     // Implementation
-    lv_unitIndex = (gf_UnitTypeGetPhalanxCapacity(UnitGetType(lp_unit))+gv_reserveUnitIndex[lp_player][lp_phalanx]);
+    lv_unitIndex = (gf_UnitTypeGetPhalanxCapacity(UnitGetType(lp_unit))+gv_reserveUnitIndex[lp_player][lp_phalanx]+1);
     if ((lv_unitIndex < gv_unitMaximumCountPerPhalanx)) {
         gv_reserveUnitIndex[lp_player][lp_phalanx] += 1;
         lv_unitType = gv_unitType[lp_player][lp_phalanx][lv_unitIndex];
