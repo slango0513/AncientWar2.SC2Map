@@ -73,7 +73,7 @@
     </CEffectCreateHealer>
     <CEffectEnumArea id="AfraSearch" parent="War3_AbilSearch">
         <SearchFilters value="-;player,allies,Structure,wall,tree,Missile,debris,item,ward,dead,Hidden,invulnerable,immunity"/>
-        <AreaArray Radius="1.1718" Effect="Bfro"/>
+        <AreaArray Radius="1.1718" Effect="Bfro10s"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="AfrbSearch" parent="War3_AbilSearch">
         <SearchFilters value="-;player,allies,Structure,wall,tree,Missile,debris,item,ward,dead,Hidden,invulnerable,immunity"/>
@@ -109,7 +109,7 @@
         <Amount value="432"/>
     </CEffectDamage>
     <CEffectDamage id="ncat1" parent="AW2_SiegeDamage">
-        <Amount value="96"/>
+        <Amount value="72"/>
         <AreaArray Radius="1.9531" Fraction="1"/>
         <SearchFilters value="-;player,allies,air,Missile,item,ward,ethereal,dead,invulnerable"/>
         <Death value="Blast"/>
@@ -140,9 +140,47 @@
         <EditorCategories value="Race:Draenei,AbilityorEffectType:Hero"/>
         <SpawnEffect value="Brai"/>
     </CEffectCreateUnit>
+    <CEffectSet id="ndt11MultishotSet">
+        <EffectArray value="ndt11LM"/>
+        <EffectArray value="ndt11MultishotSearch"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="ndt11Multishot" parent="AW2_Multishot">
+        <PeriodCount value="2"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <Marker Link="Effect/ndt11LM"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="ndt11MultishotSearch">
+        <ImpactLocation Value="CasterUnit"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Visible;player,allies,neutral,wall,tree,Missile,item,ethereal,dead,Hidden,invulnerable"/>
+        <AreaArray MaxCount="2" Radius="6" Effect="ndt11LM"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <TargetSorts>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
+    </CEffectEnumArea>
     <CEffectDamage id="ndt11" parent="AW2_MagicDamage">
         <Amount value="96"/>
     </CEffectDamage>
+    <CEffectSet id="ndt21MultishotSet">
+        <EffectArray value="ndt21LM"/>
+        <EffectArray value="ndt21MultishotSearch"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="ndt21Multishot" parent="AW2_Multishot">
+        <PeriodCount value="2"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <Marker Link="Effect/ndt21LM"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="ndt21MultishotSearch">
+        <ImpactLocation Value="CasterUnit"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Visible;player,allies,neutral,wall,tree,Missile,item,ethereal,dead,Hidden,invulnerable"/>
+        <AreaArray MaxCount="2" Radius="6" Effect="ndt21LM"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <TargetSorts>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
+    </CEffectEnumArea>
     <CEffectDamage id="ndt21" parent="AW2_MagicDamage">
         <Amount value="96"/>
         <AreaArray Radius="1.1718" Fraction="1"/>
@@ -168,7 +206,7 @@
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CEffectEnumArea>
     <CEffectDamage id="nft11" parent="AW2_MagicDamage">
-        <Amount value="12"/>
+        <Amount value="48"/>
     </CEffectDamage>
     <CEffectSet id="nft21MultishotSet">
         <EffectArray value="nft21LM"/>
@@ -187,7 +225,7 @@
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CEffectEnumArea>
     <CEffectDamage id="nft21" parent="AW2_MagicDamage">
-        <Amount value="12"/>
+        <Amount value="48"/>
     </CEffectDamage>
     <CEffectDamage id="nskk1" parent="AW2_PierceDamage">
         <Kind value="Melee"/>
@@ -558,16 +596,18 @@
     </CEffectEnumArea>
     <CEffectEnumArea id="AarmSearch" parent="War3_AuraSearch" aura="Barm"/>
     <CEffectDamage id="AbofFullDamage">
-        <Amount value="100"/>
+        <Amount value="50"/>
     </CEffectDamage>
     <CEffectEnumArea id="AbofFullDamageSearch">
         <SearchFilters value="-;player,allies,air,wall,tree,Missile,debris,item,ward,dead,invulnerable"/>
+        <AreaArray index="0" Radius="1.5625" Effect="AbofFullDamageSet"/>
     </CEffectEnumArea>
     <CEffectDamage id="AbofHalfDamage">
-        <Amount value="50"/>
+        <Amount value="25"/>
     </CEffectDamage>
     <CEffectEnumArea id="AbofHalfDamageSearch">
         <SearchFilters value="-;player,allies,air,wall,tree,Missile,debris,item,ward,dead,invulnerable"/>
+        <AreaArray index="0" Radius="1.5625" Effect="AbofHalfDamageSet"/>
     </CEffectEnumArea>
     <CEffectSet id="Awfb">
         <EffectArray value="AwfbMissile"/>
@@ -646,7 +686,7 @@
         <Amount value="25"/>
     </CEffectDamage>
     <CEffectDamage id="FlameAttackDPS" parent="War3_MagicSpellDamage">
-        <Amount value="10"/>
+        <Amount value="15"/>
     </CEffectDamage>
     <CEffectDamage id="ApxfMissileDamage">
         <Amount value="30"/>
@@ -962,6 +1002,22 @@
         <AreaArray index="0" Radius="0.5" Effect="AUimSearchImpactSet"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="AabrSearch" parent="War3_AuraSearch" aura="Babr"/>
+    <CEffectEnumArea id="FlameTowerAuraCasterSearch" parent="War3_AuraSearch" aura="FlameTowerAura">
+        <SearchFilters value="structure;neutral,enemies,wall,tree,Missile,debris,item,ward,dead,Hidden"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="ColdTowerAuraCasterSearch" parent="War3_AuraSearch" aura="ColdTowerAura">
+        <SearchFilters value="structure;neutral,enemies,wall,tree,Missile,debris,item,ward,dead,Hidden"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BoulderTowerAuraCasterSearch" parent="War3_AuraSearch" aura="BoulderTowerAura">
+        <SearchFilters value="structure;neutral,enemies,wall,tree,Missile,debris,item,ward,dead,Hidden"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="EnergyTowerAuraCasterSearch" parent="War3_AuraSearch" aura="EnergyTowerAura">
+        <SearchFilters value="structure;neutral,enemies,wall,tree,Missile,debris,item,ward,dead,Hidden"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="DeathTowerAuraCasterSearch" parent="War3_AuraSearch" aura="DeathTowerAura">
+        <SearchFilters value="summoned;neutral,enemies,wall,tree,Missile,debris,item,ward,dead,Hidden"/>
+        <AreaArray index="0" Radius="500" Effect="DeathTowerAura"/>
+    </CEffectEnumArea>
     <CEffectEnumArea id="EfficiencyAuraCasterSearch" parent="War3_AuraSearch" aura="EfficiencyAura"/>
     <CEffectEnumArea id="InhibitionAuraCasterSearch" parent="War3_AuraSearch" aura="InhibitionAura"/>
     <CEffectEnumArea id="SongOfAncientHuntingCasterSearch" parent="War3_AuraSearch" aura="SongOfAncientHunting"/>
@@ -985,6 +1041,12 @@
         <AreaArray index="1" removed="1"/>
         <AreaArray index="2" removed="1"/>
     </CEffectDamage>
+    <CEffectDamage id="AimpSphereEffect" parent="AW2_SiegeDamage">
+        <Amount value="48"/>
+        <AreaArray Radius="1.1718" Fraction="1"/>
+        <SearchFilters value="-;player,allies,air,wall,Missile,item,ward,ethereal,dead,invulnerable"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
     <CEffectCreateHealer id="AheaHeal">
         <RechargeVitalRate value="75"/>
     </CEffectCreateHealer>
@@ -1004,6 +1066,11 @@
         <Amount value="15"/>
     </CEffectDamage>
     <CEffectApplyBehavior id="Babr" parent="War3_AuraBuff"/>
+    <CEffectApplyBehavior id="FlameTowerAura" parent="War3_AuraBuff"/>
+    <CEffectApplyBehavior id="ColdTowerAura" parent="War3_AuraBuff"/>
+    <CEffectApplyBehavior id="BoulderTowerAura" parent="War3_AuraBuff"/>
+    <CEffectApplyBehavior id="EnergyTowerAura" parent="War3_AuraBuff"/>
+    <CEffectApplyBehavior id="DeathTowerAura" parent="War3_AuraBuff"/>
     <CEffectApplyBehavior id="EfficiencyAura" parent="War3_AuraBuff"/>
     <CEffectApplyBehavior id="InhibitionAura" parent="War3_AuraBuff">
         <ValidatorArray value="TargetIsRider"/>
@@ -1503,7 +1570,7 @@
     </CEffectDamage>
     <CEffectDamage id="nina1" parent="AW2_ChaosDamage">
         <Amount value="432"/>
-        <AreaArray Radius="1.9531" Fraction="1"/>
+        <AreaArray Radius="1.1718" Fraction="1"/>
         <SearchFilters value="-;air,mechanical,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,invulnerable"/>
     </CEffectDamage>
     <CEffectDamage id="ninf1" parent="AW2_ChaosDamage">
@@ -1520,7 +1587,7 @@
     </CEffectCreateUnit>
     <CEffectDamage id="ninm1" parent="AW2_ChaosDamage">
         <Amount value="144"/>
-        <AreaArray Radius="1.9531" Fraction="1"/>
+        <AreaArray Radius="1.1718" Fraction="1"/>
         <SearchFilters value="-;air,mechanical,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,invulnerable"/>
     </CEffectDamage>
     <CEffectDamage id="nlv11" parent="AW2_MagicDamage">
@@ -1549,10 +1616,10 @@
         <EffectArray index="1" value="nsgn1"/>
     </CEffectSet>
     <CEffectDamage id="ntt11" parent="AW2_ChaosDamage">
-        <Amount value="288"/>
+        <Amount value="384"/>
     </CEffectDamage>
     <CEffectDamage id="ntx21" parent="AW2_ChaosDamage">
-        <Amount value="864"/>
+        <Amount value="1152"/>
     </CEffectDamage>
     <CEffectDamage id="nwzd1" parent="AW2_MagicDamage">
         <Amount value="96"/>
@@ -1686,7 +1753,7 @@
     </CEffectDamage>
     <CEffectDamage id="ebal2" parent="AW2_SiegeDamage">
         <Amount value="48"/>
-        <AreaArray Radius="1.9531" Fraction="1"/>
+        <AreaArray Radius="1.1718" Fraction="1"/>
         <SearchFilters value="-;player,allies,air,wall,Missile,item,ward,ethereal,dead,invulnerable"/>
         <Death value="Blast"/>
     </CEffectDamage>
@@ -1963,7 +2030,7 @@
         <Amount value="12"/>
     </CEffectDamage>
     <CEffectDamage id="hmtm1" parent="AW2_SiegeDamage">
-        <Amount value="24"/>
+        <Amount value="36"/>
         <AreaArray Radius="1.9531" Fraction="1"/>
         <SearchFilters value="-;player,allies,air,wall,Missile,item,ward,ethereal,dead,invulnerable"/>
         <Death value="Blast"/>
@@ -2424,7 +2491,7 @@
         <Amount value="72"/>
     </CEffectDamage>
     <CEffectDamage id="ocat1" parent="AW2_SiegeDamage">
-        <Amount value="96"/>
+        <Amount value="144"/>
         <AreaArray Radius="1.9531" Fraction="1"/>
         <SearchFilters value="-;player,allies,air,Missile,item,ward,ethereal,dead,invulnerable"/>
         <Death value="Blast"/>

@@ -54,6 +54,12 @@
     <CBehaviorBuff id="Afra">
         <DamageResponse Handled="AfraSearch"/>
     </CBehaviorBuff>
+    <!--AuraPlague-->
+    <CBehaviorBuff id="Bapl">
+        <DurationOverride index="0" Duration="60">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+    </CBehaviorBuff>
     <CBehaviorBuff id="DarkAttack" parent="War3_Sphere">
         <EditorCategories value="Race:Draenei,AbilityorEffectType:Unit"/>
         <DamageResponse Handled="ushd" TargetFilters="-;Structure,wall,tree,debris,item,ward,dead,invulnerable"/>
@@ -64,7 +70,6 @@
         <DamageResponse Handled="AfrbSearch"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="TowerRecoverTimmer180" parent="AW2_TimeLife">
-        <Name value="TowerTimeLife/Name"/>
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btntower.dds"/>
         <Duration value="180"/>
         <DurationOverride Duration="180">
@@ -74,10 +79,27 @@
         <ExpireEffect value="TimedLifeFateTower"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="TowerRecoverTimmer60" parent="AW2_TimeLife">
-        <Name value="TowerTimeLife2/Name"/>
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btntower.dds"/>
         <Duration value="60"/>
         <DurationOverride Duration="60">
+            <ValidatorArray value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <FinalEffect value=""/>
+        <ExpireEffect value="TimedLifeFateTower"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TowerRecoverTimmer30" parent="AW2_TimeLife">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btntower.dds"/>
+        <Duration value="30"/>
+        <DurationOverride Duration="30">
+            <ValidatorArray value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <FinalEffect value=""/>
+        <ExpireEffect value="TimedLifeFateTower"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TowerRecoverTimmer15" parent="AW2_TimeLife">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btntower.dds"/>
+        <Duration value="15"/>
+        <DurationOverride Duration="15">
             <ValidatorArray value="HeroOrPowerfulMob"/>
         </DurationOverride>
         <FinalEffect value=""/>
@@ -772,6 +794,21 @@
             <BehaviorLinkDisableArray value="HostileSleeperAlert"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="FlameTowerAuraCaster" parent="War3_AuraCaster">
+        <Requirements value="FlameTowerAuraCaster"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ColdTowerAuraCaster" parent="War3_AuraCaster">
+        <Requirements value="ColdTowerAuraCaster"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BoulderTowerAuraCaster" parent="War3_AuraCaster">
+        <Requirements value="BoulderTowerAuraCaster"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EnergyTowerAuraCaster" parent="War3_AuraCaster">
+        <Requirements value="EnergyTowerAuraCaster"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DeathTowerAuraCaster" parent="War3_AuraCaster">
+        <Requirements value="DeathTowerAuraCaster"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="EfficiencyAuraCaster" parent="War3_AuraCaster">
         <Requirements value="EfficiencyAuraCaster"/>
     </CBehaviorBuff>
@@ -1193,6 +1230,51 @@
             <RateMultiplierArray index="Cooldown" value="1.5"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="FlameTowerAura" parent="War3_AuraBuff">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnadvancedflametower.dds"/>
+        <EditorCategories value="Race:Draenei,AbilityorEffectType:Units"/>
+        <MaxStackCount value="2"/>
+        <MaxStackCountPerCaster value="1"/>
+        <Modification AttackSpeedMultiplier="1.25"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ColdTowerAura" parent="War3_AuraBuff">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnadvancedfrosttower.dds"/>
+        <EditorCategories value="Race:Draenei,AbilityorEffectType:Units"/>
+        <MaxStackCount value="2"/>
+        <MaxStackCountPerCaster value="1"/>
+        <Modification LifeArmorBonus="5">
+            <VitalRegenArray index="Life" value="5"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BoulderTowerAura" parent="War3_AuraBuff">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnadvancedrocktower.dds"/>
+        <EditorCategories value="Race:Draenei,AbilityorEffectType:Units"/>
+        <MaxStackCount value="2"/>
+        <MaxStackCountPerCaster value="1"/>
+        <Modification>
+            <VitalMaxArray index="Life" value="100"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EnergyTowerAura" parent="War3_AuraBuff">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnadvancedenergytower.dds"/>
+        <EditorCategories value="Race:Draenei,AbilityorEffectType:Units"/>
+        <MaxStackCount value="2"/>
+        <MaxStackCountPerCaster value="1"/>
+        <Modification RangedWeaponRange="2" WeaponScanBonus="2">
+            <DamageDealtFraction index="Spell" value="0.5"/>
+            <DamageDealtFraction index="Melee" value="0.25"/>
+            <DamageDealtFraction index="Ranged" value="0.25"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DeathTowerAura" parent="War3_AuraBuff">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnadvanceddeathtower.dds"/>
+        <EditorCategories value="Race:Draenei,AbilityorEffectType:Units"/>
+        <MaxStackCount value="2"/>
+        <MaxStackCountPerCaster value="1"/>
+        <Modification>
+            <VitalMaxFractionArray index="Life" value="0.5"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="EfficiencyAura" parent="War3_AuraBuff">
         <EditorCategories value="Race:Goblin,AbilityorEffectType:Units"/>
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnengineeringupgrade.dds"/>
@@ -1358,7 +1440,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="Aeib" parent="War3_Passive">
         <Requirements value="Aeib"/>
-        <Modification RangedWeaponRange="3" WeaponScanBonus="3"/>
+        <Modification RangedWeaponRange="8" WeaponScanBonus="8"/>
     </CBehaviorBuff>
     <!--FaerieFire-->
     <CBehaviorBuff id="Bfae">
@@ -1387,12 +1469,12 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="FlameAttack" parent="War3_Buff">
         <Alignment value="Negative"/>
-        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnfirebolt.dds"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnfire.dds"/>
         <BehaviorCategories index="User1" value="1"/>
         <EditorCategories value="Race:Draenei,AbilityorEffectType:Units"/>
         <TechAliasArray value="_Debuff"/>
-        <Duration value="10"/>
-        <DurationOverride index="0" Duration="5">
+        <Duration value="120"/>
+        <DurationOverride index="0" Duration="60">
             <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
         </DurationOverride>
         <Period value="1"/>

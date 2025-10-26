@@ -342,6 +342,8 @@ trigger gt_AllianceInizialization;
 trigger gt_ScoreBoardInizialization;
 trigger gt_TimerInizialization;
 trigger gt_PlayerInizialization;
+trigger gt_AimpImpact;
+trigger gt_AbofImpact;
 trigger gt_TimedLifeFateTower;
 trigger gt_DreamIllusion;
 trigger gt_Transmute;
@@ -4596,6 +4598,81 @@ void gt_PlayerInizialization_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: Aimp - Impact
+//--------------------------------------------------------------------------------------------------
+bool gt_AimpImpact_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_u;
+
+    // Variable Initialization
+    lv_u = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitBehaviorEnabled(lv_u, "Aimp") == true))) {
+            return false;
+        }
+
+        if (!((UnitHasBehavior(lv_u, "Aimp") == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitCreateEffectPoint(lv_u, "AimpSphereEffect", PointInterpolate(UnitGetPosition(lv_u), EventPlayerEffectUsedPoint(c_effectLocationTargetPoint), 1.33));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_AimpImpact_Init () {
+    gt_AimpImpact = TriggerCreate("gt_AimpImpact_Func");
+    TriggerAddEventPlayerEffectUsed(gt_AimpImpact, c_playerAny, "ebal1");
+    TriggerAddEventPlayerEffectUsed(gt_AimpImpact, c_playerAny, "ebal2");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Abof - Impact
+//--------------------------------------------------------------------------------------------------
+bool gt_AbofImpact_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_u;
+
+    // Variable Initialization
+    lv_u = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitBehaviorEnabled(lv_u, "Abof") == true))) {
+            return false;
+        }
+
+        if (!((UnitHasBehavior(lv_u, "Abof") == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitCreateEffectPoint(lv_u, "AbofSphereEffect", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint));
+    UnitCreateEffectPoint(lv_u, "AbofSphereEffect", PointInterpolate(UnitGetPosition(lv_u), EventPlayerEffectUsedPoint(c_effectLocationTargetPoint), 1.25));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_AbofImpact_Init () {
+    gt_AbofImpact = TriggerCreate("gt_AbofImpact_Func");
+    TriggerAddEventPlayerEffectUsed(gt_AbofImpact, c_playerAny, "ncat1");
+    TriggerAddEventPlayerEffectUsed(gt_AbofImpact, c_playerAny, "ncat2");
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: Timed Life Fate Tower
 //--------------------------------------------------------------------------------------------------
 bool gt_TimedLifeFateTower_Func (bool testConds, bool runActions) {
@@ -6262,6 +6339,8 @@ void InitTriggers () {
     gt_ScoreBoardInizialization_Init();
     gt_TimerInizialization_Init();
     gt_PlayerInizialization_Init();
+    gt_AimpImpact_Init();
+    gt_AbofImpact_Init();
     gt_TimedLifeFateTower_Init();
     gt_DreamIllusion_Init();
     gt_Transmute_Init();

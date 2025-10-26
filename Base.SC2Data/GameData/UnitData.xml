@@ -1868,19 +1868,17 @@
         <Attributes index="fort" value="1"/>
         <CostResource index="gold" value="75"/>
         <KillResource index="Custom" value="75"/>
-        <LifeStart value="250"/>
-        <LifeMax value="250"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
         <AbilArray index="4" Link="TowerRecoverTimmer180"/>
         <AbilArray Link="DraeneiInventory"/>
         <AbilArray Link="UpgradeTonbt2"/>
         <RepairTime value="20"/>
         <Race value="Draenei"/>
         <GlossaryCategory value="Unit/Category/DraeneiUnits"/>
-        <BehaviorArray Link="ACmi"/>
         <CardLayouts index="0">
             <LayoutButtons Face="nbt2" Type="AbilCmd" AbilCmd="UpgradeTonbt2,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="ACmi" Type="Passive" Behavior="ACmi" Row="2" Column="0"/>
-            <LayoutButtons Face="BoulderAttack" Type="Passive" Row="2" Column="1"/>
+            <LayoutButtons Face="BoulderAttack" Type="Passive" Row="2" Column="0"/>
         </CardLayouts>
     </CUnit>
     <!--boulder tower upgraded-->
@@ -1889,17 +1887,17 @@
         <Attributes index="fort" value="1"/>
         <CostResource index="gold" value="225"/>
         <KillResource index="Custom" value="225"/>
-        <LifeStart value="250"/>
-        <LifeMax value="250"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
         <AbilArray index="4" Link="TowerRecoverTimmer180"/>
         <AbilArray Link="DraeneiInventory"/>
+        <AbilArray Link="BoulderTowerAura"/>
         <RepairTime value="20"/>
         <Race value="Draenei"/>
         <GlossaryCategory value="Unit/Category/DraeneiUnits"/>
-        <BehaviorArray Link="ACmi"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ACmi" Type="Passive" Behavior="ACmi" Row="2" Column="0"/>
-            <LayoutButtons Face="BoulderAttack" Type="Passive" Row="2" Column="1"/>
+            <LayoutButtons Face="BoulderAttack" Type="Passive" Row="2" Column="0"/>
+            <LayoutButtons Face="BoulderTowerAuraCaster" Type="Passive" Behavior="BoulderTowerAuraCaster" Row="2" Column="1"/>
         </CardLayouts>
     </CUnit>
     <!--Demolisher(Draenei)-->
@@ -2076,8 +2074,8 @@
         <Attributes index="small" value="1"/>
         <CostResource index="gold" value="60"/>
         <KillResource index="Custom" value="30"/>
-        <LifeStart value="25"/>
-        <LifeMax value="25"/>
+        <LifeStart value="100"/>
+        <LifeMax value="100"/>
         <Speed value="2"/>
         <Race value="Draenei"/>
         <Mover value="foot"/>
@@ -2098,14 +2096,18 @@
         <GlossaryCategory value="Unit/Category/DraeneiUnits"/>
         <WeaponArray index="1" removed="1"/>
     </CUnit>
+    <!--draenei salamander-->
+    <CUnit id="ndsa">
+        <Food value="3"/>
+    </CUnit>
     <!--cold tower-->
     <CUnit id="ndt1" parent="AW2_Building" defType="FORT">
         <Attributes index="mechanical" value="1"/>
         <Attributes index="fort" value="1"/>
         <CostResource index="gold" value="75"/>
         <KillResource index="Custom" value="75"/>
-        <LifeStart value="250"/>
-        <LifeMax value="250"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
         <AbilArray index="4" Link="TowerRecoverTimmer180"/>
         <AbilArray Link="DraeneiInventory"/>
         <AbilArray Link="UpgradeTondt2"/>
@@ -2113,10 +2115,9 @@
         <Race value="Draenei"/>
         <GlossaryCategory value="Unit/Category/DraeneiUnits"/>
         <BehaviorArray Link="Afr2"/>
-        <BehaviorArray Link="ACmi"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ndt2" Type="AbilCmd" AbilCmd="UpgradeTondt2,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="ACmi" Type="Passive" Behavior="ACmi" Row="2" Column="0"/>
+            <LayoutButtons Face="Multishot" Type="Passive" Row="2" Column="0"/>
             <LayoutButtons Face="Afr2" Type="Passive" Behavior="Afr2" Row="2" Column="1"/>
         </CardLayouts>
     </CUnit>
@@ -2126,18 +2127,19 @@
         <Attributes index="fort" value="1"/>
         <CostResource index="gold" value="225"/>
         <KillResource index="Custom" value="225"/>
-        <LifeStart value="250"/>
-        <LifeMax value="250"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
         <AbilArray index="4" Link="TowerRecoverTimmer180"/>
         <AbilArray Link="DraeneiInventory"/>
+        <AbilArray Link="ColdTowerAura"/>
         <RepairTime value="20"/>
         <Race value="Draenei"/>
         <GlossaryCategory value="Unit/Category/DraeneiUnits"/>
-        <BehaviorArray Link="ACmi"/>
         <BehaviorArray Link="Afra"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ACmi" Type="Passive" Behavior="ACmi" Row="2" Column="0"/>
+            <LayoutButtons Face="Multishot" Type="Passive" Row="2" Column="0"/>
             <LayoutButtons Face="Afra" Type="Passive" Behavior="Afra" Row="2" Column="1"/>
+            <LayoutButtons Face="ColdTowerAuraCaster" Type="Passive" Behavior="ColdTowerAuraCaster" Row="2" Column="2"/>
         </CardLayouts>
     </CUnit>
     <!--elven guard fire tower-->
@@ -2146,8 +2148,8 @@
         <Attributes index="fort" value="1"/>
         <CostResource index="gold" value="75"/>
         <KillResource index="Custom" value="75"/>
-        <LifeStart value="250"/>
-        <LifeMax value="250"/>
+        <LifeStart value="900"/>
+        <LifeMax value="900"/>
         <AbilArray index="4" Link="TowerRecoverTimmer180"/>
         <AbilArray Link="DraeneiInventory"/>
         <AbilArray Link="AHfa"/>
@@ -2155,10 +2157,8 @@
         <RepairTime value="20"/>
         <Race value="Draenei"/>
         <GlossaryCategory value="Unit/Category/DraeneiUnits"/>
-        <BehaviorArray Link="ACmi"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ACmi" Type="Passive" Behavior="ACmi" Row="2" Column="0"/>
-            <LayoutButtons Face="AHfa" Type="AbilCmd" AbilCmd="AHfaAugment,0" Row="2" Column="1"/>
+            <LayoutButtons Face="AHfa" Type="AbilCmd" AbilCmd="AHfaAugment,0" Row="2" Column="0"/>
         </CardLayouts>
         <EnergyStart value="60"/>
         <EnergyMax value="60"/>
@@ -2169,17 +2169,13 @@
         <Attributes index="fort" value="1"/>
         <CostResource index="gold" value="75"/>
         <KillResource index="Custom" value="75"/>
-        <LifeStart value="250"/>
-        <LifeMax value="250"/>
+        <LifeStart value="900"/>
+        <LifeMax value="900"/>
         <AbilArray index="4" Link="TowerRecoverTimmer180"/>
         <AbilArray Link="DraeneiInventory"/>
         <RepairTime value="20"/>
         <Race value="Draenei"/>
         <GlossaryCategory value="Unit/Category/DraeneiUnits"/>
-        <BehaviorArray Link="ACmi"/>
-        <CardLayouts index="0">
-            <LayoutButtons Face="ACmi" Type="Passive" Behavior="ACmi" Row="2" Column="0"/>
-        </CardLayouts>
     </CUnit>
     <!--energy tower-->
     <CUnit id="net1" parent="AW2_Building" defType="FORT">
@@ -2187,18 +2183,16 @@
         <Attributes index="fort" value="1"/>
         <CostResource index="gold" value="75"/>
         <KillResource index="Custom" value="75"/>
-        <LifeStart value="250"/>
-        <LifeMax value="250"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
         <AbilArray index="4" Link="TowerRecoverTimmer180"/>
         <AbilArray Link="DraeneiInventory"/>
         <AbilArray Link="UpgradeTonet2"/>
         <RepairTime value="20"/>
         <Race value="Draenei"/>
         <GlossaryCategory value="Unit/Category/DraeneiUnits"/>
-        <BehaviorArray Link="ACmi"/>
         <CardLayouts index="0">
             <LayoutButtons Face="net2" Type="AbilCmd" AbilCmd="UpgradeTonet2,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="ACmi" Type="Passive" Behavior="ACmi" Row="2" Column="0"/>
         </CardLayouts>
     </CUnit>
     <!--energy tower upgraded-->
@@ -2207,16 +2201,16 @@
         <Attributes index="fort" value="1"/>
         <CostResource index="gold" value="225"/>
         <KillResource index="Custom" value="225"/>
-        <LifeStart value="250"/>
-        <LifeMax value="250"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
         <AbilArray index="4" Link="TowerRecoverTimmer180"/>
         <AbilArray Link="DraeneiInventory"/>
+        <AbilArray Link="EnergyTowerAura"/>
         <RepairTime value="20"/>
         <Race value="Draenei"/>
         <GlossaryCategory value="Unit/Category/DraeneiUnits"/>
-        <BehaviorArray Link="ACmi"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ACmi" Type="Passive" Behavior="ACmi" Row="2" Column="0"/>
+            <LayoutButtons Face="EnergyTowerAuraCaster" Type="Passive" Behavior="EnergyTowerAuraCaster" Row="2" Column="0"/>
         </CardLayouts>
     </CUnit>
     <!--flame tower-->
@@ -2225,21 +2219,19 @@
         <Attributes index="fort" value="1"/>
         <CostResource index="gold" value="75"/>
         <KillResource index="Custom" value="75"/>
-        <LifeStart value="250"/>
-        <LifeMax value="250"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
         <AbilArray index="4" Link="TowerRecoverTimmer180"/>
         <AbilArray Link="DraeneiInventory"/>
         <AbilArray Link="UpgradeTonft2"/>
         <RepairTime value="20"/>
         <Race value="Draenei"/>
         <GlossaryCategory value="Unit/Category/DraeneiUnits"/>
-        <BehaviorArray Link="ACmi"/>
         <BehaviorArray Link="FlameAttackCaster"/>
         <CardLayouts index="0">
             <LayoutButtons Face="nft2" Type="AbilCmd" AbilCmd="UpgradeTonft2,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="ACmi" Type="Passive" Behavior="ACmi" Row="2" Column="0"/>
-            <LayoutButtons Face="Multishot" Type="Passive" Row="2" Column="1"/>
-            <LayoutButtons Face="FlameAttackCaster" Type="Passive" Behavior="FlameAttackCaster" Row="2" Column="2"/>
+            <LayoutButtons Face="Multishot" Type="Passive" Row="2" Column="0"/>
+            <LayoutButtons Face="FlameAttackCaster" Type="Passive" Behavior="FlameAttackCaster" Row="2" Column="1"/>
         </CardLayouts>
     </CUnit>
     <!--flame tower upgraded-->
@@ -2248,19 +2240,19 @@
         <Attributes index="fort" value="1"/>
         <CostResource index="gold" value="225"/>
         <KillResource index="Custom" value="225"/>
-        <LifeStart value="250"/>
-        <LifeMax value="250"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
         <AbilArray index="4" Link="TowerRecoverTimmer180"/>
         <AbilArray Link="DraeneiInventory"/>
+        <AbilArray Link="FlameTowerAura"/>
         <RepairTime value="20"/>
         <Race value="Draenei"/>
         <GlossaryCategory value="Unit/Category/DraeneiUnits"/>
-        <BehaviorArray Link="ACmi"/>
         <BehaviorArray Link="FlameAttackCaster"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ACmi" Type="Passive" Behavior="ACmi" Row="2" Column="0"/>
-            <LayoutButtons Face="Multishot" Type="Passive" Row="2" Column="1"/>
-            <LayoutButtons Face="FlameAttackCaster" Type="Passive" Behavior="FlameAttackCaster" Row="2" Column="2"/>
+            <LayoutButtons Face="Multishot" Type="Passive" Row="2" Column="0"/>
+            <LayoutButtons Face="FlameAttackCaster" Type="Passive" Behavior="FlameAttackCaster" Row="2" Column="1"/>
+            <LayoutButtons Face="FlameTowerAuraCaster" Type="Passive" Behavior="FlameTowerAuraCaster" Row="2" Column="2"/>
         </CardLayouts>
     </CUnit>
     <!--hydra-->
@@ -2386,18 +2378,16 @@
         <Attributes index="fort" value="1"/>
         <CostResource index="gold" value="75"/>
         <KillResource index="Custom" value="75"/>
-        <LifeStart value="250"/>
-        <LifeMax value="250"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
         <AbilArray index="4" Link="TowerRecoverTimmer180"/>
         <AbilArray Link="DraeneiInventory"/>
         <AbilArray Link="UpgradeTontx2"/>
         <RepairTime value="20"/>
         <Race value="Draenei"/>
         <GlossaryCategory value="Unit/Category/DraeneiUnits"/>
-        <BehaviorArray Link="ACmi"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ntx2" Type="AbilCmd" AbilCmd="UpgradeTontx2,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="ACmi" Type="Passive" Behavior="ACmi" Row="2" Column="0"/>
         </CardLayouts>
     </CUnit>
     <!--death tower upgraded-->
@@ -2406,18 +2396,18 @@
         <Attributes index="fort" value="1"/>
         <CostResource index="gold" value="225"/>
         <KillResource index="Custom" value="225"/>
-        <LifeStart value="250"/>
-        <LifeMax value="250"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
         <AbilArray index="4" Link="TowerRecoverTimmer180"/>
         <AbilArray Link="DraeneiInventory"/>
+        <AbilArray Link="DeathTowerAura"/>
         <RepairTime value="20"/>
         <Race value="Draenei"/>
         <GlossaryCategory value="Unit/Category/DraeneiUnits"/>
-        <BehaviorArray Link="ACmi"/>
         <BehaviorArray Link="DarkAttack"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ACmi" Type="Passive" Behavior="ACmi" Row="2" Column="0"/>
-            <LayoutButtons Face="DarkAttack" Type="Passive" Behavior="DarkAttack" Row="2" Column="1"/>
+            <LayoutButtons Face="DarkAttack" Type="Passive" Behavior="DarkAttack" Row="2" Column="0"/>
+            <LayoutButtons Face="DeathTowerAuraCaster" Type="Passive" Behavior="DeathTowerAuraCaster" Row="2" Column="1"/>
         </CardLayouts>
     </CUnit>
     <!--dark wizard-->
@@ -3606,8 +3596,8 @@
         <Attributes index="fort" value="1"/>
         <CostResource index="gold" value="15"/>
         <KillResource index="Custom" value="5"/>
-        <LifeStart value="250"/>
-        <LifeMax value="250"/>
+        <LifeStart value="100"/>
+        <LifeMax value="100"/>
         <RepairTime value="20"/>
         <Race value="Human"/>
         <AbilArray index="4" Link="TowerRecoverTimmer60"/>
@@ -3623,6 +3613,10 @@
         <GlossaryCategory value="Unit/Category/HumanUnits"/>
         <WeaponArray index="0" Link="hwtw2" Turret="Attu"/>
         <WeaponArray index="1" removed="1"/>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
     </CUnit>
     <!--blue drake-->
     <CUnit id="nadk">
@@ -4568,8 +4562,8 @@
         <Attributes index="fort" value="1"/>
         <CostResource index="gold" value="15"/>
         <KillResource index="Custom" value="5"/>
-        <LifeStart value="250"/>
-        <LifeMax value="250"/>
+        <LifeStart value="100"/>
+        <LifeMax value="100"/>
         <AbilArray index="4" Link="TowerRecoverTimmer60"/>
         <AbilArray Link="BloodElfInventory"/>
         <AbilArray Link="UpgradeTondgt"/>

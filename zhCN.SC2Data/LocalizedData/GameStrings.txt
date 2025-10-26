@@ -150,7 +150,6 @@ Adef/Ubertip=激活以拥有75%的概率反弹穿刺攻击。如果防御状态�
 Adev/Ubertip=吞噬敌方目标单位，将其慢慢咀嚼，每秒对其造成<d ref="Effect,BdigDPS,Amount"/>点的伤害。在咀嚼目标的过程中，如果遭到杀害，那么它肚中的被吞噬单位就会从中跳出来。
 Advc/Tip=Advc
 Aegr/Ubertip=减少来自穿刺攻击的伤害到原来的50%，并减少来自魔法攻击的伤害到原来的50%。
-Aeib/Name=强化弓
 Aeib/Tip=强化弓
 Aeib/Ubertip=增加弓箭手<d ref="Behavior,Aeib,Modification.RangedWeaponRange"/>的攻击范围。
 Aens/Ubertip=能将一个目标空中单位固定在地面上，使其在<d ref="Behavior,Bena,Duration"/>秒内不能移动。
@@ -227,7 +226,6 @@ Attribute003/Value009/Name=混乱兽人
 Attribute003/Value010/Name=龙(精英)
 Attribute003/Value011/Name=恶魔(精英)
 Attribute003/Value012/Name=德莱尼
-
 Attribute004/Name=第二种族 (AW2)
 Attribute004/Value001/Name=随机(双种族模式可用)
 Attribute004/Value002/Name=人类
@@ -241,7 +239,6 @@ Attribute004/Value009/Name=混乱兽人
 Attribute004/Value010/Name=龙(精英)
 Attribute004/Value011/Name=恶魔(精英)
 Attribute004/Value012/Name=德莱尼
-
 Auco/Ubertip=制造出一次强力爆炸，对目标敌方空中单位造成<d ref="Effect,AucoDamage,Amount"/>点伤害，对周围敌空中单位造成<d ref="Effect,AucoDamage,Amount * Effect,AucoDamage,AreaArray[0].Fraction + Effect,AucoDamage,AreaArray[0].Bonus"/>点伤害。
 Auhf/Ubertip=增加目标单位<d ref="Behavior,Buhf,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度，但是每秒也会消耗目标<d ref="Effect,BuhfDPS,Amount"/>点的生命值。<n/>持续<d ref="Behavior,Buhf,Duration"/>秒。
 Aven/Ubertip=能造成每秒<d ref="Effect,BpsdDPS,Amount"/>点的毒性伤害。<n/>持续<d ref="Behavior,Bpoi,Duration"/>秒。
@@ -285,6 +282,10 @@ BloodElfSorceress/Tip=升级到血精灵女巫
 BloodElfSorceress/Ubertip=基本的远程攻击单位，能施放减速术。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 BoulderAttack/Tip=巨石攻击
 BoulderAttack/Ubertip=巨石之塔能对区域内非建筑单位造成大量伤害。<n/><n/><c val="ffcc00">可能误伤友军。</c>
+BoulderTowerAura/Buffubertip=该建筑处于巨石之塔光环的作用之下，因此提高了最大生命值。
+BoulderTowerAura/Name=巨石之塔光环
+BoulderTowerAuraCaster/Tip=巨石之塔光环
+BoulderTowerAuraCaster/Ubertip=增加周围友方建筑<d ref="Behavior,BoulderTowerAura,Modification.VitalMaxArray[Life]"/>点的最大生命值。
 BreathOfFire/Buffubertip=该单位正受到火焰的灼伤，不断受到伤害。
 BreathOfFire/Name=火焰吐息
 BreathOfFireCaster/Tip=火焰吐息
@@ -372,6 +373,10 @@ CmdPurchaseUndead/Tip=购买物品
 CmdPurchaseUndead/Ubertip=能显示出当前你所能购买的物品。
 CmdPurchaseUndead2/Tip=购买物品
 CmdPurchaseUndead2/Ubertip=能显示出当前你所能购买的物品。
+ColdTowerAura/Buffubertip=该建筑处于冰霜之塔光环的作用之下，因此提高了护甲，生命值恢复速度也加快了。
+ColdTowerAura/Name=冰霜之塔光环
+ColdTowerAuraCaster/Tip=冰霜之塔光环
+ColdTowerAuraCaster/Ubertip=增加周围友方建筑<d ref="Behavior,ColdTowerAura,Modification.LifeArmorBonus"/>点的护甲和每秒<d ref="Behavior,ColdTowerAura,Modification.VitalRegenArray[Life]" precision="1"/>点的生命恢复速度。
 Cyclone/Tip=飓风
 Cyclone/Ubertip=双足飞龙每次攻击时扇动巨翼，将目标及周围的敌方地面单位吹飞。
 DAMAGE_MAIC=类型：<c val="ffcc00">穿刺</c>
@@ -383,7 +388,10 @@ DOCSTR_0004=星灵单位
 DOCSTR_0005=[新手]混战
 DarkAttack/Tip=黑暗攻击
 DarkAttack/Ubertip=死亡之塔能向目标发射一只具有<d ref="Unit,ushd,LifeStart"/>点生命值的阴影，能看见其他的隐形单位。
-Defend/Name=防御
+DeathTowerAura/Buffubertip=该单位处于死亡之塔光环的作用之下，因此提高了最大生命值。
+DeathTowerAura/Name=死亡之塔光环
+DeathTowerAuraCaster/Tip=死亡之塔光环
+DeathTowerAuraCaster/Ubertip=增加所有友方召唤单位<d ref="Behavior,DeathTowerAura,Modification.VitalMaxFractionArray[Life] * 100"/>%的最大生命值。
 Defend/Tip=防御
 Defend/Ubertip=激活后只会受到10%的穿刺攻击伤害。如果防御状态被激活，移动速度会变成<d ref="Behavior,Defend,Modification.MoveSpeedMultiplier * 100"/>%的常规速度。
 DefendUn/Tip=停止防御
@@ -479,25 +487,29 @@ DocInfo/PatchNote080=为电脑加入难度选项。
 DocInfo/PatchNote081=调整地形，尝试解决布阵僵化的问题。
 DocInfo/PatchNote082=修复复生导致游戏不能继续的漏洞。
 DocInfo/PatchNote083=防御塔类建筑现在到期后会回收木材。具有攻击力的防御塔期限增加到3分钟。
-DocInfo/PatchNote084=人类：
-DocInfo/PatchNote085=圣光术的效果提高50%。
-DocInfo/PatchNote086=防御塔的射程增加到12。
-DocInfo/PatchNote087=亡灵：
-DocInfo/PatchNote088=死亡缠绕的效果提高50%。
-DocInfo/PatchNote089=绞肉车获得新技能创建尸体，伤害降低到24。
-DocInfo/PatchNote090=疾病之云的伤害提高到10。
-DocInfo/PatchNote091=地精：
-DocInfo/PatchNote092=采集获得的额外木材量减少到140%。
-DocInfo/PatchNote093=血精灵：
-DocInfo/PatchNote094=凤凰蛋的孵化时间增加到45秒，生命值减少到25点。
-DocInfo/PatchNote095=凤凰的护甲类型现在是神圣，并且凤凰火焰经过重新设计。
+DocInfo/PatchNote084=修复穿刺剑刃无效的漏洞。
+DocInfo/PatchNote085=人类：
+DocInfo/PatchNote086=圣光术的效果提高50%。
+DocInfo/PatchNote087=防御塔的射程增加到12。
+DocInfo/PatchNote088=暗夜精灵：
+DocInfo/PatchNote089=强化弓的射程加成增加到8。
+DocInfo/PatchNote090=亡灵：
+DocInfo/PatchNote091=死亡缠绕的效果提高50%。
+DocInfo/PatchNote092=绞肉车获得新技能创建尸体，伤害降低到24。
+DocInfo/PatchNote093=疾病之云的伤害提高到10。
+DocInfo/PatchNote094=地精：
+DocInfo/PatchNote095=采集获得的额外木材量减少到140%。
+DocInfo/PatchNote096=血精灵：
+DocInfo/PatchNote097=凤凰蛋的孵化时间增加到45秒，生命值减少到25点。
+DocInfo/PatchNote098=凤凰的护甲类型现在是神圣，并且凤凰火焰经过重新设计。
+DocInfo/PatchNote099=混乱兽人：
+DocInfo/PatchNote100=粉碎者的伤害增加到144。
 DraeneiFlag/Name=德莱尼旗帜
 DraeneiFlag/Tip=放置德莱尼旗帜
 DraeneiFlag/Ubertip=放置德莱尼旗帜。
 DraeneiFlag2/Name=德莱尼旗帜
 DraeneiFlag2/Tip=放置德莱尼旗帜(决赛)
 DraeneiFlag2/Ubertip=放置德莱尼旗帜(决赛)。
-DraeniStalkerInvisibility/Name=隐形
 DraeniStalkerInvisibility/Tip=隐形
 DraeniStalkerInvisibility/Ubertip=使德莱尼追踪者隐形。<n/>持续<d ref="Behavior,DraeniStalkerInvisibility,Duration"/>秒。
 DragonFlag/Name=龙旗帜
@@ -583,6 +595,10 @@ Emns/Tip=升级到玛法里奥
 Emns/Ubertip=基本的远程攻击单位，能施放飓风。<n/><n/><c val="ffcc00">攻击地面和空中单位。</c>
 Emoo/Tip=升级到月之女祭司
 Emoo/Ubertip=高速远程攻击骑兵，具有强击光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+EnergyTowerAura/Buffubertip=该建筑处于能量光环的作用之下，因此其攻击力和法术攻击力得到了增强。
+EnergyTowerAura/Name=能量之塔光环
+EnergyTowerAuraCaster/Tip=能量之塔光环
+EnergyTowerAuraCaster/Ubertip=增加附近友方建筑<d ref="Behavior,EnergyTowerAura,Modification.DamageDealtFraction[Melee] * 100"/>%的攻击力、<d ref="Behavior,EnergyTowerAura,Modification.DamageDealtFraction[Spell] * 100"/>%的法术攻击力和<d ref="Behavior,EnergyTowerAura,Modification.RangedWeaponRange"/>的远程攻击范围。
 EternityAura/Buffubertip=该单位的时间流逝速度减缓了。
 EternityAura/Name=永恒光环
 EternityAuraCaster/Tip=永恒光环
@@ -597,9 +613,14 @@ FelDriveAura/Buffubertip=该单位处在邪能驱动光环的作用之下，因�
 FelDriveAura/Name=邪能驱动光环
 FelDriveAuraCaster/Tip=邪能驱动光环
 FelDriveAuraCaster/Ubertip=增加周围机械单位<d ref="Behavior,FelDriveAura,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度和<d ref="Behavior,FelDriveAura,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度。
+FlameAttack/Buffubertip=该单位受到了火焰之塔的攻击，因此会在短时间内持续地受到伤害。
 FlameAttack/Name=火焰攻击
 FlameAttackCaster/Tip=火焰攻击
 FlameAttackCaster/Ubertip=每次攻击带有火焰效果，在<d ref="Behavior,FlameAttack,Duration"/>秒内持续受到每秒<d ref="Effect,FlameAttackDPS,Amount"/>点的伤害。
+FlameTowerAura/Buffubertip=该建筑处在火焰之塔光环的作用之下，因此其攻击速度都加快了。
+FlameTowerAura/Name=火焰之塔光环
+FlameTowerAuraCaster/Tip=火焰之塔光环
+FlameTowerAuraCaster/Ubertip=增加周围建筑<d ref="Behavior,FlameTowerAura,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度。
 FrostAura/Buffubertip=该单位被冻住了。
 FrostAura/Name=凛风光环
 FrostAuraCaster/Tip=凛风光环
@@ -612,7 +633,6 @@ GoblinFlag/Ubertip=放置地精旗帜。
 GoblinFlag2/Name=地精旗帜
 GoblinFlag2/Tip=放置地精旗帜(决赛)
 GoblinFlag2/Ubertip=放置地精旗帜(决赛)。
-GoblinLandMineInvisibility/Name=隐形
 GoblinLandMineInvisibility/Tip=隐形
 GoblinLandMineInvisibility/Ubertip=使地精地雷隐形。<n/>持续<d ref="Behavior,GoblinLandMineInvisibility,Duration"/>秒。
 Gyrocopter/Name=矮人直升机
@@ -638,7 +658,6 @@ Hlgr/Tip=升级到黑暗骑士
 Hlgr/Ubertip=骑兵，具有虔诚光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 HonorShield/Tip=荣誉之盾
 HonorShield/Ubertip=每次攻击地面单位或受到攻击将会提升<d ref="Behavior,HonorShield,Modification.DamageDealtUnscaled[Ranged]"/>点攻击及<d ref="Behavior,HonorShield,Modification.LifeArmorBonus"/>点护甲。
-HonorShieldCaster/Name=荣誉之盾
 Hpal/Tip=训练圣骑士
 Hpal/Ubertip=重型的近战单位，能施放圣光术。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 HumanPhalanxPlaceholder/Name=HumanPreviewer
@@ -1112,7 +1131,6 @@ nerw/Ubertip=<c val="ffcc00">精英</c><n/>远程攻击型魔法施放单位，�
 net1/Ubertip=防守型建筑物，射出能量之箭，擅长于对付敌人的空中单位，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 net2/Ubertip=防守型建筑物，擅长于对付敌人的空中单位，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nfac/Tip=建造口袋工厂
-nfacTimeLife/Name=nfacTimeLife
 nfgl/Tip=升级到血肉傀儡
 nfgl/Ubertip=重型的近战单位，具有分裂攻击和疾病之云技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nfgu/Tip=训练恶魔守卫
