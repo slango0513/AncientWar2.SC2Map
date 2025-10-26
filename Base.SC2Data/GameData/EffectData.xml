@@ -211,6 +211,12 @@
         <AreaArray index="0" Radius="15.625" Effect="Btau"/>
         <MaxCount value="18"/>
     </CEffectEnumArea>
+    <CEffectDamage id="BNab1DPS">
+        <Amount value="10"/>
+    </CEffectDamage>
+    <CEffectDamage id="BNabS1DPS">
+        <Amount value="5"/>
+    </CEffectDamage>
     <CEffectApplyBehavior id="Bsds"/>
     <CEffectEnumArea id="AwarAoESearch" parent="War3_AbilSearch">
         <EditorCategories value="Race:Orc"/>
@@ -244,11 +250,9 @@
         <TargetSorts>
             <SortArray index="0" value="TSKillResourceTerrazineLargestFirst"/>
         </TargetSorts>
-        <MinCount value="6"/>
+        <MinCount value="3"/>
+        <MaxCount value="3"/>
     </CEffectEnumArea>
-    <CEffectModifyUnit id="AHreHeal">
-        <VitalArray index="Life" Change="100" ChangeFraction="0"/>
-    </CEffectModifyUnit>
     <CEffectCreatePersistent id="ACcvTarget">
         <EditorCategories value="Race:Naga"/>
         <WhichLocation Value="CasterPoint"/>
@@ -565,11 +569,11 @@
     </CEffectDamage>
     <CEffectDamage id="Nalc1" parent="AW2_SiegeDamage">
         <Kind value="Melee"/>
-        <Amount value="96"/>
+        <Amount value="192"/>
     </CEffectDamage>
     <CEffectDamage id="Nalm1" parent="AW2_SiegeDamage">
         <Kind value="Melee"/>
-        <Amount value="96"/>
+        <Amount value="192"/>
     </CEffectDamage>
     <CEffectDamage id="Nbbc1" parent="AW2_ChaosDamage">
         <Kind value="Melee"/>
@@ -712,8 +716,8 @@
         <Abil value="Asb3Un"/>
         <ValidatorArray value="EmergeValidator3"/>
     </CEffectIssueOrder>
-    <CEffectDamage id="Oshd1" parent="AW2_MagicDamage">
-        <Amount value="24"/>
+    <CEffectDamage id="Oshd1" parent="AW2_NormalDamage">
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="Otch1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
@@ -813,9 +817,8 @@
         <Kind value="Melee"/>
         <Amount value="12"/>
     </CEffectDamage>
-    <CEffectDamage id="ngbl1" parent="AW2_SiegeDamage">
+    <CEffectDamage id="ngbl1" parent="AW2_NormalDamage">
         <Amount value="96"/>
-        <Death value="Blast"/>
         <Kind value="Melee"/>
     </CEffectDamage>
     <CEffectDamage id="ngir1" parent="AW2_NormalDamage">
@@ -1215,6 +1218,10 @@
         <Kind value="Melee"/>
         <Amount value="96"/>
     </CEffectDamage>
+    <CEffectDamage id="nogn1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="24"/>
+    </CEffectDamage>
     <CEffectDamage id="nogo1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
         <Amount value="48"/>
@@ -1240,6 +1247,9 @@
     </CEffectDamage>
     <CEffectDamage id="nrvd1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
+        <Amount value="24"/>
+    </CEffectDamage>
+    <CEffectDamage id="ovlj1" parent="AW2_MagicDamage">
         <Amount value="24"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="zhyd1LM" parent="War3_Missile" weaponid="zhyd1"/>
@@ -1404,7 +1414,7 @@
     </CEffectDamage>
     <CEffectDamage id="ugho1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
-        <Amount value="30"/>
+        <Amount value="36"/>
     </CEffectDamage>
     <CEffectDamage id="uktn1" parent="AW2_MagicDamage">
         <Amount value="24"/>

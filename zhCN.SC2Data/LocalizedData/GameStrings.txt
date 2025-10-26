@@ -33,9 +33,10 @@ AIct/Tip=变更昼夜
 AIct/Ubertip=制造日蚀，阻挡阳光，以创造人造夜晚。<n/>持续30秒。
 AIpv/Tip=吸血药水
 AIpv/Ubertip=在攻击的同时生命吸取。<n/>持续<d ref="Behavior,BIpv,Duration"/>秒。
+ANab/Ubertip=投掷出一瓶酸性液体，然后对其周围的单位同时也造成伤害。<n/><n/>减少<d ref="-Behavior,BNab1,Modification.LifeArmorBonus"/>点护甲值；对主目标造成每秒<d ref="Effect,BNab1DPS,Amount"/>点伤害兵对周围的单位造成较少伤害。<n/>持续<d ref="Behavior,BNab1,Duration"/>秒。
 ANba/Ubertip=被黑暗箭射死的单位会变成具有<d ref="Unit,ndr1,LifeStart"/>点生命值的骷髅兵。
 ANbh/Ubertip=使敌人昏迷<d ref="Behavior,BHbh,Duration"/>秒。
-ANcr/Ubertip=炼金师让其食人魔进入了一种狂暴的状态，从而提高了<d ref="Behavior,BNcr1,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度和<d ref="Behavior,BNcr1,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度，持续时间<d ref="Behavior,BNcr1,Duration"/>秒。
+ANcr/Ubertip=炼金师让其食人魔进入了一种狂暴的状态，从而提高了<d ref="Behavior,BNcr1,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度和<d ref="Behavior,BNcr1,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度。
 ANcs/Ubertip=工匠每次攻击时对目标区域用火箭进行攻击，对周围的地面单位造成伤害，并在<d ref="Behavior,BNcs,Duration"/>秒内让其处于昏晕状态。
 ANdo/Ubertip=使一个目标遭到恶魔附身。被折磨的单位无法施放任何魔法直至死亡。在它死亡后，一个巨大的恶魔将从他的尸体上诞生。末日降临无法被驱散或取消。
 ANfa/Ubertip=每次攻击带有冷冻效果，攻击值为<d ref="Behavior,ANfa1,Modification.DamageDealtUnscaled[Melee]"/>。在5秒内使敌人减慢<d ref="1 - Behavior,Bcsd1,Modification.AttackSpeedMultiplier * 100"/>%的攻击速度和<d ref="1 - Behavior,Bcsd1,Modification.MoveSpeedMultiplier * 100"/>%的移动速度。
@@ -74,6 +75,7 @@ AOre/Ubertip=使当牛头人酋长被杀时，它就会自动复活。复生有<
 AOsf/Ubertip=召唤出<d ref="Effect,osw1,SpawnCount"/>条幽魂之狼来为你战斗。每头狼具有<d ref="Unit,osw1,LifeMax"/>点生命值和<d ref="Effect,osw11,Amount"/>点的攻击力。<n/>持续<d ref="Behavior,BOsf,Duration"/>秒。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 AOsh/Ubertip=能发出一道向前的能量波，对一条线上的敌方地面单位造成<d ref="Effect,AOshDamage1,Amount"/>点的伤害。
 AOsw/Ubertip=召唤出一个固定不动的毒蛇守卫来为暗影猎手攻击。守卫具有<d ref="Unit,osp1,LifeStart"/>点生命值并对魔法免疫。攻击力为<d ref="Effect,osp11,Amount"/>点。<n/>持续<d ref="Behavior,BOwd,Duration"/>秒。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+AOvd/Ubertip=将在暗影猎手附近一定区域内的所有友方单位都变为无敌。<n/>但是暗影猎手自己不会变为无敌。<n/>持续<d ref="Behavior,BOvc,Duration"/>秒。
 AOws/Ubertip=重击地面，对周围的地面单位造成<d ref="Effect,AOwsDamage1,Amount"/>点的伤害并在<d ref="Effect,AOws1Dur,Duration"/>秒内使其处于昏晕状态。
 AUau/Ubertip=增加周围友方单位<d ref="Behavior,BUau1,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度和每秒<d ref="Behavior,BUau1,Modification.VitalRegenArray[Life]" precision="1"/>点的生命恢复速度。
 AUbu1/Tip=建造近战部队
@@ -109,13 +111,14 @@ Acyc/Ubertip=将目标单位投掷到空中，使其不能移动、攻击和施�
 Adef/Ubertip=激活以拥有75%的概率反弹穿刺攻击。如果防御状态被激活，移动速度会变成<d ref="Behavior,Adef,Modification.MoveSpeedMultiplier * 100"/>%的常规速度。
 Adev/Ubertip=吞噬敌方目标单位，将其慢慢咀嚼，每秒对其造成<d ref="Effect,BdigDPS,Amount"/>点的伤害。在咀嚼目标的过程中，如果遭到杀害，那么它肚中的被吞噬单位就会从中跳出来。
 Aegr/Ubertip=减少来自穿刺攻击的伤害到原来的25%，并减少来自魔法攻击的伤害到原来的50%。
+Aeib/Name=强化弓
 Aeib/Tip=强化弓
 Aeib/Ubertip=增加弓箭手<d ref="Behavior,Aeib,Modification.RangedWeaponRange"/>的攻击范围。
 Aens/Ubertip=能将一个目标空中单位固定在地面上，使其在<d ref="Behavior,Bena,Duration"/>秒内不能移动。
 Aetl/Ubertip=处于灵体形态的单位对物理攻击免疫，但是魔法能对其造成额外的伤害。
 Afae/Ubertip=减少目标单位<d ref="-Behavior,Bfae,Modification.LifeArmorBonus"/>点护甲值，并能拥有该单位的视野。<n/>持续<d ref="Behavior,Bfae,Duration"/>秒。
 Ahea/Ubertip=治疗一个友方的非机械受伤单位，恢复其<d ref="Effect,AheaHeal,RechargeVitalRate"/>的生命值。
-Ahr3/Ubertip=从杀死的单位上采集木材资源。
+Ahr3/Ubertip=从杀死的单位上采集木材资源。每次杀死敌人能获得3倍的额外木材。
 Ahra/Tip=黑火药
 Ahra/Ubertip=增加矮人火枪手100%的护甲穿透。
 Ahwd/Ubertip=召唤出一个固定的结界，以每秒<d ref="Effect,AoarHealTick,VitalArray[Life].ChangeFraction * 100"/>%的速度恢复周围友方非机械单位的生命值。<n/>持续<d ref="Behavior,Bhwd,Duration"/>秒。
@@ -218,6 +221,7 @@ DOCSTR_0001=BracketOpen
 DOCSTR_0002=BracketOpen
 DOCSTR_0003=星灵单位
 DOCSTR_0004=星灵单位
+Defend/Name=防御
 Defend/Tip=防御
 Defend/Ubertip=激活后只会受到10%的穿刺攻击伤害。如果防御状态被激活，移动速度会变成<d ref="Behavior,Defend,Modification.MoveSpeedMultiplier * 100"/>%的常规速度。
 DefendUn/Tip=停止防御
@@ -389,8 +393,8 @@ Ofar/Ubertip=高速远程攻击骑兵。<n/><n/><c val="ffcc00">能攻击地面�
 Ogrh/Tip=训练剑圣
 Opgh/Tip=升级到格罗姆·地狱咆哮
 OrcPhalanxPlaceholder/Name=OrcPreviewer
-Oshd/Tip=升级到暗影猎手
-Oshd/Ubertip=魔法单位，能施放妖术。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+Oshd/Tip=训练暗影猎手
+Oshd/Ubertip=远程攻击单位，精于巫毒诅咒。能施放大坏毒。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Otch/Tip=升级到牛头人酋长
 Otch/Ubertip=重型的近战单位，具有耐久光环和复生技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Othr/Tip=升级到萨尔
@@ -431,7 +435,7 @@ Param/Value/4C23E814=新手提示
 Param/Value/54C1A907= - 
 Param/Value/58BD0FA7=计分板
 Param/Value/5F942B70=剩余时间
-Param/Value/64EFDAFF=<c val="FFFF00">方阵：</c>你有3个方阵，每个方阵的位置由玩家决定，并且最多容纳6x6=36个单位(决赛6x15=90)。超出的单位将成为后备军支援前线。<n/><c val="FFFF00">物品(暂未加入)：</c>每个回合开始时会获得一个随机物品，你可以通过鼠标右键拖拽的方式将工人身上的物品放到部队身上，这样部队将会享受物品带来的各种加成。将物品拖拽到货运马能卖掉这个物品。<n/><c val="FFFF00">物品等级(暂未加入)：</c>每个物品都有自己的等级。等级越高，售价越贵，一般而言对部队的加成也越强。工人可以提升每个回合获得物品的等级，由于获得物品的数量有限，越早升级物品等级收益越大。<n/><c val="FFFF00">回合战略：</c>1到7回合你将随机遇上某个玩家，不会重复。观察还未与之战斗过的玩家，提前做好相应对策，对获胜有很大帮助。<n/><c val="FFFF00">奖励回合战略：</c>奖励回合是决赛前非常重要的一个环节，获得木材量将直接影响比赛结果。观察他人阵型，通过保存录像实践，有助于设计有效而稳定的布阵。<n/><c val="FFFF00">决赛战略：</c>决赛有很大随机性与变数，但也有规律可循。例如，有经验的玩家会针对在奖励回合获得最多木材的玩家出兵，经济最好的玩家将面临被剩下7人针对的危险。<n/><c val="FFFF00">奇袭(暂未加入)：</c>如果你经济非常落后，可以考虑在决赛前夕采用非常规战术，例如，将所有部队卖掉后只出空军。这类战术带有“要是运气好说不定能赢”的赌博特性和“反正赢不了我也不让你赢”的恶作剧特性，作者是非常推荐的。
+Param/Value/64EFDAFF=<c val="FFFF00">方阵：</c>你有3个方阵，每个方阵的位置由玩家决定，并且最多容纳共6x6=36个单位(在决赛共6x15=90个单位)。超出的单位将成为后备军支援前线。<n/><c val="FFFF00">物品(暂未加入)：</c>每个回合开始时会获得一个随机物品，你可以通过鼠标右键拖拽的方式将工人身上的物品放到部队身上，这样部队将会享受物品带来的各种加成。将物品拖拽到货运马能卖掉这个物品。<n/><c val="FFFF00">物品等级(暂未加入)：</c>每个物品都有自己的等级。等级越高，售价越贵，一般而言对部队的加成也越强。工人可以提升每个回合获得物品的等级，由于获得物品的数量有限，越早升级物品等级收益越大。<n/><c val="FFFF00">物品与游戏模式：</c>在2V2V2V2模式中你既可以将部队建在自己的区域，就像在混战模式中一样，也可以将他们建在队友的区域，赠送给队友。赠送给队友的部队能享受种族特有物品带来的加成，例如，暗夜精灵玩家将树妖赠送给兽人队友后，树妖能装备闪电之球。<n/><c val="FFFF00">回合战略：</c>1到7回合你将随机遇上某个玩家，不会重复。观察还未与之战斗过的玩家，提前做好相应对策，对获胜有很大帮助。<n/><c val="FFFF00">奖励回合战略：</c>奖励回合是决赛前非常重要的一个环节，获得木材量将直接影响比赛结果。观察他人阵型，通过保存录像实践，有助于设计有效而稳定的布阵。<n/><c val="FFFF00">决赛战略：</c>决赛有很大随机性与变数，但也有规律可循。例如，有经验的玩家会针对在奖励回合获得最多木材的玩家出兵，经济最好的玩家将面临被剩下7人针对的危险。<n/><c val="FFFF00">奇袭(暂未加入)：</c>如果你经济非常落后，可以考虑在决赛前夕采用非常规战术，例如，将所有部队卖掉后只出空军。这类战术带有“要是运气好说不定能赢”的赌博特性和“反正赢不了我也不让你赢”的恶作剧特性，作者是非常推荐的。
 Param/Value/7EA0BD11= vs 
 Param/Value/87E4737D=击杀奖励
 Param/Value/91BA9176= - 
@@ -601,6 +605,7 @@ negz/Ubertip=地精工兵自爆小组，对城墙特别有效。具有效率光�
 nemi/Tip=训练使者
 nemi/Ubertip=魔法单位，能施放治疗术。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nfac/Tip=建造口袋工厂
+nfacTimeLife/Name=nfacTimeLife
 nfgl/Tip=升级到血肉傀儡
 nfgl/Ubertip=重型的近战单位，具有分裂攻击和疾病之云技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nfl2/Name=暗夜精灵旗帜
@@ -675,12 +680,14 @@ noga/Tip=训练石槌酋长
 noga/Ubertip=重型的近战单位，具有嘲讽技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nogl/Tip=升级到食人魔领主
 nogl/Ubertip=重型的近战单位，具有嘲讽和虔诚光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+nogn/Tip=训练石槌法师
+nogn/Ubertip=魔法单位，能施放嗜血。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nogo/Tip=训练石槌食人魔
 nogo/Ubertip=防御型单位。虽然比两个头的稍微苯点，却是一部优秀的战争机器。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nogr/Tip=升级到食人魔战士
 nogr/Ubertip=防御型单位，能施放诱捕技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
-nomg/Tip=训练食人魔法师
-nomg/Ubertip=魔法单位，能施放嗜血。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+nomg/Tip=升级到食人魔法师
+nomg/Ubertip=魔法单位，能施放酸性炸弹。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nrvd/Tip=升级到死亡亡魂
 nrvd/Ubertip=防御型单位，能施放霜甲术。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nsnp/Tip=训练海龙
@@ -699,7 +706,7 @@ nwat/Tip=训练哨兵
 nwat/Ubertip=基本的地面单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nwgs/Ubertip=轻型飞行单位。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ocor/Ubertip=增加<d ref="Behavior,AIcb,Modification.DamageDealtScaled[Melee]"/>点攻击力。能在<d ref="Behavior,BIcb,Duration"/>秒内削弱敌人的护甲。
-odoc/Ubertip=魔法单位，能施放治疗结界。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+odoc/Ubertip=魔法单位，能施放妖术。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ofir/Ubertip=增加<d ref="Behavior,AIfb,Modification.DamageDealtScaled[Melee]"/>点攻击力。能让攻击带有<d ref="Effect,AIfbSphereEffect,AreaArray[0].Bonus"/>点火焰伤害，还有一定的溅射效果。
 ofl2/Name=兽人旗帜
 ofl2/Tip=放置兽人旗帜(决赛)
@@ -729,6 +736,8 @@ otau/Ubertip=重型的近战单位，具有粉碎技能。<n/><n/><c val="ffcc00
 otbk/Tip=升级到巨魔狂战士
 otbk/Ubertip=基本的远程攻击单位，拥有狂暴技能，增加了攻击速度但是也因此而降低伤害。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c> 
 oven/Ubertip=增加<d ref="Behavior,AIpb,Modification.DamageDealtScaled[Melee]"/>点攻击力。能在<d ref="Behavior,BIpb,Duration"/>秒内对目标造成中毒效果。
+ovlj/Tip=升级到沃金
+ovlj/Ubertip=魔法单位，能施放治疗结界。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 owar/Tip=训练兽人大酋长
 owar/Ubertip=高速骑兵，具有掠夺技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 prvt/Ubertip=增加<d ref="Behavior,AIlf,Modification.VitalMaxArray[Life]"/>点生命值。

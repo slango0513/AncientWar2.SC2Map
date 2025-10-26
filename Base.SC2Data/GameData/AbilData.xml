@@ -97,6 +97,29 @@
         <CastOutroTime value="0.51"/>
         <Effect index="0" value="Bblo40s"/>
     </CAbilEffectTarget>
+    <!--Creep Abil End-->
+    <!--Creep Hero Abil-->
+    <!--Alchemist - Acid Bomb Buff=BNab-->
+    <CAbilEffectTarget id="ANab" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Creeps,AbilityorEffectType:Units"/>
+        <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
+        <Cost index="0">
+            <Vital index="Energy" value="15"/>
+            <Cooldown Location="Unit" TimeUse="15"/>
+        </Cost>
+        <Range value="6"/>
+        <PrepTime value="0.4"/>
+        <CastOutroTime value="0.5"/>
+        <Effect index="0" value="ANabMissile"/>
+        <AutoCastValidatorArray value="EnemiesNearby2"/>
+        <AutoCastValidatorArray value="NoAcidBomb"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+        </TargetSorts>
+        <AutoCastRange value="6"/>
+    </CAbilEffectTarget>
     <CAbilBehavior id="ANca">
         <CycleMode value="Random"/>
     </CAbilBehavior>
@@ -108,12 +131,13 @@
     <CAbilEffectInstant id="ANcr" parent="AW2_EffectInstant">
         <EditorCategories value="Race:Goblin,AbilityorEffectType:Units"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="60"/>
+            <Cooldown Location="Unit" TimeStart="30" TimeUse="1"/>
         </Cost>
         <Alignment value="Positive"/>
         <Effect index="0" value="BNcr1"/>
         <AutoCastFilters value="Self,Visible;-"/>
-        <AutoCastValidatorArray value="EnemiesNearby2"/>
+        <AutoCastValidatorArray value="EnemiesNearby6"/>
+        <AutoCastValidatorArray value="CasterHasNoChemicalRage"/>
     </CAbilEffectInstant>
     <!--Tinkerer - Cluster Rockets (Level 0) Buff=BNcs effect=XNcs-->
     <CAbilEffectTarget id="ANcs" parent="AW2_EffectTarget">
@@ -409,6 +433,20 @@
         <AutoCastValidatorArray value="EnemiesNearby2"/>
         <AutoCastValidatorArray value="noMarkers"/>
     </CAbilEffectTarget>
+    <!--Shadow Hunter - Voodooo Buff=BOvd,BOvc-->
+    <CAbilEffectInstant id="AOvd" parent="AW2_EffectInstant">
+        <EditorCategories value="Race:Orc,AbilityorEffectType:Units"/>
+        <Cost index="0">
+            <Vital index="Energy" value="60"/>
+            <Cooldown Location="Unit" TimeUse="60"/>
+        </Cost>
+        <PrepTime value="0.3"/>
+        <CastOutroTime value="30"/>
+        <Effect index="0" value="BOvc"/>
+        <FinishTime value="1.07"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
+        <AutoCastFilters value="Self,Visible;-"/>
+    </CAbilEffectInstant>
     <!--Self Destruct (Clockwerk Goblins) Dur=.1 HeroDur=.1-->
     <CAbilEffectTarget id="Asdg">
         <CastOutroTime index="0" value="3"/>
@@ -546,8 +584,8 @@
         <InfoArray index="Build9" Unit="noga">
             <Button DefaultButtonFace="noga" Requirements="BuildArmy"/>
         </InfoArray>
-        <InfoArray index="Build10" Unit="nomg">
-            <Button DefaultButtonFace="nomg" Requirements="BuildArmy"/>
+        <InfoArray index="Build10" Unit="nogn">
+            <Button DefaultButtonFace="nogn" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build11" Unit="nfac">
             <Button DefaultButtonFace="nfac" Requirements="BuildArmy"/>
@@ -1003,6 +1041,9 @@
         <InfoArray index="Build3" Unit="nftt">
             <Button DefaultButtonFace="nftt" Requirements="BuildArmy"/>
         </InfoArray>
+        <InfoArray index="Build4" Unit="Oshd">
+            <Button DefaultButtonFace="Oshd" Requirements="BuildArmyFinal"/>
+        </InfoArray>
         <InfoArray index="Build5" Unit="ogru">
             <Button DefaultButtonFace="ogru" Requirements="BuildArmy"/>
         </InfoArray>
@@ -1071,16 +1112,16 @@
         <EditorCategories value="Race:Orc,AbilityorEffectType:Unit"/>
         <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <Cost index="0">
-            <Vital index="Energy" value="15"/>
-            <Cooldown Location="Unit" TimeUse="15"/>
+            <Vital index="Energy" value="60"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <Range value="12"/>
         <PrepTime value="0.3"/>
         <CastOutroTime value="1.07"/>
         <Effect index="0" value="ANhx1"/>
         <TargetSorts RequestCount="1">
+            <SortArray value="TSLifeLargestFirst"/>
             <SortArray value="TSKillResourceTerrazineLargestFirst"/>
-            <SortArray value="TSLife"/>
         </TargetSorts>
         <AutoCastRange value="12"/>
         <AutoCastValidatorArray value="NoHex"/>
@@ -1787,8 +1828,8 @@
         <EditorCategories value="Race:Orc,AbilityorEffectType:Unit"/>
         <TargetFilters index="0" value="-;wall,tree,debris,item,ward,dead,invulnerable"/>
         <Cost index="0">
-            <Vital index="Energy" value="30"/>
-            <Cooldown Location="Unit" TimeUse="30"/>
+            <Vital index="Energy" value="60"/>
+            <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
         <Range value="9"/>
         <PrepTime value="0.35"/>
@@ -2437,6 +2478,12 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToNti3" parent="AW2_Upgrade" toUnit="Nti3">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToovlj" parent="AW2_Upgrade" toUnit="ovlj">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonomg" parent="AW2_Upgrade" toUnit="nomg">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
 </Catalog>
