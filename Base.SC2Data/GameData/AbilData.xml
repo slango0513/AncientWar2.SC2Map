@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CAbilTrain default="1" id="AW2_MakeItem">
+        <Flags index="WaitForFood" value="0"/>
+        <Name value="##unit##/Tip"/>
+        <InfoArray index="Train1">
+            <Charge Link="Sell\##unit##"/>
+            <Button DefaultButtonFace="##unit##" Requirements="BuildArmy"/>
+            <Unit value="##unit##"/>
+        </InfoArray>
+        <Alert value=""/>
+    </CAbilTrain>
     <CAbilTransport default="1" id="AW2_Transport" parent="War3_Transport">
         <CmdButtonArray index="Load">
             <Flags index="IgnoreUser" value="1"/>
@@ -99,23 +109,23 @@
     </CAbilEffectTarget>
     <CAbilEffectTarget id="ACbf" parent="AW2_EffectTarget">
         <Alignment value="Negative"/>
-        <Effect index="0" value="ACbfTarget"/>
         <Cost index="0">
             <Vital index="Energy" value="30"/>
-            <Cooldown Location="Unit" TimeUse="5"/>
+            <Cooldown Location="Unit" TimeUse="6"/>
         </Cost>
-        <TargetFilters index="0" value="-;player,allies,air,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
+        <TargetFilters index="0" value="-;player,allies,wall,tree,debris,item,ward,dead,invulnerable,immunity"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSMarker"/>
             <SortArray value="TSLifeLargestFirst"/>
             <SortArray value="TSKillResourceTerrazineLargestFirst"/>
         </TargetSorts>
-        <Range value="2"/>
-        <AutoCastRange value="2"/>
-        <AutoCastValidatorArray value="EnemiesNearby1"/>
+        <Range value="3"/>
+        <AutoCastRange value="3"/>
+        <AutoCastValidatorArray value="EnemiesNearby2"/>
         <AutoCastValidatorArray value="NoBreathOfFrost"/>
-        <PrepTime value="0.47"/>
-        <FinishTime value="0.8"/>
+        <PrepTime value="0.4"/>
+        <CastOutroTime value="0.5"/>
+        <Effect index="0" value="ACbfSearch"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="ACcb" parent="AW2_EffectTarget">
         <EditorCategories value="Race:Dragon,AbilityorEffectType:Units"/>
@@ -200,6 +210,31 @@
             <SortArray value="TSKillResourceTerrazineLargestFirst"/>
         </TargetSorts>
         <AutoCastRange value="6"/>
+    </CAbilEffectTarget>
+    <CAbilTrain id="Purchaserde0" parent="AW2_MakeItem" unit="rde0"/>
+    <CAbilTrain id="Purchaserde1" parent="AW2_MakeItem" unit="rde1"/>
+    <CAbilTrain id="Purchaserde2" parent="AW2_MakeItem" unit="rde2"/>
+    <CAbilTrain id="Purchaserde3" parent="AW2_MakeItem" unit="rde3"/>
+    <CAbilTrain id="Purchaserde4" parent="AW2_MakeItem" unit="rde4"/>
+    <CAbilEffectTarget id="StellarFlare" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:NightElf,AbilityorEffectType:Units"/>
+        <Cost index="0">
+            <Vital index="Energy" value="30"/>
+            <Cooldown Location="Unit" TimeUse="3"/>
+        </Cost>
+        <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSLife"/>
+            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSFarthestDistance"/>
+        </TargetSorts>
+        <Range value="11"/>
+        <AutoCastRange value="11"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
+        <AutoCastValidatorArray value="NoStarfall"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <PrepTime value="0.4"/>
+        <CastOutroTime value="1.5"/>
     </CAbilEffectTarget>
     <CAbilBehavior id="ANca">
         <CycleMode value="Random"/>
@@ -423,6 +458,9 @@
         </InfoArray>
         <InfoArray index="Build2" Unit="nfl2">
             <Button DefaultButtonFace="nfl2" Requirements="BuildPhalanxFinal"/>
+        </InfoArray>
+        <InfoArray index="Build3" Unit="ehpr">
+            <Button DefaultButtonFace="ehpr" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build4" Unit="earc">
             <Button DefaultButtonFace="earc" Requirements="BuildArmy"/>
@@ -686,9 +724,6 @@
         </InfoArray>
         <InfoArray index="Build10" Unit="Hblm">
             <Button DefaultButtonFace="Hblm" Requirements="BuildArmy"/>
-        </InfoArray>
-        <InfoArray index="Build11" Unit="npgr">
-            <Button DefaultButtonFace="npgr" Requirements="BuildArmy"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
@@ -1112,7 +1147,7 @@
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <Cost index="0">
             <Vital index="Energy" value="60"/>
-            <Cooldown Location="Unit" TimeUse="1"/>
+            <Cooldown Location="Unit" TimeUse="30"/>
         </Cost>
         <PrepTime value="0.3"/>
         <CastOutroTime value="2.4"/>
@@ -1120,12 +1155,14 @@
         <AutoCastValidatorArray index="0" value="EnemiesNearby8"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
+    <CAbilTrain id="Purchasepenr" parent="AW2_MakeItem" unit="penr"/>
+    <CAbilTrain id="Purchasepmna" parent="AW2_MakeItem" unit="pmna"/>
     <CAbilEffectInstant id="SummonSeaElemental" parent="AW2_EffectInstant">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <Effect index="0" value="nsel"/>
         <Cost index="0">
             <Vital index="Energy" value="60"/>
-            <Cooldown Location="Unit" TimeUse="1"/>
+            <Cooldown Location="Unit" TimeUse="30"/>
         </Cost>
         <AutoCastFilters value="Self,Visible;-"/>
         <AutoCastValidatorArray index="0" value="EnemiesNearby8"/>
@@ -1622,7 +1659,7 @@
         <FinishTime value="0.8"/>
         <Effect index="0" value="AOws1Search"/>
         <AutoCastValidatorArray value="EnemiesNearby2"/>
-        <AutoCastFilters value="Visible;-"/>
+        <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <!--Death Knight - Animate Dead Buff=BUan-->
     <CAbilEffectInstant id="AUan" parent="AW2_EffectInstant">
@@ -1676,6 +1713,9 @@
         </InfoArray>
         <InfoArray index="Build12" Unit="ugho">
             <Button DefaultButtonFace="ugho" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build13" Unit="ugrm">
+            <Button DefaultButtonFace="ugrm" Requirements="BuildArmy"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
@@ -2203,41 +2243,45 @@
     </CAbilEffectTarget>
     <!--Stone Form Dur=.5 cast=.7-->
     <CAbilMorph id="Astn" parent="AW2_Morph" unitID="ugrm">
-        <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
-        <Cost>
-            <Cooldown TimeUse="30"/>
-        </Cost>
+        <Flags index="Automatic" value="1"/>
+        <Flags index="Birth" value="1"/>
+        <Flags index="WaitUntilStopped" value="0"/>
         <InfoArray index="0" Unit="ugrm">
             <SectionArray index="Actor">
-                <DurationArray index="Duration" value="0.5"/>
-            </SectionArray>
-            <SectionArray index="Mover">
                 <DurationArray index="Duration" value="0.7"/>
             </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Delay" value="0.5"/>
+                <DurationArray index="Duration" value="0.3"/>
+            </SectionArray>
             <SectionArray index="Stats">
-                <DurationArray index="Duration" value="0.5"/>
+                <DurationArray index="Delay" value="0.5"/>
             </SectionArray>
         </InfoArray>
-        <Flags index="IgnoreFood" value="0"/>
-        <Flags index="IgnoreUnitCost" value="0"/>
+        <ValidatorArray value="GargoyleNearDeath"/>
+        <Cost>
+            <VitalFraction index="Life" value="-1"/>
+        </Cost>
+        <ErrorAlert value=""/>
     </CAbilMorph>
     <CAbilMorph id="AstnUn" parent="AW2_Morph" unitID="ugar">
-        <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
+        <Flags index="Birth" value="1"/>
+        <Flags index="SuppressMovement" value="1"/>
+        <Cost>
+            <VitalFraction index="Life" value="-1"/>
+        </Cost>
         <InfoArray index="0" Unit="ugar">
             <SectionArray index="Actor">
-                <DurationArray index="Duration" value="0.5"/>
-            </SectionArray>
-            <SectionArray index="Mover">
                 <DurationArray index="Duration" value="0.7"/>
             </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Delay" value="0.5"/>
+                <DurationArray index="Duration" value="0.3"/>
+            </SectionArray>
             <SectionArray index="Stats">
-                <DurationArray index="Duration" value="0.5"/>
+                <DurationArray index="Delay" value="0.5"/>
             </SectionArray>
         </InfoArray>
-        <Name value="AstnUn/Tip"/>
-        <Flags index="IgnoreFood" value="0"/>
-        <Flags index="IgnorePlacement" value="0"/>
-        <Flags index="IgnoreUnitCost" value="0"/>
     </CAbilMorph>
     <!--Web Dur=12 HeroDur=7 Buff=Bwea,Bweb-->
     <CAbilEffectTarget id="Aweb" parent="AW2_EffectTarget">
@@ -2453,101 +2497,32 @@
         <Alignment value="Negative"/>
         <EditorCategories value="Race:Undead,AbilityorEffectType:Units"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="60"/>
+            <Vital index="Energy" value="60"/>
+            <Cooldown Location="Unit" TimeUse="6"/>
         </Cost>
         <PrepTime value="0.47"/>
         <FinishTime value="0.8"/>
         <Effect index="0" value="AOws1Search"/>
-        <AutoCastValidatorArray value="EnemiesNearby2"/>
-        <AutoCastFilters value="Visible;-"/>
+        <AutoCastValidatorArray value="EnemiesNearby1"/>
+        <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilBehavior id="Multishot" parent="War3_Passive">
         <CmdButtonArray index="On" Requirements="Multishot"/>
     </CAbilBehavior>
-    <CAbilTrain id="Purchasefrhg" parent="War3_MakeItem" unit="frhg">
-        <InfoArray index="Train1">
-            <Charge CountMax="1" CountStart="1"/>
-            <Button Requirements="BuildArmy"/>
-        </InfoArray>
-    </CAbilTrain>
-    <CAbilTrain id="Purchasegcel" parent="War3_MakeItem" unit="gcel">
-        <InfoArray index="Train1">
-            <Charge CountMax="3" CountStart="3"/>
-            <Button Requirements="BuildArmy"/>
-        </InfoArray>
-    </CAbilTrain>
-    <CAbilTrain id="Purchaseocor" parent="War3_MakeItem" unit="ocor">
-        <InfoArray index="Train1">
-            <Charge CountMax="1" CountStart="1"/>
-            <Button Requirements="BuildArmy"/>
-        </InfoArray>
-    </CAbilTrain>
-    <CAbilTrain id="Purchaseofir" parent="War3_MakeItem" unit="ofir">
-        <InfoArray index="Train1">
-            <Charge CountMax="1" CountStart="1"/>
-            <Button Requirements="BuildArmy"/>
-        </InfoArray>
-    </CAbilTrain>
-    <CAbilTrain id="Purchaseofro" parent="War3_MakeItem" unit="ofro">
-        <InfoArray index="Train1">
-            <Charge CountMax="1" CountStart="1"/>
-            <Button Requirements="BuildArmy"/>
-        </InfoArray>
-    </CAbilTrain>
-    <CAbilTrain id="Purchaseoli2" parent="War3_MakeItem" unit="oli2">
-        <InfoArray index="Train1">
-            <Charge CountMax="1" CountStart="1"/>
-            <Button Requirements="BuildArmy"/>
-        </InfoArray>
-    </CAbilTrain>
-    <CAbilTrain id="Purchaseoslo" parent="War3_MakeItem" unit="oslo">
-        <InfoArray index="Train1">
-            <Charge CountMax="1" CountStart="1"/>
-            <Button Requirements="BuildArmy"/>
-        </InfoArray>
-    </CAbilTrain>
-    <CAbilTrain id="Purchaseoven" parent="War3_MakeItem" unit="oven">
-        <InfoArray index="Train1">
-            <Charge CountMax="1" CountStart="1"/>
-            <Button Requirements="BuildArmy"/>
-        </InfoArray>
-    </CAbilTrain>
-    <CAbilTrain id="Purchaseprvt" parent="War3_MakeItem" unit="prvt">
-        <InfoArray index="Train1">
-            <Charge CountMax="1" CountStart="1"/>
-            <Button Requirements="BuildArmy"/>
-        </InfoArray>
-    </CAbilTrain>
-    <CAbilTrain id="Purchaserat3" parent="War3_MakeItem" unit="rat3">
-        <InfoArray index="Train1">
-            <Charge CountMax="3" CountStart="3"/>
-            <Button Requirements="BuildArmy"/>
-        </InfoArray>
-    </CAbilTrain>
-    <CAbilTrain id="Purchaserat6" parent="War3_MakeItem" unit="rat6">
-        <InfoArray index="Train1">
-            <Charge CountMax="3" CountStart="3"/>
-            <Button Requirements="BuildArmy"/>
-        </InfoArray>
-    </CAbilTrain>
-    <CAbilTrain id="Purchaserat9" parent="War3_MakeItem" unit="rat9">
-        <InfoArray index="Train1">
-            <Charge CountMax="3" CountStart="3"/>
-            <Button Requirements="BuildArmy"/>
-        </InfoArray>
-    </CAbilTrain>
-    <CAbilTrain id="Purchaseratc" parent="War3_MakeItem" unit="ratc">
-        <InfoArray index="Train1">
-            <Charge CountMax="3" CountStart="3"/>
-            <Button Requirements="BuildArmy"/>
-        </InfoArray>
-    </CAbilTrain>
-    <CAbilTrain id="Purchaseratf" parent="War3_MakeItem" unit="ratf">
-        <InfoArray index="Train1">
-            <Charge CountMax="3" CountStart="3"/>
-            <Button Requirements="BuildArmy"/>
-        </InfoArray>
-    </CAbilTrain>
+    <CAbilTrain id="Purchasefrhg" parent="AW2_MakeItem" unit="frhg"/>
+    <CAbilTrain id="Purchasegcel" parent="AW2_MakeItem" unit="gcel"/>
+    <CAbilTrain id="Purchaseocor" parent="AW2_MakeItem" unit="ocor"/>
+    <CAbilTrain id="Purchaseofir" parent="AW2_MakeItem" unit="ofir"/>
+    <CAbilTrain id="Purchaseofro" parent="AW2_MakeItem" unit="ofro"/>
+    <CAbilTrain id="Purchaseoli2" parent="AW2_MakeItem" unit="oli2"/>
+    <CAbilTrain id="Purchaseoslo" parent="AW2_MakeItem" unit="oslo"/>
+    <CAbilTrain id="Purchaseoven" parent="AW2_MakeItem" unit="oven"/>
+    <CAbilTrain id="Purchaseprvt" parent="AW2_MakeItem" unit="prvt"/>
+    <CAbilTrain id="Purchaserat3" parent="AW2_MakeItem" unit="rat3"/>
+    <CAbilTrain id="Purchaserat6" parent="AW2_MakeItem" unit="rat6"/>
+    <CAbilTrain id="Purchaserat9" parent="AW2_MakeItem" unit="rat9"/>
+    <CAbilTrain id="Purchaseratc" parent="AW2_MakeItem" unit="ratc"/>
+    <CAbilTrain id="Purchaseratf" parent="AW2_MakeItem" unit="ratf"/>
     <CAbilEffectTarget id="SubmergeTeleport" parent="AW2_EffectTarget">
         <EditorCategories value="Race:Naga,AbilityorEffectType:Units"/>
         <TargetFilters index="0" value="-;player,allies,air,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable"/>
@@ -2584,6 +2559,9 @@
     </CAbilBehavior>
     <CAbilBehavior id="Bphx" parent="War3_Passive">
         <BehaviorArray value="Bphx"/>
+    </CAbilBehavior>
+    <CAbilBehavior id="Bstn" parent="War3_Passive">
+        <BehaviorArray value="Bstn"/>
     </CAbilBehavior>
     <CAbilTrain id="nmgvTrain" parent="War3_Train">
         <InfoArray index="Train1" Time="5" Effect="BNcg">

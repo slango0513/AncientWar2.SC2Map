@@ -433,9 +433,8 @@ void gf_RoundStartLoop (bool lp_debug) {
         if ((lp_debug == true)) {
             autoB26965AF_ae = gv_roundCount;
             autoB26965AF_ai = 1;
-            lv_round = 1;
+            lv_round = 8;
             for ( ; ( (autoB26965AF_ai >= 0 && lv_round <= autoB26965AF_ae) || (autoB26965AF_ai <= 0 && lv_round >= autoB26965AF_ae) ) ; lv_round += autoB26965AF_ai ) {
-                lv_round = 1;
                 if ((gf_IsFinalRound(lv_round) == true)) {
                     gf_FinalVenueReplace();
                 }
@@ -2234,7 +2233,7 @@ void gf_UnitTypeSetAll () {
     lv_buildingRegion = 1;
     for ( ; ( (auto05841633_ai >= 0 && lv_buildingRegion <= auto05841633_ae) || (auto05841633_ai <= 0 && lv_buildingRegion >= auto05841633_ae) ) ; lv_buildingRegion += auto05841633_ai ) {
         gv_buildingScore[gv_playerAtBuildingRegion[lv_buildingRegion]] = 0;
-        if ((TechTreeUpgradeCount(gv_playerAtBuildingRegion[lv_buildingRegion], "EmeraldDream", c_techCountCompleteOnly) == 1) && (TechTreeUpgradeCount(gf_PlayerGetCompetitor(gv_playerAtBuildingRegion[lv_buildingRegion]), "EmeraldDream", c_techCountCompleteOnly) == 0) && (gv_bonusRoundIsOn[gv_round] == false)) {
+        if ((TechTreeUpgradeCount(gv_playerAtBuildingRegion[lv_buildingRegion], "EmeraldDream", c_techCountCompleteOnly) == 1) && (TechTreeUpgradeCount(gf_PlayerGetCompetitor(gv_playerAtBuildingRegion[lv_buildingRegion]), "EmeraldDream", c_techCountCompleteOnly) == 0) && (gv_bonusRoundIsOn[gv_round] == false) && (gf_IsFinalRound(gv_round) == false)) {
             lv_buildingRegionReal = gf_PlayerGetBuidingRegion(gf_PlayerGetCompetitor(gv_playerAtBuildingRegion[lv_buildingRegion]));
         }
         else {
@@ -3662,7 +3661,6 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     int lv_player;
 
     // Variable Initialization
-    lv_debug = true;
 
     // Actions
     if (!runActions) {
@@ -3681,7 +3679,6 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     for ( ; ( (autoCF83B040_ai >= 0 && lv_player <= autoCF83B040_ae) || (autoCF83B040_ai <= 0 && lv_player >= autoCF83B040_ae) ) ; lv_player += autoCF83B040_ai ) {
         VisRevealArea(lv_player, RegionFromId(70), 0.0625, false);
         VisRevealArea(lv_player, RegionFromId(71), 0.0625, false);
-        libGAwX_gf_SetPlayerUIRace(lv_player, "Dragon");
     }
     libGAwX_gf_SetWar3TimeOfDay("13:00:00");
     libGAwX_gf_PauseUnpauseTimeOfDayWar3(true);
@@ -5688,7 +5685,7 @@ bool gt_DebugKeyPressed_Func (bool testConds, bool runActions) {
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "ncg3", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "nhew", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "ncpn", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "ncer", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Dragonspawn", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
         libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "BuildArmyFinal", 1);
         PlayerModifyPropertyInt(lv_player, c_playerPropTerrazine, c_playerPropOperSetTo, 100000);
         PlayerModifyPropertyInt(lv_player, c_playerPropCustom, c_playerPropOperSetTo, 100000);

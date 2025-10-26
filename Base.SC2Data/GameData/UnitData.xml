@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
     <CUnit default="1" id="AW2_Item" parent="War3_Item">
-        <PawnItemReduction value="0.8"/>
+        <PawnItemReduction value="1"/>
         <EffectArray index="Create" value=""/>
     </CUnit>
     <CUnit default="1" id="AW2_Building" parent="War3_Building">
@@ -163,8 +163,77 @@
         <BehaviorArray index="3" Link="AW2_Peon"/>
         <WeaponArray index="0" removed="1"/>
         <WeaponArray index="1" removed="1"/>
-        <CardLayouts index="0" removed="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="0">
+                <Face value="Anei"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="Aall,Designate"/>
+                <ShowInGlossary value="1"/>
+                <Row value="2"/>
+                <Column value="4"/>
+            </LayoutButtons>
+            <LayoutButtons index="1">
+                <Face value="ANgl"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="ANgl,Execute"/>
+                <ShowInGlossary value="1"/>
+                <Row value="2"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons index="2">
+                <Face value="ANlg"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="ANlg,Execute"/>
+                <ShowInGlossary value="1"/>
+                <Row value="2"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons index="3">
+                <Face value="Anei"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="Aall,Designate"/>
+                <ShowInGlossary value="1"/>
+                <Row value="2"/>
+                <Column value="4"/>
+            </LayoutButtons>
+            <LayoutButtons Face="ANgl" Type="AbilCmd" AbilCmd="ANgl,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="ANlg" Type="AbilCmd" AbilCmd="ANlg,Execute" Row="2" Column="1"/>
+        </CardLayouts>
+        <CardLayouts CardId="Buil">
+            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
+        </CardLayouts>
+        <CardLayouts CardId="Purc">
+            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
+            <LayoutButtons Face="Purchaserat3" Type="AbilCmd" AbilCmd="Purchaserat3,Train1" Row="0" Column="0"/>
+            <LayoutButtons Face="Purchaserat6" Type="AbilCmd" AbilCmd="Purchaserat6,Train1" Row="0" Column="1"/>
+            <LayoutButtons Face="Purchaserat9" Type="AbilCmd" AbilCmd="Purchaserat9,Train1" Row="0" Column="2"/>
+            <LayoutButtons Face="Purchaseratc" Type="AbilCmd" AbilCmd="Purchaseratc,Train1" Row="0" Column="3"/>
+            <LayoutButtons Face="Purchaserde0" Type="AbilCmd" AbilCmd="Purchaserde0,Train1" Row="1" Column="0"/>
+            <LayoutButtons Face="Purchaserde1" Type="AbilCmd" AbilCmd="Purchaserde1,Train1" Row="1" Column="1"/>
+            <LayoutButtons Face="Purchaserde2" Type="AbilCmd" AbilCmd="Purchaserde2,Train1" Row="1" Column="2"/>
+            <LayoutButtons Face="Purchaserde3" Type="AbilCmd" AbilCmd="Purchaserde3,Train1" Row="1" Column="3"/>
+            <LayoutButtons Face="Purchaserde4" Type="AbilCmd" AbilCmd="Purchaserde4,Train1" Row="1" Column="4"/>
+            <LayoutButtons Face="Purchasegcel" Type="AbilCmd" AbilCmd="Purchasegcel,Train1" Row="2" Column="0"/>
+            <LayoutButtons Face="Purchaseprvt" Type="AbilCmd" AbilCmd="Purchaseprvt,Train1" Row="2" Column="1"/>
+            <LayoutButtons Face="Purchasepenr" Type="AbilCmd" AbilCmd="Purchasepenr,Train1" Row="2" Column="2"/>
+        </CardLayouts>
         <AbilArray index="0" Link="move"/>
+        <AbilArray Link="AInv"/>
+        <AbilArray Link="ANgl"/>
+        <AbilArray Link="ANlg"/>
+        <AbilArray Link="Aall"/>
+        <AbilArray Link="Purchaserat3"/>
+        <AbilArray Link="Purchaserat6"/>
+        <AbilArray Link="Purchaserat9"/>
+        <AbilArray Link="Purchaseratc"/>
+        <AbilArray Link="Purchaserde0"/>
+        <AbilArray Link="Purchaserde1"/>
+        <AbilArray Link="Purchaserde2"/>
+        <AbilArray Link="Purchaserde3"/>
+        <AbilArray Link="Purchaserde4"/>
+        <AbilArray Link="Purchasegcel"/>
+        <AbilArray Link="Purchaseprvt"/>
+        <AbilArray Link="Purchasepenr"/>
     </CUnit>
     <CUnit default="1" id="AW2_Phalanx" parent="War3_ArmyBase">
         <DeathRevealRadius value="0"/>
@@ -447,19 +516,19 @@
     <!--HeroBloodMage-->
     <CUnit id="Hblm" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
-        <CostResource index="gold" value="60"/>
-        <KillResource index="Custom" value="30"/>
-        <LifeStart value="25"/>
-        <LifeMax value="25"/>
+        <CostResource index="gold" value="90"/>
+        <KillResource index="Custom" value="90"/>
+        <LifeStart value="900"/>
+        <LifeMax value="900"/>
         <Speed value="2"/>
         <Race value="BloodElf"/>
         <Mover value="foot"/>
         <AbilArray Link="BloodElfInventory"/>
         <AbilArray Link="UpgradeToHkal"/>
-        <AbilArray Link="AHbn"/>
+        <AbilArray Link="AHfs"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Hkal" Type="AbilCmd" AbilCmd="UpgradeToHkal,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="AHbn" Type="AbilCmd" AbilCmd="AHbn,0" Row="2" Column="0"/>
+            <LayoutButtons Face="AHfs" Type="AbilCmd" AbilCmd="AHfs,0" Row="2" Column="0"/>
         </CardLayouts>
         <EnergyStart value="60"/>
         <EnergyMax value="60"/>
@@ -552,20 +621,18 @@
     <!--Kael-->
     <CUnit id="Hkal" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
-        <CostResource index="gold" value="180"/>
-        <KillResource index="Custom" value="30"/>
-        <LifeStart value="25"/>
-        <LifeMax value="25"/>
+        <CostResource index="gold" value="270"/>
+        <KillResource index="Custom" value="90"/>
+        <LifeStart value="900"/>
+        <LifeMax value="900"/>
         <Speed value="2"/>
         <Race value="BloodElf"/>
         <Mover value="foot"/>
         <AbilArray Link="BloodElfInventory"/>
-        <AbilArray Link="AHfs"/>
+        <AbilArray Link="Aarm"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="AHfs" Type="AbilCmd" AbilCmd="AHfs,0" Row="2" Column="0"/>
+            <LayoutButtons Face="Aarm" Type="Passive" Behavior="Aarm" Row="2" Column="0"/>
         </CardLayouts>
-        <EnergyStart value="60"/>
-        <EnergyMax value="60"/>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
         <Name value="Hkal/Propernames"/>
@@ -1368,6 +1435,28 @@
         <LifeArmor value="10"/>
         <WeaponArray index="1" removed="1"/>
     </CUnit>
+    <!--Hippogryph Rider-->
+    <CUnit id="ehpr" parent="AW2_Army" defType="SMALL">
+        <Attributes index="small" value="1"/>
+        <CostResource index="gold" value="45"/>
+        <KillResource index="Custom" value="45"/>
+        <LifeStart value="450"/>
+        <LifeMax value="450"/>
+        <Speed value="3"/>
+        <Race value="NightElf"/>
+        <AbilArray Link="Aien"/>
+        <BehaviorArray Link="Aegr"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Aegr" Type="Passive" Behavior="Aegr" Row="2" Column="0"/>
+        </CardLayouts>
+        <PlaneArray index="Air" value="1"/>
+        <GlossaryCategory value="Unit/Category/NightElfUnits"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="ForceField" value="0"/>
+        <Collide index="Flying" value="1"/>
+        <Height value="1.875"/>
+        <Mover value="fly"/>
+    </CUnit>
     <CUnit id="nbda1LM" parent="War3_Missile"/>
     <CUnit id="nbds1LM" parent="War3_Missile"/>
     <!--tichondrius-->
@@ -1623,103 +1712,41 @@
     </CUnit>
     <!--Wisp-->
     <CUnit id="ewsp" parent="AW2_Peon">
-        <CardLayouts CardId="">
+        <CardLayouts index="0">
             <LayoutButtons>
                 <Face value="CmdBuildNightElf"/>
                 <Type value="Submenu"/>
-                <AbilCmd value=""/>
-                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
-                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Buil"/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="0"/>
             </LayoutButtons>
-            <LayoutButtons>
-                <Face value="nflg"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="AEbu,Build1"/>
-                <Behavior value=""/>
-                <Requirements value=""/>
-                <SubmenuAbilState value=""/>
-                <SubmenuCardId value=""/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
-                <Row value="0"/>
-                <Column value="0"/>
-            </LayoutButtons>
+            <LayoutButtons Face="nflg" Type="AbilCmd" AbilCmd="AEbu,Build1" Row="0" Column="0"/>
             <LayoutButtons>
                 <Face value="CmdPurchaseNightElf"/>
                 <Type value="Submenu"/>
-                <AbilCmd value=""/>
-                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
-                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Purc"/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="1"/>
             </LayoutButtons>
-            <LayoutButtons>
-                <Face value="nfl2"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="AEbu,Build2"/>
-                <Behavior value=""/>
-                <Requirements value=""/>
-                <SubmenuAbilState value=""/>
-                <SubmenuCardId value=""/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
-                <Row value="0"/>
-                <Column value="1"/>
-            </LayoutButtons>
-            <LayoutButtons Face="Anei" Type="AbilCmd" AbilCmd="Aall,Designate" Row="2" Column="4"/>
-            <LayoutButtons Face="ANgl" Type="AbilCmd" AbilCmd="ANgl,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="ANlg" Type="AbilCmd" AbilCmd="ANlg,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="nfl2" Type="AbilCmd" AbilCmd="AEbu,Build2" Row="0" Column="1"/>
         </CardLayouts>
-        <CardLayouts CardId="Buil">
-            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
+        <CardLayouts index="1" CardId="Buil">
             <LayoutButtons Face="nwat" Type="AbilCmd" AbilCmd="AEbu,Build5" Row="0" Column="0"/>
             <LayoutButtons Face="nssn" Type="AbilCmd" AbilCmd="AEbu,Build11" Row="0" Column="1"/>
             <LayoutButtons Face="esen" Type="AbilCmd" AbilCmd="AEbu,Build7" Row="0" Column="2"/>
-            <LayoutButtons Face="edry" Type="AbilCmd" AbilCmd="AEbu,Build9" Row="1" Column="1"/>
-            <LayoutButtons Face="earc" Type="AbilCmd" AbilCmd="AEbu,Build4" Row="1" Column="3"/>
-            <LayoutButtons Face="ebal" Type="AbilCmd" AbilCmd="AEbu,Build10" Row="1" Column="4"/>
+            <LayoutButtons Face="earc" Type="AbilCmd" AbilCmd="AEbu,Build4" Row="1" Column="1"/>
+            <LayoutButtons Face="ebal" Type="AbilCmd" AbilCmd="AEbu,Build10" Row="1" Column="3"/>
             <LayoutButtons Face="nowb" Type="AbilCmd" AbilCmd="AEbu,Build8" Row="1" Column="2"/>
+            <LayoutButtons Face="edry" Type="AbilCmd" AbilCmd="AEbu,Build9" Row="1" Column="0"/>
+            <LayoutButtons Face="ehpr" Type="AbilCmd" AbilCmd="AEbu,Build3" Row="1" Column="4"/>
         </CardLayouts>
-        <CardLayouts CardId="Purc">
-            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
-            <LayoutButtons Face="Purchaserat3" Type="AbilCmd" AbilCmd="Purchaserat3,Train1" Row="0" Column="0"/>
-            <LayoutButtons Face="Purchaserat6" Type="AbilCmd" AbilCmd="Purchaserat6,Train1" Row="0" Column="1"/>
-            <LayoutButtons Face="Purchaserat9" Type="AbilCmd" AbilCmd="Purchaserat9,Train1" Row="0" Column="2"/>
-            <LayoutButtons Face="Purchaseratc" Type="AbilCmd" AbilCmd="Purchaseratc,Train1" Row="0" Column="3"/>
-            <LayoutButtons Face="Purchaseratf" Type="AbilCmd" AbilCmd="Purchaseratf,Train1" Row="0" Column="4"/>
-            <LayoutButtons Face="Purchaseoven" Type="AbilCmd" AbilCmd="Purchaseoven,Train1" Row="1" Column="0"/>
-            <LayoutButtons Face="Purchasegcel" Type="AbilCmd" AbilCmd="Purchasegcel,Train1" Row="2" Column="0"/>
-            <LayoutButtons Face="Purchasefrhg" Type="AbilCmd" AbilCmd="Purchasefrhg,Train1" Row="2" Column="1"/>
-            <LayoutButtons Face="Purchaseprvt" Type="AbilCmd" AbilCmd="Purchaseprvt,Train1" Row="2" Column="2"/>
+        <CardLayouts index="2" CardId="Purc">
+            <LayoutButtons Face="Purchaseoven" Type="AbilCmd" AbilCmd="Purchaseoven,Train1" Row="0" Column="4"/>
         </CardLayouts>
-        <AbilArray Link="AInv"/>
-        <AbilArray Link="ANgl"/>
-        <AbilArray Link="ANlg"/>
         <AbilArray Link="AEbu"/>
-        <AbilArray Link="Aall"/>
         <AbilArray Link="Purchaseoven"/>
-        <AbilArray Link="Purchasegcel"/>
-        <AbilArray Link="Purchasefrhg"/>
-        <AbilArray Link="Purchaserat3"/>
-        <AbilArray Link="Purchaserat6"/>
-        <AbilArray Link="Purchaserat9"/>
-        <AbilArray Link="Purchaseratc"/>
-        <AbilArray Link="Purchaseratf"/>
-        <AbilArray Link="Purchaseprvt"/>
         <Speed value="3"/>
         <Radius value="0.3125"/>
         <Race value="NightElf"/>
@@ -1805,17 +1832,16 @@
     <!--blood elf dragon hawk-->
     <CUnit id="hdhw" parent="AW2_Army" defType="SMALL">
         <Attributes index="small" value="1"/>
-        <CostResource index="gold" value="90"/>
-        <KillResource index="Custom" value="15"/>
-        <LifeStart value="25"/>
-        <LifeMax value="25"/>
+        <CostResource index="gold" value="135"/>
+        <KillResource index="Custom" value="45"/>
+        <LifeStart value="450"/>
+        <LifeMax value="450"/>
         <Speed value="3"/>
         <Race value="BloodElf"/>
         <Mover value="fly"/>
         <Height value="2.1875"/>
         <AbilArray Link="BloodElfInventory"/>
         <AbilArray Link="Amls"/>
-        <AbilArray Link="hdhwTimeLife"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Amls" Type="AbilCmd" AbilCmd="Amls,0" Row="2" Column="0"/>
         </CardLayouts>
@@ -1884,8 +1910,8 @@
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="180"/>
         <KillResource index="Custom" value="30"/>
-        <LifeStart value="600"/>
-        <LifeMax value="600"/>
+        <LifeStart value="450"/>
+        <LifeMax value="450"/>
         <Speed value="3"/>
         <Race value="Human"/>
         <Mover value="fly"/>
@@ -1908,8 +1934,8 @@
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="60"/>
         <KillResource index="Custom" value="30"/>
-        <LifeStart value="600"/>
-        <LifeMax value="600"/>
+        <LifeStart value="450"/>
+        <LifeMax value="450"/>
         <Speed value="3"/>
         <Race value="Human"/>
         <Mover value="fly"/>
@@ -2082,69 +2108,27 @@
     </CUnit>
     <!--Peasant-->
     <CUnit id="hpea" parent="AW2_Peon">
-        <CardLayouts CardId="">
+        <CardLayouts index="0">
             <LayoutButtons>
                 <Face value="CmdBuildHuman"/>
                 <Type value="Submenu"/>
-                <AbilCmd value=""/>
-                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
-                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Buil"/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="0"/>
             </LayoutButtons>
-            <LayoutButtons>
-                <Face value="flag"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="AHbu,Build1"/>
-                <Behavior value=""/>
-                <Requirements value=""/>
-                <SubmenuAbilState value=""/>
-                <SubmenuCardId value=""/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
-                <Row value="0"/>
-                <Column value="0"/>
-            </LayoutButtons>
+            <LayoutButtons Face="flag" Type="AbilCmd" AbilCmd="AHbu,Build1" Row="0" Column="0"/>
             <LayoutButtons>
                 <Face value="CmdPurchaseHuman"/>
                 <Type value="Submenu"/>
-                <AbilCmd value=""/>
-                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
-                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Purc"/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="1"/>
             </LayoutButtons>
-            <LayoutButtons>
-                <Face value="fla2"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="AHbu,Build2"/>
-                <Behavior value=""/>
-                <Requirements value=""/>
-                <SubmenuAbilState value=""/>
-                <SubmenuCardId value=""/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
-                <Row value="0"/>
-                <Column value="1"/>
-            </LayoutButtons>
-            <LayoutButtons Face="Anei" Type="AbilCmd" AbilCmd="Aall,Designate" Row="2" Column="4"/>
-            <LayoutButtons Face="ANgl" Type="AbilCmd" AbilCmd="ANgl,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="ANlg" Type="AbilCmd" AbilCmd="ANlg,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="fla2" Type="AbilCmd" AbilCmd="AHbu,Build2" Row="0" Column="1"/>
         </CardLayouts>
-        <CardLayouts CardId="Buil">
-            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
+        <CardLayouts index="1" CardId="Buil">
             <LayoutButtons Face="hmil" Type="AbilCmd" AbilCmd="AHbu,Build13" Row="0" Column="0"/>
             <LayoutButtons Face="hfoo" Type="AbilCmd" AbilCmd="AHbu,Build3" Row="0" Column="1"/>
             <LayoutButtons Face="hkni" Type="AbilCmd" AbilCmd="AHbu,Build7" Row="0" Column="2"/>
@@ -2156,32 +2140,11 @@
             <LayoutButtons Face="hwtw" Type="AbilCmd" AbilCmd="AHbu,Build4" Row="2" Column="0"/>
             <LayoutButtons Face="Gyrocopter" Type="AbilCmd" AbilCmd="AHbu,Build5" Row="1" Column="0"/>
         </CardLayouts>
-        <CardLayouts CardId="Purc">
-            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
-            <LayoutButtons Face="Purchaserat3" Type="AbilCmd" AbilCmd="Purchaserat3,Train1" Row="0" Column="0"/>
-            <LayoutButtons Face="Purchaserat6" Type="AbilCmd" AbilCmd="Purchaserat6,Train1" Row="0" Column="1"/>
-            <LayoutButtons Face="Purchaserat9" Type="AbilCmd" AbilCmd="Purchaserat9,Train1" Row="0" Column="2"/>
-            <LayoutButtons Face="Purchaseratc" Type="AbilCmd" AbilCmd="Purchaseratc,Train1" Row="0" Column="3"/>
-            <LayoutButtons Face="Purchaseratf" Type="AbilCmd" AbilCmd="Purchaseratf,Train1" Row="0" Column="4"/>
-            <LayoutButtons Face="Purchaseofir" Type="AbilCmd" AbilCmd="Purchaseofir,Train1" Row="1" Column="0"/>
-            <LayoutButtons Face="Purchasegcel" Type="AbilCmd" AbilCmd="Purchasegcel,Train1" Row="2" Column="0"/>
-            <LayoutButtons Face="Purchasefrhg" Type="AbilCmd" AbilCmd="Purchasefrhg,Train1" Row="2" Column="1"/>
-            <LayoutButtons Face="Purchaseprvt" Type="AbilCmd" AbilCmd="Purchaseprvt,Train1" Row="2" Column="2"/>
+        <CardLayouts index="2" CardId="Purc">
+            <LayoutButtons Face="Purchaseofir" Type="AbilCmd" AbilCmd="Purchaseofir,Train1" Row="0" Column="4"/>
         </CardLayouts>
-        <AbilArray Link="AInv"/>
-        <AbilArray Link="ANgl"/>
-        <AbilArray Link="ANlg"/>
         <AbilArray Link="AHbu"/>
-        <AbilArray Link="Aall"/>
         <AbilArray Link="Purchaseofir"/>
-        <AbilArray Link="Purchasegcel"/>
-        <AbilArray Link="Purchasefrhg"/>
-        <AbilArray Link="Purchaserat3"/>
-        <AbilArray Link="Purchaserat6"/>
-        <AbilArray Link="Purchaserat9"/>
-        <AbilArray Link="Purchaseratc"/>
-        <AbilArray Link="Purchaseratf"/>
-        <AbilArray Link="Purchaseprvt"/>
         <Speed value="3"/>
         <Radius value="0.3125"/>
         <Race value="Human"/>
@@ -2417,7 +2380,7 @@
         <Height value="2.539"/>
         <AbilArray Link="DragonInventory"/>
         <AbilArray Link="UpgradeToubdr"/>
-        <AbilArray Link="FrostAura"/>
+        <AbilArray Link="Aarm"/>
         <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="Afrb"/>
         <BehaviorArray Link="dragon"/>
@@ -2425,15 +2388,13 @@
             <LayoutButtons Face="ubdr" Type="AbilCmd" AbilCmd="UpgradeToubdr,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
             <LayoutButtons Face="Afrb" Type="Passive" Behavior="Afrb" Row="2" Column="1"/>
-            <LayoutButtons Face="FrostAuraCaster" Type="Passive" Behavior="FrostAuraCaster" Row="2" Column="2"/>
+            <LayoutButtons Face="Aarm" Type="Passive" Behavior="Aarm" Row="2" Column="2"/>
         </CardLayouts>
         <PlaneArray index="Air" value="1"/>
         <Collide index="Ground" value="0"/>
         <Collide index="ForceField" value="0"/>
         <Collide index="Flying" value="1"/>
         <GlossaryCategory value="Unit/Category/DragonUnits"/>
-        <EnergyStart value="60"/>
-        <EnergyMax value="60"/>
         <AttackTargetPriority value="21"/>
     </CUnit>
     <!--blue dragon whelp-->
@@ -2462,8 +2423,6 @@
         <Collide index="ForceField" value="0"/>
         <Collide index="Flying" value="1"/>
         <GlossaryCategory value="Unit/Category/DragonUnits"/>
-        <EnergyStart value="60"/>
-        <EnergyMax value="60"/>
         <AttackTargetPriority value="21"/>
     </CUnit>
     <!--doom guard (summoned)-->
@@ -2474,10 +2433,10 @@
         <Speed value="2"/>
         <Race value="Undead"/>
         <Mover value="foot"/>
-        <AbilArray Link="Awrs"/>
+        <AbilArray Link="AOws"/>
         <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="Awrs" Type="AbilCmd" AbilCmd="Awrs,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="AOws" Type="AbilCmd" AbilCmd="AOws,Execute" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <WeaponArray index="0" Link="nba22"/>
@@ -2514,69 +2473,27 @@
         <EnergyMax value="60"/>
     </CUnit>
     <CUnit id="Dragonspawn" parent="AW2_Peon">
-        <CardLayouts CardId="">
+        <CardLayouts index="0">
             <LayoutButtons>
                 <Face value="CmdBuildDragon"/>
                 <Type value="Submenu"/>
-                <AbilCmd value=""/>
-                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
-                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Buil"/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="0"/>
             </LayoutButtons>
-            <LayoutButtons>
-                <Face value="DragonFlag"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="DragonBuild,Build1"/>
-                <Behavior value=""/>
-                <Requirements value=""/>
-                <SubmenuAbilState value=""/>
-                <SubmenuCardId value=""/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
-                <Row value="0"/>
-                <Column value="0"/>
-            </LayoutButtons>
+            <LayoutButtons Face="DragonFlag" Type="AbilCmd" AbilCmd="DragonBuild,Build1" Row="0" Column="0"/>
             <LayoutButtons>
                 <Face value="CmdPurchaseDragon"/>
                 <Type value="Submenu"/>
-                <AbilCmd value=""/>
-                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
-                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Purc"/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="1"/>
             </LayoutButtons>
-            <LayoutButtons>
-                <Face value="DragonFlag2"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="DragonBuild,Build2"/>
-                <Behavior value=""/>
-                <Requirements value=""/>
-                <SubmenuAbilState value=""/>
-                <SubmenuCardId value=""/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
-                <Row value="0"/>
-                <Column value="1"/>
-            </LayoutButtons>
-            <LayoutButtons Face="Anei" Type="AbilCmd" AbilCmd="Aall,Designate" Row="2" Column="4"/>
-            <LayoutButtons Face="ANgl" Type="AbilCmd" AbilCmd="ANgl,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="ANlg" Type="AbilCmd" AbilCmd="ANlg,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="DragonFlag2" Type="AbilCmd" AbilCmd="DragonBuild,Build2" Row="0" Column="1"/>
         </CardLayouts>
-        <CardLayouts CardId="Buil">
-            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
+        <CardLayouts index="1" CardId="Buil">
             <LayoutButtons Face="nadw" Type="AbilCmd" AbilCmd="DragonBuild,Build3" Row="0" Column="0"/>
             <LayoutButtons Face="ngrw" Type="AbilCmd" AbilCmd="DragonBuild,Build6" Row="0" Column="1"/>
             <LayoutButtons Face="nrdk" Type="AbilCmd" AbilCmd="DragonBuild,Build4" Row="0" Column="2"/>
@@ -2587,32 +2504,11 @@
             <LayoutButtons Face="nbzw" Type="AbilCmd" AbilCmd="DragonBuild,Build7" Row="0" Column="3"/>
             <LayoutButtons Face="nbdr" Type="AbilCmd" AbilCmd="DragonBuild,Build5" Row="0" Column="4"/>
         </CardLayouts>
-        <CardLayouts CardId="Purc">
-            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
-            <LayoutButtons Face="Purchaserat3" Type="AbilCmd" AbilCmd="Purchaserat3,Train1" Row="0" Column="0"/>
-            <LayoutButtons Face="Purchaserat6" Type="AbilCmd" AbilCmd="Purchaserat6,Train1" Row="0" Column="1"/>
-            <LayoutButtons Face="Purchaserat9" Type="AbilCmd" AbilCmd="Purchaserat9,Train1" Row="0" Column="2"/>
-            <LayoutButtons Face="Purchaseratc" Type="AbilCmd" AbilCmd="Purchaseratc,Train1" Row="0" Column="3"/>
-            <LayoutButtons Face="Purchaseratf" Type="AbilCmd" AbilCmd="Purchaseratf,Train1" Row="0" Column="4"/>
-            <LayoutButtons Face="Purchaseoven" Type="AbilCmd" AbilCmd="Purchaseoven,Train1" Row="1" Column="0"/>
-            <LayoutButtons Face="Purchasegcel" Type="AbilCmd" AbilCmd="Purchasegcel,Train1" Row="2" Column="0"/>
-            <LayoutButtons Face="Purchasefrhg" Type="AbilCmd" AbilCmd="Purchasefrhg,Train1" Row="2" Column="1"/>
-            <LayoutButtons Face="Purchaseprvt" Type="AbilCmd" AbilCmd="Purchaseprvt,Train1" Row="2" Column="2"/>
+        <CardLayouts index="2" CardId="Purc">
+            <LayoutButtons Face="Purchaseoven" Type="AbilCmd" AbilCmd="Purchaseoven,Train1" Row="0" Column="4"/>
         </CardLayouts>
-        <AbilArray Link="DragonInventory"/>
-        <AbilArray Link="ANgl"/>
-        <AbilArray Link="ANlg"/>
         <AbilArray Link="DragonBuild"/>
-        <AbilArray Link="Aall"/>
         <AbilArray Link="Purchaseoven"/>
-        <AbilArray Link="Purchasegcel"/>
-        <AbilArray Link="Purchasefrhg"/>
-        <AbilArray Link="Purchaserat3"/>
-        <AbilArray Link="Purchaserat6"/>
-        <AbilArray Link="Purchaserat9"/>
-        <AbilArray Link="Purchaseratc"/>
-        <AbilArray Link="Purchaseratf"/>
-        <AbilArray Link="Purchaseprvt"/>
         <Speed value="3"/>
         <Radius value="0.3125"/>
         <Race value="Dragon"/>
@@ -2687,18 +2583,18 @@
         <AbilArray Link="DragonInventory"/>
         <AbilArray Link="UpgradeTonbwm"/>
         <BehaviorArray Link="ACsk"/>
+        <BehaviorArray Link="Ansk"/>
         <BehaviorArray Link="dragon"/>
         <CardLayouts index="0">
             <LayoutButtons Face="nbwm" Type="AbilCmd" AbilCmd="UpgradeTonbwm,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="Ansk" Type="Passive" Behavior="Ansk" Row="2" Column="1"/>
         </CardLayouts>
         <PlaneArray index="Air" value="1"/>
         <Collide index="Ground" value="0"/>
         <Collide index="ForceField" value="0"/>
         <Collide index="Flying" value="1"/>
         <GlossaryCategory value="Unit/Category/DragonUnits"/>
-        <EnergyStart value="60"/>
-        <EnergyMax value="60"/>
         <AttackTargetPriority value="21"/>
     </CUnit>
     <!--blue dragonspawn sorceror-->
@@ -2828,18 +2724,18 @@
         <AbilArray Link="DragonInventory"/>
         <AbilArray Link="UpgradeTonser"/>
         <BehaviorArray Link="ACsk"/>
+        <BehaviorArray Link="Ansk"/>
         <BehaviorArray Link="dragon"/>
         <CardLayouts index="0">
             <LayoutButtons Face="nser" Type="AbilCmd" AbilCmd="UpgradeTonser,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="Ansk" Type="Passive" Behavior="Ansk" Row="2" Column="1"/>
         </CardLayouts>
         <PlaneArray index="Air" value="1"/>
         <Collide index="Ground" value="0"/>
         <Collide index="ForceField" value="0"/>
         <Collide index="Flying" value="1"/>
         <GlossaryCategory value="Unit/Category/DragonUnits"/>
-        <EnergyStart value="60"/>
-        <EnergyMax value="60"/>
         <AttackTargetPriority value="21"/>
     </CUnit>
     <!--bronze dragon-->
@@ -2866,8 +2762,6 @@
         <Collide index="ForceField" value="0"/>
         <Collide index="Flying" value="1"/>
         <GlossaryCategory value="Unit/Category/DragonUnits"/>
-        <EnergyStart value="60"/>
-        <EnergyMax value="60"/>
         <AttackTargetPriority value="21"/>
     </CUnit>
     <!--bronze drake-->
@@ -2897,75 +2791,31 @@
         <Collide index="ForceField" value="0"/>
         <Collide index="Flying" value="1"/>
         <GlossaryCategory value="Unit/Category/DragonUnits"/>
-        <EnergyStart value="60"/>
-        <EnergyMax value="60"/>
         <AttackTargetPriority value="21"/>
     </CUnit>
     <!--Clockwerk Goblin (lvl 4)-->
     <CUnit id="ncg3" parent="AW2_Peon">
-        <CardLayouts CardId="">
+        <CardLayouts index="0">
             <LayoutButtons>
                 <Face value="CmdBuildGoblin"/>
                 <Type value="Submenu"/>
-                <AbilCmd value=""/>
-                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
-                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Buil"/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="0"/>
             </LayoutButtons>
-            <LayoutButtons>
-                <Face value="GoblinFlag"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="GoblinBuild,Build1"/>
-                <Behavior value=""/>
-                <Requirements value=""/>
-                <SubmenuAbilState value=""/>
-                <SubmenuCardId value=""/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
-                <Row value="0"/>
-                <Column value="0"/>
-            </LayoutButtons>
+            <LayoutButtons Face="GoblinFlag" Type="AbilCmd" AbilCmd="GoblinBuild,Build1" Row="0" Column="0"/>
             <LayoutButtons>
                 <Face value="CmdPurchaseGoblin"/>
                 <Type value="Submenu"/>
-                <AbilCmd value=""/>
-                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
-                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Purc"/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="1"/>
             </LayoutButtons>
-            <LayoutButtons>
-                <Face value="GoblinFlag2"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="GoblinBuild,Build2"/>
-                <Behavior value=""/>
-                <Requirements value=""/>
-                <SubmenuAbilState value=""/>
-                <SubmenuCardId value=""/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
-                <Row value="0"/>
-                <Column value="1"/>
-            </LayoutButtons>
-            <LayoutButtons Face="Anei" Type="AbilCmd" AbilCmd="Aall,Designate" Row="2" Column="4"/>
-            <LayoutButtons Face="ANgl" Type="AbilCmd" AbilCmd="ANgl,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="ANlg" Type="AbilCmd" AbilCmd="ANlg,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="GoblinFlag2" Type="AbilCmd" AbilCmd="GoblinBuild,Build2" Row="0" Column="1"/>
         </CardLayouts>
-        <CardLayouts CardId="Buil">
-            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
+        <CardLayouts index="1" CardId="Buil">
             <LayoutButtons Face="nogo" Type="AbilCmd" AbilCmd="GoblinBuild,Build8" Row="0" Column="0"/>
             <LayoutButtons Face="noga" Type="AbilCmd" AbilCmd="GoblinBuild,Build9" Row="0" Column="1"/>
             <LayoutButtons Face="ngir" Type="AbilCmd" AbilCmd="GoblinBuild,Build3" Row="0" Column="2"/>
@@ -2976,32 +2826,11 @@
             <LayoutButtons Face="ngsp" Type="AbilCmd" AbilCmd="GoblinBuild,Build4" Row="2" Column="2"/>
             <LayoutButtons Face="nogn" Type="AbilCmd" AbilCmd="GoblinBuild,Build10" Row="2" Column="3"/>
         </CardLayouts>
-        <CardLayouts CardId="Purc">
-            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
-            <LayoutButtons Face="Purchaserat3" Type="AbilCmd" AbilCmd="Purchaserat3,Train1" Row="0" Column="0"/>
-            <LayoutButtons Face="Purchaserat6" Type="AbilCmd" AbilCmd="Purchaserat6,Train1" Row="0" Column="1"/>
-            <LayoutButtons Face="Purchaserat9" Type="AbilCmd" AbilCmd="Purchaserat9,Train1" Row="0" Column="2"/>
-            <LayoutButtons Face="Purchaseratc" Type="AbilCmd" AbilCmd="Purchaseratc,Train1" Row="0" Column="3"/>
-            <LayoutButtons Face="Purchaseratf" Type="AbilCmd" AbilCmd="Purchaseratf,Train1" Row="0" Column="4"/>
-            <LayoutButtons Face="Purchaseoslo" Type="AbilCmd" AbilCmd="Purchaseoslo,Train1" Row="1" Column="0"/>
-            <LayoutButtons Face="Purchasegcel" Type="AbilCmd" AbilCmd="Purchasegcel,Train1" Row="2" Column="0"/>
-            <LayoutButtons Face="Purchasefrhg" Type="AbilCmd" AbilCmd="Purchasefrhg,Train1" Row="2" Column="1"/>
-            <LayoutButtons Face="Purchaseprvt" Type="AbilCmd" AbilCmd="Purchaseprvt,Train1" Row="2" Column="2"/>
+        <CardLayouts index="2" CardId="Purc">
+            <LayoutButtons Face="Purchaseoslo" Type="AbilCmd" AbilCmd="Purchaseoslo,Train1" Row="0" Column="4"/>
         </CardLayouts>
-        <AbilArray Link="AInv"/>
-        <AbilArray Link="ANgl"/>
-        <AbilArray Link="ANlg"/>
         <AbilArray Link="GoblinBuild"/>
-        <AbilArray Link="Aall"/>
         <AbilArray Link="Purchaseoslo"/>
-        <AbilArray Link="Purchasegcel"/>
-        <AbilArray Link="Purchasefrhg"/>
-        <AbilArray Link="Purchaserat3"/>
-        <AbilArray Link="Purchaserat6"/>
-        <AbilArray Link="Purchaserat9"/>
-        <AbilArray Link="Purchaseratc"/>
-        <AbilArray Link="Purchaseratf"/>
-        <AbilArray Link="Purchaseprvt"/>
         <Speed value="3"/>
         <Radius value="0.3125"/>
         <Race value="Goblin"/>
@@ -3109,69 +2938,27 @@
     </CUnit>
     <!--Chaos Peon-->
     <CUnit id="ncpn" parent="AW2_Peon">
-        <CardLayouts CardId="">
+        <CardLayouts index="0">
             <LayoutButtons>
                 <Face value="CmdBuildChaosOrc"/>
                 <Type value="Submenu"/>
-                <AbilCmd value=""/>
-                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
-                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Buil"/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="0"/>
             </LayoutButtons>
-            <LayoutButtons>
-                <Face value="ChaosOrcFlag"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="ChaosOrcBuild,Build1"/>
-                <Behavior value=""/>
-                <Requirements value=""/>
-                <SubmenuAbilState value=""/>
-                <SubmenuCardId value=""/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
-                <Row value="0"/>
-                <Column value="0"/>
-            </LayoutButtons>
+            <LayoutButtons Face="ChaosOrcFlag" Type="AbilCmd" AbilCmd="ChaosOrcBuild,Build1" Row="0" Column="0"/>
             <LayoutButtons>
                 <Face value="CmdPurchaseChaosOrc"/>
                 <Type value="Submenu"/>
-                <AbilCmd value=""/>
-                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
-                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Purc"/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="1"/>
             </LayoutButtons>
-            <LayoutButtons>
-                <Face value="ChaosOrcFlag2"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="ChaosOrcBuild,Build2"/>
-                <Behavior value=""/>
-                <Requirements value=""/>
-                <SubmenuAbilState value=""/>
-                <SubmenuCardId value=""/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
-                <Row value="0"/>
-                <Column value="1"/>
-            </LayoutButtons>
-            <LayoutButtons Face="Anei" Type="AbilCmd" AbilCmd="Aall,Designate" Row="2" Column="4"/>
-            <LayoutButtons Face="ANgl" Type="AbilCmd" AbilCmd="ANgl,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="ANlg" Type="AbilCmd" AbilCmd="ANlg,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="ChaosOrcFlag2" Type="AbilCmd" AbilCmd="ChaosOrcBuild,Build2" Row="0" Column="1"/>
         </CardLayouts>
-        <CardLayouts CardId="Buil">
-            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
+        <CardLayouts index="1" CardId="Buil">
             <LayoutButtons Face="Nbbc" Type="AbilCmd" AbilCmd="ChaosOrcBuild,Build8" Row="0" Column="1"/>
             <LayoutButtons Face="nchr" Type="AbilCmd" AbilCmd="ChaosOrcBuild,Build5" Row="0" Column="2"/>
             <LayoutButtons Face="owar" Type="AbilCmd" AbilCmd="ChaosOrcBuild,Build3" Row="0" Column="3"/>
@@ -3182,32 +2969,11 @@
             <LayoutButtons Face="ocat" Type="AbilCmd" AbilCmd="ChaosOrcBuild,Build11" Row="1" Column="3"/>
             <LayoutButtons Face="ndtp" Type="AbilCmd" AbilCmd="ChaosOrcBuild,Build10" Row="2" Column="0"/>
         </CardLayouts>
-        <CardLayouts CardId="Purc">
-            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
-            <LayoutButtons Face="Purchaserat3" Type="AbilCmd" AbilCmd="Purchaserat3,Train1" Row="0" Column="0"/>
-            <LayoutButtons Face="Purchaserat6" Type="AbilCmd" AbilCmd="Purchaserat6,Train1" Row="0" Column="1"/>
-            <LayoutButtons Face="Purchaserat9" Type="AbilCmd" AbilCmd="Purchaserat9,Train1" Row="0" Column="2"/>
-            <LayoutButtons Face="Purchaseratc" Type="AbilCmd" AbilCmd="Purchaseratc,Train1" Row="0" Column="3"/>
-            <LayoutButtons Face="Purchaseratf" Type="AbilCmd" AbilCmd="Purchaseratf,Train1" Row="0" Column="4"/>
-            <LayoutButtons Face="Purchaseoli2" Type="AbilCmd" AbilCmd="Purchaseoli2,Train1" Row="1" Column="0"/>
-            <LayoutButtons Face="Purchasegcel" Type="AbilCmd" AbilCmd="Purchasegcel,Train1" Row="2" Column="0"/>
-            <LayoutButtons Face="Purchasefrhg" Type="AbilCmd" AbilCmd="Purchasefrhg,Train1" Row="2" Column="1"/>
-            <LayoutButtons Face="Purchaseprvt" Type="AbilCmd" AbilCmd="Purchaseprvt,Train1" Row="2" Column="2"/>
+        <CardLayouts index="2" CardId="Purc">
+            <LayoutButtons Face="Purchaseoli2" Type="AbilCmd" AbilCmd="Purchaseoli2,Train1" Row="0" Column="4"/>
         </CardLayouts>
-        <AbilArray Link="AInv"/>
-        <AbilArray Link="ANgl"/>
-        <AbilArray Link="ANlg"/>
         <AbilArray Link="ChaosOrcBuild"/>
-        <AbilArray Link="Aall"/>
         <AbilArray Link="Purchaseoli2"/>
-        <AbilArray Link="Purchasegcel"/>
-        <AbilArray Link="Purchasefrhg"/>
-        <AbilArray Link="Purchaserat3"/>
-        <AbilArray Link="Purchaserat6"/>
-        <AbilArray Link="Purchaserat9"/>
-        <AbilArray Link="Purchaseratc"/>
-        <AbilArray Link="Purchaseratf"/>
-        <AbilArray Link="Purchaseprvt"/>
         <Speed value="3"/>
         <Radius value="0.3125"/>
         <Race value="ChaosOrc"/>
@@ -3786,10 +3552,8 @@
         <KillResource index="Custom" value="5"/>
         <AbilArray Link="AsdsGoblinLandMine"/>
         <AbilArray Link="ngl2TimeLife"/>
-        <BehaviorArray Link="Apiv"/>
         <CardLayouts index="0">
             <LayoutButtons Face="AsdsGoblinLandMine" Type="AbilCmd" AbilCmd="AsdsGoblinLandMine,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="Apiv" Type="Passive" Behavior="Apiv" Row="2" Column="1"/>
         </CardLayouts>
         <Radius value="0.3125"/>
         <SeparationRadius value="0.3125"/>
@@ -3812,10 +3576,8 @@
         <KillResource index="Custom" value="5"/>
         <AbilArray Link="AsdsGoblinLandMine"/>
         <AbilArray Link="ngl3TimeLife"/>
-        <BehaviorArray Link="Apiv"/>
         <CardLayouts index="0">
             <LayoutButtons Face="AsdsGoblinLandMine" Type="AbilCmd" AbilCmd="AsdsGoblinLandMine,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="Apiv" Type="Passive" Behavior="Apiv" Row="2" Column="1"/>
         </CardLayouts>
         <Radius value="0.3125"/>
         <SeparationRadius value="0.3125"/>
@@ -3908,6 +3670,7 @@
         <Height value="2.539"/>
         <AbilArray Link="DragonInventory"/>
         <AbilArray Link="UpgradeTonthr"/>
+        <AbilArray Link="AEah"/>
         <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="Acor"/>
         <BehaviorArray Link="dragon"/>
@@ -3915,6 +3678,7 @@
             <LayoutButtons Face="nthr" Type="AbilCmd" AbilCmd="UpgradeTonthr,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
             <LayoutButtons Face="Acor" Type="Passive" Behavior="Acor" Row="2" Column="1"/>
+            <LayoutButtons Face="AEah" Type="Passive" Behavior="AEah" Row="2" Column="2"/>
         </CardLayouts>
         <PlaneArray index="Air" value="1"/>
         <Collide index="Ground" value="0"/>
@@ -3951,8 +3715,6 @@
         <Collide index="ForceField" value="0"/>
         <Collide index="Flying" value="1"/>
         <GlossaryCategory value="Unit/Category/DragonUnits"/>
-        <EnergyStart value="60"/>
-        <EnergyMax value="60"/>
         <AttackTargetPriority value="21"/>
     </CUnit>
     <!--GoblinSapper-->
@@ -4021,105 +3783,41 @@
     </CUnit>
     <!--blood elf worker-->
     <CUnit id="nhew" parent="AW2_Peon">
-        <CardLayouts CardId="">
+        <CardLayouts index="0">
             <LayoutButtons>
                 <Face value="CmdBuildBloodElf"/>
                 <Type value="Submenu"/>
-                <AbilCmd value=""/>
-                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
-                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Buil"/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="0"/>
             </LayoutButtons>
-            <LayoutButtons>
-                <Face value="BloodElfFlag"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="BloodElfBuild,Build1"/>
-                <Behavior value=""/>
-                <Requirements value=""/>
-                <SubmenuAbilState value=""/>
-                <SubmenuCardId value=""/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
-                <Row value="0"/>
-                <Column value="0"/>
-            </LayoutButtons>
+            <LayoutButtons Face="BloodElfFlag" Type="AbilCmd" AbilCmd="BloodElfBuild,Build1" Row="0" Column="0"/>
             <LayoutButtons>
                 <Face value="CmdPurchaseBloodElf"/>
                 <Type value="Submenu"/>
-                <AbilCmd value=""/>
-                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
-                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Purc"/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="1"/>
             </LayoutButtons>
-            <LayoutButtons>
-                <Face value="BloodElfFlag2"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="BloodElfBuild,Build2"/>
-                <Behavior value=""/>
-                <Requirements value=""/>
-                <SubmenuAbilState value=""/>
-                <SubmenuCardId value=""/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
-                <Row value="0"/>
-                <Column value="1"/>
-            </LayoutButtons>
-            <LayoutButtons Face="Anei" Type="AbilCmd" AbilCmd="Aall,Designate" Row="2" Column="4"/>
-            <LayoutButtons Face="ANgl" Type="AbilCmd" AbilCmd="ANgl,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="ANlg" Type="AbilCmd" AbilCmd="ANlg,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="BloodElfFlag2" Type="AbilCmd" AbilCmd="BloodElfBuild,Build2" Row="0" Column="1"/>
         </CardLayouts>
-        <CardLayouts CardId="Buil">
-            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
+        <CardLayouts index="1" CardId="Buil">
             <LayoutButtons Face="hsor" Type="AbilCmd" AbilCmd="BloodElfBuild,Build3" Row="1" Column="0"/>
             <LayoutButtons Face="nemi" Type="AbilCmd" AbilCmd="BloodElfBuild,Build5" Row="2" Column="0"/>
-            <LayoutButtons Face="Hblm" Type="AbilCmd" AbilCmd="BloodElfBuild,Build10" Row="2" Column="1"/>
-            <LayoutButtons Face="nhea" Type="AbilCmd" AbilCmd="BloodElfBuild,Build6" Row="1" Column="2"/>
+            <LayoutButtons Face="negt" Type="AbilCmd" AbilCmd="BloodElfBuild,Build8" Row="2" Column="1"/>
+            <LayoutButtons Face="Hblm" Type="AbilCmd" AbilCmd="BloodElfBuild,Build10" Row="1" Column="2"/>
             <LayoutButtons Face="nbel" Type="AbilCmd" AbilCmd="BloodElfBuild,Build4" Row="0" Column="0"/>
             <LayoutButtons Face="nws1" Type="AbilCmd" AbilCmd="BloodElfBuild,Build7" Row="1" Column="1"/>
-            <LayoutButtons Face="hpxe" Type="AbilCmd" AbilCmd="BloodElfBuild,Build9" Row="1" Column="3"/>
-            <LayoutButtons Face="negt" Type="AbilCmd" AbilCmd="BloodElfBuild,Build8" Row="2" Column="2"/>
-            <LayoutButtons Face="npgr" Type="AbilCmd" AbilCmd="BloodElfBuild,Build11" Row="2" Column="3"/>
+            <LayoutButtons Face="nhea" Type="AbilCmd" AbilCmd="BloodElfBuild,Build6" Row="1" Column="3"/>
+            <LayoutButtons Face="hpxe" Type="AbilCmd" AbilCmd="BloodElfBuild,Build9" Row="1" Column="4"/>
         </CardLayouts>
-        <CardLayouts CardId="Purc">
-            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
-            <LayoutButtons Face="Purchaserat3" Type="AbilCmd" AbilCmd="Purchaserat3,Train1" Row="0" Column="0"/>
-            <LayoutButtons Face="Purchaserat6" Type="AbilCmd" AbilCmd="Purchaserat6,Train1" Row="0" Column="1"/>
-            <LayoutButtons Face="Purchaserat9" Type="AbilCmd" AbilCmd="Purchaserat9,Train1" Row="0" Column="2"/>
-            <LayoutButtons Face="Purchaseratc" Type="AbilCmd" AbilCmd="Purchaseratc,Train1" Row="0" Column="3"/>
-            <LayoutButtons Face="Purchaseratf" Type="AbilCmd" AbilCmd="Purchaseratf,Train1" Row="0" Column="4"/>
-            <LayoutButtons Face="Purchaseofir" Type="AbilCmd" AbilCmd="Purchaseofir,Train1" Row="1" Column="0"/>
-            <LayoutButtons Face="Purchasegcel" Type="AbilCmd" AbilCmd="Purchasegcel,Train1" Row="2" Column="0"/>
-            <LayoutButtons Face="Purchasefrhg" Type="AbilCmd" AbilCmd="Purchasefrhg,Train1" Row="2" Column="1"/>
-            <LayoutButtons Face="Purchaseprvt" Type="AbilCmd" AbilCmd="Purchaseprvt,Train1" Row="2" Column="2"/>
+        <CardLayouts index="2" CardId="Purc">
+            <LayoutButtons Face="Purchaseofir" Type="AbilCmd" AbilCmd="Purchaseofir,Train1" Row="0" Column="4"/>
         </CardLayouts>
-        <AbilArray Link="AInv"/>
-        <AbilArray Link="ANgl"/>
-        <AbilArray Link="ANlg"/>
         <AbilArray Link="BloodElfBuild"/>
-        <AbilArray Link="Aall"/>
         <AbilArray Link="Purchaseofir"/>
-        <AbilArray Link="Purchasegcel"/>
-        <AbilArray Link="Purchasefrhg"/>
-        <AbilArray Link="Purchaserat3"/>
-        <AbilArray Link="Purchaserat6"/>
-        <AbilArray Link="Purchaserat9"/>
-        <AbilArray Link="Purchaseratc"/>
-        <AbilArray Link="Purchaseratf"/>
-        <AbilArray Link="Purchaseprvt"/>
         <Speed value="3"/>
         <Radius value="0.3125"/>
         <Race value="BloodElf"/>
@@ -4133,8 +3831,8 @@
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="180"/>
         <KillResource index="Custom" value="30"/>
-        <LifeStart value="900"/>
-        <LifeMax value="900"/>
+        <LifeStart value="1200"/>
+        <LifeMax value="1200"/>
         <Speed value="2"/>
         <Race value="Naga"/>
         <Mover value="amph"/>
@@ -4435,69 +4133,27 @@
     </CUnit>
     <!--naga peon-->
     <CUnit id="nmpe" parent="AW2_Peon">
-        <CardLayouts CardId="">
+        <CardLayouts index="0">
             <LayoutButtons>
                 <Face value="CmdBuildNaga"/>
                 <Type value="Submenu"/>
-                <AbilCmd value=""/>
-                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
-                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Buil"/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="0"/>
             </LayoutButtons>
-            <LayoutButtons>
-                <Face value="NagaFlag"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="AGbu,Build1"/>
-                <Behavior value=""/>
-                <Requirements value=""/>
-                <SubmenuAbilState value=""/>
-                <SubmenuCardId value=""/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
-                <Row value="0"/>
-                <Column value="0"/>
-            </LayoutButtons>
+            <LayoutButtons Face="NagaFlag" Type="AbilCmd" AbilCmd="AGbu,Build1" Row="0" Column="0"/>
             <LayoutButtons>
                 <Face value="CmdPurchaseNaga"/>
                 <Type value="Submenu"/>
-                <AbilCmd value=""/>
-                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
-                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Purc"/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="1"/>
             </LayoutButtons>
-            <LayoutButtons>
-                <Face value="NagaFlag2"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="AGbu,Build2"/>
-                <Behavior value=""/>
-                <Requirements value=""/>
-                <SubmenuAbilState value=""/>
-                <SubmenuCardId value=""/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
-                <Row value="0"/>
-                <Column value="1"/>
-            </LayoutButtons>
-            <LayoutButtons Face="Anei" Type="AbilCmd" AbilCmd="Aall,Designate" Row="2" Column="4"/>
-            <LayoutButtons Face="ANgl" Type="AbilCmd" AbilCmd="ANgl,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="ANlg" Type="AbilCmd" AbilCmd="ANlg,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="NagaFlag2" Type="AbilCmd" AbilCmd="AGbu,Build2" Row="0" Column="1"/>
         </CardLayouts>
-        <CardLayouts CardId="Buil">
-            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
+        <CardLayouts index="1" CardId="Buil">
             <LayoutButtons Face="nnmg" Type="AbilCmd" AbilCmd="AGbu,Build8" Row="0" Column="0"/>
             <LayoutButtons Face="nlpr" Type="AbilCmd" AbilCmd="AGbu,Build5" Row="0" Column="1"/>
             <LayoutButtons Face="nmyr" Type="AbilCmd" AbilCmd="AGbu,Build3" Row="0" Column="2"/>
@@ -4506,40 +4162,19 @@
             <LayoutButtons Face="nsnp" Type="AbilCmd" AbilCmd="AGbu,Build7" Row="1" Column="1"/>
             <LayoutButtons Face="nnsw" Type="AbilCmd" AbilCmd="AGbu,Build4" Row="2" Column="0"/>
         </CardLayouts>
-        <CardLayouts CardId="Purc">
-            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
-            <LayoutButtons Face="Purchaserat3" Type="AbilCmd" AbilCmd="Purchaserat3,Train1" Row="0" Column="0"/>
-            <LayoutButtons Face="Purchaserat6" Type="AbilCmd" AbilCmd="Purchaserat6,Train1" Row="0" Column="1"/>
-            <LayoutButtons Face="Purchaserat9" Type="AbilCmd" AbilCmd="Purchaserat9,Train1" Row="0" Column="2"/>
-            <LayoutButtons Face="Purchaseratc" Type="AbilCmd" AbilCmd="Purchaseratc,Train1" Row="0" Column="3"/>
-            <LayoutButtons Face="Purchaseratf" Type="AbilCmd" AbilCmd="Purchaseratf,Train1" Row="0" Column="4"/>
-            <LayoutButtons Face="Purchaseofro" Type="AbilCmd" AbilCmd="Purchaseofro,Train1" Row="1" Column="0"/>
-            <LayoutButtons Face="Purchasegcel" Type="AbilCmd" AbilCmd="Purchasegcel,Train1" Row="2" Column="0"/>
-            <LayoutButtons Face="Purchasefrhg" Type="AbilCmd" AbilCmd="Purchasefrhg,Train1" Row="2" Column="1"/>
-            <LayoutButtons Face="Purchaseprvt" Type="AbilCmd" AbilCmd="Purchaseprvt,Train1" Row="2" Column="2"/>
+        <CardLayouts index="2" CardId="Purc">
+            <LayoutButtons Face="Purchaseofro" Type="AbilCmd" AbilCmd="Purchaseofro,Train1" Row="0" Column="4"/>
         </CardLayouts>
-        <AbilArray Link="AInv"/>
-        <AbilArray Link="ANgl"/>
-        <AbilArray Link="ANlg"/>
         <AbilArray Link="AGbu"/>
-        <AbilArray Link="Aall"/>
         <AbilArray Link="Purchaseofro"/>
-        <AbilArray Link="Purchasegcel"/>
-        <AbilArray Link="Purchasefrhg"/>
-        <AbilArray Link="Purchaserat3"/>
-        <AbilArray Link="Purchaserat6"/>
-        <AbilArray Link="Purchaserat9"/>
-        <AbilArray Link="Purchaseratc"/>
-        <AbilArray Link="Purchaseratf"/>
-        <AbilArray Link="Purchaseprvt"/>
-        <BehaviorArray Link="MurgulSlaveSwim"/>
         <Speed value="3"/>
         <Radius value="0.3125"/>
         <Race value="Naga"/>
-        <Mover value="foot"/>
+        <Mover value="amph"/>
         <MinimapRadius value="0.3125"/>
         <SeparationRadius value="0.3125"/>
         <InnerRadius value="0.3125"/>
+        <BehaviorArray Link="MurgulSlaveSwim"/>
     </CUnit>
     <!--mur'gul reaver-->
     <CUnit id="nmrv" parent="AW2_Army" defType="SMALL">
@@ -4919,8 +4554,8 @@
         <EnergyMax value="60"/>
     </CUnit>
     <!--wildkin-->
-    <CUnit id="nowb" parent="AW2_Army" defType="NONE">
-        <Attributes index="none" value="1"/>
+    <CUnit id="nowb" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
         <CostResource index="gold" value="75"/>
         <KillResource index="Custom" value="75"/>
         <LifeStart value="900"/>
@@ -4930,19 +4565,23 @@
         <Mover value="foot"/>
         <AbilArray Link="Aien"/>
         <AbilArray Link="UpgradeTonowk"/>
+        <AbilArray Link="StellarFlare"/>
         <PlaneArray index="Ground" value="1"/>
         <CardLayouts index="0">
             <LayoutButtons Face="nowk" Type="AbilCmd" AbilCmd="UpgradeTonowk,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="StellarFlare" Type="AbilCmd" AbilCmd="StellarFlare,Execute" Row="2" Column="0"/>
         </CardLayouts>
         <GlossaryCategory value="Unit/Category/NightElfUnits"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
     </CUnit>
     <!--enraged wildkin-->
     <CUnit id="nowe">
         <Race value="NightElf"/>
     </CUnit>
     <!--berserk Wildkin-->
-    <CUnit id="nowk" parent="AW2_Army" defType="NONE">
-        <Attributes index="none" value="1"/>
+    <CUnit id="nowk" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
         <CostResource index="gold" value="225"/>
         <KillResource index="Custom" value="75"/>
         <LifeStart value="900"/>
@@ -4958,6 +4597,8 @@
             <LayoutButtons Face="Awrs" Type="AbilCmd" AbilCmd="Awrs,0" Row="2" Column="0"/>
         </CardLayouts>
         <GlossaryCategory value="Unit/Category/NightElfUnits"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
     </CUnit>
     <!--Fel Beast-->
     <CUnit id="npfl">
@@ -5011,8 +4652,6 @@
         <Collide index="ForceField" value="0"/>
         <Collide index="Flying" value="1"/>
         <GlossaryCategory value="Unit/Category/DragonUnits"/>
-        <EnergyStart value="60"/>
-        <EnergyMax value="60"/>
         <AttackTargetPriority value="21"/>
     </CUnit>
     <!--Red Drake-->
@@ -5050,20 +4689,20 @@
         <Mover value="fly"/>
         <Height value="2.539"/>
         <AbilArray Link="DragonInventory"/>
+        <AbilArray Link="ACnr"/>
         <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="BreathOfFireCaster"/>
         <BehaviorArray Link="dragon"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
             <LayoutButtons Face="BreathOfFireCaster" Type="Passive" Behavior="BreathOfFireCaster" Row="2" Column="1"/>
+            <LayoutButtons Face="ACnr" Type="Passive" Behavior="ACnr" Row="2" Column="2"/>
         </CardLayouts>
         <PlaneArray index="Air" value="1"/>
         <Collide index="Ground" value="0"/>
         <Collide index="ForceField" value="0"/>
         <Collide index="Flying" value="1"/>
         <GlossaryCategory value="Unit/Category/DragonUnits"/>
-        <EnergyStart value="60"/>
-        <EnergyMax value="60"/>
         <AttackTargetPriority value="21"/>
     </CUnit>
     <!--Satyr Trickster-->
@@ -5112,19 +4751,19 @@
         <Race value="Dragon"/>
         <Mover value="fly"/>
         <Height value="2.539"/>
-        <AbilArray Link="DragonInventory"/>
+        <AbilArray index="4" Link="DragonInventory"/>
         <BehaviorArray Link="ACsk"/>
+        <BehaviorArray Link="Ansk"/>
         <BehaviorArray Link="dragon"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="Ansk" Type="Passive" Behavior="Ansk" Row="2" Column="1"/>
         </CardLayouts>
         <PlaneArray index="Air" value="1"/>
         <Collide index="Ground" value="0"/>
         <Collide index="ForceField" value="0"/>
         <Collide index="Flying" value="1"/>
         <GlossaryCategory value="Unit/Category/DragonUnits"/>
-        <EnergyStart value="60"/>
-        <EnergyMax value="60"/>
         <AttackTargetPriority value="21"/>
     </CUnit>
     <CUnit id="nser2LM" parent="War3_Missile"/>
@@ -5201,28 +4840,23 @@
         <Mover value="fly"/>
         <Height value="2.539"/>
         <AbilArray index="4" Link="DragonInventory"/>
+        <AbilArray Link="AEah"/>
         <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="Acor"/>
         <BehaviorArray Link="dragon"/>
         <CardLayouts index="0">
-            <LayoutButtons index="5">
-                <Face value="ACsk"/>
-                <Type value="Passive"/>
-                <AbilCmd value=""/>
-                <Behavior value="ACsk"/>
-                <Row value="2"/>
-                <Column value="0"/>
-            </LayoutButtons>
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
             <LayoutButtons Face="Acor" Type="Passive" Behavior="Acor" Row="2" Column="1"/>
-            <LayoutButtons Face="Dream" Type="Passive" Row="2" Column="2"/>
+            <LayoutButtons Face="AEah" Type="Passive" Behavior="AEah" Row="2" Column="2"/>
+            <LayoutButtons Face="Dream" Type="Passive" Row="2" Column="3"/>
         </CardLayouts>
         <PlaneArray index="Air" value="1"/>
         <Collide index="Ground" value="0"/>
         <Collide index="ForceField" value="0"/>
         <Collide index="Flying" value="1"/>
         <GlossaryCategory value="Unit/Category/DragonUnits"/>
-        <EnergyStart value="60"/>
-        <EnergyMax value="60"/>
+        <EnergyStart value="180"/>
+        <EnergyMax value="180"/>
         <AttackTargetPriority value="21"/>
     </CUnit>
     <CUnit id="nthr2LM" parent="War3_Missile"/>
@@ -5286,6 +4920,14 @@
         <EnergyMax value="60"/>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
+    <!--Pendant of Energy-->
+    <CUnit id="penr" parent="AW2_Item">
+        <CostResource index="gold" value="60"/>
+    </CUnit>
+    <!--Pendant of Mana-->
+    <CUnit id="pmna" parent="AW2_Item">
+        <CostResource index="gold" value="120"/>
+    </CUnit>
     <!--undead azurelore-->
     <CUnit id="ubdd" parent="AW2_Army" defType="SMALL">
         <Attributes index="small" value="1"/>
@@ -5302,14 +4944,7 @@
         <BehaviorArray Link="Afrb"/>
         <BehaviorArray Link="dragon"/>
         <CardLayouts index="0">
-            <LayoutButtons index="5">
-                <Face value="ACsk"/>
-                <Type value="Passive"/>
-                <AbilCmd value=""/>
-                <Behavior value="ACsk"/>
-                <Row value="2"/>
-                <Column value="0"/>
-            </LayoutButtons>
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
             <LayoutButtons Face="Afrb" Type="Passive" Behavior="Afrb" Row="2" Column="1"/>
             <LayoutButtons Face="FrostAuraCaster" Type="Passive" Behavior="FrostAuraCaster" Row="2" Column="2"/>
         </CardLayouts>
@@ -5318,8 +4953,6 @@
         <Collide index="ForceField" value="0"/>
         <Collide index="Flying" value="1"/>
         <GlossaryCategory value="Unit/Category/DragonUnits"/>
-        <EnergyStart value="60"/>
-        <EnergyMax value="60"/>
         <AttackTargetPriority value="21"/>
     </CUnit>
     <!--azurelore-->
@@ -5335,21 +4968,14 @@
         <Height value="2.539"/>
         <AbilArray index="4" Link="DragonInventory"/>
         <AbilArray Link="MorphToUndeadAzurelore"/>
-        <AbilArray Link="FrostAura"/>
+        <AbilArray Link="Aarm"/>
         <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="Afrb"/>
         <BehaviorArray Link="dragon"/>
         <CardLayouts index="0">
-            <LayoutButtons index="5">
-                <Face value="ACsk"/>
-                <Type value="Passive"/>
-                <AbilCmd value=""/>
-                <Behavior value="ACsk"/>
-                <Row value="2"/>
-                <Column value="0"/>
-            </LayoutButtons>
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
             <LayoutButtons Face="Afrb" Type="Passive" Behavior="Afrb" Row="2" Column="1"/>
-            <LayoutButtons Face="FrostAuraCaster" Type="Passive" Behavior="FrostAuraCaster" Row="2" Column="2"/>
+            <LayoutButtons Face="Aarm" Type="Passive" Behavior="Aarm" Row="2" Column="2"/>
             <LayoutButtons Face="Reincarnation" Type="Passive" Row="2" Column="3"/>
         </CardLayouts>
         <PlaneArray index="Air" value="1"/>
@@ -5357,8 +4983,6 @@
         <Collide index="ForceField" value="0"/>
         <Collide index="Flying" value="1"/>
         <GlossaryCategory value="Unit/Category/DragonUnits"/>
-        <EnergyStart value="60"/>
-        <EnergyMax value="60"/>
         <AttackTargetPriority value="21"/>
         <DeathTime value="-1"/>
         <EffectArray index="Death" value="ImmortalityAzurelore"/>
@@ -5470,8 +5094,8 @@
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="60"/>
         <KillResource index="Custom" value="30"/>
-        <LifeStart value="900"/>
-        <LifeMax value="900"/>
+        <LifeStart value="1200"/>
+        <LifeMax value="1200"/>
         <Speed value="2"/>
         <Race value="Naga"/>
         <Mover value="amph"/>
@@ -5493,8 +5117,8 @@
         <Race value="Naga"/>
         <PlaneArray index="Ground" value="1"/>
         <Attributes index="large" value="1"/>
-        <LifeStart value="900"/>
-        <LifeMax value="900"/>
+        <LifeStart value="1200"/>
+        <LifeMax value="1200"/>
         <Mover value="amph"/>
         <Speed value="2"/>
         <CostResource index="gold" value="60"/>
@@ -5512,8 +5136,8 @@
         <Race value="Naga"/>
         <PlaneArray index="Ground" value="1"/>
         <Attributes index="large" value="1"/>
-        <LifeStart value="900"/>
-        <LifeMax value="900"/>
+        <LifeStart value="1200"/>
+        <LifeMax value="1200"/>
         <Mover value="amph"/>
         <Speed value="2"/>
         <CostResource index="gold" value="60"/>
@@ -5534,8 +5158,8 @@
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="180"/>
         <KillResource index="Custom" value="30"/>
-        <LifeStart value="900"/>
-        <LifeMax value="900"/>
+        <LifeStart value="1200"/>
+        <LifeMax value="1200"/>
         <Speed value="2"/>
         <Race value="Naga"/>
         <Mover value="amph"/>
@@ -5616,17 +5240,16 @@
     <!--dragon hawk-->
     <CUnit id="nws1" parent="AW2_Army" defType="SMALL">
         <Attributes index="small" value="1"/>
-        <CostResource index="gold" value="30"/>
-        <KillResource index="Custom" value="15"/>
-        <LifeStart value="25"/>
-        <LifeMax value="25"/>
+        <CostResource index="gold" value="45"/>
+        <KillResource index="Custom" value="45"/>
+        <LifeStart value="450"/>
+        <LifeMax value="450"/>
         <Speed value="3"/>
         <Race value="BloodElf"/>
         <Mover value="fly"/>
         <Height value="2.1875"/>
         <AbilArray Link="BloodElfInventory"/>
         <AbilArray Link="UpgradeTohdhw"/>
-        <AbilArray Link="nws1TimeLife"/>
         <AbilArray Link="Aclf"/>
         <CardLayouts index="0">
             <LayoutButtons Face="hdhw" Type="AbilCmd" AbilCmd="UpgradeTohdhw,Execute" Row="0" Column="0"/>
@@ -5799,69 +5422,27 @@
     </CUnit>
     <!--Peon-->
     <CUnit id="opeo" parent="AW2_Peon">
-        <CardLayouts CardId="">
+        <CardLayouts index="0">
             <LayoutButtons>
                 <Face value="CmdBuildOrc"/>
                 <Type value="Submenu"/>
-                <AbilCmd value=""/>
-                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
-                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Buil"/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="0"/>
             </LayoutButtons>
-            <LayoutButtons>
-                <Face value="oflg"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="AObu,Build1"/>
-                <Behavior value=""/>
-                <Requirements value=""/>
-                <SubmenuAbilState value=""/>
-                <SubmenuCardId value=""/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
-                <Row value="0"/>
-                <Column value="0"/>
-            </LayoutButtons>
+            <LayoutButtons Face="oflg" Type="AbilCmd" AbilCmd="AObu,Build1" Row="0" Column="0"/>
             <LayoutButtons>
                 <Face value="CmdPurchaseOrc"/>
                 <Type value="Submenu"/>
-                <AbilCmd value=""/>
-                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
-                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Purc"/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="1"/>
             </LayoutButtons>
-            <LayoutButtons>
-                <Face value="ofl2"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="AObu,Build2"/>
-                <Behavior value=""/>
-                <Requirements value=""/>
-                <SubmenuAbilState value=""/>
-                <SubmenuCardId value=""/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
-                <Row value="0"/>
-                <Column value="1"/>
-            </LayoutButtons>
-            <LayoutButtons Face="Anei" Type="AbilCmd" AbilCmd="Aall,Designate" Row="2" Column="4"/>
-            <LayoutButtons Face="ANgl" Type="AbilCmd" AbilCmd="ANgl,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="ANlg" Type="AbilCmd" AbilCmd="ANlg,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="ofl2" Type="AbilCmd" AbilCmd="AObu,Build2" Row="0" Column="1"/>
         </CardLayouts>
-        <CardLayouts CardId="Buil">
-            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
+        <CardLayouts index="1" CardId="Buil">
             <LayoutButtons Face="ogru" Type="AbilCmd" AbilCmd="AObu,Build5" Row="0" Column="0"/>
             <LayoutButtons Face="orai" Type="AbilCmd" AbilCmd="AObu,Build7" Row="0" Column="2"/>
             <LayoutButtons Face="otau" Type="AbilCmd" AbilCmd="AObu,Build11" Row="0" Column="3"/>
@@ -5874,32 +5455,11 @@
             <LayoutButtons Face="Oshd" Type="AbilCmd" AbilCmd="AObu,Build4" Row="1" Column="3"/>
             <LayoutButtons Face="Obla" Type="AbilCmd" AbilCmd="AObu,Build13" Row="0" Column="1"/>
         </CardLayouts>
-        <CardLayouts CardId="Purc">
-            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
-            <LayoutButtons Face="Purchaserat3" Type="AbilCmd" AbilCmd="Purchaserat3,Train1" Row="0" Column="0"/>
-            <LayoutButtons Face="Purchaserat6" Type="AbilCmd" AbilCmd="Purchaserat6,Train1" Row="0" Column="1"/>
-            <LayoutButtons Face="Purchaserat9" Type="AbilCmd" AbilCmd="Purchaserat9,Train1" Row="0" Column="2"/>
-            <LayoutButtons Face="Purchaseratc" Type="AbilCmd" AbilCmd="Purchaseratc,Train1" Row="0" Column="3"/>
-            <LayoutButtons Face="Purchaseratf" Type="AbilCmd" AbilCmd="Purchaseratf,Train1" Row="0" Column="4"/>
-            <LayoutButtons Face="Purchaseoli2" Type="AbilCmd" AbilCmd="Purchaseoli2,Train1" Row="1" Column="0"/>
-            <LayoutButtons Face="Purchasegcel" Type="AbilCmd" AbilCmd="Purchasegcel,Train1" Row="2" Column="0"/>
-            <LayoutButtons Face="Purchasefrhg" Type="AbilCmd" AbilCmd="Purchasefrhg,Train1" Row="2" Column="1"/>
-            <LayoutButtons Face="Purchaseprvt" Type="AbilCmd" AbilCmd="Purchaseprvt,Train1" Row="2" Column="2"/>
+        <CardLayouts index="2" CardId="Purc">
+            <LayoutButtons Face="Purchaseoli2" Type="AbilCmd" AbilCmd="Purchaseoli2,Train1" Row="0" Column="4"/>
         </CardLayouts>
-        <AbilArray Link="AInv"/>
-        <AbilArray Link="ANgl"/>
-        <AbilArray Link="ANlg"/>
         <AbilArray Link="AObu"/>
-        <AbilArray Link="Aall"/>
         <AbilArray Link="Purchaseoli2"/>
-        <AbilArray Link="Purchasegcel"/>
-        <AbilArray Link="Purchasefrhg"/>
-        <AbilArray Link="Purchaserat3"/>
-        <AbilArray Link="Purchaserat6"/>
-        <AbilArray Link="Purchaserat9"/>
-        <AbilArray Link="Purchaseratc"/>
-        <AbilArray Link="Purchaseratf"/>
-        <AbilArray Link="Purchaseprvt"/>
         <Speed value="3"/>
         <Radius value="0.3125"/>
         <Race value="Orc"/>
@@ -6186,24 +5746,24 @@
         <CostResource index="gold" value="75"/>
     </CUnit>
     <!--Ring of Protection +1-->
-    <CUnit id="rde0">
-        <LifeMax value="3"/>
+    <CUnit id="rde0" parent="AW2_Item">
+        <CostResource index="gold" value="15"/>
     </CUnit>
     <!--Ring of Protection +2-->
-    <CUnit id="rde1">
-        <LifeMax value="3"/>
+    <CUnit id="rde1" parent="AW2_Item">
+        <CostResource index="gold" value="30"/>
     </CUnit>
     <!--Ring of Protection +3-->
-    <CUnit id="rde2">
-        <LifeMax value="3"/>
+    <CUnit id="rde2" parent="AW2_Item">
+        <CostResource index="gold" value="45"/>
     </CUnit>
     <!--Ring of Protection +4-->
-    <CUnit id="rde3">
-        <LifeMax value="3"/>
+    <CUnit id="rde3" parent="AW2_Item">
+        <CostResource index="gold" value="60"/>
     </CUnit>
     <!--Ring of Protection +5-->
-    <CUnit id="rde4">
-        <LifeMax value="3"/>
+    <CUnit id="rde4" parent="AW2_Item">
+        <CostResource index="gold" value="75"/>
     </CUnit>
     <!--Abomination-->
     <CUnit id="uabo" parent="AW2_Army" defType="LARGE">
@@ -6230,69 +5790,27 @@
     </CUnit>
     <!--Acolyte-->
     <CUnit id="uaco" parent="AW2_Peon">
-        <CardLayouts CardId="">
+        <CardLayouts index="0">
             <LayoutButtons>
                 <Face value="CmdBuildUndead"/>
                 <Type value="Submenu"/>
-                <AbilCmd value=""/>
-                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
-                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Buil"/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="0"/>
             </LayoutButtons>
-            <LayoutButtons>
-                <Face value="uflg"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="AUbu,Build1"/>
-                <Behavior value=""/>
-                <Requirements value=""/>
-                <SubmenuAbilState value=""/>
-                <SubmenuCardId value=""/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
-                <Row value="0"/>
-                <Column value="0"/>
-            </LayoutButtons>
+            <LayoutButtons Face="uflg" Type="AbilCmd" AbilCmd="AUbu,Build1" Row="0" Column="0"/>
             <LayoutButtons>
                 <Face value="CmdPurchaseUndead"/>
                 <Type value="Submenu"/>
-                <AbilCmd value=""/>
-                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
-                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Purc"/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="1"/>
             </LayoutButtons>
-            <LayoutButtons>
-                <Face value="ufl2"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="AUbu,Build2"/>
-                <Behavior value=""/>
-                <Requirements value=""/>
-                <SubmenuAbilState value=""/>
-                <SubmenuCardId value=""/>
-                <SubmenuFullSubCmdValidation value="0"/>
-                <SubmenuIsSticky value="0"/>
-                <ShowInGlossary value="1"/>
-                <Row value="0"/>
-                <Column value="1"/>
-            </LayoutButtons>
-            <LayoutButtons Face="Anei" Type="AbilCmd" AbilCmd="Aall,Designate" Row="2" Column="4"/>
-            <LayoutButtons Face="ANgl" Type="AbilCmd" AbilCmd="ANgl,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="ANlg" Type="AbilCmd" AbilCmd="ANlg,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="ufl2" Type="AbilCmd" AbilCmd="AUbu,Build2" Row="0" Column="1"/>
         </CardLayouts>
-        <CardLayouts CardId="Buil">
-            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
+        <CardLayouts index="1" CardId="Buil">
             <LayoutButtons Face="ugho" Type="AbilCmd" AbilCmd="AUbu,Build12" Row="0" Column="0"/>
             <LayoutButtons Face="uabo" Type="AbilCmd" AbilCmd="AUbu,Build7" Row="0" Column="1"/>
             <LayoutButtons Face="Udea" Type="AbilCmd" AbilCmd="AUbu,Build10" Row="0" Column="2"/>
@@ -6303,33 +5821,13 @@
             <LayoutButtons Face="unec" Type="AbilCmd" AbilCmd="AUbu,Build5" Row="2" Column="1"/>
             <LayoutButtons Face="uban" Type="AbilCmd" AbilCmd="AUbu,Build4" Row="2" Column="2"/>
             <LayoutButtons Face="ndrv" Type="AbilCmd" AbilCmd="AUbu,Build3" Row="0" Column="4"/>
+            <LayoutButtons Face="ugrm" Type="AbilCmd" AbilCmd="AUbu,Build13" Row="1" Column="2"/>
         </CardLayouts>
-        <CardLayouts CardId="Purc">
-            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
-            <LayoutButtons Face="Purchaserat3" Type="AbilCmd" AbilCmd="Purchaserat3,Train1" Row="0" Column="0"/>
-            <LayoutButtons Face="Purchaserat6" Type="AbilCmd" AbilCmd="Purchaserat6,Train1" Row="0" Column="1"/>
-            <LayoutButtons Face="Purchaserat9" Type="AbilCmd" AbilCmd="Purchaserat9,Train1" Row="0" Column="2"/>
-            <LayoutButtons Face="Purchaseratc" Type="AbilCmd" AbilCmd="Purchaseratc,Train1" Row="0" Column="3"/>
-            <LayoutButtons Face="Purchaseratf" Type="AbilCmd" AbilCmd="Purchaseratf,Train1" Row="0" Column="4"/>
-            <LayoutButtons Face="Purchaseocor" Type="AbilCmd" AbilCmd="Purchaseocor,Train1" Row="1" Column="0"/>
-            <LayoutButtons Face="Purchasegcel" Type="AbilCmd" AbilCmd="Purchasegcel,Train1" Row="2" Column="0"/>
-            <LayoutButtons Face="Purchasefrhg" Type="AbilCmd" AbilCmd="Purchasefrhg,Train1" Row="2" Column="1"/>
-            <LayoutButtons Face="Purchaseprvt" Type="AbilCmd" AbilCmd="Purchaseprvt,Train1" Row="2" Column="2"/>
+        <CardLayouts index="2" CardId="Purc">
+            <LayoutButtons Face="Purchaseocor" Type="AbilCmd" AbilCmd="Purchaseocor,Train1" Row="0" Column="4"/>
         </CardLayouts>
-        <AbilArray Link="AInv"/>
-        <AbilArray Link="ANgl"/>
-        <AbilArray Link="ANlg"/>
         <AbilArray Link="AUbu"/>
-        <AbilArray Link="Aall"/>
-        <AbilArray Link="Purchaserat3"/>
-        <AbilArray Link="Purchaserat6"/>
-        <AbilArray Link="Purchaserat9"/>
-        <AbilArray Link="Purchaseratc"/>
-        <AbilArray Link="Purchaseratf"/>
         <AbilArray Link="Purchaseocor"/>
-        <AbilArray Link="Purchasegcel"/>
-        <AbilArray Link="Purchasefrhg"/>
-        <AbilArray Link="Purchaseprvt"/>
         <Speed value="3"/>
         <Radius value="0.3125"/>
         <Race value="Undead"/>
@@ -6470,8 +5968,30 @@
         <BehaviorArray Link="CreateReserveUnit90"/>
     </CUnit>
     <!--Gargoyle-->
-    <CUnit id="ugar">
-        <Food value="3"/>
+    <CUnit id="ugar" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <KillResource index="Custom" value="30"/>
+        <LifeStart value="450"/>
+        <LifeMax value="450"/>
+        <Speed value="3"/>
+        <Race value="Undead"/>
+        <Mover value="fly"/>
+        <Height value="1.875"/>
+        <AbilArray Link="Aiun"/>
+        <AbilArray Link="Astn"/>
+        <BehaviorArray Link="undead"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Astn" Type="AbilCmd" AbilCmd="Astn,0" Row="2" Column="0"/>
+        </CardLayouts>
+        <PlaneArray index="Air" value="1"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="ForceField" value="0"/>
+        <Collide index="Flying" value="1"/>
+        <GlossaryCategory value="Unit/Category/UndeadUnits"/>
+        <AttackTargetPriority value="21"/>
+        <DeathTime value="-1"/>
+        <EffectArray index="Death" value="ImmortalityGargoyle"/>
+        <LifeRegenRate value="-5"/>
     </CUnit>
     <!--Ghoul-->
     <CUnit id="ugho" parent="AW2_Army" defType="LARGE">
@@ -6504,8 +6024,21 @@
         <LifeMax value="200"/>
     </CUnit>
     <!--GargoyleMorphed-->
-    <CUnit id="ugrm">
-        <Food value="3"/>
+    <CUnit id="ugrm" parent="AW2_Sationary" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="60"/>
+        <KillResource index="Custom" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Race value="Undead"/>
+        <AbilArray Link="Aiun"/>
+        <AbilArray Link="AstnUn"/>
+        <AbilArray Link="Bstn"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AstnUn" Type="AbilCmd" AbilCmd="AstnUn,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/UndeadUnits"/>
     </CUnit>
     <!--kelthuzad ghost-->
     <CUnit id="uktg" parent="AW2_Army" defType="NONE">

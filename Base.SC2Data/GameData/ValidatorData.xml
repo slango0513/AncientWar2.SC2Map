@@ -94,6 +94,10 @@
         <Compare value="LE"/>
         <Value value="1"/>
     </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="GargoyleNearDeath">
+        <Compare value="LE"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareVital>
     <CValidatorCombine id="SubmergeValidator">
         <CombineArray value="CliffLevelEqualOrLesserEnemiesNearby5"/>
         <CombineArray value="NotAttackingAndNotInCombatWar3"/>
@@ -262,7 +266,7 @@
     <CValidatorUnitCompareBehaviorCount id="NoDoom">
         <Behavior value="BNdo"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="BreathOfFrost">
+    <CValidatorUnitCompareBehaviorCount id="NoBreathOfFrost">
         <Behavior value="BCbf"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NoHex">
@@ -283,6 +287,9 @@
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NoAcidBomb">
         <Behavior value="BNab1"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoStarfall">
+        <Behavior value="AEsd"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorLocationEnumArea id="PhalanxMarkerLessThan36">
         <WhichLocation Value="CasterPoint"/>
