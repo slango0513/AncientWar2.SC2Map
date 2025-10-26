@@ -46,12 +46,14 @@
         <Flags index="AutoCastOn" value="1"/>
     </CAbilAugment>
     <CAbilMorph default="1" id="AW2_Morph" parent="War3_Morph">
-        <CmdButtonArray index="Execute" Requirements="">
+        <CmdButtonArray index="Execute" Requirements="UseMorph">
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
         <CmdButtonArray index="Cancel">
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
+        <Flags index="IgnoreFood" value="1"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
     </CAbilMorph>
     <CAbilMorph default="1" id="AW2_Upgrade" parent="War3_Upgrade">
         <InfoArray index="0" Score="1" Unit="##toUnit##">
@@ -66,6 +68,26 @@
             </SectionArray>
         </InfoArray>
     </CAbilMorph>
+    <CAbilEffectTarget id="ACcv" parent="AW2_EffectTarget">
+        <Alignment value="Negative"/>
+        <EditorCategories value="Race:Naga,AbilityorEffectType:Units"/>
+        <Effect index="0" value="ACcvTarget"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="30"/>
+        </Cost>
+        <TargetFilters index="0" value="-;player,allies,air,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity,hero"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSMarker"/>
+            <SortArray value="TSLife"/>
+            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+        </TargetSorts>
+        <Range value="5"/>
+        <AutoCastRange value="5"/>
+        <AutoCastValidatorArray value="CasterHasSwimmingAmphibian"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+        <PrepTime value="0.47"/>
+        <FinishTime value="0.8"/>
+    </CAbilEffectTarget>
     <!--Abolish Magic (Creep, 1,2 pos)-->
     <CAbilEffectTarget id="ACd2">
         <Cost index="0">
@@ -79,18 +101,48 @@
         </CmdButtonArray>
     </CAbilEffectTarget>
     <!--Ensnare (Creep) Dur=10 HeroDur=5 Buff=Bena,Beng-->
-    <CAbilEffectTarget id="ACen">
-        <CmdButtonArray index="Execute" Requirements="">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
-        <CmdButtonArray index="Cancel">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
+    <CAbilEffectTarget id="ACen" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Naga,AbilityorEffectType:Unit"/>
+        <TargetFilters index="0" value="-;player,allies,ground,wall,tree,debris,item,structure,ward,dead,invulnerable"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="15"/>
+        </Cost>
+        <Range value="6"/>
+        <PrepTime value="0.6"/>
+        <CastOutroTime value="0.2"/>
+        <Effect index="0" value="AensMissile"/>
+        <Alignment value="Negative"/>
+        <AutoCastRange value="6"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+        <AutoCastValidatorArray value="noMarkers"/>
     </CAbilEffectTarget>
     <CAbilBehavior id="ACnr" parent="War3_HeroAura">
         <CmdButtonArray index="On" Requirements="ACnr"/>
         <BehaviorArray value="ACnr"/>
     </CAbilBehavior>
+    <!--Parasite(eredar) Dur=30 HeroDur= Buff=BNpa,BNpm cast=90-->
+    <CAbilEffectTarget id="ACpa" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Naga,AbilityorEffectType:Unit"/>
+        <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity,hero"/>
+        <Cost index="0">
+            <Vital index="Energy" value="60"/>
+            <Cooldown Location="Unit" TimeUse="60"/>
+        </Cost>
+        <Range value="12"/>
+        <PrepTime value="0.3"/>
+        <CastOutroTime value="0.51"/>
+        <Effect index="0" value="ACpaMissile"/>
+        <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+        <AutoCastValidatorArray value="NoBNpaACpa"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <!--AutoCastValidatorArray value="Threatens"/-->
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+        </TargetSorts>
+        <Alignment value="Negative"/>
+    </CAbilEffectTarget>
     <CAbilBuild id="AEbu" parent="War3_Build">
         <EditorCategories value="Race:Nightelf,AbilityorEffectType:Units"/>
         <InfoArray index="Build1" Unit="nflg">
@@ -141,6 +193,12 @@
         </InfoArray>
         <InfoArray index="Build5" Unit="nlpr">
             <Button DefaultButtonFace="nlpr" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build6" Unit="ntrs">
+            <Button DefaultButtonFace="ntrs" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build7" Unit="nsnp">
+            <Button DefaultButtonFace="nsnp" Requirements="BuildArmy"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
@@ -259,6 +317,10 @@
             <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
     </CAbilEffectInstant>
+    <CAbilBehavior id="ANth" parent="War3_Passive">
+        <EditorCategories value="Race:Naga,AbilityorEffectType:Units"/>
+        <BehaviorArray value="ANth"/>
+    </CAbilBehavior>
     <CAbilEffectInstant id="CallTide" parent="AW2_EffectInstant">
         <EditorCategories value="Race:Naga,AbilityorEffectType:Units"/>
         <Cost index="0">
@@ -266,6 +328,8 @@
         </Cost>
         <AutoCastFilters value="Visible;Ally,Neutral,Enemy"/>
         <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+        <PrepTime value="0.45"/>
+        <CastOutroTime value="1.08"/>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="AIpv" parent="War3_EffectInstant">
         <CmdButtonArray index="Execute" Requirements="">
@@ -347,6 +411,7 @@
         <CmdButtonArray index="On">
             <Flags index="IgnoreUser" value="0"/>
         </CmdButtonArray>
+        <Flags index="AutoCastOn" value="0"/>
     </CAbilBehavior>
     <!--Pit Lord - Rain of Fire Buff=BNrd,BNrf effect=XErf cast=1-->
     <CAbilEffectTarget id="ANrf" parent="AW2_EffectTarget">
@@ -647,8 +712,9 @@
         <BehaviorArray value="Aabr"/>
     </CAbilBehavior>
     <CAbilInteract id="Aall">
-        <Range value="2"/>
-        <AutoCastRange value="2"/>
+        <Range value="1"/>
+        <AutoCastRange value="1"/>
+        <TargetFilters value="Radar;Neutral,Enemy,Dead,Hidden,Hallucination"/>
     </CAbilInteract>
     <!--Anti-magic Shield (Matrix) Dur=90 HeroDur=90 Buff=Bams,Bam2-->
     <CAbilEffectTarget id="Aam2">
@@ -871,7 +937,8 @@
         <InfoArray/>
         <InfoArray/>
     </CAbilInventory>
-    <CAbilInventory id="InventoryNaga" parent="AW2_UnitInventory">
+    <CAbilInventory id="NagaInventory" parent="AW2_UnitInventory">
+        <Name value="InventoryNaga/Name"/>
         <InfoArray/>
         <InfoArray/>
     </CAbilInventory>
@@ -936,9 +1003,8 @@
         <AutoCastValidatorArray value="NotFullManaFriendNearBy"/>
         <AutoCastFilters value="Visible;Neutral,Enemy"/>
     </CAbilEffectInstant>
-    <CAbilMorph id="Asb1" parent="War3_Morph" unitID="nmys">
+    <CAbilMorph id="Asb1" parent="AW2_Morph" unitID="nmys">
         <EditorCategories value="Race:Naga,AbilityorEffectType:Units"/>
-        <CmdButtonArray index="Execute" Requirements="Asb1"/>
         <InfoArray index="0" Unit="nmys">
             <SectionArray index="Actor">
                 <DurationArray index="Duration" value="1.1"/>
@@ -951,9 +1017,12 @@
                 <DurationArray index="Duration" value="1"/>
             </SectionArray>
         </InfoArray>
+        <Cost>
+            <Cooldown TimeUse="5"/>
+        </Cost>
     </CAbilMorph>
-    <CAbilMorph id="Asb1Un" parent="War3_Morph" unitID="nmyr">
-        <CmdButtonArray index="Execute" Requirements="Asb1Un"/>
+    <CAbilMorph id="Asb1Un" parent="AW2_Morph" unitID="nmyr">
+        <EditorCategories value="Race:Naga,AbilityorEffectType:Units"/>
         <InfoArray index="0" Unit="nmyr">
             <SectionArray index="Actor">
                 <DurationArray index="Duration" value="1.1"/>
@@ -967,9 +1036,8 @@
             </SectionArray>
         </InfoArray>
     </CAbilMorph>
-    <CAbilMorph id="Asb2" parent="War3_Morph" unitID="nnrs">
+    <CAbilMorph id="Asb2" parent="AW2_Morph" unitID="nnrs">
         <EditorCategories value="Race:Naga,AbilityorEffectType:Units"/>
-        <CmdButtonArray index="Execute" Requirements="Asb2"/>
         <InfoArray index="0" Unit="nnrs">
             <SectionArray index="Actor">
                 <DurationArray index="Duration" value="1.1"/>
@@ -982,10 +1050,46 @@
                 <DurationArray index="Duration" value="1"/>
             </SectionArray>
         </InfoArray>
+        <Cost>
+            <Cooldown TimeUse="5"/>
+        </Cost>
     </CAbilMorph>
-    <CAbilMorph id="Asb2Un" parent="War3_Morph" unitID="nnrg">
-        <CmdButtonArray index="Execute" Requirements="Asb2Un"/>
+    <CAbilMorph id="Asb2Un" parent="AW2_Morph" unitID="nnrg">
+        <EditorCategories value="Race:Naga,AbilityorEffectType:Units"/>
         <InfoArray index="0" Unit="nnrg">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="1.1"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Delay" value="0.1"/>
+                <DurationArray index="Duration" value="1"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Duration" value="1"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="Asb3" parent="AW2_Morph" unitID="nsbs">
+        <EditorCategories value="Race:Naga,AbilityorEffectType:Units"/>
+        <InfoArray index="0" Unit="nsbs">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="1.1"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Delay" value="0.1"/>
+                <DurationArray index="Duration" value="1"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Duration" value="1"/>
+            </SectionArray>
+        </InfoArray>
+        <Cost>
+            <Cooldown TimeUse="5"/>
+        </Cost>
+    </CAbilMorph>
+    <CAbilMorph id="Asb3Un" parent="AW2_Morph" unitID="nsnp">
+        <EditorCategories value="Race:Naga,AbilityorEffectType:Units"/>
+        <InfoArray index="0" Unit="nsnp">
             <SectionArray index="Actor">
                 <DurationArray index="Duration" value="1.1"/>
             </SectionArray>
@@ -1030,6 +1134,8 @@
                 <DurationArray index="Duration" value="0.5"/>
             </SectionArray>
         </InfoArray>
+        <Flags index="IgnoreFood" value="0"/>
+        <Flags index="IgnoreUnitCost" value="0"/>
     </CAbilMorph>
     <CAbilMorph id="AstnUn" parent="AW2_Morph" unitID="ugar">
         <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
@@ -1045,7 +1151,9 @@
             </SectionArray>
         </InfoArray>
         <Name value="AstnUn/Tip"/>
+        <Flags index="IgnoreFood" value="0"/>
         <Flags index="IgnorePlacement" value="0"/>
+        <Flags index="IgnoreUnitCost" value="0"/>
     </CAbilMorph>
     <!--Web Dur=12 HeroDur=7 Buff=Bwea,Bweb-->
     <CAbilEffectTarget id="Aweb" parent="AW2_EffectTarget">
@@ -1232,6 +1340,12 @@
             <Button Requirements="BuildArmy"/>
         </InfoArray>
     </CAbilTrain>
+    <CAbilTrain id="Purchaseofro" parent="War3_MakeItem" unit="ofro">
+        <InfoArray index="Train1">
+            <Charge CountMax="1" CountStart="1"/>
+            <Button Requirements="BuildArmy"/>
+        </InfoArray>
+    </CAbilTrain>
     <CAbilTrain id="Purchaseoli2" parent="War3_MakeItem" unit="oli2">
         <InfoArray index="Train1">
             <Charge CountMax="1" CountStart="1"/>
@@ -1280,6 +1394,18 @@
             <Button Requirements="BuildArmy"/>
         </InfoArray>
     </CAbilTrain>
+    <CAbilEffectTarget id="SubmergeTeleport" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Naga,AbilityorEffectType:Units"/>
+        <TargetFilters index="0" value="-;player,allies,air,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSMarker"/>
+        </TargetSorts>
+        <Range value="9"/>
+        <AutoCastRange value="9"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </Cost>
+    </CAbilEffectTarget>
     <CAbilStop id="stop">
         <CmdButtonArray index="Stop" Requirements="ShowDefaultButton">
             <Flags index="IgnoreUser" value="1"/>
@@ -1839,6 +1965,15 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeTonlkl" parent="AW2_Upgrade" toUnit="nlkl">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonmrv" parent="AW2_Upgrade" toUnit="nmrv">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTontrt" parent="AW2_Upgrade" toUnit="ntrt">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonhyc" parent="AW2_Upgrade" toUnit="nhyc">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
 </Catalog>

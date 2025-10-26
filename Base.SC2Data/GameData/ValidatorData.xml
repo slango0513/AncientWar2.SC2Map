@@ -1,5 +1,45 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CValidatorLocationEnumArea default="1" id="AW2_EnemiesNearby">
+        <AreaArray Compare="GT" Count="0"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Hover,Missile,Destructible,Dead,Hidden"/>
+        <WhichLocation Value="CasterUnit"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea default="1" id="AW2_NoEnemiesNearby">
+        <SearchFilters value="Visible;Player,Ally,Neutral,Hover,Missile,Destructible,Dead,Hidden"/>
+        <WhichLocation Value="CasterUnit"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <Compare value="Eq"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorCombine id="CanUseAnyInventory">
+        <CombineArray value="CanUseNagaInventory"/>
+    </CValidatorCombine>
+    <CValidatorUnitOrder id="CanUseNagaInventory">
+        <WhichUnit Value="Target"/>
+        <AbilLink value="NagaInventory"/>
+        <AbilCmdIndex value="2"/>
+    </CValidatorUnitOrder>
+    <CValidatorLocationCompareCliffLevel id="CasterCliffLevelEqualOrLesser">
+        <Compare value="LE"/>
+        <WhichLocation Value="TargetUnit"/>
+        <OtherLocation Value="CasterUnit"/>
+    </CValidatorLocationCompareCliffLevel>
+    <CValidatorCombine id="EmergeValidator">
+        <CombineArray value="EnemiesNearby1"/>
+        <CombineArray value="NoEnemiesNearby9"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="SubmergeValidator">
+        <CombineArray value="CliffLevelEqualOrLesserEnemiesNearby5"/>
+        <CombineArray value="NotAttackingAndNotInCombatWar3"/>
+        <Type value="And"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="EmergeValidator3">
+        <CombineArray value="NoEnemiesNearby2"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="SubmergeValidator3">
+        <CombineArray value="EnemiesNearby2"/>
+    </CValidatorCombine>
     <CValidatorUnitCompareSpeed id="HeroPitLordRun">
         <Value value="2.25"/>
     </CValidatorUnitCompareSpeed>
@@ -40,9 +80,25 @@
         <Find value="1"/>
         <Value value="CountUnit"/>
     </CValidatorPlayerRequirement>
-    <CValidatorLocationEnumArea id="EnemiesNearby3">
-        <AreaArray Compare="GT" Count="0" Radius="3"/>
-        <SearchFilters value="Visible;Player,Ally,Neutral,Hover,Missile,Dead,Hidden"/>
+    <CValidatorLocationEnumArea id="EnemiesNearby1" parent="AW2_EnemiesNearby">
+        <AreaArray index="0" Compare="GT" Count="0" Radius="1"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="EnemiesNearby2" parent="AW2_EnemiesNearby">
+        <AreaArray index="0" Compare="GT" Count="0" Radius="2"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="EnemiesNearby3" parent="AW2_EnemiesNearby">
+        <AreaArray index="0" Compare="GT" Count="0" Radius="3"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="EnemiesNearby5" parent="AW2_EnemiesNearby">
+        <AreaArray index="0" Compare="GT" Count="0" Radius="5"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="CliffLevelEqualOrLesserEnemiesNearby5" parent="AW2_EnemiesNearby">
+        <AreaArray index="0">
+            <Compare value="GT"/>
+            <Count value="0"/>
+            <Radius value="5"/>
+            <Validator value="CasterCliffLevelEqualOrLesser"/>
+        </AreaArray>
     </CValidatorLocationEnumArea>
     <CValidatorUnitCompareField id="IsRangedUnit">
         <Field value="TechAliasArray[0]"/>
@@ -131,6 +187,14 @@
     <CValidatorLocationEnumArea id="TacticalDefendThreatSearchEmpty" parent="TacticalCloakThreatSearchEmpty" unitLink="hfoo">
         <AreaArray index="0" Radius="7.5" Validator="UnitThreatenshfoo"/>
     </CValidatorLocationEnumArea>
+    <CValidatorUnitMover id="TargetIsAmphibian">
+        <Value value="amph"/>
+        <Find value="1"/>
+    </CValidatorUnitMover>
+    <CValidatorUnitMover id="TargetIsRider">
+        <Value value="horse"/>
+        <Find value="1"/>
+    </CValidatorUnitMover>
     <CValidatorUnitCompareAttackPriority id="UnitThreatenshfoo" parent="ThreatensUnit" unitLink="hfoo"/>
     <CValidatorUnitCompareAttackPriority id="UnitThreatensnbel" parent="ThreatensUnit" unitLink="nbel"/>
     <CValidatorLocationEnumArea id="TacticalMagicDefendThreatSearch" parent="TacticalCloakThreatSearch" unitLink="nbel">
@@ -206,11 +270,17 @@
         <CombineArray value="CasterIsAttackingWar3B"/>
         <Negate value="1"/>
     </CValidatorCombine>
-    <CValidatorLocationEnumArea id="NoEnemiesNearby15">
-        <AreaArray Count="0" Radius="15"/>
-        <SearchFilters value="Visible;Player,Ally,Neutral,Hover,Missile,Dead,Hidden"/>
-        <WhichLocation Value="CasterUnitOrPoint"/>
-        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    <CValidatorLocationEnumArea id="NoEnemiesNearby1" parent="AW2_NoEnemiesNearby">
+        <AreaArray Radius="1"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="NoEnemiesNearby2" parent="AW2_NoEnemiesNearby">
+        <AreaArray Radius="2"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="NoEnemiesNearby5" parent="AW2_NoEnemiesNearby">
+        <AreaArray Radius="5"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="NoEnemiesNearby9" parent="AW2_NoEnemiesNearby">
+        <AreaArray Radius="9"/>
     </CValidatorLocationEnumArea>
     <CValidatorUnitBehaviorState id="IsCloaked">
         <Enabled value="1"/>
@@ -220,8 +290,17 @@
         <CombineArray value="IsCloaked"/>
         <CombineArray value="IsHallucinationAny"/>
     </CValidatorCombine>
-    <CValidatorUnitCompareBehaviorCount id="HasSwimmingNaga">
+    <CValidatorUnitCompareBehaviorCount id="HasSwimmingAmphibian">
         <Compare value="GT"/>
-        <Behavior value="SwimmingNaga"/>
+        <Behavior value="SwimmingAmphibian"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="CasterHasSwimmingAmphibian">
+        <Compare value="GT"/>
+        <Behavior value="SwimmingAmphibian"/>
+        <WhichUnit Value="Caster"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="HasSwimmingHorse">
+        <Compare value="GT"/>
+        <Behavior value="SwimmingHorse"/>
     </CValidatorUnitCompareBehaviorCount>
 </Catalog>

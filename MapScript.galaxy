@@ -97,7 +97,6 @@ int[gv_teamRoundMaximumCount + 1] gv_teamRoundRandomized;
 int[gv_venueGroupMaximumCount + 1][gv_teamRoundMaximumCount + 1] gv_venueGroupRandomized;
 point[gv_venueMaximumCount + 1] gv_creepPoint;
 string[gv_venueMaximumCount + 1][gv_roundMaximumCount + 1] gv_creepUnitType;
-bool gv_tidal;
 playergroup gv_aIGroup;
 int[gv_teamMaximumCount + 1] gv_teamAlive;
 int gv_round;
@@ -159,7 +158,6 @@ void InitGlobals () {
 // Global Function Declarations
 //--------------------------------------------------------------------------------------------------
 void gf_ModInizialization (bool lp_debug);
-void gf_WaterSetState ();
 void gf_RoundStartLoop (bool lp_debug);
 void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug);
 void gf_TeamMemberSetAndTeamMemberCountSet ();
@@ -173,6 +171,8 @@ void gf_PlayerAtFinalVenueReplace (int lp_round);
 void gf_PlayerAtFinalVenueSet ();
 void gf_PlayerCountTest ();
 void gf_GameOverTestNotPassed ();
+void gf_ChangeWaterState ();
+void gf_RestoreWaterState ();
 void gf_ReserveUnitCreation2 (int lp_player, int lp_phalanx);
 unitgroup gf_PlayerGetWorkers (int lp_player);
 int gf_PlayerGetTeam (int lp_player);
@@ -309,6 +309,8 @@ void gf_ModInizialization (bool lp_debug) {
     TriggerEnable(libGAwX_gt_NonHeroItemDeathDrop, false);
     TriggerEnable(libGAw3_gt_ChangeOwerFromCreep, false);
     TriggerEnable(libGAw3_gt_ChangeOwerToCreep, false);
+    TriggerEnable(libGAwX_gt_RegisterChannelingUnits, false);
+    TriggerEnable(libGAwX_gt_ChannelStopCancel, false);
     TriggerEnable(libGAwX_gt_AdefDefendInitRegister, false);
     UISetResourceTradingAllowed(c_resourceTypeMinerals, false);
     UISetResourceTradingAllowed(c_resourceTypeVespene, false);
@@ -341,11 +343,6 @@ void gf_ModInizialization (bool lp_debug) {
     }
     else {
     }
-}
-
-void gf_WaterSetState () {
-    // Implementation
-    WaterSetState("AW2_Default|Alternate Setting", 0.0, c_wtcLinear);
 }
 
 void gf_RoundStartLoop (bool lp_debug) {
@@ -447,6 +444,7 @@ void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug) {
         gf_ObjectiveSetState(lp_round, c_objectiveStateCompleted);
     }
 
+    gf_RestoreWaterState();
     Wait(2.0, c_timeGame);
 }
 
@@ -931,6 +929,54 @@ void gf_GameOverTestNotPassed () {
     for ( ; ( (autoD2DC7757_ai >= 0 && lv_player <= autoD2DC7757_ae) || (autoD2DC7757_ai <= 0 && lv_player >= autoD2DC7757_ae) ) ; lv_player += autoD2DC7757_ai ) {
         GameOver(lv_player, c_gameOverTie, true, true);
     }
+}
+
+void gf_ChangeWaterState () {
+    playergroup autoAF95B0B5_g;
+    int autoAF95B0B5_p;
+
+    // Variable Declarations
+    int lv_player;
+
+    // Variable Initialization
+
+    // Implementation
+    SoundPlayForPlayer(SoundLink("TidalGuardianWhat", -1), c_maxPlayers, PlayerGroupActive(), 100.0, 0.0);
+    WaterSetState("AW2_Default|[Default]", 5.0, c_wtcLinear);
+    Wait(2.0, c_timeGame);
+    autoAF95B0B5_g = PlayerGroupActive(); 
+    autoAF95B0B5_p = 1;
+    for ( ; autoAF95B0B5_p <= PlayerGroupCount(autoAF95B0B5_g) ; autoAF95B0B5_p += BoolToInt(lv_player == PlayerGroupPlayer(autoAF95B0B5_g, autoAF95B0B5_p)) ) {
+        lv_player = PlayerGroupPlayer(autoAF95B0B5_g, autoAF95B0B5_p);
+        libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "Tide", 1);
+    }
+    TimerWindowShow(gv_callTideTimmerWindow, PlayerGroupActive(), true);
+}
+
+void gf_RestoreWaterState () {
+    playergroup auto5475E430_g;
+    int auto5475E430_p;
+
+    // Variable Declarations
+    int lv_player;
+
+    // Variable Initialization
+
+    // Implementation
+    auto5475E430_g = PlayerGroupActive(); 
+    auto5475E430_p = 1;
+    for ( ; auto5475E430_p <= PlayerGroupCount(auto5475E430_g) ; auto5475E430_p += BoolToInt(lv_player == PlayerGroupPlayer(auto5475E430_g, auto5475E430_p)) ) {
+        lv_player = PlayerGroupPlayer(auto5475E430_g, auto5475E430_p);
+        libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "Tide", 0);
+    }
+    TimerWindowShow(gv_callTideTimmerWindow, PlayerGroupActive(), false);
+    Wait(2.0, c_timeGame);
+    if ((TechTreeUpgradeCount(PlayerGroupPlayer(PlayerGroupActive(), 1), "Tide", c_techCountCompleteOnly) == 0)) {
+        SoundPlayForPlayer(SoundLink("TempleOfTidesWhat", -1), c_maxPlayers, PlayerGroupActive(), 100.0, 0.0);
+        WaterSetState("AW2_Default|Alternate Setting", 5.0, c_wtcLinear);
+        libNtve_gf_SendActorMessageToGameRegion(RegionEntireMap(), "AnimGroupRemove Swim");
+    }
+
 }
 
 void gf_ReserveUnitCreation2 (int lp_player, int lp_phalanx) {
@@ -3073,6 +3119,7 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
             libGAwX_gf_SetPlayerUIRace(lv_player, "Undead");
         }
 
+        libGAwX_gf_SetPlayerUIRace(lv_player, "Naga");
     }
     libGAwX_gf_SetWar3TimeOfDay("13:00:00");
     libGAwX_gf_PauseUnpauseTimeOfDayWar3(true);
@@ -3510,7 +3557,6 @@ bool gt_PlayerInizialization_Func (bool testConds, bool runActions) {
         PlayerSetState(lv_player, c_playerStateFoodIgnored, true);
         PlayerSetState(lv_player, c_playerStateShowWorldTip, true);
         PlayerOptionOverride(lv_player, "simplecommandcard", "0");
-        PlayerOptionOverride(lv_player, "displayunitstatus", "All");
         PlayerOptionOverride(lv_player, "buildgridhint", "1");
         PlayerOptionOverride(lv_player, "gametooltips", "1");
         PlayerOptionOverride(lv_player, "selectuncontrolable", "1");
@@ -3951,9 +3997,7 @@ bool gt_CallTideChangeWaterState_Func (bool testConds, bool runActions) {
     }
 
     if ((TimerGetRemaining(gv_callTideTimer) == 0)) {
-        gv_tidal = true;
-        WaterSetState("AW2_Default|[Default]", 2.0, c_wtcLinear);
-        TimerWindowShow(gv_callTideTimmerWindow, PlayerGroupActive(), true);
+        gf_ChangeWaterState();
     }
 
     TimerStart(gv_callTideTimer, (TimerGetRemaining(gv_callTideTimer)+gv_callTideDuration), false, c_timeGame);
@@ -3975,9 +4019,7 @@ bool gt_CallTideRestoreWaterState_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    gv_tidal = false;
-    WaterSetState("AW2_Default|Alternate Setting", 2.0, c_wtcLinear);
-    TimerWindowShow(gv_callTideTimmerWindow, PlayerGroupActive(), false);
+    gf_RestoreWaterState();
     return true;
 }
 
@@ -4332,9 +4374,8 @@ bool gt_TideAddRemoveSwimmingPeriodic_Func (bool testConds, bool runActions) {
     autoB515EBFF_u = 1;
     for ( ; autoB515EBFF_u <= UnitGroupCount(autoB515EBFF_g, c_unitCountAll) ; autoB515EBFF_u += BoolToInt(lv_unit == UnitGroupUnit(autoB515EBFF_g, autoB515EBFF_u)) ) {
         lv_unit = UnitGroupUnit(autoB515EBFF_g, autoB515EBFF_u);
-        if ((gv_tidal == true) && (WorldHeight(c_heightMapGround, UnitGetPosition(lv_unit)) < 11.0)) {
-            UnitBehaviorAddPlayer(lv_unit, "Swimming", UnitGetOwner(lv_unit), 1);
-            UnitBehaviorAddPlayer(lv_unit, "SwimmingNaga", UnitGetOwner(lv_unit), 1);
+        if ((TechTreeUpgradeCount(UnitGetOwner(lv_unit), "Tide", c_techCountCompleteOnly) == 1) && (WorldHeight(c_heightMapGround, UnitGetPosition(lv_unit)) < 10.5)) {
+            PlayerCreateEffectUnit(UnitGetOwner(lv_unit), "SwimmingSwitch", lv_unit);
         }
 
     }
@@ -4345,7 +4386,7 @@ bool gt_TideAddRemoveSwimmingPeriodic_Func (bool testConds, bool runActions) {
 void gt_TideAddRemoveSwimmingPeriodic_Init () {
     gt_TideAddRemoveSwimmingPeriodic = TriggerCreate("gt_TideAddRemoveSwimmingPeriodic_Func");
     TriggerEnable(gt_TideAddRemoveSwimmingPeriodic, false);
-    TriggerAddEventTimePeriodic(gt_TideAddRemoveSwimmingPeriodic, 1.0, c_timeGame);
+    TriggerAddEventTimePeriodic(gt_TideAddRemoveSwimmingPeriodic, 0.5, c_timeGame);
 }
 
 //--------------------------------------------------------------------------------------------------

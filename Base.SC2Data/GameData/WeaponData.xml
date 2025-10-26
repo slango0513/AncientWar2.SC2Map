@@ -189,7 +189,7 @@
         <TargetFilters value="Visible;wall,tree,Missile,dead,invulnerable,immunity"/>
         <Range value="6"/>
         <RangeSlop value="1.9531"/>
-        <Period value="3"/>
+        <Period value="6"/>
         <DamagePoint value="0.73"/>
         <Backswing value="0.54"/>
     </CWeaponLegacy>
@@ -802,6 +802,17 @@
         <DamagePoint value="0.72"/>
         <Backswing value="0.28"/>
     </CWeaponLegacy>
+    <!--Naga Dragon Turtle-->
+    <CWeaponLegacy id="nhyc1" parent="missile" atkType="PIERCE">
+        <Effect value="nhyc1LM"/>
+        <MinScanRange value="2"/>
+        <TargetFilters value="Visible;air,wall,tree,Missile,structure,ethereal,dead,invulnerable"/>
+        <Range value="2"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="3"/>
+        <DamagePoint value="0.7"/>
+        <Backswing value="0.3"/>
+    </CWeaponLegacy>
     <!--hydromancer-->
     <CWeaponLegacy id="nhym1" parent="missile" atkType="MAGIC">
         <Effect value="nhym1LM"/>
@@ -845,7 +856,7 @@
         <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
         <Range value="0.7812"/>
         <RangeSlop value="1.9531"/>
-        <Period value="3"/>
+        <Period value="1.5"/>
         <DamagePoint value="0.3"/>
         <Backswing value="0.3"/>
     </CWeaponLegacy>
@@ -855,7 +866,7 @@
         <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
         <Range value="0.7812"/>
         <RangeSlop value="1.9531"/>
-        <Period value="3"/>
+        <Period value="1.5"/>
         <DamagePoint value="0.38"/>
         <Backswing value="0.6"/>
     </CWeaponLegacy>
@@ -865,7 +876,7 @@
         <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
         <Range value="0.7812"/>
         <RangeSlop value="1.9531"/>
-        <Period value="3"/>
+        <Period value="1.5"/>
         <DamagePoint value="0.38"/>
         <Backswing value="0.6"/>
     </CWeaponLegacy>
@@ -926,6 +937,16 @@
         <Period value="1.5"/>
         <DamagePoint value="0.66"/>
         <Backswing value="0.84"/>
+    </CWeaponLegacy>
+    <!--mur'gul reaver-->
+    <CWeaponLegacy id="nmrv1" parent="normal" atkType="NORMAL">
+        <MinScanRange value="3.9062"/>
+        <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
+        <Range value="0.7812"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.6"/>
+        <Backswing value="0.7"/>
     </CWeaponLegacy>
     <!--naga myrmidon-->
     <CWeaponLegacy id="nmyr1" parent="normal" atkType="NORMAL">
@@ -1030,6 +1051,17 @@
         <DamagePoint value="0.6"/>
         <Backswing value="0.3"/>
     </CWeaponLegacy>
+    <!--naga snap dragon-->
+    <CWeaponLegacy id="nsnp1" parent="missile" atkType="PIERCE">
+        <Effect value="nsnp1Multishot"/>
+        <MinScanRange value="7"/>
+        <TargetFilters value="Visible;wall,tree,Missile,ethereal,dead,invulnerable"/>
+        <Range value="7"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="3"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.7"/>
+    </CWeaponLegacy>
     <!--dragon turtle-->
     <CWeaponLegacy id="ntrd1" parent="normal" atkType="CHAOS">
         <MinScanRange value="3.9062"/>
@@ -1040,22 +1072,44 @@
         <DamagePoint value="0.6"/>
         <Backswing value="0.3"/>
     </CWeaponLegacy>
-    <!--sea turtle-->
-    <CWeaponLegacy id="ntrs1" parent="normal" atkType="NORMAL">
+    <!--gargantuan sea turtle-->
+    <CWeaponLegacy id="ntrg1" parent="normal" atkType="NORMAL">
         <MinScanRange value="3.9062"/>
         <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
         <Range value="0.7812"/>
         <RangeSlop value="1.9531"/>
         <Period value="3"/>
-        <DamagePoint value="0.66"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+    </CWeaponLegacy>
+    <!--sea turtle hatchling-->
+    <CWeaponLegacy id="ntrh1" parent="missile" atkType="PIERCE">
+        <Effect value="ntrh1LM"/>
+        <MinScanRange value="12"/>
+        <TargetFilters value="Visible;wall,tree,Missile,ethereal,dead,invulnerable"/>
+        <Range value="12"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="3"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.3"/>
+    </CWeaponLegacy>
+    <!--sea turtle-->
+    <CWeaponLegacy id="ntrs1" parent="missile" atkType="PIERCE">
+        <Effect value="ntrs1LM"/>
+        <MinScanRange value="2"/>
+        <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
+        <Range value="2"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="3"/>
+        <DamagePoint value="0.5"/>
         <Backswing value="0.3"/>
     </CWeaponLegacy>
     <!--giant sea turtle-->
     <CWeaponLegacy id="ntrt1" parent="missile" atkType="PIERCE">
         <Effect value="ntrt1LM"/>
-        <MinScanRange value="12"/>
+        <MinScanRange value="2"/>
         <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
-        <Range value="12"/>
+        <Range value="2"/>
         <RangeSlop value="1.9531"/>
         <Period value="3"/>
         <DamagePoint value="0.5"/>
@@ -1081,6 +1135,17 @@
         <Period value="3"/>
         <DamagePoint value="0.33"/>
         <Backswing value="0.64"/>
+    </CWeaponLegacy>
+    <!--naga coutl-->
+    <CWeaponLegacy id="nwgs1" parent="missile" atkType="PIERCE">
+        <Effect value="nwgs1LM"/>
+        <MinScanRange value="3"/>
+        <TargetFilters value="Visible;wall,tree,Missile,ethereal,dead,invulnerable"/>
+        <Range value="3"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="3"/>
+        <DamagePoint value="0.33"/>
+        <Backswing value="1"/>
     </CWeaponLegacy>
     <!--WitchDoctor-->
     <CWeaponLegacy id="odoc1">
@@ -1241,7 +1306,7 @@
         <TargetFilters value="Visible;air,Missile,structure,ethereal,dead,invulnerable"/>
         <Range value="6"/>
         <RangeSlop value="1.9531"/>
-        <Period value="3"/>
+        <Period value="6"/>
         <DamagePoint value="0.7"/>
         <Backswing value="1.3"/>
     </CWeaponLegacy>
