@@ -4,8 +4,6 @@
         <CmdButtonArray index="Drop" Requirements="BuildArmy"/>
     </CAbilInventory>
     <CAbilBehavior default="1" id="AW2_Toggle" parent="War3_Passive">
-        <Flags index="AutoCast" value="0"/>
-        <Flags index="AutoCastOn" value="0"/>
         <Flags index="Toggle" value="1"/>
         <CmdButtonArray index="On" Requirements="">
             <Flags index="IgnoreUser" value="1"/>
@@ -15,20 +13,34 @@
         </CmdButtonArray>
     </CAbilBehavior>
     <CAbilEffectInstant default="1" id="AW2_EffectInstant" parent="War3_EffectInstant">
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
         <CmdButtonArray index="Execute" Requirements="">
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
         <CmdButtonArray index="Cancel">
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
+        <UninterruptibleArray index="Wait" value="1"/>
+        <UninterruptibleArray index="Prep" value="1"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
     </CAbilEffectInstant>
     <CAbilEffectTarget default="1" id="AW2_EffectTarget" parent="War3_EffectTarget">
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
         <CmdButtonArray index="Execute" Requirements="">
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
         <CmdButtonArray index="Cancel">
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
+        <UninterruptibleArray index="Wait" value="1"/>
+        <UninterruptibleArray index="Prep" value="1"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
     </CAbilEffectTarget>
     <CAbilMorph default="1" id="AW2_Morph" parent="War3_Morph">
         <CmdButtonArray index="Execute" Requirements="">
@@ -111,13 +123,6 @@
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
-    <!--Demon Hunter - Metamorphosis Buff=BEme-->
-    <CAbilMorph id="AEme">
-        <Cost>
-            <Vital index="Energy" value="0"/>
-            <Cooldown TimeUse="1"/>
-        </Cost>
-    </CAbilMorph>
     <!--Paladin - Devotion Aura Buff=BHad-->
     <CAbilBehavior id="AHad">
         <CmdButtonArray index="On" Requirements="">
@@ -180,6 +185,8 @@
         <Alignment value="Positive"/>
         <Effect index="0" value="BHds1"/>
         <Flags index="Transient" value="1"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3AndCasterLifeLT90Percent"/>
+        <AutoCastFilters value="Visible;Ally,Neutral,Enemy"/>
     </CAbilEffectInstant>
     <CAbilEffectTarget id="AHhb" parent="AW2_EffectTarget">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
@@ -188,9 +195,16 @@
             <Vital index="Energy" value="10"/>
             <Cooldown Location="Unit" TimeUse="6"/>
         </Cost>
-        <Range value="6.25"/>
+        <Range value="6"/>
         <PrepTime value="0.5"/>
         <CastOutroTime value="1.67"/>
+        <AutoCastRange value="6"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="RaceNonUndeadFirst"/>
+            <SortArray value="TSMarker"/>
+            <SortArray value="TSLife"/>
+        </TargetSorts>
+        <AutoCastFilters value="Visible;-"/>
     </CAbilEffectTarget>
     <!--Paladin - Resurrection-->
     <CAbilEffectInstant id="AHre" parent="AW2_EffectInstant">
@@ -202,6 +216,8 @@
         <PrepTime value="0.5"/>
         <CastOutroTime value="1.67"/>
         <Alignment value="Positive"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+        <AutoCastFilters value="Visible;Ally,Neutral,Enemy"/>
     </CAbilEffectInstant>
     <!--Arch Mage - Water Elemental Buff=BHwe-->
     <CAbilEffectInstant id="AHwe" parent="AW2_EffectInstant">
@@ -212,6 +228,8 @@
         <PrepTime value="0.3"/>
         <CastOutroTime value="2.4"/>
         <Effect index="0" value="hwat"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+        <AutoCastFilters value="Visible;Ally,Neutral,Enemy"/>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="AIpv" parent="War3_EffectInstant">
         <CmdButtonArray index="Execute" Requirements="">
@@ -231,10 +249,17 @@
         <Cost index="0">
             <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
-        <Range value="9"/>
+        <Range value="14"/>
         <PrepTime value="0.4"/>
         <CastOutroTime value="0.5"/>
         <Effect index="0" value="BNch"/>
+        <AutoCastRange value="14"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
     </CAbilEffectTarget>
     <!--Pit Lord - Doom Buff=BNdo,BNdi-->
     <CAbilEffectTarget id="ANdo" parent="AW2_EffectTarget">
@@ -244,10 +269,18 @@
             <Vital index="Energy" value="60"/>
             <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
-        <Range value="15"/>
+        <Range value="13"/>
         <PrepTime value="0.75"/>
         <CastOutroTime value="0.51"/>
         <Effect index="0" value="BNdo"/>
+        <AutoCastRange value="13"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+        <AutoCastValidatorArray value="NoDoom"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSLife"/>
+            <SortArray value="TSFarthestDistance"/>
+        </TargetSorts>
     </CAbilEffectTarget>
     <!--Taunt(Creep)-->
     <CAbilEffectInstant id="ANta">
@@ -371,15 +404,22 @@
     </CAbilEffectInstant>
     <!--Chieftain - Shock Wave Buff=BOsh-->
     <CAbilEffectTarget id="AOsh" parent="AW2_EffectTarget">
-        <EditorCategories value="Race:Orc,AbilityorEffectType:Units"/>
+        <TargetFilters index="0" value="-;player,allies,air,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity,hero"/>
+        <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <Cost index="0">
             <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
-        <Range value="5.4687"/>
+        <Range value="1"/>
         <PrepTime value="0.47"/>
         <FinishTime value="0.8"/>
         <Effect index="0" value="AOshTarget"/>
         <Alignment value="Negative"/>
+        <AutoCastRange value="1"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSDistance"/>
+        </TargetSorts>
     </CAbilEffectTarget>
     <!--Shadow Hunter - Serpent Ward Buff=BOwd-->
     <CAbilEffectTarget id="AOsw">
@@ -417,6 +457,8 @@
         <Alignment value="Positive"/>
         <AINotifyEffect value="AUanSearch"/>
         <Effect index="0" value="AUanSearch"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+        <AutoCastFilters value="Visible;Ally,Neutral,Enemy"/>
     </CAbilEffectInstant>
     <CAbilBuild id="AUbuArmy" parent="War3_PowerBuild">
         <Name value="AUbuUnit/Name"/>
@@ -461,10 +503,36 @@
             <Vital index="Energy" value="10"/>
             <Cooldown Location="Unit" TimeUse="6"/>
         </Cost>
-        <Range value="6.25"/>
+        <Range value="6"/>
         <PrepTime value="0.452"/>
         <CastOutroTime value="1.008"/>
         <Effect index="0" value="AUdcMissile"/>
+        <AutoCastRange value="6"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="RaceUndeadFirst"/>
+            <SortArray value="TSMarker"/>
+            <SortArray value="TSLife"/>
+        </TargetSorts>
+        <AutoCastFilters value="Visible;-"/>
+    </CAbilEffectTarget>
+    <!--Lich - Frost Armor Buff=BUfa-->
+    <CAbilEffectTarget id="AUfa" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
+        <TargetFilters index="0" value="-;enemies,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="45"/>
+        </Cost>
+        <Range value="6"/>
+        <Effect index="0" value="BUfa1"/>
+        <AutoCastRange value="6"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+        <AutoCastValidatorArray value="NoFrostArmor"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+        </TargetSorts>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
     </CAbilEffectTarget>
     <CAbilInteract id="Aall">
         <Range value="2"/>
@@ -555,22 +623,39 @@
         <TargetFilters value="Dead;Air,Mechanical,Hover,Heroic,HarvestableResource,Destructible,Item,PreventDefeat,Buried,Invulnerable"/>
         <Range value="0.3906"/>
         <AutoCastFilters value="Visible;-"/>
-        <AutoCastRange value="4"/>
+        <AutoCastRange value="6"/>
         <DefaultError value="MustTargetUnit,Errors/Cantfindcorpse"/>
         <CmdButtonArray index="Execute">
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
         <ProgressButtonArray index="Channel" value="Acan"/>
-        <UninterruptibleArray index="Channel" value="1"/>
         <FinishTime value="0.51"/>
+        <AutoCastValidatorArray value="NotAttackingAndNotInCombatWar3"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <TargetSorts>
+            <SortArray value="TSDistance"/>
+        </TargetSorts>
     </CAbilEffectInstant>
     <!--Cannibalize (Abomination) Dur=33 HeroDur=33-->
-    <CAbilEffectInstant id="Acn2" parent="Acan">
-        <PrepTime value="0.3"/>
-        <Effect index="0" value="Acn2"/>
-        <CastOutroTime value="0.51"/>
-        <FinishTime index="0" removed="1"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="Acn2"/>
+    <CAbilEffectInstant id="Acn2" parent="AW2_EffectInstant">
+        <Alignment value="Positive"/>
+        <AbilSetId value="cannibalize"/>
+        <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
+        <TargetFilters value="Dead;Air,Mechanical,Hover,Heroic,HarvestableResource,Destructible,Item,PreventDefeat,Buried,Invulnerable"/>
+        <Range value="0.3906"/>
+        <AutoCastFilters value="Visible;-"/>
+        <AutoCastRange value="6"/>
+        <DefaultError value="MustTargetUnit,Errors/Cantfindcorpse"/>
+        <CmdButtonArray index="Execute">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <ProgressButtonArray index="Channel" value="Acn2"/>
+        <FinishTime value="0.51"/>
+        <AutoCastValidatorArray value="NotAttackingAndNotInCombatWar3"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <TargetSorts>
+            <SortArray value="TSDistance"/>
+        </TargetSorts>
     </CAbilEffectInstant>
     <!--Cripple Dur=60 HeroDur=10 Buff=Bcri-->
     <CAbilEffectTarget id="Acri" parent="AW2_EffectTarget">
@@ -581,9 +666,17 @@
             <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
         <Effect index="0" value="Bcri"/>
-        <Range value="9"/>
+        <Range value="11"/>
         <PrepTime value="0.5"/>
         <CastOutroTime value="0.5"/>
+        <AutoCastRange value="11"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+        <AutoCastValidatorArray value="NoCripple"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
     </CAbilEffectTarget>
     <!--Curse Dur=120 HeroDur=60 Buff=Bcrs-->
     <CAbilEffectTarget id="Acrs" parent="AW2_EffectTarget">
@@ -592,16 +685,14 @@
         <Cost index="0">
             <Cooldown Location="Unit" TimeUse="30"/>
         </Cost>
-        <Range value="12"/>
+        <Range value="14"/>
         <PrepTime value="0.5"/>
         <CastOutroTime value="0.83"/>
         <Effect index="0" value="Bcrs"/>
         <Flags index="AllowMovement" value="1"/>
-        <Flags index="AutoCast" value="1"/>
-        <Flags index="AutoCastOn" value="1"/>
-        <AutoCastRange value="12"/>
+        <AutoCastRange value="14"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="NoCurse"/>
-        <AutoCastValidatorArray value="Threatens"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSKillResourceTerrazineLargestFirst"/>
@@ -624,6 +715,7 @@
     <CAbilBehavior id="Adef" parent="AW2_Toggle">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <BehaviorArray value="Adef"/>
+        <AutoCastValidatorArray value="TacticalDefendThreatSearch"/>
     </CAbilBehavior>
     <!--Orb of Annihilation-->
     <CAbilEffectTarget id="Afak" parent="AW2_EffectTarget">
@@ -632,8 +724,6 @@
         <Range value="500"/>
         <Alignment value="Negative"/>
         <Flags index="AllowMovement" value="1"/>
-        <Flags index="AutoCast" value="1"/>
-        <Flags index="AutoCastOn" value="1"/>
         <Flags index="BestUnit" value="0"/>
         <Flags index="Transient" value="1"/>
         <Arc value="360"/>
@@ -644,30 +734,26 @@
             <Vital index="Energy" value="3"/>
             <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
-        <Range value="5"/>
+        <Range value="6"/>
         <PrepTime value="0.5"/>
         <CastOutroTime value="0.67"/>
         <TargetFilters index="0" value="-;enemies,mechanical,ancient,wall,tree,Missile,debris,item,structure,ward,dead"/>
         <AutoCastFilters value="Visible;Neutral,Enemy"/>
         <Flags index="AllowMovement" value="1"/>
-        <Flags index="AutoCast" value="1"/>
-        <Flags index="AutoCastOn" value="1"/>
         <Flags index="NoDeceleration" value="1"/>
         <Flags index="ReExecutable" value="1"/>
         <Flags index="Smart" value="1"/>
-        <AutoCastRange value="7.5"/>
+        <AutoCastRange value="6"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLife"/>
         </TargetSorts>
         <Alignment value="Positive"/>
-        <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="HealingAutoCastTargetFilter"/>
+        <AutoCastValidatorArray value="noMarkers"/>
         <Marker>
             <MismatchFlags index="CasterUnit" value="1"/>
         </Marker>
         <UseMarkerArray index="Approach" value="0"/>
-        <UninterruptibleArray index="Channel" value="1"/>
-        <UninterruptibleArray index="Finish" value="1"/>
     </CAbilEffectTarget>
     <CAbilInventory id="Aihn" parent="AW2_UnitInventory">
         <InfoArray/>
@@ -679,15 +765,13 @@
             <Vital index="Energy" value="30"/>
             <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
-        <Range value="5"/>
-        <AutoCastRange value="7.5"/>
+        <Range value="6"/>
+        <AutoCastRange value="6"/>
         <PrepTime value="0.5"/>
         <CastOutroTime value="0.67"/>
         <TargetFilters index="0" value="-;enemies,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <AutoCastFilters value="Visible;Neutral,Enemy"/>
         <Flags index="AllowMovement" value="1"/>
-        <Flags index="AutoCast" value="1"/>
-        <Flags index="AutoCastOn" value="1"/>
         <Flags index="NoDeceleration" value="1"/>
         <Flags index="Smart" value="1"/>
         <Flags index="TransientPreferred" value="1"/>
@@ -697,7 +781,7 @@
         </TargetSorts>
         <Alignment value="Positive"/>
         <Effect index="0" value="Binf"/>
-        <AutoCastValidatorArray value="TargetIsAttacking"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="NoInnerFire"/>
         <AutoCastValidatorArray value="noMarkers"/>
     </CAbilEffectTarget>
@@ -715,13 +799,10 @@
         <PrepTime value="0.5"/>
         <FinishTime value="0.51"/>
         <Alignment value="Positive"/>
-        <Flags index="AutoCast" value="1"/>
-        <Flags index="AutoCastOn" value="1"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="DamagedFriendNearBy"/>
         <CastOutroTime value="1"/>
-        <AutoCastFilters value="Visible;-"/>
-        <UninterruptibleArray index="Channel" value="1"/>
-        <UninterruptibleArray index="Finish" value="1"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
     </CAbilEffectInstant>
     <!--Replenish (Mana) Dur=1 HeroDur=1 Buff=Brpm cast=6-->
     <CAbilEffectInstant id="Arpm" parent="AW2_EffectInstant">
@@ -735,12 +816,9 @@
         <FinishTime value="0.51"/>
         <Alignment value="Positive"/>
         <CastOutroTime value="1"/>
-        <Flags index="AutoCast" value="1"/>
-        <Flags index="AutoCastOn" value="1"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="NotFullManaFriendNearBy"/>
-        <AutoCastFilters value="Visible;-"/>
-        <UninterruptibleArray index="Channel" value="1"/>
-        <UninterruptibleArray index="Finish" value="1"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
     </CAbilEffectInstant>
     <!--Spell Steal-->
     <CAbilEffectTarget id="Asps" parent="AW2_EffectTarget">
@@ -750,10 +828,8 @@
             <Vital index="Energy" value="10"/>
             <Cooldown Location="Unit" TimeUse="3"/>
         </Cost>
-        <AutoCastRange value="4.5"/>
-        <Flags index="AutoCast" value="1"/>
-        <Flags index="AutoCastOn" value="1"/>
-        <Range value="4.5"/>
+        <AutoCastRange value="6"/>
+        <Range value="6"/>
         <PrepTime value="0.3"/>
         <CastOutroTime value="0.51"/>
         <AutoCastFilters value="Visible;Neutral"/>
@@ -768,8 +844,6 @@
         </Cost>
         <Range value="9"/>
         <CastOutroTime value="0.51"/>
-        <Flags index="AutoCast" value="1"/>
-        <Flags index="AutoCastOn" value="1"/>
         <AutoCastRange value="9"/>
         <Marker>
             <MismatchFlags index="CasterUnit" value="1"/>
@@ -780,6 +854,7 @@
     <CAbilBehavior id="Defend" parent="AW2_Toggle">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <BehaviorArray value="Defend"/>
+        <AutoCastValidatorArray value="TacticalDefendThreatSearch"/>
     </CAbilBehavior>
     <!--Ensnare Dur=12 HeroDur=3 Buff=Bena,Beng-->
     <CAbilEffectTarget id="Aens">
@@ -831,6 +906,7 @@
     <CAbilBehavior id="Amdf" parent="AW2_Toggle">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <BehaviorArray value="Amdf"/>
+        <AutoCastValidatorArray value="TacticalMagicDefendThreatSearch"/>
     </CAbilBehavior>
     <CAbilMove id="Amov">
         <CmdButtonArray index="Move" Requirements="ShowDefaultButton">
@@ -890,10 +966,20 @@
             <Vital index="Energy" value="15"/>
             <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
-        <Range value="9"/>
+        <Range value="13"/>
         <PrepTime value="0.5"/>
         <CastOutroTime value="0.5"/>
         <Effect index="0" value="Buhf"/>
+        <AutoCastRange value="13"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+        <AutoCastValidatorArray value="TargetLifeGE200"/>
+        <AutoCastValidatorArray value="NoUnholyFrenzy"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
     </CAbilEffectTarget>
     <!--War Stomp (creep) Dur=3 HeroDur=2 Buff=BPSE-->
     <CAbilEffectInstant id="Awrs" parent="AW2_EffectInstant">
@@ -941,6 +1027,12 @@
         </InfoArray>
     </CAbilTrain>
     <CAbilTrain id="Purchaseoven" parent="War3_MakeItem" unit="oven">
+        <InfoArray index="Train1">
+            <Charge CountMax="1" CountStart="1"/>
+            <Button Requirements="BuildArmy"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilTrain id="Purchaseprvt" parent="War3_MakeItem" unit="prvt">
         <InfoArray index="Train1">
             <Charge CountMax="1" CountStart="1"/>
             <Button Requirements="BuildArmy"/>
@@ -1003,27 +1095,37 @@
         <Cost index="0">
             <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
-        <Range value="7.5"/>
+        <Range value="13"/>
         <PrepTime value="0.45"/>
         <CastOutroTime value="1.08"/>
         <Alignment value="Negative"/>
         <Effect index="0" value="Bply"/>
+        <AutoCastRange value="13"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+        <AutoCastValidatorArray value="NoPolymorph"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSLife"/>
+        </TargetSorts>
     </CAbilEffectTarget>
     <!--Possession (Channeling) Dur=4.5 HeroDur=4.5 Buff=Bpos,Bpoc-->
-    <CAbilEffectTarget id="Aps2">
-        <Flags index="AutoCast" value="1"/>
-        <Cost index="0">
-            <Vital index="Energy" value="0"/>
-        </Cost>
-        <AutoCastRange value="4.6875"/>
-        <AutoCastValidatorArray value="noMarkers"/>
+    <CAbilEffectTarget id="Aps2" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
+        <TargetFilters index="0" value="-;player,allies,air,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity,hero"/>
+        <Range value="14"/>
+        <PrepTime value="0.5"/>
+        <ProgressButtonArray index="Channel" value="Aps2"/>
+        <CancelableArray index="Channel" value="1"/>
+        <FinishTime value="0.83"/>
+        <AutoCastRange value="14"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="NoPossession"/>
-        <CmdButtonArray index="Execute" Requirements="">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
-        <CmdButtonArray index="Cancel">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+        </TargetSorts>
     </CAbilEffectTarget>
     <!--Raise Dead Dur=40 HeroDur=40 Buff=Brai-->
     <CAbilEffectInstant id="Arai" parent="AW2_EffectInstant">
@@ -1035,14 +1137,12 @@
             <Vital index="Energy" value="15"/>
             <Cooldown Location="Unit" TimeUse="20"/>
         </Cost>
-        <Range value="9"/>
+        <Range value="13"/>
         <PrepTime value="0.5"/>
         <FinishTime value="0.5"/>
         <Alignment value="Positive"/>
         <AutoCastFilters value="Visible;-"/>
-        <AutoCastRange value="9"/>
-        <Flags index="AutoCast" value="1"/>
-        <Flags index="AutoCastOn" value="1"/>
+        <AutoCastRange value="13"/>
         <Flags index="WaitToSpend" value="1"/>
         <DefaultError value="MustTargetUnit,Errors/Cantfindcorpse"/>
         <AutoCastValidatorArray value="SkeletonsLT25"/>
@@ -1059,11 +1159,19 @@
         <Cost index="0">
             <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
-        <Range value="7.5"/>
+        <Range value="13"/>
         <PrepTime value="0.45"/>
         <CastOutroTime value="1.08"/>
         <Alignment value="Negative"/>
         <Effect index="0" value="Bslo"/>
+        <AutoCastRange value="13"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+        <AutoCastValidatorArray value="NoSlow"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="Asud" parent="War3_EffectInstant">
         <CmdButtonArray index="Execute" Requirements="Asud">

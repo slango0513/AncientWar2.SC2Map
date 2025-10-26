@@ -44,6 +44,7 @@ AUbu3/Tip=建造法术部队
 AUbuUnit/Name=AUbuArmy
 AUbuUnit/Tip=建造建筑物
 AUbuUnit/Ubertip=打开一个你所能建造的建筑物的列表。
+AUfa/Ubertip=使目标身上具有一层霜冻保护。这保护层能增加<d ref="Behavior,BUfa1,Modification.LifeArmorBonus"/>点护甲值并使近战攻击该目标的敌人在<d ref="Behavior,Bfro,Duration"/>秒内减速。<n/>持续<d ref="Behavior,BUfa1,Duration"/>秒。
 AUim/Ubertip=地穴领主每次攻击时以巨爪震击地面，射出一道直线形尖刺波，造成伤害，并将其轨迹上的敌地面单位抛入空中，使他们晕眩<d ref="Effect,AUim1Dur,Duration"/>秒。
 AW2_Army/Name=AW2_Army
 Aakb/Ubertip=能增加周围友方单位<d ref="Behavior,Bakb,Modification.DamageDealtFraction[Melee] * 100" precision="1"/>%的攻击力。<n/>最多叠加<d ref="Behavior,Bakb,MaxStackCount"/>层。
@@ -164,16 +165,16 @@ Huth/Tip=升级到乌瑟尔
 Huth/Ubertip=重型的近战单位，能施放复活术。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Hvwd/Tip=升级到希尔瓦娜斯·风行者
 Hvwd/Ubertip=远程攻击单位。拥有强击光环技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c> 
-MapInfo/Player00/Name=
-MapInfo/Player01/Name=
-MapInfo/Player02/Name=
-MapInfo/Player03/Name=
-MapInfo/Player04/Name=
-MapInfo/Player05/Name=
-MapInfo/Player06/Name=
-MapInfo/Player07/Name=
-MapInfo/Player08/Name=
-MapInfo/Player09/Name=
+MapInfo/Player00/Name=中立
+MapInfo/Player01/Name=玩家1
+MapInfo/Player02/Name=玩家2
+MapInfo/Player03/Name=玩家3
+MapInfo/Player04/Name=玩家4
+MapInfo/Player05/Name=玩家5
+MapInfo/Player06/Name=玩家6
+MapInfo/Player07/Name=玩家7
+MapInfo/Player08/Name=玩家8
+MapInfo/Player09/Name=敌对
 MapInfo/Player10/Name=
 MapInfo/Player11/Name=
 MapInfo/Player12/Name=
@@ -228,18 +229,21 @@ Param/Expression/8E300498=Deact PlxB=~A~ P=~B~ Plx=~C~
 Param/Expression/96727924=~A~
 Param/Expression/A093297C=游戏将在~A~秒后结束。
 Param/Expression/C24F66A3=PlxB=~A~ P=~B~ Plx=~C~
-Param/Expression/C6E8DEE4=CreepPlayerC ~A~ vs ~B~, ~C~ vs ~D~, ~E~ vs ~F~, ~G~ vs ~H~
 Param/Expression/CEBDBACC=奖励回合<c val="FFFF00">~A~</c>：<c val="FFFF00">~B~</c>
 Param/Expression/E3B3FC74=Act PlxB=~A~ P=~B~ Plx=~C~
+Param/Expression/E469976D=第~I~回合：~A~~J~~B~，~C~~J~~D~，~E~~J~~F~，~G~~J~~H~。
 Param/Expression/E9329EDD=PlayerC ~A~ vs ~B~, ~C~ vs ~D~, ~E~ vs ~F~, ~G~ vs ~H~
+Param/Expression/EA367955=第~I~回合：~A~ vs ~B~，~C~ vs ~D~，~E~ vs ~F~，~G~ vs ~H~。
 Param/Expression/F33720A6=回合<c val="FFFF00">~A~</c>
 Param/Expression/F3F549EF=~A~~B~
 Param/Value/317E0CA0=在整场比赛获胜！
+Param/Value/44054E35=
 Param/Value/58BD0FA7=计分板
 Param/Value/5F942B70=剩余时间
 Param/Value/87E4737D=击杀奖励
 Param/Value/A4868C6E=建造奖励
 Param/Value/C201E5C3=玩家
+Param/Value/EE8A9ECA= vs 
 Param/Value/F4A0DF83=在本回合获胜。
 RotationSystem/Buffubertip=该单位遵循轮换制，在生命值较低时会脱离到稍后的位置。
 RotationSystem/Name=轮换制
@@ -386,7 +390,7 @@ npn4/Ubertip=价值：<c val="ffffff"><d ref="Unit,npn4,KillResource[2]"/></c><n
 npn5/Ubertip=价值：<c val="ffffff"><d ref="Unit,npn5,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">无甲</c><n/>生命：<c val="ffffff"><d ref="Unit,npn5,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,npn5,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,npn5,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">魔法</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,npn51,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,npn51,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,npn51,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">闪电链</c>、<c val="ffffff">闪电之盾</c>、<c val="ffffff">地震</c>、<c val="ffffff">抗性皮肤</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 npn6/Ubertip=价值：<c val="ffffff"><d ref="Unit,npn6,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">城墙</c><n/>生命：<c val="ffffff"><d ref="Unit,npn6,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,npn6,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,npn6,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">普通</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,npn61,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,npn61,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,npn61,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">粉碎</c>、<c val="ffffff">嘲讽</c>、<c val="ffffff">先祖之魂</c>、<c val="ffffff">魔法防护</c><n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nrvd/Tip=升级到死亡亡魂
-nrvd/Ubertip=防御型单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+nrvd/Ubertip=防御型单位，能施放霜甲术。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ntrd/Ubertip=重型近战两栖单位，具有分裂攻击和尖刺外壳技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ntrs/Ubertip=轻型的近战攻击单位，身上的尖刺外壳能对周围敌人的近战单位造成伤害。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ntrt/Ubertip=中型的远程攻击单位，身上的尖刺外壳能对周围敌人的近战单位造成伤害。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>

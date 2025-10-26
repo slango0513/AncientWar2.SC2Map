@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
-    <CRequirementAnd id="AndCountBehaviorAW2_ArmyNotHostilePlayerCompleteOnlyAtUnitCountUpgradeBuildArmyCompleteOnly">
-        <OperandArray value="CountBehaviorAW2_ArmyNotHostilePlayerCompleteOnlyAtUnit"/>
+    <CRequirementAnd id="AndCountBehaviorAW2_BuildingCompleteOnlyAtUnitCountUpgradeBuildArmyCompleteOnly">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountBehaviorAW2_BuildingCompleteOnlyAtUnit"/>
         <OperandArray value="CountUpgradeBuildArmyCompleteOnly"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndLTCountUnitAlias_PhalanxQueuedOrBetter3CountUpgradeBuildPhalanxCompleteOnly">
@@ -24,9 +25,10 @@
         <OperandArray value="OrCountUpgradeBuildArmyCompleteOnlyCountUpgradeBuildPhalanxCompleteOnly"/>
         <OperandArray value="NotCountBehaviorAlias_PhalanxBuffCompleteOnlyAtUnit"/>
     </CRequirementAnd>
-    <CRequirementCountBehavior id="CountBehaviorAW2_ArmyNotHostilePlayerCompleteOnlyAtUnit">
+    <CRequirementCountBehavior id="CountBehaviorAW2_BuildingCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
-        <Count Link="AW2_ArmyNotHostilePlayer" State="CompleteOnlyAtUnit"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="AW2_Building" State="CompleteOnlyAtUnit"/>
     </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorAlias_PhalanxBuffCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
@@ -54,7 +56,6 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeBuildArmyFinalCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="BuildArmyFinal" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeBuildPhalanxCompleteOnly">
@@ -69,8 +70,9 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="CountUnit" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
-    <CRequirementEq id="EqCountBehaviorAW2_ArmyNotHostilePlayerCompleteOnlyAtUnit0">
-        <OperandArray index="0" value="CountBehaviorAW2_ArmyNotHostilePlayerCompleteOnlyAtUnit"/>
+    <CRequirementEq id="EqCountBehaviorAW2_BuildingCompleteOnlyAtUnit0">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountBehaviorAW2_BuildingCompleteOnlyAtUnit"/>
         <OperandArray index="1" value="0"/>
     </CRequirementEq>
     <CRequirementLT id="LTCountUnitAlias_PhalanxQueuedOrBetter3">
@@ -85,7 +87,6 @@
         <OperandArray index="0" value="CountBehaviorAlias_PhalanxBuffCompleteOnlyAtUnit"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUnitAlias_PhalanxQueuedOrBetter">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUnitAlias_PhalanxQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotOrCountUpgradeBuildPhalanxCompleteOnlyCountUpgradeBuildPortalCompleteOnly">

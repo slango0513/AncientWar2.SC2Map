@@ -46,6 +46,9 @@
     <CValidatorUnitCompareBehaviorCount id="NoPossession">
         <Behavior value="Bpos"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoFrostArmor">
+        <Behavior value="BUfa1"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NoPolymorph">
         <Behavior value="Bply"/>
     </CValidatorUnitCompareBehaviorCount>
@@ -70,12 +73,12 @@
             <Radius value="500"/>
             <Validator value="HasPhalanxMarker"/>
         </AreaArray>
-        <SearchFilters value="Visible;Player,Neutral,Enemy,Hover,Missile,Dead,Hidden,MapBoss"/>
+        <SearchFilters value="Visible;Ally,Neutral,Enemy,Hover,Missile,Dead,Hidden,MapBoss"/>
     </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="PhalanxMarkerEqual0">
         <WhichLocation Value="CasterPoint"/>
         <AreaArray Radius="500" Validator="HasPhalanxMarker"/>
-        <SearchFilters value="Visible;Player,Neutral,Enemy,Hover,Missile,Dead,Hidden,MapBoss"/>
+        <SearchFilters value="Visible;Ally,Neutral,Enemy,Hover,Missile,Dead,Hidden,MapBoss"/>
         <Compare value="Eq"/>
     </CValidatorLocationEnumArea>
     <CValidatorPlayerRequirement id="DontHavePhalanx">

@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
-    <const id="summoned" path="SDamageResponse.TargetFilters" value="Summoned"/>
-    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
     <const id="hero" path="SDamageResponse.TargetFilters" value="Resistant"/>
-    <const id="allies" path="SDamageResponse.TargetFilters" value="Ally"/>
+    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
+    <const id="summoned" path="SDamageResponse.TargetFilters" value="Summoned"/>
     <const id="air" path="SDamageResponse.TargetFilters" value="Air"/>
-    <const id="tree" path="SDamageResponse.TargetFilters" value="HarvestableResource"/>
+    <const id="allies" path="SDamageResponse.TargetFilters" value="Ally"/>
     <const id="item" path="SDamageResponse.TargetFilters" value="Item"/>
-    <const id="player" path="SDamageResponse.TargetFilters" value="Player"/>
+    <const id="tree" path="SDamageResponse.TargetFilters" value="HarvestableResource"/>
     <const id="ancient" path="SDamageResponse.TargetFilters" value="Psionic"/>
-    <const id="enemies" path="SDamageResponse.TargetFilters" value="Enemy"/>
+    <const id="player" path="SDamageResponse.TargetFilters" value="Player"/>
     <const id="structure" path="SDamageResponse.TargetFilters" value="PreventDefeat"/>
-    <const id="self" path="SDamageResponse.TargetFilters" value="Self"/>
-    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="enemies" path="SDamageResponse.TargetFilters" value="Enemy"/>
     <const id="mechanical" path="SDamageResponse.TargetFilters" value="Mechanical"/>
-    <const id="neutral" path="SDamageResponse.TargetFilters" value="Neutral"/>
+    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="self" path="SDamageResponse.TargetFilters" value="Self"/>
     <const id="ground" path="SDamageResponse.TargetFilters" value="Ground"/>
+    <const id="neutral" path="SDamageResponse.TargetFilters" value="Neutral"/>
     <const id="wall" path="SDamageResponse.TargetFilters" value="Hover"/>
     <const id="dead" path="SDamageResponse.TargetFilters" value="Dead"/>
     <const id="ethereal" path="SDamageResponse.TargetFilters" value="Stasis"/>
-    <const id="invulnerable" path="SDamageResponse.TargetFilters" value="Invulnerable"/>
     <const id="debris" path="SDamageResponse.TargetFilters" value="Destructible"/>
+    <const id="invulnerable" path="SDamageResponse.TargetFilters" value="Invulnerable"/>
     <CBehaviorBuff default="1" id="AW2_Item" parent="War3_Passive">
         <EditorCategories value="Race:Other,AbilityorEffectType:Item"/>
         <MaxStackCount value="0"/>
@@ -65,6 +65,12 @@
         <Modification>
             <DamageDealtScaled index="Melee" value="12"/>
             <DamageDealtScaled index="Ranged" value="12"/>
+        </Modification>
+    </CBehaviorBuff>
+    <!--MaxLifeBonus (Least)-->
+    <CBehaviorBuff id="AIlf" parent="AW2_Item">
+        <Modification>
+            <VitalMaxArray index="Life" value="150"/>
         </Modification>
     </CBehaviorBuff>
     <!--Orb of Lightning-->
@@ -120,11 +126,9 @@
             <DamageDealtScaled index="Ranged" value="15"/>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="AW2_ArmyNotHostilePlayer" parent="War3_Passive">
-        <Requirements value="AW2_ArmyNotHostilePlayer"/>
-        <RemoveValidatorArray value="NotHostilePlayer"/>
-        <RemoveValidatorArray value="CasterIsNotWorker"/>
-        <RemoveValidatorArray value="CasterIsNotCreep"/>
+    <CBehaviorBuff id="AW2_Building" parent="War3_Passive">
+        <Name value="AW2_ArmyNotHostilePlayer/Name"/>
+        <Requirements value="AW2_Building"/>
         <Modification>
             <ModifyFlags index="SuppressMoving" value="1"/>
             <ModifyFlags index="SuppressTurning" value="1"/>
@@ -218,6 +222,10 @@
         <Modification MoveSpeedMultiplier="1.25">
             <VitalRegenArray index="Life" value="2.5"/>
         </Modification>
+    </CBehaviorBuff>
+    <!--Lich - Frost Armor Buff=BUfa-->
+    <CBehaviorBuff id="BUfa1">
+        <Modification LifeArmorBonus="10"/>
     </CBehaviorBuff>
     <!--Cripple-->
     <CBehaviorBuff id="Bcri">

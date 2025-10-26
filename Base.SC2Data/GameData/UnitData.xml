@@ -5,7 +5,7 @@
         <EffectArray index="Create" value=""/>
     </CUnit>
     <CUnit default="1" id="AW2_Army" parent="War3_Army">
-        <DeathTime value="15"/>
+        <DeathTime value="30"/>
         <DeathRevealRadius value="0"/>
         <FogVisibility value="Snapshot"/>
         <AbilArray Link="Asud"/>
@@ -13,8 +13,6 @@
             <LayoutButtons Face="Asud" Type="AbilCmd" AbilCmd="Asud,Execute" Row="2" Column="4"/>
         </CardLayouts>
         <PlacementFootprint value="1x1Army"/>
-        <BehaviorArray index="3" Link="AW2_ArmyNotHostilePlayer"/>
-        <TacticalAIThink value="AIThinkCreep"/>
         <LifeArmorFormula>
             <NegativeArmorMultiplier value="-1"/>
             <NegativeDamageBase value="1"/>
@@ -1359,6 +1357,7 @@
             <LayoutButtons Face="Purchaseofir" Type="AbilCmd" AbilCmd="Purchaseofir,Train1" Row="1" Column="0"/>
             <LayoutButtons Face="Purchasegcel" Type="AbilCmd" AbilCmd="Purchasegcel,Train1" Row="2" Column="0"/>
             <LayoutButtons Face="Purchasefrhg" Type="AbilCmd" AbilCmd="Purchasefrhg,Train1" Row="2" Column="1"/>
+            <LayoutButtons Face="Purchaseprvt" Type="AbilCmd" AbilCmd="Purchaseprvt,Train1" Row="2" Column="2"/>
         </CardLayouts>
         <AbilArray Link="AInv"/>
         <AbilArray Link="AHbuArmy"/>
@@ -1371,6 +1370,7 @@
         <AbilArray Link="Purchaserat9"/>
         <AbilArray Link="Purchaseratc"/>
         <AbilArray Link="Purchaseratf"/>
+        <AbilArray Link="Purchaseprvt"/>
         <Speed value="2"/>
         <Radius value="0.3125"/>
         <Race value="Human"/>
@@ -2261,6 +2261,10 @@
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/UndeadUnits"/>
         <AbilArray Link="Aiun"/>
+        <AbilArray Link="AUfa"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AUfa" Type="AbilCmd" AbilCmd="AUfa,Execute" Row="2" Column="0"/>
+        </CardLayouts>
     </CUnit>
     <!--dragon turtle-->
     <CUnit id="ntrd" parent="AW2_Creep" defType="LARGE">
@@ -2809,6 +2813,10 @@
     <CUnit id="oven" parent="AW2_Item">
         <CostResource index="gold" value="900"/>
     </CUnit>
+    <!--Periapt of Vitality-->
+    <CUnit id="prvt" parent="AW2_Item">
+        <CostResource index="gold" value="450"/>
+    </CUnit>
     <!--Claws of Attack +3-->
     <CUnit id="rat3" parent="AW2_Item">
         <CostResource index="gold" value="150"/>
@@ -2942,8 +2950,8 @@
             <LayoutButtons Face="ucry" Type="AbilCmd" AbilCmd="AUbuArmy,Build6" Row="1" Column="0"/>
             <LayoutButtons Face="umtw" Type="AbilCmd" AbilCmd="AUbuArmy,Build8" Row="1" Column="1"/>
             <LayoutButtons Face="uobs" Type="AbilCmd" AbilCmd="AUbuArmy,Build9" Row="2" Column="0"/>
-            <LayoutButtons Face="uban" Type="AbilCmd" AbilCmd="AUbuArmy,Build4" Row="2" Column="1"/>
-            <LayoutButtons Face="unec" Type="AbilCmd" AbilCmd="AUbuArmy,Build5" Row="2" Column="2"/>
+            <LayoutButtons Face="unec" Type="AbilCmd" AbilCmd="AUbuArmy,Build5" Row="2" Column="1"/>
+            <LayoutButtons Face="uban" Type="AbilCmd" AbilCmd="AUbuArmy,Build4" Row="2" Column="2"/>
         </CardLayouts>
         <CardLayouts CardId="Purc">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
@@ -2955,6 +2963,7 @@
             <LayoutButtons Face="Purchaseocor" Type="AbilCmd" AbilCmd="Purchaseocor,Train1" Row="1" Column="0"/>
             <LayoutButtons Face="Purchasegcel" Type="AbilCmd" AbilCmd="Purchasegcel,Train1" Row="2" Column="0"/>
             <LayoutButtons Face="Purchasefrhg" Type="AbilCmd" AbilCmd="Purchasefrhg,Train1" Row="2" Column="1"/>
+            <LayoutButtons Face="Purchaseprvt" Type="AbilCmd" AbilCmd="Purchaseprvt,Train1" Row="2" Column="2"/>
         </CardLayouts>
         <AbilArray Link="AInv"/>
         <AbilArray Link="AUbuArmy"/>
@@ -2967,6 +2976,7 @@
         <AbilArray Link="Purchaseocor"/>
         <AbilArray Link="Purchasegcel"/>
         <AbilArray Link="Purchasefrhg"/>
+        <AbilArray Link="Purchaseprvt"/>
         <Speed value="2"/>
         <Radius value="0.3125"/>
         <Race value="Undead"/>
