@@ -762,7 +762,7 @@
         <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-MEDIUM.tga"/>
     </CActorUnit>
     <!--revenantofthedepths-->
-    <CActorUnit id="ndrv" parent="War3_Army" unitSound="Revenant" unitName="ndrv" defType="LARGE">
+    <CActorUnit id="ndrv" parent="War3_Army" unitSound="Revenant" unitName="ndrv" defType="MEDIUM">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnRevenant.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnRevenant.dds"/>
@@ -1030,7 +1030,7 @@
         <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-FORT.tga"/>
     </CActorUnit>
     <!--deathrevenant-->
-    <CActorUnit id="nrvd" parent="War3_Army" unitSound="Revenant" unitName="nrvd" defType="LARGE">
+    <CActorUnit id="nrvd" parent="War3_Army" unitSound="Revenant" unitName="nrvd" defType="MEDIUM">
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnRevenant.dds"/>
         <GroupIcon>
@@ -1220,6 +1220,20 @@
         <WalkAnimMoveSpeed value="2.1093"/>
         <WalkAnimTimeScalingAsFlyer value="1"/>
     </CActorUnit>
+    <!--obsidiandestroyer-->
+    <CActorUnit id="ubsp" parent="War3_Army" unitSound="ObsidianDestroyer" unitName="ubsp" defType="SMALL">
+        <On Terms="ActorCreation" Send="AnimGroupApply Alternate {} {} Instant"/>
+        <On Terms="UnitPortrait.*.Configure" Target="::PortraitGameSelf" Send="AnimGroupApply Alternate {} {} Instant"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnDestroyer.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnDestroyer.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnDestroyer.dds"/>
+        <BarWidth value="75"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="10"/>
+        <WalkAnimMoveSpeed value="2.5"/>
+    </CActorUnit>
     <!--cryptfiend-->
     <CActorUnit id="ucry" parent="War3_Army" unitSound="CryptFiend" unitName="ucry" defType="MEDIUM">
         <On index="56" Send="AnimPlay Ready Stand,00 FullMatch,PlayForever,AssetDrivenLooping"/>
@@ -1326,6 +1340,20 @@
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
+    <CActorUnit id="uob2" parent="War3_Army" unitSound="ObsidianStatue" unitName="uob2" defType="LARGE">
+        <AnimBlendTime value="0.300000"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnObsidianStatue.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnObsidianStatue.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnObsidianStatue.dds"/>
+        <BarWidth value="105"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <CActorAction id="uob21" parent="War3_AttackMissileSwapable"/>
+    <CActorMissile id="uob21LM" parent="War3_MissileSwapable" unitName="uob21LM"/>
     <!--skeletonwarrior-->
     <CActorUnit id="uske" parent="War3_Army" unitSound="Skeleton" unitName="uske" defType="LARGE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnSkeletonWarrior.dds"/>

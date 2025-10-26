@@ -44,6 +44,7 @@ AUbu3/Tip=建造法术部队
 AUbuUnit/Name=AUbuArmy
 AUbuUnit/Tip=建造建筑物
 AUbuUnit/Ubertip=打开一个你所能建造的建筑物的列表。
+AUim/Ubertip=地穴领主每次攻击时以巨爪震击地面，射出一道直线形尖刺波，造成伤害，并将其轨迹上的敌地面单位抛入空中，使他们晕眩<d ref="Effect,AUim1Dur,Duration"/>秒。
 AW2_Army/Name=AW2_Army
 Aakb/Ubertip=能增加周围友方单位<d ref="Behavior,Bakb,Modification.DamageDealtFraction[Melee] * 100" precision="1"/>%的攻击力。<n/>最多叠加<d ref="Behavior,Bakb,MaxStackCount"/>层。
 Abil/Name/AmovWorker=AmovWorker
@@ -52,6 +53,8 @@ Abil/Name/Bushido=武士道
 Abil/Name/CreateReserveUnit=CreateReserveUnit
 Abil/Name/Teleport=Teleport
 Ablo/Ubertip=增加一个友方单位<d ref="Behavior,Bblo,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度和<d ref="Behavior,Bblo,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度。<n/>持续<d ref="Behavior,Bblo,Duration"/>秒。
+Acan/Ubertip=消耗周围的某个尸体来以每秒<d ref="Effect,Acan,RechargeVitalRate"/>点的速度恢复自己的生命值。
+Acn2/Ubertip=吞食一个附近的尸体，每秒治疗<d ref="Effect,Acn2,RechargeVitalRate"/>点生命值。
 Adef/Ubertip=激活以拥有50%的概率反弹穿刺攻击。如果防御状态被激活，移动速度会变成<d ref="Behavior,Adef,Modification.MoveSpeedMultiplier * 100"/>%的常规速度。
 Aetl/Ubertip=处于灵体形态的单位对物理攻击免疫，但是魔法能对其造成额外的伤害。
 Ahea/Ubertip=治疗一个友方的非机械受伤单位，恢复其<d ref="Effect,AheaHeal,RechargeVitalRate"/>的生命值。
@@ -64,8 +67,10 @@ Anh1/Ubertip=治疗一个友方的非机械受伤单位，恢复其<d ref="Effec
 Anh2/Ubertip=治疗一个友方的非机械受伤单位，恢复其<d ref="Effect,Anh2Heal,RechargeVitalRate"/>的生命值。
 Apig/Ubertip=烧伤附近的敌人，造成每秒<d ref="Effect,ApigDPS,Amount"/>点伤害。
 Aply/Ubertip=使得敌人的一个单位变成一头小绵羊，保有原有的生命值和防御，但是会使其丧失攻击力。<n/>不能被用在英雄身上。<n/>持续<d ref="Behavior,Bply,Duration"/>秒。
-Arai/Ubertip=从一具尸体中召唤出<d ref="Effect,uske65sX2,SpawnCount"/>个骷髅爪牙。
+Arai/Ubertip=从一具尸体中召唤出1个骷髅爪牙。
 Aroc/Ubertip=对周围的敌方地面单位进行强有力的弹幕攻击。
+Arpl/Ubertip=恢复附近友方<d ref="Effect,BrplHeal,RechargeVitalRate"/>点生命值。
+Arpm/Ubertip=恢复附近友方<d ref="Behavior,Brpm,Modification.VitalRegenArray[Energy]" precision="1"/>点法力值。
 Asal/Ubertip=攻击敌方单位来掠取资源。
 Aslo/Ubertip=减慢目标单位<d ref="1 - Behavior,Bslo,Modification.AttackSpeedMultiplier * 100"/>%的攻击速度和<d ref="1 - Behavior,Bslo,Modification.MoveSpeedMultiplier * 100"/>%的移动速度。<n/>持续<d ref="Behavior,Bslo,Duration"/>秒。
 Aspl/Ubertip=链接<d ref="Behavior,Bspl,MaxStackCount"/>个单位在一起。所有被灵魂连接作用的单位都可以将其50%受到的伤害转移到其他单位身上。<n/>持续<d ref="Behavior,Bspl,Duration"/>秒。
@@ -176,6 +181,8 @@ MapInfo/Team04/Name=E
 MapInfo/Team05/Name=F
 MapInfo/Team06/Name=G
 MapInfo/Team07/Name=H
+MorphTouob2/Tip=变形为黑曜石雕像
+MorphTouobs/Tip=变形为黑曜石雕像
 MultiShot/Tip=多重射击
 Multishot/Name=多重射击
 Multishot/Tip=多重射击
@@ -238,8 +245,11 @@ RotationSystemUn/Ubertip=关闭轮换制。
 Teleport/Name=传送
 Teleport/Tip=传送
 Ucrl/Tip=升级到地穴领主
+Ucrl/Ubertip=远程攻击单位，具有穿刺技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Udea/Tip=训练死亡骑士
+Udea/Ubertip=重型的近战单位，是人类圣骑士的邪恶对手。能施放死亡缠绕。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Uear/Tip=升级到阿尔萨斯
+Uear/Ubertip=重型的近战单位，是人类圣骑士的邪恶对手。具有邪恶光环技能，还能施放操纵死尸。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Unit/Category/HumanUnits=人类单位
 Unit/Category/NightElfUnits=暗夜精灵单位
 Unit/Category/UndeadUnits=亡灵单位
@@ -293,7 +303,6 @@ earc/Ubertip=远程攻击单位。拥有艾露恩的赐福技能。<n/><n/><c va
 edcm/Tip=升级到利爪德鲁伊
 eshd/Tip=升级到珊蒂斯
 eshd/Ubertip=远程攻击单位。拥有艾露恩的赐福技能。还能施放冰霜箭。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c> 
-flag/Name=放置人类旗帜
 flag/Tip=放置人类旗帜
 frhg/Ubertip=增加<d ref="Behavior,AId5,Modification.LifeArmorBonus"/>点护甲值和<d ref="Behavior,AIs2,Modification.AttackSpeedMultiplier - 1 * 100"/>%的进攻速度。
 gcel/Ubertip=增加<d ref="Behavior,AIsx,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度。
@@ -326,11 +335,13 @@ nchw/Ubertip=价值：<c val="ffffff"><d ref="Unit,nchw,KillResource[2]"/></c><n
 nckb/Tip=升级到混乱兽人科多兽
 nckb/Ubertip=价值：<c val="ffffff"><d ref="Unit,nckb,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">中甲</c><n/>生命：<c val="ffffff"><d ref="Unit,nckb,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,nckb,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,nckb,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">混乱</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,nckb1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,nckb1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,nckb1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">耐久光环</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ndrv/Tip=训练深渊亡魂
+ndrv/Ubertip=防御型单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ndtp/Tip=升级到黑暗巨魔暗影牧师
 ndtp/Ubertip=价值：<c val="ffffff"><d ref="Unit,ndtp,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">无甲</c><n/>生命：<c val="ffffff"><d ref="Unit,ndtp,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,ndtp,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,ndtp,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">魔法</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,ndtp1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,ndtp1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,ndtp1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">驱散魔法</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nemi/Tip=训练使者
 nemi/Ubertip=支援型魔法单位。能施放治疗术。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
-nflg/Name=放置暗夜精灵旗帜
+nfgl/Tip=升级到血肉傀儡
+nfgl/Ubertip=重型的近战单位，具有疾病之云技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nflg/Tip=放置暗夜精灵旗帜
 nfsh/Tip=升级到森林巨魔高阶牧师
 nfsh/Ubertip=价值：<c val="ffffff"><d ref="Unit,nfsh,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">无甲</c><n/>生命：<c val="ffffff"><d ref="Unit,nfsh,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,nfsh,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,nfsh,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">魔法</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,nfsh1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,nfsh1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,nfsh1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">治疗术</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
@@ -340,6 +351,8 @@ nftb/Ubertip=价值：<c val="ffffff"><d ref="Unit,nftb,KillResource[2]"/></c><n
 nftr/Tip=升级到森林巨魔
 nftt/Tip=训练森林巨魔捕兽者
 nftt/Ubertip=价值：<c val="ffffff"><d ref="Unit,nftt,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">中甲</c><n/>生命：<c val="ffffff"><d ref="Unit,nftt,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,nftt,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,nftt,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">普通</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,nftt1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,nftt1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,nftt1,Period" precision="1"/></c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+ngh1/Tip=升级到幽灵
+ngh1/Ubertip=魔法单位，能施放占据。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ngns/Ubertip=轻型远程攻击单位，具有多重射击技能，能射出毒箭。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ngnv/Ubertip=重型近战单位，具有分裂攻击技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nhea/Name=高等精灵弓箭手
@@ -351,11 +364,14 @@ nitp/Tip=训练冰霜巨魔牧师
 nitp/Ubertip=价值：<c val="ffffff"><d ref="Unit,nitp,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">无甲</c><n/>生命：<c val="ffffff"><d ref="Unit,nitp,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,nitp,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,nitp,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">魔法</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,nitp1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,nitp1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,nitp1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">治疗术</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nmed/Tip=升级到麦迪文
 nnwl/Tip=升级到尼拉布织网者
+nnwl/Ubertip=远程攻击单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nnwr/Tip=升级到尼拉布先知
+nnwr/Ubertip=远程攻击单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 npn4/Ubertip=价值：<c val="ffffff"><d ref="Unit,npn4,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">中甲</c><n/>生命：<c val="ffffff"><d ref="Unit,npn4,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,npn4,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,npn4,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">攻城</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,npn41,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,npn41,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,npn41,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">永久的献祭</c>、<c val="ffffff">吸血药水</c>、<c val="ffffff">嗜血</c>、<c val="ffffff">抗性皮肤</c><n/><n/><c val="ffcc00">能攻击地面单位。</c>
 npn5/Ubertip=价值：<c val="ffffff"><d ref="Unit,npn5,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">无甲</c><n/>生命：<c val="ffffff"><d ref="Unit,npn5,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,npn5,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,npn5,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">魔法</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,npn51,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,npn51,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,npn51,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">闪电链</c>、<c val="ffffff">闪电之盾</c>、<c val="ffffff">地震</c>、<c val="ffffff">抗性皮肤</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 npn6/Ubertip=价值：<c val="ffffff"><d ref="Unit,npn6,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">城墙</c><n/>生命：<c val="ffffff"><d ref="Unit,npn6,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,npn6,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,npn6,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">普通</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,npn61,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,npn61,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,npn61,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">粉碎</c>、<c val="ffffff">嘲讽</c>、<c val="ffffff">先祖之魂</c>、<c val="ffffff">魔法防护</c><n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nrvd/Tip=升级到死亡亡魂
+nrvd/Ubertip=防御型单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ntrd/Ubertip=重型近战两栖单位，具有分裂攻击和尖刺外壳技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ntrs/Ubertip=轻型的近战攻击单位，身上的尖刺外壳能对周围敌人的近战单位造成伤害。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ntrt/Ubertip=中型的远程攻击单位，具有多重射击技能，身上的尖刺外壳能对周围敌人的近战单位造成伤害。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
@@ -364,7 +380,6 @@ nw2w/Ubertip=价值：<c val="ffffff"><d ref="Unit,nw2w,KillResource[2]"/></c><n
 ocor/Ubertip=增加<d ref="Behavior,AIcb,Modification.DamageDealtScaled[Melee]"/>点攻击力。能在<d ref="Behavior,BIcb,Duration"/>秒内削弱敌人的护甲。
 odoc/Ubertip=价值：<c val="ffffff"><d ref="Unit,odoc,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">无甲</c><n/>生命：<c val="ffffff"><d ref="Unit,odoc,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,odoc,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,odoc,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">魔法</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,odoc1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,odoc1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,odoc1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">治疗结界</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ofir/Ubertip=增加<d ref="Behavior,AIfb,Modification.DamageDealtScaled[Melee]"/>点攻击力。能让攻击带有<d ref="Effect,AIfbSphereEffect,AreaArray[0].Bonus"/>点火焰伤害，还有一定的溅射效果。
-oflg/Name=放置兽人旗帜
 oflg/Tip=放置兽人旗帜
 ogru/Ubertip=价值：<c val="ffffff"><d ref="Unit,ogru,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">重甲</c><n/>生命：<c val="ffffff"><d ref="Unit,ogru,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,ogru,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,ogru,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">普通</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,ogru1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,ogru1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,ogru1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">掠夺</c><n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ohun/Ubertip=价值：<c val="ffffff"><d ref="Unit,ohun,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">中甲</c><n/>生命：<c val="ffffff"><d ref="Unit,ohun,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,ohun,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,ohun,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">穿刺</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,ohun1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,ohun1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,ohun1,Period" precision="1"/></c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
@@ -383,6 +398,21 @@ otau/Ubertip=价值：<c val="ffffff"><d ref="Unit,otau,KillResource[2]"/></c><n
 otbk/Tip=升级到巨魔狂战士
 otbk/Ubertip=价值：<c val="ffffff"><d ref="Unit,otbk,KillResource[2]"/></c><n/><n/>护甲类型：<c val="ffcc00">中甲</c><n/>生命：<c val="ffffff"><d ref="Unit,otbk,LifeStart" precision="1"/></c><n/>护甲：<c val="ffffff"><d ref="Unit,otbk,LifeArmor" precision="1"/></c><n/><n/>移动速度：<c val="ffffff"><d ref="Unit,otbk,Speed" precision="1"/></c><n/><n/>攻击类型：<c val="ffcc00">穿刺</c><n/>攻击范围：<c val="ffffff"><d ref="Weapon,otbk1,Range" precision="1"/></c><n/>伤害：<c val="ffffff"><d ref="Effect,otbk1,Amount" precision="1"/></c><n/>攻击间歇：<c val="ffffff"><d ref="Weapon,otbk1,Period" precision="1"/></c><n/><n/>技能：<c val="ffffff">狂暴</c><n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 oven/Ubertip=增加<d ref="Behavior,AIpb,Modification.DamageDealtScaled[Melee]"/>点攻击力。能在<d ref="Behavior,BIpb,Duration"/>秒内对目标造成中毒效果。
-uflg/Name=放置亡灵旗帜
+uabo/Ubertip=重型的近战单位，具有食尸和疾病之云技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+uban/Ubertip=魔法单位，能施放诅咒技能，从而让敌人有一定的概率击空。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+ucry/Ubertip=远程攻击单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 uflg/Tip=放置亡灵旗帜
+ugho/Ubertip=基本的地面单位，具有食尸技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 uktg/Name=克尔苏加德之魂
+uktg/Tip=升级到克尔苏加德之魂
+uktg/Ubertip=魔法单位，能施放末日降临。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+uktn/Tip=升级到克尔苏加德
+uktn/Ubertip=魔法单位，能施放邪恶狂暴。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+umtw/Ubertip=远程的攻城武器，具有疾病之云技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+unec/Ubertip=魔法单位，能施放尸控术。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+uob2/Name=黑曜石雕像
+uob2/Tip=建造黑曜石雕像
+uob2/Ubertip=一种坚固的雕像，能帮助你恢复自己部队的法力值。具有灵魂之触技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+uobs/Ubertip=一种坚固的雕像，能帮助你恢复自己部队的生命值。具有荒芜精华技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+uswb/Tip=升级到希尔瓦娜斯·风行者
+uswb/Ubertip=魔法单位，能施放魅惑技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>

@@ -33,6 +33,7 @@
             <PositiveArmorMultiplier value="1"/>
             <PositiveDamageRatio value="0"/>
         </LifeArmorFormula>
+        <FlagArray index="debris" value="1"/>
     </CUnit>
     <CUnit default="1" id="AW2_Peon" parent="War3_ArmyBase">
         <DeathRevealRadius value="0"/>
@@ -699,6 +700,9 @@
         <AbilArray Link="Aiun"/>
         <BehaviorArray Link="undead"/>
         <WeaponArray index="1" removed="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AUim" Type="Passive" Row="2" Column="0"/>
+        </CardLayouts>
     </CUnit>
     <!--HeroDeathKnight-->
     <CUnit id="Udea" parent="AW2_Army" defType="LARGE">
@@ -741,8 +745,8 @@
         <AbilArray Link="AUau"/>
         <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="AUan" Type="AbilCmd" AbilCmd="AUan,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="AUau" Type="Passive" Behavior="BUau1" Row="2" Column="1"/>
+            <LayoutButtons Face="AUau" Type="Passive" Behavior="BUau1" Row="2" Column="0"/>
+            <LayoutButtons Face="AUan" Type="AbilCmd" AbilCmd="AUan,Execute" Row="2" Column="1"/>
         </CardLayouts>
         <Name value="Uear/Propernames"/>
         <EnergyStart value="60"/>
@@ -1334,14 +1338,14 @@
             <LayoutButtons Face="hmil" Type="AbilCmd" AbilCmd="AHbuArmy,Build2" Row="0" Column="0"/>
             <LayoutButtons Face="hfoo" Type="AbilCmd" AbilCmd="AHbuArmy,Build3" Row="0" Column="1"/>
             <LayoutButtons Face="hkni" Type="AbilCmd" AbilCmd="AHbuArmy,Build7" Row="0" Column="2"/>
-            <LayoutButtons Face="hspt" Type="AbilCmd" AbilCmd="AHbuArmy,Build5" Row="0" Column="3"/>
+            <LayoutButtons Face="Hpal" Type="AbilCmd" AbilCmd="AHbuArmy,Build6" Row="0" Column="3"/>
             <LayoutButtons Face="hsor" Type="AbilCmd" AbilCmd="AHbuArmy,Build4" Row="1" Column="0"/>
             <LayoutButtons Face="hrif" Type="AbilCmd" AbilCmd="AHbuArmy,Build11" Row="1" Column="1"/>
             <LayoutButtons Face="nhym" Type="AbilCmd" AbilCmd="AHbuArmy,Build8" Row="1" Column="2"/>
             <LayoutButtons Face="hmtm" Type="AbilCmd" AbilCmd="AHbuArmy,Build10" Row="1" Column="3"/>
             <LayoutButtons Face="hrtt" Type="AbilCmd" AbilCmd="AHbuArmy,Build12" Row="1" Column="4"/>
             <LayoutButtons Face="nemi" Type="AbilCmd" AbilCmd="AHbuArmy,Build9" Row="2" Column="0"/>
-            <LayoutButtons Face="Hpal" Type="AbilCmd" AbilCmd="AHbuArmy,Build6" Row="2" Column="1"/>
+            <LayoutButtons Face="hspt" Type="AbilCmd" AbilCmd="AHbuArmy,Build5" Row="0" Column="4"/>
         </CardLayouts>
         <CardLayouts CardId="Purc">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
@@ -1646,12 +1650,12 @@
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--revenant of the depths-->
-    <CUnit id="ndrv" parent="AW2_Army" defType="LARGE">
-        <Attributes index="large" value="1"/>
+    <CUnit id="ndrv" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
         <CostResource index="gold" value="300"/>
         <KillResource index="gold" value="15"/>
-        <LifeStart value="300"/>
-        <LifeMax value="300"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
         <Speed value="2"/>
         <Race value="Undead"/>
         <Mover value="foot"/>
@@ -1717,8 +1721,8 @@
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="2250"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="2000"/>
-        <LifeMax value="2000"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
         <Speed value="2"/>
         <Race value="Undead"/>
         <Mover value="foot"/>
@@ -1732,6 +1736,7 @@
             <LayoutButtons Face="Aap1" Type="Passive" Behavior="Aap1" Row="2" Column="1"/>
             <LayoutButtons Face="Acn2" Type="AbilCmd" AbilCmd="Acn2,0" Row="2" Column="0"/>
         </CardLayouts>
+        <LifeArmor value="10"/>
     </CUnit>
     <!--NightElf flag-->
     <CUnit id="nflg" parent="AW2_Phalanx">
@@ -2187,12 +2192,12 @@
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--death revenant-->
-    <CUnit id="nrvd" parent="AW2_Army" defType="LARGE">
-        <Attributes index="large" value="1"/>
+    <CUnit id="nrvd" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
         <CostResource index="gold" value="900"/>
         <KillResource index="gold" value="15"/>
-        <LifeStart value="300"/>
-        <LifeMax value="300"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
         <Speed value="2"/>
         <Race value="Undead"/>
         <Mover value="foot"/>
@@ -2757,8 +2762,8 @@
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="750"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="2000"/>
-        <LifeMax value="2000"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
         <Speed value="2"/>
         <Race value="Undead"/>
         <Mover value="foot"/>
@@ -2774,6 +2779,7 @@
             <LayoutButtons Face="Aap1" Type="Passive" Behavior="Aap1" Row="2" Column="1"/>
             <LayoutButtons Face="Acn2" Type="AbilCmd" AbilCmd="Acn2,0" Row="2" Column="0"/>
         </CardLayouts>
+        <LifeArmor value="10"/>
     </CUnit>
     <!--Acolyte-->
     <CUnit id="uaco" parent="AW2_Peon">
@@ -2838,14 +2844,14 @@
         <CardLayouts CardId="Buil">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
             <LayoutButtons Face="ugho" Type="AbilCmd" AbilCmd="AUbuArmy,Build2" Row="0" Column="0"/>
-            <LayoutButtons Face="ndrv" Type="AbilCmd" AbilCmd="AUbuArmy,Build3" Row="0" Column="1"/>
+            <LayoutButtons Face="uabo" Type="AbilCmd" AbilCmd="AUbuArmy,Build7" Row="0" Column="1"/>
             <LayoutButtons Face="Udea" Type="AbilCmd" AbilCmd="AUbuArmy,Build10" Row="0" Column="2"/>
-            <LayoutButtons Face="uabo" Type="AbilCmd" AbilCmd="AUbuArmy,Build7" Row="0" Column="3"/>
+            <LayoutButtons Face="ndrv" Type="AbilCmd" AbilCmd="AUbuArmy,Build3" Row="0" Column="3"/>
             <LayoutButtons Face="ucry" Type="AbilCmd" AbilCmd="AUbuArmy,Build6" Row="1" Column="0"/>
             <LayoutButtons Face="umtw" Type="AbilCmd" AbilCmd="AUbuArmy,Build8" Row="1" Column="1"/>
             <LayoutButtons Face="uobs" Type="AbilCmd" AbilCmd="AUbuArmy,Build9" Row="2" Column="0"/>
-            <LayoutButtons Face="unec" Type="AbilCmd" AbilCmd="AUbuArmy,Build5" Row="2" Column="1"/>
-            <LayoutButtons Face="uban" Type="AbilCmd" AbilCmd="AUbuArmy,Build4" Row="2" Column="2"/>
+            <LayoutButtons Face="uban" Type="AbilCmd" AbilCmd="AUbuArmy,Build4" Row="2" Column="1"/>
+            <LayoutButtons Face="unec" Type="AbilCmd" AbilCmd="AUbuArmy,Build5" Row="2" Column="2"/>
         </CardLayouts>
         <CardLayouts CardId="Purc">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
@@ -2902,10 +2908,10 @@
     <!--destroyer-->
     <CUnit id="ubsp" parent="AW2_Army" defType="SMALL">
         <Attributes index="small" value="1"/>
-        <CostResource index="gold" value="600"/>
-        <KillResource index="gold" value="30"/>
-        <LifeStart value="25"/>
-        <LifeMax value="25"/>
+        <CostResource index="gold" value="750"/>
+        <KillResource index="gold" value="75"/>
+        <LifeStart value="900"/>
+        <LifeMax value="900"/>
         <Speed value="2"/>
         <Race value="Undead"/>
         <Mover value="fly"/>
@@ -2924,8 +2930,8 @@
             <LayoutButtons Face="Aave" Type="AbilCmd" AbilCmd="Aave,0" Row="2" Column="3"/>
             <LayoutButtons Face="Aabs" Type="AbilCmd" AbilCmd="Aabs,0" Row="2" Column="2"/>
         </CardLayouts>
-        <EnergyStart value="100"/>
-        <EnergyMax value="100"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
         <Collide index="Ground" value="0"/>
         <Collide index="ForceField" value="0"/>
         <Collide index="Flying" value="1"/>
@@ -2936,8 +2942,8 @@
         <Attributes index="medium" value="1"/>
         <CostResource index="gold" value="600"/>
         <KillResource index="gold" value="30"/>
-        <LifeStart value="300"/>
-        <LifeMax value="300"/>
+        <LifeStart value="200"/>
+        <LifeMax value="200"/>
         <Speed value="2"/>
         <Race value="Undead"/>
         <Mover value="foot"/>
@@ -2965,8 +2971,8 @@
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="150"/>
         <KillResource index="gold" value="5"/>
-        <LifeStart value="300"/>
-        <LifeMax value="300"/>
+        <LifeStart value="200"/>
+        <LifeMax value="200"/>
         <Speed value="2"/>
         <Race value="Undead"/>
         <Mover value="foot"/>
@@ -2978,6 +2984,7 @@
         <CardLayouts index="0">
             <LayoutButtons Face="Acan" Type="AbilCmd" AbilCmd="Acan,0" Row="2" Column="0"/>
         </CardLayouts>
+        <WeaponArray index="1" removed="1"/>
     </CUnit>
     <!--kelthuzad ghost-->
     <CUnit id="uktg" parent="AW2_Army" defType="NONE">
@@ -3083,33 +3090,55 @@
     <CUnit id="uobs" parent="AW2_Army" defType="LARGE">
         <Attributes index="mechanical" value="1"/>
         <Attributes index="large" value="1"/>
-        <CostResource index="gold" value="60"/>
-        <KillResource index="gold" value="30"/>
-        <LifeStart value="25"/>
-        <LifeMax value="25"/>
+        <CostResource index="gold" value="750"/>
+        <KillResource index="gold" value="75"/>
+        <LifeStart value="900"/>
+        <LifeMax value="900"/>
         <Speed value="2"/>
         <Race value="Undead"/>
         <Mover value="foot"/>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/UndeadUnits"/>
+        <AbilArray Link="UpgradeTouob2"/>
         <AbilArray Link="Aiun"/>
         <AbilArray Link="Arpl"/>
-        <AbilArray Link="Arpm"/>
-        <AbilArray Link="Aave"/>
         <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
+            <LayoutButtons Face="MorphTouob2" Type="AbilCmd" AbilCmd="UpgradeTouob2,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="Arpl" Type="AbilCmd" AbilCmd="Arpl,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="Arpm" Type="AbilCmd" AbilCmd="Arpm,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="ubsp" Type="AbilCmd" AbilCmd="Aave,Execute" Row="2" Column="2"/>
         </CardLayouts>
-        <EnergyStart value="100"/>
-        <EnergyMax value="100"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
     </CUnit>
+    <CUnit id="uob2" parent="AW2_Army" defType="LARGE">
+        <Race value="Undead"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Attributes index="mechanical" value="1"/>
+        <Attributes index="large" value="1"/>
+        <LifeStart value="900"/>
+        <LifeMax value="900"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
+        <Mover value="foot"/>
+        <Speed value="2"/>
+        <CostResource index="gold" value="750"/>
+        <KillResource index="gold" value="75"/>
+        <AbilArray Link="UpgradeTouobs"/>
+        <AbilArray Link="Aiun"/>
+        <AbilArray Link="Arpm"/>
+        <BehaviorArray Link="undead"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="MorphTouobs" Type="AbilCmd" AbilCmd="UpgradeTouobs,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Arpm" Type="AbilCmd" AbilCmd="Arpm,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <GlossaryCategory value="Unit/Category/UndeadUnits"/>
+    </CUnit>
+    <CUnit id="uob21LM" parent="War3_Missile"/>
     <!--SkeletonWarrior-->
     <CUnit id="uske" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
-        <LifeStart value="150"/>
-        <LifeMax value="150"/>
+        <LifeStart value="300"/>
+        <LifeMax value="300"/>
         <Speed value="2"/>
         <Race value="Undead"/>
         <Mover value="foot"/>

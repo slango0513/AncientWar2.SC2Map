@@ -30,6 +30,14 @@
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
     </CAbilEffectTarget>
+    <CAbilMorph default="1" id="AW2_Morph" parent="War3_Morph">
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilMorph>
     <CAbilMorph default="1" id="AW2_Upgrade" parent="War3_Upgrade">
         <InfoArray index="0" Score="1" Unit="##toUnit##">
             <SectionArray index="Abils">
@@ -489,6 +497,23 @@
         <CmdButtonArray index="Execute" Requirements="ShowDefaultButton"/>
         <CmdButtonArray index="Barrage" Requirements="ShowDefaultButton"/>
     </CAbilAttack>
+    <!--Avenger Form Dur=1.1 HeroDur= cast=1-->
+    <CAbilMorph id="Aave" parent="War3_Morph" unitID="ubsp">
+        <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
+        <InfoArray index="0" Unit="ubsp">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="1.1"/>
+                <EffectArray index="Finish" value="ClearMana"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Delay" value="0.1"/>
+                <DurationArray index="Duration" value="1"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Duration" value="1"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
     <!--Bloodlust Dur=60 HeroDur=60 Buff=Bblo-->
     <CAbilEffectTarget id="Ablo">
         <CmdButtonArray index="Execute" Requirements="">
@@ -511,13 +536,30 @@
         </CmdButtonArray>
     </CAbilEffectInstant>
     <!--Cannibalize Dur=33 HeroDur=33-->
-    <CAbilEffectInstant id="Acan">
-        <CmdButtonArray index="Execute" Requirements="">
-            <Flags index="IgnoreUser" value="1"/>
+    <CAbilEffectInstant id="Acan" parent="AW2_EffectInstant">
+        <Alignment value="Positive"/>
+        <AbilSetId value="cannibalize"/>
+        <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
+        <TargetFilters value="Dead;Air,Mechanical,Hover,Heroic,HarvestableResource,Destructible,Item,PreventDefeat,Buried,Invulnerable"/>
+        <Range value="0.3906"/>
+        <AutoCastFilters value="Visible;-"/>
+        <AutoCastRange value="4"/>
+        <DefaultError value="MustTargetUnit,Errors/Cantfindcorpse"/>
+        <CmdButtonArray index="Execute">
+            <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
-        <CmdButtonArray index="Cancel">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
+        <ProgressButtonArray index="Channel" value="Acan"/>
+        <CancelableArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <FinishTime value="0.51"/>
+    </CAbilEffectInstant>
+    <!--Cannibalize (Abomination) Dur=33 HeroDur=33-->
+    <CAbilEffectInstant id="Acn2" parent="Acan">
+        <PrepTime value="0.3"/>
+        <Effect index="0" value="Acn2"/>
+        <CastOutroTime value="0.51"/>
+        <FinishTime index="0" removed="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Acn2"/>
     </CAbilEffectInstant>
     <!--Cripple Dur=60 HeroDur=10 Buff=Bcri-->
     <CAbilEffectTarget id="Acri">
@@ -554,6 +596,19 @@
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <BehaviorArray value="Adef"/>
     </CAbilBehavior>
+    <!--Orb of Annihilation-->
+    <CAbilEffectTarget id="Afak" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
+        <TargetFilters index="0" value="-;player,allies,wall,tree,debris,item,ward,dead,invulnerable,immunity"/>
+        <Range value="500"/>
+        <Alignment value="Negative"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="BestUnit" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <Arc value="360"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="Ahea" parent="AW2_EffectTarget">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <Cost index="0">
@@ -621,6 +676,43 @@
         <InfoArray/>
         <InfoArray/>
     </CAbilInventory>
+    <!--Replenish (Life) Dur=1 HeroDur=1 Buff=Brpl cast=6-->
+    <CAbilEffectInstant id="Arpl" parent="AW2_EffectInstant">
+        <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
+        <Cost index="0">
+            <Vital index="Energy" value="3"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </Cost>
+        <PrepTime value="0.5"/>
+        <FinishTime value="0.51"/>
+        <Alignment value="Positive"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <AutoCastValidatorArray value="DamagedFriendNearBy"/>
+        <CastOutroTime value="1"/>
+        <AutoCastFilters value="Visible;-"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+    </CAbilEffectInstant>
+    <!--Replenish (Mana) Dur=1 HeroDur=1 Buff=Brpm cast=6-->
+    <CAbilEffectInstant id="Arpm" parent="AW2_EffectInstant">
+        <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
+        <Cost index="0">
+            <Vital index="Energy" value="3"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </Cost>
+        <Range value="1.9531"/>
+        <PrepTime value="0.5"/>
+        <FinishTime value="0.51"/>
+        <Alignment value="Positive"/>
+        <CastOutroTime value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <AutoCastValidatorArray value="NotFullManaFriendNearBy"/>
+        <AutoCastFilters value="Visible;-"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+    </CAbilEffectInstant>
     <!--Spell Steal-->
     <CAbilEffectTarget id="Asps" parent="AW2_EffectTarget">
         <EditorCategories value="Race:Human,AbilityorEffectType:Unit"/>
@@ -1323,6 +1415,12 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeTonrvd" parent="AW2_Upgrade" toUnit="nrvd">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTouobs" parent="AW2_Upgrade" toUnit="uobs">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTouob2" parent="AW2_Upgrade" toUnit="uob2">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
 </Catalog>

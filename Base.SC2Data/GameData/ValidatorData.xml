@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CValidatorCombine id="NotAttackingAndNotInCombatWar3">
+        <CombineArray value="CasterIsAttackingWar3"/>
+        <CombineArray value="CasterInCombat"/>
+        <Type value="And"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
     <CValidatorCombine id="AttackingOrInCombatWar3AndCasterLifeLT90Percent">
         <Type value="And"/>
         <CombineArray value="AttackingOrInCombatWar3"/>
