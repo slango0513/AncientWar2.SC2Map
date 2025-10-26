@@ -22,7 +22,7 @@ void InitLibs () {
 // Constants
 //--------------------------------------------------------------------------------------------------
 const fixed gv_asplRadius = 5.8593;
-const int gv_asplMaxTargets = 6;
+const int gv_asplMaxTargets = 4;
 const fixed gv_asplSplitFactor = 0.1;
 const string gv_dreamUnitType = "ngrd";
 const string gv_aOmiAbilEntry = "AOmi";
@@ -3491,7 +3491,7 @@ void gf_ReserveUnitCreationEnable (bool lp_option) {
             SoundPlayForPlayer(SoundLink(gf_RaceGetHorn(PlayerRace(lv_player)), c_soundIndexAny), c_maxPlayers, PlayerGroupSingle(lv_player), 100.0, 0.0);
             SoundPlayForPlayer(SoundLink("HornOfCenariusSound", c_soundIndexAny), c_maxPlayers, PlayerGroupSingle(lv_player), 100.0, 0.0);
         }
-        Wait(5.0, c_timeGame);
+        Wait(8.0, c_timeGame);
         Wait(gv_minimumPeriod, c_timeGame);
         gf_IssueOrderAll(false);
         Wait(5.0, c_timeGame);

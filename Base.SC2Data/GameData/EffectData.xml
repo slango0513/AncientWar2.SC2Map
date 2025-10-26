@@ -69,6 +69,10 @@
         <Amount value="150"/>
         <AreaArray index="0" Radius="1.9531" Bonus="-50" Fraction="1"/>
     </CEffectDamage>
+    <CEffectDamage id="AwarAoEDamage">
+        <AreaArray index="0" Radius="1.5625" Bonus="100" Fraction="1"/>
+        <AreaArray index="1" removed="1"/>
+    </CEffectDamage>
     <CEffectApplyBehavior id="ChargeKnight" parent="War3_ApplyBuff">
         <WhichUnit Value="Caster"/>
         <Behavior value="ChargingKnight"/>
@@ -603,10 +607,6 @@
     <CEffectSet id="StellarFlare">
         <EffectArray value="AEsd"/>
     </CEffectSet>
-    <CEffectDamage id="AwarAoEDamage">
-        <AreaArray index="0" Radius="1.5625" Bonus="100" Fraction="1"/>
-        <AreaArray index="1" removed="1"/>
-    </CEffectDamage>
     <CEffectApplyBehavior id="BCcb"/>
     <CEffectApplyBehavior id="AUfn1Dur">
         <Duration value="10"/>
@@ -1084,6 +1084,7 @@
     </CEffectEnumArea>
     <CEffectEnumArea id="EfficiencyAuraCasterSearch" parent="War3_AuraSearch" aura="EfficiencyAura"/>
     <CEffectEnumArea id="InhibitionAuraCasterSearch" parent="War3_AuraSearch" aura="InhibitionAura"/>
+    <CEffectEnumArea id="CycloneAuraCasterSearch" parent="War3_AuraSearch" aura="CycloneAura"/>
     <CEffectEnumArea id="SongOfAncientHuntingCasterSearch" parent="War3_AuraSearch" aura="SongOfAncientHunting"/>
     <CEffectEnumArea id="HumidityAuraCasterSearch" parent="War3_AuraSearch" aura="HumidityAura"/>
     <CEffectEnumArea id="PressureAuraCasterSearch" parent="War3_AuraSearch" aura="PressureAura"/>
@@ -1137,6 +1138,9 @@
     <CEffectApplyBehavior id="DeathTowerAura" parent="War3_AuraBuff"/>
     <CEffectApplyBehavior id="EfficiencyAura" parent="War3_AuraBuff"/>
     <CEffectApplyBehavior id="InhibitionAura" parent="War3_AuraBuff">
+        <ValidatorArray value="TargetIsRider"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CycloneAura" parent="War3_AuraBuff">
         <ValidatorArray value="TargetIsRider"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="SongOfAncientHunting" parent="War3_AuraBuff">
@@ -1720,6 +1724,22 @@
         <Kind value="Melee"/>
         <Amount value="96"/>
     </CEffectDamage>
+    <CEffectApplyForce id="CycloneAuraApplyForce">
+        <Amount value="1"/>
+    </CEffectApplyForce>
+    <CEffectEnumArea id="CycloneAuraApplyForceSearch" parent="War3_AbilSearch">
+        <SearchFilters value="-;player,allies,air,Structure,wall,tree,Missile,debris,item,ward,dead,Hidden,invulnerable"/>
+        <AreaArray Radius="1" Effect="CycloneAuraApplyForceSearchImpactSet"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="CycloneAuraApplyForceCreatePersistent">
+        <PeriodCount value="4"/>
+        <PeriodicEffectArray value="CycloneAuraApplyForce"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <WhichLocation Value="TargetUnit"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="CycloneAuraApplyForceSearchImpactSet">
+        <EffectArray value="CycloneAuraApplyForceCreatePersistent"/>
+    </CEffectSet>
     <CEffectApplyForce id="ownr1ApplyForce">
         <Amount value="1"/>
     </CEffectApplyForce>

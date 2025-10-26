@@ -200,7 +200,7 @@ AsdsGoblinLandMine/Ubertip=对一定区域造成伤害。对付城墙特别地�
 AsdsPassive/Tip=咔嘣！
 AsdsPassive/Ubertip=死亡时对一定区域造成伤害，爆炸产生的冲击波还能将周围的地面单位炸飞，落地后在<d ref="Behavior,Bsds,Duration"/>秒内使其成为昏晕状态。对付城墙特别地有效。
 Aslo/Ubertip=减慢目标单位<d ref="1 - Behavior,Bslo,Modification.AttackSpeedMultiplier * 100"/>%的攻击速度和<d ref="1 - Behavior,Bslo,Modification.MoveSpeedMultiplier * 100"/>%的移动速度。<n/>持续<d ref="Behavior,Bslo,Duration"/>秒。
-Aspl/Ubertip=链接6个单位在一起。所有被灵魂连接作用的单位都可以将其90%受到的伤害转移到其他单位身上。<n/>持续<d ref="Behavior,Bspl,Duration"/>秒。
+Aspl/Ubertip=链接4个单位在一起。所有被灵魂连接作用的单位都可以将其90%受到的伤害转移到其他单位身上。<n/>持续<d ref="Behavior,Bspl,Duration"/>秒。
 Aspo/Ubertip=迟缓毒药攻击能造成每秒<d ref="Effect,BssdDPS,Amount"/>点的伤害，并在<d ref="Behavior,Bspo,Duration"/>秒内减慢敌人<d ref="1 - Behavior,Bspo,Modification.MoveSpeedMultiplier * 100"/>%的移动速度和<d ref="1 - Behavior,Bspo,Modification.AttackSpeedMultiplier * 100"/>%的攻击速度。
 Aspt/Tip=产生小多头蛇
 Aspt/Ubertip=当该单位被杀死的时候，许多小点的多头蛇会从其尸体中冒出来。
@@ -273,7 +273,7 @@ Behavior/Name/PhalanxMarker=PhalanxMarker
 Behavior/Name/UnknownBehavior2=未知行为
 BlackrockClan/Name=雷德·黑手
 BlackrockClan/Tip=雷德·黑手
-BlackrockClan/Ubertip=高速骑兵，具有掠夺、诱捕和抑制光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+BlackrockClan/Ubertip=高速骑兵，具有掠夺、诱捕和飓风光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 BloodElfFlag/Name=血精灵旗帜
 BloodElfFlag/Tip=放置血精灵旗帜
 BloodElfFlag/Ubertip=放置血精灵旗帜。
@@ -388,6 +388,9 @@ ColdTowerAuraCaster/Tip=冰霜之塔光环
 ColdTowerAuraCaster/Ubertip=增加周围友方建筑<d ref="Behavior,ColdTowerAura,Modification.LifeArmorBonus"/>点的护甲和每秒<d ref="Behavior,ColdTowerAura,Modification.VitalRegenArray[Life]" precision="1"/>点的生命恢复速度。
 Cyclone/Tip=飓风
 Cyclone/Ubertip=双足飞龙每次攻击时扇动巨翼，将目标及周围的敌方地面单位吹飞。
+CycloneAura/Name=飓风光环
+CycloneAuraCaster/Tip=飓风光环
+CycloneAuraCaster/Ubertip=让周围友方骑兵单位每次近战攻击能将目标击退。不能击退强大的单位。
 DAMAGE_MAIC=类型：<c val="ffcc00">穿刺</c>
 DOCSTR_0000=选择编组9
 DOCSTR_0001=BracketOpen
@@ -508,7 +511,8 @@ DocInfo/PatchNote092=凤凰蛋的孵化时间增加到45秒，生命值减少到
 DocInfo/PatchNote093=凤凰的护甲类型现在是神圣，并且凤凰火焰经过重新设计。
 DocInfo/PatchNote094=混乱兽人：
 DocInfo/PatchNote095=粉碎者的伤害增加到144。
-DocInfo/PatchNote096=防御塔类单位的生命值减少到原来的75%。
+DocInfo/PatchNote096=德莱尼：
+DocInfo/PatchNote097=防御塔类单位的生命值减少到原来的75%。
 DocInfo/PatchNote099=去除布阵步骤，增加阵前音效。
 DocInfo/PatchNote100=优化寻路，减少由寻路造成的卡顿。
 DocInfo/PatchNote101=增加2V2V2V2模式的回合金，使其与混战模式齐平。
@@ -516,12 +520,12 @@ DocInfo/PatchNote102=人类：
 DocInfo/PatchNote103=骑士类单位获得新技能冲锋。
 DocInfo/PatchNote104=兽人：
 DocInfo/PatchNote105=凯恩·血蹄现在统领具有粉碎技能的牛头人。
-DocInfo/PatchNote106=灵魂连接经过大幅度强化。
+DocInfo/PatchNote106=灵魂连接及其目标判断经过大幅度强化。
 DocInfo/PatchNote107=狼骑兵类单位获得新技能强力掠夺。
-DocInfo/PatchNote108=混乱兽人步兵和混乱兽人狼骑兵类单位获得新技能掠夺。
-DocInfo/PatchNote109=龙：
-DocInfo/PatchNote110=梦境不再对2V2V2V2模式有效。
-DocInfo/PatchNote111=德莱尼：
+DocInfo/PatchNote108=雷德·黑手获得新技能飓风光环，取代原来的技能抑制光环。
+DocInfo/PatchNote109=混乱兽人步兵和混乱兽人狼骑兵类单位获得新技能掠夺。
+DocInfo/PatchNote110=龙：
+DocInfo/PatchNote111=梦境不再对2V2V2V2模式有效。
 DraeneiFlag/Name=德莱尼旗帜
 DraeneiFlag/Tip=放置德莱尼旗帜
 DraeneiFlag/Ubertip=放置德莱尼旗帜。
