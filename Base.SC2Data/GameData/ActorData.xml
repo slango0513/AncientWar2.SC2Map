@@ -3,6 +3,26 @@
     <CActorAction id="AimpSphereEffect" parent="War3_Attack">
         <DamageMap index="None" Model="AimpTarget"/>
     </CActorAction>
+    <CActorSound id="ChargeKnight" parent="SoundContinuous">
+        <On Terms="Behavior.ChargingKnight.Create" Send="Create"/>
+        <On Terms="Behavior.ChargingKnight.Destroy" Send="Destroy"/>
+    </CActorSound>
+    <CActorSound id="ChargeKnightInitial" parent="SoundOneShot">
+        <On Terms="Effect.ChargeKnightInitialSet.Start" Send="Create"/>
+        <Sound value="MetalHeavyChopMetal"/>
+    </CActorSound>
+    <CActorModel id="ChargingKnight" parent="War3_Buff">
+        <On Terms="Behavior.ChargingKnight.On" Send="Create"/>
+        <On Terms="Behavior.ChargingKnight.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorModel id="MoraleBoosting" parent="War3_Buff">
+        <On Terms="Behavior.MoraleBoosting.On" Send="Create"/>
+        <On Terms="Behavior.MoraleBoosting.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="$overhead"/>
+    </CActorModel>
+    <CActorSound id="MoraleBoostingSearch" parent="SoundOneShot">
+        <On Terms="Effect.MoraleBoostingSearch.Start" Send="Create"/>
+    </CActorSound>
     <CActorSimple id="WindWalk" parent="War3_AbilSoundOnly" effectsound="WindWalk"/>
     <CActorModel id="AgydSpecial1" parent="SpecialArt"/>
     <CActorModel id="AgydSpecial2" parent="SpecialArt"/>
@@ -87,7 +107,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnDranaiAkama.dds"/>
         <BarWidth value="87"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
@@ -471,7 +491,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnAdvancedRockTower.dds"/>
         <BarWidth value="125"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
         <BarOffset value="240"/>
         <DeathArray index="Cancel" AnimProps="Birth" ModelLink="War3_HCancelDeath"/>
     </CActorUnit>
@@ -613,7 +633,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnAdvancedFrostTower.dds"/>
         <BarWidth value="125"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
         <BarOffset value="240"/>
         <DeathArray index="Cancel" AnimProps="Birth" ModelLink="War3_HCancelDeath"/>
     </CActorUnit>
@@ -683,7 +703,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnAdvancedEnergyTower.dds"/>
         <BarWidth value="125"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
         <BarOffset value="240"/>
         <DeathArray index="Cancel" AnimProps="Birth" ModelLink="War3_HCancelDeath"/>
     </CActorUnit>
@@ -741,7 +761,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnAdvancedFlameTower.dds"/>
         <BarWidth value="125"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
         <BarOffset value="240"/>
         <DeathArray index="Cancel" AnimProps="Birth" ModelLink="War3_HCancelDeath"/>
     </CActorUnit>
@@ -926,7 +946,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnAdvancedDeathTower.dds"/>
         <BarWidth value="125"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
         <BarOffset value="240"/>
         <DeathArray index="Cancel" AnimProps="Birth" ModelLink="War3_HCancelDeath"/>
     </CActorUnit>

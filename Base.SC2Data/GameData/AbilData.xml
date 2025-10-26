@@ -94,6 +94,13 @@
             </SectionArray>
         </InfoArray>
     </CAbilMorph>
+    <CAbilAugment id="ChargeKnight" parent="War3_Augment">
+        <AbilCmd value="Aatk,Execute"/>
+        <Cost>
+            <Cooldown TimeUse="60"/>
+        </Cost>
+        <AutoCastFilters value="Visible;Air,Hover,HarvestableResource,Missile,Stasis,Dead,Invulnerable"/>
+    </CAbilAugment>
     <!--Cripple (creep) Dur=60 HeroDur=10 Buff=Bcri-->
     <CAbilEffectTarget id="ACcr" parent="AW2_EffectTarget">
         <Alignment value="Negative"/>
@@ -1822,10 +1829,10 @@
         <Cost index="0">
             <Cooldown Location="Unit" TimeUse="120"/>
         </Cost>
-        <PrepTime value="0.47"/>
+        <PrepTime value="0.25"/>
         <FinishTime value="0.8"/>
         <Effect index="0" value="AOws1Search"/>
-        <AutoCastValidatorArray value="GroundEnemiesNearby2"/>
+        <AutoCastValidatorArray index="0" value="GroundEnemiesNearby3"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilBehavior id="Agyd" parent="AW2_Passive">
@@ -2118,12 +2125,12 @@
         <Alignment value="Negative"/>
         <EditorCategories value="Race:Orc,AbilityorEffectType:Units"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="120"/>
+            <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
-        <PrepTime value="0.47"/>
+        <PrepTime value="0.25"/>
         <FinishTime value="0.8"/>
         <Effect index="0" value="AOws1Search"/>
-        <AutoCastValidatorArray value="GroundEnemiesNearby2"/>
+        <AutoCastValidatorArray index="0" value="GroundEnemiesNearby3"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <!--Death Knight - Animate Dead Buff=BUan-->
@@ -3023,10 +3030,10 @@
             <Vital index="Energy" value="60"/>
             <Cooldown Location="Unit" TimeUse="6"/>
         </Cost>
-        <PrepTime value="0.47"/>
+        <PrepTime value="0.25"/>
         <FinishTime value="0.8"/>
         <Effect index="0" value="AOws1Search"/>
-        <AutoCastValidatorArray value="EnemiesNearby1"/>
+        <AutoCastValidatorArray index="0" value="GroundEnemiesNearby3"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilBehavior id="Multishot" parent="War3_Passive">

@@ -189,6 +189,8 @@ Aroa/Ubertip=增加周围友方单位<d ref="Behavior,Broa,Modification.DamageDe
 Aroc/Ubertip=对周围的敌方地面单位进行强有力的弹幕攻击。
 Arpl/Ubertip=恢复附近友方<d ref="Effect,BrplHeal,RechargeVitalRate"/>点生命值。
 Arpm/Ubertip=恢复附近友方<d ref="Behavior,Brpm,Modification.VitalRegenArray[Energy]" precision="1"/>点法力值。
+Asa2/Tip=强力掠夺
+Asa2/Ubertip=攻击敌方单位来掠取大量资源。每次命中能获得<d ref="-Behavior,Asa2,DamageResponse.Cost.Resource[Custom]"/>木材。
 Asal/Ubertip=攻击敌方单位来掠取资源。每次命中能获得<d ref="-Behavior,Asal,DamageResponse.Cost.Resource[Custom]"/>木材。
 Asdg/Ubertip=死亡时对一定区域造成<d ref="Effect,AsdgDamage,Amount"/>点伤害。对付城墙特别地有效。
 Asds/Ubertip=对一定区域造成伤害，爆炸产生的冲击波还能将周围的地面单位炸飞，落地后在<d ref="Behavior,Bsds,Duration"/>秒内使其成为昏晕状态。对付城墙特别地有效。
@@ -198,7 +200,7 @@ AsdsGoblinLandMine/Ubertip=对一定区域造成伤害。对付城墙特别地�
 AsdsPassive/Tip=咔嘣！
 AsdsPassive/Ubertip=死亡时对一定区域造成伤害，爆炸产生的冲击波还能将周围的地面单位炸飞，落地后在<d ref="Behavior,Bsds,Duration"/>秒内使其成为昏晕状态。对付城墙特别地有效。
 Aslo/Ubertip=减慢目标单位<d ref="1 - Behavior,Bslo,Modification.AttackSpeedMultiplier * 100"/>%的攻击速度和<d ref="1 - Behavior,Bslo,Modification.MoveSpeedMultiplier * 100"/>%的移动速度。<n/>持续<d ref="Behavior,Bslo,Duration"/>秒。
-Aspl/Ubertip=链接4个单位在一起。所有被灵魂连接作用的单位都可以将其50%受到的伤害转移到其他单位身上。<n/>持续<d ref="Behavior,Bspl,Duration"/>秒。
+Aspl/Ubertip=链接6个单位在一起。所有被灵魂连接作用的单位都可以将其90%受到的伤害转移到其他单位身上。<n/>持续<d ref="Behavior,Bspl,Duration"/>秒。
 Aspo/Ubertip=迟缓毒药攻击能造成每秒<d ref="Effect,BssdDPS,Amount"/>点的伤害，并在<d ref="Behavior,Bspo,Duration"/>秒内减慢敌人<d ref="1 - Behavior,Bspo,Modification.MoveSpeedMultiplier * 100"/>%的移动速度和<d ref="1 - Behavior,Bspo,Modification.AttackSpeedMultiplier * 100"/>%的攻击速度。
 Aspt/Tip=产生小多头蛇
 Aspt/Ubertip=当该单位被杀死的时候，许多小点的多头蛇会从其尸体中冒出来。
@@ -263,6 +265,7 @@ Bbsk/Buffubertip=该单位处于狂暴状态，因此攻击速度得到了加强
 Behavior/Name/AW2_ArmyUser=AW2_ArmyUser
 Behavior/Name/AW2_PathingBlocker=AW2_PathingBlocker
 Behavior/Name/Ahr3=采集
+Behavior/Name/Asa2=掠夺
 Behavior/Name/BOwk1=疾风步
 Behavior/Name/Building=Building
 Behavior/Name/EfficiencyAura=效率光环
@@ -270,7 +273,7 @@ Behavior/Name/PhalanxMarker=PhalanxMarker
 Behavior/Name/UnknownBehavior2=未知行为
 BlackrockClan/Name=雷德·黑手
 BlackrockClan/Tip=雷德·黑手
-BlackrockClan/Ubertip=高速骑兵，具有诱捕和抑制光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+BlackrockClan/Ubertip=高速骑兵，具有掠夺、诱捕和抑制光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 BloodElfFlag/Name=血精灵旗帜
 BloodElfFlag/Tip=放置血精灵旗帜
 BloodElfFlag/Ubertip=放置血精灵旗帜。
@@ -317,6 +320,12 @@ ChaosOrcFlag2/Ubertip=放置混乱兽人旗帜(决赛)。
 ChaosOrcShaman/Name=混乱兽人萨满
 ChaosOrcShaman/Tip=训练混乱兽人萨满
 ChaosOrcShaman/Ubertip=魔法单位，能施放嗜血。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+ChargeKnight/Name=冲锋
+ChargeKnight/Tip=冲锋
+ChargeKnight/Ubertip=向敌人发起冲锋！成功冲散敌军先锋能鼓舞我方全员士气，<d ref="Behavior,MoraleBoosting,Duration"/>秒内提高<d ref="Behavior,MoraleBoosting,Modification.DamageDealtFraction[Melee]*100" precision="1"/>%攻击力和<d ref="Behavior,MoraleBoosting,Modification.DamageDealtFraction[Spell] * 100"/>%法术攻击力。
+ChargeKnightStun/Buffubertip=该单位被击晕了，所以不能移动，攻击和施放魔法。
+ChargeKnightStun/Name=冲锋昏迷
+ChargingKnight/Name=冲锋
 CmdBuildBloodElf/Tip=建造建筑物
 CmdBuildBloodElf/Ubertip=能显示出当前你所能建造的建筑物。
 CmdBuildChaosOrc/Tip=建造建筑物
@@ -430,7 +439,7 @@ DocInfo/PatchNote023=加入新单位蝠骑士。
 DocInfo/PatchNote024=龙：
 DocInfo/PatchNote025=复生后的萨菲隆不再自动损失生命值。
 DocInfo/PatchNote026=绿龙、蓝龙、红龙、青铜龙和黑龙不再造成溅射伤害。
-DocInfo/PatchNote027=恶魔：
+DocInfo/PatchNote027=魅魔类单位获得新技能Prêt-à-porter。
 DocInfo/PatchNote028=部队身上的物品加入价值计算系统。
 DocInfo/PatchNote029=决赛时布置在高地的部队现在会占领高地一小段时间。
 DocInfo/PatchNote030=人类：
@@ -464,44 +473,55 @@ DocInfo/PatchNote057=人类：
 DocInfo/PatchNote058=加入新单位狮鹫骑士。
 DocInfo/PatchNote059=兽人：
 DocInfo/PatchNote060=加入新单位加索克和纳兹格雷尔。
-DocInfo/PatchNote061=掠夺获得的木材增加到3。
-DocInfo/PatchNote062=暗影猎手的生命值降低到900。
-DocInfo/PatchNote063=血杀斧的生命吸取减少到25%。
-DocInfo/PatchNote064=纳迦：
-DocInfo/PatchNote065=上古多头蛇不再拥有技能潮湿光环。
-DocInfo/PatchNote066=海巨人不再拥有技能嘲讽。
-DocInfo/PatchNote067=粉碎的生命值恢复增加到100%。
-DocInfo/PatchNote068=远古猎歌现在只对精英单位有效，并且在原来的基础上新增法术攻击力加成。
-DocInfo/PatchNote069=地精：
-DocInfo/PatchNote070=嘲讽的单位数量减少到6个。
-DocInfo/PatchNote071=混乱兽人：
-DocInfo/PatchNote072=加入新单位卡加斯·刃拳和雷德·黑手。
-DocInfo/PatchNote073=加入新单位混乱兽人萨满。
-DocInfo/PatchNote074=火球术的法力值消耗降低到30点。
-DocInfo/PatchNote075=龙：
-DocInfo/PatchNote076=蓝色龙人监军获得新技能潮湿光环，潮湿光环的每秒生命值恢复加成降低到0.75%。
-DocInfo/PatchNote077=魅魔类单位获得新技能Prêt-à-porter。
-DocInfo/PatchNote078=地狱机器类单位的生命值降低40%。
+DocInfo/PatchNote061=暗影猎手的生命值降低到900。
+DocInfo/PatchNote062=血杀斧的生命吸取减少到25%。
+DocInfo/PatchNote063=纳迦：
+DocInfo/PatchNote064=上古多头蛇不再拥有技能潮湿光环。
+DocInfo/PatchNote065=海巨人不再拥有技能嘲讽。
+DocInfo/PatchNote066=粉碎的生命值恢复增加到100%。
+DocInfo/PatchNote067=远古猎歌现在只对精英单位有效，并且在原来的基础上新增法术攻击力加成。
+DocInfo/PatchNote068=地精：
+DocInfo/PatchNote069=嘲讽的单位数量减少到6个。
+DocInfo/PatchNote070=混乱兽人：
+DocInfo/PatchNote071=加入新单位卡加斯·刃拳和雷德·黑手。
+DocInfo/PatchNote072=加入新单位混乱兽人萨满。
+DocInfo/PatchNote073=火球术的法力值消耗降低到30点。
+DocInfo/PatchNote074=龙：
+DocInfo/PatchNote075=蓝色龙人监军获得新技能潮湿光环，潮湿光环的每秒生命值恢复加成降低到0.75%。
+DocInfo/PatchNote076=恶魔：
+DocInfo/PatchNote077=地狱机器类单位的生命值降低40%。
+DocInfo/PatchNote078=混乱兽人：
 DocInfo/PatchNote079=完成种族德莱尼。
 DocInfo/PatchNote080=为电脑加入难度选项。
-DocInfo/PatchNote081=调整地形，尝试解决布阵僵化的问题。
-DocInfo/PatchNote082=修复复生导致游戏不能继续的漏洞。
-DocInfo/PatchNote083=防御塔类建筑现在到期后会回收木材。具有攻击力的防御塔期限增加到3分钟。
-DocInfo/PatchNote084=修复穿刺剑刃无效的漏洞。
-DocInfo/PatchNote085=人类：
-DocInfo/PatchNote086=圣光术的效果提高50%。
-DocInfo/PatchNote087=防御塔的射程增加到12。
-DocInfo/PatchNote088=亡灵：
-DocInfo/PatchNote089=死亡缠绕的效果提高50%。
-DocInfo/PatchNote090=绞肉车获得新技能创建尸体，伤害降低到24。
-DocInfo/PatchNote091=疾病之云的伤害提高到10。
-DocInfo/PatchNote092=地精：
-DocInfo/PatchNote093=采集获得的额外木材量减少到140%。
-DocInfo/PatchNote094=血精灵：
-DocInfo/PatchNote095=凤凰蛋的孵化时间增加到45秒，生命值减少到25点。
-DocInfo/PatchNote096=凤凰的护甲类型现在是神圣，并且凤凰火焰经过重新设计。
-DocInfo/PatchNote097=混乱兽人：
-DocInfo/PatchNote098=粉碎者的伤害增加到144。
+DocInfo/PatchNote081=防御塔类建筑现在到期后会回收木材。具有攻击力的防御塔期限增加到3分钟。
+DocInfo/PatchNote082=修复穿刺剑刃无效的漏洞。
+DocInfo/PatchNote083=人类：
+DocInfo/PatchNote084=圣光术的效果提高50%。
+DocInfo/PatchNote085=亡灵：
+DocInfo/PatchNote086=死亡缠绕的效果提高50%。
+DocInfo/PatchNote087=绞肉车获得新技能创建尸体，伤害降低到24。
+DocInfo/PatchNote088=疾病之云的伤害提高到10。
+DocInfo/PatchNote089=地精：
+DocInfo/PatchNote090=采集获得的额外木材量减少到140%。
+DocInfo/PatchNote091=血精灵：
+DocInfo/PatchNote092=凤凰蛋的孵化时间增加到45秒，生命值减少到25点。
+DocInfo/PatchNote093=凤凰的护甲类型现在是神圣，并且凤凰火焰经过重新设计。
+DocInfo/PatchNote094=混乱兽人：
+DocInfo/PatchNote095=粉碎者的伤害增加到144。
+DocInfo/PatchNote096=防御塔类单位的生命值减少到原来的75%。
+DocInfo/PatchNote099=去除布阵步骤，增加阵前音效。
+DocInfo/PatchNote100=优化寻路，减少由寻路造成的卡顿。
+DocInfo/PatchNote101=增加2V2V2V2模式的回合金，使其与混战模式齐平。
+DocInfo/PatchNote102=人类：
+DocInfo/PatchNote103=骑士类单位获得新技能冲锋。
+DocInfo/PatchNote104=兽人：
+DocInfo/PatchNote105=凯恩·血蹄现在统领具有粉碎技能的牛头人。
+DocInfo/PatchNote106=灵魂连接经过大幅度强化。
+DocInfo/PatchNote107=狼骑兵类单位获得新技能强力掠夺。
+DocInfo/PatchNote108=混乱兽人步兵和混乱兽人狼骑兵类单位获得新技能掠夺。
+DocInfo/PatchNote109=龙：
+DocInfo/PatchNote110=梦境不再对2V2V2V2模式有效。
+DocInfo/PatchNote111=德莱尼：
 DraeneiFlag/Name=德莱尼旗帜
 DraeneiFlag/Tip=放置德莱尼旗帜
 DraeneiFlag/Ubertip=放置德莱尼旗帜。
@@ -547,6 +567,7 @@ Effect/Name/BOwkOrderAttackSet=BOwkOrderAttackSet
 Effect/Name/BOwkOrderAttackTargetMarker=BOwkOrderAttackTargetMarker
 Effect/Name/Btau=Btau
 Effect/Name/Bwfb=Bwfb
+Effect/Name/ChargeKnightSearch=ChargeKnightSearch
 Effect/Name/CountPhalanxTriggerNotice=CountPhalanxTriggerNotice
 Effect/Name/CountUnitController=CountUnitController
 Effect/Name/CountUnitRemove=CountUnitRemove
@@ -653,7 +674,7 @@ Hkal/Tip=升级到凯尔
 Hkal/Ubertip=远程攻击型魔法施放单位，精于对魔法的控制。具有放逐术和法力恢复光环技能。<n/><n/><c val="ffcc00">攻击地面和空中单位。</c>
 Hlgr/Name=黑暗骑士
 Hlgr/Tip=升级到黑暗骑士
-Hlgr/Ubertip=骑兵，具有虔诚光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+Hlgr/Ubertip=骑兵，具有冲锋和虔诚光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 HonorShield/Tip=荣誉之盾
 HonorShield/Ubertip=每次攻击地面单位或受到攻击将会提升<d ref="Behavior,HonorShield,Modification.DamageDealtUnscaled[Ranged]"/>点攻击及<d ref="Behavior,HonorShield,Modification.LifeArmorBonus"/>点护甲。
 Hpal/Tip=训练圣骑士
@@ -673,9 +694,11 @@ InhibitionAura/Name=抑制光环
 InhibitionAuraCaster/Tip=抑制光环
 InhibitionAuraCaster/Ubertip=能让周围友方骑兵单位对某些特定魔法免疫，并降低负性魔法的持续时间。
 InventoryNaga/Name=NagaInventory
+InvulnerableTemp/Buffubertip=该单位是无敌的。
+InvulnerableTemp/Name=准备中
 KargathBladefist/Name=卡加斯·刃拳
 KargathBladefist/Tip=卡加斯·刃拳
-KargathBladefist/Ubertip=基本的兽人地面单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+KargathBladefist/Ubertip=基本的兽人地面单位，具有掠夺技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 MapInfo/Player00/Name=中立
 MapInfo/Player01/Name=玩家1
 MapInfo/Player02/Name=玩家2
@@ -701,6 +724,7 @@ MapInfo/Team05/Name=F
 MapInfo/Team06/Name=G
 MapInfo/Team07/Name=H
 Moonlight/Name=月光
+MoraleBoosting/Name=鼓舞士气
 MorphToospm/Tip=变形为灵魂行者
 MorphToospw/Tip=变形为灵魂行者
 MorphTouob2/Tip=变形为黑曜石雕像
@@ -777,12 +801,15 @@ Param/Expression/0E472FCC=奖励回合<c val="FFFF00">~A~</c>：<c val="FFFF00">
 Param/Expression/188F0AD5=~A~的难度：~B~
 Param/Expression/2BCCABE1=奖励回合<c val="FFFF00">~A~</c>
 Param/Expression/2F7B45C0=RoundR ~A~ = ~B~, ~C~ = ~D~, ~E~ = ~F~, ~G~ = ~H~, ~I~ = ~J~, ~K~ = ~L~, ~M~ = ~N~
+Param/Expression/492A5FF4=PathCost=~A~ Distance=~B~
 Param/Expression/4CA5E705=~A~
 Param/Expression/614CEEB0=TeamC ~A~ vs ~B~, ~C~ vs ~D~, ~E~ vs ~F~, ~G~ vs ~H~
 Param/Expression/6736687E=决赛
 Param/Expression/6D6635EF=GroupR ~A~ = ~B~, ~C~ = ~D~, ~E~ = ~F~, ~G~ = ~H~
 Param/Expression/70F14678=战网标识：~A~。
+Param/Expression/7D06ED70=P~A~ Phx~B~
 Param/Expression/831164FF=~A~现在由电脑接管。
+Param/Expression/859E3A1E=Player ~C~ Unit ~B~ Item ~A~
 Param/Expression/87F08C04=Reserve 1 ~A~ 2 ~B~ 3 ~C~ 4 ~D~ 5 ~E~ 6 ~F~ 7 ~G~ 8 ~H~
 Param/Expression/8BDDF43A=UT ~A~ Fc ~B~
 Param/Expression/96727924=~A~
@@ -795,13 +822,10 @@ Param/Expression/E9329EDD=PlayerC ~A~ vs ~B~, ~C~ vs ~D~, ~E~ vs ~F~, ~G~ vs ~H~
 Param/Expression/EA367955=第~I~回合：~A~ vs ~B~，~C~ vs ~D~，~E~ vs ~F~，~G~ vs ~H~。
 Param/Expression/F33720A6=回合<c val="FFFF00">~A~</c>
 Param/Expression/F3F549EF=~A~~B~
-Param/Expression/FC66627E=PathCost=~A~ Distance=~B~
 Param/Value/15A47604= 
 Param/Value/15C739EB=玩家交流
 Param/Value/191E7488=<c val="FFFF00">玩家交流QQ群：</c>417769011<n/><c val="FFFF00">Facebook：</c>Ancient War Official Group
 Param/Value/317E0CA0=在整场比赛获胜！
-Param/Value/3B6C9995= vs 
-Param/Value/409862D3= vs 
 Param/Value/44054E35=
 Param/Value/4B1A6B77=进阶提示
 Param/Value/4C23E814=新手提示
@@ -815,21 +839,17 @@ Param/Value/87E4737D=击杀奖励
 Param/Value/91BA9176= - 
 Param/Value/93A8605D=进阶提示
 Param/Value/A4868C6E=建造奖励
-Param/Value/A7A67DDB= - 
-Param/Value/AAB1976C= 
 Param/Value/B3EEA70D= - 
 Param/Value/B744BA58= vs 
 Param/Value/BB55835D=与其他人讨论兵法、分享自己的战术和约战！<n/><c val="FFFF00">玩家交流QQ群：</c>417769011<n/><c val="FFFF00">Facebook：</c>Ancient War Official Group
 Param/Value/BF89C086=玩家交流
 Param/Value/C201E5C3=玩家
-Param/Value/C2CD87EE= - 
 Param/Value/C7A905FA=夜晚
 Param/Value/CB456843=新手提示
 Param/Value/CC4C1E4D=潮汐
 Param/Value/D03089AF=为了获得最佳游戏体验，建议勾选上：<n/>菜单-选项-音效-音量-<c val="FFFF00">音乐连续播放</c>。
 Param/Value/E286B000=<c val="FFFF00">游戏目标：</c>在总决赛夺冠！<n/><c val="FFFF00">游戏流程：</c>1到7回合；奖励回合；决赛（四分之一决赛、半决赛、总决赛）<n/><c val="FFFF00">如何夺冠：</c>1到7回合通过战胜其他玩家积累优势，奖励回合争取获得更多木材，以此为经济基础在决赛击败所有人。
 Param/Value/EE8A9ECA= vs 
-Param/Value/F3B24310= - 
 Param/Value/F4A0DF83=在本回合获胜。
 PressureAura/Buffubertip=该单位处于压力光环的作用之下，因此其溅射攻击力得到了增强，并且受到的溅射伤害降低。
 PressureAura/Name=压力光环
@@ -1037,7 +1057,7 @@ hgyr/Ubertip=快速移动的飞行机器，能有效地抵抗敌人的空中单�
 hhes/Tip=升级到剑士
 hhes/Ubertip=防御型单位。拥有防御技能，有效地抵抗敌人的穿刺型攻击。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 hkn2/Name=骑士
-hkni/Ubertip=高速骑兵。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+hkni/Ubertip=高速骑兵，具有冲锋技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 hmil/Tip=训练民兵
 hmil/Ubertip=基本的防御型单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 hmpr/Tip=升级到牧师
@@ -1074,7 +1094,7 @@ nbds/Ubertip=<c val="ffcc00">精英</c><n/>远程攻击型魔法施放单位，�
 nbdw/Ubertip=近战型的魔法施放单位，具有抗性皮肤和冰霜呼吸技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nbel/Ubertip=精灵战士，被训练来消灭法师。拥有魔法防御技能，有效地抵抗敌人的魔法型攻击。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nbld/Tip=升级到强盗头子
-nbld/Ubertip=高速骑兵，具有震荡波技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+nbld/Ubertip=高速骑兵，具有冲锋和震荡波技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nbt1/Ubertip=防守型建筑物，投掷出能造成溅射伤害的巨石，擅长于对付地面单位，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nbt2/Ubertip=防守型建筑物，擅长于对付地面单位，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nbwm/Tip=升级到黑龙
@@ -1086,8 +1106,8 @@ nbzw/Ubertip=远程攻击飞行单位，具有抗性皮肤技能。<n/><n/><c va
 ncat/Ubertip=远程攻城武器，具有燃烧之油技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ncg3/Name=发条地精
 nchg/Tip=训练混乱兽人步兵
-nchg/Ubertip=基本的兽人地面单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
-nchr/Ubertip=高速骑兵，具有诱捕技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+nchg/Ubertip=基本的兽人地面单位，具有掠夺技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+nchr/Ubertip=高速骑兵，具有掠夺和诱捕技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nchw/Ubertip=魔法单位，能施放火球术，伤害并使敌人昏迷。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nckb/Ubertip=一种笨重的战争野兽，由一个兽人鼓手驾驭。拥有吸血光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ndgt/Tip=升级到达拉然防御塔

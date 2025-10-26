@@ -65,6 +65,70 @@
         </TargetSorts>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CEffectEnumArea>
+    <CEffectDamage id="AUfnDamage1">
+        <Amount value="150"/>
+        <AreaArray index="0" Radius="1.9531" Bonus="-50" Fraction="1"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="ChargeKnight" parent="War3_ApplyBuff">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="ChargingKnight"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="ChargeKnightInitialSet">
+        <EffectArray value="ChargeKnightCreatePersistent"/>
+        <EffectArray value="ChargingKnightInitialRemover"/>
+        <EffectArray value="MoraleBoostingSearch"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="ChargingKnightInitialRemover">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="ChargingKnightRemover"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="ChargeKnightSearch" parent="War3_AbilSearch">
+        <EditorCategories value="Race:Human"/>
+        <AreaArray Radius="0.375" Effect="ChargeKnightInitialSet"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFilters value="-;player,allies,air,Structure,wall,tree,Missile,debris,item,ward,ethereal,dead,Hidden,invulnerable"/>
+    </CEffectEnumArea>
+    <CEffectRemoveBehavior id="ChargingKnightRemover">
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="ChargingKnight"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="MoraleBoosting" parent="War3_ApplyBuff"/>
+    <CEffectEnumArea id="MoraleBoostingSearch" parent="War3_AbilSearch">
+        <AreaArray Radius="500" Effect="MoraleBoosting"/>
+        <SearchFilters value="-;neutral,enemies,wall,tree,Missile,debris,item,structure,ward,dead"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectApplyForce id="ChargeKnightApplyForce">
+        <Amount value="1"/>
+    </CEffectApplyForce>
+    <CEffectApplyBehavior id="ChargeKnightController">
+        <ValidatorArray index="0" value="NoChargeKnightController"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="ChargeKnightCreatePersistent">
+        <InitialEffect value="ChargeKnightInitial"/>
+        <PeriodCount value="18"/>
+        <PeriodicEffectArray value="ChargeKnightInitial"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="ChargeKnightHeight"/>
+    <CEffectEnumArea id="ChargeKnightInitial">
+        <SearchFilters value="-;player,allies,neutral,air,wall,tree,debris,item,structure,ward,dead,Hidden,invulnerable"/>
+        <AreaArray Radius="0.5" RadiusBonus="0.25" Effect="ChargeKnightSet"/>
+    </CEffectEnumArea>
+    <CEffectModifyUnit id="ChargeKnightLower">
+        <Height value="-2.625"/>
+        <HeightTime value="1"/>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="ChargeKnightRaise">
+        <Height value="2.625"/>
+        <HeightTime value="0.75"/>
+    </CEffectModifyUnit>
+    <CEffectSet id="ChargeKnightSet">
+        <EffectArray value="ChargeKnightApplyForce"/>
+        <EffectArray value="ChargeKnightController"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="ChargeKnightStun"/>
     <CEffectDamage id="AUdcDamage1">
         <Amount value="225"/>
     </CEffectDamage>
@@ -540,7 +604,7 @@
         <EffectArray value="AEsd"/>
     </CEffectSet>
     <CEffectDamage id="AwarAoEDamage">
-        <AreaArray index="0" Radius="1.1718" Bonus="100" Fraction="1"/>
+        <AreaArray index="0" Radius="1.5625" Bonus="100" Fraction="1"/>
         <AreaArray index="1" removed="1"/>
     </CEffectDamage>
     <CEffectApplyBehavior id="BCcb"/>
@@ -558,7 +622,7 @@
     <CEffectSet id="Alit"/>
     <CEffectApplyBehavior id="BCbf" parent="War3_ApplyBuff"/>
     <CEffectDamage id="BCbfDPS" parent="War3_MagicSpellDamage">
-        <Amount value="50"/>
+        <Amount value="75"/>
     </CEffectDamage>
     <CEffectModifyUnit id="ACnrHealTick">
         <VitalArray index="Life" Change="10" ChangeFraction="0"/>
@@ -662,10 +726,10 @@
     </CEffectApplyBehavior>
     <!--Chieftain - War Stomp Buff=BPSE-->
     <CEffectEnumArea id="AOws1Search">
-        <AreaArray index="0" Radius="5" Effect="AOws1SearchImpact"/>
+        <AreaArray index="0" Radius="5.8593" Effect="AOws1SearchImpact"/>
     </CEffectEnumArea>
     <CEffectDamage id="AOwsDamage1">
-        <Amount value="50"/>
+        <Amount value="100"/>
     </CEffectDamage>
     <CEffectApplyBehavior id="AUim1HeroDur">
         <Duration value="2"/>
@@ -1144,6 +1208,7 @@
         <Death value="Remove"/>
     </CEffectDamage>
     <CEffectSet id="AsalTriggerNotice"/>
+    <CEffectSet id="Asa2TriggerNotice"/>
     <CEffectApplyBehavior id="Ahr3Resource"/>
     <CEffectSet id="Ahr3TriggerNotice"/>
     <CEffectApplyBehavior id="BIpv" parent="War3_ApplyBuff">
@@ -2030,7 +2095,7 @@
         <Amount value="12"/>
     </CEffectDamage>
     <CEffectDamage id="hmtm1" parent="AW2_SiegeDamage">
-        <Amount value="36"/>
+        <Amount value="24"/>
         <AreaArray Radius="1.9531" Fraction="1"/>
         <SearchFilters value="-;player,allies,air,wall,Missile,item,ward,ethereal,dead,invulnerable"/>
         <Death value="Blast"/>
