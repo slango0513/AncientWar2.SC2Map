@@ -167,6 +167,31 @@
     <CAbilEffectTarget id="ANso">
         <CastOutroTime index="0" value="1"/>
     </CAbilEffectTarget>
+    <!--Unstable Concoction-->
+    <CAbilEffectTarget id="Auco" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:ChaosOrc,AbilityorEffectType:Unit"/>
+        <Effect index="0" value="AucoMissile"/>
+        <TargetFilters index="0" value="-;player,allies,ground,wall,tree,debris,item,structure,ward,ethereal,dead,invulnerable"/>
+        <Range value="6"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSMarker"/>
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
+        </TargetSorts>
+        <AutoCastRange value="6"/>
+        <AutoCastValidatorArray index="1" value="EnemiesNearby4"/>
+    </CAbilEffectTarget>
+    <CAbilTrain id="Purchaseclfm">
+        <InfoArray index="Train1">
+            <Charge>
+                <CountMax value="0"/>
+                <CountStart value="0"/>
+                <CountUse value="0"/>
+                <TimeUse value="0"/>
+            </Charge>
+            <Button Requirements="BuildArmy"/>
+        </InfoArray>
+    </CAbilTrain>
     <CAbilEffectInstant id="SoulBurn" parent="AW2_EffectInstant">
         <EditorCategories value="Race:Demon,AbilityorEffectType:Units"/>
         <Effect index="0" value="SoulBurnSearch"/>
@@ -182,7 +207,7 @@
     <!--Dreadlord - Sleep Buff=BUsl,BUsp,Bust-->
     <CAbilEffectTarget id="AUsl" parent="AW2_EffectTarget">
         <EditorCategories value="Race:Demon,AbilityorEffectType:Units"/>
-        <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
+        <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity,MapBoss"/>
         <Cost index="0">
             <Vital index="Energy" value="20"/>
             <Cooldown Location="Unit" TimeUse="1"/>
@@ -962,6 +987,9 @@
         <InfoArray index="Build11" Unit="ocat">
             <Button DefaultButtonFace="ocat" Requirements="BuildArmyFinal"/>
         </InfoArray>
+        <InfoArray index="Build12" Unit="otbr">
+            <Button DefaultButtonFace="otbr" Requirements="BuildArmy"/>
+        </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
     <CAbilBuild id="DragonBuild" parent="War3_PowerBuild">
@@ -1106,7 +1134,7 @@
             <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
         <PrepTime value="0.3"/>
-        <CastOutroTime value="15"/>
+        <CastOutroTime value="10"/>
         <Effect index="0" value="BOvc"/>
         <FinishTime value="1.07"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
@@ -1508,8 +1536,10 @@
     <CAbilInventory id="Aien" parent="AW2_UnitInventory">
         <InfoArray/>
         <InfoArray/>
+        <InfoArray/>
     </CAbilInventory>
     <CAbilInventory id="Aion" parent="AW2_UnitInventory">
+        <InfoArray/>
         <InfoArray/>
         <InfoArray/>
     </CAbilInventory>
@@ -1598,7 +1628,7 @@
         <Alignment value="Positive"/>
         <Flags index="BestUnit" value="1"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
-        <AutoCastFilters value="Visible;-"/>
+        <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilAugment id="BladeMasterSlamControl" parent="AW2_AttackAugment">
         <Cost>
@@ -1757,6 +1787,9 @@
         <InfoArray index="Build2" Unit="ofl2">
             <Button DefaultButtonFace="ofl2" Requirements="BuildPhalanxFinal"/>
         </InfoArray>
+        <InfoArray index="Build3" Unit="ownr">
+            <Button DefaultButtonFace="ownr" Requirements="BuildArmy"/>
+        </InfoArray>
         <InfoArray index="Build4" Unit="Oshd">
             <Button DefaultButtonFace="Oshd" Requirements="BuildArmyFinal"/>
         </InfoArray>
@@ -1910,7 +1943,7 @@
         <AINotifyEffect value="AUanSearch"/>
         <Effect index="0" value="AUanSearch"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
-        <AutoCastFilters value="Visible;-"/>
+        <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilBuild id="AUbu" parent="War3_PowerBuild">
         <EditorCategories value="Race:Undead,AbilityorEffectType:Units"/>
@@ -2014,6 +2047,9 @@
     </CAbilBehavior>
     <CAbilBehavior id="EfficiencyAura" parent="War3_HeroAura">
         <BehaviorArray value="EfficiencyAuraCaster"/>
+    </CAbilBehavior>
+    <CAbilBehavior id="ObsidianAura" parent="War3_HeroAura">
+        <BehaviorArray value="ObsidianAuraCaster"/>
     </CAbilBehavior>
     <CAbilBehavior id="FelDriveAura" parent="War3_HeroAura">
         <BehaviorArray value="FelDriveAuraCaster"/>
@@ -2274,32 +2310,40 @@
     <CAbilInventory id="Aihn" parent="AW2_UnitInventory">
         <InfoArray/>
         <InfoArray/>
+        <InfoArray/>
     </CAbilInventory>
     <CAbilInventory id="NagaInventory" parent="AW2_UnitInventory">
+        <InfoArray/>
         <InfoArray/>
         <InfoArray/>
     </CAbilInventory>
     <CAbilInventory id="GoblinInventory" parent="AW2_UnitInventory">
         <InfoArray/>
         <InfoArray/>
+        <InfoArray/>
     </CAbilInventory>
     <CAbilInventory id="DemonInventory" parent="AW2_UnitInventory">
+        <InfoArray/>
         <InfoArray/>
         <InfoArray/>
     </CAbilInventory>
     <CAbilInventory id="DraeneiInventory" parent="AW2_UnitInventory">
         <InfoArray/>
         <InfoArray/>
+        <InfoArray/>
     </CAbilInventory>
     <CAbilInventory id="BloodElfInventory" parent="AW2_UnitInventory">
+        <InfoArray/>
         <InfoArray/>
         <InfoArray/>
     </CAbilInventory>
     <CAbilInventory id="ChaosOrcInventory" parent="AW2_UnitInventory">
         <InfoArray/>
         <InfoArray/>
+        <InfoArray/>
     </CAbilInventory>
     <CAbilInventory id="DragonInventory" parent="AW2_UnitInventory">
+        <InfoArray/>
         <InfoArray/>
         <InfoArray/>
     </CAbilInventory>
@@ -2332,6 +2376,7 @@
     <CAbilInventory id="Aiun" parent="AW2_UnitInventory">
         <InfoArray/>
         <InfoArray/>
+        <InfoArray/>
     </CAbilInventory>
     <!--Replenish (Life) Dur=1 HeroDur=1 Buff=Brpl cast=6-->
     <CAbilEffectInstant id="Arpl" parent="AW2_EffectInstant">
@@ -2345,7 +2390,7 @@
         <Alignment value="Positive"/>
         <AutoCastValidatorArray value="DamagedFriendNearBy"/>
         <CastOutroTime value="1"/>
-        <AutoCastFilters value="Visible;-"/>
+        <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <!--Replenish (Mana) Dur=1 HeroDur=1 Buff=Brpm cast=6-->
     <CAbilEffectInstant id="Arpm" parent="AW2_EffectInstant">
@@ -2360,7 +2405,7 @@
         <Alignment value="Positive"/>
         <CastOutroTime value="1"/>
         <AutoCastValidatorArray value="NotFullManaFriendNearBy"/>
-        <AutoCastFilters value="Visible;-"/>
+        <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilMorph id="Asb1" parent="AW2_Morph" unitID="nmys">
         <EditorCategories value="Race:Naga,AbilityorEffectType:Units"/>
@@ -3404,6 +3449,12 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToHant" parent="AW2_Upgrade" toUnit="Hant">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToowyv" parent="AW2_Upgrade" toUnit="owyv">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToEtyr" parent="AW2_Upgrade" toUnit="Etyr">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
 </Catalog>

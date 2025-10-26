@@ -52,6 +52,8 @@
             <VitalMaxArray index="Energy" value="150"/>
         </Modification>
     </CBehaviorBuff>
+    <!--ItemCloakOfFlames Dur=1 HeroDur=1 Buff=BIcf-->
+    <CBehaviorBuff id="AIcf" parent="AW2_Item"/>
     <!--temporary attack speed increase,carry End-->
     <!--continuous Defense Bonus,carry-->
     <!--DefenseBonus (+1)-->
@@ -379,6 +381,11 @@
     <CBehaviorBuff id="Aflk">
         <Requirements value=""/>
     </CBehaviorBuff>
+    <!--Liquid Fire Dur=3 HeroDur=3 Buff=Bliq-->
+    <CBehaviorBuff id="Aliq">
+        <Requirements value=""/>
+        <DamageResponse TargetFilters="-;player,allies,air,wall,tree,debris,item,ward,dead"/>
+    </CBehaviorBuff>
     <!--temporary max mana bonus,carry End-->
     <!--Regen Life-->
     <CBehaviorBuff id="Arel" parent="AW2_Item">
@@ -388,6 +395,10 @@
     </CBehaviorBuff>
     <!--Resistant Skin-->
     <CBehaviorBuff id="Arsk">
+        <Requirements value=""/>
+    </CBehaviorBuff>
+    <!--Venom Spears Dur=25 HeroDur=1 Buff=Bpoi,Bpsd-->
+    <CBehaviorBuff id="Aven">
         <Requirements value=""/>
     </CBehaviorBuff>
     <CBehaviorBuff id="BHadI">
@@ -429,9 +440,32 @@
             <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
         </DurationOverride>
     </CBehaviorBuff>
+    <!--LiquidFire-->
+    <CBehaviorBuff id="Bliq">
+        <Modification AttackSpeedMultiplier="0.75"/>
+    </CBehaviorBuff>
+    <!--PoisonAttack-->
+    <CBehaviorBuff id="Bpoi">
+        <Duration value="6"/>
+        <DurationOverride index="0" Duration="3"/>
+    </CBehaviorBuff>
+    <!--PoisonAttackStackDoT-->
+    <CBehaviorBuff id="Bpsd">
+        <Duration value="6"/>
+        <DurationOverride index="0" Duration="3"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="DreamIllusion" parent="War3_Buff">
         <BehaviorFlags index="EnabledWhileDead" value="1"/>
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnsleep.dds"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Moonlight" parent="War3_Buff">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnmoonstone.dds"/>
+        <Modification RangedWeaponRange="3" WeaponScanBonus="3">
+            <VitalRegenArray index="Life" value="15"/>
+            <VitalRegenArray index="Energy" value="1.5"/>
+        </Modification>
+        <DisableValidatorArray value="Night"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="SeaElemental" parent="War3_Buff">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnSeaElemental.dds"/>
@@ -501,7 +535,7 @@
     </CBehaviorBuff>
     <!--VoodooCaster-->
     <CBehaviorBuff id="BOvc">
-        <Duration value="15"/>
+        <Duration value="10"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="BUav1">
         <MaxStackCount value="2"/>
@@ -544,10 +578,10 @@
     </CBehaviorBuff>
     <!--PhoenixFire-->
     <CBehaviorBuff id="Bpxf">
-        <DurationOverride index="0" Duration="10">
+        <DurationOverride index="0" Duration="15">
             <ValidatorArray index="0" value="Hero"/>
         </DurationOverride>
-        <Duration value="20"/>
+        <Duration value="30"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Bwfb" parent="War3_Buff">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnfirebolt.dds"/>
@@ -583,6 +617,9 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="EfficiencyAuraCaster" parent="War3_AuraCaster">
         <Requirements value="EfficiencyAuraCaster"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ObsidianAuraCaster" parent="War3_AuraCaster">
+        <Requirements value="ObsidianAuraCaster"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="FelDriveAuraCaster" parent="War3_AuraCaster">
         <Requirements value="FelDriveAuraCaster"/>
@@ -976,6 +1013,15 @@
         <MaxStackCountPerCaster value="1"/>
         <Modification MoveSpeedMinimum="2" MoveSpeedMultiplier="1.25"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="ObsidianAura" parent="War3_AuraBuff">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnicecrownobelisk.dds"/>
+        <EditorCategories value="Race:Undead,AbilityorEffectType:Units"/>
+        <MaxStackCount value="2"/>
+        <MaxStackCountPerCaster value="1"/>
+        <Modification>
+            <DamageDealtFraction index="Spell" value="0.5"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="FelDriveAura" parent="War3_AuraBuff">
         <EditorCategories value="Race:Demon,AbilityorEffectType:Units"/>
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnengineeringupgrade.dds"/>
@@ -1003,7 +1049,7 @@
         <TechAliasArray value="_Debuff"/>
         <MaxStackCount value="2"/>
         <MaxStackCountPerCaster value="1"/>
-        <Modification TimeScale="0.75"/>
+        <Modification TimeScale="0.875"/>
     </CBehaviorBuff>
     <!--AuraSlow-->
     <CBehaviorBuff id="Basl">
@@ -1070,6 +1116,16 @@
     <CBehaviorBuff id="Bcyc">
         <Duration value="10"/>
         <DurationOverride index="0" Duration="5">
+            <ValidatorArray index="0" value="Hero"/>
+        </DurationOverride>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Cyclone" parent="War3_Buff">
+        <Alignment value="Negative"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnCyclone.dds"/>
+        <TechAliasArray value="_Debuff"/>
+        <Duration value="1"/>
+        <DurationOverride index="0" Duration="1">
             <ValidatorArray index="0" value="Hero"/>
         </DurationOverride>
     </CBehaviorBuff>

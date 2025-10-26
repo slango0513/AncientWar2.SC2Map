@@ -15,6 +15,28 @@
         <On Terms="ActorCreation" Send="SetRotationFrom _Selectable"/>
     </CActorModel>
     <CActorSimple id="ANrc" parent="War3_SimpleCastAnim"/>
+    <CActorModel id="CycloneEffect" parent="EffectArt">
+        <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="Behavior.Cyclone.On" Send="Create"/>
+        <On Terms="Behavior.Cyclone.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="Attach ::Main {Attacher 0}"/>
+        <On Terms="Behavior.Cyclone.Off" Target="::Main" Send="HostSiteOpsSet ::Host"/>
+        <On Terms="Behavior.Cyclone.Off" Target="::Main" Send="RefClear ::Host"/>
+        <On Terms="ActorCreation" Send="Create EffectSoundLooped CycloneLoop"/>
+        <On Terms="Behavior.Cyclone.Off" Send="Destroy"/>
+    </CActorModel>
+    <!--tyrande-->
+    <CActorUnit id="Etyr" parent="War3_Army" unitSound="Tyrande" unitName="Etyr" defType="NONE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnPriestessOfTheMoon.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnPriestessOfTheMoon.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnPriestessOfTheMoon.dds"/>
+        <BarWidth value="112"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.5"/>
+    </CActorUnit>
     <!--antonidus-->
     <CActorUnit id="Hant" parent="War3_Army" unitSound="HeroArchMage" unitName="Hant" defType="NONE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHeroArchMage.dds"/>
@@ -520,6 +542,58 @@
     </CActorUnit>
     <CActorAction id="nzep2" parent="War3_AttackMissileSwapable"/>
     <CActorMissile id="nzep2LM" parent="War3_MissileSwapable" unitName="nzep2LM"/>
+    <!--trollbatrider-->
+    <CActorUnit id="otbr" parent="War3_Army" unitSound="TrollBatrider" unitName="otbr" defType="SMALL">
+        <DeathArray index="Normal" AnimProps="Death"/>
+        <DeathArray index="Impact" AnimProps="Death,Spell"/>
+        <Macros index="2" removed="1"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnTrollBatRider.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnTrollBatRider.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnTrollBatRider.dds"/>
+        <BarWidth value="87"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <BarOffset value="20"/>
+        <WalkAnimMoveSpeed value="2.5"/>
+    </CActorUnit>
+    <!--riderlesswyvern-->
+    <CActorUnit id="ownr" parent="War3_Army" unitSound="HippoGryph" unitName="ownr" defType="SMALL">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnWyvern.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnWyvern.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnWyvern.dds"/>
+        <BarWidth value="87"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.7343"/>
+    </CActorUnit>
+    <!--windrider-->
+    <CActorUnit id="owyv" parent="War3_Army" unitSound="WyvernRider" unitName="owyv" defType="SMALL">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnWyvernRider.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnWyvernRider.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnWyvernRider.dds"/>
+        <BarWidth value="87"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <BarOffset value="20"/>
+        <WalkAnimMoveSpeed value="2.5"/>
+    </CActorUnit>
+    <CActorUnit id="owy2" parent="War3_Army" unitSound="WyvernRider" unitName="owy2" defType="SMALL">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnWyvernRider.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnWyvernRider.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnWyvernRider.dds"/>
+        <BarWidth value="87"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <BarOffset value="20"/>
+        <WalkAnimMoveSpeed value="2.5"/>
+    </CActorUnit>
+    <CActorAction id="owy21" parent="War3_AttackMissileSwapable"/>
+    <CActorMissile id="owy21LM" parent="War3_MissileSwapable" unitName="owy21LM"/>
     <!--airbarge-->
     <CActorUnit id="uarb" parent="War3_Army" unitName="uarb" defType="SMALL">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnUndeadAirBarge.dds"/>
@@ -1838,7 +1912,7 @@
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnShadowHunter.dds"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.5"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
     </CActorUnit>
     <!--taurenchieftain-->
     <CActorUnit id="Otch" parent="War3_Army" unitSound="HeroTaurenChieftain" unitName="Otch" defType="LARGE">
@@ -3773,6 +3847,15 @@
         <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
         <On Terms="Behavior.EfficiencyAuraCaster.On" Send="Create"/>
         <On Terms="Behavior.EfficiencyAuraCaster.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorModel id="ObsidianAura" parent="War3_Buff">
+        <HostSiteOps Ops="$origin"/>
+    </CActorModel>
+    <CActorModel id="ObsidianAuraTarget" parent="TargetArtX">
+        <HostSiteOps Ops="SOpAttachHarnessSoft SOpShadow" HoldRotation="1"/>
+        <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="Behavior.ObsidianAuraCaster.On" Send="Create"/>
+        <On Terms="Behavior.ObsidianAuraCaster.Off" Send="AnimBracketStop BSD"/>
     </CActorModel>
     <CActorModel id="FrostAura" parent="War3_Buff">
         <HostSiteOps Ops="$origin"/>
