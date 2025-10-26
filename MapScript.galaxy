@@ -3092,7 +3092,6 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     int lv_player;
 
     // Variable Initialization
-    lv_debug = true;
 
     // Actions
     if (!runActions) {
@@ -3119,7 +3118,6 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
             libGAwX_gf_SetPlayerUIRace(lv_player, "Undead");
         }
 
-        libGAwX_gf_SetPlayerUIRace(lv_player, "Naga");
     }
     libGAwX_gf_SetWar3TimeOfDay("13:00:00");
     libGAwX_gf_PauseUnpauseTimeOfDayWar3(true);
@@ -3553,7 +3551,7 @@ bool gt_PlayerInizialization_Func (bool testConds, bool runActions) {
     autoD5DFB1DB_ai = 1;
     lv_player = 1;
     for ( ; ( (autoD5DFB1DB_ai >= 0 && lv_player <= autoD5DFB1DB_ae) || (autoD5DFB1DB_ai <= 0 && lv_player >= autoD5DFB1DB_ae) ) ; lv_player += autoD5DFB1DB_ai ) {
-        libGAwX_gf_SetPlayerUIRace(lv_player, libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue("[bnet:War3 Extra (GA)/0.0/60618,file:Mods\\WarCraft\\WarCraftDataAbil.SC2Mod]1", lv_player)));
+        libGAwX_gf_SetPlayerUIRace(lv_player, libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue("3", lv_player)));
         PlayerSetState(lv_player, c_playerStateFoodIgnored, true);
         PlayerSetState(lv_player, c_playerStateShowWorldTip, true);
         PlayerOptionOverride(lv_player, "simplecommandcard", "0");
