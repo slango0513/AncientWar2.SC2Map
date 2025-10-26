@@ -15,6 +15,19 @@
         <On Terms="ActorCreation" Send="SetRotationFrom _Selectable"/>
     </CActorModel>
     <CActorSimple id="ANrc" parent="War3_SimpleCastAnim"/>
+    <!--antonidus-->
+    <CActorUnit id="Hant" parent="War3_Army" unitSound="HeroArchMage" unitName="Hant" defType="NONE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHeroArchMage.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnHeroArchMage.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroArchMage.dds"/>
+        <SoundArray index="Movement" value="HumanHeroArchMageMovement"/>
+        <BarWidth value="75"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.5"/>
+    </CActorUnit>
     <!--kiljaeden-->
     <CActorUnit id="Nklj" parent="War3_Army" unitName="Nklj" defType="NONE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnKiljaedin.dds"/>
@@ -260,6 +273,18 @@
     </CActorUnit>
     <CActorAction id="Nklj1" parent="War3_AttackMissileSwapable"/>
     <CActorMissile id="Nklj1LM" parent="War3_MissileSwapable" unitName="Nklj1LM"/>
+    <!--hippogryph-->
+    <CActorUnit id="ehip" parent="War3_Army" unitSound="HippoGryph" unitName="ehip" defType="SMALL">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHippogriff.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnHippogriff.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHippogriff.dds"/>
+        <BarWidth value="75"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="3.125"/>
+    </CActorUnit>
     <!--riddenhippogryph-->
     <CActorUnit id="ehpr" parent="War3_Army" unitSound="RiddenHippoGryph" unitName="ehpr" defType="SMALL">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHippogriffRider.dds"/>
@@ -268,10 +293,23 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHippogriffRider.dds"/>
         <BarWidth value="75"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.7343"/>
     </CActorUnit>
+    <CActorUnit id="ehp2" parent="War3_Army" unitSound="RiddenHippoGryph" unitName="ehp2" defType="SMALL">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHippogriffRider.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnHippogriffRider.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHippogriffRider.dds"/>
+        <BarWidth value="75"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.7343"/>
+    </CActorUnit>
+    <CActorAction id="ehp21" parent="War3_AttackMissileSwapable"/>
+    <CActorMissile id="ehp21LM" parent="War3_MissileSwapable" unitName="ehp21LM"/>
     <!--mountaingiant-->
     <CActorUnit id="emtg" parent="War3_Army" unitSound="MountainGiant" unitName="emtg" defType="MEDIUM">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnMountainGiant.dds"/>
@@ -418,6 +456,30 @@
         <BarOffset value="90"/>
         <WalkAnimMoveSpeed value="1.4062"/>
     </CActorUnit>
+    <!--CActorUnit id="hatw">-->
+    <!--        <DeathArray index="Normal" AnimProps="Death" ModelLink="hwtw"/>-->
+    <!--        <On index="66" Send="AnimPlay Birth Work"/>-->
+    <!--    </CActorUnit>-->
+    <!--    <CActorUnit id="hctw">-->
+    <!--        <DeathArray index="Normal" AnimProps="Death" ModelLink="hwtw"/>-->
+    <!--        <On index="66" Send="AnimPlay Birth Work"/>-->
+    <!--    </CActorUnit>-->
+    <!--    <CActorUnit id="hgtw">-->
+    <!--        <DeathArray index="Normal" AnimProps="Death" ModelLink="hwtw"/>-->
+    <!--        <On index="66" Send="AnimPlay Birth Work"/>-->
+    <!--    </CActorUnit-->
+    <!--lavaspawn-->
+    <CActorUnit id="nlv1" parent="War3_Army" unitSound="LavaSpawn" unitName="nlv1" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnLavaSpawn.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnLavaSpawn.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnLavaSpawn.dds"/>
+        <BarWidth value="80"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.3437"/>
+    </CActorUnit>
     <!--netherdragon-->
     <CActorUnit id="nndr" parent="War3_Army" unitSound="NetherDragon" unitName="nndr" defType="SMALL">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnNetherDragon.dds"/>
@@ -426,9 +488,22 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnNetherDragon.dds"/>
         <BarWidth value="100"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.7343"/>
+    </CActorUnit>
+    <!--darkwizard-->
+    <CActorUnit id="nwzd" parent="War3_Army" unitSound="HeroArchMage" unitName="nwzd" defType="NONE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnBanditMage.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnBanditMage.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnBanditMage.dds"/>
+        <BarWidth value="75"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_HumanLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
     <!--goblinzeppelin-->
     <CActorUnit id="nzep" parent="War3_Army" unitSound="GoblinZeppelin" unitName="nzep" defType="SMALL">
@@ -453,7 +528,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnUndeadAirBarge.dds"/>
         <BarWidth value="100"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar80"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
@@ -698,7 +773,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnDragonHawk.dds"/>
         <BarWidth value="75"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
         <BarOffset value="20"/>
         <WalkAnimMoveSpeed value="2.7343"/>
     </CActorUnit>
@@ -1413,7 +1488,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnDragonHawk.dds"/>
         <BarWidth value="62"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
         <BarOffset value="20"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>

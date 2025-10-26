@@ -59,6 +59,7 @@ ANgl/Ubertip=用<d ref="Abil,ANgl,Cost[0].Resource[Terrazine]"/>黄金交换<d r
 ANht/Ubertip=深渊领主发出恐怖的嚎叫，使周围敌人在恐惧中战栗，减少他们的伤害<d ref="-Behavior,BNht1,Modification.DamageDealtFraction[Melee] * 100"/>%，持续<d ref="Behavior,BNht1,Duration"/>秒。
 ANlg/Tip=用木材交换黄金
 ANlg/Ubertip=用<d ref="Abil,ANlg,Cost[0].Resource[Custom]"/>木材交换<d ref="-Abil,ANlg,Cost[0].Resource[Terrazine]"/>黄金。
+ANlm/Ubertip=召唤出一个熔岩爪牙。<n/><n/>具有<d ref="Unit,nlv1,LifeMax"/>点生命值，<d ref="Effect,nlv11,Amount"/>的攻击力。<n/>持续<d ref="Behavior,BNlm,Duration"/> 秒。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ANms/Ubertip=激活一个护盾，护盾会消耗法力值来吸收伤害，每一点法力值吸收<d ref="Behavior,BNms1,Modification.EnergyDamageRatioBonus"/>点伤害。
 ANpi/Ubertip=对周围的敌人每秒造成<d ref="Effect,BEimDPS1,Amount"/>点伤害。
 ANr4/Name=机器人地精
@@ -335,6 +336,7 @@ DOCSTR_0001=BracketOpen
 DOCSTR_0002=BracketOpen
 DOCSTR_0003=星灵单位
 DOCSTR_0004=星灵单位
+DOCSTR_0005=[新手]混战
 Defend/Name=防御
 Defend/Tip=防御
 Defend/Ubertip=激活后只会受到10%的穿刺攻击伤害。如果防御状态被激活，移动速度会变成<d ref="Behavior,Defend,Modification.MoveSpeedMultiplier * 100"/>%的常规速度。
@@ -356,6 +358,8 @@ DocInfo/PatchNote005=被恶魔之血所污染的混乱兽人从兽人独立出�
 DocInfo/PatchNote006=加入新模式混战(双种族)。
 DocInfo/PatchNote007=加入新物品。
 DocInfo/PatchNote008=完成种族恶魔。
+DocInfo/PatchNote009=取消第三回合的奖励回合。
+DocInfo/PatchNote010=部分空中单位经过重新设计，以此加快游戏速度。
 DraeneiFlag/Name=德莱尼旗帜
 DraeneiFlag/Tip=放置德莱尼旗帜
 DraeneiFlag/Ubertip=放置德莱尼旗帜。
@@ -455,6 +459,8 @@ Gyrocopter/Tip=训练矮人直升机
 Gyrocopter/Ubertip=快速移动的飞行机器，能有效地抵抗敌人的空中单位。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 Hamg/Tip=升级到大法师
 Hamg/Ubertip=远程攻击骑兵，具有辉煌光环技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+Hant/Tip=升级到安东尼达斯
+Hant/Ubertip=高速远程攻击骑兵，能召唤熔岩爪牙。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 Hblm/Tip=训练血法师
 Hblm/Ubertip=远程攻击型魔法施放单位，精于远程袭击。具有烈焰风暴技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 Hgam/Tip=升级到大法师之魂
@@ -767,8 +773,10 @@ edcm/Ubertip=近战型的魔法施放单位，能施放咆哮技能，从而增�
 edoc/Ubertip=近战型的魔法施放单位，能施放回春术。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 edot/Ubertip=基本的远程攻击单位。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 edry/Ubertip=远程攻击单位，具有多重射击技能。她的毒性攻击能减慢敌人的速度并慢慢地消耗敌人的生命值。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
-ehpr/Tip=训练角鹰兽骑士
-ehpr/Ubertip=弓箭手骑乘在了角鹰兽上面就成为了角鹰兽骑士。拥有艾露恩的赐福技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+ehip/Ubertip=高速近战型单位。拥有艾露恩的赐福技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+ehp2/Name=角鹰兽骑士
+ehpr/Tip=升级到角鹰兽骑士
+ehpr/Ubertip=高速远程攻击骑兵。拥有艾露恩的赐福技能，还具有诱捕技能，能将一个目标空中单位固定在地面上。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 emtg/Ubertip=大型的近战单位，善于吸收敌人的进攻。具有嘲讽、硬化皮肤和抗性皮肤技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 enec/Tip=升级到暗夜精灵信使
 enec/Ubertip=基本的地面单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
@@ -793,7 +801,7 @@ hatw/Ubertip=防守型建筑物。<n/><n/><c val="ffcc00">能攻击地面和空�
 hbew/Ubertip=每个货车里都藏着一个秘密。
 hctw/Ubertip=防守型建筑物，对付成群结队的敌人尤为有效。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 hdhw/Tip=升级到龙鹰骑士
-hdhw/Ubertip=动作敏捷的飞行单位，由一位精灵战士驾驶。拥有空中锁镣技能，可以暂时禁锢和残废敌空中单位。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+hdhw/Ubertip=高速远程攻击骑兵。拥有空中锁镣技能，可以暂时禁锢和残废敌空中单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 hfoo/Name=步兵
 hfoo/Ubertip=防御型单位。拥有防御技能，有效地抵抗敌人的穿刺型攻击。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 hgtw/Ubertip=防守型建筑物。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
@@ -953,7 +961,7 @@ nmsc/Tip=训练鱼人暗影法师
 nmsc/Ubertip=基本的远程攻击单位。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nmyr/Ubertip=极其强大的近战单位，拥有潜水技能，允许该单位藏在水中。同时拥有抗性皮肤技能，可以减少负面魔法的延续时间，以及诱捕技能，能将一个目标空中单位固定在地面上。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nndr/Tip=训练地狱龙
-nndr/Ubertip=飞行单位，可以残废敌人。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+nndr/Ubertip=高速远程攻击单位，能有效地抵抗敌人的空中单位。可以残废敌人。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nnmg/Ubertip=基本的两栖单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nnrg/Tip=升级到纳迦皇家卫兵
 nnrg/Ubertip=极其强大的近战单位，拥有潜水技能，允许该单位藏在水中。同时拥有抗性皮肤技能，可以减少负面魔法的延续时间，以及冲击波技能，能对一直线上的敌人造成伤害。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
@@ -1009,7 +1017,9 @@ nw2w/Tip=训练兽人术士
 nwat/Tip=训练哨兵
 nwat/Ubertip=基本的地面单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nwgs/Ubertip=轻型飞行单位。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
-nws1/Ubertip=动作敏捷的飞行单位，由一位精灵战士驾驶。拥有乌云技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+nws1/Ubertip=高速远程攻击骑兵。拥有乌云技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+nwzd/Tip=训练黑暗巫师
+nwzd/Ubertip=高速远程攻击骑兵，能召唤熔岩爪牙。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nzep/Tip=建造地精飞艇
 nzep/Ubertip=缓慢移动的飞艇，能有效地抵抗敌人的空中单位，具有多重射击技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ocat/Ubertip=远程攻城武器，具有燃烧之油技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>

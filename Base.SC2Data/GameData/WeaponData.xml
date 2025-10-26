@@ -102,6 +102,15 @@
         <DamagePoint value="0.55"/>
         <Backswing value="0.85"/>
     </CWeaponLegacy>
+    <!--antonidus-->
+    <CWeaponLegacy id="Hant1" parent="missile" atkType="MAGIC">
+        <Effect value="Hant1LM"/>
+        <TargetFilters value="Visible;wall,tree,Missile,dead,invulnerable,immunity"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.55"/>
+        <Backswing value="0.85"/>
+    </CWeaponLegacy>
     <!--HeroBloodMage-->
     <CWeaponLegacy id="Hblm1" parent="missile" atkType="MAGIC">
         <Effect value="Hblm1LM"/>
@@ -613,13 +622,31 @@
         <DamagePoint value="0.3"/>
         <Backswing value="0.7"/>
     </CWeaponLegacy>
+    <!--Hippogryph-->
+    <CWeaponLegacy id="ehip1" parent="normal" atkType="NORMAL">
+        <EditorCategories value="Race:NightElf"/>
+        <MinScanRange value="3.9062"/>
+        <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
+        <Range value="1"/>
+        <RangeSlop value="2.3437"/>
+        <Period value="3"/>
+        <DamagePoint value="0.6"/>
+        <Backswing value="0.37"/>
+    </CWeaponLegacy>
     <!--Hippogryph Rider-->
     <CWeaponLegacy id="ehpr1" parent="missile" atkType="PIERCE">
         <Effect value="ehpr1LM"/>
         <EditorCategories value="Race:NightElf"/>
-        <MinScanRange value="7"/>
-        <TargetFilters value="Visible;wall,tree,Missile,ethereal,dead,invulnerable"/>
-        <Range value="7"/>
+        <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="3"/>
+        <DamagePoint value="0.633"/>
+        <Backswing value="0.337"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ehp21" parent="missile" atkType="PIERCE">
+        <Effect value="ehp21LM"/>
+        <EditorCategories value="Race:NightElf"/>
+        <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
         <RangeSlop value="1.9531"/>
         <Period value="3"/>
         <DamagePoint value="0.633"/>
@@ -687,9 +714,7 @@
     <CWeaponLegacy id="hdhw1" parent="missile" atkType="MAGIC">
         <Effect value="hdhw1LM"/>
         <EditorCategories value="Race:BloodElf"/>
-        <MinScanRange value="7"/>
-        <TargetFilters value="Visible;wall,tree,Missile,dead,invulnerable,immunity"/>
-        <Range value="7"/>
+        <TargetFilters value="Visible;air,wall,tree,Missile,dead,invulnerable,immunity"/>
         <RangeSlop value="1.9531"/>
         <Period value="3"/>
         <DamagePoint value="0.43"/>
@@ -1253,24 +1278,40 @@
         <DamagePoint value="0.5"/>
         <Backswing value="0.8"/>
     </CWeaponLegacy>
+    <!--LavaSpawn-->
+    <CWeaponLegacy id="nlv11" parent="missile" atkType="MAGIC">
+        <Effect value="nlv11LM"/>
+        <MinScanRange value="3.9062"/>
+        <TargetFilters value="Visible;wall,tree,Missile,dead,invulnerable,immunity"/>
+        <Range value="3"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="3"/>
+        <DamagePoint value="0.4"/>
+        <Backswing value="0.77"/>
+    </CWeaponLegacy>
     <!--nether dragon-->
     <CWeaponLegacy id="nndr1" parent="missile" atkType="CHAOS">
         <Effect value="nndr1LM"/>
-        <MinScanRange value="7"/>
         <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
-        <Range value="7"/>
         <RangeSlop value="1.9531"/>
         <Period value="3"/>
         <DamagePoint value="0.4"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="nndr2" parent="missile" atkType="CHAOS">
         <Effect value="nndr2LM"/>
-        <MinScanRange value="7"/>
         <TargetFilters value="Visible;ground,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,invulnerable"/>
-        <Range value="7"/>
         <RangeSlop value="1.9531"/>
         <Period value="3"/>
         <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <!--dark wizard-->
+    <CWeaponLegacy id="nwzd1" parent="missile" atkType="MAGIC">
+        <Effect value="nwzd1LM"/>
+        <TargetFilters value="Visible;wall,tree,Missile,dead,invulnerable,immunity"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.55"/>
+        <Backswing value="0.85"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="nzep1" parent="missile" atkType="SIEGE">
         <Effect value="nzep1LM"/>
@@ -2323,9 +2364,7 @@
     <!--dragon hawk-->
     <CWeaponLegacy id="nws11" parent="missile" atkType="MAGIC">
         <Effect value="nws11LM"/>
-        <MinScanRange value="7"/>
-        <TargetFilters value="Visible;wall,tree,Missile,dead,invulnerable,immunity"/>
-        <Range value="7"/>
+        <TargetFilters value="Visible;air,wall,tree,Missile,dead,invulnerable,immunity"/>
         <RangeSlop value="1.9531"/>
         <Period value="3"/>
         <DamagePoint value="0.43"/>

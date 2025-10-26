@@ -91,7 +91,7 @@
         <EditorCategories value="Race:Demon,AbilityorEffectType:Unit"/>
         <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <Cost index="0">
-            <Vital index="Energy" value="30"/>
+            <Vital index="Energy" value="60"/>
             <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <Effect index="0" value="Bcri"/>
@@ -150,6 +150,19 @@
         <AutoCastRange value="6"/>
         <AutoCastValidatorArray value="noMarkers"/>
     </CAbilEffectTarget>
+    <!--Firelord - Summon Lava Spawn Buff=BNlm-->
+    <CAbilEffectInstant id="ANlm" parent="AW2_EffectInstant">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
+        <Cost index="0">
+            <Vital index="Energy" value="60"/>
+            <Cooldown Location="Unit" TimeUse="30"/>
+        </Cost>
+        <PrepTime value="0.67"/>
+        <CastOutroTime value="0.4"/>
+        <Effect index="0" value="nlv1"/>
+        <AutoCastValidatorArray index="0" value="EnemiesNearby8"/>
+        <AutoCastFilters value="Self,Visible;-"/>
+    </CAbilEffectInstant>
     <!--Firelord - Soul Burn Buff=BNso-->
     <CAbilEffectTarget id="ANso">
         <CastOutroTime index="0" value="1"/>
@@ -640,8 +653,8 @@
         <InfoArray index="Build2" Unit="nfl2">
             <Button DefaultButtonFace="nfl2" Requirements="BuildPhalanxFinal"/>
         </InfoArray>
-        <InfoArray index="Build3" Unit="ehpr">
-            <Button DefaultButtonFace="ehpr" Requirements="BuildArmy"/>
+        <InfoArray index="Build3" Unit="ehip">
+            <Button DefaultButtonFace="ehip" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build4" Unit="earc">
             <Button DefaultButtonFace="earc" Requirements="BuildArmy"/>
@@ -908,6 +921,9 @@
         </InfoArray>
         <InfoArray index="Build10" Unit="Hblm">
             <Button DefaultButtonFace="Hblm" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build11" Unit="nwzd">
+            <Button DefaultButtonFace="nwzd" Requirements="BuildArmy"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
@@ -1612,7 +1628,7 @@
         <EditorCategories value="Race:Creeps,AbilityorEffectType:Units"/>
         <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,hero"/>
         <Cost index="0">
-            <Vital index="Energy" value="180"/>
+            <Vital index="Energy" value="90"/>
             <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <Range value="6"/>
@@ -3381,6 +3397,12 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmyFinal"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToUvar" parent="AW2_Upgrade" toUnit="Uvar">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToehpr" parent="AW2_Upgrade" toUnit="ehpr">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToHant" parent="AW2_Upgrade" toUnit="Hant">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
 </Catalog>
