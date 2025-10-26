@@ -37,6 +37,8 @@ const fixed gv_callTideDuration = 30.0;
 const fixed gv_minimumPeriod = 0.0625;
 const int gv_customValuePhalanx = 1;
 const string gv_workerBuildAbilityDataUserType = "WorkerBuildAbilityData";
+const string gv_raceAttributeMapping = "RaceAttributeMapping";
+const string gv_raceAttributeMappingAW2 = "AW2_RaceAttributeMapping";
 const string gv_raceUnitTypeUserType = "RaceUnitTypeMapping";
 const string gv_unitTypeUserType = "ArmyTypeData";
 const string gv_phalanxUserType = "PhalanxData";
@@ -62,6 +64,7 @@ const int gv_venueGroupMaximumCount = (gv_teamMaximumCount/2);
 bool gv_isBonusRound;
 text[4] gv_objectiveTextSeparator;
 int[gv_roundMaximumCount + 1] gv_objective;
+string[gv_playerCount + 1] gv_secondRace;
 text gv_tip1;
 text gv_tip2;
 text gv_tip3;
@@ -210,6 +213,8 @@ void gf_PlayerAtFinalVenueReplace (int lp_round);
 void gf_PlayerAtFinalVenueSet ();
 void gf_PlayerCountTest ();
 void gf_GameOverTestNotPassed ();
+string gf_GenerateRaceFromRaceAttributeAW2 (string lp_att);
+string gf_GenerateSecondRaceFromRaceAttribute (string lp_att, int lp_player);
 void gf_AddTip ();
 void gf_ChangeTOD ();
 void gf_RestoreTOD ();
@@ -223,6 +228,7 @@ abilcmd gf_RaceGetBuildPhalanxCommand (string lp_race);
 string gf_RaceGetPhalanxType (string lp_race);
 string gf_RaceGetPreviewerPhalanxType (string lp_race);
 string gf_RaceGetPreviewerType (string lp_race);
+string gf_RaceGetWorkerType (string lp_race);
 string gf_WorkerTypeGetAbility (string lp_unitType);
 int gf_UnitTypeGetPhalanxCapacity (string lp_unitType);
 fixed gf_PointGetVenueFacing (point lp_point);
@@ -1005,6 +1011,45 @@ void gf_GameOverTestNotPassed () {
     }
 }
 
+string gf_GenerateRaceFromRaceAttributeAW2 (string lp_att) {
+    // Variable Declarations
+    string lv_ut;
+    string lv_race;
+    int lv_i;
+    int lv_c;
+
+    // Variable Initialization
+    lv_ut = gv_raceAttributeMappingAW2;
+    lv_race = UserDataGetGameLink(lv_ut, ("lp_att"), "Race", 1);
+    lv_c = UserDataInstanceCount(lv_ut);
+
+    // Implementation
+    if ((lv_race == null)) {
+        lv_race = UserDataGetGameLink(lv_ut, UserDataInstance(lv_ut, RandomInt(1, lv_c)), "Race", 1);
+    }
+
+    return lv_race;
+}
+
+string gf_GenerateSecondRaceFromRaceAttribute (string lp_att, int lp_player) {
+    // Variable Declarations
+    string lv_ut;
+    string lv_race;
+    int lv_i;
+    int lv_c;
+
+    // Variable Initialization
+    lv_ut = gv_raceAttributeMapping;
+    lv_race = UserDataGetGameLink(lv_ut, ("lp_att"), "Race", 1);
+    lv_c = UserDataInstanceCount(lv_ut);
+
+    // Implementation
+    while (((lv_race == null) || (lv_race == PlayerRace(lp_player)))) {
+        lv_race = UserDataGetGameLink(lv_ut, UserDataInstance(lv_ut, RandomInt(1, lv_c)), "Race", 1);
+    }
+    return lv_race;
+}
+
 void gf_AddTip () {
     // Implementation
     HelpPanelAddTip(gv_uIPlayergroup, libNtve_gf_FormatTipTitle(StringExternal("Param/Value/4C23E814"), libNtve_ge_TipType_NormalTip), gv_tip1, StringExternal("Param/Value/CB456843"), "Assets\\Textures\\BTN\\Renee_war3_btnmoonkey.dds");
@@ -1223,6 +1268,17 @@ string gf_RaceGetPreviewerType (string lp_race) {
 
     // Variable Initialization
     lv_unitType = UserDataGetUnit(gv_raceUnitTypeUserType, ((lp_race)), "Previewer", 1);
+
+    // Implementation
+    return lv_unitType;
+}
+
+string gf_RaceGetWorkerType (string lp_race) {
+    // Variable Declarations
+    string lv_unitType;
+
+    // Variable Initialization
+    lv_unitType = UserDataGetUnit(gv_raceUnitTypeUserType, ((lp_race)), "Worker", 1);
 
     // Implementation
     return lv_unitType;
@@ -3371,10 +3427,10 @@ void gf_DebugEnable (bool lp_option) {
 // Trigger: MapInizialization
 //--------------------------------------------------------------------------------------------------
 bool gt_MapInizialization_Func (bool testConds, bool runActions) {
-    playergroup autoE8E91B19_g;
-    int autoE8E91B19_p;
-    playergroup autoB199C2B0_g;
-    int autoB199C2B0_p;
+    int autoCF83B040_ae;
+    int autoCF83B040_ai;
+    int auto1222D8BF_ae;
+    int auto1222D8BF_ai;
 
     // Variable Declarations
     bool lv_debug;
@@ -3393,10 +3449,10 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     TriggerExecute(gt_PreviewerPointInizialization, true, false);
     TriggerExecute(gt_RoundInitialization, true, false);
     gf_ModInizialization(lv_debug);
-    autoE8E91B19_g = PlayerGroupActive(); 
-    autoE8E91B19_p = 1;
-    for ( ; autoE8E91B19_p <= PlayerGroupCount(autoE8E91B19_g) ; autoE8E91B19_p += BoolToInt(lv_player == PlayerGroupPlayer(autoE8E91B19_g, autoE8E91B19_p)) ) {
-        lv_player = PlayerGroupPlayer(autoE8E91B19_g, autoE8E91B19_p);
+    autoCF83B040_ae = gv_playerCount;
+    autoCF83B040_ai = 1;
+    lv_player = 1;
+    for ( ; ( (autoCF83B040_ai >= 0 && lv_player <= autoCF83B040_ae) || (autoCF83B040_ai <= 0 && lv_player >= autoCF83B040_ae) ) ; lv_player += autoCF83B040_ai ) {
         VisRevealArea(lv_player, RegionFromId(70), 0.0625, false);
         VisRevealArea(lv_player, RegionFromId(71), 0.0625, false);
     }
@@ -3404,11 +3460,15 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     libGAwX_gf_PauseUnpauseTimeOfDayWar3(true);
     WaterSetState("AW2_Default|Alternate Setting", 0.0, c_wtcLinear);
     MeleeInitUnits();
-    autoB199C2B0_g = PlayerGroupActive(); 
-    autoB199C2B0_p = 1;
-    for ( ; autoB199C2B0_p <= PlayerGroupCount(autoB199C2B0_g) ; autoB199C2B0_p += BoolToInt(lv_player == PlayerGroupPlayer(autoB199C2B0_g, autoB199C2B0_p)) ) {
-        lv_player = PlayerGroupPlayer(autoB199C2B0_g, autoB199C2B0_p);
+    auto1222D8BF_ae = gv_playerCount;
+    auto1222D8BF_ai = 1;
+    lv_player = 1;
+    for ( ; ( (auto1222D8BF_ai >= 0 && lv_player <= auto1222D8BF_ae) || (auto1222D8BF_ai <= 0 && lv_player >= auto1222D8BF_ae) ) ; lv_player += auto1222D8BF_ai ) {
         gf_WorkersSave(lv_player);
+        if ((GameAttributeGameValue("2") == "0003")) {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, gf_RaceGetWorkerType(gv_secondRace[lv_player]), 0, lv_player, PlayerStartLocation(lv_player));
+        }
+
         if ((PlayerGroupHasPlayer(gv_aIGroup, lv_player) == true)) {
             gf_WorkerExchangeSetAutoCast(lv_player, true);
         }
@@ -3443,6 +3503,34 @@ bool gt_VenueInizialization_Func (bool testConds, bool runActions) {
 
     auto480E4CF2_val = lv_gameValue;
     if (auto480E4CF2_val == "0001") {
+        gf_VenueInitialSet(RegionFromId(25), 1, 90.0);
+        gf_VenueInitialSet(RegionFromId(27), 2, 270.0);
+        gf_VenueInitialSet(RegionFromId(29), 3, 270.0);
+        gf_VenueInitialSet(RegionFromId(31), 4, 90.0);
+        gf_VenueInitialSet(RegionFromId(33), 5, 0.0);
+        gf_VenueInitialSet(RegionFromId(34), 6, 180.0);
+        gf_VenueInitialSet(RegionFromId(35), 7, 180.0);
+        gf_VenueInitialSet(RegionFromId(36), 8, 0.0);
+        gf_BonusVenueSet(RegionFromId(25), 1, 90.0);
+        gf_BonusVenueSet(RegionFromId(29), 2, 270.0);
+        gf_BonusVenueSet(RegionFromId(33), 3, 0.0);
+        gf_BonusVenueSet(RegionFromId(35), 4, 180.0);
+        gf_BonusVenueSet(RegionFromId(38), 5, 0.0);
+        gf_BonusVenueSet(RegionFromId(39), 6, 180.0);
+        gf_BonusVenueSet(RegionFromId(40), 7, 0.0);
+        gf_BonusVenueSet(RegionFromId(41), 8, 180.0);
+        gf_FinalVenueSet(RegionFromId(72), 1, 0.0);
+        gf_FinalVenueSet(RegionFromId(73), 2, 180.0);
+        gf_CreepPointSet(PointFromId(1622943121), 1);
+        gf_CreepPointSet(PointFromId(9096037), 2);
+        gf_CreepPointSet(PointFromId(914766699), 3);
+        gf_CreepPointSet(PointFromId(2024075559), 4);
+        gf_CreepPointSet(PointFromId(1413534366), 5);
+        gf_CreepPointSet(PointFromId(775643380), 6);
+        gf_CreepPointSet(PointFromId(1844541176), 7);
+        gf_CreepPointSet(PointFromId(1335332667), 8);
+    }
+    else if (auto480E4CF2_val == "0003") {
         gf_VenueInitialSet(RegionFromId(25), 1, 90.0);
         gf_VenueInitialSet(RegionFromId(27), 2, 270.0);
         gf_VenueInitialSet(RegionFromId(29), 3, 270.0);
@@ -3624,6 +3712,19 @@ bool gt_RoundInitialization_Func (bool testConds, bool runActions) {
         gf_BonusRoundSet(true, 7);
         gf_RoundGoldSet(8, 360);
     }
+    else if (autoB7B0BFE0_val == "0003") {
+        gf_ObjectiveTextSeparatorSet(StringExternal("Param/Value/409862D3"), StringExternal("Param/Value/A7A67DDB"), StringExternal("Param/Value/F3B24310"));
+        gf_RoundGoldSet(1, 90);
+        gf_RoundGoldSet(2, 90);
+        gf_RoundGoldSet(3, 180);
+        gf_BonusRoundSet(true, 3);
+        gf_RoundGoldSet(4, 180);
+        gf_RoundGoldSet(5, 270);
+        gf_RoundGoldSet(6, 270);
+        gf_RoundGoldSet(7, 360);
+        gf_BonusRoundSet(true, 7);
+        gf_RoundGoldSet(8, 360);
+    }
     else if (autoB7B0BFE0_val == "0002") {
         gf_ObjectiveTextSeparatorSet(StringExternal("Param/Value/15A47604"), StringExternal("Param/Value/7EA0BD11"), StringExternal("Param/Value/B3EEA70D"));
         gf_RoundGoldSet(1, 90);
@@ -3672,6 +3773,9 @@ bool gt_GameAttributeInizialization_Func (bool testConds, bool runActions) {
     else if (auto4F0CCA57_val == "0002") {
         gv_teamCount = 4;
     }
+    else if (auto4F0CCA57_val == "0003") {
+        gv_teamCount = 8;
+    }
     else {
     }
     gv_teamRoundCount = (gv_teamCount-1);
@@ -3686,6 +3790,10 @@ bool gt_GameAttributeInizialization_Func (bool testConds, bool runActions) {
     else if (auto6B7DF3F0_val == "0002") {
         gv_finalRound = 7;
         gv_venueFinalEnd = 4;
+    }
+    else if (auto6B7DF3F0_val == "0003") {
+        gv_finalRound = 8;
+        gv_venueFinalEnd = 2;
     }
     else {
     }
@@ -3820,6 +3928,7 @@ void gt_TimerInizialization_Init () {
 bool gt_PlayerInizialization_Func (bool testConds, bool runActions) {
     int autoD5DFB1DB_ae;
     int autoD5DFB1DB_ai;
+    string autoFDE01903_val;
 
     // Variable Declarations
     int lv_player;
@@ -3835,7 +3944,19 @@ bool gt_PlayerInizialization_Func (bool testConds, bool runActions) {
     autoD5DFB1DB_ai = 1;
     lv_player = 1;
     for ( ; ( (autoD5DFB1DB_ai >= 0 && lv_player <= autoD5DFB1DB_ae) || (autoD5DFB1DB_ai <= 0 && lv_player >= autoD5DFB1DB_ae) ) ; lv_player += autoD5DFB1DB_ai ) {
-        libGAwX_gf_SetPlayerUIRace(lv_player, libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue("3", lv_player)));
+        autoFDE01903_val = GameAttributeGameValue("2");
+        if (autoFDE01903_val == "0001") {
+            libGAwX_gf_SetPlayerUIRace(lv_player, gf_GenerateRaceFromRaceAttributeAW2(GameAttributePlayerValue("3", lv_player)));
+        }
+        else if (autoFDE01903_val == "0002") {
+            libGAwX_gf_SetPlayerUIRace(lv_player, gf_GenerateRaceFromRaceAttributeAW2(GameAttributePlayerValue("3", lv_player)));
+        }
+        else if (autoFDE01903_val == "0003") {
+            libGAwX_gf_SetPlayerUIRace(lv_player, gf_GenerateRaceFromRaceAttributeAW2(GameAttributePlayerValue("3", lv_player)));
+            gv_secondRace[lv_player] = gf_GenerateSecondRaceFromRaceAttribute(GameAttributePlayerValue("[bnet:War3 Extra (GA)/0.0/60618,file:Mods\\WarCraft\\WarCraftDataAbil.SC2Mod]1", lv_player), lv_player);
+        }
+        else {
+        }
         PlayerSetState(lv_player, c_playerStateFoodIgnored, true);
         PlayerSetState(lv_player, c_playerStateShowWorldTip, true);
         PlayerOptionOverride(lv_player, "simplecommandcard", "0");

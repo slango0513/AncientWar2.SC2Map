@@ -1,6 +1,60 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
     <CUser default="1" id="AW2_User"/>
+    <CUser id="AW2_RaceAttributeMapping">
+        <Fields Id="Race" Type="GameLink" GameLinkType="Race"/>
+        <Instances Id="[Default]"/>
+        <Instances Id="0002">
+            <GameLink GameLink="Orc">
+                <Field Id="Race"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="0003">
+            <GameLink GameLink="NightElf">
+                <Field Id="Race"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="0004">
+            <GameLink GameLink="Undead">
+                <Field Id="Race"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="0005">
+            <GameLink GameLink="Undead">
+                <Field Id="Race"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="0006">
+            <GameLink GameLink="Naga">
+                <Field Id="Race"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="0007">
+            <GameLink GameLink="Goblin">
+                <Field Id="Race"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="0008">
+            <GameLink GameLink="BloodElf">
+                <Field Id="Race"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="0009">
+            <GameLink GameLink="ChaosOrc">
+                <Field Id="Race"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="[Override]0002">
+            <GameLink GameLink="Human">
+                <Field Id="Race"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="[Override]0004">
+            <GameLink GameLink="Orc">
+                <Field Id="Race"/>
+            </GameLink>
+        </Instances>
+    </CUser>
     <CUser id="AbilityDataDefendElunesGrace">
         <Instances Id="Defend">
             <Fixed Fixed="0.0998">
@@ -2004,52 +2058,11 @@
             </Unit>
         </Instances>
     </CUser>
-    <CUser id="RaceAttributeMapping">
-        <Instances index="1" Id="0002">
-            <GameLink index="0" GameLink="Orc"/>
-        </Instances>
-        <Instances index="2" Id="0003">
-            <GameLink index="0" GameLink="NightElf"/>
-        </Instances>
-        <Instances index="3" Id="0004">
-            <GameLink index="0" GameLink="Undead"/>
-        </Instances>
-        <Instances index="4" Id="0005"/>
-        <Instances Id="0006">
-            <GameLink GameLink="Naga">
-                <Field Id="Race"/>
-            </GameLink>
-        </Instances>
-        <Instances Id="0007">
-            <GameLink GameLink="Goblin">
-                <Field Id="Race"/>
-            </GameLink>
-        </Instances>
-        <Instances Id="0008">
-            <GameLink GameLink="BloodElf">
-                <Field Id="Race"/>
-            </GameLink>
-        </Instances>
-        <Instances Id="0009">
-            <GameLink GameLink="ChaosOrc">
-                <Field Id="Race"/>
-            </GameLink>
-        </Instances>
-        <Instances Id="[Override]0002">
-            <GameLink GameLink="Human">
-                <Field Id="Race"/>
-            </GameLink>
-        </Instances>
-        <Instances Id="[Override]0004">
-            <GameLink GameLink="Orc">
-                <Field Id="Race"/>
-            </GameLink>
-        </Instances>
-    </CUser>
     <CUser id="RaceUnitTypeMapping">
         <Fields Id="Phalanx" Type="Unit" Count="2"/>
         <Fields Id="Previewer" Type="Unit"/>
         <Fields Id="Command" Type="AbilCmd" Count="2"/>
+        <Fields Id="Worker" Type="Unit"/>
         <Instances Id="[Default]"/>
         <Instances Id="Human">
             <AbilCmd Abil="AHbu">
@@ -2066,6 +2079,9 @@
             </Unit>
             <Unit Unit="fla2">
                 <Field Id="Phalanx" Index="1"/>
+            </Unit>
+            <Unit Unit="hpea">
+                <Field Id="Worker"/>
             </Unit>
         </Instances>
         <Instances Id="Orc">
@@ -2084,6 +2100,9 @@
             <Unit Unit="ofl2">
                 <Field Id="Phalanx" Index="1"/>
             </Unit>
+            <Unit Unit="opeo">
+                <Field Id="Worker"/>
+            </Unit>
         </Instances>
         <Instances Id="NightElf">
             <AbilCmd Abil="AEbu">
@@ -2100,6 +2119,9 @@
             </Unit>
             <Unit Unit="nfl2">
                 <Field Id="Phalanx" Index="1"/>
+            </Unit>
+            <Unit Unit="ewsp">
+                <Field Id="Worker"/>
             </Unit>
         </Instances>
         <Instances Id="Undead">
@@ -2118,6 +2140,9 @@
             <Unit Unit="ufl2">
                 <Field Id="Phalanx" Index="1"/>
             </Unit>
+            <Unit Unit="uaco">
+                <Field Id="Worker"/>
+            </Unit>
         </Instances>
         <Instances Id="Naga">
             <AbilCmd Abil="AGbu">
@@ -2134,6 +2159,9 @@
             </Unit>
             <Unit Unit="NagaFlag2">
                 <Field Id="Phalanx" Index="1"/>
+            </Unit>
+            <Unit Unit="nmpe">
+                <Field Id="Worker"/>
             </Unit>
         </Instances>
         <Instances Id="Demon">
@@ -2186,6 +2214,9 @@
             <Unit Unit="GoblinPreviewer">
                 <Field Id="Previewer"/>
             </Unit>
+            <Unit Unit="ncg3">
+                <Field Id="Worker"/>
+            </Unit>
         </Instances>
         <Instances Id="BloodElf">
             <AbilCmd Abil="BloodElfBuild">
@@ -2203,6 +2234,9 @@
             <Unit Unit="BloodElfFlag2">
                 <Field Id="Phalanx" Index="1"/>
             </Unit>
+            <Unit Unit="nhew">
+                <Field Id="Worker"/>
+            </Unit>
         </Instances>
         <Instances Id="ChaosOrc">
             <AbilCmd Abil="ChaosOrcBuild">
@@ -2219,6 +2253,9 @@
             </Unit>
             <Unit Unit="ChaosOrcFlag2">
                 <Field Id="Phalanx" Index="1"/>
+            </Unit>
+            <Unit Unit="ncpn">
+                <Field Id="Worker"/>
             </Unit>
         </Instances>
         <Instances Id="Dragon">
