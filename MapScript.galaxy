@@ -61,6 +61,8 @@ const int gv_venueGroupMaximumCount = (gv_teamMaximumCount/2);
 // Global Variables
 //--------------------------------------------------------------------------------------------------
 bool gv_isBonusRound;
+text gv_info;
+text gv_infoVenue;
 text[4] gv_objectiveTextSeparator;
 int[gv_roundMaximumCount + 1] gv_objective;
 string[gv_playerCount + 1] gv_secondRace;
@@ -153,6 +155,8 @@ int gv_finalRound;
 void InitGlobals () {
     int init_i;
 
+    gv_info = StringExternal("Param/Value/BB55835D");
+    gv_infoVenue = StringExternal("Param/Value/84A7D743");
     for (init_i = 0; init_i <= gv_roundMaximumCount; init_i += 1) {
         gv_objective[init_i] = c_invalidObjectiveId;
     }
@@ -200,6 +204,8 @@ void InitGlobals () {
 //--------------------------------------------------------------------------------------------------
 void gf_ModInizialization (bool lp_debug);
 void gf_RoundStartLoop (bool lp_debug);
+void gf_AddInfo (bool lp_clear);
+void gf_AddInfoVenue (bool lp_clear);
 void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug);
 void gf_TeamMemberSetAndTeamMemberCountSet ();
 void gf_TeamRoundRandomize ();
@@ -432,6 +438,7 @@ void gf_RoundStartLoop (bool lp_debug) {
     // Implementation
     if ((gv_testPassed == true)) {
         gf_AddTip();
+        gf_AddInfo(false);
         if ((lp_debug == true)) {
             auto5B8794E9_ae = gv_roundCount;
             auto5B8794E9_ai = 1;
@@ -481,6 +488,26 @@ void gf_RoundStartLoop (bool lp_debug) {
 
 }
 
+void gf_AddInfo (bool lp_clear) {
+    // Implementation
+    if ((lp_clear == false)) {
+        UIDisplayMessage(gv_uIPlayergroup, c_messageAreaDirective, gv_info);
+    }
+    else {
+        UIClearMessages(gv_uIPlayergroup, c_messageAreaDirective);
+    }
+}
+
+void gf_AddInfoVenue (bool lp_clear) {
+    // Implementation
+    if ((lp_clear == false)) {
+        UIDisplayMessage(gv_uIPlayergroup, c_messageAreaDirective, gv_infoVenue);
+    }
+    else {
+        UIClearMessages(gv_uIPlayergroup, c_messageAreaDirective);
+    }
+}
+
 void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug) {
     // Implementation
     gv_round = lp_round;
@@ -506,6 +533,10 @@ void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug) {
         gf_PlayerAtFinalVenueReplace(lp_round);
     }
     else {
+        if ((lp_round == 1)) {
+            gf_AddInfo(false);
+        }
+
         if ((lp_bonusRound == false) && (gf_IsFinalRound(lp_round) == false)) {
             gf_ObjectiveSetState(lp_round, c_objectiveStateActive);
         }
@@ -515,11 +546,16 @@ void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug) {
         gf_PreviewEnable(true);
         gf_StartLocationCameraPan();
         gf_TimerSet((45.0+lp_round*5), lp_debug);
+        if ((lp_round == 1)) {
+            gf_AddInfo(true);
+        }
+
         gf_AIBuildingPosition();
         gf_BuildingRegionRevealerEnable(false, lp_debug);
         gf_PreviewEnable(false);
         gf_UnitTypeSetAll();
     }
+    gf_AddInfoVenue(false);
     gf_KillScoreResetAll();
     gf_KillScoreUpdateAll();
     gf_VenueRevealerEnable(lp_round, true);
@@ -531,6 +567,7 @@ void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug) {
     else {
         gf_TimerSet((20.0), lp_debug);
     }
+    gf_AddInfoVenue(true);
     gf_AIPhalanxAndPortalPositionAll(lp_round);
     gf_PhalanxCounterEnable(false, false);
     gf_AIPhalanxBuffSetAll(lp_round);
@@ -3325,6 +3362,7 @@ void gf_DisplayMessageAll (int lp_round) {
     // Implementation
     if ((gv_round == gv_roundCount)) {
         lv_text = StringExternal("Param/Value/317E0CA0");
+        gf_AddInfo(false);
     }
     else {
         lv_text = StringExternal("Param/Value/F4A0DF83");
@@ -3901,46 +3939,46 @@ bool gt_RoundInitialization_Func (bool testConds, bool runActions) {
     if (autoB7B0BFE0_val == "0001") {
         gf_ObjectiveTextSeparatorSet(StringExternal("Param/Value/B744BA58"), StringExternal("Param/Value/91BA9176"), StringExternal("Param/Value/54C1A907"));
         gf_RoundGoldSet(1, 90);
-        gf_RoundGoldSet(2, 90);
+        gf_RoundGoldSet(2, 135);
         gf_RoundGoldSet(3, 180);
-        gf_RoundGoldSet(4, 180);
+        gf_RoundGoldSet(4, 225);
         gf_RoundGoldSet(5, 270);
-        gf_RoundGoldSet(6, 270);
+        gf_RoundGoldSet(6, 315);
         gf_RoundGoldSet(7, 360);
         gf_BonusRoundSet(true, 7);
-        gf_RoundGoldSet(8, 360);
+        gf_RoundGoldSet(8, 405);
     }
     else if (autoB7B0BFE0_val == "0003") {
         gf_ObjectiveTextSeparatorSet(StringExternal("Param/Value/409862D3"), StringExternal("Param/Value/A7A67DDB"), StringExternal("Param/Value/F3B24310"));
         gf_RoundGoldSet(1, 90);
-        gf_RoundGoldSet(2, 90);
+        gf_RoundGoldSet(2, 135);
         gf_RoundGoldSet(3, 180);
-        gf_RoundGoldSet(4, 180);
+        gf_RoundGoldSet(4, 225);
         gf_RoundGoldSet(5, 270);
-        gf_RoundGoldSet(6, 270);
+        gf_RoundGoldSet(6, 315);
         gf_RoundGoldSet(7, 360);
         gf_BonusRoundSet(true, 7);
-        gf_RoundGoldSet(8, 360);
+        gf_RoundGoldSet(8, 405);
     }
     else if (autoB7B0BFE0_val == "0002") {
         gf_ObjectiveTextSeparatorSet(StringExternal("Param/Value/15A47604"), StringExternal("Param/Value/7EA0BD11"), StringExternal("Param/Value/B3EEA70D"));
         gf_RoundGoldSet(1, 90);
-        gf_RoundGoldSet(2, 90);
+        gf_RoundGoldSet(2, 135);
         gf_RoundGoldSet(3, 180);
-        gf_RoundGoldSet(4, 180);
+        gf_RoundGoldSet(4, 225);
         gf_RoundGoldSet(5, 270);
-        gf_RoundGoldSet(6, 270);
+        gf_RoundGoldSet(6, 315);
         gf_BonusRoundSet(true, 6);
         gf_RoundGoldSet(7, 360);
     }
     else if (autoB7B0BFE0_val == "0004") {
         gf_ObjectiveTextSeparatorSet(StringExternal("Param/Value/AAB1976C"), StringExternal("Param/Value/3B6C9995"), StringExternal("Param/Value/C2CD87EE"));
         gf_RoundGoldSet(1, 90);
-        gf_RoundGoldSet(2, 90);
+        gf_RoundGoldSet(2, 135);
         gf_RoundGoldSet(3, 180);
-        gf_RoundGoldSet(4, 180);
+        gf_RoundGoldSet(4, 225);
         gf_RoundGoldSet(5, 270);
-        gf_RoundGoldSet(6, 270);
+        gf_RoundGoldSet(6, 315);
         gf_BonusRoundSet(true, 6);
         gf_RoundGoldSet(7, 360);
     }
