@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
-    <const id="summoned" path="SDamageResponse.TargetFilters" value="Summoned"/>
-    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
     <const id="hero" path="SDamageResponse.TargetFilters" value="Resistant"/>
-    <const id="allies" path="SDamageResponse.TargetFilters" value="Ally"/>
+    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
+    <const id="summoned" path="SDamageResponse.TargetFilters" value="Summoned"/>
     <const id="air" path="SDamageResponse.TargetFilters" value="Air"/>
-    <const id="tree" path="SDamageResponse.TargetFilters" value="HarvestableResource"/>
+    <const id="allies" path="SDamageResponse.TargetFilters" value="Ally"/>
     <const id="item" path="SDamageResponse.TargetFilters" value="Item"/>
-    <const id="player" path="SDamageResponse.TargetFilters" value="Player"/>
+    <const id="tree" path="SDamageResponse.TargetFilters" value="HarvestableResource"/>
     <const id="ancient" path="SDamageResponse.TargetFilters" value="Psionic"/>
-    <const id="enemies" path="SDamageResponse.TargetFilters" value="Enemy"/>
+    <const id="player" path="SDamageResponse.TargetFilters" value="Player"/>
     <const id="structure" path="SDamageResponse.TargetFilters" value="PreventDefeat"/>
-    <const id="self" path="SDamageResponse.TargetFilters" value="Self"/>
-    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="enemies" path="SDamageResponse.TargetFilters" value="Enemy"/>
     <const id="mechanical" path="SDamageResponse.TargetFilters" value="Mechanical"/>
-    <const id="neutral" path="SDamageResponse.TargetFilters" value="Neutral"/>
+    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="self" path="SDamageResponse.TargetFilters" value="Self"/>
     <const id="ground" path="SDamageResponse.TargetFilters" value="Ground"/>
+    <const id="neutral" path="SDamageResponse.TargetFilters" value="Neutral"/>
     <const id="wall" path="SDamageResponse.TargetFilters" value="Hover"/>
     <const id="dead" path="SDamageResponse.TargetFilters" value="Dead"/>
     <const id="ethereal" path="SDamageResponse.TargetFilters" value="Stasis"/>
-    <const id="invulnerable" path="SDamageResponse.TargetFilters" value="Invulnerable"/>
     <const id="debris" path="SDamageResponse.TargetFilters" value="Destructible"/>
+    <const id="invulnerable" path="SDamageResponse.TargetFilters" value="Invulnerable"/>
     <CBehaviorBuff default="1" id="AW2_TimeLife" parent="War3_Passive">
         <DisplayDuration index="Self" value="1"/>
         <DisplayDuration index="Ally" value="1"/>
@@ -46,6 +46,8 @@
         </DamageResponse>
         <MaxStackCount value="0"/>
     </CBehaviorBuff>
+    <!--mana regeneration aura-->
+    <CBehaviorBuff id="Aarm" parent="War3_AuraCaster"/>
     <!--Resistant Skin (creep)-->
     <CBehaviorBuff id="ACrk" parent="War3_Passive">
         <EditorCategories value="Race:Orc,AbilityorEffectType:Unit"/>
@@ -271,6 +273,13 @@
     <CBehaviorBuff id="Aabr" parent="War3_AuraCaster">
         <Requirements value="Aabr"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="Aflk">
+        <Requirements value=""/>
+    </CBehaviorBuff>
+    <!--Detect (Gyrocopter)-->
+    <CBehaviorBuff id="Agyv">
+        <Modification Detect="500"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="BNab1">
         <Duration value="30"/>
         <DurationOverride index="0" Duration="30">
@@ -296,6 +305,23 @@
         <Duration value="1"/>
         <DurationOverride index="0" Duration="0.5">
             <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+    </CBehaviorBuff>
+    <!--VoodooCaster-->
+    <CBehaviorBuff id="BOvc">
+        <Duration value="15"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Bmlt">
+        <Duration value="20"/>
+    </CBehaviorBuff>
+    <!--Phoenix-->
+    <CBehaviorBuff id="Bphx">
+        <Duration value="30"/>
+    </CBehaviorBuff>
+    <!--PhoenixFire-->
+    <CBehaviorBuff id="Bpxf">
+        <DurationOverride index="0" Duration="5">
+            <ValidatorArray index="0" value="Hero"/>
         </DurationOverride>
     </CBehaviorBuff>
     <CBehaviorBuff id="EfficiencyAuraCaster" parent="War3_AuraCaster">
@@ -395,6 +421,15 @@
             <VitalRegenArray index="Energy" value="0.5"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="Barm" parent="War3_AuraBuff">
+        <EditorCategories value="Race:BloodElf,AbilityorEffectType:Units"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnmanarecharge.dds"/>
+        <Modification>
+            <VitalRegenArray index="Energy" value="1"/>
+        </Modification>
+        <MaxStackCount value="2"/>
+        <MaxStackCountPerCaster value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="BHad1">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <MaxStackCount value="2"/>
@@ -467,7 +502,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="nmgvTimeLife" parent="AW2_TimeLife">
         <EditorCategories value="Race:BloodElf,AbilityorEffectType:Units"/>
-        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnmagicvault.dds"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnpowergenerator.dds"/>
         <DurationOverride Duration="60">
             <ValidatorArray value="HeroOrPowerfulMob"/>
         </DurationOverride>
@@ -483,7 +518,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="hatwTimeLife" parent="AW2_TimeLife">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
-        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnhumanwatchtower.dds"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnHumanArcaneTower.dds"/>
         <DurationOverride Duration="60">
             <ValidatorArray value="HeroOrPowerfulMob"/>
         </DurationOverride>
@@ -491,7 +526,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="hctwTimeLife" parent="AW2_TimeLife">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
-        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnhumanwatchtower.dds"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnCannonTower.dds"/>
         <DurationOverride Duration="60">
             <ValidatorArray value="HeroOrPowerfulMob"/>
         </DurationOverride>
@@ -499,11 +534,67 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="hgtwTimeLife" parent="AW2_TimeLife">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
-        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnhumanwatchtower.dds"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnGuardTower.dds"/>
         <DurationOverride Duration="60">
             <ValidatorArray value="HeroOrPowerfulMob"/>
         </DurationOverride>
         <Duration value="60"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="negtTimeLife" parent="AW2_TimeLife">
+        <EditorCategories value="Race:BloodElf,AbilityorEffectType:Units"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnelvenguardtower.dds"/>
+        <DurationOverride Duration="60">
+            <ValidatorArray value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Duration value="60"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ndgtTimeLife" parent="AW2_TimeLife">
+        <EditorCategories value="Race:BloodElf,AbilityorEffectType:Units"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btndalaranguardtower.dds"/>
+        <DurationOverride Duration="60">
+            <ValidatorArray value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Duration value="60"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GyrocopterTimeLife" parent="AW2_TimeLife">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnFlyingMachine.dds"/>
+        <DurationOverride Duration="90">
+            <ValidatorArray value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Duration value="90"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="hgyrTimeLife" parent="AW2_TimeLife">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnFlyingMachine.dds"/>
+        <DurationOverride Duration="90">
+            <ValidatorArray value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Duration value="90"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="npgrTimeLife" parent="AW2_TimeLife">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnFlyingMachine.dds"/>
+        <DurationOverride Duration="60">
+            <ValidatorArray value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Duration value="60"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="nws1TimeLife" parent="AW2_TimeLife">
+        <EditorCategories value="Race:BloodElf,AbilityorEffectType:Units"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btndragonhawk.dds"/>
+        <DurationOverride Duration="90">
+            <ValidatorArray value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Duration value="90"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="hdhwTimeLife" parent="AW2_TimeLife">
+        <EditorCategories value="Race:BloodElf,AbilityorEffectType:Units"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btndragonhawk.dds"/>
+        <DurationOverride Duration="90">
+            <ValidatorArray value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Duration value="90"/>
     </CBehaviorBuff>
     <!--Corruption-->
     <CBehaviorBuff id="BIcb">
@@ -698,8 +789,6 @@
     </CBehaviorBuff>
     <!--Roar-->
     <CBehaviorBuff id="Broa">
-        <MaxStackCount value="0"/>
-        <MaxStackCountPerCaster value="1"/>
         <Modification>
             <DamageDealtFraction index="Melee" value="0.5"/>
             <DamageDealtFraction index="Ranged" value="0.5"/>
@@ -1094,7 +1183,7 @@
         </DurationOverride>
         <Modification MoveSpeedMinimum="3">
             <VitalRegenArray index="Life" value="15"/>
-            <VitalRegenArray index="Energy" value="3"/>
+            <VitalRegenArray index="Energy" value="2"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="TeleportMarker" parent="War3_Passive">

@@ -3382,7 +3382,6 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     int lv_player;
 
     // Variable Initialization
-    lv_debug = true;
 
     // Actions
     if (!runActions) {
@@ -3401,7 +3400,6 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
         lv_player = PlayerGroupPlayer(autoE8E91B19_g, autoE8E91B19_p);
         VisRevealArea(lv_player, RegionFromId(70), 0.0625, false);
         VisRevealArea(lv_player, RegionFromId(71), 0.0625, false);
-        libGAwX_gf_SetPlayerUIRace(lv_player, "Human");
     }
     libGAwX_gf_SetWar3TimeOfDay("13:00:00");
     libGAwX_gf_PauseUnpauseTimeOfDayWar3(true);
@@ -4053,7 +4051,7 @@ bool gt_Harvest_Func (bool testConds, bool runActions) {
     lv_player = EventPlayer();
     lv_targetUnit = EventPlayerEffectUsedUnit(c_effectUnitTarget);
     lv_targetUnitType = UnitGetType(lv_targetUnit);
-    lv_value = (CatalogFieldValueGetAsInt(c_gameCatalogUnit, lv_targetUnitType, "KillResource[" + IntToString(3) + "]", lv_player)*3);
+    lv_value = (CatalogFieldValueGetAsInt(c_gameCatalogUnit, lv_targetUnitType, "KillResource[" + IntToString(3) + "]", lv_player)*2);
 
     // Actions
     if (!runActions) {
@@ -4281,7 +4279,7 @@ bool gt_AdefDefendDamaged_Func (bool testConds, bool runActions) {
     if ((gf_EffectAttackType(EventUnitDamageEffect()) == "DAMAGE_PIERCE")) {
         if ((RandomFixed(0.0, 1.0) <= lv_deflectChance)) {
             UnitCreateEffectUnit(lv_unit, lv_deflectedEffect, lv_unit);
-            if ((lv_source != lv_unit) && (UnitTypeTestFlag(UnitGetType(lv_triggerAttaker), c_unitFlagPreventDefeat) == false)) {
+            if ((lv_source != lv_unit)) {
                 if ((CatalogEntryIsValid(c_gameCatalogEffect, lv_lM) == false)) {
                     lv_lM = ((lv_weapon));
                 }
@@ -4412,7 +4410,7 @@ bool gt_DefendDamaged_Func (bool testConds, bool runActions) {
     if ((gf_EffectAttackType(EventUnitDamageEffect()) == "DAMAGE_PIERCE")) {
         if ((RandomFixed(0.0, 1.0) <= lv_deflectChance)) {
             UnitCreateEffectUnit(lv_unit, lv_deflectedEffect, lv_unit);
-            if ((lv_source != lv_unit) && (UnitTypeTestFlag(UnitGetType(lv_triggerAttaker), c_unitFlagPreventDefeat) == false)) {
+            if ((lv_source != lv_unit)) {
                 if ((CatalogEntryIsValid(c_gameCatalogEffect, lv_lM) == false)) {
                     lv_lM = ((lv_weapon));
                 }
@@ -4543,7 +4541,7 @@ bool gt_AmdfDamaged_Func (bool testConds, bool runActions) {
     if ((gf_EffectAttackType(EventUnitDamageEffect()) == "DAMAGE_MAGIC")) {
         if ((RandomFixed(0.0, 1.0) <= lv_deflectChance)) {
             UnitCreateEffectUnit(lv_unit, lv_deflectedEffect, lv_unit);
-            if ((lv_source != lv_unit) && (UnitTypeTestFlag(UnitGetType(lv_triggerAttaker), c_unitFlagPreventDefeat) == false)) {
+            if ((lv_source != lv_unit)) {
                 if ((CatalogEntryIsValid(c_gameCatalogEffect, lv_lM) == false)) {
                     lv_lM = ((lv_weapon));
                 }
@@ -5217,6 +5215,10 @@ bool gt_UnitDied_Func (bool testConds, bool runActions) {
         if (!((UnitFilterMatch(lv_unit, UnitGetOwner(lv_unit), UnitFilter(0, (1 << (c_targetFilterHallucination - 32)), 0, 0)) == false))) {
             return false;
         }
+
+        if (!((lv_killPlayer != 16))) {
+            return false;
+        }
     }
 
     // Actions
@@ -5282,6 +5284,10 @@ bool gt_DebugKeyPressed_Func (bool testConds, bool runActions) {
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "uaco", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "nmpe", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "ncg3", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "nhew", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "ncpn", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "ncer", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
+        libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "BuildArmyFinal", 1);
         PlayerModifyPropertyInt(lv_player, c_playerPropTerrazine, c_playerPropOperSetTo, 100000);
         PlayerModifyPropertyInt(lv_player, c_playerPropCustom, c_playerPropOperSetTo, 100000);
         PlayerGroupClear(gv_aIGroup);

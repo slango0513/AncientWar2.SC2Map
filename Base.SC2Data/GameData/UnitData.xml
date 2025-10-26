@@ -17,12 +17,36 @@
         <AbilArray Link="Asud"/>
         <CardLayouts index="0">
             <LayoutButtons>
+                <Face value="CmdMove"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="Amov,Move"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
                 <Face value="CmdStop"/>
                 <Type value="AbilCmd"/>
                 <AbilCmd value="stop,Stop"/>
                 <ShowInGlossary value="0"/>
                 <Row value="0"/>
                 <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="CmdHoldPos"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="Amov,HoldPos"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="CmdPatrol"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="Amov,Patrol"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="3"/>
             </LayoutButtons>
             <LayoutButtons>
                 <Face value="CmdAttack"/>
@@ -37,6 +61,7 @@
         <DeathRevealRadius value="0"/>
         <LifeRegenRate value="0.0625"/>
         <PlacementFootprint value="1x1Army"/>
+        <AttackTargetPriority value="20"/>
     </CUnit>
     <CUnit default="1" id="AW2_Sationary" parent="War3_Sationary">
         <DeathRevealRadius value="0"/>
@@ -83,6 +108,14 @@
                 <ShowInGlossary value="0"/>
                 <Row value="0"/>
                 <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="CmdAttack"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="Aatk,Execute"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="4"/>
             </LayoutButtons>
             <LayoutButtons Face="Asud" Type="AbilCmd" AbilCmd="Asud,Execute" Row="2" Column="4"/>
         </CardLayouts>
@@ -329,8 +362,10 @@
         <PlaneArray index="Ground" value="1"/>
         <AbilArray Link="Aien"/>
         <AbilArray Link="AIct"/>
+        <AbilArray Link="AEar"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="AIct" Type="AbilCmd" AbilCmd="AIct,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="AEar1" Type="Passive" Behavior="AEar" Row="2" Column="0"/>
+            <LayoutButtons Face="AIct" Type="AbilCmd" AbilCmd="AIct,Execute" Row="2" Column="1"/>
         </CardLayouts>
         <GlossaryCategory value="Unit/Category/NightElfUnits"/>
         <WeaponArray index="1" removed="1"/>
@@ -409,6 +444,29 @@
         <GlossaryStrongArray value="uabo"/>
         <GlossaryWeakArray value="hspt"/>
     </CUnit>
+    <!--HeroBloodMage-->
+    <CUnit id="Hblm" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="60"/>
+        <KillResource index="Custom" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="BloodElf"/>
+        <Mover value="foot"/>
+        <AbilArray Link="BloodElfInventory"/>
+        <AbilArray Link="UpgradeToHkal"/>
+        <AbilArray Link="AHbn"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Hkal" Type="AbilCmd" AbilCmd="UpgradeToHkal,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="AHbn" Type="AbilCmd" AbilCmd="AHbn,0" Row="2" Column="0"/>
+        </CardLayouts>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
+        <WeaponArray index="1" removed="1"/>
+    </CUnit>
     <!--ghostly archmage-->
     <CUnit id="Hgam" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
@@ -486,6 +544,30 @@
         <GlossaryStrongArray value="ogru"/>
         <GlossaryStrongArray value="ugho"/>
         <GlossaryWeakArray value="hspt"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
+    </CUnit>
+    <!--Kael-->
+    <CUnit id="Hkal" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="180"/>
+        <KillResource index="Custom" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="BloodElf"/>
+        <Mover value="foot"/>
+        <AbilArray Link="BloodElfInventory"/>
+        <AbilArray Link="AHfs"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AHfs" Type="AbilCmd" AbilCmd="AHfs,0" Row="2" Column="0"/>
+        </CardLayouts>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
+        <Name value="Hkal/Propernames"/>
+        <WeaponArray index="1" removed="1"/>
     </CUnit>
     <!--Lord Garithos-->
     <CUnit id="Hlgr" parent="AW2_Army" defType="LARGE">
@@ -1643,19 +1725,17 @@
         <Sight value="1"/>
     </CUnit>
     <!--Arcane Tower-->
-    <CUnit id="hatw" parent="AW2_Building" defType="LARGE">
+    <CUnit id="hatw" parent="AW2_Building" defType="FORT">
         <Attributes index="mechanical" value="1"/>
-        <Attributes index="large" value="1"/>
-        <CostResource index="gold" value="75"/>
-        <KillResource index="Custom" value="75"/>
-        <LifeStart value="300"/>
-        <LifeMax value="300"/>
+        <Attributes index="fort" value="1"/>
+        <CostResource index="gold" value="90"/>
+        <KillResource index="Custom" value="30"/>
+        <LifeStart value="250"/>
+        <LifeMax value="250"/>
         <RepairTime value="20"/>
         <Race value="Human"/>
-        <BehaviorArray Link="Adts"/>
-        <CardLayouts index="0">
-            <LayoutButtons Face="Adts" Type="Passive" Behavior="Adts" Row="1" Column="2"/>
-        </CardLayouts>
+        <AbilArray Link="Aihn"/>
+        <GlossaryCategory value="Unit/Category/HumanUnits"/>
     </CUnit>
     <!--blood elf wagon-->
     <CUnit id="hbew" parent="AW2_Army" defType="LARGE">
@@ -1667,7 +1747,7 @@
         <LifeMax value="25"/>
         <Speed value="2"/>
         <Race value="BloodElf"/>
-        <Mover value="foot"/>
+        <Mover value="hover"/>
         <AbilArray Link="BloodElfInventory"/>
         <AbilArray Link="UpgradeTonmgv"/>
         <AbilArray Link="hbewTrain"/>
@@ -1684,17 +1764,40 @@
     <CUnit id="hctw" parent="AW2_Building" defType="FORT">
         <Attributes index="mechanical" value="1"/>
         <Attributes index="fort" value="1"/>
-        <CostResource index="gold" value="75"/>
-        <KillResource index="Custom" value="75"/>
-        <LifeStart value="300"/>
-        <LifeMax value="300"/>
+        <CostResource index="gold" value="90"/>
+        <KillResource index="Custom" value="30"/>
+        <LifeStart value="250"/>
+        <LifeMax value="250"/>
+        <AbilArray Link="Aihn"/>
         <RepairTime value="20"/>
         <Race value="Human"/>
+        <WeaponArray index="1" removed="1"/>
+        <GlossaryCategory value="Unit/Category/HumanUnits"/>
     </CUnit>
     <!--blood elf dragon hawk-->
-    <CUnit id="hdhw">
-        <Food value="1"/>
+    <CUnit id="hdhw" parent="AW2_Army" defType="SMALL">
+        <Attributes index="small" value="1"/>
+        <CostResource index="gold" value="90"/>
+        <KillResource index="Custom" value="15"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="3"/>
         <Race value="BloodElf"/>
+        <Mover value="fly"/>
+        <Height value="2.1875"/>
+        <AbilArray Link="BloodElfInventory"/>
+        <AbilArray Link="Amls"/>
+        <AbilArray Link="hdhwTimeLife"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Amls" Type="AbilCmd" AbilCmd="Amls,0" Row="2" Column="0"/>
+        </CardLayouts>
+        <PlaneArray index="Air" value="1"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="ForceField" value="0"/>
+        <Collide index="Flying" value="1"/>
+        <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
     </CUnit>
     <!--Footman-->
     <CUnit id="hfoo" parent="AW2_Army" defType="LARGE">
@@ -1733,56 +1836,70 @@
         <ScoreKill value="3"/>
     </CUnit>
     <!--GuardTower-->
-    <CUnit id="hgtw" parent="AW2_Building" defType="LARGE">
+    <CUnit id="hgtw" parent="AW2_Building" defType="FORT">
         <Attributes index="mechanical" value="1"/>
-        <Attributes index="large" value="1"/>
-        <CostResource index="gold" value="75"/>
-        <KillResource index="Custom" value="75"/>
-        <LifeStart value="300"/>
-        <LifeMax value="300"/>
+        <Attributes index="fort" value="1"/>
+        <CostResource index="gold" value="90"/>
+        <KillResource index="Custom" value="30"/>
+        <LifeStart value="250"/>
+        <LifeMax value="250"/>
+        <AbilArray Link="Aihn"/>
         <RepairTime value="20"/>
         <Race value="Human"/>
+        <GlossaryCategory value="Unit/Category/HumanUnits"/>
     </CUnit>
+    <CUnit id="Gyrocopter2LM" parent="War3_Missile"/>
+    <CUnit id="hwtw1LM" parent="War3_Missile"/>
     <!--Flying Machine-->
     <CUnit id="hgyr" parent="AW2_Army" defType="LARGE">
         <Attributes index="mechanical" value="1"/>
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="180"/>
         <KillResource index="Custom" value="30"/>
-        <LifeStart value="300"/>
-        <LifeMax value="300"/>
-        <Speed value="2"/>
+        <LifeStart value="450"/>
+        <LifeMax value="450"/>
+        <Speed value="3"/>
         <Race value="Human"/>
         <Mover value="fly"/>
         <Height value="2.1875"/>
         <AbilArray Link="Aihn"/>
+        <AbilArray Link="hgyrTimeLife"/>
+        <BehaviorArray Link="Aflk"/>
+        <BehaviorArray Link="Agyv"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Agyv" Type="Passive" Behavior="Agyv" Row="2" Column="0"/>
+            <LayoutButtons Face="Aflk" Type="Passive" Behavior="Aflk" Row="2" Column="1"/>
+        </CardLayouts>
         <PlaneArray index="Air" value="1"/>
         <Collide index="Ground" value="0"/>
         <Collide index="ForceField" value="0"/>
         <Collide index="Flying" value="1"/>
+        <GlossaryCategory value="Unit/Category/HumanUnits"/>
     </CUnit>
     <CUnit id="Gyrocopter" parent="AW2_Army" defType="LARGE">
         <Attributes index="mechanical" value="1"/>
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="60"/>
         <KillResource index="Custom" value="30"/>
-        <LifeStart value="300"/>
-        <LifeMax value="300"/>
-        <Speed value="2"/>
+        <LifeStart value="450"/>
+        <LifeMax value="450"/>
+        <Speed value="3"/>
         <Race value="Human"/>
         <Mover value="fly"/>
         <Height value="2.1875"/>
         <AbilArray Link="Aihn"/>
         <AbilArray Link="UpgradeTohgyr"/>
+        <AbilArray Link="GyrocopterTimeLife"/>
+        <BehaviorArray Link="Agyv"/>
         <CardLayouts index="0">
             <LayoutButtons Face="hgyr" Type="AbilCmd" AbilCmd="UpgradeTohgyr,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Agyv" Type="Passive" Behavior="Agyv" Row="2" Column="0"/>
         </CardLayouts>
-        <WeaponArray index="0" Link="hgyr1"/>
-        <WeaponArray index="1" Link="hgyr2"/>
         <PlaneArray index="Air" value="1"/>
         <Collide index="Ground" value="0"/>
         <Collide index="ForceField" value="0"/>
         <Collide index="Flying" value="1"/>
+        <GlossaryCategory value="Unit/Category/HumanUnits"/>
     </CUnit>
     <!--high elven swordsman-->
     <CUnit id="hhes" parent="AW2_Army" defType="LARGE">
@@ -1925,7 +2042,7 @@
         <KillResource index="Custom" value="150"/>
         <LifeStart value="1800"/>
         <LifeMax value="1800"/>
-        <Speed value="3"/>
+        <Speed value="2"/>
         <Race value="Human"/>
         <Mover value="foot"/>
         <AbilArray Link="Aihn"/>
@@ -2011,6 +2128,7 @@
             <LayoutButtons Face="hmtm" Type="AbilCmd" AbilCmd="AHbu,Build10" Row="1" Column="3"/>
             <LayoutButtons Face="hrtt" Type="AbilCmd" AbilCmd="AHbu,Build12" Row="1" Column="4"/>
             <LayoutButtons Face="hwtw" Type="AbilCmd" AbilCmd="AHbu,Build4" Row="2" Column="0"/>
+            <LayoutButtons Face="Gyrocopter" Type="AbilCmd" AbilCmd="AHbu,Build5" Row="1" Column="0"/>
         </CardLayouts>
         <CardLayouts CardId="Purc">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
@@ -2047,8 +2165,31 @@
         <InnerRadius value="0.3125"/>
     </CUnit>
     <!--Peasant-->
-    <CUnit id="hphx">
+    <CUnit id="hphx" parent="AW2_Army" defType="SMALL">
+        <Attributes index="small" value="1"/>
+        <KillResource index="Custom" value="150"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
+        <LifeRegenRate value="-30"/>
+        <Speed value="3"/>
         <Race value="BloodElf"/>
+        <Mover value="fly"/>
+        <Height value="2.1875"/>
+        <AbilArray Link="BloodElfInventory"/>
+        <AbilArray Link="Aphx"/>
+        <BehaviorArray Link="Apxf"/>
+        <BehaviorArray Link="Avul"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Apxf" Type="Passive" Behavior="Apxf" Row="2" Column="0"/>
+            <LayoutButtons Face="Avul" Type="Passive" Behavior="Avul" Row="2" Column="1"/>
+        </CardLayouts>
+        <DeathTime value="-1"/>
+        <EffectArray index="Death" value="Immortality"/>
+        <PlaneArray index="Air" value="1"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="ForceField" value="0"/>
+        <Collide index="Flying" value="1"/>
+        <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
     </CUnit>
     <!--portal unit-->
     <CUnit id="hprt" parent="AW2_Portal">
@@ -2058,8 +2199,18 @@
         <FlagArray index="Turnable" value="0"/>
     </CUnit>
     <!--Phoenix Egg-->
-    <CUnit id="hpxe">
+    <CUnit id="hpxe" parent="AW2_Sationary" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="lumber" value="3000"/>
+        <KillResource index="Custom" value="150"/>
+        <LifeStart value="900"/>
+        <LifeMax value="900"/>
         <Race value="BloodElf"/>
+        <AbilArray Link="BloodElfInventory"/>
+        <AbilArray Link="AphxUn"/>
+        <AbilArray Link="Bphx"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
     </CUnit>
     <!--Rifleman-->
     <CUnit id="hrif" parent="AW2_Army" defType="MEDIUM">
@@ -2093,7 +2244,7 @@
         <KillResource index="Custom" value="150"/>
         <LifeStart value="1800"/>
         <LifeMax value="1800"/>
-        <Speed value="3"/>
+        <Speed value="2"/>
         <Race value="Human"/>
         <Mover value="foot"/>
         <AbilArray Link="Aihn"/>
@@ -2159,6 +2310,8 @@
         <GlossaryStrongArray value="ogru"/>
         <GlossaryStrongArray value="ugho"/>
         <GlossaryWeakArray value="hspt"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
     </CUnit>
     <CUnit id="BloodElfSorceress1LM" parent="War3_Missile"/>
     <!--Blood Elf Spell Breaker-->
@@ -2199,25 +2352,25 @@
         <DeathTime value="0"/>
     </CUnit>
     <!--Scout Tower-->
-    <CUnit id="hwtw" parent="AW2_Building" defType="SMALL">
-        <Attributes index="small" value="1"/>
+    <CUnit id="hwtw" parent="AW2_Building" defType="FORT">
         <Attributes index="mechanical" value="1"/>
-        <CostResource index="gold" value="5"/>
+        <Attributes index="fort" value="1"/>
+        <CostResource index="gold" value="15"/>
         <KillResource index="Custom" value="5"/>
-        <LifeStart value="300"/>
-        <LifeMax value="300"/>
+        <LifeStart value="250"/>
+        <LifeMax value="250"/>
         <RepairTime value="20"/>
         <Race value="Human"/>
         <AbilArray Link="UpgradeTohgtw"/>
         <AbilArray Link="UpgradeTohctw"/>
         <AbilArray Link="UpgradeTohatw"/>
-        <BehaviorArray Link="Adts"/>
+        <AbilArray Link="Aihn"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="hgtw" Type="AbilCmd" AbilCmd="UpgradeTohgtw,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="hctw" Type="AbilCmd" AbilCmd="UpgradeTohctw,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="hatw" Type="AbilCmd" AbilCmd="UpgradeTohatw,Execute" Row="2" Column="2"/>
-            <LayoutButtons Face="Adts" Type="Passive" Behavior="Adts" Row="1" Column="2"/>
+            <LayoutButtons Face="hctw" Type="AbilCmd" AbilCmd="UpgradeTohctw,Execute" Row="0" Column="1"/>
+            <LayoutButtons Face="hgtw" Type="AbilCmd" AbilCmd="UpgradeTohgtw,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="hatw" Type="AbilCmd" AbilCmd="UpgradeTohatw,Execute" Row="0" Column="2"/>
         </CardLayouts>
+        <GlossaryCategory value="Unit/Category/HumanUnits"/>
     </CUnit>
     <!--doom guard (summoned)-->
     <CUnit id="nba2" parent="AW2_Army" defType="LARGE">
@@ -2636,8 +2789,18 @@
         <InnerRadius value="0.3125"/>
     </CUnit>
     <!--dalaran guard tower-->
-    <CUnit id="ndgt">
-        <ScoreMake value="1"/>
+    <CUnit id="ndgt" parent="AW2_Building" defType="FORT">
+        <Attributes index="mechanical" value="1"/>
+        <Attributes index="fort" value="1"/>
+        <CostResource index="gold" value="90"/>
+        <KillResource index="Custom" value="30"/>
+        <LifeStart value="250"/>
+        <LifeMax value="250"/>
+        <AbilArray Link="BloodElfInventory"/>
+        <AbilArray Link="ndgtTimeLife"/>
+        <RepairTime value="20"/>
+        <Race value="BloodElf"/>
+        <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
     </CUnit>
     <!--dark portal (southeast)-->
     <CUnit id="ndke">
@@ -2687,6 +2850,11 @@
         <PlaneArray index="Ground" value="1"/>
         <DeathTime value="0"/>
     </CUnit>
+    <!--dalaran reject-->
+    <CUnit id="ndrj">
+        <Race value="BloodElf"/>
+        <Food value="3"/>
+    </CUnit>
     <!--revenant of the depths-->
     <CUnit id="ndrv" parent="AW2_Army" defType="MEDIUM">
         <Attributes index="medium" value="1"/>
@@ -2731,14 +2899,28 @@
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--elven guard tower-->
-    <CUnit id="negt">
-        <LifeMax value="1"/>
+    <CUnit id="negt" parent="AW2_Building" defType="FORT">
+        <Attributes index="mechanical" value="1"/>
+        <Attributes index="fort" value="1"/>
+        <CostResource index="gold" value="15"/>
+        <KillResource index="Custom" value="5"/>
+        <LifeStart value="250"/>
+        <LifeMax value="250"/>
+        <AbilArray Link="BloodElfInventory"/>
+        <AbilArray Link="UpgradeTondgt"/>
+        <AbilArray Link="negtTimeLife"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ndgt" Type="AbilCmd" AbilCmd="UpgradeTondgt,Execute" Row="0" Column="0"/>
+        </CardLayouts>
+        <RepairTime value="20"/>
+        <Race value="BloodElf"/>
+        <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
     </CUnit>
     <!--engineer gazlowe-->
     <CUnit id="negz" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
-        <CostResource index="gold" value="180"/>
-        <KillResource index="Custom" value="30"/>
+        <CostResource index="gold" value="225"/>
+        <KillResource index="Custom" value="75"/>
         <LifeStart value="300"/>
         <LifeMax value="300"/>
         <Speed value="2"/>
@@ -3214,8 +3396,8 @@
     <!--GoblinSapper-->
     <CUnit id="ngsp" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
-        <CostResource index="gold" value="60"/>
-        <KillResource index="Custom" value="30"/>
+        <CostResource index="gold" value="75"/>
+        <KillResource index="Custom" value="75"/>
         <LifeStart value="300"/>
         <LifeMax value="300"/>
         <Speed value="2"/>
@@ -3240,8 +3422,8 @@
         <LifeMax value="300"/>
         <Mover value="foot"/>
         <Speed value="2"/>
-        <CostResource index="gold" value="60"/>
-        <KillResource index="Custom" value="30"/>
+        <CostResource index="gold" value="75"/>
+        <KillResource index="Custom" value="75"/>
         <AbilArray Link="GoblinInventory"/>
         <AbilArray Link="Asds"/>
         <BehaviorArray Link="Asds"/>
@@ -3342,8 +3524,13 @@
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
             <LayoutButtons Face="hsor" Type="AbilCmd" AbilCmd="BloodElfBuild,Build3" Row="1" Column="0"/>
             <LayoutButtons Face="nemi" Type="AbilCmd" AbilCmd="BloodElfBuild,Build5" Row="2" Column="0"/>
+            <LayoutButtons Face="Hblm" Type="AbilCmd" AbilCmd="BloodElfBuild,Build10" Row="2" Column="1"/>
             <LayoutButtons Face="nhea" Type="AbilCmd" AbilCmd="BloodElfBuild,Build6" Row="1" Column="2"/>
             <LayoutButtons Face="nbel" Type="AbilCmd" AbilCmd="BloodElfBuild,Build4" Row="0" Column="0"/>
+            <LayoutButtons Face="nws1" Type="AbilCmd" AbilCmd="BloodElfBuild,Build7" Row="1" Column="1"/>
+            <LayoutButtons Face="hpxe" Type="AbilCmd" AbilCmd="BloodElfBuild,Build9" Row="1" Column="3"/>
+            <LayoutButtons Face="negt" Type="AbilCmd" AbilCmd="BloodElfBuild,Build8" Row="2" Column="2"/>
+            <LayoutButtons Face="npgr" Type="AbilCmd" AbilCmd="BloodElfBuild,Build11" Row="2" Column="3"/>
         </CardLayouts>
         <CardLayouts CardId="Purc">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
@@ -3352,7 +3539,7 @@
             <LayoutButtons Face="Purchaserat9" Type="AbilCmd" AbilCmd="Purchaserat9,Train1" Row="0" Column="2"/>
             <LayoutButtons Face="Purchaseratc" Type="AbilCmd" AbilCmd="Purchaseratc,Train1" Row="0" Column="3"/>
             <LayoutButtons Face="Purchaseratf" Type="AbilCmd" AbilCmd="Purchaseratf,Train1" Row="0" Column="4"/>
-            <LayoutButtons Face="Purchaseofro" Type="AbilCmd" AbilCmd="Purchaseofro,Train1" Row="1" Column="0"/>
+            <LayoutButtons Face="Purchaseofir" Type="AbilCmd" AbilCmd="Purchaseofir,Train1" Row="1" Column="0"/>
             <LayoutButtons Face="Purchasegcel" Type="AbilCmd" AbilCmd="Purchasegcel,Train1" Row="2" Column="0"/>
             <LayoutButtons Face="Purchasefrhg" Type="AbilCmd" AbilCmd="Purchasefrhg,Train1" Row="2" Column="1"/>
             <LayoutButtons Face="Purchaseprvt" Type="AbilCmd" AbilCmd="Purchaseprvt,Train1" Row="2" Column="2"/>
@@ -3362,7 +3549,7 @@
         <AbilArray Link="ANlg"/>
         <AbilArray Link="BloodElfBuild"/>
         <AbilArray Link="Aall"/>
-        <AbilArray Link="Purchaseofro"/>
+        <AbilArray Link="Purchaseofir"/>
         <AbilArray Link="Purchasegcel"/>
         <AbilArray Link="Purchasefrhg"/>
         <AbilArray Link="Purchaserat3"/>
@@ -4169,6 +4356,24 @@
     <CUnit id="npfm">
         <Race value="Demon"/>
     </CUnit>
+    <!--power generator-->
+    <CUnit id="npgr" parent="AW2_Building" defType="FORT">
+        <Attributes index="mechanical" value="1"/>
+        <Attributes index="fort" value="1"/>
+        <CostResource index="gold" value="75"/>
+        <KillResource index="Custom" value="75"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <AbilArray Link="BloodElfInventory"/>
+        <AbilArray Link="Aarm"/>
+        <AbilArray Link="npgrTimeLife"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Aarm" Type="Passive" Behavior="Aarm" Row="2" Column="0"/>
+        </CardLayouts>
+        <RepairTime value="20"/>
+        <Race value="BloodElf"/>
+        <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
+    </CUnit>
     <!--Fire pandaren split2-->
     <CUnit id="npn4" parent="AW2_Army" defType="MEDIUM">
         <Attributes index="medium" value="1"/>
@@ -4293,6 +4498,10 @@
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
         <FlagArray index="Movable" value="0"/>
         <Description value="nsnp/Ubertip"/>
+    </CUnit>
+    <!--sludge flinger-->
+    <CUnit id="nslf">
+        <Race value="BloodElf"/>
     </CUnit>
     <!--naga snap dragon-->
     <CUnit id="nsnp" parent="AW2_Army" defType="MEDIUM">
@@ -4631,9 +4840,31 @@
         <Height value="1.875"/>
     </CUnit>
     <!--dragon hawk-->
-    <CUnit id="nws1">
-        <Food value="1"/>
+    <CUnit id="nws1" parent="AW2_Army" defType="SMALL">
+        <Attributes index="small" value="1"/>
+        <CostResource index="gold" value="30"/>
+        <KillResource index="Custom" value="15"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="3"/>
         <Race value="BloodElf"/>
+        <Mover value="fly"/>
+        <Height value="2.1875"/>
+        <AbilArray Link="BloodElfInventory"/>
+        <AbilArray Link="UpgradeTohdhw"/>
+        <AbilArray Link="nws1TimeLife"/>
+        <AbilArray Link="Aclf"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="hdhw" Type="AbilCmd" AbilCmd="UpgradeTohdhw,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Aclf" Type="AbilCmd" AbilCmd="Aclf,0" Row="2" Column="0"/>
+        </CardLayouts>
+        <PlaneArray index="Air" value="1"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="ForceField" value="0"/>
+        <Collide index="Flying" value="1"/>
+        <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
     </CUnit>
     <!--Orb of Corruption-->
     <CUnit id="ocor" parent="AW2_Item">
