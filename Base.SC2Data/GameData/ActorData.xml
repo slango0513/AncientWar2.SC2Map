@@ -266,6 +266,86 @@
     </CActorUnit>
     <CActorAction id="ear21" parent="War3_AttackMissileSwapable"/>
     <CActorMissile id="ear21LM" parent="War3_MissileSwapable" unitName="ear21LM"/>
+    <!--humanarcanetower-->
+    <CActorUnit id="hatw" parent="War3_Building" unitSound="ArcaneTower" unitName="hatw" defType="LARGE">
+        <On index="66" Send="AnimPlay Birth Work"/>
+        <On Terms="ActorCreation" Send="Create UBR_HSMA"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply Upgrade,StageThird {} {} Instant"/>
+        <On Terms="UnitPortrait.*.Configure" Target="::PortraitGameSelf" Send="AnimGroupApply Upgrade,StageThird {} {} Instant"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHumanArcaneTower.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnHumanArcaneTower.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHumanArcaneTower.dds"/>
+        <SoundArray index="Construction" value="BuildingConstructionLoop"/>
+        <BarWidth value="125"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <BarOffset value="120"/>
+        <DeathArray index="Normal" AnimProps="Death" ModelLink="hwtw"/>
+        <DeathArray index="Cancel" AnimProps="Birth" ModelLink="War3_HCancelDeath"/>
+    </CActorUnit>
+    <!--bloodelfwagon-->
+    <CActorUnit id="hbew" parent="War3_Army" unitName="hbew" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnBloodElfSupplyWagon.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnBloodElfSupplyWagon.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnBloodElfSupplyWagon.dds"/>
+        <BarWidth value="125"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="1.4062"/>
+    </CActorUnit>
+    <!--cannontower-->
+    <CActorUnit id="hctw" parent="War3_Building" unitSound="CannonTower" unitName="hctw" defType="FORT">
+        <On index="66" Send="AnimPlay Birth Work"/>
+        <On Terms="ActorCreation" Send="Create UBR_HSMA"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply Upgrade,StageSecond {} {} Instant"/>
+        <On Terms="UnitPortrait.*.Configure" Target="::PortraitGameSelf" Send="AnimGroupApply Upgrade,StageSecond {} {} Instant"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnCannonTower.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnCannonTower.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnCannonTower.dds"/>
+        <SoundArray index="Construction" value="BuildingConstructionLoop"/>
+        <BarWidth value="125"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <BarOffset value="120"/>
+        <DeathArray index="Normal" AnimProps="Death" ModelLink="hwtw"/>
+        <DeathArray index="Cancel" AnimProps="Birth" ModelLink="War3_HCancelDeath"/>
+    </CActorUnit>
+    <!--guardtower-->
+    <CActorUnit id="hgtw" parent="War3_Building" unitSound="GuardTower" unitName="hgtw" defType="LARGE">
+        <On index="66" Send="AnimPlay Birth Work"/>
+        <On Terms="ActorCreation" Send="Create UBR_HSMA"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply Upgrade,StageFirst {} {} Instant"/>
+        <On Terms="UnitPortrait.*.Configure" Target="::PortraitGameSelf" Send="AnimGroupApply Upgrade,StageFirst {} {} Instant"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnGuardTower.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnGuardTower.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnGuardTower.dds"/>
+        <SoundArray index="Construction" value="BuildingConstructionLoop"/>
+        <BarWidth value="125"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <BarOffset value="120"/>
+        <DeathArray index="Normal" AnimProps="Death" ModelLink="hwtw"/>
+        <DeathArray index="Cancel" AnimProps="Birth" ModelLink="War3_HCancelDeath"/>
+    </CActorUnit>
+    <!--scouttower-->
+    <CActorUnit id="hwtw" parent="War3_Building" unitSound="ScoutTower" unitName="hwtw" defType="SMALL">
+        <On Terms="ActorCreation" Send="Create UBR_HSMA"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHumanWatchTower.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnHumanWatchTower.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHumanWatchTower.dds"/>
+        <SoundArray index="Construction" value="BuildingConstructionLoop"/>
+        <BarWidth value="125"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <BarOffset value="120"/>
+        <DeathArray index="Cancel" AnimProps="Birth" ModelLink="War3_HCancelDeath"/>
+    </CActorUnit>
     <!--clockwerkgoblin1-->
     <CActorUnit id="ncgb" parent="War3_Army" unitSound="ClockwerkGoblin" unitName="ncgb" defType="LARGE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnClockWerkGoblin.dds"/>
@@ -415,6 +495,18 @@
     </CActorUnit>
     <CActorAction id="nlp21" parent="War3_AttackSwapable" WeaponSound="MetalMediumChop"/>
     <CActorAction id="nltc1" parent="War3_AttackSwapable" WeaponSound="MetalMediumChop"/>
+    <!--magicvault-->
+    <CActorUnit id="nmgv" parent="War3_Building" unitName="nmgv" defType="FORT">
+        <!--MinimapIcon value="Assets\Textures\UI\MiniMap\minimap-neutralbuilding.tga"/-->
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnMagicVault.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnMagicVault.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnMagicVault.dds"/>
+        <BarWidth value="165"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="120"/>
+    </CActorUnit>
     <!--murgulshadowcaster-->
     <CActorUnit id="nmsc" parent="War3_Army" unitSound="Murloc" unitName="nmsc" defType="NONE">
         <On Terms="Behavior.MurgulShadowcasterSwim.On" Send="AnimGroupApply Swim"/>
@@ -1305,7 +1397,7 @@
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <!--bloodelflieutenant-->
-    <CActorUnit id="nbel" parent="War3_Army" unitSound="SpellBreaker" unitName="nbel" defType="LARGE">
+    <CActorUnit id="nbel" parent="War3_Army" unitSound="SpellBreaker" unitName="nbel" defType="MEDIUM">
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnTheCaptain.dds"/>
         <GroupIcon>
