@@ -37,6 +37,15 @@
     <CBehaviorBuff id="ACsp">
         <RemoveValidatorArray value="CasterIsNotCreep"/>
     </CBehaviorBuff>
+    <!--continuous Defense Bonus,carry End-->
+    <!--ATK Bonus Start-->
+    <!--AttackBonus-->
+    <CBehaviorBuff id="AIat" parent="AW2_Item">
+        <Modification>
+            <DamageDealtScaled index="Melee" value="3"/>
+            <DamageDealtScaled index="Ranged" value="3"/>
+        </Modification>
+    </CBehaviorBuff>
     <!--Orb of Corruption Dur=5 HeroDur=5 Buff=BIcb-->
     <CBehaviorBuff id="AIcb" parent="AW2_SphereItem">
         <DamageResponse Handled="BIcb" TargetFilters="-;wall,tree,debris,item,structure,dead,invulnerable"/>
@@ -82,6 +91,34 @@
     <!--Attack Speed Increase-->
     <CBehaviorBuff id="AIsx" parent="AW2_Item">
         <Modification AttackSpeedMultiplier="1.25"/>
+    </CBehaviorBuff>
+    <!--AttackBonus-->
+    <CBehaviorBuff id="AIt6" parent="AW2_Item">
+        <Modification>
+            <DamageDealtScaled index="Melee" value="6"/>
+            <DamageDealtScaled index="Ranged" value="6"/>
+        </Modification>
+    </CBehaviorBuff>
+    <!--AttackBonus-->
+    <CBehaviorBuff id="AIt9" parent="AW2_Item">
+        <Modification>
+            <DamageDealtScaled index="Melee" value="9"/>
+            <DamageDealtScaled index="Ranged" value="9"/>
+        </Modification>
+    </CBehaviorBuff>
+    <!--AttackBonus-->
+    <CBehaviorBuff id="AItc" parent="AW2_Item">
+        <Modification>
+            <DamageDealtScaled index="Melee" value="12"/>
+            <DamageDealtScaled index="Ranged" value="12"/>
+        </Modification>
+    </CBehaviorBuff>
+    <!--AttackBonus-->
+    <CBehaviorBuff id="AItf" parent="AW2_Item">
+        <Modification>
+            <DamageDealtScaled index="Melee" value="15"/>
+            <DamageDealtScaled index="Ranged" value="15"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="AW2_ArmyNotHostilePlayer" parent="War3_Passive">
         <Requirements value="AW2_ArmyNotHostilePlayer"/>
@@ -149,6 +186,10 @@
     <CBehaviorBuff id="Apo2" parent="AW2_SphereItem">
         <DamageResponse TargetFilters="-;mechanical,Structure,wall,tree,debris,item,ward,dead,invulnerable"/>
     </CBehaviorBuff>
+    <!--Plague Toss Dur=10 HeroDur=10, Trigger Hook-->
+    <CBehaviorBuff id="Apts">
+        <Requirements value=""/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="Aroc">
         <Requirements value=""/>
     </CBehaviorBuff>
@@ -170,6 +211,18 @@
     <!--Corruption-->
     <CBehaviorBuff id="BIcb">
         <Modification LifeArmorBonus="-10"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BUau1">
+        <MaxStackCount value="0"/>
+        <MaxStackCountPerCaster value="1"/>
+        <Modification MoveSpeedMultiplier="1.25">
+            <VitalRegenArray index="Life" value="2.5"/>
+        </Modification>
+    </CBehaviorBuff>
+    <!--Cripple-->
+    <CBehaviorBuff id="Bcri">
+        <Duration value="30"/>
+        <Modification MoveSpeedMultiplier="0.5"/>
     </CBehaviorBuff>
     <!--InnerFire-->
     <CBehaviorBuff id="Binf">
@@ -195,7 +248,7 @@
         <MaxStackCount value="0"/>
         <MaxStackCountPerCaster value="1"/>
         <Modification>
-            <VitalRegenArray index="Energy" value="1.5"/>
+            <VitalRegenArray index="Energy" value="3"/>
         </Modification>
     </CBehaviorBuff>
     <!--Slow-->
@@ -465,7 +518,7 @@
         <RemoveValidatorArray index="0" removed="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="War3_Unit">
-        <Modification SightMaximum="0">
+        <Modification SightMaximum="0" MoveSpeedMaximum="3">
             <StateFlags index="SuppressFoodMade" value="1"/>
             <StateFlags index="SuppressFoodUsed" value="1"/>
         </Modification>
@@ -485,10 +538,34 @@
         </Modification>
         <Duration value="0.0625"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="ntrd" parent="War3_Passive">
+    <CBehaviorBuff id="ntrs" parent="War3_Passive">
         <DamageResponse Chance="1" Fatal="1" Handled="ntrt"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ntrt" parent="War3_Passive">
+        <DamageResponse Chance="1" Fatal="1" Handled="ntrd"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ntrd" parent="War3_Passive">
         <DamageResponse Chance="1" Fatal="1" Handled="ntrs"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="nmgw" parent="War3_Passive">
+        <DamageResponse Chance="1" Fatal="1" Handled="nmgr"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="nmgr" parent="War3_Passive">
+        <DamageResponse Chance="1" Fatal="1" Handled="nmgd"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="nmgd" parent="War3_Passive">
+        <DamageResponse Chance="1" Fatal="1" Handled="nmgw"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ngno" parent="War3_Passive">
+        <DamageResponse Chance="1" Fatal="1" Handled="ngnv"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ngnv" parent="War3_Passive">
+        <DamageResponse Chance="1" Fatal="1" Handled="ngns"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ngns" parent="War3_Passive">
+        <DamageResponse Chance="1" Fatal="1" Handled="ngnw"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ngnw" parent="War3_Passive">
+        <DamageResponse Chance="1" Fatal="1" Handled="ngno"/>
     </CBehaviorBuff>
 </Catalog>

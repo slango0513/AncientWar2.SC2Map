@@ -12,6 +12,16 @@
         <AreaArray/>
         <ExtendRadius value="5"/>
     </CTargetFindEnumArea>
+    <CTargetFindEnumArea id="Cripple">
+        <Abil value="Acri"/>
+        <ExtendRadius value="0"/>
+        <TargetValidator value="AICrippleTarget"/>
+        <TargetSorts>
+            <SortArray index="0" value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray index="1" value="TSLifeLargestFirst"/>
+            <SortArray index="2" removed="1"/>
+        </TargetSorts>
+    </CTargetFindEnumArea>
     <CTargetFindEffect id="EarthquakeSearch">
         <TargetFilters value="Visible;Player,Ally,Neutral"/>
     </CTargetFindEffect>
@@ -32,6 +42,14 @@
         <AreaArray Radius="10"/>
         <Abil value="Aps2"/>
         <SearchFilters value="Visible;Player,Ally,Neutral,Hover,Missile,Dead,Invulnerable,Unstoppable"/>
+        <TargetValidator value="noMarkers"/>
+    </CTargetFindEnumArea>
+    <CTargetFindEnumArea id="Charm">
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray Radius="10"/>
+        <Abil value="ANch"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Hover,Missile,Dead,Invulnerable,Unstoppable"/>
+        <TargetValidator value="noMarkers"/>
     </CTargetFindEnumArea>
     <CTargetFindEnumArea id="Invisibility">
         <TargetValidator value="AIInvisibilityTarget"/>
@@ -87,7 +105,7 @@
         <Abil value="ANdo"/>
         <TargetSorts>
             <SortArray value="TSLife"/>
-            <SortArray value="TSDistance"/>
+            <SortArray value="TSFarthestDistance"/>
         </TargetSorts>
         <TargetFilters value="Visible;Player,Ally,Neutral,Hover,Missile,Dead,Invulnerable,Unstoppable"/>
         <TargetValidator value="AIDoomTarget"/>
@@ -143,5 +161,16 @@
         <TargetSorts>
             <SortArray value="TSLifeLargestFirst"/>
         </TargetSorts>
+    </CTargetFindEnumArea>
+    <CTargetFindSet id="Web">
+        <Type value="Successful"/>
+        <Array value="WebAirTarget"/>
+    </CTargetFindSet>
+    <CTargetFindEnumArea id="WebAirTarget">
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray/>
+        <Abil value="Aweb"/>
+        <SearchFilters value="Air;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden"/>
+        <TargetValidator value="noMarkers"/>
     </CTargetFindEnumArea>
 </Catalog>

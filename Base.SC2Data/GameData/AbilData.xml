@@ -224,6 +224,18 @@
             <Charge CountMax="1" CountStart="1" CountUse="1"/>
         </Cost>
     </CAbilEffectInstant>
+    <!--Dark Ranger - Charm-->
+    <CAbilEffectTarget id="ANch" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Creeps,AbilityorEffectType:Units"/>
+        <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,hero"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="60"/>
+        </Cost>
+        <Range value="9"/>
+        <PrepTime value="0.4"/>
+        <CastOutroTime value="0.5"/>
+        <Effect index="0" value="BNch"/>
+    </CAbilEffectTarget>
     <!--Pit Lord - Doom Buff=BNdo,BNdi-->
     <CAbilEffectTarget id="ANdo" parent="AW2_EffectTarget">
         <EditorCategories value="Race:Undead,AbilityorEffectType:Units"/>
@@ -549,7 +561,6 @@
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
         <ProgressButtonArray index="Channel" value="Acan"/>
-        <CancelableArray index="Channel" value="1"/>
         <UninterruptibleArray index="Channel" value="1"/>
         <FinishTime value="0.51"/>
     </CAbilEffectInstant>
@@ -562,22 +573,40 @@
         <CmdButtonArray index="Execute" DefaultButtonFace="Acn2"/>
     </CAbilEffectInstant>
     <!--Cripple Dur=60 HeroDur=10 Buff=Bcri-->
-    <CAbilEffectTarget id="Acri">
-        <CmdButtonArray index="Execute" Requirements="">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
-        <CmdButtonArray index="Cancel">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
+    <CAbilEffectTarget id="Acri" parent="AW2_EffectTarget">
+        <Alignment value="Negative"/>
+        <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
+        <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="60"/>
+        </Cost>
+        <Effect index="0" value="Bcri"/>
+        <Range value="9"/>
+        <PrepTime value="0.5"/>
+        <CastOutroTime value="0.5"/>
     </CAbilEffectTarget>
     <!--Curse Dur=120 HeroDur=60 Buff=Bcrs-->
-    <CAbilEffectTarget id="Acrs">
-        <CmdButtonArray index="Execute" Requirements="">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
-        <CmdButtonArray index="Cancel">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
+    <CAbilEffectTarget id="Acrs" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
+        <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="30"/>
+        </Cost>
+        <Range value="12"/>
+        <PrepTime value="0.5"/>
+        <CastOutroTime value="0.83"/>
+        <Effect index="0" value="Bcrs"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="NoCurse"/>
+        <AutoCastValidatorArray value="Threatens"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
     </CAbilEffectTarget>
     <!--Disenchant(new)-->
     <CAbilEffectTarget id="Adcn">
@@ -729,6 +758,24 @@
         <CastOutroTime value="0.51"/>
         <AutoCastFilters value="Visible;Neutral"/>
         <AutoCastValidatorArray value="noMarkers"/>
+    </CAbilEffectTarget>
+    <!--Web Dur=12 HeroDur=7 Buff=Bwea,Bweb-->
+    <CAbilEffectTarget id="Aweb" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
+        <TargetFilters index="0" value="-;player,allies,ground,wall,tree,debris,item,structure,ward,dead,invulnerable"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="12"/>
+        </Cost>
+        <Range value="9"/>
+        <CastOutroTime value="0.51"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <AutoCastRange value="9"/>
+        <Marker>
+            <MismatchFlags index="CasterUnit" value="1"/>
+        </Marker>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <Effect index="0" value="AwebMissile"/>
     </CAbilEffectTarget>
     <CAbilBehavior id="Defend" parent="AW2_Toggle">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
@@ -896,6 +943,36 @@
     <CAbilTrain id="Purchaseoven" parent="War3_MakeItem" unit="oven">
         <InfoArray index="Train1">
             <Charge CountMax="1" CountStart="1"/>
+            <Button Requirements="BuildArmy"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilTrain id="Purchaserat3" parent="War3_MakeItem" unit="rat3">
+        <InfoArray index="Train1">
+            <Charge CountMax="3" CountStart="3"/>
+            <Button Requirements="BuildArmy"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilTrain id="Purchaserat6" parent="War3_MakeItem" unit="rat6">
+        <InfoArray index="Train1">
+            <Charge CountMax="3" CountStart="3"/>
+            <Button Requirements="BuildArmy"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilTrain id="Purchaserat9" parent="War3_MakeItem" unit="rat9">
+        <InfoArray index="Train1">
+            <Charge CountMax="3" CountStart="3"/>
+            <Button Requirements="BuildArmy"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilTrain id="Purchaseratc" parent="War3_MakeItem" unit="ratc">
+        <InfoArray index="Train1">
+            <Charge CountMax="3" CountStart="3"/>
+            <Button Requirements="BuildArmy"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilTrain id="Purchaseratf" parent="War3_MakeItem" unit="ratf">
+        <InfoArray index="Train1">
+            <Charge CountMax="3" CountStart="3"/>
             <Button Requirements="BuildArmy"/>
         </InfoArray>
     </CAbilTrain>

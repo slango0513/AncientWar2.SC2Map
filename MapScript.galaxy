@@ -44,6 +44,7 @@ const int gv_venueGroupMaximumCount = (gv_teamMaximumCount/2);
 //--------------------------------------------------------------------------------------------------
 // Global Variables
 //--------------------------------------------------------------------------------------------------
+bool gv_isBonusRound;
 int gv_teamFinal;
 int gv_teamFinalInitial;
 unitgroup gv_adefGroup;
@@ -340,8 +341,19 @@ void gf_RoundStartLoop (bool lp_debug) {
     if ((gv_testPassed == true)) {
         autoE4112BFC_ae = gv_roundCount;
         autoE4112BFC_ai = 1;
-        lv_round = 3;
+        lv_round = 1;
         for ( ; ( (autoE4112BFC_ai >= 0 && lv_round <= autoE4112BFC_ae) || (autoE4112BFC_ai <= 0 && lv_round >= autoE4112BFC_ae) ) ; lv_round += autoE4112BFC_ai ) {
+            if ((lp_debug == true)) {
+                lv_round = 1;
+            }
+
+            if ((gf_IsFinalRound(lv_round) == true)) {
+                gf_FinalVenueReplace();
+            }
+            else {
+                gf_VenueInitialReplace();
+            }
+            gf_RoundStart(lv_round, false, lp_debug);
             if ((gv_bonusRoundIsOn[lv_round] == true)) {
                 gf_BonusVenueReplace();
                 gf_RoundStart(lv_round, true, lp_debug);
@@ -355,6 +367,7 @@ void gf_RoundStartLoop (bool lp_debug) {
 void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug) {
     // Implementation
     gv_round = lp_round;
+    gv_isBonusRound = lp_bonusRound;
     gf_BattlefieldReset();
     gf_BattlefieldRevealerEnable(false);
     gf_ScoreBoardSetName(lp_round, lp_bonusRound);
@@ -685,8 +698,6 @@ void gf_PlayerAtVenueSet (bool lp_debug) {
     int auto199F204B_ai;
     int auto12E4A334_ae;
     int auto12E4A334_ai;
-    int autoAB7CD91B_ae;
-    int autoAB7CD91B_ai;
 
     // Variable Declarations
     int lv_creepTeam;
@@ -738,32 +749,6 @@ void gf_PlayerAtVenueSet (bool lp_debug) {
                 gv_creepPlayerAtVenue[lv_venue][lv_round] = PlayerGroupPlayer(gv_teamGroup[gv_teamAtVenue[lv_creepTeam][lv_teamRound]], lv_teamMember);
             }
         }
-    }
-    autoAB7CD91B_ae = gv_roundCount;
-    autoAB7CD91B_ai = 1;
-    lv_round = 1;
-    for ( ; ( (autoAB7CD91B_ai >= 0 && lv_round <= autoAB7CD91B_ae) || (autoAB7CD91B_ai <= 0 && lv_round >= autoAB7CD91B_ae) ) ; lv_round += autoAB7CD91B_ai ) {
-        TextExpressionSetToken("Param/Expression/E9329EDD", "A", IntToText(gv_playerAtVenue[1][lv_round]));
-        TextExpressionSetToken("Param/Expression/E9329EDD", "B", IntToText(gv_playerAtVenue[2][lv_round]));
-        TextExpressionSetToken("Param/Expression/E9329EDD", "C", IntToText(gv_playerAtVenue[3][lv_round]));
-        TextExpressionSetToken("Param/Expression/E9329EDD", "D", IntToText(gv_playerAtVenue[4][lv_round]));
-        TextExpressionSetToken("Param/Expression/E9329EDD", "E", IntToText(gv_playerAtVenue[5][lv_round]));
-        TextExpressionSetToken("Param/Expression/E9329EDD", "F", IntToText(gv_playerAtVenue[6][lv_round]));
-        TextExpressionSetToken("Param/Expression/E9329EDD", "G", IntToText(gv_playerAtVenue[7][lv_round]));
-        TextExpressionSetToken("Param/Expression/E9329EDD", "H", IntToText(gv_playerAtVenue[8][lv_round]));
-        TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/E9329EDD"), true);
-        if ((gv_bonusRoundIsOn[lv_round] == true)) {
-            TextExpressionSetToken("Param/Expression/C6E8DEE4", "A", IntToText(gv_creepPlayerAtVenue[1][lv_round]));
-            TextExpressionSetToken("Param/Expression/C6E8DEE4", "B", IntToText(gv_creepPlayerAtVenue[2][lv_round]));
-            TextExpressionSetToken("Param/Expression/C6E8DEE4", "C", IntToText(gv_creepPlayerAtVenue[3][lv_round]));
-            TextExpressionSetToken("Param/Expression/C6E8DEE4", "D", IntToText(gv_creepPlayerAtVenue[4][lv_round]));
-            TextExpressionSetToken("Param/Expression/C6E8DEE4", "E", IntToText(gv_creepPlayerAtVenue[5][lv_round]));
-            TextExpressionSetToken("Param/Expression/C6E8DEE4", "F", IntToText(gv_creepPlayerAtVenue[6][lv_round]));
-            TextExpressionSetToken("Param/Expression/C6E8DEE4", "G", IntToText(gv_creepPlayerAtVenue[7][lv_round]));
-            TextExpressionSetToken("Param/Expression/C6E8DEE4", "H", IntToText(gv_creepPlayerAtVenue[8][lv_round]));
-            TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/C6E8DEE4"), true);
-        }
-
     }
 }
 
@@ -1987,14 +1972,11 @@ void gf_CreepUnitTypeSetAll () {
     int lv_venue;
     int lv_count;
     int lv_index;
-    string lv_roundID;
     string lv_unitType;
     text lv_description;
-    text lv_descriptionMore;
     string lv_path;
 
     // Variable Initialization
-    lv_roundID = "";
     lv_path = "";
 
     // Implementation
@@ -2010,17 +1992,14 @@ void gf_CreepUnitTypeSetAll () {
             for ( ; ( (auto57A507C1_ai >= 0 && lv_venue <= auto57A507C1_ae) || (auto57A507C1_ai <= 0 && lv_venue >= auto57A507C1_ae) ) ; lv_venue += auto57A507C1_ai ) {
                 while ((gv_creepUnitType[lv_venue][lv_round] == null)) {
                     lv_index = RandomInt(1, lv_count);
-                    lv_roundID = IntToString(lv_round);
-                    lv_unitType = UserDataGetUnit(gv_creepUnitTypeUserType, (lv_roundID), "UnitType", lv_index);
+                    lv_unitType = UserDataGetUnit(gv_creepUnitTypeUserType, ("1"), "UnitType", lv_index);
                     if ((lv_unitType != null)) {
                         gv_creepUnitType[lv_venue][lv_round] = lv_unitType;
                         lv_description = StringExternal(CatalogFieldValueGet(c_gameCatalogUnit, gv_creepUnitType[lv_venue][lv_round], "Description", gv_playerAtVenue[lv_venue][lv_round]));
-                        lv_descriptionMore = UserDataGetText(gv_creepUnitTypeUserType, (lv_roundID), "Description", lv_index);
                         lv_path = CatalogFieldValueGet(c_gameCatalogActor, (lv_unitType), "UnitIcon", gv_playerAtVenue[lv_venue][lv_round]);
                         TextExpressionSetToken("Param/Expression/0E472FCC", "A", IntToText(lv_round));
                         TextExpressionSetToken("Param/Expression/0E472FCC", "B", UnitTypeGetName(lv_unitType));
                         TextExpressionSetToken("Param/Expression/4CA5E705", "A", lv_description);
-                        TextExpressionSetToken("Param/Expression/4CA5E705", "B", lv_descriptionMore);
                         TextExpressionSetToken("Param/Expression/CEBDBACC", "A", IntToText(lv_round));
                         TextExpressionSetToken("Param/Expression/CEBDBACC", "B", UnitTypeGetName(lv_unitType));
                         HelpPanelAddTip(PlayerGroupSingle(gv_playerAtVenue[lv_venue][lv_round]), TextExpressionAssemble("Param/Expression/0E472FCC"), TextExpressionAssemble("Param/Expression/4CA5E705"), TextExpressionAssemble("Param/Expression/CEBDBACC"), (lv_path));
@@ -3031,7 +3010,6 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     int lv_player;
 
     // Variable Initialization
-    lv_debug = true;
 
     // Actions
     if (!runActions) {
@@ -3051,7 +3029,14 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
         lv_player = PlayerGroupPlayer(autoE8E91B19_g, autoE8E91B19_p);
         VisRevealArea(lv_player, RegionFromId(70), 0.0625, false);
         VisRevealArea(lv_player, RegionFromId(71), 0.0625, false);
-        libGAwX_gf_SetPlayerUIRace(lv_player, "Human");
+        if ((PlayerRace(lv_player) == "NightElf")) {
+            libGAwX_gf_SetPlayerUIRace(lv_player, "Human");
+        }
+
+        if ((PlayerRace(lv_player) == "Orc")) {
+            libGAwX_gf_SetPlayerUIRace(lv_player, "Undead");
+        }
+
     }
     libGAwX_gf_SetWar3TimeOfDay("13:00:00");
     libGAwX_gf_PauseUnpauseTimeOfDayWar3(true);
@@ -4289,32 +4274,35 @@ bool gt_IssueOrderPeriodic_Func (bool testConds, bool runActions) {
     auto0E7465C9_u = 1;
     for ( ; auto0E7465C9_u <= UnitGroupCount(auto0E7465C9_g, c_unitCountAll) ; auto0E7465C9_u += BoolToInt(lv_unit == UnitGroupUnit(auto0E7465C9_g, auto0E7465C9_u)) ) {
         lv_unit = UnitGroupUnit(auto0E7465C9_g, auto0E7465C9_u);
-        lv_targetUnit = null;
-        lv_targetPoint = null;
-        UnitGroupClear(lv_targetUnitgroup);
-        if ((gv_round > (gv_roundCount-gv_finalRoundCount))) {
-            lv_region = RegionCircle(UnitGetPosition(lv_unit), gv_searchRadiusInFinalRound);
-        }
-        else {
-            lv_region = gv_battlefield;
-        }
-        lv_targetUnitgroup = UnitGroupAlliance(UnitGetOwner(lv_unit), c_unitAllianceEnemy, lv_region, gv_unitAndCreepFilter, 0);
-        while ((UnitGroupCount(lv_targetUnitgroup, c_unitCountAlive) > 0)) {
-            lv_targetUnit = UnitGroupClosestToPoint(lv_targetUnitgroup, UnitGetPosition(lv_unit));
-            if ((UnitCanAttackTarget(lv_unit, lv_targetUnit) == true)) {
-                lv_targetPoint = UnitGetPosition(lv_targetUnit);
-                break;
+        if (true) {
+            lv_targetUnit = null;
+            lv_targetPoint = null;
+            UnitGroupClear(lv_targetUnitgroup);
+            if ((gv_round > (gv_roundCount-gv_finalRoundCount))) {
+                lv_region = RegionCircle(UnitGetPosition(lv_unit), gv_searchRadiusInFinalRound);
             }
             else {
-                UnitGroupRemove(lv_targetUnitgroup, lv_targetUnit);
+                lv_region = gv_battlefield;
+            }
+            lv_targetUnitgroup = UnitGroupAlliance(UnitGetOwner(lv_unit), c_unitAllianceEnemy, lv_region, gv_unitAndCreepFilter, 0);
+            while ((UnitGroupCount(lv_targetUnitgroup, c_unitCountAlive) > 0)) {
+                lv_targetUnit = UnitGroupClosestToPoint(lv_targetUnitgroup, UnitGetPosition(lv_unit));
+                if ((UnitCanAttackTarget(lv_unit, lv_targetUnit) == true)) {
+                    lv_targetPoint = UnitGetPosition(lv_targetUnit);
+                    break;
+                }
+                else {
+                    UnitGroupRemove(lv_targetUnitgroup, lv_targetUnit);
+                }
+            }
+            if ((lv_targetPoint != null)) {
+                UnitIssueOrder(lv_unit, OrderTargetingPoint(AbilityCommand("Amov", 3), lv_targetPoint), c_orderQueueReplace);
+            }
+            else {
+                UnitIssueOrder(lv_unit, Order(AbilityCommand("stop", 0)), c_orderQueueReplace);
             }
         }
-        if ((lv_targetPoint != null)) {
-            UnitIssueOrder(lv_unit, OrderTargetingPoint(AbilityCommand("Amov", 3), lv_targetPoint), c_orderQueueReplace);
-        }
-        else {
-            UnitIssueOrder(lv_unit, Order(AbilityCommand("stop", 0)), c_orderQueueReplace);
-        }
+
     }
     return true;
 }
@@ -4387,7 +4375,7 @@ bool gt_CountUnit_Func (bool testConds, bool runActions) {
         }
 
     }
-    if ((gv_bonusRoundIsOn[gv_round] == false)) {
+    if ((gv_isBonusRound == false)) {
         if ((lv_teamCountAlive == 1)) {
             auto5E5272DF_ae = gv_teamMaximumCount;
             auto5E5272DF_ai = 1;
