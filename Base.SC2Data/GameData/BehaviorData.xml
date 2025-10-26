@@ -46,6 +46,26 @@
         </DamageResponse>
         <MaxStackCount value="0"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="TowerRecoverTimmer180" parent="AW2_TimeLife">
+        <Name value="TowerTimeLife/Name"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btntower.dds"/>
+        <Duration value="180"/>
+        <DurationOverride Duration="180">
+            <ValidatorArray value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <FinalEffect value=""/>
+        <ExpireEffect value="TimedLifeFateTower"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TowerRecoverTimmer60" parent="AW2_TimeLife">
+        <Name value="TowerTimeLife2/Name"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btntower.dds"/>
+        <Duration value="60"/>
+        <DurationOverride Duration="60">
+            <ValidatorArray value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <FinalEffect value=""/>
+        <ExpireEffect value="TimedLifeFateTower"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="ACpv">
         <Requirements value=""/>
         <Modification CriticalAttackChanceScaledBonus="0.1"/>
@@ -293,8 +313,8 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="ANfa1">
         <Modification>
-            <DamageDealtUnscaled index="Melee" value="50"/>
-            <DamageDealtUnscaled index="Ranged" value="50"/>
+            <DamageDealtUnscaled index="Melee" value="75"/>
+            <DamageDealtUnscaled index="Ranged" value="75"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="ANrg">
@@ -388,10 +408,24 @@
     <CBehaviorBuff id="Aflk">
         <Requirements value=""/>
     </CBehaviorBuff>
+    <!--Graveyard-->
+    <CBehaviorSpawn id="Agyd">
+        <InfoArray index="0">
+            <Unit value="ughoCorpseGravy"/>
+            <MaxCount value="5"/>
+            <StartCount value="0"/>
+            <Requirements value="AgydMarker"/>
+            <Delay value="10"/>
+        </InfoArray>
+    </CBehaviorSpawn>
     <!--Liquid Fire Dur=3 HeroDur=3 Buff=Bliq-->
     <CBehaviorBuff id="Aliq">
         <Requirements value=""/>
         <DamageResponse TargetFilters="-;player,allies,air,wall,tree,debris,item,ward,dead"/>
+    </CBehaviorBuff>
+    <!--PhoenixFire Dur=10 HeroDur=7-->
+    <CBehaviorBuff id="Apxf">
+        <Period value="1.5"/>
     </CBehaviorBuff>
     <!--Slow Poison Dur=5 HeroDur=1 Buff=Bspo,Bssd-->
     <CBehaviorBuff id="Aspo">
@@ -401,9 +435,16 @@
     <CBehaviorBuff id="Asth">
         <Requirements value=""/>
     </CBehaviorBuff>
+    <!--CreepThunderClap-->
+    <CBehaviorBuff id="BCtc">
+        <Duration value="30"/>
+        <DurationOverride index="0" Duration="15">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+    </CBehaviorBuff>
     <CBehaviorBuff id="GoblinLandMineInvisibility" parent="War3_Passive">
         <EditorCategories value="Race:Goblin,AbilityorEffectType:Unit"/>
-        <Duration value="15"/>
+        <Duration value="10"/>
         <Modification>
             <StateFlags index="Cloak" value="1"/>
         </Modification>
@@ -641,7 +682,7 @@
     </CBehaviorBuff>
     <!--Phoenix-->
     <CBehaviorBuff id="Bphx">
-        <Duration value="30"/>
+        <Duration value="45"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Bstn" parent="War3_Buff">
         <EditorCategories value="Race:Undead,AbilityorEffectType:Units"/>
@@ -875,6 +916,15 @@
             <Kind index="Spell" value="0"/>
             <Kind index="Splash" value="0"/>
         </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PretAPorter" parent="War3_Passive">
+        <Requirements value="PretAPorter"/>
+        <Modification LifeArmorMultiplier="10"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SuppressRegen">
+        <Modification>
+            <BehaviorClassDisableArray index="CBehaviorBuff" value="1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="nglmTimeLife" parent="AW2_TimeLife">
         <EditorCategories value="Race:Goblin,AbilityorEffectType:Units"/>

@@ -1834,6 +1834,14 @@
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
+    <!--boulder tower-->
+    <CUnit id="nbt1">
+        <Race value="Draenei"/>
+    </CUnit>
+    <!--boulder tower upgraded-->
+    <CUnit id="nbt2">
+        <Race value="Draenei"/>
+    </CUnit>
     <!--queen of suffering-->
     <CUnit id="ndqs" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
@@ -1853,10 +1861,141 @@
         <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
-            <LayoutButtons Face="Suffering" Type="Passive" Behavior="Suffering" Row="2" Column="1"/>
-            <LayoutButtons Face="ANch" Type="AbilCmd" AbilCmd="ANch,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="PretAPorter" Type="Passive" Row="2" Column="1"/>
+            <LayoutButtons Face="Suffering" Type="Passive" Behavior="Suffering" Row="2" Column="2"/>
+            <LayoutButtons Face="ANch" Type="AbilCmd" AbilCmd="ANch,Execute" Row="2" Column="3"/>
         </CardLayouts>
         <EnergyMax value="180"/>
+        <LifeArmorFormula NegativeArmorMultiplier="-1.5" PositiveArmorMultiplier="1.5"/>
+    </CUnit>
+    <!--draenei laborer-->
+    <CUnit id="ndrl" parent="AW2_Peon">
+        <CardLayouts index="0">
+            <LayoutButtons>
+                <Face value="CmdBuildDraenei"/>
+                <Type value="Submenu"/>
+                <Requirements value="ShowBuildArmy"/>
+                <SubmenuCardId value="Buil"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons Face="DraeneiFlag" Type="AbilCmd" AbilCmd="DraeneiBuild,Build1" Row="0" Column="0"/>
+            <LayoutButtons>
+                <Face value="CmdPurchaseDraenei"/>
+                <Type value="Submenu"/>
+                <Requirements value="ShowBuildArmy"/>
+                <SubmenuCardId value="Purc"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons Face="DraeneiFlag2" Type="AbilCmd" AbilCmd="DraeneiBuild,Build2" Row="0" Column="1"/>
+            <LayoutButtons>
+                <Face value="CmdPurchaseDraenei2"/>
+                <Type value="Submenu"/>
+                <Requirements value="ShowBuildArmy"/>
+                <SubmenuCardId value="Pur2"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
+        </CardLayouts>
+        <CardLayouts index="1" CardId="Buil">
+            <LayoutButtons Face="nnmg" Type="AbilCmd" AbilCmd="DraeneiBuild,Build3" Row="0" Column="0"/>
+            <LayoutButtons Face="nskk" Type="AbilCmd" AbilCmd="DraeneiBuild,Build4" Row="0" Column="1"/>
+            <LayoutButtons Face="ndt1" Type="AbilCmd" AbilCmd="DraeneiBuild,Build5" Row="2" Column="2"/>
+        </CardLayouts>
+        <CardLayouts index="2" CardId="Purc">
+            <LayoutButtons Face="Purchaseofir" Type="AbilCmd" AbilCmd="Purchaseofir,Train1" Row="2" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="3" CardId="Pur2">
+            <LayoutButtons Face="Purchasepmna" Type="AbilCmd" AbilCmd="Purchasepmna,Train1" Row="2" Column="0"/>
+        </CardLayouts>
+        <AbilArray Link="DraeneiBuild"/>
+        <AbilArray Link="Purchaseofir"/>
+        <AbilArray Link="Purchasepmna"/>
+        <Speed value="3"/>
+        <Radius value="0.3125"/>
+        <Race value="Draenei"/>
+        <Mover value="foot"/>
+        <MinimapRadius value="0.3125"/>
+        <SeparationRadius value="0.3125"/>
+        <InnerRadius value="0.3125"/>
+    </CUnit>
+    <!--cold tower-->
+    <CUnit id="ndt1" parent="AW2_Building" defType="FORT">
+        <Attributes index="mechanical" value="1"/>
+        <Attributes index="fort" value="1"/>
+        <CostResource index="gold" value="90"/>
+        <KillResource index="Custom" value="30"/>
+        <LifeStart value="250"/>
+        <LifeMax value="250"/>
+        <AbilArray index="4" Link="TowerRecoverTimmer180"/>
+        <AbilArray Link="DraeneiInventory"/>
+        <AbilArray Link="UpgradeTondt2"/>
+        <RepairTime value="20"/>
+        <Race value="Draenei"/>
+        <GlossaryCategory value="Unit/Category/DraeneiUnits"/>
+        <BehaviorArray Link="Afra"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ndt2" Type="AbilCmd" AbilCmd="UpgradeTondt2,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Afra" Type="Passive" Behavior="Afra" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <!--cold tower upgraded-->
+    <CUnit id="ndt2" parent="AW2_Building" defType="FORT">
+        <Attributes index="mechanical" value="1"/>
+        <Attributes index="fort" value="1"/>
+        <CostResource index="gold" value="270"/>
+        <KillResource index="Custom" value="90"/>
+        <LifeStart value="750"/>
+        <LifeMax value="750"/>
+        <AbilArray index="4" Link="TowerRecoverTimmer180"/>
+        <AbilArray Link="DraeneiInventory"/>
+        <RepairTime value="20"/>
+        <Race value="Draenei"/>
+        <GlossaryCategory value="Unit/Category/DraeneiUnits"/>
+        <BehaviorArray Link="Afra"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Afra" Type="Passive" Behavior="Afra" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <!--elven guard fire tower-->
+    <CUnit id="negf">
+        <Race value="Draenei"/>
+    </CUnit>
+    <!--elven guard magic tower-->
+    <CUnit id="negm">
+        <Race value="Draenei"/>
+    </CUnit>
+    <!--energy tower-->
+    <CUnit id="net1" parent="AW2_Building" defType="FORT">
+        <Attributes index="mechanical" value="1"/>
+        <Attributes index="fort" value="1"/>
+        <CostResource index="gold" value="90"/>
+        <KillResource index="Custom" value="30"/>
+        <LifeStart value="250"/>
+        <LifeMax value="250"/>
+        <AbilArray Link="DraeneiInventory"/>
+        <AbilArray Link="UpgradeTonet2"/>
+        <RepairTime value="20"/>
+        <Race value="Draenei"/>
+        <GlossaryCategory value="Unit/Category/DraeneiUnits"/>
+        <BehaviorArray Link="Afra"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="net2" Type="AbilCmd" AbilCmd="UpgradeTonet2,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Afra" Type="Passive" Behavior="Afra" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <!--energy tower upgraded-->
+    <CUnit id="net2">
+        <Race value="Draenei"/>
+    </CUnit>
+    <!--flame tower-->
+    <CUnit id="nft1">
+        <Race value="Draenei"/>
+    </CUnit>
+    <!--flame tower upgraded-->
+    <CUnit id="nft2">
+        <Race value="Draenei"/>
     </CUnit>
     <!--hydra-->
     <CUnit id="nhyd" parent="AW2_Army" defType="LARGE">
@@ -1952,6 +2091,36 @@
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
+    </CUnit>
+    <!--Skink-->
+    <CUnit id="nskk" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="45"/>
+        <KillResource index="Custom" value="2"/>
+        <LifeStart value="100"/>
+        <LifeMax value="100"/>
+        <Speed value="2"/>
+        <Race value="Draenei"/>
+        <Mover value="foot"/>
+        <Radius value="0.25"/>
+        <MinimapRadius value="0.25"/>
+        <SeparationRadius value="0.25"/>
+        <InnerRadius value="0.25"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/DraeneiUnits"/>
+        <DeathTime value="0"/>
+    </CUnit>
+    <!--thunder lizard-->
+    <CUnit id="nthl">
+        <Race value="Draenei"/>
+    </CUnit>
+    <!--death tower-->
+    <CUnit id="ntt1">
+        <Race value="Draenei"/>
+    </CUnit>
+    <!--death tower upgraded-->
+    <CUnit id="ntx2">
+        <Race value="Draenei"/>
     </CUnit>
     <!--dark wizard-->
     <CUnit id="nwzd" parent="AW2_Army" defType="NONE">
@@ -2542,6 +2711,7 @@
         <LifeMax value="250"/>
         <RepairTime value="20"/>
         <Race value="Human"/>
+        <AbilArray index="4" Link="TowerRecoverTimmer180"/>
         <AbilArray Link="Aihn"/>
         <GlossaryCategory value="Unit/Category/HumanUnits"/>
     </CUnit>
@@ -2576,6 +2746,7 @@
         <KillResource index="Custom" value="30"/>
         <LifeStart value="250"/>
         <LifeMax value="250"/>
+        <AbilArray index="4" Link="TowerRecoverTimmer180"/>
         <AbilArray Link="Aihn"/>
         <RepairTime value="20"/>
         <Race value="Human"/>
@@ -2668,6 +2839,7 @@
         <KillResource index="Custom" value="30"/>
         <LifeStart value="250"/>
         <LifeMax value="250"/>
+        <AbilArray index="4" Link="TowerRecoverTimmer180"/>
         <AbilArray Link="Aihn"/>
         <RepairTime value="20"/>
         <Race value="Human"/>
@@ -2941,11 +3113,11 @@
         <InnerRadius value="0.3125"/>
     </CUnit>
     <!--Peasant-->
-    <CUnit id="hphx" parent="AW2_Army" defType="SMALL">
-        <Attributes index="small" value="1"/>
+    <CUnit id="hphx" parent="AW2_Army" defType="DIVINE">
+        <Attributes index="divine" value="1"/>
         <KillResource index="Custom" value="150"/>
-        <LifeStart value="2100"/>
-        <LifeMax value="2100"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
         <LifeRegenRate value="-30"/>
         <Speed value="3"/>
         <Race value="BloodElf"/>
@@ -2975,12 +3147,12 @@
         <FlagArray index="Turnable" value="0"/>
     </CUnit>
     <!--Phoenix Egg-->
-    <CUnit id="hpxe" parent="AW2_Sationary" defType="LARGE">
-        <Attributes index="large" value="1"/>
+    <CUnit id="hpxe" parent="AW2_Sationary" defType="NONE">
+        <Attributes index="none" value="1"/>
         <CostResource index="lumber" value="3000"/>
         <KillResource index="Custom" value="150"/>
-        <LifeStart value="900"/>
-        <LifeMax value="900"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
         <Race value="BloodElf"/>
         <AbilArray Link="BloodElfInventory"/>
         <AbilArray Link="AphxUn"/>
@@ -3140,6 +3312,7 @@
         <LifeMax value="250"/>
         <RepairTime value="20"/>
         <Race value="Human"/>
+        <AbilArray index="4" Link="TowerRecoverTimmer60"/>
         <AbilArray Link="UpgradeTohgtw"/>
         <AbilArray Link="UpgradeTohctw"/>
         <AbilArray Link="UpgradeTohatw"/>
@@ -3862,8 +4035,9 @@
         <KillResource index="Custom" value="30"/>
         <LifeStart value="250"/>
         <LifeMax value="250"/>
+        <AbilArray index="4" Link="TowerRecoverTimmer180"/>
         <AbilArray Link="BloodElfInventory"/>
-        <AbilArray Link="ndgtTimeLife"/>
+        <AbilArray Link="TowerRecoverTimmer180"/>
         <RepairTime value="20"/>
         <Race value="BloodElf"/>
         <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
@@ -3914,10 +4088,12 @@
         <CardLayouts index="0">
             <LayoutButtons Face="ndqs" Type="AbilCmd" AbilCmd="UpgradeTondqs,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
-            <LayoutButtons Face="AUsl" Type="AbilCmd" AbilCmd="AUsl,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="PretAPorter" Type="Passive" Row="2" Column="1"/>
+            <LayoutButtons Face="AUsl" Type="AbilCmd" AbilCmd="AUsl,Execute" Row="2" Column="2"/>
         </CardLayouts>
         <EnergyMax value="60"/>
         <EnergyStart value="60"/>
+        <LifeArmorFormula NegativeArmorMultiplier="-1.5" PositiveArmorMultiplier="1.5"/>
     </CUnit>
     <!--vile temptress-->
     <CUnit id="ndqt" parent="AW2_Army" defType="NONE">
@@ -4096,9 +4272,9 @@
         <KillResource index="Custom" value="5"/>
         <LifeStart value="250"/>
         <LifeMax value="250"/>
+        <AbilArray index="4" Link="TowerRecoverTimmer60"/>
         <AbilArray Link="BloodElfInventory"/>
         <AbilArray Link="UpgradeTondgt"/>
-        <AbilArray Link="negtTimeLife"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ndgt" Type="AbilCmd" AbilCmd="UpgradeTondgt,Execute" Row="0" Column="0"/>
         </CardLayouts>
@@ -7340,10 +7516,12 @@
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/UndeadUnits"/>
         <AbilArray Link="Aiun"/>
+        <AbilArray Link="Agyd"/>
         <BehaviorArray Link="undead"/>
         <BehaviorArray Link="Apts"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Apts" Type="Passive" Behavior="Apts" Row="2" Column="0"/>
+            <LayoutButtons Face="Agyd" Type="Passive" Behavior="Agyd" Row="2" Column="1"/>
         </CardLayouts>
         <WeaponArray index="1" removed="1"/>
     </CUnit>

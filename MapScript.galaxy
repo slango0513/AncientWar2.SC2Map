@@ -341,6 +341,7 @@ trigger gt_AllianceInizialization;
 trigger gt_ScoreBoardInizialization;
 trigger gt_TimerInizialization;
 trigger gt_PlayerInizialization;
+trigger gt_TimedLifeFateTower;
 trigger gt_DreamIllusion;
 trigger gt_Transmute;
 trigger gt_AOmiRemoveAllNonPermanent;
@@ -577,12 +578,20 @@ void gf_UserSkinSet () {
     lv_player = 1;
     for ( ; ( (auto4447B836_ai >= 0 && lv_player <= auto4447B836_ae) || (auto4447B836_ai <= 0 && lv_player >= auto4447B836_ae) ) ; lv_player += auto4447B836_ai ) {
         if ((PlayerType(lv_player) == c_playerTypeUser)) {
-            if (true) {
+            if ((UserDataGetInt("SkinPlayerHandle", (PlayerHandle(lv_player)), "Owl", 1) != 0)) {
                 libGAwX_gf_UseSkinSetForPlayer("SkinSetOwl", lv_player, true);
             }
 
-            if (true) {
-                libGAwX_gf_UseSkinSetForPlayer("SkinSetPandarenBrewmaster", lv_player, true);
+            if ((UserDataGetInt("SkinPlayerHandle", (PlayerHandle(lv_player)), "StormPandarenBrewmaster", 1) != 0)) {
+                libGAwX_gf_UseSkinSetForPlayer("SkinSetStormPandarenBrewmaster", lv_player, true);
+            }
+
+            if ((UserDataGetInt("SkinPlayerHandle", (PlayerHandle(lv_player)), "EarthPandarenBrewmaster", 1) != 0)) {
+                libGAwX_gf_UseSkinSetForPlayer("SkinSetEarthPandarenBrewmaster", lv_player, true);
+            }
+
+            if ((UserDataGetInt("SkinPlayerHandle", (PlayerHandle(lv_player)), "FirePandarenBrewmaster", 1) != 0)) {
+                libGAwX_gf_UseSkinSetForPlayer("SkinSetFirePandarenBrewmaster", lv_player, true);
             }
 
         }
@@ -4469,6 +4478,36 @@ void gt_PlayerInizialization_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: Timed Life Fate Tower
+//--------------------------------------------------------------------------------------------------
+bool gt_TimedLifeFateTower_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_player;
+    string lv_unitType;
+    int lv_value;
+
+    // Variable Initialization
+    lv_player = EventPlayer();
+    lv_unitType = EventPlayerEffectUsedUnitType(c_effectUnitCaster);
+    lv_value = CatalogFieldValueGetAsInt(c_gameCatalogUnit, EventPlayerEffectUsedUnitType(c_effectUnitCaster), "KillResource[" + IntToString(3) + "]", lv_player);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    PlayerModifyPropertyInt(lv_player, c_playerPropCustom, c_playerPropOperAdd, lv_value);
+    gf_KillScoreAdd(lv_player, lv_value);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_TimedLifeFateTower_Init () {
+    gt_TimedLifeFateTower = TriggerCreate("gt_TimedLifeFateTower_Func");
+    TriggerAddEventPlayerEffectUsed(gt_TimedLifeFateTower, c_playerAny, "TimedLifeFateTower");
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: DreamIllusion
 //--------------------------------------------------------------------------------------------------
 bool gt_DreamIllusion_Func (bool testConds, bool runActions) {
@@ -4709,7 +4748,7 @@ bool gt_Harvest_Func (bool testConds, bool runActions) {
     lv_player = EventPlayer();
     lv_targetUnit = EventPlayerEffectUsedUnit(c_effectUnitTarget);
     lv_targetUnitType = UnitGetType(lv_targetUnit);
-    lv_value = (CatalogFieldValueGetAsInt(c_gameCatalogUnit, lv_targetUnitType, "KillResource[" + IntToString(3) + "]", lv_player)*2);
+    lv_value = FixedToInt((IntToFixed(CatalogFieldValueGetAsInt(c_gameCatalogUnit, lv_targetUnitType, "KillResource[" + IntToString(3) + "]", lv_player)) * 1.4));
 
     // Actions
     if (!runActions) {
@@ -5973,6 +6012,7 @@ bool gt_DebugKeyPressed_Func (bool testConds, bool runActions) {
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "ncpn", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "Dragonspawn", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "npfl", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "ndrl", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
         libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "BuildArmyFinal", 1);
         PlayerModifyPropertyInt(lv_player, c_playerPropTerrazine, c_playerPropOperSetTo, 100000);
         PlayerModifyPropertyInt(lv_player, c_playerPropCustom, c_playerPropOperSetTo, 100000);
@@ -6102,6 +6142,7 @@ void InitTriggers () {
     gt_ScoreBoardInizialization_Init();
     gt_TimerInizialization_Init();
     gt_PlayerInizialization_Init();
+    gt_TimedLifeFateTower_Init();
     gt_DreamIllusion_Init();
     gt_Transmute_Init();
     gt_AOmiRemoveAllNonPermanent_Init();

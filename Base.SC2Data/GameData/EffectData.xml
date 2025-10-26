@@ -40,9 +40,7 @@
         <AttributeFactor index="divine" value="-0.75"/>
         <AttributeFactor index="hero" value="0"/>
     </CEffectDamage>
-    <CEffectDamage default="1" id="AW2_ChaosDamage" parent="War3_ChaosDamage">
-        <AttributeFactor index="divine" value="1"/>
-    </CEffectDamage>
+    <CEffectDamage default="1" id="AW2_ChaosDamage" parent="War3_ChaosDamage"/>
     <CEffectDamage default="1" id="ANcsAOEDamageBase" parent="AW2_SiegeDamage">
         <EditorCategories value="Race:Goblin"/>
         <AreaArray Radius="1.5625" Fraction="1" Validator="CasterNoEngineeringUpgrade"/>
@@ -67,6 +65,28 @@
         </TargetSorts>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CEffectEnumArea>
+    <CEffectEnumArea id="ApxfSearch">
+        <AreaArray index="0" Radius="500" Effect="ApxfMissile"/>
+        <MaxCount value="6"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="TimedLifeFateTower" parent="TimedLifeFate">
+        <Name value="Effect/Name/TimedLifeFateTower"/>
+    </CEffectDamage>
+    <CEffectDamage id="ndt11" parent="AW2_MagicDamage">
+        <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectDamage id="ndt21" parent="AW2_MagicDamage">
+        <Amount value="96"/>
+        <AreaArray Radius="0.586" Fraction="1"/>
+        <SearchFilters value="-;player,allies,air,wall,tree,Missile,item,ward,ethereal,dead,invulnerable"/>
+    </CEffectDamage>
+    <CEffectDamage id="net11" parent="AW2_MagicDamage">
+        <Amount value="144"/>
+    </CEffectDamage>
+    <CEffectDamage id="nskk1" parent="AW2_PierceDamage">
+        <Kind value="Melee"/>
+        <Amount value="12"/>
+    </CEffectDamage>
     <CEffectDamage id="ACceDamage" parent="War3_ChaosDamage">
         <Kind value="Melee"/>
         <AreaArray Radius="1.1718" Fraction="0.5"/>
@@ -95,6 +115,13 @@
         <EffectArray value="ACpvAoEDamage"/>
         <EffectArray value="ACpvModifyUnit"/>
     </CEffectSet>
+    <CEffectDamage id="ACtcDamage">
+        <Amount value="150"/>
+    </CEffectDamage>
+    <!--Thunder Clap (Creep) Dur=4 HeroDur=2 Buff=BCtc-->
+    <CEffectEnumArea id="ACtcSearch">
+        <AreaArray index="0" Radius="5" Effect="BCtc"/>
+    </CEffectEnumArea>
     <CEffectDamage id="AEmb1Damage">
         <VitalBonus index="Energy" value="60"/>
     </CEffectDamage>
@@ -120,9 +147,8 @@
         <Amount value="30"/>
     </CEffectDamage>
     <CEffectSet id="ACch">
-        <ValidatorArray value="CasterAndTargetNotDead"/>
         <EffectArray value="BNch"/>
-        <EffectArray value="PhalanxMarker"/>
+        <EffectArray value="PhalanxMarkerCopy"/>
     </CEffectSet>
     <CEffectApplyBehavior id="ANso1Dur">
         <Duration value="60"/>
@@ -148,6 +174,10 @@
     <CEffectModifyUnit id="AoarHealTick">
         <VitalArray index="Life" ChangeFraction="0.015"/>
     </CEffectModifyUnit>
+    <CEffectSet id="BNchSet">
+        <EffectArray value="PhalanxMarkerCopy"/>
+        <EffectArray value="BNch"/>
+    </CEffectSet>
     <CEffectModifyUnit id="HumidityAuraHealTick">
         <EditorCategories value="Race:Dragon"/>
         <VitalArray index="Life" ChangeFraction="0.0075"/>
@@ -207,7 +237,7 @@
     </CEffectDamage>
     <CEffectModifyUnit id="SufferingModifyUnit">
         <ImpactUnit Value="Caster"/>
-        <VitalArray index="Energy" Change="2"/>
+        <VitalArray index="Energy" Change="3"/>
     </CEffectModifyUnit>
     <CEffectDamage id="Ulic1" parent="AW2_MagicDamage">
         <Amount value="96"/>
@@ -504,13 +534,13 @@
         <AreaArray index="0" Radius="7.0312" Effect="Boar"/>
     </CEffectEnumArea>
     <CEffectDamage id="ApxfDamageDPS">
-        <Amount value="25"/>
+        <Amount value="30"/>
     </CEffectDamage>
     <CEffectDamage id="BreathOfFireDPS" parent="War3_MagicSpellDamage">
         <Amount value="25"/>
     </CEffectDamage>
     <CEffectDamage id="ApxfMissileDamage">
-        <Amount value="60"/>
+        <Amount value="30"/>
     </CEffectDamage>
     <!--Roar Dur=45 HeroDur=45 Buff=Broa-->
     <CEffectEnumArea id="AroaSearch">
@@ -883,7 +913,7 @@
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="FelDriveAura" parent="War3_AuraBuff"/>
     <CEffectDamage id="BaplDPS">
-        <Amount value="5"/>
+        <Amount value="10"/>
     </CEffectDamage>
     <CEffectDamage id="BpsiDPS">
         <Amount value="5"/>
@@ -2489,7 +2519,7 @@
         <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="umtw1" parent="AW2_SiegeDamage">
-        <Amount value="48"/>
+        <Amount value="24"/>
         <AreaArray Radius="1.9531" Fraction="1"/>
         <SearchFilters value="-;player,allies,air,wall,Missile,item,ward,ethereal,dead,invulnerable"/>
         <Death value="Blast"/>

@@ -159,6 +159,17 @@
         <AutoCastRange value="6"/>
         <AutoCastValidatorArray value="noMarkers"/>
     </CAbilEffectTarget>
+    <CAbilEffectInstant id="ACt2" parent="AW2_EffectInstant">
+        <Alignment value="Negative"/>
+        <Effect index="0" value="ACtcSearch"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="6"/>
+        </Cost>
+        <AutoCastFilters value="Self,Visible;-"/>
+        <AutoCastValidatorArray value="GroundEnemiesNearby2"/>
+        <PrepTime value="0.47"/>
+        <FinishTime value="0.56"/>
+    </CAbilEffectInstant>
     <!--Demon Hunter - Immolation Buff=BEim,BEia-->
     <CAbilBehavior id="AEim" parent="AW2_Toggle">
         <EditorCategories value="Race:Demon,AbilityorEffectType:Unit"/>
@@ -258,6 +269,7 @@
         <AutoCastFilters value="Self,Visible;Ally,Neutral,Enemy"/>
         <AutoCastValidatorArray value="GroundEnemiesNearby2"/>
     </CAbilEffectInstant>
+    <CAbilEffectTarget id="Ache" parent="AW2_EffectTarget"/>
     <!--Unstable Concoction-->
     <CAbilEffectTarget id="Auco" parent="AW2_EffectTarget">
         <EditorCategories value="Race:ChaosOrc,AbilityorEffectType:Unit"/>
@@ -490,7 +502,7 @@
         <EditorCategories value="Race:Demon,AbilityorEffectType:Units"/>
         <Cost index="0">
             <Vital index="Energy" value="60"/>
-            <Cooldown Location="Unit" TimeUse="60"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <Range value="5"/>
         <PrepTime value="0.3"/>
@@ -505,7 +517,7 @@
         <EditorCategories value="Race:Demon,AbilityorEffectType:Units"/>
         <Cost index="0">
             <Vital index="Energy" value="180"/>
-            <Cooldown Location="Unit" TimeUse="60"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <Range value="5"/>
         <PrepTime value="0.3"/>
@@ -675,6 +687,9 @@
         <Alignment value="Negative"/>
         <AutoCastRange value="9"/>
         <AutoCastValidatorArray index="1" value="noMarkers"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
     </CAbilEffectTarget>
     <CAbilBehavior id="ACnr" parent="War3_HeroAura">
         <CmdButtonArray index="On" Requirements="ACnr"/>
@@ -1308,26 +1323,14 @@
         <InfoArray index="Build2" Unit="DraeneiFlag2">
             <Button DefaultButtonFace="DraeneiFlag2" Requirements="BuildPhalanxFinal"/>
         </InfoArray>
-        <InfoArray index="Build3" Unit="nmyr">
-            <Button DefaultButtonFace="nmyr" Requirements="BuildArmy"/>
-        </InfoArray>
-        <InfoArray index="Build4" Unit="nnsw">
-            <Button DefaultButtonFace="nnsw" Requirements="BuildArmy"/>
-        </InfoArray>
-        <InfoArray index="Build5" Unit="nlpr">
-            <Button DefaultButtonFace="nlpr" Requirements="BuildArmy"/>
-        </InfoArray>
-        <InfoArray index="Build6" Unit="ntrs">
-            <Button DefaultButtonFace="ntrs" Requirements="BuildArmy"/>
-        </InfoArray>
-        <InfoArray index="Build7" Unit="nsnp">
-            <Button DefaultButtonFace="nsnp" Requirements="BuildArmy"/>
-        </InfoArray>
-        <InfoArray index="Build8" Unit="nnmg">
+        <InfoArray index="Build3" Unit="nnmg">
             <Button DefaultButtonFace="nnmg" Requirements="BuildArmy"/>
         </InfoArray>
-        <InfoArray index="Build9" Unit="nmsc">
-            <Button DefaultButtonFace="nmsc" Requirements="BuildArmy"/>
+        <InfoArray index="Build4" Unit="nskk">
+            <Button DefaultButtonFace="nskk" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build5" Unit="ndt1">
+            <Button DefaultButtonFace="ndt1" Requirements="BuildArmy"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
@@ -1765,6 +1768,9 @@
         <AutoCastValidatorArray value="GroundEnemiesNearby2"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
+    <CAbilBehavior id="Agyd" parent="AW2_Passive">
+        <BehaviorArray value="Agyd"/>
+    </CAbilBehavior>
     <CAbilBehavior id="Aspy" parent="AW2_Passive">
         <BehaviorArray value="Aspy"/>
     </CAbilBehavior>
@@ -1798,11 +1804,11 @@
         <Range value="6"/>
         <PrepTime value="0.4"/>
         <CastOutroTime value="0.5"/>
-        <Effect index="0" value="BNch"/>
+        <Effect index="0" value="BNchSet"/>
         <AutoCastRange value="6"/>
+        <AutoCastValidatorArray index="1" value="EnemiesNearby2"/>
         <AutoCastValidatorArray value="noMarkers"/>
-        <AutoCastValidatorArray value="EnemiesNearby2"/>
-        <AutoCastValidatorArray value="TargetLifeGE750"/>
+        <AutoCastValidatorArray value="TargetLifeGE150"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
             <SortArray value="TSKillResourceCustomLargestFirst"/>
@@ -1812,16 +1818,14 @@
         <EditorCategories value="Race:Demon,AbilityorEffectType:Units"/>
         <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,hero"/>
         <Cost index="0">
-            <Vital index="Energy" value="180"/>
             <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <Range value="6"/>
-        <PrepTime value="0.4"/>
+        <PrepTime value="2"/>
         <CastOutroTime value="0.5"/>
         <AutoCastRange value="6"/>
+        <AutoCastValidatorArray index="1" value="EnemiesNearby2"/>
         <AutoCastValidatorArray value="noMarkers"/>
-        <AutoCastValidatorArray value="EnemiesNearby2"/>
-        <AutoCastValidatorArray value="TargetLifeGE750"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
             <SortArray value="TSKillResourceCustomLargestFirst"/>
@@ -1959,16 +1963,15 @@
         <Range value="500"/>
     </CAbilBuild>
     <!--Farseer - Chain Lightning-->
-    <CAbilEffectTarget id="AOcl">
+    <CAbilEffectTarget id="AOcl" parent="AW2_EffectTarget">
+        <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <Cost index="0">
-            <Vital index="Energy" value="0"/>
+            <Cooldown Location="Unit" TimeUse="9"/>
         </Cost>
-        <CmdButtonArray index="Execute" Requirements="">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
-        <CmdButtonArray index="Cancel">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
+        <Range value="5.4687"/>
+        <!--PrepTime value="0.3"/-->
+        <Alignment value="Negative"/>
+        <CastOutroTime value="1.07"/>
     </CAbilEffectTarget>
     <!--Farseer - Earthquake Buff=BOeq,BOea effect=XOeq-->
     <CAbilEffectTarget id="AOeq">
@@ -2734,6 +2737,9 @@
         </Marker>
         <AutoCastValidatorArray index="1" value="noMarkers"/>
         <Effect index="0" value="AwebMissile"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
     </CAbilEffectTarget>
     <CAbilBehavior id="Defend" parent="AW2_Toggle">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
@@ -2754,6 +2760,9 @@
         <Alignment value="Negative"/>
         <AutoCastRange value="9"/>
         <AutoCastValidatorArray index="1" value="noMarkers"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
     </CAbilEffectTarget>
     <!--Healing Ward Dur=30 HeroDur=30 Buff=Bhwd-->
     <CAbilEffectTarget id="Ahwd" parent="AW2_EffectTarget">
@@ -3004,6 +3013,9 @@
     <CAbilMorph id="UpgradeTondgt" parent="AW2_Upgrade" toUnit="ndgt">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
+    <CAbilMorph id="UpgradeTondt2" parent="AW2_Upgrade" toUnit="ndt2">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
     <CAbilTrain id="ndkwTrain" parent="War3_Train">
         <InfoArray index="Train1" Time="15">
             <Button DefaultButtonFace="ninf">
@@ -3081,6 +3093,12 @@
         <Flags index="BestUnit" value="0"/>
         <Flags index="IgnoreUnitCost" value="1"/>
     </CAbilTrain>
+    <CAbilBehavior id="TowerRecoverTimmer180" parent="War3_Passive">
+        <BehaviorArray value="TowerRecoverTimmer180"/>
+    </CAbilBehavior>
+    <CAbilBehavior id="TowerRecoverTimmer60" parent="War3_Passive">
+        <BehaviorArray value="TowerRecoverTimmer60"/>
+    </CAbilBehavior>
     <CAbilBehavior id="nglmTimeLife" parent="War3_Passive">
         <BehaviorArray value="nglmTimeLife"/>
     </CAbilBehavior>

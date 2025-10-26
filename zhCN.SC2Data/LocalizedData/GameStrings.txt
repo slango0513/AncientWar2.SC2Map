@@ -13,6 +13,7 @@ ACpa/Ubertip=用一个致命的寄生虫折磨目标单位。如果命中单位�
 ACpv/Ubertip=给予<d ref="Behavior,ACpv,Modification.CriticalAttackChanceScaledBonus * 100"/>%的几率能对周围的单位造成<d ref="Effect,ACpvAoEDamage,AreaArray[0].Bonus"/>点的伤害，同时恢复<d ref="Effect,ACpvModifyUnit,VitalArray[Life].ChangeFraction * 100"/>%的生命值。
 ACrf/Ubertip=召唤出数波火焰之雨，每波能造成<d ref="Effect,ANrfDamage1,Amount"/>点伤害。<n/>持续<d ref="Effect,ANrf1,PeriodCount + 1"/>波。
 ACrj/Ubertip=在<d ref="Behavior,Brej,Duration"/>秒内恢复目标友方单位<d ref="Effect,BrejHealTick,RechargeVitalRate * Behavior,Brej,Duration"/>点的生命值。
+ACtc/Ubertip=震击地面，对周围的敌方地面单位造成<d ref="Effect,ACtcDamage,Amount"/>点的伤害。并减慢其移动和攻击速度。
 AEah/Ubertip=该光环能给予周围的友方单位一个具有攻击力的护盾保护，在施法者的魔法消耗完前不会受到任何伤害，敌人对这些单位进行一次近战攻击就会受到相当于50%自身攻击力的伤害。
 AEar/Ubertip=一种能增加周围友方单位<d ref="Behavior,BEar1,Modification.DamageDealtFraction[Ranged] * 100"/>%远程攻击力的光环。
 AEbu1/Tip=建造近战部队
@@ -119,6 +120,7 @@ Aakb/Ubertip=能增加周围友方单位<d ref="Behavior,Bakb,Modification.Damag
 Aapl/Ubertip=用疾病来感染周围的敌人。疾病之云每秒能对敌人造成<d ref="Effect,BaplDPS,Amount"/>点的伤害。<n/>持续<d ref="Behavior,Bapl,Duration"/>秒。
 Aarm/Tip=法力恢复光环
 Aarm/Ubertip=能加快周围友方单位每秒<d ref="Behavior,Barm,Modification.VitalRegenArray[Energy]" precision="1"/>点的法力值恢复速度。
+Abil/Name/ACt2=ACt2
 Abil/Name/ANdp=黑暗之门
 Abil/Name/ANgl=用黄金交换木材
 Abil/Name/ANlg=用木材交换黄金
@@ -145,6 +147,7 @@ Adef/Ubertip=激活以拥有75%的概率反弹穿刺攻击。如果防御状态�
 Adev/Ubertip=吞噬敌方目标单位，将其慢慢咀嚼，每秒对其造成<d ref="Effect,BdigDPS,Amount"/>点的伤害。在咀嚼目标的过程中，如果遭到杀害，那么它肚中的被吞噬单位就会从中跳出来。
 Advc/Tip=Advc
 Aegr/Ubertip=减少来自穿刺攻击的伤害到原来的50%，并减少来自魔法攻击的伤害到原来的50%。
+Aeib/Name=强化弓
 Aeib/Tip=强化弓
 Aeib/Ubertip=增加弓箭手<d ref="Behavior,Aeib,Modification.RangedWeaponRange"/>的攻击范围。
 Aens/Ubertip=能将一个目标空中单位固定在地面上，使其在<d ref="Behavior,Bena,Duration"/>秒内不能移动。
@@ -152,8 +155,10 @@ Aetl/Ubertip=处于灵体形态的单位对物理攻击免疫，但是魔法能�
 Afae/Ubertip=减少目标单位<d ref="-Behavior,Bfae,Modification.LifeArmorBonus"/>点护甲值，并能拥有该单位的视野。<n/>持续<d ref="Behavior,Bfae,Duration"/>秒。
 Afrb/Tip=冰霜呼吸
 Afrb/Ubertip=每次攻击带有冷冻效果，在<d ref="Effect,Bfro10s,Duration"/>秒内使敌人减慢<d ref="1 - Behavior,Bfro,Modification.AttackSpeedMultiplier * 100"/>%的攻击速度和<d ref="1 - Behavior,Bfro,Modification.MoveSpeedMultiplier * 100"/>%的移动速度。
+Agyd/Tip=创建尸体
+Agyd/Ubertip=每<d ref="Behavior,Agyd,InfoArray[0].Delay"/>秒让绞肉车制造出一具尸体。
 Ahea/Ubertip=治疗一个友方的非机械受伤单位，恢复其<d ref="Effect,AheaHeal,RechargeVitalRate"/>的生命值。
-Ahr3/Ubertip=从杀死的单位上采集木材资源。每次杀死敌人能获得2倍的额外木材。
+Ahr3/Ubertip=从杀死的单位上采集木材资源。每次杀死敌人能获得140%的额外木材。
 Ahra/Tip=黑火药
 Ahra/Ubertip=增加矮人火枪手100%的护甲穿透。
 Ahwd/Ubertip=召唤出一个固定的结界，以每秒<d ref="Effect,AoarHealTick,VitalArray[Life].ChangeFraction * 100" precision="1"/>%的速度恢复周围友方非机械单位的生命值。<n/>持续<d ref="Behavior,Bhwd,Duration"/>秒。
@@ -286,6 +291,7 @@ BushidoUn/Ubertip=关闭武士道。
 Button/Name/CmdBuildDemon=召唤建筑物
 Button/Name/CmdBuildGoblin=建造建筑物
 Button/Name/HonorShield=荣誉之盾
+Button/Name/PretAPorter=Prêt-à-porter
 Button/Tooltip/ndgt=防守型建筑物。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Bwfb/Buffubertip=该单位被击晕了，所以不能移动，攻击和施放魔法。
 Bwfb/Name=火球术
@@ -307,53 +313,55 @@ CmdBuildChaosOrc/Tip=建造建筑物
 CmdBuildChaosOrc/Ubertip=能显示出当前你所能建造的建筑物。
 CmdBuildDemon/Tip=召唤建筑物
 CmdBuildDemon/Ubertip=打开一个你所能建造的建筑物的列表。
+CmdBuildDraenei/Tip=建造建筑物
+CmdBuildDraenei/Ubertip=能显示出当前你所能建造的建筑物。
 CmdBuildDragon/Tip=建造建筑物
 CmdBuildDragon/Ubertip=打开一个你所能建造的建筑物的列表。
 CmdBuildGoblin/Tip=建造建筑物
 CmdBuildGoblin/Ubertip=能显示出当前你所能建造的建筑物。
-CmdPurchaseBloodElf/Tip=出售物品
+CmdPurchaseBloodElf/Tip=购买物品
 CmdPurchaseBloodElf/Ubertip=能显示出当前你所能购买的物品。
-CmdPurchaseBloodElf2/Tip=出售物品
+CmdPurchaseBloodElf2/Tip=购买物品
 CmdPurchaseBloodElf2/Ubertip=能显示出当前你所能购买的物品。
-CmdPurchaseChaosOrc/Tip=出售物品
+CmdPurchaseChaosOrc/Tip=购买物品
 CmdPurchaseChaosOrc/Ubertip=能显示出当前你所能购买的物品。
-CmdPurchaseChaosOrc2/Tip=出售物品
+CmdPurchaseChaosOrc2/Tip=购买物品
 CmdPurchaseChaosOrc2/Ubertip=能显示出当前你所能购买的物品。
-CmdPurchaseDemon/Tip=出售物品
+CmdPurchaseDemon/Tip=购买物品
 CmdPurchaseDemon/Ubertip=能显示出当前你所能购买的物品。
-CmdPurchaseDemon2/Tip=出售物品
+CmdPurchaseDemon2/Tip=购买物品
 CmdPurchaseDemon2/Ubertip=能显示出当前你所能购买的物品。
-CmdPurchaseDraenei/Tip=出售物品
+CmdPurchaseDraenei/Tip=购买物品
 CmdPurchaseDraenei/Ubertip=能显示出当前你所能购买的物品。
-CmdPurchaseDraenei2/Tip=出售物品
+CmdPurchaseDraenei2/Tip=购买物品
 CmdPurchaseDraenei2/Ubertip=能显示出当前你所能购买的物品。
-CmdPurchaseDragon/Tip=出售物品
+CmdPurchaseDragon/Tip=购买物品
 CmdPurchaseDragon/Ubertip=能显示出当前你所能购买的物品。
-CmdPurchaseDragon2/Tip=出售物品
+CmdPurchaseDragon2/Tip=购买物品
 CmdPurchaseDragon2/Ubertip=能显示出当前你所能购买的物品。
-CmdPurchaseGoblin/Tip=出售物品
+CmdPurchaseGoblin/Tip=购买物品
 CmdPurchaseGoblin/Ubertip=能显示出当前你所能购买的物品。
-CmdPurchaseGoblin2/Tip=出售物品
+CmdPurchaseGoblin2/Tip=购买物品
 CmdPurchaseGoblin2/Ubertip=能显示出当前你所能购买的物品。
-CmdPurchaseHuman/Tip=出售物品
+CmdPurchaseHuman/Tip=购买物品
 CmdPurchaseHuman/Ubertip=能显示出当前你所能购买的物品。
-CmdPurchaseHuman2/Tip=出售物品
+CmdPurchaseHuman2/Tip=购买物品
 CmdPurchaseHuman2/Ubertip=能显示出当前你所能购买的物品。
-CmdPurchaseNaga/Tip=出售物品
+CmdPurchaseNaga/Tip=购买物品
 CmdPurchaseNaga/Ubertip=能显示出当前你所能购买的物品。
-CmdPurchaseNaga2/Tip=出售物品
+CmdPurchaseNaga2/Tip=购买物品
 CmdPurchaseNaga2/Ubertip=能显示出当前你所能购买的物品。
-CmdPurchaseNightElf/Tip=出售物品
+CmdPurchaseNightElf/Tip=购买物品
 CmdPurchaseNightElf/Ubertip=能显示出当前你所能购买的物品。
-CmdPurchaseNightElf2/Tip=出售物品
+CmdPurchaseNightElf2/Tip=购买物品
 CmdPurchaseNightElf2/Ubertip=能显示出当前你所能购买的物品。
-CmdPurchaseOrc/Tip=出售物品
+CmdPurchaseOrc/Tip=购买物品
 CmdPurchaseOrc/Ubertip=能显示出当前你所能购买的物品。
-CmdPurchaseOrc2/Tip=出售物品
+CmdPurchaseOrc2/Tip=购买物品
 CmdPurchaseOrc2/Ubertip=能显示出当前你所能购买的物品。
-CmdPurchaseUndead/Tip=出售物品
+CmdPurchaseUndead/Tip=购买物品
 CmdPurchaseUndead/Ubertip=能显示出当前你所能购买的物品。
-CmdPurchaseUndead2/Tip=出售物品
+CmdPurchaseUndead2/Tip=购买物品
 CmdPurchaseUndead2/Ubertip=能显示出当前你所能购买的物品。
 Cyclone/Tip=飓风
 Cyclone/Ubertip=双足飞龙每次攻击时扇动巨翼，将目标及周围的敌方地面单位吹飞。
@@ -364,6 +372,7 @@ DOCSTR_0002=BracketOpen
 DOCSTR_0003=星灵单位
 DOCSTR_0004=星灵单位
 DOCSTR_0005=[新手]混战
+Defend/Name=防御
 Defend/Tip=防御
 Defend/Ubertip=激活后只会受到10%的穿刺攻击伤害。如果防御状态被激活，移动速度会变成<d ref="Behavior,Defend,Modification.MoveSpeedMultiplier * 100"/>%的常规速度。
 DefendUn/Tip=停止防御
@@ -452,7 +461,20 @@ DocInfo/PatchNote073=加入新单位混乱兽人萨满。
 DocInfo/PatchNote074=火球术的法力值消耗降低到30点。
 DocInfo/PatchNote075=龙：
 DocInfo/PatchNote076=蓝色龙人监军获得新技能潮湿光环，潮湿光环的每秒生命值恢复加成降低到0.75%。
-DocInfo/PatchNote077=地狱机器类单位的生命值降低40%。
+DocInfo/PatchNote077=魅魔类单位获得新技能Prêt-à-porter。
+DocInfo/PatchNote078=地狱机器类单位的生命值降低40%。
+DocInfo/PatchNote079=修复复生导致游戏不能继续的漏洞。
+DocInfo/PatchNote080=防御塔类建筑现在到期后会回收木材。具有攻击力的防御塔期限增加到3分钟。
+DocInfo/PatchNote081=人类：
+DocInfo/PatchNote082=防御塔的射程增加到12。
+DocInfo/PatchNote083=亡灵：
+DocInfo/PatchNote084=绞肉车获得新技能创建尸体，伤害降低到24。
+DocInfo/PatchNote085=疾病之云的伤害提高到10。
+DocInfo/PatchNote086=地精：
+DocInfo/PatchNote087=采集获得的额外木材量减少到140%。
+DocInfo/PatchNote088=血精灵：
+DocInfo/PatchNote089=凤凰蛋的孵化时间增加到45秒，生命值减少到25点。
+DocInfo/PatchNote090=凤凰的护甲类型现在是神圣，并且凤凰火焰经过重新设计。
 DraeneiFlag/Name=德莱尼旗帜
 DraeneiFlag/Tip=放置德莱尼旗帜
 DraeneiFlag/Ubertip=放置德莱尼旗帜。
@@ -488,6 +510,7 @@ Effect/Name/AsalTriggerNotice=AsalTriggerNotice
 Effect/Name/AwarAoESearch=AwarAoESearch
 Effect/Name/BEahManaLoss=BEahManaLoss
 Effect/Name/BIpv=BIpv
+Effect/Name/BNchSet=BNchSet
 Effect/Name/BOwkOrderAttack=BOwkOrderAttack
 Effect/Name/BOwkOrderAttackSearch=BOwkOrderAttackSearch
 Effect/Name/BOwkOrderAttackSet=BOwkOrderAttackSet
@@ -514,6 +537,7 @@ Effect/Name/SwimmingSwitch=SwimmingSwitch
 Effect/Name/Teleport=Teleport
 Effect/Name/TeleportMarker=TeleportMarker
 Effect/Name/TeleportSet=TeleportSet
+Effect/Name/TimedLifeFateTower=TimedLifeFateTower
 Effect/Name/nba2120sSet=nba2120sSet
 Effect/Name/ngns1Multishot=ngns1Multishot
 Effect/Name/ngns1MultishotSearch=ngns1MultishotSearch
@@ -565,6 +589,7 @@ GoblinFlag/Ubertip=放置地精旗帜。
 GoblinFlag2/Name=地精旗帜
 GoblinFlag2/Tip=放置地精旗帜(决赛)
 GoblinFlag2/Ubertip=放置地精旗帜(决赛)。
+GoblinLandMineInvisibility/Name=隐形
 GoblinLandMineInvisibility/Tip=隐形
 GoblinLandMineInvisibility/Ubertip=使地精地雷隐形。<n/>持续<d ref="Behavior,GoblinLandMineInvisibility,Duration"/>秒。
 Gyrocopter/Name=矮人直升机
@@ -590,6 +615,7 @@ Hlgr/Tip=升级到黑暗骑士
 Hlgr/Ubertip=骑兵，具有虔诚光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 HonorShield/Tip=荣誉之盾
 HonorShield/Ubertip=每次攻击地面单位或受到攻击将会提升<d ref="Behavior,HonorShield,Modification.DamageDealtUnscaled[Ranged]"/>点攻击及<d ref="Behavior,HonorShield,Modification.LifeArmorBonus"/>点护甲。
+HonorShieldCaster/Name=荣誉之盾
 Hpal/Tip=训练圣骑士
 Hpal/Ubertip=重型的近战单位，能施放圣光术。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 HumanPhalanxPlaceholder/Name=HumanPreviewer
@@ -766,6 +792,8 @@ PressureAura/Buffubertip=该单位处于压力光环的作用之下，因此其�
 PressureAura/Name=压力光环
 PressureAuraCaster/Tip=压力光环
 PressureAuraCaster/Ubertip=能增加周围友方单位<d ref="Behavior,PressureAura,Modification.DamageDealtFraction[Splash] * 100"/>%的溅射攻击力，并且使其受到的溅射伤害降低<d ref="1 - Behavior,PressureAura,DamageResponse.ModifyFraction * 100"/>%。
+PretAPorter/Tip=Prêt-à-porter
+PretAPorter/Ubertip=爱美是女人的天性。提供50%的额外护甲加成。
 Race/Name/Dragon=龙
 Race/Name/Elemental=元素
 Reincarnation/Tip=复生
@@ -812,6 +840,7 @@ SwimmingNaga/Buffubertip=该单位正在游泳，其最小移动速度和攻击�
 SwimmingNaga/Name=游泳
 Teleport/Name=传送
 Teleport/Tip=传送
+TowerRecoverTimmer/Name=TowerRecoverTimmer180
 Ucrl/Tip=升级到地穴领主
 Ucrl/Ubertip=远程攻击单位，具有穿刺技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Udea/Tip=训练死亡骑士
@@ -826,6 +855,7 @@ UndeadPhalanxPlaceholder/Name=UndeadPreviewer
 Unit/Category/BloodElfUnits=血精灵单位
 Unit/Category/ChaosOrcUnits=混乱兽人单位
 Unit/Category/DemonUnits=恶魔单位
+Unit/Category/DraeneiUnits=德莱尼单位
 Unit/Category/DragonUnits=龙单位
 Unit/Category/GoblinUnits=地精单位
 Unit/Category/HumanUnits=人类单位
@@ -1038,6 +1068,7 @@ nemi/Ubertip=魔法单位，能施放治疗术。<n/><n/><c val="ffcc00">能攻�
 nerw/Tip=训练埃瑞达术士
 nerw/Ubertip=<c val="ffcc00">精英</c><n/>远程攻击型魔法施放单位，具有抗性皮肤技能，还可以施放痛苦之指。<n/><n/><c val="ffcc00">攻击地面和空中单位。</c>
 nfac/Tip=建造口袋工厂
+nfacTimeLife/Name=nfacTimeLife
 nfgl/Tip=升级到血肉傀儡
 nfgl/Ubertip=重型的近战单位，具有分裂攻击和疾病之云技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nfgu/Tip=训练恶魔守卫
@@ -1154,6 +1185,7 @@ nsgh/Tip=训练打猎海巨人
 nsgh/Ubertip=近战两栖单位，具有抗性皮肤、粉碎和远古猎歌技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nsgn/Tip=训练海巨人
 nsgn/Ubertip=近战两栖单位，具有抗性皮肤和粉碎技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+nskk/Tip=训练小蜥蜴
 nsnp/Tip=训练海龙
 nsnp/Ubertip=远程攻击单位，有着毒性攻击，可以缓慢和伤害敌单位。拥有潜水技能，可以隐藏在水中。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nss2/Name=暗夜精灵刺客
@@ -1270,7 +1302,7 @@ uktg/Tip=升级到克尔苏加德之魂
 uktg/Ubertip=魔法单位，能施放尸控术，还具有荒芜光环技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 uktn/Tip=升级到克尔苏加德
 uktn/Ubertip=魔法单位，能施放邪恶狂暴。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
-umtw/Ubertip=远程的攻城武器，具有疾病之云技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+umtw/Ubertip=远程的攻城武器，具有疾病之云和创建尸体技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 unec/Ubertip=魔法单位，能施放尸控术。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 uob2/Name=黑曜石雕像
 uob2/Tip=建造黑曜石雕像

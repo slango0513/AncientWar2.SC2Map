@@ -494,6 +494,9 @@
     <CValidatorUnitCompareVital id="TargetLifeGE750" parent="TargetLifeGE250">
         <Value value="750"/>
     </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="TargetLifeGE150" parent="TargetLifeGE250">
+        <Value value="150"/>
+    </CValidatorUnitCompareVital>
     <CValidatorUnitCompareVital id="TargetLifeLE175" parent="TargetLifeLE25">
         <Value value="175"/>
     </CValidatorUnitCompareVital>
@@ -580,6 +583,14 @@
         <CombineArray value="CasterIsAttackingWar3B"/>
         <Negate value="1"/>
     </CValidatorCombine>
+    <CValidatorLocationEnumArea id="NoNonPreventDefeatNearby500" parent="AW2_NoEnemiesNearby">
+        <AreaArray Radius="500" Validator="NoNonPreventDefeatNearby2"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Hover,Missile,Destructible,PreventDefeat,Dead,Hidden,MapBoss"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="NoNonPreventDefeatNearby2" parent="AW2_NoEnemiesNearby">
+        <AreaArray Radius="2"/>
+        <SearchFilters value="Visible;Neutral,Enemy,Hover,Missile,Destructible,PreventDefeat,Dead,Hidden,MapBoss"/>
+    </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="NoEnemiesNearby1" parent="AW2_NoEnemiesNearby">
         <AreaArray Radius="1"/>
     </CValidatorLocationEnumArea>
@@ -636,6 +647,11 @@
     <CValidatorUnitType id="NotTaurenChieftain">
         <Value value="Otch"/>
         <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="CasterIsNotUndeadAzurelore">
+        <Value value="ubdd"/>
+        <Find value="0"/>
+        <WhichUnit Value="Caster"/>
     </CValidatorUnitType>
     <CValidatorUnitCompareBehaviorCount id="HasNoBOwkOrderAttackTargetMarker">
         <Behavior value="BOwkOrderAttackTargetMarker"/>
