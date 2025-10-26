@@ -88,9 +88,8 @@
         <CmdButtonArray index="On" Requirements="ACnr"/>
         <BehaviorArray value="ACnr"/>
     </CAbilBehavior>
-    <CAbilBuild id="AEbuArmy" parent="War3_PowerBuild">
-        <Name value="AEbuUnit/Name"/>
-        <FlagArray index="IgnoreFood" value="1"/>
+    <CAbilBuild id="AEbu" parent="War3_Build">
+        <EditorCategories value="Race:Nightelf,AbilityorEffectType:Units"/>
         <InfoArray index="Build1" Unit="nflg">
             <Button DefaultButtonFace="nflg" Requirements="BuildPhalanx"/>
         </InfoArray>
@@ -123,6 +122,16 @@
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
+    <CAbilBuild id="AGbu" parent="War3_PowerBuild">
+        <EditorCategories value="Race:Naga,AbilityorEffectType:Units"/>
+        <InfoArray index="Build1" Unit="NagaFlag">
+            <Button DefaultButtonFace="NagaFlag" Requirements="BuildPhalanx"/>
+        </InfoArray>
+        <InfoArray index="Build2" Unit="hfoo">
+            <Button DefaultButtonFace="hfoo" Requirements="BuildArmy"/>
+        </InfoArray>
+        <Range value="500"/>
+    </CAbilBuild>
     <!--Paladin - Devotion Aura Buff=BHad-->
     <CAbilBehavior id="AHad">
         <CmdButtonArray index="On" Requirements="">
@@ -132,9 +141,8 @@
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
     </CAbilBehavior>
-    <CAbilBuild id="AHbuArmy" parent="War3_PowerBuild">
-        <Name value="AHbuUnit/Name"/>
-        <FlagArray index="IgnoreFood" value="1"/>
+    <CAbilBuild id="AHbu" parent="War3_PowerBuild">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <InfoArray index="Build1" Unit="flag">
             <Button DefaultButtonFace="flag" Requirements="BuildPhalanx"/>
         </InfoArray>
@@ -291,8 +299,8 @@
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
     </CAbilEffectInstant>
-    <CAbilBuild id="AObuArmy" parent="War3_PowerBuild">
-        <FlagArray index="IgnoreFood" value="1"/>
+    <CAbilBuild id="AObu" parent="War3_PowerBuild">
+        <EditorCategories value="Race:Orc,AbilityorEffectType:Units"/>
         <InfoArray index="Build1" Unit="oflg">
             <Button DefaultButtonFace="oflg" Requirements="BuildPhalanx"/>
         </InfoArray>
@@ -460,9 +468,8 @@
         <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastFilters value="Visible;Ally,Neutral,Enemy"/>
     </CAbilEffectInstant>
-    <CAbilBuild id="AUbuArmy" parent="War3_PowerBuild">
-        <Name value="AUbuUnit/Name"/>
-        <FlagArray index="IgnoreFood" value="1"/>
+    <CAbilBuild id="AUbu" parent="War3_PowerBuild">
+        <EditorCategories value="Race:Undead,AbilityorEffectType:Units"/>
         <InfoArray index="Build1" Unit="uflg">
             <Button DefaultButtonFace="uflg" Requirements="BuildPhalanx"/>
         </InfoArray>

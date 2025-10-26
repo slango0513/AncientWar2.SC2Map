@@ -125,6 +125,14 @@
                 <Field Id="Row"/>
             </Int>
         </Instances>
+        <Instances Id="NagaFlag">
+            <Int Int="6">
+                <Field Id="Column"/>
+            </Int>
+            <Int Int="6">
+                <Field Id="Row"/>
+            </Int>
+        </Instances>
     </CUser>
     <CUser id="PortalData">
         <Fields Id="Column" Type="Int"/>
@@ -1200,5 +1208,106 @@
             </Unit>
         </Instances>
     </CUser>
+    <CUser id="RaceAttributeMapping">
+        <Instances Id="0006">
+            <GameLink GameLink="Naga">
+                <Field Id="Race"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="[Override]0001"/>
+        <Instances Id="[Override]0002"/>
+        <Instances Id="[Override]0003"/>
+        <Instances Id="[Override]0004"/>
+    </CUser>
+    <CUser id="RaceUnitTypeMapping">
+        <Fields Id="Phalanx" Type="Unit"/>
+        <Fields Id="Previewer" Type="Unit"/>
+        <Fields Id="Command" Type="AbilCmd"/>
+        <Instances Id="[Default]"/>
+        <Instances Id="Human">
+            <AbilCmd Abil="AHbu">
+                <Field Id="Command"/>
+            </AbilCmd>
+            <Unit Unit="flag">
+                <Field Id="Phalanx"/>
+            </Unit>
+            <Unit Unit="HumanPreviewer">
+                <Field Id="Previewer"/>
+            </Unit>
+        </Instances>
+        <Instances Id="Orc">
+            <AbilCmd Abil="AObu">
+                <Field Id="Command"/>
+            </AbilCmd>
+            <Unit Unit="OrcPreviewer">
+                <Field Id="Previewer"/>
+            </Unit>
+            <Unit Unit="oflg">
+                <Field Id="Phalanx"/>
+            </Unit>
+        </Instances>
+        <Instances Id="NightElf">
+            <AbilCmd Abil="AEbu">
+                <Field Id="Command"/>
+            </AbilCmd>
+            <Unit Unit="nflg">
+                <Field Id="Phalanx"/>
+            </Unit>
+            <Unit Unit="NightElfPreviewer">
+                <Field Id="Previewer"/>
+            </Unit>
+        </Instances>
+        <Instances Id="Undead">
+            <AbilCmd Abil="AUbu">
+                <Field Id="Command"/>
+            </AbilCmd>
+            <Unit Unit="UndeadPreviewer">
+                <Field Id="Previewer"/>
+            </Unit>
+            <Unit Unit="uflg">
+                <Field Id="Phalanx"/>
+            </Unit>
+        </Instances>
+        <Instances Id="Naga">
+            <AbilCmd Abil="AGbu">
+                <Field Id="Command"/>
+            </AbilCmd>
+            <Unit Unit="NagaFlag">
+                <Field Id="Phalanx"/>
+            </Unit>
+            <Unit Unit="NagaPreviewer">
+                <Field Id="Previewer"/>
+            </Unit>
+        </Instances>
+    </CUser>
     <CUser id="SkinSetWar3HD" parent="AW2_User"/>
+    <CUser id="WorkerBuildAbilityData">
+        <Fields Id="Ability" Type="GameLink" GameLinkType="Abil"/>
+        <Instances Id="[Default]"/>
+        <Instances Id="hpea">
+            <GameLink GameLink="AHbu">
+                <Field Id="Ability"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="ewsp">
+            <GameLink GameLink="AEbu">
+                <Field Id="Ability"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="opeo">
+            <GameLink GameLink="AObu">
+                <Field Id="Ability"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="uaco">
+            <GameLink GameLink="AUbu">
+                <Field Id="Ability"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="nmpe">
+            <GameLink GameLink="AGbu">
+                <Field Id="Ability"/>
+            </GameLink>
+        </Instances>
+    </CUser>
 </Catalog>

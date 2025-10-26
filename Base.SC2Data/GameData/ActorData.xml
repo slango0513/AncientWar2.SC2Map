@@ -309,16 +309,20 @@
         <On Terms="Effect.Teleport.Stop" Send="Create"/>
         <On Terms="Effect.Teleport.Start" Send="HostSiteOpsSet ::Host $originStationary 1 1"/>
     </CActorModel>
-    <CActorUnit id="HumanPhalanxPlaceholder" parent="War3_Item" unitName="HumanPhalanxPlaceholder">
-        <Model value="HumanPhalanxPlaceholder"/>
+    <CActorUnit id="HumanPreviewer" parent="War3_Item" unitName="HumanPreviewer">
+        <Model value="HumanPreviewer"/>
         <Scale value="4.000000"/>
     </CActorUnit>
-    <CActorUnit id="NightElfPhalanxPlaceholder" parent="War3_Item" unitName="NightElfPhalanxPlaceholder">
-        <Model value="NightElfPhalanxPlaceholder"/>
+    <CActorUnit id="NightElfPreviewer" parent="War3_Item" unitName="NightElfPreviewer">
+        <Model value="NightElfPreviewer"/>
         <Scale value="4.000000"/>
     </CActorUnit>
-    <CActorUnit id="OrcPhalanxPlaceholder" parent="War3_Item" unitName="OrcPhalanxPlaceholder">
-        <Model value="OrcPhalanxPlaceholder"/>
+    <CActorUnit id="NagaPreviewer" parent="War3_Item" unitName="NagaPreviewer">
+        <Model value="NagaPreviewer"/>
+        <Scale value="4.000000"/>
+    </CActorUnit>
+    <CActorUnit id="OrcPreviewer" parent="War3_Item" unitName="OrcPreviewer">
+        <Model value="OrcPreviewer"/>
         <Scale value="4.000000"/>
     </CActorUnit>
     <!--cryptlord-->
@@ -357,8 +361,8 @@
         <BarOffset value="100"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
-    <CActorUnit id="UndeadPhalanxPlaceholder" parent="War3_Item" unitName="UndeadPhalanxPlaceholder">
-        <Model value="UndeadPhalanxPlaceholder"/>
+    <CActorUnit id="UndeadPreviewer" parent="War3_Item" unitName="UndeadPreviewer">
+        <Model value="UndeadPreviewer"/>
         <Scale value="4.000000"/>
     </CActorUnit>
     <!--archer-->
@@ -809,6 +813,12 @@
     <CActorUnit id="nflg">
         <BuildModel value="War3_NightElfCaptureFlag"/>
         <PlacementModel value="War3_NightElfCaptureFlag"/>
+    </CActorUnit>
+    <CActorUnit id="NagaFlag" parent="War3_Item" unitName="NagaFlag" art="Assets\Textures\BTN\Renee_war3_btnNightElfCaptureFlag.dds">
+        <Model value="War3_NagaCaptureFlag"/>
+        <PortraitModel value="War3_NagaCaptureFlag"/>
+        <BuildModel value="War3_NagaCaptureFlag"/>
+        <PlacementModel value="War3_NagaCaptureFlag"/>
     </CActorUnit>
     <!--foresttrollhighpriest-->
     <CActorUnit id="nfsh" defType="NONE">

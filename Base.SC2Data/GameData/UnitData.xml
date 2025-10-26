@@ -471,12 +471,19 @@
         <GlossaryStrongArray value="orai"/>
         <GlossaryWeakArray value="hfoo"/>
     </CUnit>
-    <CUnit id="NightElfPhalanxPlaceholder" parent="War3_Item" defType="">
+    <CUnit id="NightElfPreviewer" parent="War3_Item" defType="">
+        <FogVisibility value="Snapshot"/>
         <Collide index="Ground" value="1"/>
         <Collide index="ForceField" value="1"/>
+        <BehaviorArray Link="Previewer"/>
         <Footprint value="6x6Phalanx"/>
+    </CUnit>
+    <CUnit id="NagaPreviewer" parent="War3_Item" defType="">
         <FogVisibility value="Snapshot"/>
-        <BehaviorArray Link="PhalanxPlaceholder"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <BehaviorArray Link="Previewer"/>
+        <Footprint value="6x6Phalanx"/>
     </CUnit>
     <!--HeroNagaSeaWitch-->
     <CUnit id="Nngs">
@@ -590,12 +597,12 @@
         <WeaponArray index="1" removed="1"/>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
-    <CUnit id="OrcPhalanxPlaceholder" parent="War3_Item" defType="">
+    <CUnit id="OrcPreviewer" parent="War3_Item" defType="">
+        <FogVisibility value="Snapshot"/>
         <Collide index="Ground" value="1"/>
         <Collide index="ForceField" value="1"/>
+        <BehaviorArray Link="Previewer"/>
         <Footprint value="6x6Phalanx"/>
-        <FogVisibility value="Snapshot"/>
-        <BehaviorArray Link="PhalanxPlaceholder"/>
     </CUnit>
     <!--HeroShadowHunter-->
     <CUnit id="Oshd" parent="AW2_Army" defType="NONE">
@@ -952,7 +959,7 @@
             <LayoutButtons>
                 <Face value="nflg"/>
                 <Type value="AbilCmd"/>
-                <AbilCmd value="AEbuArmy,Build1"/>
+                <AbilCmd value="AEbu,Build1"/>
                 <Behavior value=""/>
                 <Requirements value=""/>
                 <SubmenuAbilState value=""/>
@@ -994,23 +1001,23 @@
         </CardLayouts>
         <CardLayouts CardId="Bui1">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
-            <LayoutButtons Face="nwat" Type="AbilCmd" AbilCmd="AEbuArmy,Build5" Row="0" Column="0"/>
-            <LayoutButtons Face="edoc" Type="AbilCmd" AbilCmd="AEbuArmy,Build6" Row="0" Column="1"/>
-            <LayoutButtons Face="esen" Type="AbilCmd" AbilCmd="AEbuArmy,Build7" Row="0" Column="2"/>
+            <LayoutButtons Face="nwat" Type="AbilCmd" AbilCmd="AEbu,Build5" Row="0" Column="0"/>
+            <LayoutButtons Face="edoc" Type="AbilCmd" AbilCmd="AEbu,Build6" Row="0" Column="1"/>
+            <LayoutButtons Face="esen" Type="AbilCmd" AbilCmd="AEbu,Build7" Row="0" Column="2"/>
         </CardLayouts>
         <CardLayouts CardId="Bui2">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
-            <LayoutButtons Face="edot" Type="AbilCmd" AbilCmd="AEbuArmy,Build8" Row="0" Column="0"/>
-            <LayoutButtons Face="nhea" Type="AbilCmd" AbilCmd="AEbuArmy,Build3" Row="0" Column="1"/>
-            <LayoutButtons Face="earc" Type="AbilCmd" AbilCmd="AEbuArmy,Build4" Row="0" Column="2"/>
-            <LayoutButtons Face="edry" Type="AbilCmd" AbilCmd="AEbuArmy,Build9" Row="0" Column="3"/>
-            <LayoutButtons Face="ebal" Type="AbilCmd" AbilCmd="AEbuArmy,Build10" Row="0" Column="4"/>
+            <LayoutButtons Face="edot" Type="AbilCmd" AbilCmd="AEbu,Build8" Row="0" Column="0"/>
+            <LayoutButtons Face="nhea" Type="AbilCmd" AbilCmd="AEbu,Build3" Row="0" Column="1"/>
+            <LayoutButtons Face="earc" Type="AbilCmd" AbilCmd="AEbu,Build4" Row="0" Column="2"/>
+            <LayoutButtons Face="edry" Type="AbilCmd" AbilCmd="AEbu,Build9" Row="0" Column="3"/>
+            <LayoutButtons Face="ebal" Type="AbilCmd" AbilCmd="AEbu,Build10" Row="0" Column="4"/>
         </CardLayouts>
         <CardLayouts CardId="Bui3">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
-            <LayoutButtons Face="earc" Type="AbilCmd" AbilCmd="AEbuArmy,Build4" Row="0" Column="0"/>
+            <LayoutButtons Face="earc" Type="AbilCmd" AbilCmd="AEbu,Build4" Row="0" Column="0"/>
         </CardLayouts>
-        <AbilArray Link="AEbuArmy"/>
+        <AbilArray Link="AEbu"/>
         <Speed value="2.1093"/>
         <Radius value="0.3125"/>
         <Race value="NightElf"/>
@@ -1293,7 +1300,7 @@
             <LayoutButtons>
                 <Face value="flag"/>
                 <Type value="AbilCmd"/>
-                <AbilCmd value="AHbuArmy,Build1"/>
+                <AbilCmd value="AHbu,Build1"/>
                 <Behavior value=""/>
                 <Requirements value=""/>
                 <SubmenuAbilState value=""/>
@@ -1335,17 +1342,17 @@
         </CardLayouts>
         <CardLayouts CardId="Buil">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
-            <LayoutButtons Face="hmil" Type="AbilCmd" AbilCmd="AHbuArmy,Build2" Row="0" Column="0"/>
-            <LayoutButtons Face="hfoo" Type="AbilCmd" AbilCmd="AHbuArmy,Build3" Row="0" Column="1"/>
-            <LayoutButtons Face="hkni" Type="AbilCmd" AbilCmd="AHbuArmy,Build7" Row="0" Column="2"/>
-            <LayoutButtons Face="Hpal" Type="AbilCmd" AbilCmd="AHbuArmy,Build6" Row="0" Column="3"/>
-            <LayoutButtons Face="hsor" Type="AbilCmd" AbilCmd="AHbuArmy,Build4" Row="1" Column="0"/>
-            <LayoutButtons Face="hrif" Type="AbilCmd" AbilCmd="AHbuArmy,Build11" Row="1" Column="1"/>
-            <LayoutButtons Face="nhym" Type="AbilCmd" AbilCmd="AHbuArmy,Build8" Row="1" Column="2"/>
-            <LayoutButtons Face="hmtm" Type="AbilCmd" AbilCmd="AHbuArmy,Build10" Row="1" Column="3"/>
-            <LayoutButtons Face="hrtt" Type="AbilCmd" AbilCmd="AHbuArmy,Build12" Row="1" Column="4"/>
-            <LayoutButtons Face="nemi" Type="AbilCmd" AbilCmd="AHbuArmy,Build9" Row="2" Column="0"/>
-            <LayoutButtons Face="hspt" Type="AbilCmd" AbilCmd="AHbuArmy,Build5" Row="0" Column="4"/>
+            <LayoutButtons Face="hmil" Type="AbilCmd" AbilCmd="AHbu,Build2" Row="0" Column="0"/>
+            <LayoutButtons Face="hfoo" Type="AbilCmd" AbilCmd="AHbu,Build3" Row="0" Column="1"/>
+            <LayoutButtons Face="hkni" Type="AbilCmd" AbilCmd="AHbu,Build7" Row="0" Column="2"/>
+            <LayoutButtons Face="Hpal" Type="AbilCmd" AbilCmd="AHbu,Build6" Row="0" Column="3"/>
+            <LayoutButtons Face="hsor" Type="AbilCmd" AbilCmd="AHbu,Build4" Row="1" Column="0"/>
+            <LayoutButtons Face="hrif" Type="AbilCmd" AbilCmd="AHbu,Build11" Row="1" Column="1"/>
+            <LayoutButtons Face="nhym" Type="AbilCmd" AbilCmd="AHbu,Build8" Row="1" Column="2"/>
+            <LayoutButtons Face="hmtm" Type="AbilCmd" AbilCmd="AHbu,Build10" Row="1" Column="3"/>
+            <LayoutButtons Face="hrtt" Type="AbilCmd" AbilCmd="AHbu,Build12" Row="1" Column="4"/>
+            <LayoutButtons Face="nemi" Type="AbilCmd" AbilCmd="AHbu,Build9" Row="2" Column="0"/>
+            <LayoutButtons Face="hspt" Type="AbilCmd" AbilCmd="AHbu,Build5" Row="0" Column="4"/>
         </CardLayouts>
         <CardLayouts CardId="Purc">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
@@ -1360,7 +1367,7 @@
             <LayoutButtons Face="Purchaseprvt" Type="AbilCmd" AbilCmd="Purchaseprvt,Train1" Row="2" Column="2"/>
         </CardLayouts>
         <AbilArray Link="AInv"/>
-        <AbilArray Link="AHbuArmy"/>
+        <AbilArray Link="AHbu"/>
         <AbilArray Link="Aall"/>
         <AbilArray Link="Purchaseofir"/>
         <AbilArray Link="Purchasegcel"/>
@@ -1378,7 +1385,6 @@
         <MinimapRadius value="0.3125"/>
         <SeparationRadius value="0.3125"/>
         <InnerRadius value="0.3125"/>
-        <HotkeyCategory value="UI/HUMAN"/>
     </CUnit>
     <!--portal unit-->
     <CUnit id="hprt" parent="AW2_Portal">
@@ -2130,6 +2136,102 @@
         <PlaneArray index="Ground" value="1"/>
         <LifeArmor value="10"/>
     </CUnit>
+    <!--naga peon-->
+    <CUnit id="nmpe" parent="AW2_Peon">
+        <CardLayouts CardId="">
+            <LayoutButtons>
+                <Face value="CmdBuildNaga"/>
+                <Type value="Submenu"/>
+                <AbilCmd value=""/>
+                <Behavior value=""/>
+                <Requirements value="ShowBuildArmy"/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value="Buil"/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="NagaFlag"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="AGbu,Build1"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value=""/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="CmdPurchaseHuman"/>
+                <Type value="Submenu"/>
+                <AbilCmd value=""/>
+                <Behavior value=""/>
+                <Requirements value="ShowBuildArmy"/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value="Purc"/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Anei"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="Aall,Designate"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value=""/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Row value="2"/>
+                <Column value="4"/>
+            </LayoutButtons>
+        </CardLayouts>
+        <CardLayouts CardId="Buil">
+            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
+            <LayoutButtons Face="hfoo" Type="AbilCmd" AbilCmd="AGbu,Build2" Row="0" Column="0"/>
+        </CardLayouts>
+        <CardLayouts CardId="Purc">
+            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
+            <LayoutButtons Face="Purchaserat3" Type="AbilCmd" AbilCmd="Purchaserat3,Train1" Row="0" Column="0"/>
+            <LayoutButtons Face="Purchaserat6" Type="AbilCmd" AbilCmd="Purchaserat6,Train1" Row="0" Column="1"/>
+            <LayoutButtons Face="Purchaserat9" Type="AbilCmd" AbilCmd="Purchaserat9,Train1" Row="0" Column="2"/>
+            <LayoutButtons Face="Purchaseratc" Type="AbilCmd" AbilCmd="Purchaseratc,Train1" Row="0" Column="3"/>
+            <LayoutButtons Face="Purchaseratf" Type="AbilCmd" AbilCmd="Purchaseratf,Train1" Row="0" Column="4"/>
+            <LayoutButtons Face="Purchaseofir" Type="AbilCmd" AbilCmd="Purchaseofir,Train1" Row="1" Column="0"/>
+            <LayoutButtons Face="Purchasegcel" Type="AbilCmd" AbilCmd="Purchasegcel,Train1" Row="2" Column="0"/>
+            <LayoutButtons Face="Purchasefrhg" Type="AbilCmd" AbilCmd="Purchasefrhg,Train1" Row="2" Column="1"/>
+            <LayoutButtons Face="Purchaseprvt" Type="AbilCmd" AbilCmd="Purchaseprvt,Train1" Row="2" Column="2"/>
+        </CardLayouts>
+        <AbilArray Link="AInv"/>
+        <AbilArray Link="AGbu"/>
+        <AbilArray Link="Aall"/>
+        <AbilArray Link="Purchaseofir"/>
+        <AbilArray Link="Purchasegcel"/>
+        <AbilArray Link="Purchasefrhg"/>
+        <AbilArray Link="Purchaserat3"/>
+        <AbilArray Link="Purchaserat6"/>
+        <AbilArray Link="Purchaserat9"/>
+        <AbilArray Link="Purchaseratc"/>
+        <AbilArray Link="Purchaseratf"/>
+        <AbilArray Link="Purchaseprvt"/>
+        <Speed value="2"/>
+        <Radius value="0.3125"/>
+        <Race value="Naga"/>
+        <Mover value="foot"/>
+        <MinimapRadius value="0.3125"/>
+        <SeparationRadius value="0.3125"/>
+        <InnerRadius value="0.3125"/>
+    </CUnit>
     <!--naga siren-->
     <CUnit id="nnsw">
         <Food value="1"/>
@@ -2527,7 +2629,7 @@
             <LayoutButtons>
                 <Face value="oflg"/>
                 <Type value="AbilCmd"/>
-                <AbilCmd value="AObuArmy,Build1"/>
+                <AbilCmd value="AObu,Build1"/>
                 <Behavior value=""/>
                 <Requirements value=""/>
                 <SubmenuAbilState value=""/>
@@ -2568,32 +2670,32 @@
             </LayoutButtons>
         </CardLayouts>
         <CardLayouts CardId="Bui1">
-            <LayoutButtons Face="ogru" Type="AbilCmd" AbilCmd="AObuArmy,Build5" Row="0" Column="0"/>
-            <LayoutButtons Face="Ogrh" Type="AbilCmd" AbilCmd="AObuArmy,Build14" Row="0" Column="1"/>
-            <LayoutButtons Face="Obla" Type="AbilCmd" AbilCmd="AObuArmy,Build13" Row="0" Column="2"/>
-            <LayoutButtons Face="otau" Type="AbilCmd" AbilCmd="AObuArmy,Build11" Row="0" Column="3"/>
-            <LayoutButtons Face="orai" Type="AbilCmd" AbilCmd="AObuArmy,Build7" Row="0" Column="4"/>
-            <LayoutButtons Face="oshm" Type="AbilCmd" AbilCmd="AObuArmy,Build21" Row="1" Column="0"/>
+            <LayoutButtons Face="ogru" Type="AbilCmd" AbilCmd="AObu,Build5" Row="0" Column="0"/>
+            <LayoutButtons Face="Ogrh" Type="AbilCmd" AbilCmd="AObu,Build14" Row="0" Column="1"/>
+            <LayoutButtons Face="Obla" Type="AbilCmd" AbilCmd="AObu,Build13" Row="0" Column="2"/>
+            <LayoutButtons Face="otau" Type="AbilCmd" AbilCmd="AObu,Build11" Row="0" Column="3"/>
+            <LayoutButtons Face="orai" Type="AbilCmd" AbilCmd="AObu,Build7" Row="0" Column="4"/>
+            <LayoutButtons Face="oshm" Type="AbilCmd" AbilCmd="AObu,Build21" Row="1" Column="0"/>
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
-            <LayoutButtons Face="npn6" Type="AbilCmd" AbilCmd="AObuArmy,Build30" Row="1" Column="3"/>
-            <LayoutButtons Face="npn4" Type="AbilCmd" AbilCmd="AObuArmy,Build28" Row="1" Column="2"/>
+            <LayoutButtons Face="npn6" Type="AbilCmd" AbilCmd="AObu,Build30" Row="1" Column="3"/>
+            <LayoutButtons Face="npn4" Type="AbilCmd" AbilCmd="AObu,Build28" Row="1" Column="2"/>
         </CardLayouts>
         <CardLayouts CardId="Bui2">
-            <LayoutButtons Face="nftt" Type="AbilCmd" AbilCmd="AObuArmy,Build3" Row="0" Column="0"/>
-            <LayoutButtons Face="ohun" Type="AbilCmd" AbilCmd="AObuArmy,Build9" Row="0" Column="1"/>
-            <LayoutButtons Face="nw2w" Type="AbilCmd" AbilCmd="AObuArmy,Build18" Row="0" Column="2"/>
-            <LayoutButtons Face="npn5" Type="AbilCmd" AbilCmd="AObuArmy,Build29" Row="1" Column="3"/>
+            <LayoutButtons Face="nftt" Type="AbilCmd" AbilCmd="AObu,Build3" Row="0" Column="0"/>
+            <LayoutButtons Face="ohun" Type="AbilCmd" AbilCmd="AObu,Build9" Row="0" Column="1"/>
+            <LayoutButtons Face="nw2w" Type="AbilCmd" AbilCmd="AObu,Build18" Row="0" Column="2"/>
+            <LayoutButtons Face="npn5" Type="AbilCmd" AbilCmd="AObu,Build29" Row="1" Column="3"/>
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
-            <LayoutButtons Face="Ofar" Type="AbilCmd" AbilCmd="AObuArmy,Build26" Row="0" Column="3"/>
+            <LayoutButtons Face="Ofar" Type="AbilCmd" AbilCmd="AObu,Build26" Row="0" Column="3"/>
         </CardLayouts>
         <CardLayouts CardId="Bui3">
-            <LayoutButtons Face="nitp" Type="AbilCmd" AbilCmd="AObuArmy,Build24" Row="0" Column="0"/>
-            <LayoutButtons Face="odoc" Type="AbilCmd" AbilCmd="AObuArmy,Build22" Row="0" Column="1"/>
-            <LayoutButtons Face="okod" Type="AbilCmd" AbilCmd="AObuArmy,Build15" Row="0" Column="2"/>
-            <LayoutButtons Face="ospw" Type="AbilCmd" AbilCmd="AObuArmy,Build20" Row="0" Column="3"/>
+            <LayoutButtons Face="nitp" Type="AbilCmd" AbilCmd="AObu,Build24" Row="0" Column="0"/>
+            <LayoutButtons Face="odoc" Type="AbilCmd" AbilCmd="AObu,Build22" Row="0" Column="1"/>
+            <LayoutButtons Face="okod" Type="AbilCmd" AbilCmd="AObu,Build15" Row="0" Column="2"/>
+            <LayoutButtons Face="ospw" Type="AbilCmd" AbilCmd="AObu,Build20" Row="0" Column="3"/>
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
         </CardLayouts>
-        <AbilArray Link="AObuArmy"/>
+        <AbilArray Link="AObu"/>
         <Speed value="1.4843"/>
         <Radius value="0.3125"/>
         <Race value="Orc"/>
@@ -2901,7 +3003,7 @@
             <LayoutButtons>
                 <Face value="uflg"/>
                 <Type value="AbilCmd"/>
-                <AbilCmd value="AUbuArmy,Build1"/>
+                <AbilCmd value="AUbu,Build1"/>
                 <Behavior value=""/>
                 <Requirements value=""/>
                 <SubmenuAbilState value=""/>
@@ -2943,15 +3045,15 @@
         </CardLayouts>
         <CardLayouts CardId="Buil">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
-            <LayoutButtons Face="ugho" Type="AbilCmd" AbilCmd="AUbuArmy,Build2" Row="0" Column="0"/>
-            <LayoutButtons Face="uabo" Type="AbilCmd" AbilCmd="AUbuArmy,Build7" Row="0" Column="1"/>
-            <LayoutButtons Face="Udea" Type="AbilCmd" AbilCmd="AUbuArmy,Build10" Row="0" Column="2"/>
-            <LayoutButtons Face="ndrv" Type="AbilCmd" AbilCmd="AUbuArmy,Build3" Row="0" Column="3"/>
-            <LayoutButtons Face="ucry" Type="AbilCmd" AbilCmd="AUbuArmy,Build6" Row="1" Column="0"/>
-            <LayoutButtons Face="umtw" Type="AbilCmd" AbilCmd="AUbuArmy,Build8" Row="1" Column="1"/>
-            <LayoutButtons Face="uobs" Type="AbilCmd" AbilCmd="AUbuArmy,Build9" Row="2" Column="0"/>
-            <LayoutButtons Face="unec" Type="AbilCmd" AbilCmd="AUbuArmy,Build5" Row="2" Column="1"/>
-            <LayoutButtons Face="uban" Type="AbilCmd" AbilCmd="AUbuArmy,Build4" Row="2" Column="2"/>
+            <LayoutButtons Face="ugho" Type="AbilCmd" AbilCmd="AUbu,Build2" Row="0" Column="0"/>
+            <LayoutButtons Face="uabo" Type="AbilCmd" AbilCmd="AUbu,Build7" Row="0" Column="1"/>
+            <LayoutButtons Face="Udea" Type="AbilCmd" AbilCmd="AUbu,Build10" Row="0" Column="2"/>
+            <LayoutButtons Face="ndrv" Type="AbilCmd" AbilCmd="AUbu,Build3" Row="0" Column="3"/>
+            <LayoutButtons Face="ucry" Type="AbilCmd" AbilCmd="AUbu,Build6" Row="1" Column="0"/>
+            <LayoutButtons Face="umtw" Type="AbilCmd" AbilCmd="AUbu,Build8" Row="1" Column="1"/>
+            <LayoutButtons Face="uobs" Type="AbilCmd" AbilCmd="AUbu,Build9" Row="2" Column="0"/>
+            <LayoutButtons Face="unec" Type="AbilCmd" AbilCmd="AUbu,Build5" Row="2" Column="1"/>
+            <LayoutButtons Face="uban" Type="AbilCmd" AbilCmd="AUbu,Build4" Row="2" Column="2"/>
         </CardLayouts>
         <CardLayouts CardId="Purc">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
@@ -2966,7 +3068,7 @@
             <LayoutButtons Face="Purchaseprvt" Type="AbilCmd" AbilCmd="Purchaseprvt,Train1" Row="2" Column="2"/>
         </CardLayouts>
         <AbilArray Link="AInv"/>
-        <AbilArray Link="AUbuArmy"/>
+        <AbilArray Link="AUbu"/>
         <AbilArray Link="Aall"/>
         <AbilArray Link="Purchaserat3"/>
         <AbilArray Link="Purchaserat6"/>
@@ -3069,6 +3171,11 @@
     </CUnit>
     <!--Undead flag-->
     <CUnit id="uflg" parent="AW2_Phalanx">
+        <BehaviorArray Link="CreateReserveUnit36"/>
+        <Footprint value="6x6Phalanx"/>
+        <PlacementFootprint value="6x6Phalanx"/>
+    </CUnit>
+    <CUnit id="NagaFlag" parent="AW2_Phalanx">
         <BehaviorArray Link="CreateReserveUnit36"/>
         <Footprint value="6x6Phalanx"/>
         <PlacementFootprint value="6x6Phalanx"/>
@@ -3257,12 +3364,12 @@
         <PlaneArray index="Ground" value="1"/>
         <DeathTime value="0"/>
     </CUnit>
-    <CUnit id="HumanPhalanxPlaceholder" parent="War3_Item" defType="">
+    <CUnit id="HumanPreviewer" parent="War3_Item" defType="">
+        <FogVisibility value="Snapshot"/>
         <Collide index="Ground" value="1"/>
         <Collide index="ForceField" value="1"/>
+        <BehaviorArray Link="Previewer"/>
         <Footprint value="6x6Phalanx"/>
-        <FogVisibility value="Snapshot"/>
-        <BehaviorArray Link="PhalanxPlaceholder"/>
     </CUnit>
     <!--sylvanus banshee-->
     <CUnit id="uswb" parent="AW2_Army" defType="NONE">
@@ -3287,11 +3394,11 @@
         <SeparationRadius value="0.3125"/>
         <InnerRadius value="0.3125"/>
     </CUnit>
-    <CUnit id="UndeadPhalanxPlaceholder" parent="War3_Item" defType="">
+    <CUnit id="UndeadPreviewer" parent="War3_Item" defType="">
+        <FogVisibility value="Snapshot"/>
         <Collide index="Ground" value="1"/>
         <Collide index="ForceField" value="1"/>
+        <BehaviorArray Link="Previewer"/>
         <Footprint value="6x6Phalanx"/>
-        <FogVisibility value="Snapshot"/>
-        <BehaviorArray Link="PhalanxPlaceholder"/>
     </CUnit>
 </Catalog>
