@@ -400,12 +400,12 @@
         <DamagePoint value="0.3"/>
     </CWeaponLegacy>
     <!--grom hellscream-->
-    <CWeaponLegacy id="Ogrh1" parent="normal" atkType="NORMAL">
+    <CWeaponLegacy id="Ogrh1" parent="normal" atkType="SIEGE">
         <MinScanRange value="3.9062"/>
         <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
         <Range value="0.7812"/>
         <RangeSlop value="1.9531"/>
-        <Period value="1.5"/>
+        <Period value="3"/>
         <DamagePoint value="0.5"/>
     </CWeaponLegacy>
     <!--possessed grom hellscream-->
@@ -414,7 +414,7 @@
         <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
         <Range value="0.7812"/>
         <RangeSlop value="1.9531"/>
-        <Period value="1.5"/>
+        <Period value="3"/>
         <DamagePoint value="0.5"/>
     </CWeaponLegacy>
     <!--HeroShadowHunter-->
@@ -658,6 +658,8 @@
         <Period value="3"/>
         <DamagePoint value="0.43"/>
         <Backswing value="0.633"/>
+        <MinScanRange value="9"/>
+        <Range value="9"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="hwtw1" parent="missile" atkType="PIERCE">
         <Effect value="hwtw1LM"/>
@@ -686,6 +688,37 @@
         <MinScanRange value="10"/>
         <TargetFilters value="Visible;air,wall,tree,Missile,dead,invulnerable,immunity"/>
         <Range value="10"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="3"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+    </CWeaponLegacy>
+    <!--dark troll berserker-->
+    <CWeaponLegacy id="ndtb1" parent="missile" atkType="NORMAL">
+        <Effect value="ndtb1LM"/>
+        <MinScanRange value="6"/>
+        <TargetFilters value="Visible;wall,tree,Missile,ethereal,dead,invulnerable"/>
+        <Range value="6"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="3"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+    </CWeaponLegacy>
+    <!--dark troll high priest-->
+    <CWeaponLegacy id="ndth1" parent="missile" atkType="MAGIC">
+        <Effect value="ndth1LM"/>
+        <TargetFilters value="Visible;air,wall,tree,Missile,dead,invulnerable,immunity"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="3"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+    </CWeaponLegacy>
+    <!--darkTrollTrapper-->
+    <CWeaponLegacy id="ndtt1" parent="missile" atkType="NORMAL">
+        <Effect value="ndtt1LM"/>
+        <MinScanRange value="6"/>
+        <TargetFilters value="Visible;wall,tree,Missile,ethereal,dead,invulnerable"/>
+        <Range value="6"/>
         <RangeSlop value="1.9531"/>
         <Period value="3"/>
         <DamagePoint value="0.3"/>
@@ -1740,13 +1773,25 @@
         <DamagePoint value="0.43"/>
         <Backswing value="0.633"/>
     </CWeaponLegacy>
+    <!--Demolisher-->
+    <CWeaponLegacy id="ocat1" parent="artillery" atkType="SIEGE">
+        <Effect value="ocat1LM"/>
+        <EditorCategories value="Race:ChaosOrc"/>
+        <MinScanRange value="9"/>
+        <TargetFilters value="Visible;air,Missile,ethereal,dead,invulnerable"/>
+        <Range value="9"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="6"/>
+        <DamagePoint value="0.1"/>
+        <Backswing value="1.9"/>
+    </CWeaponLegacy>
     <!--WitchDoctor-->
     <CWeaponLegacy id="odoc1" parent="missile" atkType="MAGIC">
         <Effect value="odoc1LM"/>
         <EditorCategories value="Race:Orc"/>
-        <MinScanRange value="6"/>
+        <MinScanRange value="7"/>
         <TargetFilters value="Visible;wall,tree,Missile,dead,invulnerable,immunity"/>
-        <Range value="6"/>
+        <Range value="7"/>
         <RangeSlop value="1.9531"/>
         <Period value="3"/>
         <DamagePoint value="0.73"/>
@@ -1767,9 +1812,9 @@
     <CWeaponLegacy id="ohun1" parent="missile" atkType="PIERCE">
         <Effect value="ohun1LM"/>
         <EditorCategories value="Race:Orc"/>
-        <MinScanRange value="7"/>
+        <MinScanRange value="6"/>
         <TargetFilters value="Visible;wall,tree,Missile,ethereal,dead,invulnerable"/>
-        <Range value="7"/>
+        <Range value="6"/>
         <RangeSlop value="1.9531"/>
         <Period value="3"/>
         <DamagePoint value="0.31"/>
@@ -1778,9 +1823,9 @@
     <CWeaponLegacy id="ohu21" parent="missile" atkType="PIERCE">
         <Effect value="ohu21LM"/>
         <EditorCategories value="Race:Orc"/>
-        <MinScanRange value="7"/>
+        <MinScanRange value="6"/>
         <TargetFilters value="Visible;wall,tree,Missile,ethereal,dead,invulnerable"/>
-        <Range value="7"/>
+        <Range value="6"/>
         <RangeSlop value="1.9531"/>
         <Period value="3"/>
         <DamagePoint value="0.31"/>
@@ -1822,9 +1867,9 @@
     <CWeaponLegacy id="oshm1" parent="missile" atkType="MAGIC">
         <Effect value="oshm1LM"/>
         <EditorCategories value="Race:Orc"/>
-        <MinScanRange value="6"/>
+        <MinScanRange value="7"/>
         <TargetFilters value="Visible;wall,tree,Missile,dead,invulnerable,immunity"/>
-        <Range value="6"/>
+        <Range value="7"/>
         <RangeSlop value="1.9531"/>
         <Period value="3"/>
         <DamagePoint value="0.43"/>
@@ -1911,9 +1956,9 @@
     <CWeaponLegacy id="otbk1" parent="missile" atkType="PIERCE">
         <Effect value="otbk1LM"/>
         <EditorCategories value="Race:Orc"/>
-        <MinScanRange value="7"/>
+        <MinScanRange value="6"/>
         <TargetFilters value="Visible;wall,tree,Missile,ethereal,dead,invulnerable"/>
-        <Range value="7"/>
+        <Range value="6"/>
         <RangeSlop value="1.9531"/>
         <Period value="3"/>
         <DamagePoint value="0.31"/>
@@ -1922,9 +1967,9 @@
     <!--vol'jin-->
     <CWeaponLegacy id="ovlj1" parent="missile" atkType="MAGIC">
         <Effect value="ovlj1LM"/>
-        <MinScanRange value="6"/>
+        <MinScanRange value="7"/>
         <TargetFilters value="Visible;wall,tree,Missile,dead,invulnerable,immunity"/>
-        <Range value="6"/>
+        <Range value="7"/>
         <RangeSlop value="1.9531"/>
         <Period value="3"/>
         <DamagePoint value="0.73"/>

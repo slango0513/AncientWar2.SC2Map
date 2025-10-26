@@ -65,10 +65,10 @@
     <!--Neutral Regen (health only)-->
     <CEffectEnumArea id="ACnrSearch" parent="War3_AuraSearch" aura="BCnr"/>
     <CEffectApplyBehavior id="AHbn1Dur">
-        <Duration value="20"/>
+        <Duration value="10"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="AHbn1HeroDur">
-        <Duration value="10"/>
+        <Duration value="5"/>
     </CEffectApplyBehavior>
     <CEffectDamage id="AHfsFullDamage1">
         <Amount value="50"/>
@@ -84,6 +84,21 @@
         <SearchFilters value="-;player,allies,air,wall,Missile,item,ward,dead,Hidden,invulnerable,immunity"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="AarmSearch" parent="War3_AuraSearch" aura="Barm"/>
+    <CEffectDamage id="AbofFullDamage">
+        <Amount value="50"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="AbofFullDamageSearch">
+        <SearchFilters value="-;player,allies,air,wall,tree,Missile,debris,item,ward,dead,invulnerable"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="AbofHalfDamage">
+        <Amount value="25"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="AbofHalfDamageSearch">
+        <SearchFilters value="-;player,allies,air,wall,tree,Missile,debris,item,ward,dead,invulnerable"/>
+    </CEffectEnumArea>
+    <CEffectSet id="Awfb">
+        <EffectArray value="AwfbMissile"/>
+    </CEffectSet>
     <CEffectSet id="AwfbMissileImpactSet">
         <EffectArray value="AwfbDamage"/>
         <EffectArray value="Bwfb"/>
@@ -701,12 +716,30 @@
         <Kind value="Melee"/>
         <VitalFractionMax index="Life" value="1"/>
     </CEffectDamage>
+    <CEffectSet id="Ogrh1Crit">
+        <EffectArray index="0" value="Ogrh1"/>
+        <EffectArray value="Ogrh1CritKill"/>
+    </CEffectSet>
+    <CEffectDamage id="Ogrh1CritKill" parent="War3_PhysicSpellDamage">
+        <EditorCategories value="Race:Orc"/>
+        <Kind value="Melee"/>
+        <VitalFractionMax index="Life" value="1"/>
+    </CEffectDamage>
     <CEffectSet id="Nbbc1Crit">
         <EffectArray index="0" value="Nbbc1"/>
         <EffectArray value="Nbbc1CritKill"/>
     </CEffectSet>
     <CEffectDamage id="Nbbc1CritKill" parent="War3_PhysicSpellDamage">
-        <EditorCategories value="Race:Orc"/>
+        <EditorCategories value="Race:ChaosOrc"/>
+        <Kind value="Melee"/>
+        <VitalFractionMax index="Life" value="1"/>
+    </CEffectDamage>
+    <CEffectSet id="Opgh1Crit">
+        <EffectArray index="0" value="Opgh1"/>
+        <EffectArray value="Opgh1CritKill"/>
+    </CEffectSet>
+    <CEffectDamage id="Opgh1CritKill" parent="War3_PhysicSpellDamage">
+        <EditorCategories value="Race:ChaosOrc"/>
         <Kind value="Melee"/>
         <VitalFractionMax index="Life" value="1"/>
     </CEffectDamage>
@@ -720,13 +753,13 @@
     <CEffectDamage id="Ogld1" parent="AW2_ChaosDamage">
         <Amount value="24"/>
     </CEffectDamage>
-    <CEffectDamage id="Ogrh1" parent="AW2_NormalDamage">
+    <CEffectDamage id="Ogrh1" parent="AW2_SiegeDamage">
         <Kind value="Melee"/>
         <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="Opgh1" parent="AW2_ChaosDamage">
         <Kind value="Melee"/>
-        <Amount value="96"/>
+        <Amount value="120"/>
     </CEffectDamage>
     <CEffectIssueOrder id="OrderRoboGoblin">
         <WhichUnit Value="Caster"/>
@@ -914,6 +947,15 @@
     <CEffectDamage id="ndgt1" parent="AW2_MagicDamage">
         <Amount value="96"/>
     </CEffectDamage>
+    <CEffectDamage id="ndtb1" parent="AW2_NormalDamage">
+        <Amount value="48"/>
+    </CEffectDamage>
+    <CEffectDamage id="ndth1" parent="AW2_MagicDamage">
+        <Amount value="24"/>
+    </CEffectDamage>
+    <CEffectDamage id="ndtt1" parent="AW2_NormalDamage">
+        <Amount value="48"/>
+    </CEffectDamage>
     <CEffectDamage id="negt1" parent="AW2_MagicDamage">
         <Amount value="24"/>
     </CEffectDamage>
@@ -1035,7 +1077,7 @@
         <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="nckb1" parent="AW2_ChaosDamage">
-        <Amount value="96"/>
+        <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="ndr11" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
@@ -1358,6 +1400,12 @@
     <CEffectDamage id="nws11" parent="AW2_MagicDamage">
         <Amount value="48"/>
     </CEffectDamage>
+    <CEffectDamage id="ocat1" parent="AW2_SiegeDamage">
+        <Amount value="96"/>
+        <AreaArray Radius="1.1718" Fraction="1"/>
+        <SearchFilters value="-;player,allies,air,Missile,item,ward,ethereal,dead,invulnerable"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
     <CEffectDamage id="ovlj1" parent="AW2_MagicDamage">
         <Amount value="24"/>
     </CEffectDamage>
@@ -1457,11 +1505,11 @@
     </CEffectDamage>
     <CEffectLaunchMissile id="ohu21LM" parent="War3_Missile" weaponid="ohu21"/>
     <CEffectDamage id="okod1" parent="AW2_NormalDamage">
-        <Amount value="96"/>
+        <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="omtg1" parent="AW2_ChaosDamage">
         <Kind value="Melee"/>
-        <Amount value="72"/>
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="orai1" parent="AW2_SiegeDamage">
         <Amount value="120"/>
@@ -1505,7 +1553,7 @@
     </CEffectDamage>
     <CEffectDamage id="owar1" parent="AW2_ChaosDamage">
         <Kind value="Melee"/>
-        <Amount value="72"/>
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="uabo1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>

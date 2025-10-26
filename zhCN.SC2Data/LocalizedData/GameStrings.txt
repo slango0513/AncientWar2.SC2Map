@@ -1,4 +1,4 @@
-﻿ACac/Ubertip=增加附近友方单位<d ref="Behavior,BOac,Modification.DamageDealtFraction[Melee] * 100"/>%的近战攻击力。
+﻿ACac/Ubertip=增加附近友方单位<d ref="Behavior,BOac,Modification.DamageDealtFraction[Melee] * 100"/>%的攻击力。
 ACbb/Ubertip=在<d ref="Effect,Bblo40s,Duration"/>秒内增加目标单位<d ref="Behavior,Bblo,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度和<d ref="Behavior,Bblo,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度。
 ACcv/Ubertip=发射出一道巨大的能量波，对一线上的敌人造成<d ref="Effect,ACcvDamage,Amount"/>点的伤害。
 ACen/Ubertip=将敌方的某个空中单位捕获到地面能动弹。被诱捕的空中单位能像地面单位一样遭到攻击。<n/>持续<d ref="Behavior,Bena,Duration"/>秒。
@@ -83,6 +83,7 @@ AOsw/Ubertip=召唤出一个固定不动的毒蛇守卫来为暗影猎手攻击�
 AOvd/Ubertip=将在暗影猎手附近一定区域内的所有友方单位都变为无敌。<n/>但是暗影猎手自己不会变为无敌。<n/>持续<d ref="Behavior,BOvc,Duration"/>秒。
 AOws/Ubertip=重击地面，对周围的地面单位造成<d ref="Effect,AOwsDamage1,Amount"/>点的伤害并在<d ref="Effect,AOws1Dur,Duration"/>秒内使其处于昏晕状态。
 AUau/Ubertip=增加周围友方单位<d ref="Behavior,BUau1,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度和每秒<d ref="Behavior,BUau1,Modification.VitalRegenArray[Life]" precision="1"/>点的生命恢复速度。
+AUav/Ubertip=附近的单位可以将<d ref="Behavior,BUav1Leech,Modification.VitalDamageLeechArray[Life].KindArray[Melee] * 100"/>%对敌人的伤害值转成自己的生命值。
 AUbu1/Tip=建造近战部队
 AUbu2/Tip=建造远程部队
 AUbu3/Tip=建造法术部队
@@ -279,7 +280,8 @@ DocInfo/DescLong=该版本使用麦德三世的魔兽争霸III Mod。<n/>排兵�
 DocInfo/DescShort=任意
 DocInfo/Name=古代战争II - 魔兽争霸III Mod (GA)
 DocInfo/PatchNote001=完成种族人类、暗夜精灵、兽人、亡灵、纳迦和地精。
-DocInfo/PatchNote002=不满现状的血精灵从人类独立出来。
+DocInfo/PatchNote002=渴望魔法的血精灵从人类独立出来。
+DocInfo/PatchNote003=被恶魔之血所污染的混乱兽人从兽人独立出来。
 DraeneiFlag/Name=德莱尼旗帜
 DraeneiFlag/Tip=放置德莱尼旗帜
 DraeneiFlag/Ubertip=放置德莱尼旗帜。
@@ -420,7 +422,7 @@ Nalm/Propernames=拉泽尔·拿破仑
 Nalm/Tip=升级到拉泽尔·拿破仑
 Nalm/Ubertip=重型的近战单位，具有抗性皮肤技能，还能施放点金术。<n/><n/><c val="ffcc00">攻击地面单位。</c>
 Nbbc/Tip=训练黑石氏族的剑圣
-Nbbc/Ubertip=敏捷系单位，精于速杀落单的单位。具有掠夺和致命一击技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+Nbbc/Ubertip=敏捷系单位，精于速杀落单的单位。具有致命一击技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Nbrn/Tip=升级到黑暗游侠
 Nbrn/Ubertip=远程攻击单位。拥有艾露恩的赐福技能。还能施放黑暗箭。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c> 
 NightElfPhalanxPlaceholder/Name=NightElfPreviewer
@@ -450,8 +452,11 @@ Ocbh/Ubertip=重型的近战单位，具有战争践踏技能。<n/><n/><c val="
 Ofar/Tip=训练先知
 Ofar/Ubertip=高速远程攻击骑兵。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Ogld/Tip=升级到古尔丹
-Ogrh/Tip=训练剑圣
+Ogld/Ubertip=魔法单位，能施放邪恶狂暴。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+Ogrh/Tip=升级到格罗姆·地狱咆哮
+Ogrh/Ubertip=敏捷系单位，精于速杀落单的单位。具有掠夺和致命一击技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Opgh/Tip=升级到格罗姆·地狱咆哮
+Opgh/Ubertip=敏捷系单位，精于速杀落单的单位。具有致命一击技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 OrcPhalanxPlaceholder/Name=OrcPreviewer
 Oshd/Tip=训练暗影猎手
 Oshd/Ubertip=远程攻击单位，精于巫毒诅咒。能施放大坏毒。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
@@ -471,14 +476,11 @@ Param/Expression/6D6635EF=GroupR ~A~ = ~B~, ~C~ = ~D~, ~E~ = ~F~, ~G~ = ~H~
 Param/Expression/831164FF=~A~现在由电脑接管。
 Param/Expression/87F08C04=Reserve 1 ~A~ 2 ~B~ 3 ~C~ 4 ~D~ 5 ~E~ 6 ~F~ 7 ~G~ 8 ~H~
 Param/Expression/8BDDF43A=UT ~A~ Fc ~B~
-Param/Expression/8E300498=Deact PlxB=~A~ P=~B~ Plx=~C~
 Param/Expression/96727924=~A~
 Param/Expression/A093297C=游戏将在~A~秒后结束。
 Param/Expression/C24F66A3=PlxB=~A~ P=~B~ Plx=~C~
 Param/Expression/C345D910=Att=~A~ Race=~B~
 Param/Expression/CEBDBACC=奖励回合<c val="FFFF00">~A~</c>：<c val="FFFF00">~B~</c>
-Param/Expression/D3AC5439=VenueFinal=~A~ FinalRound=~B~ PlayerAtFinalVenue=~C~
-Param/Expression/E3B3FC74=Act PlxB=~A~ P=~B~ Plx=~C~
 Param/Expression/E469976D=第~I~回合 ~A~~1~~B~~2~~C~~1~~D~~3~~E~~1~~F~~2~~G~~1~~H~。
 Param/Expression/E9329EDD=PlayerC ~A~ vs ~B~, ~C~ vs ~D~, ~E~ vs ~F~, ~G~ vs ~H~
 Param/Expression/EA367955=第~I~回合：~A~ vs ~B~，~C~ vs ~D~，~E~ vs ~F~，~G~ vs ~H~。
@@ -653,9 +655,9 @@ hmpr/Tip=升级到牧师
 hmpr/Ubertip=魔法单位，能施放心灵之火。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 hmtm/Ubertip=远距离攻城单位，具有碎片攻击技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 hphx/Tip=训练凤凰
-hphx/Ubertip=召唤一只强大的凤凰。凤凰全身燃烧剧烈的火焰，烧伤附近的敌人。当凤凰死后，会变成一只蛋，可以再次孵化成凤凰。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+hphx/Ubertip=召唤一只强大的凤凰。凤凰全身燃烧剧烈的火焰，烧伤附近的敌人。具有抗性皮肤。当凤凰死后，会变成一只蛋，可以再次孵化成凤凰。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 hpxe/Tip=训练凤凰蛋
-hpxe/Ubertip=召唤一只强大的凤凰。凤凰全身燃烧剧烈的火焰，烧伤附近的敌人。当凤凰死后，会变成一只蛋，可以再次孵化成凤凰。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+hpxe/Ubertip=召唤一只强大的凤凰。凤凰全身燃烧剧烈的火焰，烧伤附近的敌人。具有抗性皮肤。当凤凰死后，会变成一只蛋，可以再次孵化成凤凰。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 hrif/Ubertip=远程攻击单位，具有黑火药技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 hrtt/Ubertip=重型装甲车辆。拥有弹幕攻击技能，从而可以对多个敌人的地面单位进行攻击。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 hsor/Ubertip=基本的远程攻击单位。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
@@ -668,16 +670,22 @@ nbld/Tip=升级到强盗头子
 nbld/Ubertip=高速骑兵，具有震荡波技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ncg3/Name=发条地精
 nchg/Tip=训练混乱兽人步兵
-nchg/Ubertip=基本的兽人地面单位，具有掠夺技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
-nchr/Ubertip=高速骑兵，具有掠夺和诱捕技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
-nchw/Tip=升级到混乱兽人术士
-nckb/Ubertip=一种笨重的战争野兽，由一个兽人鼓手驾驭。拥有战鼓技能。战鼓能提高周围单位的攻击力。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+nchg/Ubertip=基本的兽人地面单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+nchr/Ubertip=高速骑兵，具有诱捕技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+nchw/Ubertip=魔法单位，能施放火球术，伤害并使敌人昏迷。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+nckb/Ubertip=一种笨重的战争野兽，由一个兽人鼓手驾驭。拥有吸血光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ndgt/Tip=升级到达拉然防御塔
 ndgt/Ubertip=防守型建筑物。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ndrv/Tip=训练深渊亡魂
 ndrv/Ubertip=防御型单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
-ndtp/Tip=升级到黑暗巨魔暗影牧师
-ndtp/Ubertip=魔法单位，能施放驱除魔法。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+ndtb/Tip=升级到黑暗巨魔狂战士
+ndtb/Ubertip=远程攻击单位。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+ndth/Tip=升级到黑暗巨魔高阶牧师
+ndth/Ubertip=魔法单位，能施放驱除魔法。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+ndtp/Tip=训练黑暗巨魔暗影牧师
+ndtp/Ubertip=魔法单位，能施放治疗术。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+ndtt/Tip=训练黑暗巨魔捕兽者
+ndtt/Ubertip=远程攻击单位。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 negt/Ubertip=防守型建筑物。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 negz/Tip=升级到工程师加兹鲁维
 negz/Ubertip=地精工兵自爆小组，对城墙特别有效。具有效率光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
@@ -787,6 +795,7 @@ nwat/Tip=训练哨兵
 nwat/Ubertip=基本的地面单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nwgs/Ubertip=轻型飞行单位。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nws1/Ubertip=动作敏捷的飞行单位，由一位精灵战士驾驶。拥有乌云技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+ocat/Ubertip=远程攻城武器，具有燃烧之油技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ocor/Ubertip=增加<d ref="Behavior,AIcb,Modification.DamageDealtScaled[Melee]"/>点攻击力。能在<d ref="Behavior,BIcb,Duration"/>秒内削弱敌人的护甲。
 odoc/Ubertip=魔法单位，能施放妖术。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ofir/Ubertip=增加<d ref="Behavior,AIfb,Modification.DamageDealtScaled[Melee]"/>点攻击力。能让攻击带有<d ref="Effect,AIfbSphereEffect,AreaArray[0].Bonus"/>点火焰伤害，还有一定的溅射效果。
@@ -799,10 +808,10 @@ ofro/Ubertip=能让攻击带有<d ref="Behavior,AIob,Modification.DamageDealtSca
 ogru/Ubertip=基本的兽人地面单位，具有掠夺技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ohu2/Name=巨魔猎头者
 ohun/Ubertip=基本的远程攻击单位。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c> 
-okod/Ubertip=一种笨重的战争野兽，由一个兽人鼓手驾驭。拥有吞噬技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+okod/Ubertip=一种笨重的战争野兽，由一个兽人鼓手驾驭。拥有战鼓技能。战鼓能提高周围单位的攻击力。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 oli2/Ubertip=能增加<d ref="Behavior,AIll,Modification.DamageDealtScaled[Melee]"/>点攻击力。还能驱散魔法和在3秒内减慢敌人的移动速度。<n/><c val="ffcc00">对召唤单位能造成 150点伤害。
 omtg/Tip=升级到马索格
-omtg/Ubertip=高速骑兵，具有掠夺和命令光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+omtg/Ubertip=高速骑兵，具有命令光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 orai/Ubertip=高速骑兵，具有掠夺和诱捕技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 oshm/Tip=训练萨满 
 oshm/Ubertip=魔法单位，能施放嗜血。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
@@ -821,7 +830,7 @@ oven/Ubertip=增加<d ref="Behavior,AIpb,Modification.DamageDealtScaled[Melee]"/
 ovlj/Tip=升级到沃金
 ovlj/Ubertip=魔法单位，能施放治疗结界。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 owar/Tip=训练兽人大酋长
-owar/Ubertip=高速骑兵，具有掠夺技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+owar/Ubertip=高速骑兵。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 prvt/Ubertip=增加<d ref="Behavior,AIlf,Modification.VitalMaxArray[Life]"/>点生命值。
 rat3/Ubertip=增加<d ref="Behavior,AIat,Modification.DamageDealtScaled[Melee]"/>点攻击力。
 rat6/Ubertip=能增加<d ref="Behavior,AIt6,Modification.DamageDealtScaled[Melee]"/>点攻击力。

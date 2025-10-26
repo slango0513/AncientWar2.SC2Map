@@ -268,6 +268,9 @@
         <CmdButtonArray index="On" Requirements="ACnr"/>
         <BehaviorArray value="ACnr"/>
     </CAbilBehavior>
+    <CAbilBehavior id="Aakb" parent="War3_Passive">
+        <BehaviorArray value="Aakb"/>
+    </CAbilBehavior>
     <CAbilBehavior id="Aarm" parent="War3_HeroAura">
         <CmdButtonArray index="On" Requirements="Aarm"/>
         <BehaviorArray value="Aarm"/>
@@ -495,12 +498,12 @@
     </CAbilMorph>
     <CAbilEffectTarget id="Awfb" parent="AW2_EffectTarget">
         <EditorCategories value="Race:ChaosOrc,AbilityorEffectType:Units"/>
-        <Effect index="0" value="AwfbMissile"/>
         <Cost index="0">
             <Vital index="Energy" value="60"/>
             <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <TargetSorts RequestCount="1">
+            <SortArray value="TSMarker"/>
             <SortArray value="TSLifeLargestFirst"/>
             <SortArray value="TSKillResourceTerrazineLargestFirst"/>
         </TargetSorts>
@@ -508,8 +511,7 @@
         <AutoCastRange value="13"/>
         <AutoCastValidatorArray value="EnemiesNearby7"/>
         <AutoCastValidatorArray value="NoFireBolt"/>
-        <AutoCastValidatorArray value="noMarkers"/>
-        <PrepTime value="0.5"/>
+        <PrepTime value="1"/>
         <CastOutroTime value="1"/>
         <TargetFilters index="0" value="-;wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
     </CAbilEffectTarget>
@@ -575,6 +577,15 @@
         </InfoArray>
         <InfoArray index="Build8" Unit="Nbbc">
             <Button DefaultButtonFace="Nbbc" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build9" Unit="ndtt">
+            <Button DefaultButtonFace="ndtt" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build10" Unit="ndtp">
+            <Button DefaultButtonFace="ndtp" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build11" Unit="ocat">
+            <Button DefaultButtonFace="ocat" Requirements="BuildArmyFinal"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
@@ -889,7 +900,7 @@
         <Effect index="0" value="BHds1"/>
         <Flags index="Transient" value="1"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="60"/>
+            <Cooldown Location="Unit" TimeUse="120"/>
         </Cost>
         <AutoCastFilters value="Self,Visible;-"/>
         <AutoCastValidatorArray value="CasterLifeNotFull"/>
@@ -1274,9 +1285,6 @@
         <InfoArray index="Build2" Unit="ofl2">
             <Button DefaultButtonFace="ofl2" Requirements="BuildPhalanxFinal"/>
         </InfoArray>
-        <InfoArray index="Build3" Unit="nftt">
-            <Button DefaultButtonFace="nftt" Requirements="BuildArmy"/>
-        </InfoArray>
         <InfoArray index="Build4" Unit="Oshd">
             <Button DefaultButtonFace="Oshd" Requirements="BuildArmyFinal"/>
         </InfoArray>
@@ -1306,9 +1314,6 @@
         </InfoArray>
         <InfoArray index="Build22" Unit="odoc">
             <Button DefaultButtonFace="odoc" Requirements="BuildArmy"/>
-        </InfoArray>
-        <InfoArray index="Build24" Unit="nitp">
-            <Button DefaultButtonFace="nitp" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build26" Unit="Ofar">
             <Button DefaultButtonFace="Ofar" Requirements="BuildArmy"/>
@@ -1359,7 +1364,7 @@
         <AutoCastRange value="12"/>
         <AutoCastValidatorArray value="NoHex"/>
         <AutoCastValidatorArray value="noMarkers"/>
-        <AutoCastValidatorArray value="EnemiesNearby6"/>
+        <AutoCastValidatorArray value="EnemiesNearby7"/>
     </CAbilEffectTarget>
     <!--Farseer - Spirit Wolf Buff=BOsf-->
     <CAbilEffectInstant id="AOsf" parent="AW2_EffectInstant">
@@ -1614,7 +1619,7 @@
         <AutoCastRange value="12"/>
         <AutoCastValidatorArray value="NoBloodlust"/>
         <AutoCastValidatorArray value="noMarkers"/>
-        <AutoCastValidatorArray value="EnemiesNearby6"/>
+        <AutoCastValidatorArray value="EnemiesNearby7"/>
         <Effect index="0" value="Bblo"/>
         <AutoCastFilters value="Visible;Neutral,Enemy"/>
         <TargetSorts RequestCount="1">
@@ -1631,7 +1636,7 @@
         <Effect index="0" value="Bbsk"/>
         <PrepTime value="0.5"/>
         <CastOutroTime value="0.5"/>
-        <AutoCastValidatorArray value="EnemiesNearby7"/>
+        <AutoCastValidatorArray value="EnemiesNearby6"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="Abs2" parent="AW2_EffectInstant">
@@ -1642,7 +1647,7 @@
         </Cost>
         <PrepTime value="0.5"/>
         <CastOutroTime value="0.5"/>
-        <AutoCastValidatorArray value="EnemiesNearby7"/>
+        <AutoCastValidatorArray value="EnemiesNearby6"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <!--Cannibalize Dur=33 HeroDur=33-->
@@ -2073,7 +2078,7 @@
         <EditorCategories value="Race:Orc,AbilityorEffectType:Unit"/>
         <TargetFilters index="0" value="-;wall,tree,debris,item,ward,dead,invulnerable"/>
         <Cost index="0">
-            <Vital index="Energy" value="60"/>
+            <Vital index="Energy" value="30"/>
             <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
         <Range value="9"/>
@@ -2089,7 +2094,7 @@
         <AutoCastFilters value="Visible;Neutral,Enemy"/>
         <AutoCastRange value="9"/>
         <AutoCastValidatorArray value="noMarkers"/>
-        <AutoCastValidatorArray value="EnemiesNearby6"/>
+        <AutoCastValidatorArray value="EnemiesNearby7"/>
     </CAbilEffectTarget>
     <!--Invisibility Dur=120 HeroDur=120 Buff=Binv-->
     <CAbilEffectTarget id="Aivs" parent="AW2_EffectTarget">
@@ -2865,6 +2870,12 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToOgld" parent="AW2_Upgrade" toUnit="Ogld">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTondtb" parent="AW2_Upgrade" toUnit="ndtb">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTondth" parent="AW2_Upgrade" toUnit="ndth">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
 </Catalog>

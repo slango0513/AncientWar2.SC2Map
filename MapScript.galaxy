@@ -196,7 +196,7 @@ void InitGlobals () {
 // Global Function Declarations
 //--------------------------------------------------------------------------------------------------
 void gf_ModInizialization (bool lp_debug);
-void gf_RoundStartLoop (bool lp_debug, bool lp_debugOnlyBonusRound);
+void gf_RoundStartLoop (bool lp_debug);
 void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug);
 void gf_TeamMemberSetAndTeamMemberCountSet ();
 void gf_TeamRoundRandomize ();
@@ -221,6 +221,7 @@ int gf_PlayerGetTeam (int lp_player);
 region gf_IndexGetVenue (int lp_index);
 abilcmd gf_RaceGetBuildPhalanxCommand (string lp_race);
 string gf_RaceGetPhalanxType (string lp_race);
+string gf_RaceGetPreviewerPhalanxType (string lp_race);
 string gf_RaceGetPreviewerType (string lp_race);
 string gf_WorkerTypeGetAbility (string lp_unitType);
 int gf_UnitTypeGetPhalanxCapacity (string lp_unitType);
@@ -249,7 +250,7 @@ void gf_FinalVenueReplace ();
 void gf_VenueInitialReplace ();
 int gf_PointInBuildingRegionGetBuildingRegion (point lp_point);
 int gf_PointInBuildingRegionGetPhalanx (point lp_point);
-void gf_PhalanxPlaceholderPositionAll ();
+void gf_PreviewerPositionAll ();
 void gf_BuildingRegionSet (region lp_region, int lp_index, int lp_phalanx);
 void gf_PlayerAtBuildingRegionSet ();
 void gf_BuildingRegionRevealerEnable (bool lp_option, bool lp_debug);
@@ -400,7 +401,7 @@ void gf_ModInizialization (bool lp_debug) {
         TriggerExecute(gt_TimerInizialization, true, false);
         TriggerExecute(gt_PlayerInizialization, true, false);
         gf_PlayerAtBuildingRegionSet();
-        gf_PhalanxPlaceholderPositionAll();
+        gf_PreviewerPositionAll();
         gf_CreepUnitTypeSetAll();
         gf_ValidRegionFillHidden();
     }
@@ -408,7 +409,7 @@ void gf_ModInizialization (bool lp_debug) {
     }
 }
 
-void gf_RoundStartLoop (bool lp_debug, bool lp_debugOnlyBonusRound) {
+void gf_RoundStartLoop (bool lp_debug) {
     int autoE4112BFC_ae;
     int autoE4112BFC_ai;
 
@@ -424,15 +425,6 @@ void gf_RoundStartLoop (bool lp_debug, bool lp_debugOnlyBonusRound) {
         autoE4112BFC_ai = 1;
         lv_round = 1;
         for ( ; ( (autoE4112BFC_ai >= 0 && lv_round <= autoE4112BFC_ae) || (autoE4112BFC_ai <= 0 && lv_round >= autoE4112BFC_ae) ) ; lv_round += autoE4112BFC_ai ) {
-            if ((lp_debug == true)) {
-                if ((lp_debugOnlyBonusRound == true)) {
-                    lv_round = 3;
-                }
-                else {
-                    lv_round = 1;
-                }
-            }
-
             if ((gf_IsFinalRound(lv_round) == true)) {
                 gf_FinalVenueReplace();
             }
@@ -1214,6 +1206,17 @@ string gf_RaceGetPhalanxType (string lp_race) {
     return lv_unitType;
 }
 
+string gf_RaceGetPreviewerPhalanxType (string lp_race) {
+    // Variable Declarations
+    string lv_unitType;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_unitType = UserDataGetUnit(gv_raceUnitTypeUserType, ((lp_race)), "Phalanx", 1);
+    return lv_unitType;
+}
+
 string gf_RaceGetPreviewerType (string lp_race) {
     // Variable Declarations
     string lv_unitType;
@@ -1817,7 +1820,7 @@ int gf_PointInBuildingRegionGetPhalanx (point lp_point) {
     return lv_index;
 }
 
-void gf_PhalanxPlaceholderPositionAll () {
+void gf_PreviewerPositionAll () {
     int auto1E842374_ae;
     int auto1E842374_ai;
     int autoA38A80FF_ae;
@@ -2214,10 +2217,7 @@ void gf_PreviewUpdate (int lp_player, int lp_phalanx) {
     for ( ; ( (auto96EE433F_ai >= 0 && lv_index <= auto96EE433F_ae) || (auto96EE433F_ai <= 0 && lv_index >= auto96EE433F_ae) ) ; lv_index += auto96EE433F_ai ) {
         ActorSend(gv_previewModel[lp_player][lp_phalanx][lv_index], libNtve_gf_Destroy());
     }
-    if ((TechTreeUpgradeCount(lp_player, "BuildArmyFinal", c_techCountCompleteOnly) == 0)) {
-        gf_UnitOrPreviewModelPosition(gv_previewer[lp_player][lp_phalanx], true);
-    }
-
+    gf_UnitOrPreviewModelPosition(gv_previewer[lp_player][lp_phalanx], true);
 }
 
 void gf_PreviewerRegionSet (region lp_region, int lp_index, int lp_phalanx) {
@@ -2274,7 +2274,7 @@ void gf_PreviewerAtBuildingRegionPositionAll () {
         autoAE1731CD_ai = 1;
         lv_phalanx = 1;
         for ( ; ( (autoAE1731CD_ai >= 0 && lv_phalanx <= autoAE1731CD_ae) || (autoAE1731CD_ai <= 0 && lv_phalanx >= autoAE1731CD_ae) ) ; lv_phalanx += autoAE1731CD_ai ) {
-            lv_unitType = gf_RaceGetPhalanxType(PlayerRace(gv_playerAtBuildingRegion[lv_buildingRegion]));
+            lv_unitType = gf_RaceGetPreviewerPhalanxType(PlayerRace(gv_playerAtBuildingRegion[lv_buildingRegion]));
             libNtve_gf_CreateUnitsAtPoint2(1, lv_unitType, c_unitCreateIgnorePlacement, gv_playerAtBuildingRegion[lv_buildingRegion], RegionGetCenter(gv_previewRegion[lv_buildingRegion][lv_phalanx]));
             UnitSetFacing(UnitLastCreated(), 90.0, 0.0);
             UnitSetCustomValue(UnitLastCreated(), gv_customValuePhalanx, lv_phalanx);
@@ -3378,11 +3378,9 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
 
     // Variable Declarations
     bool lv_debug;
-    bool lv_debugOnlyBonusRound;
     int lv_player;
 
     // Variable Initialization
-    lv_debug = true;
 
     // Actions
     if (!runActions) {
@@ -3401,7 +3399,6 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
         lv_player = PlayerGroupPlayer(autoE8E91B19_g, autoE8E91B19_p);
         VisRevealArea(lv_player, RegionFromId(70), 0.0625, false);
         VisRevealArea(lv_player, RegionFromId(71), 0.0625, false);
-        libGAwX_gf_SetPlayerUIRace(lv_player, "ChaosOrc");
     }
     libGAwX_gf_SetWar3TimeOfDay("13:00:00");
     libGAwX_gf_PauseUnpauseTimeOfDayWar3(true);
@@ -3417,7 +3414,7 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
         }
 
     }
-    gf_RoundStartLoop(lv_debug, lv_debugOnlyBonusRound);
+    gf_RoundStartLoop(lv_debug);
     return true;
 }
 
