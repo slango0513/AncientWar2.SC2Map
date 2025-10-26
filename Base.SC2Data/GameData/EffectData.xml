@@ -997,6 +997,8 @@
         <Kind value="Melee"/>
         <Amount value="192"/>
     </CEffectDamage>
+    <CEffectLaunchMissile id="nzep2LM" parent="War3_Missile" weaponid="nzep2"/>
+    <CEffectLaunchMissile id="uarb2LM" parent="War3_Missile" weaponid="uarb2"/>
     <CEffectCreateUnit id="nsel" parent="War3_SummonUnit">
         <EditorCategories value="Race:Human"/>
         <SpawnEffect value="SeaElemental"/>
@@ -1106,6 +1108,8 @@
         <Amount value="96"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="Gyrocopter2LM" parent="War3_Missile" weaponid="Gyrocopter2"/>
+    <CEffectLaunchMissile id="nzep1LM" parent="War3_Missile" weaponid="nzep1"/>
+    <CEffectLaunchMissile id="uarb1LM" parent="War3_Missile" weaponid="uarb1"/>
     <CEffectDamage id="hphx1" parent="AW2_MagicDamage">
         <Amount value="96"/>
         <AreaArray Radius="0.9765" Fraction="1"/>
@@ -1221,6 +1225,12 @@
     <CEffectDamage id="Gyrocopter2" parent="AW2_SiegeDamage">
         <Amount value="24"/>
     </CEffectDamage>
+    <CEffectDamage id="nzep1" parent="AW2_SiegeDamage">
+        <Amount value="24"/>
+    </CEffectDamage>
+    <CEffectDamage id="uarb1" parent="AW2_SiegeDamage">
+        <Amount value="24"/>
+    </CEffectDamage>
     <CEffectDamage id="hhes1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
         <Amount value="24"/>
@@ -1262,10 +1272,32 @@
     <CEffectDamage id="hrtt2" parent="AW2_PierceDamage">
         <Amount value="48"/>
     </CEffectDamage>
+    <CEffectDamage id="nzep2" parent="AW2_PierceDamage">
+        <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectDamage id="uarb2" parent="AW2_PierceDamage">
+        <Amount value="96"/>
+    </CEffectDamage>
     <CEffectEnumArea id="hrttBarrageSearch">
         <AreaArray index="0" Radius="5" Effect="hrtt2LM"/>
         <MaxCount value="12"/>
         <SearchFilters value="Visible;player,allies,neutral,air,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,Hidden,invulnerable"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="nzep2Search">
+        <EditorCategories value="Race:Goblin"/>
+        <ImpactLocation Value="CasterUnit"/>
+        <IncludeArray Value="Target"/>
+        <SearchFilters value="Visible;player,allies,neutral,ground,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,Hidden,invulnerable"/>
+        <AreaArray Radius="5" Effect="nzep2LM"/>
+        <MaxCount value="3"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="uarb2Search">
+        <EditorCategories value="Race:Goblin"/>
+        <ImpactLocation Value="CasterUnit"/>
+        <IncludeArray Value="Target"/>
+        <SearchFilters value="Visible;player,allies,neutral,ground,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,Hidden,invulnerable"/>
+        <AreaArray Radius="5" Effect="uarb2LM"/>
+        <MaxCount value="3"/>
     </CEffectEnumArea>
     <CEffectDamage id="hsor1" parent="AW2_MagicDamage">
         <Amount value="24"/>

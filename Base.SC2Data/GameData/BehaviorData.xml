@@ -320,6 +320,13 @@
     <CBehaviorBuff id="Arsk">
         <Requirements value=""/>
     </CBehaviorBuff>
+    <!--Curse-->
+    <CBehaviorBuff id="Bcrs">
+        <Duration value="60"/>
+        <DurationOverride index="0" Duration="30">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+    </CBehaviorBuff>
     <CBehaviorBuff id="DreamIllusion" parent="War3_Buff">
         <BehaviorFlags index="EnabledWhileDead" value="1"/>
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnsleep.dds"/>
@@ -719,6 +726,20 @@
     <CBehaviorBuff id="GyrocopterTimeLife" parent="War3_Buff">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnFlyingMachine.dds"/>
+        <Modification>
+            <VitalRegenArray index="Life" value="-5"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="nzepTimeLife" parent="War3_Buff">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btngoblinzeppelin.dds"/>
+        <Modification>
+            <VitalRegenArray index="Life" value="-5"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="uarbTimeLife" parent="War3_Buff">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnundeadairbarge.dds"/>
         <Modification>
             <VitalRegenArray index="Life" value="-5"/>
         </Modification>

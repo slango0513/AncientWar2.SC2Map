@@ -1040,6 +1040,9 @@
         <InfoArray index="Build11" Unit="nfac">
             <Button DefaultButtonFace="nfac" Requirements="BuildArmy"/>
         </InfoArray>
+        <InfoArray index="Build12" Unit="nzep">
+            <Button DefaultButtonFace="nzep" Requirements="BuildArmy"/>
+        </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
     <!--Paladin - Devotion Aura Buff=BHad-->
@@ -1682,7 +1685,7 @@
         <Alignment value="Negative"/>
         <EditorCategories value="Race:Orc,AbilityorEffectType:Units"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="60"/>
+            <Cooldown Location="Unit" TimeUse="120"/>
         </Cost>
         <PrepTime value="0.47"/>
         <FinishTime value="0.8"/>
@@ -2666,6 +2669,12 @@
     <CAbilBehavior id="GyrocopterTimeLife" parent="War3_Passive">
         <BehaviorArray value="GyrocopterTimeLife"/>
     </CAbilBehavior>
+    <CAbilBehavior id="nzepTimeLife" parent="War3_Passive">
+        <BehaviorArray value="nzepTimeLife"/>
+    </CAbilBehavior>
+    <CAbilBehavior id="uarbTimeLife" parent="War3_Passive">
+        <BehaviorArray value="uarbTimeLife"/>
+    </CAbilBehavior>
     <CAbilBehavior id="hgyrTimeLife" parent="War3_Passive">
         <BehaviorArray value="hgyrTimeLife"/>
     </CAbilBehavior>
@@ -3118,6 +3127,9 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeTonowk" parent="AW2_Upgrade" toUnit="nowk">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTouarb" parent="AW2_Upgrade" toUnit="uarb">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
 </Catalog>
