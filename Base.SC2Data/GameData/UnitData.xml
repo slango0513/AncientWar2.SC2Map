@@ -1829,8 +1829,8 @@
         <Attributes index="large" value="1"/>
         <CostResource index="lumber" value="3000"/>
         <KillResource index="Custom" value="150"/>
-        <LifeStart value="3600"/>
-        <LifeMax value="3600"/>
+        <LifeStart value="2700"/>
+        <LifeMax value="2700"/>
         <Speed value="2"/>
         <Race value="Naga"/>
         <Mover value="amph"/>
@@ -2286,8 +2286,8 @@
     <!--hydra-->
     <CUnit id="nhyd" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
-        <LifeStart value="1200"/>
-        <LifeMax value="1200"/>
+        <LifeStart value="900"/>
+        <LifeMax value="900"/>
         <Speed value="2"/>
         <Race value="Naga"/>
         <Mover value="amph"/>
@@ -2305,8 +2305,8 @@
     <!--hydra hatchling-->
     <CUnit id="nhyh" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
-        <LifeStart value="400"/>
-        <LifeMax value="400"/>
+        <LifeStart value="300"/>
+        <LifeMax value="300"/>
         <Speed value="2"/>
         <Race value="Naga"/>
         <Mover value="amph"/>
@@ -2462,6 +2462,31 @@
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/DraeneiUnits"/>
+    </CUnit>
+    <!--naga snap dragon-->
+    <CUnit id="nsnp" parent="AW2_Army" defType="MEDIUM">
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <CostResource index="gold" value="60"/>
+        <KillResource index="Custom" value="30"/>
+        <AbilArray Link="NagaInventory"/>
+        <AbilArray Link="UpgradeTozhyd"/>
+        <AbilArray Link="Asb3"/>
+        <BehaviorArray Link="naga"/>
+        <BehaviorArray Link="NagaSnapDragonSwim"/>
+        <BehaviorArray Link="Aspo"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="zhyd" Type="AbilCmd" AbilCmd="UpgradeTozhyd,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Multishot" Type="Passive" Row="2" Column="0"/>
+            <LayoutButtons Face="Aspo" Type="Passive" Behavior="Aspo" Row="2" Column="1"/>
+            <LayoutButtons Face="Asb3" Type="AbilCmd" AbilCmd="Asb3,Execute" Row="2" Column="2"/>
+        </CardLayouts>
+        <GlossaryCategory value="Unit/Category/NagaUnits"/>
+        <Race value="Naga"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Attributes index="medium" value="1"/>
+        <Mover value="amph"/>
     </CUnit>
     <!--thunder lizard-->
     <CUnit id="nthl" parent="AW2_Army" defType="MEDIUM">
@@ -3884,12 +3909,12 @@
         <AbilArray Link="DragonInventory"/>
         <AbilArray Link="UpgradeTonbds"/>
         <AbilArray Link="ACfn"/>
-        <BehaviorArray Link="ACsk"/>
+        <BehaviorArray Link="DragonScale"/>
         <BehaviorArray Link="BlueDragonSpawnApprenticeRun"/>
         <BehaviorArray Link="dragon"/>
         <CardLayouts index="0">
             <LayoutButtons Face="nbds" Type="AbilCmd" AbilCmd="UpgradeTonbds,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="DragonScale" Type="Passive" Behavior="DragonScale" Row="2" Column="0"/>
             <LayoutButtons Face="ACfn" Type="AbilCmd" AbilCmd="ACfn,Execute" Row="2" Column="1"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
@@ -4012,11 +4037,11 @@
         <AbilArray Link="DragonInventory"/>
         <AbilArray Link="ACbf"/>
         <AbilArray Link="HumidityAura"/>
-        <BehaviorArray Link="ACsk"/>
+        <BehaviorArray Link="DragonScale"/>
         <BehaviorArray Link="BlueDragonSpawnOverseerRun"/>
         <BehaviorArray Link="dragon"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="DragonScale" Type="Passive" Behavior="DragonScale" Row="2" Column="0"/>
             <LayoutButtons Face="ACbf" Type="AbilCmd" AbilCmd="ACbf,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="HumidityAuraCaster" Type="Passive" Behavior="HumidityAuraCaster" Row="2" Column="2"/>
         </CardLayouts>
@@ -4063,11 +4088,11 @@
         <AbilArray Link="DragonInventory"/>
         <AbilArray Link="ACfn"/>
         <AbilArray Link="Aarm"/>
-        <BehaviorArray Link="ACsk"/>
+        <BehaviorArray Link="DragonScale"/>
         <BehaviorArray Link="BlueDragonSpawnSorcerorRun"/>
         <BehaviorArray Link="dragon"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="DragonScale" Type="Passive" Behavior="DragonScale" Row="2" Column="0"/>
             <LayoutButtons Face="ACfn" Type="AbilCmd" AbilCmd="ACfn,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="Aarm" Type="Passive" Behavior="Aarm" Row="2" Column="2"/>
         </CardLayouts>
@@ -4089,12 +4114,12 @@
         <AbilArray Link="DragonInventory"/>
         <AbilArray Link="UpgradeTonbdo"/>
         <AbilArray Link="ACbf"/>
-        <BehaviorArray Link="ACsk"/>
+        <BehaviorArray Link="DragonScale"/>
         <BehaviorArray Link="BlueDragonSpawnWarriorRun"/>
         <BehaviorArray Link="dragon"/>
         <CardLayouts index="0">
             <LayoutButtons Face="nbdo" Type="AbilCmd" AbilCmd="UpgradeTonbdo,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="DragonScale" Type="Passive" Behavior="DragonScale" Row="2" Column="0"/>
             <LayoutButtons Face="ACbf" Type="AbilCmd" AbilCmd="ACbf,Execute" Row="2" Column="1"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
@@ -6001,7 +6026,6 @@
         <BehaviorArray Link="naga"/>
         <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="NagaMyrmidoSwim"/>
-        <BehaviorArray Link="OrderSubmerge1"/>
         <CardLayouts index="0">
             <LayoutButtons Face="nnrg" Type="AbilCmd" AbilCmd="UpgradeTonnrg,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="Asb1" Type="AbilCmd" AbilCmd="Asb1,Execute" Row="2" Column="0"/>
@@ -6021,11 +6045,9 @@
         <Mover value="amph"/>
         <AbilArray Link="NagaInventory"/>
         <AbilArray Link="Asb1Un"/>
-        <AbilArray Link="SubmergeTeleport"/>
         <BehaviorArray Link="naga"/>
         <BehaviorArray Link="NagaMyrmidoSwim"/>
         <BehaviorArray Link="ACsk"/>
-        <BehaviorArray Link="OrderEmerge1"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Asb1Un" Type="AbilCmd" AbilCmd="Asb1Un,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="1"/>
@@ -6033,7 +6055,11 @@
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
         <FlagArray index="Movable" value="0"/>
+        <FlagArray index="Invulnerable" value="1"/>
         <Description value="nmyr/Ubertip"/>
+        <Collide index="Burrow" value="1"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="ForceField" value="0"/>
     </CUnit>
     <!--nether dragon-->
     <CUnit id="nndr" parent="AW2_Army" defType="LARGE">
@@ -6099,7 +6125,6 @@
         <BehaviorArray Link="naga"/>
         <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="NagaRoyalGuardSwim"/>
-        <BehaviorArray Link="OrderSubmerge2"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Asb2" Type="AbilCmd" AbilCmd="Asb2,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="1"/>
@@ -6111,18 +6136,15 @@
     <!--naga royal guard submerged-->
     <CUnit id="nnrs" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
-        <KillResource index="Custom" value="90"/>
         <LifeStart value="2100"/>
         <LifeMax value="2100"/>
         <Race value="Naga"/>
         <Mover value="amph"/>
         <AbilArray Link="NagaInventory"/>
         <AbilArray Link="Asb2Un"/>
-        <AbilArray Link="SubmergeTeleport"/>
         <BehaviorArray Link="naga"/>
         <BehaviorArray Link="NagaRoyalGuardSwim"/>
         <BehaviorArray Link="ACsk"/>
-        <BehaviorArray Link="OrderEmerge2"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Asb2Un" Type="AbilCmd" AbilCmd="Asb2Un,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="1"/>
@@ -6130,7 +6152,11 @@
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
         <FlagArray index="Movable" value="0"/>
+        <FlagArray index="Invulnerable" value="1"/>
         <Description value="nnrg/Ubertip"/>
+        <Collide index="Burrow" value="1"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="ForceField" value="0"/>
     </CUnit>
     <!--naga siren-->
     <CUnit id="nnsu" parent="AW2_Army" defType="NONE">
@@ -6578,14 +6604,24 @@
         <AbilArray Link="Asb3Un"/>
         <BehaviorArray Link="naga"/>
         <BehaviorArray Link="NagaSnapDragonSwim"/>
-        <BehaviorArray Link="OrderEmerge3"/>
+        <BehaviorArray Link="Aspo"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="Asb3Un" Type="AbilCmd" AbilCmd="Asb3Un,0" Row="2" Column="0"/>
+            <LayoutButtons Face="Multishot" Type="Passive" Row="2" Column="0"/>
+            <LayoutButtons Face="Aspo" Type="Passive" Behavior="Aspo" Row="2" Column="1"/>
+            <LayoutButtons Face="Asb3Un" Type="AbilCmd" AbilCmd="Asb3Un,Execute" Row="2" Column="2"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
-        <FlagArray index="Movable" value="0"/>
         <Description value="nsnp/Ubertip"/>
+        <WeaponArray index="0" Link="nsnp1"/>
+        <WeaponArray index="1" Link="nsnp2"/>
+        <CostResource index="gold" value="60"/>
+        <FlagArray index="Movable" value="0"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <Collide index="Burrow" value="1"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="ForceField" value="0"/>
+        <Speed value="2"/>
     </CUnit>
     <!--sea elemental-->
     <CUnit id="nsel" parent="AW2_Army" defType="LARGE">
@@ -6630,31 +6666,6 @@
     <!--sludge flinger-->
     <CUnit id="nslf">
         <Race value="BloodElf"/>
-    </CUnit>
-    <!--naga snap dragon-->
-    <CUnit id="nsnp" parent="AW2_Army" defType="MEDIUM">
-        <Attributes index="medium" value="1"/>
-        <CostResource index="gold" value="60"/>
-        <KillResource index="Custom" value="30"/>
-        <LifeStart value="25"/>
-        <LifeMax value="25"/>
-        <Speed value="2"/>
-        <Race value="Naga"/>
-        <Mover value="amph"/>
-        <AbilArray Link="NagaInventory"/>
-        <AbilArray Link="UpgradeTozhyd"/>
-        <AbilArray Link="Asb3"/>
-        <BehaviorArray Link="naga"/>
-        <BehaviorArray Link="NagaSnapDragonSwim"/>
-        <BehaviorArray Link="OrderSubmerge3"/>
-        <BehaviorArray Link="Aspo"/>
-        <CardLayouts index="0">
-            <LayoutButtons Face="zhyd" Type="AbilCmd" AbilCmd="UpgradeTozhyd,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="Aspo" Type="Passive" Behavior="Aspo" Row="2" Column="1"/>
-            <LayoutButtons Face="Asb3" Type="AbilCmd" AbilCmd="Asb3,Execute" Row="2" Column="0"/>
-        </CardLayouts>
-        <PlaneArray index="Ground" value="1"/>
-        <GlossaryCategory value="Unit/Category/NagaUnits"/>
     </CUnit>
     <!--stormreaver hermit-->
     <CUnit id="nsrh">

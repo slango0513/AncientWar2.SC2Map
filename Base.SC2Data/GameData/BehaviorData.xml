@@ -173,6 +173,19 @@
         <Requirements value=""/>
         <DamageResponse Handled="AfrbSearch"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="SubmergingInvulnerable">
+        <InfoFlags index="Hidden" value="1"/>
+        <Duration value="2"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SwimmingBase" parent="War3_Buff">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnsummonwaterelemental.dds"/>
+        <Duration value="1.0625"/>
+        <DurationOverride index="0" Duration="1.0625">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Alignment value="Negative"/>
+        <BuffFlags index="Countdown" value="0"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="TowerRecoverTimmer180" parent="AW2_TimeLife">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btntower.dds"/>
         <Duration value="180"/>
@@ -752,8 +765,8 @@
         <Alignment value="Positive"/>
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnmoonstone.dds"/>
         <Modification RangedWeaponRange="3" WeaponScanBonus="3">
-            <VitalRegenArray index="Life" value="15"/>
-            <VitalRegenArray index="Energy" value="1.5"/>
+            <VitalRegenArray index="Life" value="20"/>
+            <VitalRegenArray index="Energy" value="2"/>
         </Modification>
         <DisableValidatorArray value="Night"/>
     </CBehaviorBuff>
@@ -1030,6 +1043,13 @@
         <DamageResponse ClampMinimum="30" ModifyAmount="-120">
             <ValidatorArray value="HasNoHardenedSkin"/>
         </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DragonScale" parent="War3_Passive">
+        <EditorCategories value="Race:Dragon,AbilityorEffectType:Unit"/>
+        <DamageResponse Chance="1" ClampMaximum="150" TargetFilters="-;player,neutral"/>
+        <Modification>
+            <StateFlags index="Resistant" value="1"/>
+        </Modification>
     </CBehaviorBuff>
     <!--TornadoSpin Dur=12 HeroDur=6 Buff=Btsp,Btsa-->
     <CBehaviorBuff id="Atsp">
@@ -1940,12 +1960,6 @@
     <CBehaviorBuff id="MultiShot" parent="War3_Passive">
         <Requirements value="MultiShot"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="OrderSubmerge1" parent="War3_Passive">
-        <Requirements value="OrderSubmerge1"/>
-        <Period value="0.0625"/>
-        <PeriodicEffect value="OrderSubmerge1"/>
-        <DisableValidatorArray value="HasSwimmingAmphibian"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="OrderEvilIllidan" parent="War3_Passive">
         <Requirements value="OrderEvilIllidan"/>
         <Period value="0.0625"/>
@@ -1975,33 +1989,6 @@
         <Requirements value="OrderRoboGoblin2Un"/>
         <Period value="0.0625"/>
         <PeriodicEffect value="OrderRoboGoblin2Un"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="OrderEmerge1" parent="War3_Passive">
-        <Requirements value="OrderEmerge1"/>
-        <Period value="0.0625"/>
-        <PeriodicEffect value="OrderEmerge1"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="OrderSubmerge2" parent="War3_Passive">
-        <Requirements value="OrderSubmerge2"/>
-        <Period value="0.0625"/>
-        <PeriodicEffect value="OrderSubmerge2"/>
-        <DisableValidatorArray value="HasSwimmingAmphibian"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="OrderEmerge2" parent="War3_Passive">
-        <Requirements value="OrderEmerge2"/>
-        <Period value="0.0625"/>
-        <PeriodicEffect value="OrderEmerge2"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="OrderSubmerge3" parent="War3_Passive">
-        <Requirements value="OrderSubmerge3"/>
-        <Period value="0.0625"/>
-        <PeriodicEffect value="OrderSubmerge3"/>
-        <DisableValidatorArray value="HasSwimmingAmphibian"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="OrderEmerge3" parent="War3_Passive">
-        <Requirements value="OrderEmerge3"/>
-        <Period value="0.0625"/>
-        <PeriodicEffect value="OrderEmerge3"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="PhalanxMarker" parent="War3_Passive">
         <Requirements value="PhalanxMarker"/>
@@ -2047,35 +2034,19 @@
             <DamageDealtFraction index="Ranged" value="0.25"/>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="Swimming" parent="War3_Buff">
-        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnsummonwaterelemental.dds"/>
-        <Modification MoveSpeedMaximum="1"/>
-        <Duration value="1.0625"/>
-        <DurationOverride index="0" Duration="1.0625">
-            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
-        </DurationOverride>
-        <Alignment value="Negative"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="SwimmingHorse" parent="War3_Buff">
-        <Alignment value="Negative"/>
-        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnsummonwaterelemental.dds"/>
-        <Duration value="1.0625"/>
-        <DurationOverride index="0" Duration="1.0625">
-            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
-        </DurationOverride>
+    <CBehaviorBuff id="Swimming" parent="SwimmingBase">
         <Modification MoveSpeedMaximum="1"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="SwimmingAmphibian" parent="War3_Buff">
+    <CBehaviorBuff id="SwimmingHorse" parent="SwimmingBase">
+        <Modification MoveSpeedMaximum="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SwimmingAmphibian" parent="SwimmingBase">
         <Alignment value="Positive"/>
-        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnsummonwaterelemental.dds"/>
-        <Duration value="1.0625"/>
-        <DurationOverride index="0" Duration="1.0625">
-            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
-        </DurationOverride>
-        <Modification MoveSpeedMinimum="3">
-            <VitalRegenArray index="Life" value="15"/>
-            <VitalRegenArray index="Energy" value="1.5"/>
+        <Modification MoveSpeedMinimum="4">
+            <VitalRegenArray index="Energy" value="2"/>
         </Modification>
+        <Period value="1"/>
+        <PeriodicEffect value="SwimmingHealTick"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="TeleportMarker" parent="War3_Passive">
         <Requirements value="TeleportMarker"/>

@@ -889,7 +889,7 @@
     <CAbilEffectTarget id="AEbl" parent="AW2_EffectTarget">
         <EditorCategories value="Race:NightElf,AbilityorEffectType:Units"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="2"/>
+            <Cooldown Location="Unit" TimeStart="15" TimeUse="2"/>
         </Cost>
         <Range value="8"/>
         <CastOutroTime value="0.83"/>
@@ -1936,9 +1936,9 @@
             <Cooldown Location="Unit" TimeUse="120"/>
         </Cost>
         <PrepTime value="2"/>
-        <CastOutroTime value="1.08"/>
-        <AutoCastValidatorArray value="EnemiesNearby5"/>
-        <AutoCastFilters value="Visible;-"/>
+        <CastOutroTime value="0.5"/>
+        <AutoCastValidatorArray index="0" value="EnemiesNearby8"/>
+        <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="AIpv" parent="AW2_EffectInstant">
         <Cost index="0">
@@ -2735,6 +2735,7 @@
         <FinishTime value="0.51"/>
         <Alignment value="Positive"/>
         <AutoCastValidatorArray index="0" value="DamagedFriendNearBy"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
         <CastOutroTime value="1"/>
         <AutoCastFilters value="Self,Visible;-"/>
         <Range value="1.9531"/>
@@ -2752,6 +2753,7 @@
         <Alignment value="Positive"/>
         <CastOutroTime value="1"/>
         <AutoCastValidatorArray index="0" value="NotFullManaFriendNearBy"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilMorph id="Asb1" parent="AW2_Morph" unitID="nmys">
@@ -2759,6 +2761,8 @@
         <InfoArray index="0" Unit="nmys">
             <SectionArray index="Actor">
                 <DurationArray index="Duration" value="1.1"/>
+                <EffectArray index="Start" value="SubmergingInvulnerable"/>
+                <EffectArray index="Finish" value="SubmergeTeleportSearch"/>
             </SectionArray>
             <SectionArray index="Mover">
                 <DurationArray index="Delay" value="0.1"/>
@@ -2769,8 +2773,10 @@
             </SectionArray>
         </InfoArray>
         <Cost>
-            <Cooldown TimeUse="5"/>
+            <Cooldown TimeUse="45"/>
         </Cost>
+        <Flags index="Automatic" value="1"/>
+        <ValidatorArray value="CasterHasSwimmingAmphibian"/>
     </CAbilMorph>
     <CAbilMorph id="Asb1Un" parent="AW2_Morph" unitID="nmyr">
         <EditorCategories value="Race:Naga,AbilityorEffectType:Units"/>
@@ -2786,12 +2792,15 @@
                 <DurationArray index="Duration" value="1"/>
             </SectionArray>
         </InfoArray>
+        <Flags index="Automatic" value="1"/>
     </CAbilMorph>
     <CAbilMorph id="Asb2" parent="AW2_Morph" unitID="nnrs">
         <EditorCategories value="Race:Naga,AbilityorEffectType:Units"/>
         <InfoArray index="0" Unit="nnrs">
             <SectionArray index="Actor">
                 <DurationArray index="Duration" value="1.1"/>
+                <EffectArray index="Start" value="SubmergingInvulnerable"/>
+                <EffectArray index="Finish" value="SubmergeTeleportSearch"/>
             </SectionArray>
             <SectionArray index="Mover">
                 <DurationArray index="Delay" value="0.1"/>
@@ -2802,8 +2811,10 @@
             </SectionArray>
         </InfoArray>
         <Cost>
-            <Cooldown TimeUse="5"/>
+            <Cooldown TimeUse="45"/>
         </Cost>
+        <Flags index="Automatic" value="1"/>
+        <ValidatorArray value="CasterHasSwimmingAmphibian"/>
     </CAbilMorph>
     <CAbilMorph id="Asb2Un" parent="AW2_Morph" unitID="nnrg">
         <EditorCategories value="Race:Naga,AbilityorEffectType:Units"/>
@@ -2819,12 +2830,14 @@
                 <DurationArray index="Duration" value="1"/>
             </SectionArray>
         </InfoArray>
+        <Flags index="Automatic" value="1"/>
     </CAbilMorph>
     <CAbilMorph id="Asb3" parent="AW2_Morph" unitID="nsbs">
         <EditorCategories value="Race:Naga,AbilityorEffectType:Units"/>
         <InfoArray index="0" Unit="nsbs">
             <SectionArray index="Actor">
                 <DurationArray index="Duration" value="1.1"/>
+                <EffectArray index="Start" value="SubmergingInvulnerable"/>
             </SectionArray>
             <SectionArray index="Mover">
                 <DurationArray index="Delay" value="0.1"/>
@@ -2835,8 +2848,11 @@
             </SectionArray>
         </InfoArray>
         <Cost>
-            <Cooldown TimeUse="5"/>
+            <Cooldown TimeStart="5"/>
         </Cost>
+        <Flags index="Automatic" value="1"/>
+        <ValidatorArray value="CasterHasSwimmingAmphibian"/>
+        <ValidatorArray value="EnemiesNearby8"/>
     </CAbilMorph>
     <CAbilMorph id="Asb3Un" parent="AW2_Morph" unitID="nsnp">
         <EditorCategories value="Race:Naga,AbilityorEffectType:Units"/>
@@ -2852,6 +2868,8 @@
                 <DurationArray index="Duration" value="1"/>
             </SectionArray>
         </InfoArray>
+        <Flags index="Automatic" value="1"/>
+        <ValidatorArray value="CasterHasNoSwimmingAmphibianOrNoEnemiesNearby8"/>
     </CAbilMorph>
     <!--Spell Steal-->
     <CAbilEffectTarget id="Asps" parent="AW2_EffectTarget">
@@ -3177,19 +3195,6 @@
     <CAbilTrain id="Purchasegldo" parent="AW2_MakeItem" unit="gldo"/>
     <CAbilTrain id="Purchasefwss" parent="AW2_MakeItem" unit="fwss"/>
     <CAbilTrain id="Purchasedtsb" parent="AW2_MakeItem" unit="dtsb"/>
-    <CAbilEffectTarget id="SubmergeTeleport" parent="AW2_EffectTarget">
-        <EditorCategories value="Race:Naga,AbilityorEffectType:Units"/>
-        <TargetFilters index="0" value="-;player,allies,air,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable"/>
-        <TargetSorts RequestCount="1">
-            <SortArray value="TSMarker"/>
-        </TargetSorts>
-        <Range value="9"/>
-        <AutoCastRange value="9"/>
-        <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="1"/>
-        </Cost>
-        <AutoCastValidatorArray index="1" removed="1"/>
-    </CAbilEffectTarget>
     <CAbilMorph id="UpgradeTohatw" parent="AW2_Upgrade" toUnit="hatw">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>

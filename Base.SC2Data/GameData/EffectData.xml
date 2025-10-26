@@ -65,6 +65,26 @@
         </TargetSorts>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CEffectEnumArea>
+    <CEffectEnumArea id="SubmergeTeleportSearch">
+        <SearchFilters value="-;player,allies,air,wall,tree,Missile,debris,item,structure,ward,dead,Hidden,invulnerable"/>
+        <AreaArray Radius="11" Effect="SubmergeTeleport"/>
+        <TargetSorts>
+            <SortArray value="TSMarker"/>
+            <SortArray value="TSLife"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
+        </TargetSorts>
+        <MaxCount value="1"/>
+        <ValidatorArray value="CasterCliffLevelEqualOrLesser"/>
+        <ImpactLocation Value="CasterUnit"/>
+    </CEffectEnumArea>
+    <CEffectSet id="SubmergeTeleportDummy"/>
+    <CEffectApplyBehavior id="SubmergingInvulnerable">
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyUnit id="SwimmingHealTick">
+        <EditorCategories value="Race:Dragon"/>
+        <VitalArray index="Life" ChangeFraction="0.015"/>
+    </CEffectModifyUnit>
     <CEffectDamage id="ACbcDamage">
         <Amount value="100"/>
     </CEffectDamage>
@@ -95,11 +115,15 @@
     <CEffectModifyUnit id="AfakCost">
         <VitalArray index="Energy" Change="-6"/>
     </CEffectModifyUnit>
-    <CEffectDamage id="AfakWeaponDamage">
+    <CEffectDamage id="AfakWeaponDamage" parent="ubsp1">
+        <EditorCategories value="Race:Undead"/>
         <Amount value="100"/>
-        <AreaArray index="0" Radius="1.1718" Fraction="1"/>
-        <AreaArray index="1" removed="1"/>
-        <AreaArray index="2" removed="1"/>
+        <AreaArray Radius="1.1718" Fraction="1"/>
+        <SearchFilters value="-;player,allies,wall,tree,debris,item,ward,dead,invulnerable,immunity"/>
+        <AttributeFactor index="divine" value="-0.75"/>
+        <AttributeFactor index="hero" value="0"/>
+        <AttributeFactor index="fortified" value="-0.75"/>
+        <Random value="0"/>
     </CEffectDamage>
     <CEffectSet id="AraiSummonLv1">
         <EffectArray value="uskm"/>
@@ -638,7 +662,7 @@
     </CEffectCreatePersistent>
     <CEffectCreatePersistent id="ANrcCreatePersistent">
         <OffsetFacingFallback Value="CasterUnit"/>
-        <PeriodCount value="3"/>
+        <PeriodCount value="5"/>
         <PeriodicEffectArray value="ANrc"/>
         <PeriodicPeriodArray value="0.5"/>
     </CEffectCreatePersistent>
@@ -1585,36 +1609,6 @@
         <Abil value="ANr4Un"/>
         <ValidatorArray value="NoEnemiesNearby2"/>
     </CEffectIssueOrder>
-    <CEffectIssueOrder id="OrderSubmerge1">
-        <WhichUnit Value="Caster"/>
-        <Abil value="Asb1"/>
-        <ValidatorArray value="SubmergeValidator"/>
-    </CEffectIssueOrder>
-    <CEffectIssueOrder id="OrderSubmerge2">
-        <WhichUnit Value="Caster"/>
-        <Abil value="Asb2"/>
-        <ValidatorArray value="SubmergeValidator"/>
-    </CEffectIssueOrder>
-    <CEffectIssueOrder id="OrderSubmerge3">
-        <WhichUnit Value="Caster"/>
-        <Abil value="Asb3"/>
-        <ValidatorArray value="SubmergeValidator3"/>
-    </CEffectIssueOrder>
-    <CEffectIssueOrder id="OrderEmerge1">
-        <WhichUnit Value="Caster"/>
-        <Abil value="Asb1Un"/>
-        <ValidatorArray value="EmergeValidator"/>
-    </CEffectIssueOrder>
-    <CEffectIssueOrder id="OrderEmerge2">
-        <WhichUnit Value="Caster"/>
-        <Abil value="Asb2Un"/>
-        <ValidatorArray value="EmergeValidator"/>
-    </CEffectIssueOrder>
-    <CEffectIssueOrder id="OrderEmerge3">
-        <WhichUnit Value="Caster"/>
-        <Abil value="Asb3Un"/>
-        <ValidatorArray value="EmergeValidator3"/>
-    </CEffectIssueOrder>
     <CEffectDamage id="Oshd1" parent="AW2_NormalDamage">
         <Amount value="96"/>
     </CEffectDamage>
@@ -1628,8 +1622,8 @@
     <CEffectTeleport id="SubmergeTeleport">
         <EditorCategories value="Race:Naga"/>
         <WhichUnit Value="Caster"/>
-        <TargetLocation Value="TargetPoint"/>
-        <ValidatorArray value="CasterCliffLevelEqualOrLesser"/>
+        <TargetLocation Value="TargetUnit"/>
+        <TeleportEffect value="SubmergeTeleportDummy"/>
     </CEffectTeleport>
     <CEffectApplyBehavior id="Swimming" parent="War3_ApplyBuff"/>
     <CEffectApplyBehavior id="SwimmingAmphibian" parent="War3_ApplyBuff"/>

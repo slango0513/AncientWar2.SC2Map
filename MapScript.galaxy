@@ -381,6 +381,7 @@ trigger gt_MoonstoneRestoreTOD;
 trigger gt_CallTideInit;
 trigger gt_CallTideChangeWaterState;
 trigger gt_CallTideRestoreWaterState;
+trigger gt_TideAddRemoveSwimmingPeriodic;
 trigger gt_UnitChangeOwner2;
 trigger gt_UnitDied2;
 trigger gt_PlayerLeft;
@@ -391,7 +392,6 @@ trigger gt_PortalCreated;
 trigger gt_PhalanxBuffChange;
 trigger gt_CreateReserveUnit;
 trigger gt_IssueOrderPeriodic;
-trigger gt_TideAddRemoveSwimmingPeriodic;
 trigger gt_AutoCastAlwaysOnEnable;
 trigger gt_CountUnit;
 trigger gt_CountUnitControl;
@@ -1483,6 +1483,8 @@ void gf_RestoreWaterState (bool lp_wait) {
     }
     if ((TechTreeUpgradeCount(lv_controller, "Tide", c_techCountCompleteOnly) == 0)) {
         WaterSetState("AW2_Default|Alternate Setting", 5.0, c_wtcLinear);
+        libNtve_gf_SendActorMessageToGameRegion(RegionEntireMap(), "AnimGroupRemove Swim");
+        Wait(2.0, c_timeGame);
         libNtve_gf_SendActorMessageToGameRegion(RegionEntireMap(), "AnimGroupRemove Swim");
     }
 
@@ -5809,6 +5811,44 @@ void gt_CallTideRestoreWaterState_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: TideAddRemoveSwimmingPeriodic
+//--------------------------------------------------------------------------------------------------
+bool gt_TideAddRemoveSwimmingPeriodic_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_unit;
+
+    // Automatic Variable Declarations
+    unitgroup autoB515EBFF_g;
+    int autoB515EBFF_u;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoB515EBFF_g = UnitGroup(null, c_playerAny, gv_battlefield, gv_unitAndCreepFilter, 0);
+    autoB515EBFF_u = UnitGroupCount(autoB515EBFF_g, c_unitCountAll);
+    for (;; autoB515EBFF_u -= 1) {
+        lv_unit = UnitGroupUnitFromEnd(autoB515EBFF_g, autoB515EBFF_u);
+        if (lv_unit == null) { break; }
+        if ((TechTreeUpgradeCount(UnitGetOwner(lv_unit), "Tide", c_techCountCompleteOnly) == 1) && (WorldHeight(c_heightMapGround, UnitGetPosition(lv_unit)) < 10.5)) {
+            PlayerCreateEffectUnit(UnitGetOwner(lv_unit), "SwimmingSwitch", lv_unit);
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_TideAddRemoveSwimmingPeriodic_Init () {
+    gt_TideAddRemoveSwimmingPeriodic = TriggerCreate("gt_TideAddRemoveSwimmingPeriodic_Func");
+    TriggerEnable(gt_TideAddRemoveSwimmingPeriodic, false);
+    TriggerAddEventTimePeriodic(gt_TideAddRemoveSwimmingPeriodic, 1.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: UnitChangeOwner2
 //--------------------------------------------------------------------------------------------------
 bool gt_UnitChangeOwner2_Func (bool testConds, bool runActions) {
@@ -6142,44 +6182,6 @@ void gt_IssueOrderPeriodic_Init () {
     gt_IssueOrderPeriodic = TriggerCreate("gt_IssueOrderPeriodic_Func");
     TriggerEnable(gt_IssueOrderPeriodic, false);
     TriggerAddEventTimePeriodic(gt_IssueOrderPeriodic, 4.0, c_timeGame);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: TideAddRemoveSwimmingPeriodic
-//--------------------------------------------------------------------------------------------------
-bool gt_TideAddRemoveSwimmingPeriodic_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    unit lv_unit;
-
-    // Automatic Variable Declarations
-    unitgroup autoB515EBFF_g;
-    int autoB515EBFF_u;
-
-    // Variable Initialization
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    autoB515EBFF_g = UnitGroup(null, c_playerAny, gv_battlefield, gv_unitAndCreepFilter, 0);
-    autoB515EBFF_u = UnitGroupCount(autoB515EBFF_g, c_unitCountAll);
-    for (;; autoB515EBFF_u -= 1) {
-        lv_unit = UnitGroupUnitFromEnd(autoB515EBFF_g, autoB515EBFF_u);
-        if (lv_unit == null) { break; }
-        if ((TechTreeUpgradeCount(UnitGetOwner(lv_unit), "Tide", c_techCountCompleteOnly) == 1) && (WorldHeight(c_heightMapGround, UnitGetPosition(lv_unit)) < 10.5)) {
-            PlayerCreateEffectUnit(UnitGetOwner(lv_unit), "SwimmingSwitch", lv_unit);
-        }
-
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_TideAddRemoveSwimmingPeriodic_Init () {
-    gt_TideAddRemoveSwimmingPeriodic = TriggerCreate("gt_TideAddRemoveSwimmingPeriodic_Func");
-    TriggerEnable(gt_TideAddRemoveSwimmingPeriodic, false);
-    TriggerAddEventTimePeriodic(gt_TideAddRemoveSwimmingPeriodic, 1.0, c_timeGame);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6673,6 +6675,7 @@ void InitTriggers () {
     gt_CallTideInit_Init();
     gt_CallTideChangeWaterState_Init();
     gt_CallTideRestoreWaterState_Init();
+    gt_TideAddRemoveSwimmingPeriodic_Init();
     gt_UnitChangeOwner2_Init();
     gt_UnitDied2_Init();
     gt_PlayerLeft_Init();
@@ -6683,7 +6686,6 @@ void InitTriggers () {
     gt_PhalanxBuffChange_Init();
     gt_CreateReserveUnit_Init();
     gt_IssueOrderPeriodic_Init();
-    gt_TideAddRemoveSwimmingPeriodic_Init();
     gt_AutoCastAlwaysOnEnable_Init();
     gt_CountUnit_Init();
     gt_CountUnitControl_Init();
