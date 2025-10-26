@@ -336,6 +336,7 @@ trigger gt_BuidingRegionInizialization;
 trigger gt_PreviewerPointInizialization;
 trigger gt_RoundInitialization;
 trigger gt_ShowPlayerHandle;
+trigger gt_ShowPlayerDifficultyAll;
 trigger gt_GameAttributeInizialization;
 trigger gt_AllianceInizialization;
 trigger gt_ScoreBoardInizialization;
@@ -551,7 +552,12 @@ void gf_CreateRandomItem (int lp_round, bool lp_finalRound) {
                     lv_max = lp_round;
                 }
                 if (((lv_level >= lv_min) && (lv_level <= lv_max))) {
-                    UnitInventoryCreate(UnitGroupUnit(gv_workers[lv_player], 1), lv_item);
+                    if ((PlayerGroupHasPlayer(gv_aIGroup, lv_player) == false)) {
+                        UnitInventoryCreate(UnitGroupUnit(gv_workers[lv_player], 1), lv_item);
+                    }
+                    else {
+                        PlayerModifyPropertyInt(lv_player, c_playerPropTerrazine, c_playerPropOperAdd, (lv_level * 15));
+                    }
                     break;
                 }
 
@@ -1694,9 +1700,12 @@ void gf_BonusRoundSet (bool lp_on, int lp_round) {
 void gf_GoldAdd (int lp_round) {
     int auto0C4AA007_ae;
     int auto0C4AA007_ai;
+    int auto876F7D42_val;
 
     // Variable Declarations
     int lv_player;
+    int lv_lumber;
+    int lv_gold;
 
     // Variable Initialization
 
@@ -1705,8 +1714,39 @@ void gf_GoldAdd (int lp_round) {
     auto0C4AA007_ai = 1;
     lv_player = 1;
     for ( ; ( (auto0C4AA007_ai >= 0 && lv_player <= auto0C4AA007_ae) || (auto0C4AA007_ai <= 0 && lv_player >= auto0C4AA007_ae) ) ; lv_player += auto0C4AA007_ai ) {
-        PlayerModifyPropertyInt(lv_player, c_playerPropCustom, c_playerPropOperAdd, gv_buildingScore[lv_player]);
-        PlayerModifyPropertyInt(lv_player, c_playerPropTerrazine, c_playerPropOperAdd, gv_roundGold[lp_round]);
+        if ((PlayerGroupHasPlayer(gv_aIGroup, lv_player) == true)) {
+            auto876F7D42_val = PlayerDifficulty(lv_player);
+            if (auto876F7D42_val == 1) {
+                lv_gold = FixedToInt((gv_roundGold[lp_round]*1.0));
+                lv_lumber = FixedToInt((gv_buildingScore[lv_player]*1.0));
+            }
+            else if (auto876F7D42_val == 3) {
+                lv_gold = FixedToInt((gv_roundGold[lp_round]*1.0));
+                lv_lumber = FixedToInt((gv_buildingScore[lv_player]*1.0));
+            }
+            else if (auto876F7D42_val == 5) {
+                lv_gold = FixedToInt((gv_roundGold[lp_round]*1.2));
+                lv_lumber = FixedToInt((gv_buildingScore[lv_player]*1.2));
+            }
+            else if (auto876F7D42_val == 7) {
+                lv_gold = FixedToInt((gv_roundGold[lp_round]*1.2));
+                lv_lumber = FixedToInt((gv_buildingScore[lv_player]*1.2));
+            }
+            else if (auto876F7D42_val == 9) {
+                lv_gold = FixedToInt((gv_roundGold[lp_round]*1.4));
+                lv_lumber = FixedToInt((gv_buildingScore[lv_player]*1.4));
+            }
+            else {
+                lv_gold = FixedToInt((gv_roundGold[lp_round]*1.0));
+                lv_lumber = FixedToInt((gv_buildingScore[lv_player]*1.0));
+            }
+        }
+        else {
+            lv_gold = gv_roundGold[lp_round];
+            lv_lumber = gv_buildingScore[lv_player];
+        }
+        PlayerModifyPropertyInt(lv_player, c_playerPropTerrazine, c_playerPropOperAdd, lv_gold);
+        PlayerModifyPropertyInt(lv_player, c_playerPropCustom, c_playerPropOperAdd, lv_lumber);
         gv_buildingScore[lv_player] = 0;
         gv_killScore[lv_player] = 0;
     }
@@ -3641,14 +3681,41 @@ void gf_SetPhalanxHighlighted (int lp_player, bool lp_highlighted) {
 }
 
 void gf_KillScoreUnitAndItemAdd (int lp_player, unit lp_unit) {
+    int autoDD6F864C_val;
+
     // Variable Declarations
     string lv_itemType;
     int lv_itemIndex;
+    fixed lv_modifier;
 
     // Variable Initialization
 
     // Implementation
     gv_killScore[lp_player] += gf_UnitTypeGetKillResource(UnitGetType(lp_unit));
+    if ((PlayerGroupHasPlayer(gv_aIGroup, lp_player) == true)) {
+        autoDD6F864C_val = PlayerDifficulty(lp_player);
+        if (autoDD6F864C_val == 1) {
+            lv_modifier = 0.0;
+        }
+        else if (autoDD6F864C_val == 3) {
+            lv_modifier = 0.4;
+        }
+        else if (autoDD6F864C_val == 5) {
+            lv_modifier = 0.8;
+        }
+        else if (autoDD6F864C_val == 7) {
+            lv_modifier = 1.2;
+        }
+        else if (autoDD6F864C_val == 9) {
+            lv_modifier = 2.0;
+        }
+        else {
+            lv_modifier = 0.0;
+        }
+        gv_killScore[lp_player] += FixedToInt((gf_UnitTypeGetKillResource(UnitGetType(lp_unit))*lv_modifier));
+        PlayerModifyPropertyInt(lp_player, c_playerPropCustom, c_playerPropOperAdd, FixedToInt((gf_UnitTypeGetKillResource(UnitGetType(lp_unit))*lv_modifier)));
+    }
+
     gf_KillScoreUpdateAll();
 }
 
@@ -4237,6 +4304,40 @@ void gt_ShowPlayerHandle_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: ShowPlayerDifficultyAll
+//--------------------------------------------------------------------------------------------------
+bool gt_ShowPlayerDifficultyAll_Func (bool testConds, bool runActions) {
+    int autoC3DF1BCB_ae;
+    int autoC3DF1BCB_ai;
+
+    // Variable Declarations
+    int lv_player;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoC3DF1BCB_ae = gv_playerCount;
+    autoC3DF1BCB_ai = 1;
+    lv_player = 1;
+    for ( ; ( (autoC3DF1BCB_ai >= 0 && lv_player <= autoC3DF1BCB_ae) || (autoC3DF1BCB_ai <= 0 && lv_player >= autoC3DF1BCB_ae) ) ; lv_player += autoC3DF1BCB_ai ) {
+        TextExpressionSetToken("Param/Expression/188F0AD5", "A", PlayerName(lv_player));
+        TextExpressionSetToken("Param/Expression/188F0AD5", "B", DifficultyName(PlayerDifficulty(lv_player)));
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, TextExpressionAssemble("Param/Expression/188F0AD5"));
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_ShowPlayerDifficultyAll_Init () {
+    gt_ShowPlayerDifficultyAll = TriggerCreate("gt_ShowPlayerDifficultyAll_Func");
+    TriggerAddEventChatMessage(gt_ShowPlayerDifficultyAll, c_playerAny, "-pd", true);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: GameAttributeInizialization
 //--------------------------------------------------------------------------------------------------
 bool gt_GameAttributeInizialization_Func (bool testConds, bool runActions) {
@@ -4336,6 +4437,7 @@ bool gt_ScoreBoardInizialization_Func (bool testConds, bool runActions) {
     int autoFD0B85D6_ai;
     int auto8F5FEE41_ae;
     int auto8F5FEE41_ai;
+    int auto26D786A1_val;
 
     // Variable Declarations
     int lv_column;
@@ -4375,6 +4477,22 @@ bool gt_ScoreBoardInizialization_Func (bool testConds, bool runActions) {
         for ( ; ( (auto8F5FEE41_ai >= 0 && lv_column <= auto8F5FEE41_ae) || (auto8F5FEE41_ai <= 0 && lv_column >= auto8F5FEE41_ae) ) ; lv_column += auto8F5FEE41_ai ) {
             if ((lv_column == 1)) {
                 BoardItemSetFontSize(gv_scoreBoard, lv_column, lv_row, 20);
+                auto26D786A1_val = PlayerDifficulty(lv_player);
+                if (auto26D786A1_val == 1) {
+                }
+                else if (auto26D786A1_val == 3) {
+                }
+                else if (auto26D786A1_val == 5) {
+                    BoardItemSetBackgroundColor(gv_scoreBoard, lv_column, lv_row, ColorWithAlpha(0.0, 100.0, 0.0, 25.0));
+                }
+                else if (auto26D786A1_val == 7) {
+                    BoardItemSetBackgroundColor(gv_scoreBoard, lv_column, lv_row, ColorWithAlpha(100.0, 100.0, 0.0, 25.0));
+                }
+                else if (auto26D786A1_val == 9) {
+                    BoardItemSetBackgroundColor(gv_scoreBoard, lv_column, lv_row, ColorWithAlpha(100.0, 0.0, 0.0, 25.0));
+                }
+                else {
+                }
                 BoardItemSetTextColor(gv_scoreBoard, lv_column, lv_row, libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lv_player, false)));
             }
             else if (((lv_column == 2) || (lv_column == 3))) {
@@ -5474,6 +5592,7 @@ bool gt_PlayerLeft_Func (bool testConds, bool runActions) {
     gf_WorkerExchangeSetAutoCast(EventPlayer(), true);
     TextExpressionSetToken("Param/Expression/831164FF", "A", TextWithColor(PlayerName(EventPlayer()), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(EventPlayer(), false))));
     UIDisplayMessage(gv_uIPlayergroup, c_messageAreaSubtitle, TextExpressionAssemble("Param/Expression/831164FF"));
+    PlayerSetDifficulty(EventPlayer(), 3);
     return true;
 }
 
@@ -6137,6 +6256,7 @@ void InitTriggers () {
     gt_PreviewerPointInizialization_Init();
     gt_RoundInitialization_Init();
     gt_ShowPlayerHandle_Init();
+    gt_ShowPlayerDifficultyAll_Init();
     gt_GameAttributeInizialization_Init();
     gt_AllianceInizialization_Init();
     gt_ScoreBoardInizialization_Init();

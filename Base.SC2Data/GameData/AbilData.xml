@@ -778,13 +778,14 @@
         <EffectRange index="0" value="0,7.8125"/>
         <CastIntroTime value="0.33"/>
         <AutoCastRange value="8"/>
-        <AutoCastValidatorArray value="noMarkers"/>
-        <AutoCastValidatorArray value="GroundEnemiesNearby2"/>
+        <AutoCastValidatorArray index="1" value="noMarkers"/>
+        <AutoCastValidatorArray value="GroundEnemiesNearby3"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLife"/>
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <TargetFilters index="0" value="-;air,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,invulnerable"/>
+        <PostEffectBehavior Behavior="AEblTempInvulnerable" Count="1"/>
     </CAbilEffectTarget>
     <CAbilBuild id="AEbu" parent="War3_Build">
         <EditorCategories value="Race:Nightelf,AbilityorEffectType:Units"/>
