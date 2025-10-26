@@ -687,7 +687,7 @@
         <EditorCategories value="Race:NightElf,AbilityorEffectType:Units"/>
         <TargetFilters index="0" value="-;player,allies,air,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="15"/>
+            <Cooldown Location="Unit" TimeUse="10"/>
         </Cost>
         <Range value="13"/>
         <PrepTime value="0.7"/>
@@ -1318,7 +1318,7 @@
         <TargetFilters index="0" value="-;self,mechanical,ancient,wall,tree,debris,item,structure,ward,dead"/>
         <Cost index="0">
             <Vital index="Energy" value="10"/>
-            <Cooldown Location="Unit" TimeUse="6"/>
+            <Cooldown Location="Unit" TimeUse="5"/>
         </Cost>
         <Range value="6"/>
         <PrepTime value="0.5"/>
@@ -1336,7 +1336,7 @@
     <CAbilEffectInstant id="AHre" parent="AW2_EffectInstant">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <Cost index="0">
-            <Vital index="Energy" value="15"/>
+            <Vital index="Energy" value="20"/>
             <Cooldown Location="Unit" TimeUse="5"/>
         </Cost>
         <PrepTime value="0.5"/>
@@ -1958,7 +1958,7 @@
         <TargetFilters index="0" value="-;self,mechanical,ancient,wall,tree,debris,item,structure,ward,dead"/>
         <Cost index="0">
             <Vital index="Energy" value="10"/>
-            <Cooldown Location="Unit" TimeUse="6"/>
+            <Cooldown Location="Unit" TimeUse="5"/>
         </Cost>
         <Range value="6"/>
         <PrepTime value="0.452"/>
@@ -2683,6 +2683,7 @@
         <AutoCastRange value="6"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby4"/>
+        <AutoCastValidatorArray value="TargetLifeGT25"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="Auhf" parent="AW2_EffectTarget">
         <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>

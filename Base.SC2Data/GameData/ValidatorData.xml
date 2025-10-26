@@ -45,6 +45,10 @@
         <Compare value="GE"/>
         <Value value="250"/>
     </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital default="1" id="TargetLifeGT175">
+        <Compare value="GT"/>
+        <Value value="175"/>
+    </CValidatorUnitCompareVital>
     <CValidatorUnitCompareVital default="1" id="TargetLifeLE25">
         <Compare value="LE"/>
         <Value value="25"/>
@@ -297,6 +301,11 @@
         <Value value="5"/>
         <Compare value="GE"/>
     </CValidatorUnitCompareField>
+    <CValidatorUnitCompareField id="KillResourceCustomLE135">
+        <Field value="KillResource[Custom]"/>
+        <Value value="135"/>
+        <Compare value="LE"/>
+    </CValidatorUnitCompareField>
     <CValidatorUnitCompareBehaviorCount id="NoPossession">
         <Behavior value="Bpos"/>
     </CValidatorUnitCompareBehaviorCount>
@@ -442,6 +451,9 @@
     </CValidatorUnitCompareVital>
     <CValidatorUnitCompareVital id="TargetLifeLE175" parent="TargetLifeLE25">
         <Value value="175"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="TargetLifeGT25" parent="TargetLifeGT175">
+        <Value value="25"/>
     </CValidatorUnitCompareVital>
     <CValidatorUnitCompareAttackPriority id="UnitThreatenshfoo" parent="ThreatensUnit" unitLink="hfoo"/>
     <CValidatorUnitCompareAttackPriority id="UnitThreatenshhes" parent="ThreatensUnit" unitLink="hhes"/>
