@@ -139,7 +139,6 @@ unitfilter gv_creepFilterCcore;
 unitfilter gv_unitFilter;
 unitfilter gv_unitFilterScore;
 unitfilter gv_unitAndCreepFilter;
-unitfilter gv_pathBlockerFilter;
 unitfilter gv_villagerFilter;
 region[gv_venueMaximumCount + 1] gv_finalVenue;
 fixed[gv_venueMaximumCount + 1] gv_finalVenueFacing;
@@ -190,7 +189,6 @@ void InitGlobals () {
     gv_unitFilter = UnitFilter(0, 0, (1 << c_targetFilterHover) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterMapBoss - 32)));
     gv_unitFilterScore = UnitFilter(0, 0, (1 << c_targetFilterHover) | (1 << c_targetFilterMissile), (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterMapBoss - 32)));
     gv_unitAndCreepFilter = UnitFilter(0, 0, (1 << c_targetFilterHover) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
-    gv_pathBlockerFilter = UnitFilter((1 << c_targetFilterUser1), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
     gv_villagerFilter = UnitFilter((1 << c_targetFilterDestructible), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
 }
 
@@ -236,7 +234,6 @@ bool gf_IsFinalRound (int lp_round);
 void gf_RoundGoldSet (int lp_round, int lp_value);
 void gf_BonusRoundSet (bool lp_on, int lp_round);
 void gf_GoldAdd (int lp_round);
-void gf_PathingBlockerRemove (region lp_region);
 void gf_ValidRegionFillHidden ();
 void gf_BattlefieldSetAll (region lp_region);
 void gf_BattlefieldRevealerEnable (bool lp_option);
@@ -1390,24 +1387,6 @@ void gf_GoldAdd (int lp_round) {
         PlayerModifyPropertyInt(lv_player, c_playerPropTerrazine, c_playerPropOperAdd, gv_roundGold[lp_round]);
         gv_buildingScore[lv_player] = 0;
         gv_killScore[lv_player] = 0;
-    }
-}
-
-void gf_PathingBlockerRemove (region lp_region) {
-    unitgroup autoC9B4EDC5_g;
-    int autoC9B4EDC5_u;
-
-    // Variable Declarations
-    unit lv_unit;
-
-    // Variable Initialization
-
-    // Implementation
-    autoC9B4EDC5_g = UnitGroup(null, c_playerAny, lp_region, gv_pathBlockerFilter, 0);
-    autoC9B4EDC5_u = 1;
-    for ( ; autoC9B4EDC5_u <= UnitGroupCount(autoC9B4EDC5_g, c_unitCountAll) ; autoC9B4EDC5_u += BoolToInt(lv_unit == UnitGroupUnit(autoC9B4EDC5_g, autoC9B4EDC5_u)) ) {
-        lv_unit = UnitGroupUnit(autoC9B4EDC5_g, autoC9B4EDC5_u);
-        UnitRemove(lv_unit);
     }
 }
 
@@ -3465,10 +3444,6 @@ bool gt_VenueInizialization_Func (bool testConds, bool runActions) {
         gf_VenueInitialSet(RegionFromId(30), 6, 270.0);
         gf_VenueInitialSet(RegionFromId(31), 7, 90.0);
         gf_VenueInitialSet(RegionFromId(32), 8, 90.0);
-        gf_PathingBlockerRemove(RegionFromId(78));
-        gf_PathingBlockerRemove(RegionFromId(79));
-        gf_PathingBlockerRemove(RegionFromId(80));
-        gf_PathingBlockerRemove(RegionFromId(81));
         gf_BonusVenueSet(RegionFromId(25), 1, 90.0);
         gf_BonusVenueSet(RegionFromId(26), 2, 90.0);
         gf_BonusVenueSet(RegionFromId(29), 3, 270.0);
@@ -5048,7 +5023,7 @@ bool gt_TideAddRemoveSwimmingPeriodic_Func (bool testConds, bool runActions) {
 void gt_TideAddRemoveSwimmingPeriodic_Init () {
     gt_TideAddRemoveSwimmingPeriodic = TriggerCreate("gt_TideAddRemoveSwimmingPeriodic_Func");
     TriggerEnable(gt_TideAddRemoveSwimmingPeriodic, false);
-    TriggerAddEventTimePeriodic(gt_TideAddRemoveSwimmingPeriodic, 0.5, c_timeGame);
+    TriggerAddEventTimePeriodic(gt_TideAddRemoveSwimmingPeriodic, 1.0, c_timeGame);
 }
 
 //--------------------------------------------------------------------------------------------------

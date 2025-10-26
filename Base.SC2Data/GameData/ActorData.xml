@@ -95,6 +95,9 @@
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <CActorAction id="Nti31" parent="War3_AttackSwapable" WeaponSound="WoodHeavyBash"/>
+    <CActorEventMacro id="War3_DeadAnimationMacroUnit">
+        <On index="4" Terms="AnimDone; AnimName Flesh; IsStatus Dead 1" Send="AnimPlay Bone Decay,Bone NonLooping -1.000000 -1.000000 8.000000 AsDuration"/>
+    </CActorEventMacro>
     <CActorModel id="XIctEffect" parent="EffectArt">
         <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
         <On Terms="Abil.AIct.SourcePrepStart" Send="Create"/>
@@ -133,6 +136,7 @@
     </CActorModel>
     <CActorModel id="AsdgCaster" parent="CasterArt">
         <On Terms="Effect.Asdg.Start; At Caster" Send="Create"/>
+        <On Terms="ActorCreation" Send="AnimPlay death Death NonLooping"/>
     </CActorModel>
     <CActorSimple id="Defend" parent="War3_ChannelAnim">
         <On Terms="Behavior.Defend.On" Send="Create"/>
