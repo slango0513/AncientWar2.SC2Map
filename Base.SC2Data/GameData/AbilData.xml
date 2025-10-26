@@ -94,6 +94,42 @@
             </SectionArray>
         </InfoArray>
     </CAbilMorph>
+    <!--Breath of Fire(Creep) Dur=5 HeroDur=5 Buff=BNbf-->
+    <CAbilEffectTarget id="ACbc" parent="AW2_EffectTarget">
+        <Alignment value="Negative"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="60"/>
+        </Cost>
+        <TargetFilters index="0" value="-;player,allies,wall,tree,debris,item,ward,dead,invulnerable,immunity"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSLife"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
+            <SortArray value="TSFarthestDistance"/>
+        </TargetSorts>
+        <Range value="9"/>
+        <AutoCastRange value="9"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
+        <AutoCastValidatorArray value="NoBreathOfFire"/>
+        <PrepTime value="0.5"/>
+        <CastOutroTime value="0.8"/>
+        <Effect index="0" value="ACbcSearch"/>
+    </CAbilEffectTarget>
+    <!--Chain Lightning (creep)-->
+    <CAbilEffectTarget id="ACcl" parent="AW2_EffectTarget">
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="8"/>
+        </Cost>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSMarker"/>
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
+        </TargetSorts>
+        <Range value="6"/>
+        <AutoCastRange value="6"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
+        <CastOutroTime value="0.5"/>
+        <TargetFilters index="0" value="-;wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
+    </CAbilEffectTarget>
     <CAbilAugment id="ChargeKnight" parent="War3_Augment">
         <AbilCmd value="Aatk,Execute"/>
         <Cost>
@@ -1394,6 +1430,9 @@
         </InfoArray>
         <InfoArray index="Build14" Unit="ndrt">
             <Button DefaultButtonFace="ndrt" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build15" Unit="ndsa">
+            <Button DefaultButtonFace="ndsa" Requirements="BuildArmy"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
@@ -3193,6 +3232,12 @@
     <CAbilBehavior id="TowerRecoverTimmer180" parent="War3_Passive">
         <BehaviorArray value="TowerRecoverTimmer180"/>
     </CAbilBehavior>
+    <CAbilBehavior id="TowerRecoverTimmer150" parent="War3_Passive">
+        <BehaviorArray value="TowerRecoverTimmer150"/>
+    </CAbilBehavior>
+    <CAbilBehavior id="TowerRecoverTimmer120" parent="War3_Passive">
+        <BehaviorArray value="TowerRecoverTimmer120"/>
+    </CAbilBehavior>
     <CAbilBehavior id="TowerRecoverTimmer60" parent="War3_Passive">
         <BehaviorArray value="TowerRecoverTimmer60"/>
     </CAbilBehavior>
@@ -3754,6 +3799,12 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToNaka" parent="AW2_Upgrade" toUnit="Naka">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonsll" parent="AW2_Upgrade" toUnit="nsll">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonthl" parent="AW2_Upgrade" toUnit="nthl">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
 </Catalog>

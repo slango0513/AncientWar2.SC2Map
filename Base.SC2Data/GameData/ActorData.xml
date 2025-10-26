@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <!--Devour Buff=Bdig,Bdvv-->
+    <CActorSimple id="Adev">
+        <On Terms="UnitBirth.ndsa" Send="Create"/>
+        <On Terms="UnitDeath.ndsa" Send="Destroy"/>
+        <On Terms="UnitBirth.nthl" Send="Create"/>
+        <On Terms="UnitDeath.nthl" Send="Destroy"/>
+        <On Terms="UnitBirth.nsll" Send="Create"/>
+        <On Terms="UnitDeath.nsll" Send="Destroy"/>
+    </CActorSimple>
+    <CActorSimple id="AdevTurtle">
+        <On Terms="AbilTransport.Adev.TransportLoad" Target="_Selectable" Send="AnimPlay spell Attack,Spell NonLooping -1.000000 -1.000000 1.000000 AsTimeScaleAbsolute"/>
+        <On Terms="Abil.Adev.TransportEmpty" Target="_Selectable" Send="AnimPlay spell Attack,Spell,Puke NonLooping -1.000000 -1.000000 1.000000 AsTimeScaleAbsolute"/>
+        <On Terms="UnitBirth.nhyc" Send="Create"/>
+        <On Terms="UnitDeath.nhyc" Send="Destroy"/>
+        <On Terms="UnitBirth.ntr3" Send="Create"/>
+        <On Terms="UnitDeath.ntr3" Send="Destroy"/>
+    </CActorSimple>
     <CActorAction id="AimpSphereEffect" parent="War3_Attack">
         <DamageMap index="None" Model="AimpTarget"/>
     </CActorAction>
@@ -83,6 +100,8 @@
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.5"/>
+        <AnimBlendTime value="0.300000"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.500000 1.000000 tyrandemorph"/>
     </CActorUnit>
     <!--antonidus-->
     <!--akama-->
@@ -197,6 +216,7 @@
     </CActorUnit>
     <!--kael-->
     <CActorUnit id="Hkal" parent="War3_Army" unitSound="Kael" unitName="Hkal" defType="NONE">
+        <On Terms="ActorCreation" Send="SetTintColor 255,255,150"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnBloodMage2.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnBloodMage2.dds"/>
@@ -222,6 +242,7 @@
     </CActorUnit>
     <!--alchemistmorph-->
     <CActorUnit id="Nalm" parent="War3_Army" unitSound="HEROGoblinALCHEMIST" unitName="Nalm" defType="LARGE">
+        <On Terms="ActorCreation" Send="SetTintColor 255,255,150"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHeroAlchemist.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnHeroAlchemist.dds"/>
@@ -284,6 +305,7 @@
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <CActorUnit id="Nti3" parent="War3_Army" unitSound="HeroTinker" unitName="Nti3" defType="LARGE">
+        <On Terms="ActorCreation" Send="SetTintColor 255,255,150"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHeroTinker.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnHeroTinker.dds"/>
@@ -346,6 +368,7 @@
     </CActorUnit>
     <!--varimathras-->
     <CActorUnit id="Uvar" parent="War3_Army" unitSound="Varimathras" unitName="Uvar" defType="LARGE">
+        <On Terms="ActorCreation" Send="SetTintColor 150,150,150"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHeroDreadlord.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnHeroDreadlord.dds"/>
@@ -603,6 +626,23 @@
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnDranai.dds"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_HumanLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--draeneisalamander-->
+    <CActorUnit id="ndsa" parent="War3_ThunderLizardUnit" unitSound="KotoBeastNoRider" unitName="ndsa" defType="MEDIUM">
+        <On Terms="Behavior.DraeneiSalamanderRun.On" Send="AnimGroupApply Fast"/>
+        <On Terms="Behavior.DraeneiSalamanderRun.Off" Send="AnimGroupRemove Fast"/>
+        <On Terms="Behavior.DraeneiSalamanderRun.On" Send="SetWalkAnimMoveSpeed 3.5"/>
+        <On Terms="Behavior.DraeneiSalamanderRun.Off" Send="SetWalkAnimMoveSpeed 2.1093"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnThunderLizardVizier.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnThunderLizardVizier.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnThunderLizardVizier.dds"/>
+        <BarWidth value="100"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <BarOffset value="120"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <!--coldtower-->
@@ -918,6 +958,41 @@
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
         <WalkAnimMoveSpeed value="1.5625"/>
     </CActorUnit>
+    <!--salamanderlord-->
+    <CActorUnit id="nsll" parent="War3_ThunderLizardUnit" unitSound="KotoBeastNoRider" unitName="nsll" defType="MEDIUM">
+        <On Terms="Behavior.SalamanderLordRun.On" Send="AnimGroupApply Fast"/>
+        <On Terms="Behavior.SalamanderLordRun.Off" Send="AnimGroupRemove Fast"/>
+        <On Terms="Behavior.SalamanderLordRun.On" Send="SetWalkAnimMoveSpeed 3.5"/>
+        <On Terms="Behavior.SalamanderLordRun.Off" Send="SetWalkAnimMoveSpeed 2.1093"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnThunderLizardSalamander.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnThunderLizardSalamander.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnThunderLizardSalamander.dds"/>
+        <BarWidth value="125"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <BarOffset value="120"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <CActorAction id="nsll1" parent="War3_LightningAttack"/>
+    <!--thunderlizard-->
+    <CActorUnit id="nthl" parent="War3_ThunderLizardUnit" unitSound="KotoBeastNoRider" unitName="nthl" defType="MEDIUM">
+        <On Terms="Behavior.ThunderlizardRun.On" Send="AnimGroupApply Fast"/>
+        <On Terms="Behavior.ThunderlizardRun.Off" Send="AnimGroupRemove Fast"/>
+        <On Terms="Behavior.ThunderlizardRun.On" Send="SetWalkAnimMoveSpeed 3.5"/>
+        <On Terms="Behavior.ThunderlizardRun.Off" Send="SetWalkAnimMoveSpeed 2.1093"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnThunderLizard.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnThunderLizard.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnThunderLizard.dds"/>
+        <BarWidth value="125"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <BarOffset value="120"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
     <!--deathtower-->
     <CActorUnit id="ntt1" parent="War3_Building" unitSound="ElvenGuardTower" unitName="ntt1" defType="FORT">
         <!--MinimapIcon value="Assets\Textures\UI\MiniMap\minimap-neutralbuilding.tga"/-->
@@ -982,6 +1057,7 @@
     <CActorAction id="KargathBladefist1" parent="War3_AttackSwapable" WeaponSound="MetalMediumChop"/>
     <!--garthok-->
     <CActorUnit id="ogrk" parent="War3_Army" unitSound="Grunt" unitName="ogrk" defType="LARGE">
+        <On Terms="ActorCreation" Send="SetTintColor 255,255,150"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnGrunt.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnGrunt.dds"/>
@@ -995,6 +1071,7 @@
     </CActorUnit>
     <!--nazgrel-->
     <CActorUnit id="onzg" parent="War3_Army" unitSound="Nazgrel" unitName="onzg" defType="SMALL">
+        <On Terms="ActorCreation" Send="SetTintColor 255,255,150"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnRaider.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnRaider.dds"/>
@@ -1243,6 +1320,7 @@
     <CActorAction id="Obl21" parent="War3_AttackSwapable" WeaponSound="MetalHeavySlice"/>
     <!--cairnebloodhoof-->
     <CActorUnit id="Ocbh" parent="War3_Army" unitSound="Cairne" unitName="Ocbh" defType="LARGE">
+        <On Terms="ActorCreation" Send="SetTintColor 255,255,150"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHeroTaurenChieftain.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnHeroTaurenChieftain.dds"/>
@@ -1472,6 +1550,7 @@
     </CActorUnit>
     <!--bluedragonspawnsorceror-->
     <CActorUnit id="nbds" parent="War3_DragonSpawnUnit" unitSound="DragonSpawn" unitName="nbds" defType="NONE">
+        <On Terms="ActorCreation" Send="SetTintColor 255,255,140"/>
         <On Terms="Behavior.BlueDragonSpawnSorcerorRun.On" Send="AnimGroupApply Fast"/>
         <On Terms="Behavior.BlueDragonSpawnSorcerorRun.Off" Send="AnimGroupRemove Fast"/>
         <On Terms="Behavior.BlueDragonSpawnSorcerorRun.On" Send="SetWalkAnimMoveSpeed 3.5"/>
@@ -1594,6 +1673,7 @@
     </CActorUnit>
     <!--darktrollhighpriest-->
     <CActorUnit id="ndth" parent="War3_Army" unitSound="ForestTrollShadowPriest" unitName="ndth" defType="NONE">
+        <On Terms="ActorCreation" Send="SetTintColor 150,150,150"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnDarkTrollShadowPriest.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnDarkTrollShadowPriest.dds"/>
@@ -1635,6 +1715,7 @@
     </CActorAction>
     <!--engineergazlowe-->
     <CActorUnit id="negz" parent="War3_Army" unitSound="GoblinSapper" unitName="negz" defType="LARGE">
+        <On Terms="ActorCreation" Send="SetTintColor 255,255,150"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnGoblinSapper.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnGoblinSapper.dds"/>
@@ -1685,6 +1766,7 @@
     <CActorMissile id="nowb1LM" parent="War3_MissileSwapable" unitName="nowb1LM"/>
     <!--berserkowlbear-->
     <CActorUnit id="nowk" parent="War3_Army" unitSound="Owlbear" unitName="nowk" defType="LARGE">
+        <On Terms="ActorCreation" Send="SetTintColor 255,255,150"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnOwlBear.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnOwlBear.dds"/>
@@ -1702,6 +1784,7 @@
     <CActorMissile id="nowk1LM" parent="War3_MissileSwapable" unitName="nowk1LM"/>
     <!--goblinblaster-->
     <CActorUnit id="ngbl" parent="War3_Army" unitSound="IronGolem" unitName="ngbl" defType="LARGE">
+        <On Terms="ActorCreation" Send="SetTintColor 255,255,150"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnJunkGolem.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnJunkGolem.dds"/>
@@ -1752,6 +1835,7 @@
         <Macros index="2" removed="1"/>
     </CActorUnit>
     <CActorUnit id="ngl3" parent="War3_Army" unitSound="GoblinLandMine" unitName="ngl3" defType="MEDIUM">
+        <On Terms="ActorCreation" Send="SetTintColor 150,150,150"/>
         <DeathArray index="Normal" AnimProps="Death"/>
         <DeathArray index="Impact" AnimProps="Death,Spell"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnGoblinLandMine.dds"/>
@@ -1932,6 +2016,7 @@
     </CActorUnit>
     <!--ogremagi-->
     <CActorUnit id="nomg" parent="War3_Army" unitSound="Ogre" unitName="nomg" defType="LARGE">
+        <On Terms="ActorCreation" Send="SetTintColor 255,255,150"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnOgreMagi.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnOgreMagi.dds"/>
@@ -2045,6 +2130,7 @@
         <WalkAnimMoveSpeed value="1.7187"/>
     </CActorUnit>
     <CActorUnit id="ovlj" parent="War3_Army" unitSound="WitchDoctor" unitName="ovlj" defType="NONE">
+        <On Terms="ActorCreation" Send="SetTintColor 255,255,150"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnWitchDoctor.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnWitchDoctor.dds"/>
@@ -2499,6 +2585,7 @@
     </CActorUnit>
     <!--evilarthas-->
     <CActorUnit id="Uear" parent="War3_Army" unitSound="EvilArthas" unitName="Uear" defType="LARGE">
+        <On Terms="ActorCreation" Send="SetTintColor 150,150,150"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHeroDeathKnight.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnHeroDeathKnight.dds"/>
@@ -2950,6 +3037,7 @@
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <CActorUnit id="KargathBladefist" parent="War3_Army" unitSound="ChaosGrunt" unitName="KargathBladefist" defType="LARGE">
+        <On Terms="ActorCreation" Send="SetTintColor 255,255,150"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnChaosGrunt.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnChaosGrunt.dds"/>
@@ -2975,6 +3063,7 @@
         <WalkAnimMoveSpeed value="2.7343"/>
     </CActorUnit>
     <CActorUnit id="BlackrockClan" parent="War3_Army" unitSound="Wolfrider" unitName="BlackrockClan" defType="SMALL">
+        <On Terms="ActorCreation" Send="SetTintColor 255,255,150"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnChaosWolfRider.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnChaosWolfRider.dds"/>
@@ -2993,6 +3082,10 @@
     </CActorUnit>
     <!--chaoskotobeast-->
     <CActorUnit id="nckb" parent="War3_KodoUnit" unitSound="KotoBeast" unitName="nckb" defType="NONE">
+        <On Terms="Behavior.ChaosKodoBeastRun.On" Send="AnimGroupApply Fast"/>
+        <On Terms="Behavior.ChaosKodoBeastRun.Off" Send="AnimGroupRemove Fast"/>
+        <On Terms="Behavior.ChaosKodoBeastRun.On" Send="SetWalkAnimMoveSpeed 3.5"/>
+        <On Terms="Behavior.ChaosKodoBeastRun.Off" Send="SetWalkAnimMoveSpeed 1.7187"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnChaosKotoBeast.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnChaosKotoBeast.dds"/>
@@ -3966,6 +4059,10 @@
     </CActorUnit>
     <!--kotobeast-->
     <CActorUnit id="okod" parent="War3_KodoUnit" unitSound="KotoBeast" unitName="okod" defType="NONE">
+        <On Terms="Behavior.KodoBeastRun.On" Send="AnimGroupApply Fast"/>
+        <On Terms="Behavior.KodoBeastRun.Off" Send="AnimGroupRemove Fast"/>
+        <On Terms="Behavior.KodoBeastRun.On" Send="SetWalkAnimMoveSpeed 3.5"/>
+        <On Terms="Behavior.KodoBeastRun.Off" Send="SetWalkAnimMoveSpeed 1.7187"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnKotoBeast.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnKotoBeast.dds"/>
@@ -3979,6 +4076,7 @@
     </CActorUnit>
     <!--mathog-->
     <CActorUnit id="omtg" parent="War3_Army" unitSound="ChaosWarlord" unitName="omtg" defType="LARGE">
+        <On Terms="ActorCreation" Send="SetTintColor 255,255,150"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnChaosWarlord.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnChaosWarlord.dds"/>
@@ -4317,7 +4415,6 @@
         <On Terms="ActorCreation" Send="SetOpacity 1.000000 1.000000 obsidianstatuemorph"/>
     </CActorUnit>
     <CActorUnit id="uob2" parent="War3_Army" unitSound="ObsidianStatue" unitName="uob2" defType="LARGE">
-        <AnimBlendTime value="0.300000"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnObsidianStatue.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnObsidianStatue.dds"/>
@@ -4327,6 +4424,7 @@
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.1093"/>
+        <AnimBlendTime value="0.300000"/>
         <On Terms="ActorCreation" Send="SetOpacity 0.500000 1.000000 obsidianstatuemorph"/>
     </CActorUnit>
     <CActorAction id="uob21" parent="War3_AttackMissileSwapable"/>

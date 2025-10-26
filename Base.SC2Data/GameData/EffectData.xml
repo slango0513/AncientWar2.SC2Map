@@ -65,13 +65,31 @@
         </TargetSorts>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CEffectEnumArea>
+    <CEffectDamage id="ACbcDamage">
+        <Amount value="100"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="ACbcSearch">
+        <AreaArray index="0" Arc="29.9707" Radius="11" Effect="ACbcSearchImpactSet"/>
+    </CEffectEnumArea>
     <CEffectDamage id="AUfnDamage1">
         <Amount value="150"/>
         <AreaArray index="0" Radius="1.9531" Bonus="-50" Fraction="1"/>
     </CEffectDamage>
+    <CEffectEnumArea id="AclfSearch">
+        <AreaArray index="0" Radius="0.5" Effect="Bclf"/>
+    </CEffectEnumArea>
     <CEffectDamage id="AwarAoEDamage">
         <AreaArray index="0" Radius="1.5625" Bonus="100" Fraction="1"/>
         <AreaArray index="1" removed="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="BEimDPS1">
+        <Amount value="15"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="BNbf">
+        <ValidatorArray index="2" removed="1"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="BNbfDPS1">
+        <Amount value="100"/>
     </CEffectDamage>
     <CEffectApplyBehavior id="ChargeKnight" parent="War3_ApplyBuff">
         <WhichUnit Value="Caster"/>
@@ -196,6 +214,11 @@
         <Kind value="Melee"/>
         <Amount value="120"/>
     </CEffectDamage>
+    <CEffectDamage id="ndsa1" parent="AW2_MagicDamage">
+        <Amount value="144"/>
+        <AreaArray Radius="1.1718" Fraction="1" Validator="KillResourceCustomLT225"/>
+        <SearchFilters value="-;self,air,wall,tree,Missile,debris,item,structure,ward,dead,Hidden,invulnerable,immunity"/>
+    </CEffectDamage>
     <CEffectDamage id="negf1" parent="AW2_MagicDamage">
         <Amount value="24"/>
     </CEffectDamage>
@@ -203,6 +226,16 @@
         <Amount value="192"/>
         <AreaArray Radius="1.1718" Fraction="1"/>
         <SearchFilters value="-;player,allies,ground,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,Hidden,invulnerable"/>
+    </CEffectDamage>
+    <CEffectDamage id="nsll1" parent="AW2_MagicDamage">
+        <Amount value="144"/>
+        <AreaArray Radius="1.1718" Fraction="1" Validator="KillResourceCustomLT225"/>
+        <SearchFilters value="-;self,air,wall,tree,Missile,debris,item,structure,ward,dead,Hidden,invulnerable,immunity"/>
+    </CEffectDamage>
+    <CEffectDamage id="nthl1" parent="AW2_MagicDamage">
+        <Amount value="144"/>
+        <AreaArray Radius="1.1718" Fraction="1" Validator="KillResourceCustomLT225"/>
+        <SearchFilters value="-;self,air,wall,tree,Missile,debris,item,structure,ward,dead,Hidden,invulnerable,immunity"/>
     </CEffectDamage>
     <CEffectCreateUnit id="ushd" parent="War3_SummonUnit">
         <EditorCategories value="Race:Draenei,AbilityorEffectType:Hero"/>

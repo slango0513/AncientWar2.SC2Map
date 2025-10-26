@@ -1827,12 +1827,12 @@ void gf_GoldAdd (int lp_round) {
                 lv_lumber = FixedToInt((gv_buildingScore[lv_player]*1.0));
             }
             else if (auto876F7D42_val == 5) {
-                lv_gold = FixedToInt((gv_roundGold[lp_round]*1.2));
-                lv_lumber = FixedToInt((gv_buildingScore[lv_player]*1.2));
+                lv_gold = FixedToInt((gv_roundGold[lp_round]*1.0));
+                lv_lumber = FixedToInt((gv_buildingScore[lv_player]*1.0));
             }
             else if (auto876F7D42_val == 7) {
-                lv_gold = FixedToInt((gv_roundGold[lp_round]*1.2));
-                lv_lumber = FixedToInt((gv_buildingScore[lv_player]*1.2));
+                lv_gold = FixedToInt((gv_roundGold[lp_round]*1.0));
+                lv_lumber = FixedToInt((gv_buildingScore[lv_player]*1.0));
             }
             else if (auto876F7D42_val == 9) {
                 lv_gold = FixedToInt((gv_roundGold[lp_round]*1.4));
@@ -3703,6 +3703,12 @@ void gf_CountUnit (int lp_team, bool lp_wait) {
             autoAEB5A592_u = 1;
             for ( ; autoAEB5A592_u <= UnitGroupCount(autoAEB5A592_g, c_unitCountAll) ; autoAEB5A592_u += BoolToInt(lv_unit == UnitGroupUnit(autoAEB5A592_g, autoAEB5A592_u)) ) {
                 lv_unit = UnitGroupUnit(autoAEB5A592_g, autoAEB5A592_u);
+                UnitGroupLoopBegin(UnitCargoGroup(lv_unit));
+                for ( ; !UnitGroupLoopDone() ; UnitGroupLoopStep() ) {
+                    PlayerModifyPropertyInt(lv_player, c_playerPropCustom, c_playerPropOperAdd, gf_UnitTypeGetKillResource(UnitGetType(UnitGroupLoopCurrent())));
+                    PlayerCreateEffectUnit(lv_player, lv_effect, UnitGroupLoopCurrent());
+                }
+                UnitGroupLoopEnd();
                 PlayerModifyPropertyInt(lv_player, c_playerPropCustom, c_playerPropOperAdd, gf_UnitTypeGetKillResource(UnitGetType(lv_unit)));
                 auto94B120CD_ae = gv_itemMaximumCountPerUnit;
                 auto94B120CD_ai = 1;
@@ -3894,13 +3900,13 @@ void gf_KillScoreUnitAndItemAdd (int lp_player, unit lp_unit) {
             lv_modifier = 0.0;
         }
         else if (autoDD6F864C_val == 3) {
-            lv_modifier = 0.4;
+            lv_modifier = 0.1;
         }
         else if (autoDD6F864C_val == 5) {
-            lv_modifier = 0.8;
+            lv_modifier = 0.2;
         }
         else if (autoDD6F864C_val == 7) {
-            lv_modifier = 1.2;
+            lv_modifier = 0.4;
         }
         else if (autoDD6F864C_val == 9) {
             lv_modifier = 2.0;

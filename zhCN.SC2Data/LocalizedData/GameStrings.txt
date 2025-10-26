@@ -1,8 +1,10 @@
 ﻿ACac/Ubertip=增加附近友方单位<d ref="Behavior,BOac,Modification.DamageDealtFraction[Melee] * 100"/>%的攻击力。
 ACbb/Ubertip=在<d ref="Effect,Bblo40s,Duration"/>秒内增加目标单位<d ref="Behavior,Bblo,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度和<d ref="Behavior,Bblo,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度。
+ACbc/Ubertip=对敌人呼出带有攻击力的火焰。最初造成<d ref="Effect,ACbcDamage,Amount"/>点的伤害。并在<d ref="Behavior,BNbf,Duration"/>秒内持续受到每秒<d ref="Effect,BNbfDPS1,Amount"/>点的伤害。
 ACbf/Ubertip=吐出带有攻击力的冰霜，最初造成<d ref="Effect,ACbfDamage,Amount"/>点的伤害，随后在<d ref="Behavior,BCbf,Duration"/>秒内对目标单位造成每秒<d ref="Effect,BCbfDPS,Amount"/>点的伤害。
 ACcb/Ubertip=向敌人投掷出一快冰球，对其造成<d ref="Effect,ACcbDamage,Amount"/>点的伤害并使其在<d ref="Behavior,BCcb,Duration"/>秒内处于昏迷状态。
 ACce/Ubertip=该生物强大的力量使得他目标周围的单位也受到<d ref="Effect,ACceDamage,AreaArray[0].Fraction * 100"/>%的伤害。
+ACcl/Ubertip=投掷出一道闪电对第一个敌人造成<d ref="Effect,ACclMainmIpactDamage,Amount"/>点的伤害，闪电一共跳跃4次。每次闪电的攻击力会随着跳跃次数增加而递减。
 ACcr/Ubertip=减慢目标单位<d ref="-Behavior,Bcri,Modification.DamageDealtFraction[Melee] * 100"/>%的攻击力并减慢其<d ref="1 - Behavior,Bcri,Modification.MoveSpeedMultiplier * 100"/>%的移动速度和<d ref="1 - Behavior,Bcri,Modification.AttackSpeedMultiplier * 100"/>%的攻击速度。<n/>持续<d ref="Behavior,Bcri,Duration"/>秒。
 ACcv/Ubertip=发射出一道巨大的能量波，对一线上的敌人造成<d ref="Effect,ACcvDamage,Amount"/>点的伤害。
 ACen/Ubertip=将敌方的某个空中单位捕获到地面能动弹。被诱捕的空中单位能像地面单位一样遭到攻击。<n/>持续<d ref="Behavior,Bena,Duration"/>秒。
@@ -150,6 +152,7 @@ Adef/Ubertip=激活以拥有75%的概率反弹穿刺攻击。如果防御状态�
 Adev/Ubertip=吞噬敌方目标单位，将其慢慢咀嚼，每秒对其造成<d ref="Effect,BdigDPS,Amount"/>点的伤害。在咀嚼目标的过程中，如果遭到杀害，那么它肚中的被吞噬单位就会从中跳出来。
 Advc/Tip=Advc
 Aegr/Ubertip=减少来自穿刺攻击的伤害到原来的50%，并减少来自魔法攻击的伤害到原来的50%。
+Aeib/Name=强化弓
 Aeib/Tip=强化弓
 Aeib/Ubertip=增加弓箭手<d ref="Behavior,Aeib,Modification.RangedWeaponRange"/>的攻击范围。
 Aens/Ubertip=能将一个目标空中单位固定在地面上，使其在<d ref="Behavior,Bena,Duration"/>秒内不能移动。
@@ -404,6 +407,7 @@ DeathTowerAura/Buffubertip=该单位处于死亡之塔光环的作用之下，�
 DeathTowerAura/Name=死亡之塔光环
 DeathTowerAuraCaster/Tip=死亡之塔光环
 DeathTowerAuraCaster/Ubertip=增加所有友方召唤单位<d ref="Behavior,DeathTowerAura,Modification.VitalMaxFractionArray[Life] * 100"/>%的最大生命值。
+Defend/Name=防御
 Defend/Tip=防御
 Defend/Ubertip=激活后只会受到10%的穿刺攻击伤害。如果防御状态被激活，移动速度会变成<d ref="Behavior,Defend,Modification.MoveSpeedMultiplier * 100"/>%的常规速度。
 DefendUn/Tip=停止防御
@@ -511,8 +515,9 @@ DocInfo/PatchNote092=凤凰蛋的孵化时间增加到45秒，生命值减少到
 DocInfo/PatchNote093=凤凰的护甲类型现在是神圣，并且凤凰火焰经过重新设计。
 DocInfo/PatchNote094=混乱兽人：
 DocInfo/PatchNote095=粉碎者的伤害增加到144。
-DocInfo/PatchNote096=德莱尼：
-DocInfo/PatchNote097=防御塔类单位的生命值减少到原来的75%。
+DocInfo/PatchNote096=乌云的影响半径减小到0.5。
+DocInfo/PatchNote097=德莱尼：
+DocInfo/PatchNote098=电脑难度曲线大幅度降低。
 DocInfo/PatchNote099=去除布阵步骤，增加阵前音效。
 DocInfo/PatchNote100=优化寻路，减少由寻路造成的卡顿。
 DocInfo/PatchNote101=增加2V2V2V2模式的回合金，使其与混战模式齐平。
@@ -526,12 +531,20 @@ DocInfo/PatchNote108=雷德·黑手获得新技能飓风光环，取代原来的
 DocInfo/PatchNote109=混乱兽人步兵和混乱兽人狼骑兵类单位获得新技能掠夺。
 DocInfo/PatchNote110=龙：
 DocInfo/PatchNote111=梦境不再对2V2V2V2模式有效。
+DocInfo/PatchNote112=优化地形，减少由装饰元素造成的卡顿。
+DocInfo/PatchNote113=去除可能导致被诱捕的空军无法被攻击的水域。
+DocInfo/PatchNote114=增强部分升级后的兵种外观上的区别。
+DocInfo/PatchNote115=修复结算时被吞噬的单位不计入奖励的漏洞。
+DocInfo/PatchNote116=血精灵：
+DocInfo/PatchNote117=加入新单位火蜥蜴。
+DocInfo/PatchNote118=防御塔类单位的生命值减少到原来的50%，回收时间减少到120秒(1级)/150秒(2级)。
 DraeneiFlag/Name=德莱尼旗帜
 DraeneiFlag/Tip=放置德莱尼旗帜
 DraeneiFlag/Ubertip=放置德莱尼旗帜。
 DraeneiFlag2/Name=德莱尼旗帜
 DraeneiFlag2/Tip=放置德莱尼旗帜(决赛)
 DraeneiFlag2/Ubertip=放置德莱尼旗帜(决赛)。
+DraeniStalkerInvisibility/Name=隐形
 DraeniStalkerInvisibility/Tip=隐形
 DraeniStalkerInvisibility/Ubertip=使德莱尼追踪者隐形。<n/>持续<d ref="Behavior,DraeniStalkerInvisibility,Duration"/>秒。
 DragonFlag/Name=龙旗帜
@@ -656,6 +669,7 @@ GoblinFlag/Ubertip=放置地精旗帜。
 GoblinFlag2/Name=地精旗帜
 GoblinFlag2/Tip=放置地精旗帜(决赛)
 GoblinFlag2/Ubertip=放置地精旗帜(决赛)。
+GoblinLandMineInvisibility/Name=隐形
 GoblinLandMineInvisibility/Tip=隐形
 GoblinLandMineInvisibility/Ubertip=使地精地雷隐形。<n/>持续<d ref="Behavior,GoblinLandMineInvisibility,Duration"/>秒。
 Gyrocopter/Name=矮人直升机
@@ -681,6 +695,7 @@ Hlgr/Tip=升级到黑暗骑士
 Hlgr/Ubertip=骑兵，具有冲锋和虔诚光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 HonorShield/Tip=荣誉之盾
 HonorShield/Ubertip=每次攻击地面单位或受到攻击将会提升<d ref="Behavior,HonorShield,Modification.DamageDealtUnscaled[Ranged]"/>点攻击及<d ref="Behavior,HonorShield,Modification.LifeArmorBonus"/>点护甲。
+HonorShieldCaster/Name=荣誉之盾
 Hpal/Tip=训练圣骑士
 Hpal/Ubertip=重型的近战单位，能施放圣光术。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 HumanPhalanxPlaceholder/Name=HumanPreviewer
@@ -703,6 +718,8 @@ InvulnerableTemp/Name=准备中
 KargathBladefist/Name=卡加斯·刃拳
 KargathBladefist/Tip=卡加斯·刃拳
 KargathBladefist/Ubertip=基本的兽人地面单位，具有掠夺技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+LightningAttack/Tip=闪电攻击
+LightningAttack/Ubertip=威力巨大的闪电能对区域内非精英单位造成大量伤害。<n/><n/><c val="ffcc00">可能误伤友军。</c>
 MapInfo/Player00/Name=中立
 MapInfo/Player01/Name=玩家1
 MapInfo/Player02/Name=玩家2
@@ -1133,6 +1150,7 @@ ndrt/Tip=训练德莱尼追踪者
 ndrt/Ubertip=敏捷系单位，精于速杀落单的单位。具有疾风步和闪避技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ndrv/Tip=训练深渊亡魂
 ndrv/Ubertip=防御型单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+ndsa/Ubertip=能投掷出闪电箭的远程攻击单位。能吞噬对手。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ndt1/Ubertip=防守型建筑物，射出冰片进行攻击，擅长于减慢敌人的速度，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ndt2/Ubertip=防守型建筑物，擅长于减慢敌人的速度，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ndtb/Tip=升级到黑暗巨魔狂战士
@@ -1153,6 +1171,7 @@ nerw/Ubertip=<c val="ffcc00">精英</c><n/>远程攻击型魔法施放单位，�
 net1/Ubertip=防守型建筑物，射出能量之箭，擅长于对付敌人的空中单位，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 net2/Ubertip=防守型建筑物，擅长于对付敌人的空中单位，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nfac/Tip=建造口袋工厂
+nfacTimeLife/Name=nfacTimeLife
 nfgl/Tip=升级到血肉傀儡
 nfgl/Ubertip=重型的近战单位，具有分裂攻击和疾病之云技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nfgu/Tip=训练恶魔守卫
@@ -1273,12 +1292,16 @@ nsgn/Tip=训练海巨人
 nsgn/Ubertip=近战两栖单位，具有抗性皮肤和粉碎技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nskk/Tip=训练小蜥蜴
 nskk/Ubertip=呼唤小蜥蜴的灵魂来拯救你。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+nsll/Tip=升级到火蜥蜴之王
+nsll/Ubertip=能投掷出闪电箭的远程攻击单位。能吞噬对手，还具有火焰吐息。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nsnp/Tip=训练海龙
 nsnp/Ubertip=远程攻击单位，有着毒性攻击，可以缓慢和伤害敌单位。拥有潜水技能，可以隐藏在水中。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nss2/Name=暗夜精灵刺客
 nssn/Name=暗夜精灵刺客
 nssn/Tip=训练刺客
 nssn/Ubertip=防御型单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+nthl/Tip=升级到雷霆蜥蜴
+nthl/Ubertip=能投掷出闪电箭的远程攻击单位。能吞噬对手，还具有闪电链。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nthr/Tip=升级到萨里法斯
 nthr/Ubertip=<c val="ffcc00">世界精英</c><n/>伊瑟拉的守护者，具有抗性皮肤和腐蚀吐息技能，还拥有睡眠技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ntr2/Name=海龟
