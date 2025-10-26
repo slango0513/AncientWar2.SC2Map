@@ -21,6 +21,17 @@ void InitLibs () {
 //--------------------------------------------------------------------------------------------------
 // Constants
 //--------------------------------------------------------------------------------------------------
+const fixed gv_asplRadius = 5.0;
+const fixed gv_asplSplitFactor = 0.1;
+const int gv_asplMaxTargets = 6;
+const string gv_aOmiAbilEntry = "AOmi";
+const string gv_aOmiPrecursorBuffEntry = "AOmiPrecursor";
+const string gv_aOmiBuffEntry = "BOmi";
+const string gv_aOmiMissileEffectEntry = "AOmiMissile";
+const string gv_aOmiNonMirrorMissileEffectEntry = "AOmiMissileNonMirror";
+const fixed gv_aOmiRange = 1.0;
+const string gv_aOmiMarker = "AOmiUniqueSummon";
+const string gv_aOmiExtraBuff = "MirrorImageExtra";
 const fixed gv_moonstoneDuration = 30.0;
 const fixed gv_callTideDuration = 30.0;
 const fixed gv_minimumPeriod = 0.0625;
@@ -50,6 +61,9 @@ const int gv_venueGroupMaximumCount = (gv_teamMaximumCount/2);
 //--------------------------------------------------------------------------------------------------
 bool gv_isBonusRound;
 int[gv_roundMaximumCount + 1] gv_objective;
+unitfilter gv_asplTargetFilter;
+int gv_aOmiBaseImages;
+int gv_aOmiExtraImagePerLevel;
 fixed gv_aegrDamageTaken;
 fixed gv_aegrMagicDamageReduction;
 unitgroup gv_adefGroup;
@@ -132,6 +146,9 @@ void InitGlobals () {
     for (init_i = 0; init_i <= gv_roundMaximumCount; init_i += 1) {
         gv_objective[init_i] = c_invalidObjectiveId;
     }
+    gv_asplTargetFilter = UnitFilter(0, 0, (1 << c_targetFilterNeutral) | (1 << c_targetFilterEnemy) | (1 << c_targetFilterMechanical) | (1 << c_targetFilterHover) | (1 << c_targetFilterHarvestableResource) | (1 << c_targetFilterMissile) | (1 << c_targetFilterDestructible) | (1 << c_targetFilterItem) | (1 << c_targetFilterUncommandable) | (1 << c_targetFilterPreventDefeat), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32)) | (1 << (c_targetFilterUnstoppable - 32)));
+    gv_aOmiBaseImages = 1;
+    gv_aOmiExtraImagePerLevel = 1;
     gv_aegrDamageTaken = 0.25;
     gv_aegrMagicDamageReduction = 0.5;
     gv_adefGroup = UnitGroupEmpty();
@@ -280,6 +297,12 @@ trigger gt_AllianceInizialization;
 trigger gt_ScoreBoardInizialization;
 trigger gt_TimerInizialization;
 trigger gt_PlayerInizialization;
+trigger gt_AsplMarker;
+trigger gt_AsplSplitTemplate;
+trigger gt_AsplRegister;
+trigger gt_AOmiRemoveAllNonPermanent;
+trigger gt_AOmiLaunch;
+trigger gt_AOmiMarker;
 trigger gt_AegrElunesGraceRegister;
 trigger gt_AegrElunesGraceDamaged;
 trigger gt_AdefDefendInitRegister;
@@ -330,6 +353,11 @@ void gf_ModInizialization (bool lp_debug) {
     TriggerEnable(libGAwX_gt_AdefDefendInitRegister, false);
     TriggerEnable(libGAwX_gt_moonMoonstoneChangeTOD, false);
     TriggerEnable(libGAwX_gt_AegrElunesGraceRegister, false);
+    TriggerEnable(libGAwX_gt_AOmiRemoveAllNonPermanent, false);
+    TriggerEnable(libGAwX_gt_AOmiLaunch, false);
+    TriggerEnable(libGAwX_gt_AOmiMarker, false);
+    TriggerEnable(libGAwX_gt_AsplMarker, false);
+    TriggerEnable(libGAwX_gt_AsplRegister, false);
     UISetResourceTradingAllowed(c_resourceTypeMinerals, false);
     UISetResourceTradingAllowed(c_resourceTypeVespene, false);
     UISetResourceTradingAllowed(c_resourceTypeTerrazine, false);
@@ -3603,6 +3631,331 @@ void gt_PlayerInizialization_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: Aspl - Marker
+//--------------------------------------------------------------------------------------------------
+bool gt_AsplMarker_Func (bool testConds, bool runActions) {
+    int autoE8FAC191_n;
+    int autoE8FAC191_i;
+    unitgroup autoE7809A11_g;
+    int autoE7809A11_u;
+    unitgroup autoC9C94F84_g;
+    int autoC9C94F84_u;
+
+    // Variable Declarations
+    unitgroup lv_ug;
+    unit lv_target;
+    int lv_player;
+    unit lv_a;
+    unit lv_b;
+    unitgroup lv_unfitGroup;
+    unit lv_testUnit;
+    fixed lv_life;
+    unit lv_u;
+
+    // Variable Initialization
+    lv_ug = UnitGroupEmpty();
+    lv_target = EventPlayerEffectUsedUnit(c_effectUnitTarget);
+    lv_player = EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster);
+    lv_unfitGroup = UnitGroupEmpty();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorRemove(lv_target, libGAwX_gv_asplMarkerBuff, c_unitBehaviorCountAll);
+    Wait(0.0625, c_timeGame);
+    autoE8FAC191_n = (gv_asplMaxTargets-1);
+    for (autoE8FAC191_i = 1; autoE8FAC191_i <= autoE8FAC191_n; autoE8FAC191_i += 1) {
+        lv_life = 0.0;
+        UnitGroupLoopBegin(UnitGroupSearch(null, lv_player, UnitGetPosition(lv_target), gv_asplRadius, gv_asplTargetFilter, 0));
+        for ( ; !UnitGroupLoopDone() ; UnitGroupLoopStep() ) {
+            if ((UnitHasBehavior(UnitGroupLoopCurrent(), libGAwX_gv_asplMarkerBuff) == false) && (UnitGetPropertyFixed(UnitGroupLoopCurrent(), c_unitPropLife, c_unitPropCurrent) > lv_life) && (UnitGroupHasUnit(lv_ug, UnitGroupLoopCurrent()) == false)) {
+                lv_life = UnitGetPropertyFixed(UnitGroupLoopCurrent(), c_unitPropLife, c_unitPropCurrent);
+                lv_u = UnitGroupLoopCurrent();
+            }
+
+        }
+        UnitGroupLoopEnd();
+        UnitGroupAdd(lv_ug, lv_u);
+    }
+    UnitGroupAdd(lv_ug, lv_target);
+    autoE7809A11_g = lv_ug;
+    autoE7809A11_u = 1;
+    for ( ; autoE7809A11_u <= UnitGroupCount(autoE7809A11_g, c_unitCountAll) ; autoE7809A11_u += BoolToInt(lv_a == UnitGroupUnit(autoE7809A11_g, autoE7809A11_u)) ) {
+        lv_a = UnitGroupUnit(autoE7809A11_g, autoE7809A11_u);
+        autoC9C94F84_g = lv_ug;
+        autoC9C94F84_u = 1;
+        for ( ; autoC9C94F84_u <= UnitGroupCount(autoC9C94F84_g, c_unitCountAll) ; autoC9C94F84_u += BoolToInt(lv_b == UnitGroupUnit(autoC9C94F84_g, autoC9C94F84_u)) ) {
+            lv_b = UnitGroupUnit(autoC9C94F84_g, autoC9C94F84_u);
+            UnitCreateEffectUnit(lv_a, libGAwX_gv_asplMarkerEffect, lv_b);
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_AsplMarker_Init () {
+    gt_AsplMarker = TriggerCreate("gt_AsplMarker_Func");
+    TriggerAddEventPlayerEffectUsed(gt_AsplMarker, c_playerAny, libGAwX_gv_asplNoticeEffect);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Aspl - Split Template
+//--------------------------------------------------------------------------------------------------
+bool gt_AsplSplitTemplate_Func (bool testConds, bool runActions) {
+    int auto448A309B_ae;
+    int auto448A309B_ai;
+
+    // Variable Declarations
+    unit lv_u;
+    int lv_player;
+    int lv_stack;
+    fixed lv_originalDamage;
+    fixed lv_actuallDamage;
+    unit lv_damager;
+    fixed lv_mainDamage;
+    fixed lv_splitDamage;
+    unitgroup lv_linkedGroup;
+    unit lv_splitTarget;
+    int lv_i;
+
+    // Variable Initialization
+    lv_u = EventUnit();
+    lv_player = EventPlayer();
+    lv_stack = UnitBehaviorCount(lv_u, libGAwX_gv_asplMarkerBuff);
+    lv_originalDamage = EventUnitDamageAbsorbed();
+    lv_actuallDamage = EventUnitDamageAmount();
+    lv_damager = EventUnitDamageSourceUnit();
+    lv_mainDamage = (lv_originalDamage * gv_asplSplitFactor);
+    lv_linkedGroup = UnitGroupEmpty();
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitIsAlive(lv_damager) == true))) {
+            return false;
+        }
+
+        if (!((lv_actuallDamage == 0.0))) {
+            return false;
+        }
+
+        if (!((lv_originalDamage != 0.0))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((lv_stack > 0)) {
+        UnitDamage(lv_damager, libGAwX_gv_asplMainDamageEffect, lv_u, lv_mainDamage);
+        lv_splitDamage = ((lv_originalDamage - lv_mainDamage) / lv_stack);
+        auto448A309B_ae = (lv_stack - 1);
+        auto448A309B_ai = 1;
+        lv_i = 0;
+        for ( ; ( (auto448A309B_ai >= 0 && lv_i <= auto448A309B_ae) || (auto448A309B_ai <= 0 && lv_i >= auto448A309B_ae) ) ; lv_i += auto448A309B_ai ) {
+            lv_splitTarget = UnitBehaviorEffectUnit(lv_u, libGAwX_gv_asplMarkerBuff, c_effectUnitCaster, lv_i);
+            if ((UnitIsAlive(lv_splitTarget) == true)) {
+                UnitDamage(lv_damager, libGAwX_gv_asplSplitDamageEffect, lv_splitTarget, lv_splitDamage);
+            }
+
+        }
+    }
+    else {
+        UnitDamage(lv_damager, libGAwX_gv_asplMainDamageEffect, lv_u, lv_originalDamage);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_AsplSplitTemplate_Init () {
+    gt_AsplSplitTemplate = TriggerCreate("gt_AsplSplitTemplate_Func");
+    TriggerEnable(gt_AsplSplitTemplate, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Aspl - Register
+//--------------------------------------------------------------------------------------------------
+bool gt_AsplRegister_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    trigger lv_trigger;
+    unit lv_u;
+    int lv_uid;
+
+    // Variable Initialization
+    lv_trigger = TriggerCreate("gt_AsplSplitTemplate_Func");;
+    lv_u = EventUnit();
+    lv_uid = UnitGetTag(lv_u);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    GAw3_AddEventUnitDamaged(lv_trigger, lv_u, c_unitDamageTypeAny, c_unitDamageEither, null);
+    libGAwX_gf_SetUnitTriggerMarker(lv_u, libGAwX_gv_asplTriggerMarker, lv_trigger);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_AsplRegister_Init () {
+    gt_AsplRegister = TriggerCreate("gt_AsplRegister_Func");
+    TriggerAddEventUnitBehaviorChange(gt_AsplRegister, null, libGAwX_gv_asplMarkerBuff, c_unitBehaviorChangeActivate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AOmi - Remove All Non-Permanent
+//--------------------------------------------------------------------------------------------------
+bool gt_AOmiRemoveAllNonPermanent_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_unit;
+
+    // Variable Initialization
+    lv_unit = EventUnit();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libGAwX_gf_RemoveAllNonPermanent(lv_unit);
+    UnitBehaviorRemove(lv_unit, gv_aOmiMarker, c_unitBehaviorCountAll);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_AOmiRemoveAllNonPermanent_Init () {
+    gt_AOmiRemoveAllNonPermanent = TriggerCreate("gt_AOmiRemoveAllNonPermanent_Func");
+    TriggerAddEventUnitBehaviorChange(gt_AOmiRemoveAllNonPermanent, null, gv_aOmiPrecursorBuffEntry, c_unitBehaviorChangeActivate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AOmi - Launch
+//--------------------------------------------------------------------------------------------------
+bool gt_AOmiLaunch_Func (bool testConds, bool runActions) {
+    int auto525F557F_ae;
+    int auto525F557F_ai;
+
+    // Variable Declarations
+    unit lv_caster;
+    point lv_casterPoint;
+    fixed lv_angle;
+    int lv_level;
+    int lv_numersThisLevel;
+    fixed lv_delta;
+    point lv_targetPoint;
+    int lv_i;
+
+    // Variable Initialization
+    lv_caster = EventUnit();
+    lv_casterPoint = UnitGetPosition(lv_caster);
+    lv_angle = libNtve_gf_RandomAngle();
+    lv_level = UnitAbilityGetLevel(lv_caster, gv_aOmiAbilEntry);
+    lv_numersThisLevel = (gv_aOmiBaseImages + (gv_aOmiExtraImagePerLevel * lv_level));
+    lv_delta = (360.0 / (lv_numersThisLevel + 1));
+    lv_targetPoint = PointWithOffsetPolar(lv_casterPoint, gv_aOmiRange, lv_angle);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetFacing(lv_caster, lv_angle, 0.0);
+    UnitCreateEffectPoint(lv_caster, gv_aOmiNonMirrorMissileEffectEntry, lv_targetPoint);
+    auto525F557F_ae = lv_numersThisLevel;
+    auto525F557F_ai = 1;
+    lv_i = 1;
+    for ( ; ( (auto525F557F_ai >= 0 && lv_i <= auto525F557F_ae) || (auto525F557F_ai <= 0 && lv_i >= auto525F557F_ae) ) ; lv_i += auto525F557F_ai ) {
+        lv_angle += lv_delta;
+        lv_targetPoint = PointWithOffsetPolar(lv_casterPoint, gv_aOmiRange, lv_angle);
+        UnitCreateEffectPoint(lv_caster, gv_aOmiMissileEffectEntry, lv_targetPoint);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_AOmiLaunch_Init () {
+    gt_AOmiLaunch = TriggerCreate("gt_AOmiLaunch_Func");
+    TriggerAddEventUnitBehaviorChange(gt_AOmiLaunch, null, gv_aOmiPrecursorBuffEntry, c_unitBehaviorChangeDeactivate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AOmi - Marker
+//--------------------------------------------------------------------------------------------------
+bool gt_AOmiMarker_Func (bool testConds, bool runActions) {
+    unitgroup auto397EC100_g;
+    int auto397EC100_u;
+    int auto9AEFBD1C_ae;
+    int auto9AEFBD1C_ai;
+
+    // Variable Declarations
+    unit lv_caster;
+    unit lv_target;
+    unitgroup lv_copysource;
+    unit lv_item;
+    unit lv_itemCopy;
+    int lv_i;
+    string lv_abil;
+    int lv_level;
+    int lv_slot;
+    int lv_container;
+    int lv_c;
+    string lv_buff;
+    int lv_stack;
+
+    // Variable Initialization
+    lv_caster = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+    lv_target = EventPlayerEffectUsedUnit(c_effectUnitTarget);
+    lv_copysource = UnitInventoryGroup(lv_caster);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorAdd(lv_caster, gv_aOmiMarker, lv_target, 1);
+    auto397EC100_g = lv_copysource;
+    auto397EC100_u = 1;
+    for ( ; auto397EC100_u <= UnitGroupCount(auto397EC100_g, c_unitCountAll) ; auto397EC100_u += BoolToInt(lv_item == UnitGroupUnit(auto397EC100_g, auto397EC100_u)) ) {
+        lv_item = UnitGroupUnit(auto397EC100_g, auto397EC100_u);
+        lv_slot = UnitInventorySlot(lv_item);
+        lv_container = UnitInventoryContainer(lv_item);
+        UnitInventoryCreate(lv_target, UnitGetType(lv_item));
+        lv_itemCopy = UnitInventoryLastCreated();
+        UnitInventoryMove(lv_itemCopy, lv_container, lv_slot);
+    }
+    lv_c = UnitBehaviorCountAll(lv_caster);
+    auto9AEFBD1C_ae = lv_c;
+    auto9AEFBD1C_ai = 1;
+    lv_i = 1;
+    for ( ; ( (auto9AEFBD1C_ai >= 0 && lv_i <= auto9AEFBD1C_ae) || (auto9AEFBD1C_ai <= 0 && lv_i >= auto9AEFBD1C_ae) ) ; lv_i += auto9AEFBD1C_ai ) {
+        lv_buff = UnitBehaviorGet(lv_caster, lv_i);
+        if ((lv_buff != "Str") && (lv_buff != "Agi") && (lv_buff != "Int") && (lv_buff != "RetrainNoUse")) {
+            lv_stack = UnitBehaviorCount(lv_caster, lv_buff);
+            UnitBehaviorAdd(lv_target, lv_buff, lv_target, lv_stack);
+        }
+
+    }
+    UnitBehaviorAdd(lv_target, gv_aOmiExtraBuff, lv_caster, 1);
+    Wait(0.0625, c_timeGame);
+    UnitBehaviorAdd(lv_caster, gv_aOmiMarker, lv_target, 1);
+    UnitSetPropertyFixed(lv_target, c_unitPropLifeMax, UnitGetPropertyFixed(lv_caster, c_unitPropLifeMax, c_unitPropCurrent));
+    UnitSetPropertyFixed(lv_target, c_unitPropLife, UnitGetPropertyFixed(lv_caster, c_unitPropLife, c_unitPropCurrent));
+    UnitSetPropertyFixed(lv_target, c_unitPropEnergyMax, UnitGetPropertyFixed(lv_caster, c_unitPropEnergyMax, c_unitPropCurrent));
+    UnitSetPropertyFixed(lv_target, c_unitPropEnergy, UnitGetPropertyFixed(lv_caster, c_unitPropEnergy, c_unitPropCurrent));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_AOmiMarker_Init () {
+    gt_AOmiMarker = TriggerCreate("gt_AOmiMarker_Func");
+    TriggerAddEventPlayerEffectUsed(gt_AOmiMarker, c_playerAny, "AOmiSpawnEffect");
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: Aegr - Elune's Grace - Register
 //--------------------------------------------------------------------------------------------------
 bool gt_AegrElunesGraceRegister_Func (bool testConds, bool runActions) {
@@ -4714,6 +5067,13 @@ bool gt_UnitDied_Func (bool testConds, bool runActions) {
     lv_killUnit = libNtve_gf_KillingUnit();
     lv_killPlayer = libNtve_gf_KillingPlayer();
 
+    // Conditions
+    if (testConds) {
+        if (!((UnitFilterMatch(lv_unit, UnitGetOwner(lv_unit), UnitFilter(0, (1 << (c_targetFilterHallucination - 32)), 0, 0)) == false))) {
+            return false;
+        }
+    }
+
     // Actions
     if (!runActions) {
         return true;
@@ -4906,6 +5266,12 @@ void InitTriggers () {
     gt_ScoreBoardInizialization_Init();
     gt_TimerInizialization_Init();
     gt_PlayerInizialization_Init();
+    gt_AsplMarker_Init();
+    gt_AsplSplitTemplate_Init();
+    gt_AsplRegister_Init();
+    gt_AOmiRemoveAllNonPermanent_Init();
+    gt_AOmiLaunch_Init();
+    gt_AOmiMarker_Init();
     gt_AegrElunesGraceRegister_Init();
     gt_AegrElunesGraceDamaged_Init();
     gt_AdefDefendInitRegister_Init();

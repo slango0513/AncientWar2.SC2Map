@@ -29,6 +29,14 @@
         <CombineArray value="EnemiesNearby1"/>
         <CombineArray value="NoEnemiesNearby9"/>
     </CValidatorCombine>
+    <CValidatorPlayerRequirement id="CasterHasDebuff">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="HasDebuff"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorUnitFilters id="NotVillager">
+        <Filters value="-;Destructible"/>
+    </CValidatorUnitFilters>
     <CValidatorCombine id="SubmergeValidator">
         <CombineArray value="CliffLevelEqualOrLesserEnemiesNearby5"/>
         <CombineArray value="NotAttackingAndNotInCombatWar3"/>
@@ -64,6 +72,10 @@
         <Type value="And"/>
         <CombineArray value="AttackingOrInCombatWar3"/>
         <CombineArray value="CasterLifeLT90Percent"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="CasterInCombatOrCasterHasDebuff">
+        <CombineArray value="CasterInCombat"/>
+        <CombineArray value="CasterHasDebuff"/>
     </CValidatorCombine>
     <CValidatorUnitCompareBehaviorCount id="CasterIsNotPreviewer">
         <Behavior value="Previewer"/>
@@ -127,6 +139,9 @@
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NoDoom">
         <Behavior value="BNdo"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoHex">
+        <Behavior value="BOhx"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NoInvisibility">
         <Behavior value="Binv"/>
@@ -200,6 +215,9 @@
         <Value value="amph"/>
         <Find value="1"/>
     </CValidatorUnitMover>
+    <CValidatorUnitFilters id="TargetIsNotVisible">
+        <Filters value="-;Visible"/>
+    </CValidatorUnitFilters>
     <CValidatorUnitMover id="TargetIsRider">
         <Value value="horse"/>
         <Find value="1"/>

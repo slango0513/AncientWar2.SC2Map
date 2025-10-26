@@ -16,7 +16,7 @@
         <LifeRegenRate value="0.0625"/>
     </CUnit>
     <CUnit default="1" id="AW2_Army" parent="War3_Army">
-        <DeathTime value="30"/>
+        <DeathTime value="20"/>
         <DeathRevealRadius value="0"/>
         <FogVisibility value="Snapshot"/>
         <AbilArray Link="Asud"/>
@@ -264,10 +264,10 @@
     <!--Hero$warden-->
     <CUnit id="Ewar" parent="AW2_Army" defType="SMALL">
         <Attributes index="small" value="1"/>
-        <CostResource index="gold" value="1800"/>
-        <KillResource index="gold" value="15"/>
-        <LifeStart value="450"/>
-        <LifeMax value="450"/>
+        <CostResource index="gold" value="3600"/>
+        <KillResource index="gold" value="30"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
         <Speed value="2"/>
         <Race value="NightElf"/>
         <Mover value="foot"/>
@@ -381,7 +381,6 @@
         <WeaponArray index="1" removed="1"/>
         <GlossaryCategory value="Unit/Category/HumanUnits"/>
         <GlossaryWeakArray value="nhym"/>
-        <LifeArmor value="10"/>
     </CUnit>
     <!--jaina-->
     <CUnit id="Hjai" parent="AW2_Army" defType="NONE">
@@ -467,7 +466,6 @@
         <WeaponArray index="1" removed="1"/>
         <GlossaryCategory value="Unit/Category/HumanUnits"/>
         <GlossaryWeakArray value="nhym"/>
-        <LifeArmor value="10"/>
     </CUnit>
     <!--uther-->
     <CUnit id="Huth" parent="AW2_Army" defType="LARGE">
@@ -491,7 +489,6 @@
         <WeaponArray index="1" removed="1"/>
         <GlossaryCategory value="Unit/Category/HumanUnits"/>
         <GlossaryWeakArray value="nhym"/>
-        <LifeArmor value="10"/>
     </CUnit>
     <!--sylvanus windrunner-->
     <CUnit id="Hvwd" parent="AW2_Army" defType="MEDIUM">
@@ -519,27 +516,26 @@
         <GlossaryWeakArray value="hfoo"/>
     </CUnit>
     <!--blackrock blademaster-->
-    <CUnit id="Nbbc" parent="AW2_Army" defType="LARGE">
-        <Attributes index="large" value="1"/>
-        <CostResource index="gold" value="2250"/>
+    <CUnit id="Nbbc" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="4500"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="1222"/>
-        <LifeMax value="1222"/>
+        <LifeStart value="1500"/>
+        <LifeMax value="1500"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
         <GlossaryCategory value="Unit/Category/OrcUnits"/>
         <AbilArray Link="Aion"/>
-        <AbilArray Link="UpgradeToOpgh"/>
         <AbilArray Link="AIpv"/>
+        <AbilArray Link="AOmi"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="Opgh" Type="AbilCmd" AbilCmd="UpgradeToOpgh,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="AIpv" Type="AbilCmd" AbilCmd="AIpv,0" Row="2" Column="0"/>
+            <LayoutButtons Face="AOmi" Type="AbilCmd" AbilCmd="AOmi,Execute" Row="2" Column="1"/>
         </CardLayouts>
-        <EnergyStart value="500"/>
-        <EnergyMax value="500"/>
         <WeaponArray index="1" removed="1"/>
         <PlaneArray index="Ground" value="1"/>
+        <Name value="Nbbc/Propernames"/>
     </CUnit>
     <!--HeroBansheeRanger-->
     <CUnit id="Nbrn" parent="AW2_Army" defType="MEDIUM">
@@ -567,8 +563,6 @@
         <GlossaryStrongArray value="orai"/>
         <GlossaryWeakArray value="hfoo"/>
         <WeaponArray index="1" removed="1"/>
-        <EnergyStart value="60"/>
-        <EnergyMax value="60"/>
     </CUnit>
     <CUnit id="NightElfPreviewer" parent="War3_Item" defType="">
         <FogVisibility value="Snapshot"/>
@@ -712,37 +706,74 @@
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--HeroBladeMaster-->
-    <CUnit id="Obla" parent="AW2_Army" defType="MEDIUM">
-        <Attributes index="medium" value="1"/>
-        <CostResource index="gold" value="750"/>
+    <CUnit id="Obla" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="1500"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="1222"/>
-        <LifeMax value="1222"/>
+        <LifeStart value="1500"/>
+        <LifeMax value="1500"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
         <GlossaryCategory value="Unit/Category/OrcUnits"/>
         <AbilArray Link="Aion"/>
         <AbilArray Link="UpgradeToNbbc"/>
-        <AbilArray Link="UpgradeToOgrh"/>
-        <AbilArray Link="AIpv"/>
+        <AbilArray Link="AOcr"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Nbbc" Type="AbilCmd" AbilCmd="UpgradeToNbbc,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="Ogrh" Type="AbilCmd" AbilCmd="UpgradeToOgrh,Execute" Row="0" Column="1"/>
-            <LayoutButtons Face="AIpv" Type="AbilCmd" AbilCmd="AIpv,0" Row="2" Column="0"/>
+            <LayoutButtons Face="AOcr1" Type="Passive" Behavior="AOcr" Row="2" Column="1"/>
         </CardLayouts>
-        <EnergyStart value="500"/>
-        <EnergyMax value="500"/>
         <WeaponArray index="1" removed="1"/>
         <PlaneArray index="Ground" value="1"/>
+    </CUnit>
+    <CUnit id="Obl2" parent="AW2_Army" defType="NONE">
+        <Race value="Orc"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Attributes index="none" value="1"/>
+        <LifeStart value="1500"/>
+        <LifeMax value="1500"/>
+        <Mover value="foot"/>
+        <Speed value="2"/>
+        <CostResource index="gold" value="1500"/>
+        <KillResource index="gold" value="75"/>
+        <AbilArray Link="Aion"/>
+        <AbilArray Link="AOmi"/>
+        <WeaponArray index="1" removed="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AOmi" Type="AbilCmd" AbilCmd="AOmi,Execute" Row="2" Column="1"/>
+        </CardLayouts>
+        <GlossaryCategory value="Unit/Category/OrcUnits"/>
+    </CUnit>
+    <!--cairne bloodhoof-->
+    <CUnit id="Ocbh" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="5400"/>
+        <KillResource index="gold" value="90"/>
+        <LifeStart value="2100"/>
+        <LifeMax value="2100"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <GlossaryCategory value="Unit/Category/OrcUnits"/>
+        <AbilArray Link="Aion"/>
+        <AbilArray Link="AOws"/>
+        <BehaviorArray Link="tauren"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AOws" Type="AbilCmd" AbilCmd="AOws,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <Subtitle value="TaurenClass"/>
+        <WeaponArray index="1" removed="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <LifeArmor value="10"/>
+        <Name value="Ocbh/Propernames"/>
     </CUnit>
     <!--HeroFarSeer-->
     <CUnit id="Ofar" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
-        <CostResource index="gold" value="750"/>
+        <CostResource index="gold" value="1500"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="1205"/>
-        <LifeMax value="1205"/>
+        <LifeStart value="900"/>
+        <LifeMax value="900"/>
         <Speed value="3"/>
         <Race value="Orc"/>
         <Mover value="horse"/>
@@ -754,8 +785,8 @@
             <LayoutButtons Face="Othr" Type="AbilCmd" AbilCmd="UpgradeToOthr,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="AOsf" Type="AbilCmd" AbilCmd="AOsf,Execute" Row="2" Column="0"/>
         </CardLayouts>
-        <EnergyStart value="100"/>
-        <EnergyMax value="100"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
         <WeaponArray index="1" removed="1"/>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
@@ -772,17 +803,16 @@
         <GlossaryCategory value="Unit/Category/OrcUnits"/>
         <AbilArray Link="Aion"/>
         <AbilArray Link="UpgradeToOpgh"/>
-        <AbilArray Link="UpgradeToObla"/>
         <BehaviorArray Link="Asal"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Opgh" Type="AbilCmd" AbilCmd="UpgradeToOpgh,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="Obla" Type="AbilCmd" AbilCmd="UpgradeToObla,Execute" Row="0" Column="2"/>
             <LayoutButtons Face="Asal" Type="Passive" Behavior="Asal" Row="2" Column="0"/>
         </CardLayouts>
         <EnergyStart value="500"/>
         <EnergyMax value="500"/>
         <WeaponArray index="1" removed="1"/>
         <PlaneArray index="Ground" value="1"/>
+        <Name value="Ogrh/Propernames"/>
     </CUnit>
     <!--possessed grom hellscream-->
     <CUnit id="Opgh" parent="AW2_Army" defType="LARGE">
@@ -796,16 +826,15 @@
         <Mover value="foot"/>
         <GlossaryCategory value="Unit/Category/OrcUnits"/>
         <AbilArray Link="Aion"/>
-        <AbilArray Link="UpgradeToNbbc"/>
         <BehaviorArray Link="Asal"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="Nbbc" Type="AbilCmd" AbilCmd="UpgradeToNbbc,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="Asal" Type="Passive" Behavior="Asal" Row="2" Column="0"/>
         </CardLayouts>
         <EnergyStart value="500"/>
         <EnergyMax value="500"/>
         <WeaponArray index="1" removed="1"/>
         <PlaneArray index="Ground" value="1"/>
+        <Name value="Opgh/Propernames"/>
     </CUnit>
     <CUnit id="OrcPreviewer" parent="War3_Item" defType="">
         <FogVisibility value="Snapshot"/>
@@ -827,10 +856,8 @@
         <GlossaryCategory value="Unit/Category/OrcUnits"/>
         <AbilArray Link="Aion"/>
         <AbilArray Link="AOhx"/>
-        <AbilArray Link="AOsw"/>
         <CardLayouts index="0">
             <LayoutButtons Face="AOhx" Type="AbilCmd" AbilCmd="AOhx,0" Row="2" Column="0"/>
-            <LayoutButtons Face="AOsw" Type="AbilCmd" AbilCmd="AOsw,0" Row="2" Column="1"/>
         </CardLayouts>
         <Radius value="0.3125"/>
         <MinimapRadius value="0.3125"/>
@@ -839,59 +866,54 @@
         <FlagArray index="AICaster" value="1"/>
         <FlagArray index="AIPressForwardDisabled" value="1"/>
         <WeaponArray index="1" removed="1"/>
-        <EnergyStart value="100"/>
-        <EnergyMax value="100"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--HeroTaurenChieftain-->
-    <CUnit id="Otch" parent="AW2_Army" defType="FORT">
-        <Attributes index="fort" value="1"/>
-        <CostResource index="gold" value="2250"/>
-        <KillResource index="gold" value="75"/>
-        <LifeStart value="1105"/>
-        <LifeMax value="1105"/>
+    <CUnit id="Otch" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="5400"/>
+        <KillResource index="gold" value="90"/>
+        <LifeStart value="2100"/>
+        <LifeMax value="2100"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
         <GlossaryCategory value="Unit/Category/OrcUnits"/>
         <AbilArray Link="Aion"/>
-        <AbilArray Link="AOsh"/>
+        <AbilArray Link="AOae"/>
         <AbilArray Link="AOre"/>
-        <AbilArray Link="AOws"/>
         <BehaviorArray Link="tauren"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="AOsh" Type="AbilCmd" AbilCmd="AOsh,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="AOws" Type="AbilCmd" AbilCmd="AOws,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="AOre" Type="Passive" Behavior="AOre" Row="2" Column="2"/>
+            <LayoutButtons Face="AOae1" Type="Passive" Behavior="AOae1" Row="2" Column="0"/>
+            <LayoutButtons Face="AOre" Type="Passive" Behavior="AOre" Row="2" Column="1"/>
         </CardLayouts>
         <Subtitle value="TaurenClass"/>
-        <EnergyStart value="100"/>
-        <EnergyMax value="100"/>
         <WeaponArray index="1" removed="1"/>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--thrall-->
     <CUnit id="Othr" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
-        <CostResource index="gold" value="2250"/>
+        <CostResource index="gold" value="4500"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="1205"/>
-        <LifeMax value="1205"/>
+        <LifeStart value="900"/>
+        <LifeMax value="900"/>
         <Speed value="3"/>
         <Race value="Orc"/>
         <Mover value="horse"/>
         <GlossaryCategory value="Unit/Category/OrcUnits"/>
         <AbilArray Link="Aion"/>
-        <AbilArray Link="AOsf"/>
         <AbilArray Link="AOfs"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="AOfs" Type="AbilCmd" AbilCmd="AOfs,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="AOsf" Type="AbilCmd" AbilCmd="AOsf,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="AOfs" Type="AbilCmd" AbilCmd="AOfs,Execute" Row="2" Column="0"/>
         </CardLayouts>
-        <EnergyStart value="100"/>
-        <EnergyMax value="100"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
         <WeaponArray index="1" removed="1"/>
         <PlaneArray index="Ground" value="1"/>
+        <Name value="Othr/Propernames"/>
     </CUnit>
     <!-- Unit Pathing Blockers do not perform as well as doodad Pathing Blockers, however, they can be dynamically turned on and off through triggers. -->
     <CUnit id="PathingBlocker1x1">
@@ -1047,7 +1069,6 @@
             <LayoutButtons Face="Aroa" Type="AbilCmd" AbilCmd="Aroa,0" Row="2" Column="0"/>
         </CardLayouts>
         <GlossaryCategory value="Unit/Category/NightElfUnits"/>
-        <LifeArmor value="10"/>
         <EnergyStart value="60"/>
         <EnergyMax value="60"/>
     </CUnit>
@@ -1056,8 +1077,8 @@
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="1500"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="1200"/>
-        <LifeMax value="1200"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
         <Speed value="2"/>
         <Race value="NightElf"/>
         <Mover value="foot"/>
@@ -1070,7 +1091,6 @@
             <LayoutButtons Face="Arej" Type="AbilCmd" AbilCmd="Arej,0" Row="2" Column="0"/>
         </CardLayouts>
         <GlossaryCategory value="Unit/Category/NightElfUnits"/>
-        <LifeArmor value="10"/>
         <EnergyStart value="60"/>
         <EnergyMax value="60"/>
     </CUnit>
@@ -1193,8 +1213,6 @@
         <GlossaryStrongArray value="Obla"/>
         <GlossaryStrongArray value="orai"/>
         <GlossaryWeakArray value="hfoo"/>
-        <EnergyStart value="60"/>
-        <EnergyMax value="60"/>
     </CUnit>
     <!--Wisp-->
     <CUnit id="ewsp" parent="AW2_Peon">
@@ -1327,8 +1345,8 @@
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="300"/>
         <KillResource index="gold" value="5"/>
-        <LifeStart value="250"/>
-        <LifeMax value="250"/>
+        <LifeStart value="150"/>
+        <LifeMax value="150"/>
         <Speed value="2"/>
         <Race value="Human"/>
         <Mover value="foot"/>
@@ -1404,8 +1422,8 @@
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="900"/>
         <KillResource index="gold" value="5"/>
-        <LifeStart value="250"/>
-        <LifeMax value="250"/>
+        <LifeStart value="150"/>
+        <LifeMax value="150"/>
         <Speed value="2"/>
         <Race value="Human"/>
         <Mover value="foot"/>
@@ -1928,20 +1946,18 @@
     <!--Chaos Kodo Beast-->
     <CUnit id="nckb" parent="AW2_Army" defType="MEDIUM">
         <Attributes index="medium" value="1"/>
-        <CostResource index="gold" value="2250"/>
+        <CostResource index="gold" value="4500"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="1321"/>
-        <LifeMax value="1321"/>
+        <LifeStart value="1200"/>
+        <LifeMax value="1200"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="horse"/>
         <GlossaryCategory value="Unit/Category/OrcUnits"/>
         <AbilArray Link="Aion"/>
-        <AbilArray Link="AOae"/>
+        <BehaviorArray Link="Aakb"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="AOae2" Type="Passive" Requirements="HeroPassiveButtonLevel2" Row="2" Column="0"/>
-            <LayoutButtons Face="AOae3" Type="Passive" Requirements="HeroPassiveButtonLevel3" Row="2" Column="0"/>
-            <LayoutButtons Face="AOae1" Type="Passive" Requirements="HeroPassiveButtonLevel1" Row="2" Column="0"/>
+            <LayoutButtons Face="Aakb" Type="Passive" Behavior="Aakb" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
@@ -1982,7 +1998,7 @@
     <!--dark troll shadow priest-->
     <CUnit id="ndtp" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
-        <CostResource index="gold" value="900"/>
+        <CostResource index="gold" value="1800"/>
         <KillResource index="gold" value="15"/>
         <LifeStart value="25"/>
         <LifeMax value="25"/>
@@ -1999,8 +2015,8 @@
         <MinimapRadius value="0.375"/>
         <SeparationRadius value="0.375"/>
         <InnerRadius value="0.375"/>
-        <EnergyMax value="100"/>
-        <EnergyStart value="100"/>
+        <EnergyMax value="60"/>
+        <EnergyStart value="60"/>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--emissary-->
@@ -2049,7 +2065,6 @@
             <LayoutButtons Face="ANca" Type="Passive" Behavior="ANca" Row="2" Column="0"/>
             <LayoutButtons Face="Aap1" Type="Passive" Behavior="Aap1" Row="2" Column="1"/>
         </CardLayouts>
-        <LifeArmor value="10"/>
     </CUnit>
     <!--NightElf flag-->
     <CUnit id="nflg" parent="AW2_Phalanx">
@@ -2060,7 +2075,7 @@
     <!--forest troll high priest-->
     <CUnit id="nfsh" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
-        <CostResource index="gold" value="900"/>
+        <CostResource index="gold" value="1800"/>
         <KillResource index="gold" value="15"/>
         <LifeStart value="25"/>
         <LifeMax value="25"/>
@@ -2077,14 +2092,14 @@
         <MinimapRadius value="0.375"/>
         <SeparationRadius value="0.375"/>
         <InnerRadius value="0.375"/>
-        <EnergyMax value="100"/>
-        <EnergyStart value="100"/>
+        <EnergyMax value="60"/>
+        <EnergyStart value="60"/>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--forest troll shadow priest-->
     <CUnit id="nfsp" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
-        <CostResource index="gold" value="900"/>
+        <CostResource index="gold" value="1800"/>
         <KillResource index="gold" value="15"/>
         <LifeStart value="25"/>
         <LifeMax value="25"/>
@@ -2110,8 +2125,8 @@
     <!--forest troll berserker-->
     <CUnit id="nftb" parent="AW2_Army" defType="MEDIUM">
         <Attributes index="medium" value="1"/>
-        <CostResource index="gold" value="450"/>
-        <KillResource index="gold" value="5"/>
+        <CostResource index="gold" value="1800"/>
+        <KillResource index="gold" value="15"/>
         <LifeStart value="25"/>
         <LifeMax value="25"/>
         <Speed value="2"/>
@@ -2119,9 +2134,9 @@
         <Mover value="foot"/>
         <GlossaryCategory value="Unit/Category/OrcUnits"/>
         <AbilArray Link="Aion"/>
-        <AbilArray Link="ACen"/>
+        <AbilArray Link="Abs2"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ACen" Type="AbilCmd" AbilCmd="ACen,0" Row="2" Column="0"/>
+            <LayoutButtons Face="Abs2" Type="AbilCmd" AbilCmd="Abs2,0" Row="2" Column="0"/>
         </CardLayouts>
         <Radius value="0.375"/>
         <MinimapRadius value="0.375"/>
@@ -2150,8 +2165,8 @@
     <!--ForestTrollTrapper-->
     <CUnit id="nftt" parent="AW2_Army" defType="MEDIUM">
         <Attributes index="medium" value="1"/>
-        <CostResource index="gold" value="150"/>
-        <KillResource index="gold" value="5"/>
+        <CostResource index="gold" value="600"/>
+        <KillResource index="gold" value="15"/>
         <LifeStart value="25"/>
         <LifeMax value="25"/>
         <Speed value="2"/>
@@ -2162,7 +2177,6 @@
         <AbilArray Link="UpgradeTonftb"/>
         <CardLayouts index="0">
             <LayoutButtons Face="nftb" Type="AbilCmd" AbilCmd="UpgradeTonftb,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="ACen" Type="AbilCmd" AbilCmd="ACen,0" Row="2" Column="0"/>
         </CardLayouts>
         <Radius value="0.375"/>
         <MinimapRadius value="0.375"/>
@@ -2170,6 +2184,27 @@
         <InnerRadius value="0.375"/>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
+    <CUnit id="nft3" parent="AW2_Army" defType="MEDIUM">
+        <Race value="Orc"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Attributes index="medium" value="1"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Mover value="foot"/>
+        <Speed value="2"/>
+        <KillResource index="gold" value="15"/>
+        <AbilArray Link="Aion"/>
+        <AbilArray Link="Abs2"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Abs2" Type="AbilCmd" AbilCmd="Abs2,0" Row="2" Column="0"/>
+        </CardLayouts>
+        <Radius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <GlossaryCategory value="Unit/Category/OrcUnits"/>
+    </CUnit>
+    <CUnit id="nft31LM" parent="War3_Missile"/>
     <!--ghost-->
     <CUnit id="ngh1" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
@@ -2355,7 +2390,7 @@
     <!--ice troll priest-->
     <CUnit id="nitp" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
-        <CostResource index="gold" value="300"/>
+        <CostResource index="gold" value="600"/>
         <KillResource index="gold" value="15"/>
         <LifeStart value="25"/>
         <LifeMax value="25"/>
@@ -2376,8 +2411,8 @@
         <MinimapRadius value="0.375"/>
         <SeparationRadius value="0.375"/>
         <InnerRadius value="0.375"/>
-        <EnergyMax value="100"/>
-        <EnergyStart value="100"/>
+        <EnergyMax value="60"/>
+        <EnergyStart value="60"/>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--IceTroll-->
@@ -2407,28 +2442,29 @@
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="4500"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="1200"/>
-        <LifeMax value="1200"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
         <Speed value="2"/>
         <Race value="Naga"/>
         <Mover value="amph"/>
         <AbilArray Link="NagaInventory"/>
         <AbilArray Link="AHad"/>
         <BehaviorArray Link="naga"/>
+        <BehaviorArray Link="ANbh"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="AHad1" Type="Passive" Behavior="AHad" Row="2" Column="0"/>
+            <LayoutButtons Face="ANbh" Type="Passive" Behavior="ANbh" Row="2" Column="0"/>
+            <LayoutButtons Face="AHad1" Type="Passive" Behavior="AHad" Row="2" Column="1"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
-        <LifeArmor value="10"/>
     </CUnit>
     <!--makrura prawn-->
     <CUnit id="nlpr" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="1500"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="1200"/>
-        <LifeMax value="1200"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
         <Speed value="2"/>
         <Race value="Naga"/>
         <Mover value="amph"/>
@@ -2436,23 +2472,37 @@
         <AbilArray Link="UpgradeTonltc"/>
         <AbilArray Link="UpgradeTonlkl"/>
         <BehaviorArray Link="naga"/>
-        <BehaviorArray Link="ANbh"/>
         <CardLayouts index="0">
             <LayoutButtons Face="nlkl" Type="AbilCmd" AbilCmd="UpgradeTonlkl,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="nltc" Type="AbilCmd" AbilCmd="UpgradeTonltc,Execute" Row="0" Column="1"/>
-            <LayoutButtons Face="ANbh" Type="Passive" Behavior="ANbh" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
-        <LifeArmor value="10"/>
+    </CUnit>
+    <CUnit id="nlp2" parent="AW2_Army" defType="LARGE">
+        <Race value="Naga"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Attributes index="large" value="1"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
+        <Mover value="amph"/>
+        <Speed value="2"/>
+        <KillResource index="gold" value="75"/>
+        <AbilArray Link="NagaInventory"/>
+        <BehaviorArray Link="naga"/>
+        <BehaviorArray Link="ANbh"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ANbh" Type="Passive" Behavior="ANbh" Row="2" Column="0"/>
+        </CardLayouts>
+        <GlossaryCategory value="Unit/Category/NagaUnits"/>
     </CUnit>
     <!--makrura tide caller-->
     <CUnit id="nltc" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="4500"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="1200"/>
-        <LifeMax value="1200"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
         <Speed value="2"/>
         <Race value="Naga"/>
         <Mover value="amph"/>
@@ -2464,7 +2514,6 @@
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
-        <LifeArmor value="10"/>
     </CUnit>
     <!--mur'gul blood-gill-->
     <CUnit id="nmbg">
@@ -2666,8 +2715,8 @@
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="1800"/>
         <KillResource index="gold" value="90"/>
-        <LifeStart value="1800"/>
-        <LifeMax value="1800"/>
+        <LifeStart value="2100"/>
+        <LifeMax value="2100"/>
         <Speed value="2"/>
         <Race value="Naga"/>
         <Mover value="amph"/>
@@ -2687,14 +2736,13 @@
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
-        <LifeArmor value="10"/>
     </CUnit>
     <!--naga myrmidon submerged-->
     <CUnit id="nmys" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
         <KillResource index="gold" value="90"/>
-        <LifeStart value="1800"/>
-        <LifeMax value="1800"/>
+        <LifeStart value="2100"/>
+        <LifeMax value="2100"/>
         <Race value="Naga"/>
         <Mover value="amph"/>
         <AbilArray Link="NagaInventory"/>
@@ -2710,7 +2758,6 @@
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
-        <LifeArmor value="10"/>
         <FlagArray index="Movable" value="0"/>
         <Description value="nmyr/Ubertip"/>
     </CUnit>
@@ -2739,8 +2786,8 @@
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="5400"/>
         <KillResource index="gold" value="90"/>
-        <LifeStart value="1800"/>
-        <LifeMax value="1800"/>
+        <LifeStart value="2100"/>
+        <LifeMax value="2100"/>
         <Speed value="2"/>
         <Race value="Naga"/>
         <Mover value="amph"/>
@@ -2758,14 +2805,13 @@
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
-        <LifeArmor value="10"/>
     </CUnit>
     <!--naga royal guard submerged-->
     <CUnit id="nnrs" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
         <KillResource index="gold" value="90"/>
-        <LifeStart value="1800"/>
-        <LifeMax value="1800"/>
+        <LifeStart value="2100"/>
+        <LifeMax value="2100"/>
         <Race value="Naga"/>
         <Mover value="amph"/>
         <AbilArray Link="NagaInventory"/>
@@ -2781,7 +2827,6 @@
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
-        <LifeArmor value="10"/>
         <FlagArray index="Movable" value="0"/>
         <Description value="nnrg/Ubertip"/>
     </CUnit>
@@ -3019,10 +3064,10 @@
     <!--night elf assassin-->
     <CUnit id="nssn" parent="AW2_Army" defType="SMALL">
         <Attributes index="small" value="1"/>
-        <CostResource index="gold" value="600"/>
-        <KillResource index="gold" value="15"/>
-        <LifeStart value="900"/>
-        <LifeMax value="900"/>
+        <CostResource index="gold" value="1200"/>
+        <KillResource index="gold" value="30"/>
+        <LifeStart value="1200"/>
+        <LifeMax value="1200"/>
         <Speed value="2"/>
         <Race value="NightElf"/>
         <Mover value="foot"/>
@@ -3042,11 +3087,11 @@
         <Race value="NightElf"/>
         <PlaneArray index="Ground" value="1"/>
         <Attributes index="small" value="1"/>
-        <LifeStart value="450"/>
-        <LifeMax value="450"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
         <Mover value="foot"/>
         <Speed value="2"/>
-        <KillResource index="gold" value="15"/>
+        <KillResource index="gold" value="30"/>
         <AbilArray Link="Aien"/>
         <AbilArray Link="AEbl"/>
         <CardLayouts index="0">
@@ -3240,7 +3285,6 @@
         <Collide index="ForceField" value="0"/>
         <Collide index="Flying" value="1"/>
         <PlaneArray index="Air" value="1"/>
-        <GlossaryCategory value="Unit/Category/NagaUnits"/>
         <Height value="1.875"/>
     </CUnit>
     <!--dragon hawk-->
@@ -3258,7 +3302,7 @@
     <!--WitchDoctor-->
     <CUnit id="odoc" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
-        <CostResource index="gold" value="600"/>
+        <CostResource index="gold" value="1800"/>
         <KillResource index="gold" value="30"/>
         <LifeStart value="25"/>
         <LifeMax value="25"/>
@@ -3277,10 +3321,8 @@
         <MinimapRadius value="0.3125"/>
         <SeparationRadius value="0.3125"/>
         <InnerRadius value="0.3125"/>
-        <FlagArray index="AICaster" value="1"/>
-        <FlagArray index="AIPressForwardDisabled" value="1"/>
-        <EnergyStart value="100"/>
-        <EnergyMax value="100"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--Orb of Fire-->
@@ -3320,7 +3362,7 @@
     <!--HeadHunter-->
     <CUnit id="ohun" parent="AW2_Army" defType="MEDIUM">
         <Attributes index="medium" value="1"/>
-        <CostResource index="gold" value="150"/>
+        <CostResource index="gold" value="300"/>
         <KillResource index="gold" value="5"/>
         <LifeStart value="25"/>
         <LifeMax value="25"/>
@@ -3335,39 +3377,51 @@
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
+    <CUnit id="ohu2" parent="AW2_Army" defType="MEDIUM">
+        <Race value="Orc"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Attributes index="medium" value="1"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Mover value="foot"/>
+        <Speed value="2"/>
+        <KillResource index="gold" value="5"/>
+        <AbilArray Link="Aion"/>
+        <AbilArray Link="Abs2"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Abs2" Type="AbilCmd" AbilCmd="Abs2,0" Row="2" Column="0"/>
+        </CardLayouts>
+        <GlossaryCategory value="Unit/Category/OrcUnits"/>
+    </CUnit>
+    <CUnit id="ohu21LM" parent="War3_Missile"/>
     <!--Healing $ward-->
-    <CUnit id="ohwd" parent="War3_Sationary" defType="NONE">
-        <Attributes index="none" value="1"/>
+    <CUnit id="ohwd" parent="AW2_Sationary" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
         <BehaviorArray Link="Aoar"/>
-        <LifeStart value="5"/>
-        <LifeMax value="5"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
-        <FlagArray index="AILifetime" value="1"/>
-        <FlagArray index="AIHighPrioTarget" value="1"/>
-        <FlagArray index="AISupport" value="1"/>
         <Radius value="0.3125"/>
         <MinimapRadius value="0.3125"/>
         <SeparationRadius value="0.3125"/>
         <InnerRadius value="0.3125"/>
     </CUnit>
     <!--KodoBeast-->
-    <CUnit id="okod" parent="AW2_Army" defType="MEDIUM">
-        <Attributes index="medium" value="1"/>
-        <CostResource index="gold" value="750"/>
+    <CUnit id="okod" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="1500"/>
         <KillResource index="gold" value="75"/>
-        <LifeStart value="1321"/>
-        <LifeMax value="1321"/>
+        <LifeStart value="1200"/>
+        <LifeMax value="1200"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="horse"/>
         <GlossaryCategory value="Unit/Category/OrcUnits"/>
         <AbilArray Link="Aion"/>
         <AbilArray Link="UpgradeTonckb"/>
-        <BehaviorArray Link="Aakb"/>
         <CardLayouts index="0">
             <LayoutButtons Face="nckb" Type="AbilCmd" AbilCmd="UpgradeTonckb,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="Aakb" Type="Passive" Behavior="Aakb" Row="2" Column="0"/>
         </CardLayouts>
         <FlagArray index="HiddenCargoUI" value="1"/>
         <PlaneArray index="Ground" value="1"/>
@@ -3375,6 +3429,27 @@
     <!--Orb of Lightning-->
     <CUnit id="oli2" parent="AW2_Item">
         <CostResource index="gold" value="900"/>
+    </CUnit>
+    <!--mathog-->
+    <CUnit id="omtg" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="3600"/>
+        <KillResource index="gold" value="30"/>
+        <LifeStart value="900"/>
+        <LifeMax value="900"/>
+        <Speed value="3"/>
+        <Race value="Orc"/>
+        <Mover value="horse"/>
+        <GlossaryCategory value="Unit/Category/OrcUnits"/>
+        <AbilArray Link="Aion"/>
+        <AbilArray Link="ACac"/>
+        <BehaviorArray Link="Asal"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Asal" Type="Passive" Behavior="Asal" Row="2" Column="0"/>
+            <LayoutButtons Face="ACac" Type="Passive" Behavior="ACac" Row="2" Column="1"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+        <LifeArmor value="10"/>
     </CUnit>
     <!--Peon-->
     <CUnit id="opeo" parent="AW2_Peon">
@@ -3439,17 +3514,18 @@
         <CardLayouts CardId="Buil">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
             <LayoutButtons Face="ogru" Type="AbilCmd" AbilCmd="AObu,Build5" Row="0" Column="0"/>
-            <LayoutButtons Face="Obla" Type="AbilCmd" AbilCmd="AObu,Build13" Row="0" Column="1"/>
+            <LayoutButtons Face="owar" Type="AbilCmd" AbilCmd="AObu,Build28" Row="0" Column="1"/>
             <LayoutButtons Face="orai" Type="AbilCmd" AbilCmd="AObu,Build7" Row="0" Column="2"/>
             <LayoutButtons Face="otau" Type="AbilCmd" AbilCmd="AObu,Build11" Row="0" Column="3"/>
             <LayoutButtons Face="ohun" Type="AbilCmd" AbilCmd="AObu,Build9" Row="1" Column="0"/>
             <LayoutButtons Face="Ofar" Type="AbilCmd" AbilCmd="AObu,Build26" Row="1" Column="2"/>
             <LayoutButtons Face="nftt" Type="AbilCmd" AbilCmd="AObu,Build3" Row="1" Column="1"/>
             <LayoutButtons Face="nitp" Type="AbilCmd" AbilCmd="AObu,Build24" Row="2" Column="0"/>
-            <LayoutButtons Face="oshm" Type="AbilCmd" AbilCmd="AObu,Build21" Row="2" Column="1"/>
-            <LayoutButtons Face="odoc" Type="AbilCmd" AbilCmd="AObu,Build22" Row="2" Column="2"/>
+            <LayoutButtons Face="odoc" Type="AbilCmd" AbilCmd="AObu,Build22" Row="2" Column="1"/>
+            <LayoutButtons Face="oshm" Type="AbilCmd" AbilCmd="AObu,Build21" Row="2" Column="2"/>
             <LayoutButtons Face="ospw" Type="AbilCmd" AbilCmd="AObu,Build20" Row="2" Column="3"/>
             <LayoutButtons Face="okod" Type="AbilCmd" AbilCmd="AObu,Build15" Row="1" Column="3"/>
+            <LayoutButtons Face="Obla" Type="AbilCmd" AbilCmd="AObu,Build13" Row="0" Column="4"/>
         </CardLayouts>
         <CardLayouts CardId="Purc">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
@@ -3509,29 +3585,25 @@
     <!--Shaman-->
     <CUnit id="oshm" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
-        <CostResource index="gold" value="600"/>
+        <CostResource index="gold" value="1800"/>
         <KillResource index="gold" value="30"/>
-        <LifeStart value="1069"/>
-        <LifeMax value="1069"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
         <GlossaryCategory value="Unit/Category/OrcUnits"/>
         <AbilArray Link="Aion"/>
-        <AbilArray Link="UpgradeTooshmEtherealForm"/>
-        <AbilArray Link="Apg2"/>
+        <AbilArray Link="Ablo"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="oshmEtherealForm" Type="AbilCmd" AbilCmd="UpgradeTooshmEtherealForm,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="Apg2" Type="AbilCmd" AbilCmd="Apg2,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Ablo" Type="AbilCmd" AbilCmd="Ablo,Execute" Row="2" Column="0"/>
         </CardLayouts>
         <Radius value="0.3125"/>
         <MinimapRadius value="0.3125"/>
         <SeparationRadius value="0.3125"/>
         <InnerRadius value="0.3125"/>
-        <FlagArray index="AICaster" value="1"/>
-        <FlagArray index="AIPressForwardDisabled" value="1"/>
-        <EnergyStart value="100"/>
-        <EnergyMax value="100"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <CUnit id="oshmEtherealForm" parent="AW2_Army" defType="NONE">
@@ -3591,105 +3663,122 @@
     <!--SpiritwalkerMorph-->
     <CUnit id="ospm" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
-        <CostResource index="gold" value="1800"/>
-        <KillResource index="gold" value="60"/>
-        <LifeStart value="853"/>
-        <LifeMax value="853"/>
+        <CostResource index="gold" value="1500"/>
+        <KillResource index="gold" value="75"/>
+        <LifeStart value="900"/>
+        <LifeMax value="900"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
         <GlossaryCategory value="Unit/Category/OrcUnits"/>
+        <AbilArray Link="UpgradeToospw"/>
         <AbilArray Link="Aion"/>
-        <AbilArray Link="Aspl"/>
-        <AbilArray Link="Adcn"/>
-        <CardLayouts index="0">
-            <LayoutButtons Face="Aspl" Type="AbilCmd" AbilCmd="Aspl,0" Row="2" Column="0"/>
-            <LayoutButtons Face="Adcn" Type="AbilCmd" AbilCmd="Adcn,0" Row="2" Column="1"/>
-            <LayoutButtons Face="Aetl" Type="Passive" AbilCmd="Aetl,Execute" Row="2" Column="2"/>
-        </CardLayouts>
+        <AbilArray Link="Aast"/>
         <BehaviorArray Link="tauren"/>
-        <BehaviorArray Link="Aetl"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="MorphToospw" Type="AbilCmd" AbilCmd="UpgradeToospw,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Aast" Type="AbilCmd" AbilCmd="Aast,Execute" Row="2" Column="0"/>
+        </CardLayouts>
         <Subtitle value="TaurenClass"/>
-        <EnergyMax value="100"/>
-        <EnergyStart value="100"/>
-        <FlagArray index="AICaster" value="1"/>
-        <FlagArray index="AIPressForwardDisabled" value="1"/>
-        <TacticalAIFilters value="-;-"/>
-        <WeaponArray index="0" Link="ospw1"/>
-        <WeaponArray index="1" Link="ospw2"/>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--Spiritwalker-->
     <CUnit id="ospw" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
-        <CostResource index="gold" value="600"/>
-        <KillResource index="gold" value="60"/>
-        <LifeStart value="853"/>
-        <LifeMax value="853"/>
+        <CostResource index="gold" value="1500"/>
+        <KillResource index="gold" value="75"/>
+        <LifeStart value="900"/>
+        <LifeMax value="900"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
         <GlossaryCategory value="Unit/Category/OrcUnits"/>
-        <AbilArray Link="Aion"/>
         <AbilArray Link="UpgradeToospm"/>
+        <AbilArray Link="Aion"/>
         <AbilArray Link="Aspl"/>
+        <BehaviorArray Link="tauren"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ospm" Type="AbilCmd" AbilCmd="UpgradeToospm,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="MorphToospm" Type="AbilCmd" AbilCmd="UpgradeToospm,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="Aspl" Type="AbilCmd" AbilCmd="Aspl,Execute" Row="2" Column="0"/>
         </CardLayouts>
-        <BehaviorArray Link="tauren"/>
         <Subtitle value="TaurenClass"/>
-        <EnergyMax value="100"/>
-        <EnergyStart value="100"/>
-        <FlagArray index="AICaster" value="1"/>
-        <FlagArray index="AIPressForwardDisabled" value="1"/>
-        <TacticalAIFilters value="-;-"/>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
+    <CUnit id="ospm1LM" parent="War3_Missile"/>
     <!--spirit wolf level 1-->
     <CUnit id="osw1" parent="AW2_Army" defType="SMALL">
         <Attributes index="small" value="1"/>
-        <LifeStart value="137"/>
-        <LifeMax value="137"/>
+        <LifeStart value="300"/>
+        <LifeMax value="300"/>
         <Speed value="3"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
-        <BehaviorArray Link="Aetl"/>
-        <CardLayouts index="0">
-            <LayoutButtons Face="Aetl" Type="Passive" AbilCmd="Aetl,Execute" Row="2" Column="0"/>
-        </CardLayouts>
-        <Radius value="0.3125"/>
-        <MinimapRadius value="0.3125"/>
-        <SeparationRadius value="0.3125"/>
-        <InnerRadius value="0.3125"/>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--Tauren-->
-    <CUnit id="otau" parent="AW2_Army" defType="FORT">
-        <Attributes index="fort" value="1"/>
-        <CostResource index="gold" value="750"/>
-        <KillResource index="gold" value="75"/>
-        <LifeStart value="1105"/>
-        <LifeMax value="1105"/>
+    <CUnit id="otau" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="1800"/>
+        <KillResource index="gold" value="90"/>
+        <LifeStart value="2100"/>
+        <LifeMax value="2100"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="foot"/>
         <GlossaryCategory value="Unit/Category/OrcUnits"/>
         <AbilArray Link="Aion"/>
         <AbilArray Link="UpgradeToOtch"/>
+        <AbilArray Link="UpgradeToOcbh"/>
         <BehaviorArray Link="Awar"/>
         <BehaviorArray Link="tauren"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Otch" Type="AbilCmd" AbilCmd="UpgradeToOtch,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Ocbh" Type="AbilCmd" AbilCmd="UpgradeToOcbh,Execute" Row="0" Column="1"/>
             <LayoutButtons Face="Awar" Type="Passive" Behavior="Awar" Row="2" Column="0"/>
         </CardLayouts>
         <Subtitle value="TaurenClass"/>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
+    <CUnit id="ota2" parent="AW2_Army" defType="LARGE">
+        <Subtitle value="TaurenClass"/>
+        <Race value="Orc"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Attributes index="large" value="1"/>
+        <LifeStart value="2100"/>
+        <LifeMax value="2100"/>
+        <Mover value="foot"/>
+        <Speed value="2"/>
+        <KillResource index="gold" value="75"/>
+        <AbilArray Link="Aion"/>
+        <BehaviorArray Link="tauren"/>
+        <GlossaryCategory value="Unit/Category/OrcUnits"/>
+    </CUnit>
+    <CUnit id="ota3" parent="AW2_Army" defType="LARGE">
+        <Subtitle value="TaurenClass"/>
+        <Race value="Orc"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Attributes index="large" value="1"/>
+        <LifeStart value="2100"/>
+        <LifeMax value="2100"/>
+        <Mover value="foot"/>
+        <Speed value="2"/>
+        <KillResource index="gold" value="75"/>
+        <AbilArray Link="Aion"/>
+        <AbilArray Link="AOws"/>
+        <BehaviorArray Link="tauren"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AOws" Type="AbilCmd" AbilCmd="AOws,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <GlossaryCategory value="Unit/Category/OrcUnits"/>
+    </CUnit>
     <!--Berserker-->
     <CUnit id="otbk" parent="AW2_Army" defType="MEDIUM">
         <Attributes index="medium" value="1"/>
-        <CostResource index="gold" value="450"/>
+        <CostResource index="gold" value="900"/>
         <KillResource index="gold" value="5"/>
         <LifeStart value="25"/>
         <LifeMax value="25"/>
@@ -3707,6 +3796,27 @@
     <!--Orb of Venom-->
     <CUnit id="oven" parent="AW2_Item">
         <CostResource index="gold" value="1800"/>
+    </CUnit>
+    <!--orc warchief-->
+    <CUnit id="owar" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="1200"/>
+        <KillResource index="gold" value="30"/>
+        <LifeStart value="900"/>
+        <LifeMax value="900"/>
+        <Speed value="3"/>
+        <Race value="Orc"/>
+        <Mover value="horse"/>
+        <GlossaryCategory value="Unit/Category/OrcUnits"/>
+        <AbilArray Link="Aion"/>
+        <AbilArray Link="UpgradeToomtg"/>
+        <BehaviorArray Link="Asal"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="omtg" Type="AbilCmd" AbilCmd="UpgradeToomtg,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Asal" Type="Passive" Behavior="Asal" Row="2" Column="0"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+        <LifeArmor value="10"/>
     </CUnit>
     <!--Periapt of Vitality-->
     <CUnit id="prvt" parent="AW2_Item">
@@ -3774,7 +3884,6 @@
             <LayoutButtons Face="Aap1" Type="Passive" Behavior="Aap1" Row="2" Column="1"/>
             <LayoutButtons Face="Acn2" Type="AbilCmd" AbilCmd="Acn2,0" Row="2" Column="0"/>
         </CardLayouts>
-        <LifeArmor value="10"/>
     </CUnit>
     <!--Acolyte-->
     <CUnit id="uaco" parent="AW2_Peon">

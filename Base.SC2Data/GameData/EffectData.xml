@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CEffectCreatePersistent default="1" id="AW2_Multiattack">
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <Flags index="Channeled" value="1"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
     <CEffectCreateUnit default="1" id="AW2_CreateCreepUnit" parent="War3_SummonUnit">
         <CreateFlags index="Placement" value="0"/>
         <WhichLocation Value="CasterUnit"/>
@@ -53,9 +59,39 @@
     <CEffectEnumArea id="AEfk1Search">
         <MaxCount value="4294967295"/>
     </CEffectEnumArea>
+    <CEffectSet id="AHbhSphereEffect">
+        <EffectArray index="0" value="BHbh"/>
+        <EffectArray index="1" removed="1"/>
+    </CEffectSet>
+    <!--Farseer - Far Sight effect=Xbdt-->
+    <CEffectCreatePersistent id="AOfs1">
+        <ExpireDelay value="15"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="AOws1Dur">
+        <Duration value="9"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AOws1HeroDur">
+        <Duration value="6"/>
+    </CEffectApplyBehavior>
+    <!--Chieftain - War Stomp Buff=BPSE-->
+    <CEffectEnumArea id="AOws1Search">
+        <AreaArray index="0" Radius="5" Effect="AOws1SearchImpact"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="AOwsDamage1">
+        <Amount value="50"/>
+    </CEffectDamage>
+    <!--Aura - Regeneration (Ward) Buff=Boar-->
+    <CEffectEnumArea id="AoarSearch">
+        <AreaArray index="0" Radius="7.0312" Effect="Boar"/>
+    </CEffectEnumArea>
     <!--Roar Dur=45 HeroDur=45 Buff=Broa-->
     <CEffectEnumArea id="AroaSearch">
         <AreaArray index="0" Radius="7.0312" Effect="Broa"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="AwarAoESearch" parent="War3_AbilSearch">
+        <EditorCategories value="Race:Orc"/>
+        <SearchFilters value="-;player,allies,air,wall,tree,item,structure,ward,ethereal,dead,invulnerable"/>
+        <AreaArray Radius="1.9531" Effect="otau1"/>
     </CEffectEnumArea>
     <CEffectSet id="BEahSet">
         <EffectArray value="BEah"/>
@@ -73,9 +109,6 @@
     <CEffectApplyBehavior id="AEer1HeroDur">
         <Duration value="5"/>
     </CEffectApplyBehavior>
-    <CEffectDamage id="AHbhExtraDamage">
-        <Amount value="50"/>
-    </CEffectDamage>
     <CEffectDamage id="AHhbDamage1">
         <Amount value="150"/>
     </CEffectDamage>
@@ -90,7 +123,7 @@
         <MinCount value="6"/>
     </CEffectEnumArea>
     <CEffectModifyUnit id="AHreHeal">
-        <VitalArray index="Life" Change="50" ChangeFraction="0"/>
+        <VitalArray index="Life" Change="100" ChangeFraction="0"/>
     </CEffectModifyUnit>
     <CEffectCreatePersistent id="ACcvTarget">
         <EditorCategories value="Race:Naga"/>
@@ -152,6 +185,9 @@
         <EffectArray index="1" removed="1"/>
         <EffectArray index="2" removed="1"/>
     </CEffectSet>
+    <CEffectApplyBehavior id="Bbs2" parent="War3_ApplyBuff">
+        <EditorCategories value="Race:Orc"/>
+    </CEffectApplyBehavior>
     <CEffectDamage id="BdigDPS">
         <Amount value="30"/>
     </CEffectDamage>
@@ -196,19 +232,6 @@
     <CEffectDamage id="ACcvDamage" parent="War3_MagicSpellDamage">
         <EditorCategories value="Race:Naga"/>
         <Amount value="100"/>
-    </CEffectDamage>
-    <CEffectApplyBehavior id="AOws1Dur">
-        <Duration value="6"/>
-    </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="AOws1HeroDur">
-        <Duration value="4"/>
-    </CEffectApplyBehavior>
-    <!--Chieftain - War Stomp Buff=BPSE-->
-    <CEffectEnumArea id="AOws1Search">
-        <AreaArray index="0" Radius="2.5" Effect="AOws1SearchImpact"/>
-    </CEffectEnumArea>
-    <CEffectDamage id="AOwsDamage1">
-        <Amount value="50"/>
     </CEffectDamage>
     <!--Death Knight - Animate Dead Buff=BUan-->
     <CEffectEnumArea id="AUanSearch">
@@ -266,9 +289,6 @@
     <CEffectCreateHealer id="Anh2Heal">
         <RechargeVitalRate value="100"/>
     </CEffectCreateHealer>
-    <CEffectModifyUnit id="AoarHealTick">
-        <VitalArray index="Life" ChangeFraction="0.01"/>
-    </CEffectModifyUnit>
     <CEffectDamage id="ApigDPS">
         <Amount value="25"/>
     </CEffectDamage>
@@ -408,7 +428,7 @@
     </CEffectDamage>
     <CEffectDamage id="Nbbc1" parent="AW2_ChaosDamage">
         <Kind value="Melee"/>
-        <Amount value="96"/>
+        <Amount value="120"/>
     </CEffectDamage>
     <CEffectDamage id="Nbrn1" parent="AW2_PierceDamage">
         <Amount value="96"/>
@@ -430,10 +450,25 @@
     </CEffectDamage>
     <CEffectDamage id="Obla1" parent="AW2_SiegeDamage">
         <Kind value="Melee"/>
+        <Amount value="120"/>
+    </CEffectDamage>
+    <CEffectDamage id="Obl21" parent="AW2_SiegeDamage">
+        <Kind value="Melee"/>
+        <Amount value="120"/>
+    </CEffectDamage>
+    <CEffectSet id="Obla1Crit">
+        <EffectArray index="0" value="Obla1CritKill"/>
+    </CEffectSet>
+    <CEffectDamage id="Obla1CritKill" parent="War3_PhysicSpellDamage">
+        <EditorCategories value="Race:Orc"/>
+        <Flags index="Kill" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="Ocbh1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
         <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="Ofar1" parent="AW2_MagicDamage">
-        <Amount value="72"/>
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="Ogrh1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
@@ -478,10 +513,10 @@
     </CEffectDamage>
     <CEffectDamage id="Otch1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
-        <Amount value="72"/>
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="Othr1" parent="AW2_MagicDamage">
-        <Amount value="72"/>
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectTeleport id="SubmergeTeleport">
         <EditorCategories value="Race:Naga"/>
@@ -664,7 +699,7 @@
         <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="nckb1" parent="AW2_ChaosDamage">
-        <Amount value="36"/>
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="ndr11" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
@@ -690,6 +725,11 @@
     <CEffectDamage id="nfsp1" parent="AW2_MagicDamage">
         <Amount value="12"/>
     </CEffectDamage>
+    <CEffectCreatePersistent id="nftb1Multiattack" parent="AW2_Multiattack">
+        <PeriodCount value="2"/>
+        <PeriodicPeriodArray value="0.4"/>
+        <PeriodicEffectArray value="nftb1LM"/>
+    </CEffectCreatePersistent>
     <CEffectDamage id="nftb1" parent="AW2_NormalDamage">
         <Amount value="24"/>
     </CEffectDamage>
@@ -697,9 +737,23 @@
         <Kind value="Melee"/>
         <Amount value="12"/>
     </CEffectDamage>
+    <CEffectCreatePersistent id="nftt1Multiattack" parent="AW2_Multiattack">
+        <PeriodCount value="2"/>
+        <PeriodicPeriodArray value="0.4"/>
+        <PeriodicEffectArray value="nftt1LM"/>
+    </CEffectCreatePersistent>
     <CEffectDamage id="nftt1" parent="AW2_NormalDamage">
         <Amount value="24"/>
     </CEffectDamage>
+    <CEffectCreatePersistent id="nft31Multiattack" parent="AW2_Multiattack">
+        <PeriodCount value="2"/>
+        <PeriodicPeriodArray value="0.4"/>
+        <PeriodicEffectArray value="nft31LM"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="nft31" parent="AW2_NormalDamage">
+        <Amount value="24"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="nft31LM" parent="War3_Missile" weaponid="nft31"/>
     <CEffectDamage id="ngh11" parent="AW2_MagicDamage">
         <Amount value="24"/>
     </CEffectDamage>
@@ -759,6 +813,26 @@
         <EffectArray value="nlpr2"/>
         <EffectArray value="AHbhSphereEffect"/>
     </CEffectSet>
+    <CEffectSet id="nlp21Crit">
+        <EditorCategories value="Race:Naga"/>
+        <EffectArray value="nlp21"/>
+        <EffectArray value="AHbhSphereEffect"/>
+    </CEffectSet>
+    <CEffectSet id="nlp22Crit">
+        <EditorCategories value="Race:Naga"/>
+        <EffectArray value="nlp22"/>
+        <EffectArray value="AHbhSphereEffect"/>
+    </CEffectSet>
+    <CEffectSet id="nlkl1Crit">
+        <EditorCategories value="Race:Naga"/>
+        <EffectArray value="nlkl1"/>
+        <EffectArray value="AHbhSphereEffect"/>
+    </CEffectSet>
+    <CEffectSet id="nlkl2Crit">
+        <EditorCategories value="Race:Naga"/>
+        <EffectArray value="nlkl2"/>
+        <EffectArray value="AHbhSphereEffect"/>
+    </CEffectSet>
     <CEffectDamage id="nhea1" parent="AW2_PierceDamage">
         <Amount value="96"/>
     </CEffectDamage>
@@ -784,6 +858,10 @@
         <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="nlpr1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectDamage id="nlp21" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
         <Amount value="96"/>
     </CEffectDamage>
@@ -988,7 +1066,7 @@
         <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="odoc1" parent="AW2_MagicDamage">
-        <Amount value="12"/>
+        <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="ogru1" parent="AW2_NormalDamage">
         <Amount value="48"/>
@@ -997,8 +1075,16 @@
     <CEffectDamage id="ohun1" parent="AW2_PierceDamage">
         <Amount value="24"/>
     </CEffectDamage>
+    <CEffectDamage id="ohu21" parent="AW2_PierceDamage">
+        <Amount value="24"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="ohu21LM" parent="War3_Missile" weaponid="ohu21"/>
     <CEffectDamage id="okod1" parent="AW2_NormalDamage">
-        <Amount value="36"/>
+        <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectDamage id="omtg1" parent="AW2_ChaosDamage">
+        <Kind value="Melee"/>
+        <Amount value="72"/>
     </CEffectDamage>
     <CEffectDamage id="orai1" parent="AW2_SiegeDamage">
         <Amount value="120"/>
@@ -1006,24 +1092,43 @@
     </CEffectDamage>
     <CEffectDamage id="oshm1" parent="AW2_MagicDamage">
         <Amount value="24"/>
-        <Kind value="Melee"/>
     </CEffectDamage>
     <CEffectDamage id="osp11" parent="AW2_PierceDamage">
         <Amount value="48"/>
     </CEffectDamage>
     <CEffectDamage id="ospw1" parent="AW2_MagicDamage">
-        <Amount value="48"/>
+        <Amount value="24"/>
     </CEffectDamage>
+    <CEffectDamage id="ospm1" parent="AW2_MagicDamage">
+        <Amount value="24"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="ospm1LM" parent="War3_Missile" weaponid="ospm1"/>
     <CEffectDamage id="osw11" parent="AW2_PierceDamage">
         <Kind value="Melee"/>
-        <Amount value="24"/>
+        <Amount value="48"/>
     </CEffectDamage>
     <CEffectDamage id="otau1" parent="AW2_NormalDamage">
-        <Amount value="144"/>
+        <Amount value="48"/>
         <Kind value="Melee"/>
     </CEffectDamage>
+    <CEffectDamage id="ota21" parent="AW2_NormalDamage">
+        <Amount value="96"/>
+        <Kind value="Melee"/>
+    </CEffectDamage>
+    <CEffectDamage id="ota31" parent="AW2_NormalDamage">
+        <Amount value="96"/>
+        <Kind value="Melee"/>
+    </CEffectDamage>
+    <CEffectSet id="otau1Crit">
+        <EffectArray index="0" value="AwarAoESearch"/>
+        <EffectArray index="1" removed="1"/>
+    </CEffectSet>
     <CEffectDamage id="otbk1" parent="AW2_PierceDamage">
         <Amount value="24"/>
+    </CEffectDamage>
+    <CEffectDamage id="owar1" parent="AW2_ChaosDamage">
+        <Kind value="Melee"/>
+        <Amount value="72"/>
     </CEffectDamage>
     <CEffectDamage id="uabo1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>

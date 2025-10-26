@@ -175,14 +175,19 @@
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="ANbh">
-        <DamageResponse Chance="0.5"/>
-        <Modification CriticalAttackChanceScaledBonus="0.5"/>
+        <DamageResponse Chance="1"/>
+        <Modification CriticalAttackChanceScaledBonus="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ANfa1">
         <Modification>
             <DamageDealtUnscaled index="Melee" value="50"/>
             <DamageDealtUnscaled index="Ranged" value="50"/>
         </Modification>
+    </CBehaviorBuff>
+    <!--Blade Master - Critical Strike-->
+    <CBehaviorBuff id="AOcr">
+        <DisableValidatorArray index="0" removed="1"/>
+        <Modification CriticalAttackChanceScaledBonus="0.1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AW2_Building" parent="War3_Passive">
         <Requirements value="AW2_Building"/>
@@ -239,6 +244,10 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="Aabr" parent="War3_AuraCaster">
         <Requirements value="Aabr"/>
+    </CBehaviorBuff>
+    <!--Aura - War Drums Buff=Bakb-->
+    <CBehaviorBuff id="Aakb">
+        <Requirements value=""/>
     </CBehaviorBuff>
     <!--Aura - Plague (Abomination) Buff=Bapl-->
     <CBehaviorBuff id="Aap1">
@@ -337,8 +346,8 @@
         <Modification LifeArmorBonus="5"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="BHbh">
-        <Duration value="6"/>
-        <DurationOverride index="0" Duration="3">
+        <Duration value="3"/>
+        <DurationOverride index="0" Duration="1.5">
             <ValidatorArray index="0" value="Hero"/>
         </DurationOverride>
     </CBehaviorBuff>
@@ -368,11 +377,27 @@
             <DeathResponse Effect="nwgs"/>
         </Modification>
     </CBehaviorBuff>
+    <!--AuraCommand-->
+    <CBehaviorBuff id="BOac">
+        <MaxStackCount value="0"/>
+        <MaxStackCountPerCaster value="1"/>
+        <Modification>
+            <DamageDealtFraction index="Melee" value="0.25"/>
+            <DamageDealtFraction index="Ranged" value="0.25"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="BOae1">
         <EditorCategories value="Race:Orc,AbilityorEffectType:Units"/>
-        <MaxStackCount value="2"/>
+        <MaxStackCount value="0"/>
         <MaxStackCountPerCaster value="1"/>
         <Modification MoveSpeedMultiplier="1.25" AttackSpeedMultiplier="1.25"/>
+    </CBehaviorBuff>
+    <!--MirrorImage-->
+    <CBehaviorBuff id="BOmi">
+        <Duration value="10"/>
+        <DurationOverride index="0" Duration="10">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
     </CBehaviorBuff>
     <CBehaviorBuff id="BUau1">
         <MaxStackCount value="0"/>
@@ -413,6 +438,35 @@
         <EditorCategories value="Race:Orc,AbilityorEffectType:Units"/>
         <Modification MoveSpeedMultiplier="1.5" AttackSpeedMultiplier="1.5"/>
     </CBehaviorBuff>
+    <!--BerserkerRage-->
+    <CBehaviorBuff id="Bbsk" parent="War3_Buff">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnBerserkForTrolls.dds"/>
+        <EditorCategories value="Race:orc,AbilityorEffectType:Units"/>
+        <DisplayDuration index="Self" value="1"/>
+        <Duration value="30"/>
+        <DurationOverride index="0" Duration="30">
+            <ValidatorArray index="0" value="Hero"/>
+        </DurationOverride>
+        <Modification AttackSpeedMultiplier="5">
+            <DamageDealtFraction index="Melee" value="-0.5"/>
+            <DamageDealtFraction index="Ranged" value="-0.5"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Bbs2" parent="War3_Buff">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnBerserkForTrolls.dds"/>
+        <EditorCategories value="Race:orc,AbilityorEffectType:Units"/>
+        <DisplayDuration index="Self" value="1"/>
+        <Duration value="30"/>
+        <DurationOverride index="0" Duration="30">
+            <ValidatorArray index="0" value="Hero"/>
+        </DurationOverride>
+        <Modification AttackSpeedMultiplier="5">
+            <DamageDealtFraction index="Melee" value="-0.5"/>
+            <DamageDealtFraction index="Ranged" value="-0.5"/>
+        </Modification>
+    </CBehaviorBuff>
     <!--Cripple-->
     <CBehaviorBuff id="Bcri">
         <EditorCategories value="Race:Undead,AbilityorEffectType:Units"/>
@@ -437,6 +491,13 @@
     <!--Frost-->
     <CBehaviorBuff id="Bfro">
         <Modification AttackSpeedMultiplier="0.5"/>
+    </CBehaviorBuff>
+    <!--HealingWard-->
+    <CBehaviorBuff id="Bhwd">
+        <Duration value="60"/>
+        <DurationOverride index="0" Duration="60">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
     </CBehaviorBuff>
     <!--InnerFire-->
     <CBehaviorBuff id="Binf">
@@ -487,10 +548,11 @@
     <!--SpiritLink-->
     <CBehaviorBuff id="Bspl">
         <EditorCategories value="Race:Orc,AbilityorEffectType:Units"/>
-        <Duration value="15"/>
-        <DurationOverride index="0" Duration="15">
+        <Duration value="6"/>
+        <DurationOverride index="0" Duration="6">
             <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
         </DurationOverride>
+        <MaxStackCount value="6"/>
     </CBehaviorBuff>
     <!--SlowPoison-->
     <CBehaviorBuff id="Bspo">
@@ -555,6 +617,7 @@
     <!--Pulverize-->
     <CBehaviorBuff id="Awar">
         <Requirements value=""/>
+        <Modification CriticalAttackChanceScaledBonus="1"/>
     </CBehaviorBuff>
     <!--ItemVampirePotion-->
     <CBehaviorBuff id="BIpv">
@@ -567,10 +630,6 @@
             <Kind index="Ranged" value="0"/>
             <Kind index="Splash" value="0"/>
         </DamageResponse>
-        <Modification>
-            <DamageDealtUnscaled index="Melee" value="36"/>
-            <DamageDealtUnscaled index="Ranged" value="36"/>
-        </Modification>
         <Duration value="30"/>
         <DurationOverride index="0" Duration="30">
             <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
@@ -585,11 +644,11 @@
     </CBehaviorBuff>
     <!--AuraKotoBeast-->
     <CBehaviorBuff id="Bakb">
-        <MaxStackCount value="4"/>
+        <MaxStackCount value="0"/>
         <MaxStackCountPerCaster value="1"/>
         <Modification>
-            <DamageDealtFraction index="Melee" value="0.125"/>
-            <DamageDealtFraction index="Ranged" value="0.125"/>
+            <DamageDealtFraction index="Melee" value="0.25"/>
+            <DamageDealtFraction index="Ranged" value="0.25"/>
         </Modification>
         <EditorCategories value="Race:Orc,AbilityorEffectType:Units"/>
     </CBehaviorBuff>
@@ -825,7 +884,7 @@
         <Duration value="0.0625"/>
         <Modification>
             <VitalDamageLeechArray index="Life">
-                <KindArray index="Melee" value="0.2"/>
+                <KindArray index="Melee" value="0.5"/>
             </VitalDamageLeechArray>
         </Modification>
     </CBehaviorBuff>
