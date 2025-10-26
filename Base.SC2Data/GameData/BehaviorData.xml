@@ -324,6 +324,22 @@
             <ValidatorArray index="0" value="Hero"/>
         </DurationOverride>
     </CBehaviorBuff>
+    <CBehaviorBuff id="Bwfb" parent="War3_Buff">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnfirebolt.dds"/>
+        <Duration value="10"/>
+        <DurationOverride index="0" Duration="5">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Alignment value="Negative"/>
+        <TechAliasArray value="_Debuff"/>
+        <BehaviorCategories index="User1" value="1"/>
+        <Modification>
+            <ModifyFlags index="DisableAbils" value="1"/>
+            <StateFlags index="Stun" value="1"/>
+            <AbilClassEnableArray index="CAbilBehavior" value="1"/>
+            <BehaviorLinkDisableArray value="HostileSleeperAlert"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="EfficiencyAuraCaster" parent="War3_AuraCaster">
         <Requirements value="EfficiencyAuraCaster"/>
     </CBehaviorBuff>
@@ -1337,7 +1353,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="Bsds" parent="War3_Buff">
         <EditorCategories value="Race:Goblin,AbilityorEffectType:Units"/>
-        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnStun.dds"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnselfdestruct.dds"/>
         <Duration value="3"/>
         <DurationOverride index="0" Duration="1.5">
             <ValidatorArray index="0" value="HeroOrPowerfulMob"/>

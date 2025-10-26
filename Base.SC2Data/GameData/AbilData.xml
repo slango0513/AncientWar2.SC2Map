@@ -493,6 +493,26 @@
             </SectionArray>
         </InfoArray>
     </CAbilMorph>
+    <CAbilEffectTarget id="Awfb" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:ChaosOrc,AbilityorEffectType:Units"/>
+        <Effect index="0" value="AwfbMissile"/>
+        <Cost index="0">
+            <Vital index="Energy" value="60"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </Cost>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+        </TargetSorts>
+        <Range value="13"/>
+        <AutoCastRange value="13"/>
+        <AutoCastValidatorArray value="EnemiesNearby7"/>
+        <AutoCastValidatorArray value="NoFireBolt"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <PrepTime value="0.5"/>
+        <CastOutroTime value="1"/>
+        <TargetFilters index="0" value="-;wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
+    </CAbilEffectTarget>
     <CAbilBuild id="BloodElfBuild" parent="War3_PowerBuild">
         <EditorCategories value="Race:BloodElf,AbilityorEffectType:Units"/>
         <InfoArray index="Build1" Unit="BloodElfFlag">
@@ -538,8 +558,23 @@
         <InfoArray index="Build2" Unit="ChaosOrcFlag2">
             <Button DefaultButtonFace="ChaosOrcFlag2" Requirements="BuildPhalanxFinal"/>
         </InfoArray>
-        <InfoArray index="Build3" Unit="hsor">
-            <Button DefaultButtonFace="hsor" Requirements="BuildArmy"/>
+        <InfoArray index="Build3" Unit="owar">
+            <Button DefaultButtonFace="owar" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build4" Unit="nchg">
+            <Button DefaultButtonFace="nchg" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build5" Unit="nchr">
+            <Button DefaultButtonFace="nchr" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build6" Unit="nchw">
+            <Button DefaultButtonFace="nchw" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build7" Unit="nckb">
+            <Button DefaultButtonFace="nckb" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build8" Unit="Nbbc">
+            <Button DefaultButtonFace="Nbbc" Requirements="BuildArmy"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
@@ -1277,9 +1312,6 @@
         </InfoArray>
         <InfoArray index="Build26" Unit="Ofar">
             <Button DefaultButtonFace="Ofar" Requirements="BuildArmy"/>
-        </InfoArray>
-        <InfoArray index="Build28" Unit="owar">
-            <Button DefaultButtonFace="owar" Requirements="BuildArmy"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
@@ -2187,6 +2219,28 @@
         </TargetSorts>
         <AutoCastFilters value="Visible;Neutral,Enemy"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="Suhf" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:ChaosOrc,AbilityorEffectType:Unit"/>
+        <TargetFilters index="0" value="-;mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
+        <Cost index="0">
+            <Vital index="Energy" value="15"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </Cost>
+        <Range value="13"/>
+        <PrepTime value="0.5"/>
+        <CastOutroTime value="0.5"/>
+        <Effect index="0" value="Buhf"/>
+        <AutoCastRange value="13"/>
+        <AutoCastValidatorArray value="TargetLifeGE200"/>
+        <AutoCastValidatorArray value="NoUnholyFrenzy"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastValidatorArray value="EnemiesNearby7"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
+    </CAbilEffectTarget>
     <!--War Stomp (creep) Dur=3 HeroDur=2 Buff=BPSE-->
     <CAbilEffectInstant id="Awrs" parent="AW2_EffectInstant">
         <Alignment value="Negative"/>
@@ -2808,6 +2862,9 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToHkal" parent="AW2_Upgrade" toUnit="Hkal">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToOgld" parent="AW2_Upgrade" toUnit="Ogld">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
 </Catalog>

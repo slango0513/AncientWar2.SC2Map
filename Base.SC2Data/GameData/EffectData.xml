@@ -84,6 +84,10 @@
         <SearchFilters value="-;player,allies,air,wall,Missile,item,ward,dead,Hidden,invulnerable,immunity"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="AarmSearch" parent="War3_AuraSearch" aura="Barm"/>
+    <CEffectSet id="AwfbMissileImpactSet">
+        <EffectArray value="AwfbDamage"/>
+        <EffectArray value="Bwfb"/>
+    </CEffectSet>
     <CEffectApplyBehavior id="Barm" parent="War3_AuraBuff">
         <EditorCategories value="Race:BloodElf"/>
         <ValidatorArray value="TargetEnergyNotFull"/>
@@ -369,6 +373,7 @@
     <CEffectApplyBehavior id="Btau" parent="War3_ApplyBuff">
         <ValidatorArray value="NoTaunt"/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="Bwfb" parent="War3_ApplyBuff"/>
     <CEffectSet id="CallTide">
         <EditorCategories value="Race:Naga"/>
     </CEffectSet>
@@ -404,6 +409,10 @@
     <CEffectDamage id="ACcvDamage" parent="War3_MagicSpellDamage">
         <EditorCategories value="Race:Naga"/>
         <Amount value="100"/>
+    </CEffectDamage>
+    <CEffectDamage id="AwfbDamage" parent="War3_MagicSpellDamage">
+        <EditorCategories value="Race:ChaosOrc"/>
+        <Amount value="50"/>
     </CEffectDamage>
     <!--Death Knight - Animate Dead Buff=BUan-->
     <CEffectEnumArea id="AUanSearch">
@@ -707,6 +716,9 @@
     </CEffectDamage>
     <CEffectDamage id="Ofar1" parent="AW2_MagicDamage">
         <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectDamage id="Ogld1" parent="AW2_ChaosDamage">
+        <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="Ogrh1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>

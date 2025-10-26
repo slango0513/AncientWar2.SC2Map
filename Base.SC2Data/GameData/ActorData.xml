@@ -10,7 +10,12 @@
     <CActorModel id="AOreEffect" parent="EffectArt">
         <On Terms="Effect.AOre.Start" Send="Create"/>
     </CActorModel>
+    <CActorSimple id="Suhf" parent="War3_SimpleCastAnim"/>
     <CActorModel id="Bsds" parent="War3_Buff">
+        <HostSiteOps Ops="$overhead"/>
+    </CActorModel>
+    <CActorSimple id="Awfb" parent="War3_SimpleCastAnim"/>
+    <CActorModel id="Bwfb" parent="War3_Buff">
         <HostSiteOps Ops="$overhead"/>
     </CActorModel>
     <!--bloodmage-->
@@ -125,6 +130,18 @@
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <CActorAction id="Nti31" parent="War3_AttackSwapable" WeaponSound="WoodHeavyBash"/>
+    <!--guldan-->
+    <CActorUnit id="Ogld" parent="War3_Army" unitSound="PitLord" unitName="Ogld" defType="NONE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnGuldan.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnGuldan.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnGuldan.dds"/>
+        <BarWidth value="70"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
     <CActorEventMacro id="War3_DeadAnimationMacroUnit">
         <On index="4" Terms="AnimDone; AnimName Flesh; IsStatus Dead 1" Send="AnimPlay Bone Decay,Bone NonLooping -1.000000 -1.000000 8.000000 AsDuration"/>
     </CActorEventMacro>
@@ -2522,7 +2539,7 @@
         <WalkAnimMoveSpeed value="1.7187"/>
     </CActorUnit>
     <!--mathog-->
-    <CActorUnit id="omtg" parent="War3_Army" unitSound="ChaosWarlord" unitName="omtg" defType="SMALL">
+    <CActorUnit id="omtg" parent="War3_Army" unitSound="ChaosWarlord" unitName="omtg" defType="LARGE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnChaosWarlord.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnChaosWarlord.dds"/>
@@ -2681,7 +2698,7 @@
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <!--chaoswarlord-->
-    <CActorUnit id="owar" parent="War3_Army" unitSound="ChaosWarlord" unitName="owar" defType="SMALL">
+    <CActorUnit id="owar" parent="War3_Army" unitSound="ChaosWarlord" unitName="owar" defType="LARGE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnChaosWarlord.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnChaosWarlord.dds"/>
