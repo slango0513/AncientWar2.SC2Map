@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CRequirementConst id="48">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Value value="48"/>
+    </CRequirementConst>
+    <CRequirementConst id="96">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Value value="96"/>
+    </CRequirementConst>
     <CRequirementAnd id="AndCountBehaviorAW2_BuildingCompleteOnlyAtUnitCountUpgradeBuildArmyCompleteOnly">
         <OperandArray value="CountBehaviorAW2_BuildingCompleteOnlyAtUnit"/>
         <OperandArray value="CountUpgradeBuildArmyCompleteOnly"/>
@@ -9,7 +17,6 @@
         <OperandArray value="CountUpgradeBuildPhalanxCompleteOnly"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndLTCountUnitAlias_PhalanxQueuedOrBetter3CountUpgradeBuildPhalanxFinalCompleteOnly">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="LTCountUnitAlias_PhalanxQueuedOrBetter3"/>
         <OperandArray value="CountUpgradeBuildPhalanxFinalCompleteOnly"/>
     </CRequirementAnd>
@@ -53,6 +60,11 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="Alias_Portal" State="QueuedOrBetter"/>
     </CRequirementCountUnit>
+    <CRequirementCountUnit id="CountUnitnskaCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="nska" State="CompleteOnly"/>
+    </CRequirementCountUnit>
     <CRequirementCountUpgrade id="CountUpgradeBuildArmyCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="BuildArmy" State="CompleteOnly"/>
@@ -67,7 +79,6 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeBuildPhalanxFinalCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="BuildPhalanxFinal" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeBuildPortalCompleteOnly">
@@ -94,6 +105,16 @@
         <OperandArray index="0" value="CountUnitAlias_PortalQueuedOrBetter"/>
         <OperandArray index="1" value="2"/>
     </CRequirementLT>
+    <CRequirementLTE id="LTESumCountUnituskmCompleteOnlyCountUnituskeCompleteOnlyCountUnitnskaCompleteOnly48">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="SumCountUnituskmCompleteOnlyCountUnituskeCompleteOnlyCountUnitnskaCompleteOnly"/>
+        <OperandArray index="1" value="48"/>
+    </CRequirementLTE>
+    <CRequirementLTE id="LTESumCountUnituskmCompleteOnlyCountUnituskeCompleteOnlyCountUnitnskaCompleteOnly96">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="SumCountUnituskmCompleteOnlyCountUnituskeCompleteOnlyCountUnitnskaCompleteOnly"/>
+        <OperandArray index="1" value="96"/>
+    </CRequirementLTE>
     <CRequirementNot id="NotCountBehaviorAlias_PhalanxBuffCompleteOnlyAtUnit">
         <OperandArray index="0" value="CountBehaviorAlias_PhalanxBuffCompleteOnlyAtUnit"/>
     </CRequirementNot>
@@ -111,4 +132,10 @@
         <OperandArray value="CountUpgradeBuildPhalanxCompleteOnly"/>
         <OperandArray value="CountUpgradeBuildPortalCompleteOnly"/>
     </CRequirementOr>
+    <CRequirementSum id="SumCountUnituskmCompleteOnlyCountUnituskeCompleteOnlyCountUnitnskaCompleteOnly">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUnituskmCompleteOnly"/>
+        <OperandArray value="CountUnituskeCompleteOnly"/>
+        <OperandArray value="CountUnitnskaCompleteOnly"/>
+    </CRequirementSum>
 </Catalog>

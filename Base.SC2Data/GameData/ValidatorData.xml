@@ -59,6 +59,17 @@
         <Compare value="LE"/>
         <Value value="25"/>
     </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareBehaviorCount id="HasNoAnsk">
+        <Behavior value="Ansk"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="HasNoAssk">
+        <Behavior value="Assk"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="HasNoHardenedSkin">
+        <Type value="And"/>
+        <CombineArray value="HasNoAssk"/>
+        <CombineArray value="HasNoAnsk"/>
+    </CValidatorCombine>
     <CValidatorUnitType id="IsGargoyle">
         <Value value="ugar"/>
     </CValidatorUnitType>
@@ -69,6 +80,16 @@
     <CValidatorUnitType id="IsGhoul">
         <Value value="ugho"/>
     </CValidatorUnitType>
+    <CValidatorUnitCompareVital id="MPGE30">
+        <Compare value="GE"/>
+        <Value value="30"/>
+        <Vital value="Energy"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="MPGE15">
+        <Compare value="GE"/>
+        <Value value="15"/>
+        <Vital value="Energy"/>
+    </CValidatorUnitCompareVital>
     <CValidatorUnitCompareBehaviorCount id="NoChargeKnightController">
         <Behavior value="ChargeKnightController"/>
     </CValidatorUnitCompareBehaviorCount>
@@ -181,6 +202,14 @@
         <Compare value="LE"/>
         <Value value="1"/>
     </CValidatorUnitCompareVital>
+    <CValidatorPlayerRequirement id="SkeletonsLE96">
+        <Find value="1"/>
+        <Value value="SkeletonsLE96"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="SkeletonsLE48">
+        <Find value="1"/>
+        <Value value="SkeletonsLE48"/>
+    </CValidatorPlayerRequirement>
     <CValidatorCombine id="SubmergeValidator">
         <CombineArray value="CliffLevelEqualOrLesserEnemiesNearby5"/>
         <CombineArray value="NotAttackingAndNotInCombatWar3"/>
@@ -677,6 +706,24 @@
         <WhichUnit Value="Caster"/>
         <Compare value="GE"/>
         <Value value="3"/>
+        <Vital value="Energy"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="CasterEnergyLT30">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Value value="30"/>
+        <Vital value="Energy"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="CasterEnergyLT15">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Value value="15"/>
+        <Vital value="Energy"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="CasterEnergyLT6">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Value value="6"/>
         <Vital value="Energy"/>
     </CValidatorUnitCompareVital>
     <CValidatorUnitCompareBehaviorCount id="NoSelfDestructController">

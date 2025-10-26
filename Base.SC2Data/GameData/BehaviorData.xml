@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
-    <const id="summoned" path="SDamageResponse.TargetFilters" value="Summoned"/>
-    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
     <const id="hero" path="SDamageResponse.TargetFilters" value="Resistant"/>
-    <const id="allies" path="SDamageResponse.TargetFilters" value="Ally"/>
+    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
+    <const id="summoned" path="SDamageResponse.TargetFilters" value="Summoned"/>
     <const id="air" path="SDamageResponse.TargetFilters" value="Air"/>
-    <const id="tree" path="SDamageResponse.TargetFilters" value="HarvestableResource"/>
+    <const id="allies" path="SDamageResponse.TargetFilters" value="Ally"/>
     <const id="item" path="SDamageResponse.TargetFilters" value="Item"/>
-    <const id="player" path="SDamageResponse.TargetFilters" value="Player"/>
+    <const id="tree" path="SDamageResponse.TargetFilters" value="HarvestableResource"/>
     <const id="ancient" path="SDamageResponse.TargetFilters" value="Psionic"/>
-    <const id="enemies" path="SDamageResponse.TargetFilters" value="Enemy"/>
+    <const id="player" path="SDamageResponse.TargetFilters" value="Player"/>
     <const id="structure" path="SDamageResponse.TargetFilters" value="PreventDefeat"/>
-    <const id="self" path="SDamageResponse.TargetFilters" value="Self"/>
-    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="enemies" path="SDamageResponse.TargetFilters" value="Enemy"/>
     <const id="mechanical" path="SDamageResponse.TargetFilters" value="Mechanical"/>
-    <const id="neutral" path="SDamageResponse.TargetFilters" value="Neutral"/>
+    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="self" path="SDamageResponse.TargetFilters" value="Self"/>
     <const id="ground" path="SDamageResponse.TargetFilters" value="Ground"/>
+    <const id="neutral" path="SDamageResponse.TargetFilters" value="Neutral"/>
     <const id="wall" path="SDamageResponse.TargetFilters" value="Hover"/>
     <const id="dead" path="SDamageResponse.TargetFilters" value="Dead"/>
     <const id="ethereal" path="SDamageResponse.TargetFilters" value="Stasis"/>
-    <const id="invulnerable" path="SDamageResponse.TargetFilters" value="Invulnerable"/>
     <const id="debris" path="SDamageResponse.TargetFilters" value="Destructible"/>
+    <const id="invulnerable" path="SDamageResponse.TargetFilters" value="Invulnerable"/>
     <CBehaviorBuff default="1" id="AW2_TimeLife" parent="War3_Passive">
         <DisplayDuration index="Self" value="1"/>
         <DisplayDuration index="Ally" value="1"/>
@@ -65,6 +65,12 @@
         <DurationOverride index="0" Duration="3">
             <ValidatorArray index="0" value="Hero"/>
         </DurationOverride>
+    </CBehaviorBuff>
+    <!--ReplenishLife-->
+    <CBehaviorBuff id="Brpl">
+        <EditorCategories value="Race:Undead,AbilityorEffectType:Units"/>
+        <MaxStackCount value="0"/>
+        <MaxStackCountPerCaster value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Preparing" parent="War3_Buff">
         <InfoFlags index="Hidden" value="1"/>
@@ -1015,12 +1021,15 @@
             <ClampMinimum value="20"/>
             <ModifyAmount value="-80"/>
             <TargetFilters value="-;player,neutral"/>
+            <ValidatorArray value="HasNoHardenedSkin"/>
         </DamageResponse>
     </CBehaviorBuff>
     <!--Hardened Skin-->
     <CBehaviorBuff id="Assk">
         <Requirements value=""/>
-        <DamageResponse ClampMinimum="30" ModifyAmount="-120"/>
+        <DamageResponse ClampMinimum="30" ModifyAmount="-120">
+            <ValidatorArray value="HasNoHardenedSkin"/>
+        </DamageResponse>
     </CBehaviorBuff>
     <!--TornadoSpin Dur=12 HeroDur=6 Buff=Btsp,Btsa-->
     <CBehaviorBuff id="Atsp">
@@ -1133,6 +1142,10 @@
         <Modification>
             <BehaviorClassDisableArray index="CBehaviorBuff" value="1"/>
         </Modification>
+    </CBehaviorBuff>
+    <!--Orb of Annihilation-->
+    <CBehaviorBuff id="UseAfak">
+        <DisableValidatorArray index="0" value="MPGE6"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="nglmTimeLife" parent="AW2_TimeLife">
         <EditorCategories value="Race:Goblin,AbilityorEffectType:Units"/>
@@ -1439,7 +1452,6 @@
         <MaxStackCount value="2"/>
         <MaxStackCountPerCaster value="1"/>
         <Modification AttackSpeedMultiplier="1.25">
-            <DamageDealtFraction index="Spell" value="0.5"/>
             <DamageDealtFraction index="Melee" value="0.25"/>
             <DamageDealtFraction index="Ranged" value="0.25"/>
         </Modification>
@@ -1659,19 +1671,13 @@
             <DamageDealtFraction index="Ranged" value="0.5"/>
         </Modification>
     </CBehaviorBuff>
-    <!--ReplenishLife-->
-    <CBehaviorBuff id="Brpl">
-        <EditorCategories value="Race:Undead,AbilityorEffectType:Units"/>
-        <MaxStackCount value="0"/>
-        <MaxStackCountPerCaster value="1"/>
-    </CBehaviorBuff>
     <!--ReplenishMana-->
     <CBehaviorBuff id="Brpm">
         <EditorCategories value="Race:Undead,AbilityorEffectType:Units"/>
         <MaxStackCount value="0"/>
         <MaxStackCountPerCaster value="1"/>
         <Modification>
-            <VitalRegenArray index="Energy" value="3"/>
+            <VitalRegenArray index="Energy" value="2"/>
         </Modification>
     </CBehaviorBuff>
     <!--Slow-->
@@ -2043,7 +2049,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="Swimming" parent="War3_Buff">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnsummonwaterelemental.dds"/>
-        <Modification MoveSpeedMaximum="1.5"/>
+        <Modification MoveSpeedMaximum="1"/>
         <Duration value="1.0625"/>
         <DurationOverride index="0" Duration="1.0625">
             <ValidatorArray index="0" value="HeroOrPowerfulMob"/>

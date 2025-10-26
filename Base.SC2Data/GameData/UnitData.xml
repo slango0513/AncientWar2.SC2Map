@@ -3,6 +3,7 @@
     <CUnit default="1" id="AW2_Item" parent="War3_Item">
         <PawnItemReduction value="1"/>
         <EffectArray index="Create" value=""/>
+        <FlagArray index="Invulnerable" value="1"/>
     </CUnit>
     <CUnit default="1" id="AW2_Building" parent="War3_Building">
         <LifeArmorFormula>
@@ -166,14 +167,6 @@
         <WeaponArray index="1" removed="1"/>
         <CardLayouts index="0">
             <LayoutButtons index="0">
-                <Face value="Anei"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="Aall,Designate"/>
-                <ShowInGlossary value="1"/>
-                <Row value="2"/>
-                <Column value="4"/>
-            </LayoutButtons>
-            <LayoutButtons index="1">
                 <Face value="ANgl"/>
                 <Type value="AbilCmd"/>
                 <AbilCmd value="ANgl,Execute"/>
@@ -181,7 +174,7 @@
                 <Row value="2"/>
                 <Column value="0"/>
             </LayoutButtons>
-            <LayoutButtons index="2">
+            <LayoutButtons index="1">
                 <Face value="ANlg"/>
                 <Type value="AbilCmd"/>
                 <AbilCmd value="ANlg,Execute"/>
@@ -189,16 +182,8 @@
                 <Row value="2"/>
                 <Column value="1"/>
             </LayoutButtons>
-            <LayoutButtons index="3">
-                <Face value="Anei"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="Aall,Designate"/>
-                <ShowInGlossary value="1"/>
-                <Row value="2"/>
-                <Column value="4"/>
-            </LayoutButtons>
-            <LayoutButtons Face="ANgl" Type="AbilCmd" AbilCmd="ANgl,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="ANlg" Type="AbilCmd" AbilCmd="ANlg,Execute" Row="2" Column="1"/>
+            <LayoutButtons index="2" removed="1"/>
+            <LayoutButtons index="3" removed="1"/>
         </CardLayouts>
         <CardLayouts CardId="Buil">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
@@ -230,7 +215,6 @@
         <AbilArray Link="AInv"/>
         <AbilArray Link="ANgl"/>
         <AbilArray Link="ANlg"/>
-        <AbilArray Link="Aall"/>
         <AbilArray Link="Purchaserat3"/>
         <AbilArray Link="Purchaserat6"/>
         <AbilArray Link="Purchaserat9"/>
@@ -1959,12 +1943,31 @@
             <LayoutButtons>
                 <Face value="CmdBuildDraenei"/>
                 <Type value="Submenu"/>
+                <AbilCmd value=""/>
+                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
+                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Buil"/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="0"/>
             </LayoutButtons>
-            <LayoutButtons Face="DraeneiFlag" Type="AbilCmd" AbilCmd="DraeneiBuild,Build1" Row="0" Column="0"/>
+            <LayoutButtons>
+                <Face value="DraeneiFlag"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="DraeneiBuild,Build1"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value=""/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
             <LayoutButtons>
                 <Face value="CmdPurchaseDraenei"/>
                 <Type value="Submenu"/>
@@ -2403,6 +2406,21 @@
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
+    </CUnit>
+    <!--skeletal archer-->
+    <CUnit id="nska" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Undead"/>
+        <Mover value="foot"/>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <PlaneArray index="Ground" value="1"/>
+        <DeathTime value="0"/>
     </CUnit>
     <!--Skink-->
     <CUnit id="nskk" parent="AW2_Army" defType="NONE">
@@ -2913,8 +2931,8 @@
         <Attributes index="medium" value="1"/>
         <CostResource index="lumber" value="3000"/>
         <KillResource index="Custom" value="150"/>
-        <LifeStart value="2100"/>
-        <LifeMax value="2100"/>
+        <LifeStart value="2700"/>
+        <LifeMax value="2700"/>
         <Speed value="2"/>
         <Race value="NightElf"/>
         <Mover value="foot"/>
@@ -3012,12 +3030,31 @@
             <LayoutButtons>
                 <Face value="CmdBuildNightElf"/>
                 <Type value="Submenu"/>
+                <AbilCmd value=""/>
+                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
+                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Buil"/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="0"/>
             </LayoutButtons>
-            <LayoutButtons Face="nflg" Type="AbilCmd" AbilCmd="AEbu,Build1" Row="0" Column="0"/>
+            <LayoutButtons>
+                <Face value="nflg"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="AEbu,Build1"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value=""/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
             <LayoutButtons>
                 <Face value="CmdPurchaseNightElf"/>
                 <Type value="Submenu"/>
@@ -3169,11 +3206,11 @@
         <Mover value="foot"/>
         <AbilArray Link="Aihn"/>
         <AbilArray Link="UpgradeTohhes"/>
-        <AbilArray Link="Defend"/>
+        <AbilArray Link="Adef"/>
         <CardLayouts index="0">
             <LayoutButtons Face="hhes" Type="AbilCmd" AbilCmd="UpgradeTohhes,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="Defend" Type="AbilCmd" AbilCmd="Defend,On" Row="2" Column="0"/>
-            <LayoutButtons Face="DefendUn" Type="AbilCmd" AbilCmd="Defend,Off" Row="2" Column="0"/>
+            <LayoutButtons Face="Adef" Type="AbilCmd" AbilCmd="Adef,On" Row="2" Column="0"/>
+            <LayoutButtons Face="AdefUn" Type="AbilCmd" AbilCmd="Adef,Off" Row="2" Column="0"/>
         </CardLayouts>
         <Radius value="0.375"/>
         <MinimapRadius value="0.375"/>
@@ -3447,12 +3484,31 @@
             <LayoutButtons>
                 <Face value="CmdBuildHuman"/>
                 <Type value="Submenu"/>
+                <AbilCmd value=""/>
+                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
+                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Buil"/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="0"/>
             </LayoutButtons>
-            <LayoutButtons Face="flag" Type="AbilCmd" AbilCmd="AHbu,Build1" Row="0" Column="0"/>
+            <LayoutButtons>
+                <Face value="flag"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="AHbu,Build1"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value=""/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
             <LayoutButtons>
                 <Face value="CmdPurchaseHuman"/>
                 <Type value="Submenu"/>
@@ -3846,12 +3902,31 @@
             <LayoutButtons>
                 <Face value="CmdBuildDragon"/>
                 <Type value="Submenu"/>
+                <AbilCmd value=""/>
+                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
+                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Buil"/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="0"/>
             </LayoutButtons>
-            <LayoutButtons Face="DragonFlag" Type="AbilCmd" AbilCmd="DragonBuild,Build1" Row="0" Column="0"/>
+            <LayoutButtons>
+                <Face value="DragonFlag"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="DragonBuild,Build1"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value=""/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
             <LayoutButtons>
                 <Face value="CmdPurchaseDragon"/>
                 <Type value="Submenu"/>
@@ -4175,12 +4250,31 @@
             <LayoutButtons>
                 <Face value="CmdBuildGoblin"/>
                 <Type value="Submenu"/>
+                <AbilCmd value=""/>
+                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
+                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Buil"/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="0"/>
             </LayoutButtons>
-            <LayoutButtons Face="GoblinFlag" Type="AbilCmd" AbilCmd="GoblinBuild,Build1" Row="0" Column="0"/>
+            <LayoutButtons>
+                <Face value="GoblinFlag"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="GoblinBuild,Build1"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value=""/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
             <LayoutButtons>
                 <Face value="CmdPurchaseGoblin"/>
                 <Type value="Submenu"/>
@@ -4379,12 +4473,31 @@
             <LayoutButtons>
                 <Face value="CmdBuildChaosOrc"/>
                 <Type value="Submenu"/>
+                <AbilCmd value=""/>
+                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
+                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Buil"/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="0"/>
             </LayoutButtons>
-            <LayoutButtons Face="ChaosOrcFlag" Type="AbilCmd" AbilCmd="ChaosOrcBuild,Build1" Row="0" Column="0"/>
+            <LayoutButtons>
+                <Face value="ChaosOrcFlag"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="ChaosOrcBuild,Build1"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value=""/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
             <LayoutButtons>
                 <Face value="CmdPurchaseChaosOrc"/>
                 <Type value="Submenu"/>
@@ -5339,12 +5452,31 @@
             <LayoutButtons>
                 <Face value="CmdBuildBloodElf"/>
                 <Type value="Submenu"/>
+                <AbilCmd value=""/>
+                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
+                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Buil"/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="0"/>
             </LayoutButtons>
-            <LayoutButtons Face="BloodElfFlag" Type="AbilCmd" AbilCmd="BloodElfBuild,Build1" Row="0" Column="0"/>
+            <LayoutButtons>
+                <Face value="BloodElfFlag"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="BloodElfBuild,Build1"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value=""/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
             <LayoutButtons>
                 <Face value="CmdPurchaseBloodElf"/>
                 <Type value="Submenu"/>
@@ -5743,12 +5875,31 @@
             <LayoutButtons>
                 <Face value="CmdBuildNaga"/>
                 <Type value="Submenu"/>
+                <AbilCmd value=""/>
+                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
+                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Buil"/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="0"/>
             </LayoutButtons>
-            <LayoutButtons Face="NagaFlag" Type="AbilCmd" AbilCmd="AGbu,Build1" Row="0" Column="0"/>
+            <LayoutButtons>
+                <Face value="NagaFlag"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="AGbu,Build1"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value=""/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
             <LayoutButtons>
                 <Face value="CmdPurchaseNaga"/>
                 <Type value="Submenu"/>
@@ -6080,12 +6231,10 @@
         <Mover value="foot"/>
         <AbilArray Link="GoblinInventory"/>
         <AbilArray Link="UpgradeTonogl"/>
-        <AbilArray Link="ANta"/>
         <BehaviorArray Link="Ansk"/>
         <CardLayouts index="0">
             <LayoutButtons Face="nogl" Type="AbilCmd" AbilCmd="UpgradeTonogl,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="ANta" Type="AbilCmd" AbilCmd="ANta,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="Ansk" Type="Passive" Behavior="Ansk" Row="2" Column="1"/>
+            <LayoutButtons Face="Ansk" Type="Passive" Behavior="Ansk" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/GoblinUnits"/>
@@ -6102,12 +6251,10 @@
         <Mover value="foot"/>
         <AbilArray Link="GoblinInventory"/>
         <AbilArray Link="ANta"/>
-        <AbilArray Link="AHad"/>
         <BehaviorArray Link="Ansk"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ANta" Type="AbilCmd" AbilCmd="ANta,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="Ansk" Type="Passive" Behavior="Ansk" Row="2" Column="1"/>
-            <LayoutButtons Face="AHad1" Type="Passive" Behavior="AHad" Row="2" Column="2"/>
+            <LayoutButtons Face="Ansk" Type="Passive" Behavior="Ansk" Row="2" Column="0"/>
+            <LayoutButtons Face="ANta" Type="AbilCmd" AbilCmd="ANta,Execute" Row="2" Column="1"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/GoblinUnits"/>
@@ -6245,12 +6392,31 @@
             <LayoutButtons>
                 <Face value="CmdBuildDemon"/>
                 <Type value="Submenu"/>
+                <AbilCmd value=""/>
+                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
+                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Buil"/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="0"/>
             </LayoutButtons>
-            <LayoutButtons Face="DemonFlag" Type="AbilCmd" AbilCmd="DemonBuild,Build1" Row="0" Column="0"/>
+            <LayoutButtons>
+                <Face value="DemonFlag"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="DemonBuild,Build1"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value=""/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
             <LayoutButtons>
                 <Face value="CmdPurchaseDemon"/>
                 <Type value="Submenu"/>
@@ -6777,6 +6943,21 @@
             <LayoutButtons Face="Atru" Type="Passive" Behavior="Atru" Row="2" Column="0"/>
         </CardLayouts>
     </CUnit>
+    <!--Skeletal Mage-->
+    <CUnit id="uskm" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Undead"/>
+        <Mover value="foot"/>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <PlaneArray index="Ground" value="1"/>
+        <DeathTime value="0"/>
+    </CUnit>
     <CUnit id="zhyd1LM" parent="War3_Missile"/>
     <!--night elf assassin-->
     <CUnit id="nssn" parent="AW2_Army" defType="SMALL">
@@ -6893,13 +7074,13 @@
         <AbilArray Link="NagaInventory"/>
         <AbilArray Link="UpgradeTontrt"/>
         <AbilArray Link="UpgradeTonhyc"/>
+        <AbilArray Link="ANth"/>
         <BehaviorArray Link="naga"/>
         <BehaviorArray Link="SeaTurtleSwim"/>
-        <BehaviorArray Link="Ansk"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ntrt" Type="AbilCmd" AbilCmd="UpgradeTontrt,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="nhyc" Type="AbilCmd" AbilCmd="UpgradeTonhyc,Execute" Row="0" Column="1"/>
-            <LayoutButtons Face="Ansk" Type="Passive" Behavior="Ansk" Row="2" Column="0"/>
+            <LayoutButtons Face="ANth" Type="Passive" Behavior="ANth" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
@@ -6915,11 +7096,11 @@
         <CostResource index="gold" value="60"/>
         <KillResource index="Custom" value="30"/>
         <AbilArray Link="NagaInventory"/>
-        <AbilArray Link="ANth"/>
+        <BehaviorArray Link="Ansk"/>
         <BehaviorArray Link="naga"/>
         <BehaviorArray Link="SeaTurtleSwim"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ANth" Type="Passive" Behavior="ANth" Row="2" Column="0"/>
+            <LayoutButtons Face="Ansk" Type="Passive" Behavior="Ansk" Row="2" Column="0"/>
         </CardLayouts>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
     </CUnit>
@@ -6955,11 +7136,11 @@
         <Race value="Naga"/>
         <Mover value="amph"/>
         <AbilArray Link="NagaInventory"/>
-        <AbilArray Link="ANth"/>
+        <BehaviorArray Link="Ansk"/>
         <BehaviorArray Link="naga"/>
         <BehaviorArray Link="GiantSeaTurtleSwim"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ANth" Type="Passive" Behavior="ANth" Row="2" Column="0"/>
+            <LayoutButtons Face="Ansk" Type="Passive" Behavior="Ansk" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
@@ -7222,12 +7403,31 @@
             <LayoutButtons>
                 <Face value="CmdBuildOrc"/>
                 <Type value="Submenu"/>
+                <AbilCmd value=""/>
+                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
+                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Buil"/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="0"/>
             </LayoutButtons>
-            <LayoutButtons Face="oflg" Type="AbilCmd" AbilCmd="AObu,Build1" Row="0" Column="0"/>
+            <LayoutButtons>
+                <Face value="oflg"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="AObu,Build1"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value=""/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
             <LayoutButtons>
                 <Face value="CmdPurchaseOrc"/>
                 <Type value="Submenu"/>
@@ -7631,12 +7831,31 @@
             <LayoutButtons>
                 <Face value="CmdBuildUndead"/>
                 <Type value="Submenu"/>
+                <AbilCmd value=""/>
+                <Behavior value=""/>
                 <Requirements value="ShowBuildArmy"/>
+                <SubmenuAbilState value=""/>
                 <SubmenuCardId value="Buil"/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
                 <Row value="0"/>
                 <Column value="0"/>
             </LayoutButtons>
-            <LayoutButtons Face="uflg" Type="AbilCmd" AbilCmd="AUbu,Build1" Row="0" Column="0"/>
+            <LayoutButtons>
+                <Face value="uflg"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="AUbu,Build1"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value=""/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
             <LayoutButtons>
                 <Face value="CmdPurchaseUndead"/>
                 <Type value="Submenu"/>
@@ -7709,34 +7928,32 @@
     <!--destroyer-->
     <CUnit id="ubsp" parent="AW2_Army" defType="SMALL">
         <Attributes index="small" value="1"/>
-        <CostResource index="gold" value="75"/>
-        <KillResource index="Custom" value="75"/>
+        <CostResource index="gold" value="90"/>
+        <KillResource index="Custom" value="90"/>
         <LifeStart value="900"/>
         <LifeMax value="900"/>
-        <Speed value="2"/>
+        <Speed value="3"/>
         <Race value="Undead"/>
         <Mover value="fly"/>
         <PlaneArray index="Air" value="1"/>
         <GlossaryCategory value="Unit/Category/UndeadUnits"/>
+        <AbilArray Link="ObsidianAura"/>
         <AbilArray Link="Aiun"/>
-        <AbilArray Link="Advm"/>
         <AbilArray Link="Afak"/>
-        <AbilArray Link="Aave"/>
-        <AbilArray Link="Aabs"/>
+        <AbilArray Link="AaveUn"/>
         <BehaviorArray Link="undead"/>
         <BehaviorArray Link="AfakUnitRegister"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="Advm" Type="AbilCmd" AbilCmd="Advm,0" Row="2" Column="0"/>
+            <LayoutButtons Face="ObsidianAuraCaster" Type="Passive" Behavior="ObsidianAuraCaster" Row="2" Column="0"/>
             <LayoutButtons Face="Afak" Type="AbilCmd" AbilCmd="Afak,0" Row="2" Column="1"/>
-            <LayoutButtons Face="Aave" Type="AbilCmd" AbilCmd="Aave,0" Row="2" Column="3"/>
-            <LayoutButtons Face="Aabs" Type="AbilCmd" AbilCmd="Aabs,0" Row="2" Column="2"/>
+            <LayoutButtons Face="AaveUn" Type="AbilCmd" AbilCmd="AaveUn,0" Row="2" Column="2"/>
         </CardLayouts>
         <EnergyStart value="60"/>
         <EnergyMax value="60"/>
+        <Height value="1.875"/>
         <Collide index="Ground" value="0"/>
         <Collide index="ForceField" value="0"/>
         <Collide index="Flying" value="1"/>
-        <Height value="1.875"/>
     </CUnit>
     <!--CryptFiend-->
     <CUnit id="ucry" parent="AW2_Army" defType="MEDIUM">
@@ -8002,17 +8219,18 @@
         <Mover value="foot"/>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/UndeadUnits"/>
-        <AbilArray Link="UpgradeTouob2"/>
+        <AbilArray Link="Aave"/>
         <AbilArray Link="Aiun"/>
         <AbilArray Link="ObsidianAura"/>
         <AbilArray Link="Arpl"/>
+        <AbilArray Link="Arpm"/>
         <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="MorphTouob2" Type="AbilCmd" AbilCmd="UpgradeTouob2,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="ObsidianAuraCaster" Type="Passive" Behavior="ObsidianAuraCaster" Row="2" Column="0"/>
             <LayoutButtons Face="Arpl" Type="AbilCmd" AbilCmd="Arpl,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="Arpm" Type="AbilCmd" AbilCmd="Arpm,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="ubsp" Type="AbilCmd" AbilCmd="Aave,Execute" Row="2" Column="3"/>
         </CardLayouts>
-        <EnergyStart value="60"/>
         <EnergyMax value="60"/>
     </CUnit>
     <CUnit id="uob2" parent="AW2_Army" defType="LARGE">
@@ -8022,7 +8240,6 @@
         <Attributes index="large" value="1"/>
         <LifeStart value="900"/>
         <LifeMax value="900"/>
-        <EnergyStart value="60"/>
         <EnergyMax value="60"/>
         <Mover value="foot"/>
         <Speed value="2"/>
@@ -8039,6 +8256,7 @@
             <LayoutButtons Face="Arpm" Type="AbilCmd" AbilCmd="Arpm,Execute" Row="2" Column="1"/>
         </CardLayouts>
         <GlossaryCategory value="Unit/Category/UndeadUnits"/>
+        <EnergyStart value="60"/>
     </CUnit>
     <CUnit id="uob21LM" parent="War3_Missile"/>
     <!--Plague$ward-->

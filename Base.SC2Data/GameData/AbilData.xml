@@ -17,6 +17,10 @@
     </CAbilTransport>
     <CAbilInventory default="1" id="AW2_UnitInventory" parent="War3_Inventory">
         <CmdButtonArray index="Drop" Requirements="BuildArmy"/>
+        <CmdButtonArray index="Take" Requirements="BuildArmy"/>
+        <TargetFilters value="Item;Neutral,Enemy"/>
+        <Range value="500"/>
+        <MaxDropRange value="500"/>
     </CAbilInventory>
     <CAbilBehavior default="1" id="AW2_Toggle" parent="War3_Passive">
         <Flags index="AutoCast" value="1"/>
@@ -146,6 +150,14 @@
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
     </CAbilEffectTarget>
+    <CAbilInventory id="AInv" parent="AW2_UnitInventory">
+        <InfoArray/>
+        <InfoArray/>
+        <InfoArray/>
+        <InfoArray/>
+        <InfoArray/>
+        <InfoArray/>
+    </CAbilInventory>
     <!--Phase Shift Dur=1.5 HeroDur=1.5 Buff=Bpsh-->
     <CAbilEffectInstant id="Apsh" parent="AW2_EffectInstant">
         <CmdButtonArray index="Execute" Requirements="Apsh"/>
@@ -2376,8 +2388,8 @@
         <BehaviorArray value="EternityAuraCaster"/>
     </CAbilBehavior>
     <CAbilInteract id="Aall">
-        <Range value="1"/>
-        <AutoCastRange value="1"/>
+        <Range value="500"/>
+        <AutoCastRange value="500"/>
         <TargetFilters value="Radar;Neutral,Enemy,Dead,Hidden,Hallucination"/>
     </CAbilInteract>
     <!--Anti-magic Shield (Matrix) Dur=90 HeroDur=90 Buff=Bams,Bam2-->
@@ -2418,12 +2430,11 @@
         <CmdButtonArray index="Barrage" Requirements="ShowDefaultButton"/>
     </CAbilAttack>
     <!--Avenger Form Dur=1.1 HeroDur= cast=1-->
-    <CAbilMorph id="Aave" parent="War3_Morph" unitID="ubsp">
+    <CAbilMorph id="Aave" parent="AW2_Morph" unitID="ubsp">
         <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
         <InfoArray index="0" Unit="ubsp">
             <SectionArray index="Actor">
                 <DurationArray index="Duration" value="1.1"/>
-                <EffectArray index="Finish" value="ClearMana"/>
             </SectionArray>
             <SectionArray index="Mover">
                 <DurationArray index="Delay" value="0.1"/>
@@ -2433,6 +2444,25 @@
                 <DurationArray index="Duration" value="1"/>
             </SectionArray>
         </InfoArray>
+        <Flags index="Automatic" value="1"/>
+        <ValidatorArray value="EnergyFullCaster"/>
+    </CAbilMorph>
+    <CAbilMorph id="AaveUn" parent="AW2_Morph" unitID="uobs">
+        <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
+        <Flags index="Automatic" value="1"/>
+        <InfoArray index="0" Unit="uobs">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="1.1"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Delay" value="0.1"/>
+                <DurationArray index="Duration" value="1"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Duration" value="1"/>
+            </SectionArray>
+        </InfoArray>
+        <ValidatorArray value="CasterEnergyLT6"/>
     </CAbilMorph>
     <!--Bloodlust Dur=60 HeroDur=60 Buff=Bblo-->
     <CAbilEffectTarget id="Ablo" parent="AW2_EffectTarget">
@@ -2698,29 +2728,30 @@
     <CAbilEffectInstant id="Arpl" parent="AW2_EffectInstant">
         <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
         <Cost index="0">
-            <Vital index="Energy" value="3"/>
-            <Cooldown Location="Unit" TimeUse="1"/>
+            <Vital index="Energy" value="-3"/>
+            <Cooldown Location="Unit" TimeUse="3"/>
         </Cost>
         <PrepTime value="0.5"/>
         <FinishTime value="0.51"/>
         <Alignment value="Positive"/>
-        <AutoCastValidatorArray value="DamagedFriendNearBy"/>
+        <AutoCastValidatorArray index="0" value="DamagedFriendNearBy"/>
         <CastOutroTime value="1"/>
         <AutoCastFilters value="Self,Visible;-"/>
+        <Range value="1.9531"/>
     </CAbilEffectInstant>
     <!--Replenish (Mana) Dur=1 HeroDur=1 Buff=Brpm cast=6-->
     <CAbilEffectInstant id="Arpm" parent="AW2_EffectInstant">
         <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
         <Cost index="0">
-            <Vital index="Energy" value="3"/>
-            <Cooldown Location="Unit" TimeUse="1"/>
+            <Vital index="Energy" value="-3"/>
+            <Cooldown Location="Unit" TimeUse="3"/>
         </Cost>
         <Range value="1.9531"/>
         <PrepTime value="0.5"/>
         <FinishTime value="0.51"/>
         <Alignment value="Positive"/>
         <CastOutroTime value="1"/>
-        <AutoCastValidatorArray value="NotFullManaFriendNearBy"/>
+        <AutoCastValidatorArray index="0" value="NotFullManaFriendNearBy"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilMorph id="Asb1" parent="AW2_Morph" unitID="nmys">
@@ -3407,7 +3438,7 @@
         <AutoCastRange value="10"/>
         <Flags index="WaitToSpend" value="1"/>
         <DefaultError value="MustTargetUnit,Errors/Cantfindcorpse"/>
-        <AutoCastValidatorArray index="0" value="SkeletonsLT25"/>
+        <AutoCastValidatorArray index="0" value="SkeletonsLE96"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby7"/>
         <Effect index="0" value="AraiEx"/>

@@ -445,7 +445,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnMountainGiant.dds"/>
         <BarWidth value="150"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar110"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar120"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
@@ -919,6 +919,7 @@
     </CActorUnit>
     <!--netherdragon-->
     <CActorUnit id="nndr" parent="War3_Army" unitSound="NetherDragon" unitName="nndr" defType="LARGE">
+        <On Terms="ActorCreation" Send="SetTintColor 255,150,150"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnNetherDragon.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnNetherDragon.dds"/>
@@ -962,6 +963,18 @@
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="1.5625"/>
+    </CActorUnit>
+    <!--skeletalarcher-->
+    <CActorUnit id="nska" parent="War3_Army" unitSound="SkeletonArcher" unitName="nska" defType="MEDIUM">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnSkeletonArcher.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnSkeletonArcher.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnSkeletonArcher.dds"/>
+        <BarWidth value="50"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <!--skink-->
     <CActorUnit id="nskk" parent="War3_Army" unitSound="Skink" unitName="nskk" defType="NONE">
@@ -2224,6 +2237,18 @@
         <WalkAnimTimeScalingAsFlyer value="1"/>
     </CActorUnit>
     <CActorAction id="ushd1" parent="War3_AttackSwapable" WeaponSound="MetalMediumSlice"/>
+    <!--skeletalmage-->
+    <CActorUnit id="uskm" parent="War3_Army" unitSound="Skeleton" unitName="uskm" defType="NONE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnSkeletonMage.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnSkeletonMage.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnSkeletonMage.dds"/>
+        <BarWidth value="50"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
     <CActorAction id="zhyd1" parent="War3_AttackMissileSwapable"/>
     <CActorMissile id="zhyd1LM" parent="War3_MissileSwapable" unitName="zhyd1LM"/>
     <CActorAction id="nss21" parent="War3_AttackSwapable" WeaponSound="MetalLightSlice"/>
@@ -4327,7 +4352,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnDestroyer.dds"/>
         <BarWidth value="75"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
         <BarOffset value="10"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
