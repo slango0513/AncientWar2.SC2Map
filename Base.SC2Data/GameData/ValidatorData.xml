@@ -12,6 +12,9 @@
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
         <Compare value="Eq"/>
     </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="2EnemiesNearby6" parent="AW2_EnemiesNearby">
+        <AreaArray index="0" Compare="GT" Count="1" Radius="6"/>
+    </CValidatorLocationEnumArea>
     <CValidatorCombine id="CanUseAnyInventory">
         <CombineArray value="CanUseNagaInventory"/>
     </CValidatorCombine>
@@ -175,6 +178,9 @@
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NoHex">
         <Behavior value="BOhx"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoEntanglingRoots">
+        <Behavior value="BEer"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NoInvisibility">
         <Behavior value="Binv"/>

@@ -44,7 +44,6 @@
             <PositiveArmorMultiplier value="1"/>
             <PositiveDamageRatio value="0"/>
         </LifeArmorFormula>
-        <FlagArray index="debris" value="1"/>
         <LifeRegenRate value="0.0625"/>
         <CargoSize value="1"/>
     </CUnit>
@@ -191,7 +190,8 @@
         <AbilArray Link="AEer"/>
         <PlaneArray index="Ground" value="1"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="AEer" Type="AbilCmd" AbilCmd="AEer,0" Row="2" Column="0"/>
+            <LayoutButtons Face="Multishot" Type="Passive" Row="2" Column="0"/>
+            <LayoutButtons Face="AEer" Type="AbilCmd" AbilCmd="AEer,0" Row="2" Column="1"/>
         </CardLayouts>
         <GlossaryCategory value="Unit/Category/NightElfUnits"/>
         <WeaponArray index="1" removed="1"/>
@@ -210,7 +210,8 @@
         <AbilArray Link="Aien"/>
         <AbilArray Link="AEah"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="AEah1" Type="Passive" Behavior="AEah" Row="2" Column="0"/>
+            <LayoutButtons Face="Multishot" Type="Passive" Row="2" Column="0"/>
+            <LayoutButtons Face="AEah1" Type="Passive" Behavior="AEah" Row="2" Column="1"/>
         </CardLayouts>
         <GlossaryCategory value="Unit/Category/NightElfUnits"/>
         <WeaponArray index="1" removed="1"/>
@@ -246,8 +247,8 @@
         <Attributes index="none" value="1"/>
         <CostResource index="gold" value="225"/>
         <KillResource index="Custom" value="75"/>
-        <LifeStart value="1600"/>
-        <LifeMax value="1600"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
         <Speed value="3"/>
         <Race value="NightElf"/>
         <Mover value="foot"/>
@@ -505,7 +506,6 @@
         <CardLayouts index="0">
             <LayoutButtons Face="AEar1" Type="Passive" Behavior="AEar" Row="2" Column="0"/>
         </CardLayouts>
-        <Name value="Hvwd/Propernames"/>
         <PlaneArray index="Ground" value="1"/>
         <WeaponArray index="1" removed="1"/>
         <GlossaryCategory value="Unit/Category/NightElfUnits"/>
@@ -598,8 +598,6 @@
         <CardLayouts index="0">
             <LayoutButtons Face="Aabr" Type="Passive" Behavior="Aabr" Row="2" Column="0"/>
         </CardLayouts>
-        <EnergyStart value="60"/>
-        <EnergyMax value="60"/>
         <WeaponArray index="1" removed="1"/>
         <Name value="Nmag/Propernames"/>
     </CUnit>
@@ -621,8 +619,6 @@
         <CardLayouts index="0">
             <LayoutButtons Face="ANht" Type="AbilCmd" AbilCmd="ANht,0" Row="2" Column="0"/>
         </CardLayouts>
-        <EnergyStart value="60"/>
-        <EnergyMax value="60"/>
         <WeaponArray index="1" removed="1"/>
         <Name value="Nman/Propernames"/>
     </CUnit>
@@ -645,8 +641,6 @@
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
         <WeaponArray index="1" removed="1"/>
-        <EnergyStart value="60"/>
-        <EnergyMax value="60"/>
     </CUnit>
     <CUnit id="Nngs1LM" parent="War3_Missile">
         <BehaviorArray Link="Atdg"/>
@@ -677,8 +671,6 @@
             <LayoutButtons Face="Nman" Type="AbilCmd" AbilCmd="UpgradeToNman,0" Row="0" Column="1"/>
             <LayoutButtons Face="ANca" Type="Passive" Behavior="ANca" Row="2" Column="0"/>
         </CardLayouts>
-        <EnergyStart value="60"/>
-        <EnergyMax value="60"/>
         <WeaponArray index="1" removed="1"/>
     </CUnit>
     <!--Sinjo Stormstout-->
@@ -782,13 +774,9 @@
         <GlossaryCategory value="Unit/Category/OrcUnits"/>
         <AbilArray Link="Aion"/>
         <AbilArray Link="UpgradeToOthr"/>
-        <AbilArray Link="AOsf"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Othr" Type="AbilCmd" AbilCmd="UpgradeToOthr,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="AOsf" Type="AbilCmd" AbilCmd="AOsf,Execute" Row="2" Column="0"/>
         </CardLayouts>
-        <EnergyStart value="60"/>
-        <EnergyMax value="60"/>
         <WeaponArray index="1" removed="1"/>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
@@ -905,12 +893,10 @@
         <Mover value="horse"/>
         <GlossaryCategory value="Unit/Category/OrcUnits"/>
         <AbilArray Link="Aion"/>
-        <AbilArray Link="AOfs"/>
+        <AbilArray Link="AOsf"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="AOfs" Type="AbilCmd" AbilCmd="AOfs,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="AOsf" Type="AbilCmd" AbilCmd="AOsf,Execute" Row="2" Column="0"/>
         </CardLayouts>
-        <EnergyStart value="60"/>
-        <EnergyMax value="60"/>
         <WeaponArray index="1" removed="1"/>
         <PlaneArray index="Ground" value="1"/>
         <Name value="Othr/Propernames"/>
@@ -1028,6 +1014,24 @@
         <GlossaryStrongArray value="orai"/>
         <GlossaryWeakArray value="hfoo"/>
     </CUnit>
+    <CUnit id="ear2" parent="AW2_Army" defType="MEDIUM">
+        <Race value="NightElf"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Attributes index="medium" value="1"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Mover value="foot"/>
+        <Speed value="2"/>
+        <KillResource index="Custom" value="30"/>
+        <AbilArray Link="Aien"/>
+        <AbilArray Link="Aeib"/>
+        <BehaviorArray Link="Aegr"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Aegr" Type="Passive" Behavior="Aegr" Row="2" Column="0"/>
+            <LayoutButtons Face="Aeib" Type="Passive" Behavior="Aeib" Row="2" Column="1"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="ear21LM" parent="War3_Missile"/>
     <!--Glaive Thrower-->
     <CUnit id="ebal" parent="AW2_Army" defType="LARGE">
         <Attributes index="mechanical" value="1"/>
@@ -1136,7 +1140,8 @@
         <CardLayouts index="0">
             <LayoutButtons Face="Ekee" Type="AbilCmd" AbilCmd="UpgradeToEkee,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="Ekgg" Type="AbilCmd" AbilCmd="UpgradeToEkgg,Execute" Row="0" Column="1"/>
-            <LayoutButtons Face="Aspo" Type="Passive" Behavior="Aspo" Row="2" Column="0"/>
+            <LayoutButtons Face="Multishot" Type="Passive" Row="2" Column="0"/>
+            <LayoutButtons Face="Aspo" Type="Passive" Behavior="Aspo" Row="2" Column="1"/>
         </CardLayouts>
         <GlossaryCategory value="Unit/Category/NightElfUnits"/>
     </CUnit>
@@ -1172,8 +1177,8 @@
         <Attributes index="none" value="1"/>
         <CostResource index="gold" value="75"/>
         <KillResource index="Custom" value="75"/>
-        <LifeStart value="1600"/>
-        <LifeMax value="1600"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
         <Speed value="3"/>
         <Race value="NightElf"/>
         <Mover value="foot"/>
@@ -1199,12 +1204,11 @@
         <Race value="NightElf"/>
         <Mover value="foot"/>
         <AbilArray Link="Aien"/>
-        <AbilArray Link="AHfa"/>
-        <AbilArray Link="AHfaAugment"/>
+        <AbilArray Link="Aeib"/>
         <BehaviorArray Link="Aegr"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Aegr" Type="Passive" Behavior="Aegr" Row="2" Column="0"/>
-            <LayoutButtons Face="AHfa" Type="AbilCmd" AbilCmd="AHfaAugment,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="Aeib" Type="Passive" Behavior="Aeib" Row="2" Column="1"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/NightElfUnits"/>
@@ -1347,10 +1351,10 @@
     <!--Footman-->
     <CUnit id="hfoo" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
-        <CostResource index="gold" value="15"/>
-        <KillResource index="Custom" value="5"/>
-        <LifeStart value="150"/>
-        <LifeMax value="150"/>
+        <CostResource index="gold" value="30"/>
+        <KillResource index="Custom" value="15"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
         <Speed value="2"/>
         <Race value="Human"/>
         <Mover value="foot"/>
@@ -1424,10 +1428,10 @@
     <!--high elven swordsman-->
     <CUnit id="hhes" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
-        <CostResource index="gold" value="45"/>
-        <KillResource index="Custom" value="5"/>
-        <LifeStart value="150"/>
-        <LifeMax value="150"/>
+        <CostResource index="gold" value="90"/>
+        <KillResource index="Custom" value="15"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
         <Speed value="2"/>
         <Race value="Human"/>
         <Mover value="foot"/>
@@ -1833,16 +1837,18 @@
     <!--doom guard (summoned)-->
     <CUnit id="nba2" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
-        <LifeStart value="2000"/>
-        <LifeMax value="2000"/>
+        <LifeStart value="2100"/>
+        <LifeMax value="2100"/>
         <Speed value="2"/>
-        <Race value="Human"/>
+        <Race value="Undead"/>
         <Mover value="foot"/>
         <AbilArray Link="Awrs"/>
+        <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Awrs" Type="AbilCmd" AbilCmd="Awrs,Execute" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
+        <LifeArmor value="10"/>
         <EnergyStart value="60"/>
         <EnergyMax value="60"/>
         <WeaponArray index="0" Link="nba22"/>
@@ -1851,10 +1857,10 @@
     <!--blood elf lieutenant-->
     <CUnit id="nbel" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
-        <CostResource index="gold" value="45"/>
-        <KillResource index="Custom" value="5"/>
-        <LifeStart value="300"/>
-        <LifeMax value="300"/>
+        <CostResource index="gold" value="90"/>
+        <KillResource index="Custom" value="15"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
         <Speed value="2"/>
         <Race value="Human"/>
         <Mover value="foot"/>
@@ -1956,8 +1962,8 @@
         <Attributes index="medium" value="1"/>
         <CostResource index="gold" value="225"/>
         <KillResource index="Custom" value="75"/>
-        <LifeStart value="1200"/>
-        <LifeMax value="1200"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="horse"/>
@@ -2067,11 +2073,11 @@
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/UndeadUnits"/>
         <AbilArray Link="Aiun"/>
-        <AbilArray Link="ANca"/>
+        <AbilArray Link="ACce"/>
         <BehaviorArray Link="undead"/>
         <BehaviorArray Link="Aap1"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ANca" Type="Passive" Behavior="ANca" Row="2" Column="0"/>
+            <LayoutButtons Face="ACce" Type="Passive" Behavior="ACce" Row="2" Column="0"/>
             <LayoutButtons Face="Aap1" Type="Passive" Behavior="Aap1" Row="2" Column="1"/>
         </CardLayouts>
     </CUnit>
@@ -2238,8 +2244,8 @@
         <InnerRadius value="0.3125"/>
     </CUnit>
     <!--Gnoll Robber-->
-    <CUnit id="ngno" parent="AW2_Creep" defType="LARGE">
-        <Attributes index="large" value="1"/>
+    <CUnit id="ngno" parent="AW2_Creep" defType="SMALL">
+        <Attributes index="small" value="1"/>
         <KillResource index="Custom" value="75"/>
         <LifeStart value="1800"/>
         <LifeMax value="1800"/>
@@ -2247,7 +2253,6 @@
         <Race value="Creeps"/>
         <Mover value="foot"/>
         <PlaneArray index="Ground" value="1"/>
-        <LifeArmor value="10"/>
         <Radius value="0.3125"/>
         <MinimapRadius value="0.3125"/>
         <SeparationRadius value="0.3125"/>
@@ -2256,9 +2261,9 @@
     <!--Gnoll Assassin-->
     <CUnit id="ngns" parent="AW2_Creep" defType="MEDIUM">
         <Attributes index="medium" value="1"/>
-        <KillResource index="Custom" value="300"/>
-        <LifeStart value="7200"/>
-        <LifeMax value="7200"/>
+        <KillResource index="Custom" value="150"/>
+        <LifeStart value="3600"/>
+        <LifeMax value="3600"/>
         <Speed value="2"/>
         <Race value="Creeps"/>
         <Mover value="foot"/>
@@ -2268,11 +2273,10 @@
             <LayoutButtons Face="ACvs" Type="Passive" Behavior="ACvs" Row="2" Column="1"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
-        <LifeArmor value="10"/>
-        <Radius value="0.375"/>
-        <MinimapRadius value="0.375"/>
-        <SeparationRadius value="0.375"/>
-        <InnerRadius value="0.375"/>
+        <Radius value="0.3125"/>
+        <MinimapRadius value="0.3125"/>
+        <SeparationRadius value="0.3125"/>
+        <InnerRadius value="0.3125"/>
     </CUnit>
     <!--Gnoll Overseer-->
     <CUnit id="ngnv" parent="AW2_Creep" defType="LARGE">
@@ -2283,23 +2287,22 @@
         <Speed value="2"/>
         <Race value="Creeps"/>
         <Mover value="foot"/>
-        <AbilArray Link="ANca"/>
+        <AbilArray Link="ACce"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ANca" Type="AbilCmd" AbilCmd="ANca,255" Row="2" Column="0"/>
+            <LayoutButtons Face="ACce" Type="Passive" Behavior="ACce" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
-        <LifeArmor value="10"/>
         <Radius value="0.3125"/>
         <MinimapRadius value="0.3125"/>
         <SeparationRadius value="0.3125"/>
         <InnerRadius value="0.3125"/>
     </CUnit>
     <!--gnoll $warden-->
-    <CUnit id="ngnw" parent="AW2_Creep" defType="MEDIUM">
-        <Attributes index="medium" value="1"/>
-        <KillResource index="Custom" value="600"/>
-        <LifeStart value="14400"/>
-        <LifeMax value="14400"/>
+    <CUnit id="ngnw" parent="AW2_Creep" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <KillResource index="Custom" value="300"/>
+        <LifeStart value="7200"/>
+        <LifeMax value="7200"/>
         <Speed value="2"/>
         <Race value="Creeps"/>
         <Mover value="foot"/>
@@ -2307,7 +2310,6 @@
             <LayoutButtons Face="Multishot" Type="Passive" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
-        <LifeArmor value="10"/>
         <Radius value="0.375"/>
         <MinimapRadius value="0.375"/>
         <SeparationRadius value="0.375"/>
@@ -2554,9 +2556,9 @@
         <Speed value="2"/>
         <Race value="Creeps"/>
         <Mover value="foot"/>
-        <AbilArray Link="ANca"/>
+        <AbilArray Link="ACce"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ANca" Type="Passive" Behavior="ANca" Row="2" Column="0"/>
+            <LayoutButtons Face="ACce" Type="Passive" Behavior="ACce" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <LifeArmor value="10"/>
@@ -2574,9 +2576,9 @@
         <Speed value="2"/>
         <Race value="Creeps"/>
         <Mover value="foot"/>
-        <AbilArray Link="ANca"/>
+        <AbilArray Link="ACce"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ANca" Type="Passive" Behavior="ANca" Row="2" Column="0"/>
+            <LayoutButtons Face="ACce" Type="Passive" Behavior="ACce" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <LifeArmor value="10"/>
@@ -3125,11 +3127,11 @@
         <Speed value="2"/>
         <Race value="Creeps"/>
         <Mover value="foot"/>
-        <AbilArray Link="ANca"/>
+        <AbilArray Link="ACce"/>
         <BehaviorArray Link="ANth"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ANth" Type="Passive" Behavior="ANth" Row="2" Column="0"/>
-            <LayoutButtons Face="ANca" Type="Passive" Behavior="ANth" Row="2" Column="1"/>
+            <LayoutButtons Face="ACce" Type="Passive" Behavior="ACce" Row="2" Column="1"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <LifeArmor value="20"/>
@@ -3222,7 +3224,6 @@
     <!--Villager Man-->
     <CUnit id="nvil" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
-        <Speed value="1"/>
         <Race value="Commoner"/>
         <Mover value="foot"/>
         <Radius value="0.3125"/>
@@ -3230,7 +3231,6 @@
         <SeparationRadius value="0.3125"/>
         <InnerRadius value="0.3125"/>
         <DeathTime value="0"/>
-        <PlaneArray index="Ground" value="1"/>
         <FlagArray index="debris" value="1"/>
         <Collide index="Ground" value="0"/>
         <Collide index="Swarm" value="1"/>
@@ -3426,8 +3426,8 @@
         <Attributes index="none" value="1"/>
         <CostResource index="gold" value="75"/>
         <KillResource index="Custom" value="75"/>
-        <LifeStart value="1200"/>
-        <LifeMax value="1200"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
         <Speed value="2"/>
         <Race value="Orc"/>
         <Mover value="horse"/>

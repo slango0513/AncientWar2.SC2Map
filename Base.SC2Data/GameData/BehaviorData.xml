@@ -189,6 +189,19 @@
         <DisableValidatorArray index="0" removed="1"/>
         <Modification CriticalAttackChanceScaledBonus="0.1"/>
     </CBehaviorBuff>
+    <!--Chieftain - Reincarnation effect=XOre cast=3-->
+    <CBehaviorBuff id="AOre">
+        <Cost>
+            <Cooldown TimeUse="60"/>
+        </Cost>
+        <Modification>
+            <DeathResponse>
+                <Cost>
+                    <Cooldown TimeUse="60"/>
+                </Cost>
+            </DeathResponse>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="AW2_Building" parent="War3_Passive">
         <Requirements value="AW2_Building"/>
         <Modification>
@@ -347,8 +360,8 @@
         <Modification LifeArmorBonus="5"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="BHbh">
-        <Duration value="3"/>
-        <DurationOverride index="0" Duration="1.5">
+        <Duration value="6"/>
+        <DurationOverride index="0" Duration="3">
             <ValidatorArray index="0" value="Hero"/>
         </DurationOverride>
     </CBehaviorBuff>
@@ -377,6 +390,8 @@
         <Modification>
             <DeathResponse Effect="nwgs"/>
         </Modification>
+        <Duration value="0"/>
+        <PeriodicEffect value=""/>
     </CBehaviorBuff>
     <!--AuraCommand-->
     <CBehaviorBuff id="BOac">
@@ -384,7 +399,7 @@
         <MaxStackCountPerCaster value="1"/>
         <Modification>
             <DamageDealtFraction index="Melee" value="0.25"/>
-            <DamageDealtFraction index="Ranged" value="0.25"/>
+            <DamageDealtFraction index="Ranged" value="0"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="BOae1">
@@ -476,16 +491,29 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="Bcsd1">
         <Modification MoveSpeedMultiplier="0.5" AttackSpeedMultiplier="0.5"/>
+        <MaxStackCount value="1"/>
+        <MaxStackCountPerCaster value="0"/>
+        <Duration value="6"/>
+        <DurationOverride index="0" Duration="3">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
     </CBehaviorBuff>
     <!--Cyclone-->
     <CBehaviorBuff id="Bcyc">
-        <Duration value="12"/>
+        <Duration value="10"/>
+        <DurationOverride index="0" Duration="5">
+            <ValidatorArray index="0" value="Hero"/>
+        </DurationOverride>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Aeib" parent="War3_Passive">
+        <Requirements value="Aeib"/>
+        <Modification RangedWeaponRange="3" WeaponScanBonus="3"/>
     </CBehaviorBuff>
     <!--FaerieFire-->
     <CBehaviorBuff id="Bfae">
         <Modification LifeArmorBonus="-10"/>
         <Duration value="30"/>
-        <DurationOverride index="0" Duration="10">
+        <DurationOverride index="0" Duration="30">
             <ValidatorArray index="0" value="Hero"/>
         </DurationOverride>
     </CBehaviorBuff>
@@ -562,6 +590,13 @@
     <!--SlowPoison-->
     <CBehaviorBuff id="Bspo">
         <Modification AttackSpeedMultiplier="0.5"/>
+        <Duration value="6"/>
+        <DurationOverride index="0" Duration="3"/>
+    </CBehaviorBuff>
+    <!--SlowPoisonStackDoT-->
+    <CBehaviorBuff id="Bssd">
+        <Duration value="6"/>
+        <DurationOverride index="0" Duration="3"/>
     </CBehaviorBuff>
     <!--TornadoSpin-->
     <CBehaviorBuff id="Btsp">
@@ -674,7 +709,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="CountUnit" parent="War3_Passive">
         <Requirements value="CountUnit"/>
-        <Period value="10"/>
+        <Period value="5"/>
         <PeriodicEffect value="CountUnitTriggerNotice"/>
         <DisableValidatorArray value="CountUnit"/>
         <DisableValidatorArray value="PhalanxMarkerEqual0"/>
@@ -838,7 +873,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="Swimming" parent="War3_Buff">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnsummonwaterelemental.dds"/>
-        <Modification MoveSpeedMaximum="1.5"/>
+        <Modification MoveSpeedMaximum="1"/>
         <Duration value="0.625"/>
         <DurationOverride index="0" Duration="0.625">
             <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
@@ -852,7 +887,7 @@
         <DurationOverride index="0" Duration="0.625">
             <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
         </DurationOverride>
-        <Modification MoveSpeedMaximum="1"/>
+        <Modification MoveSpeedMaximum="0.5"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="SwimmingAmphibian" parent="War3_Buff">
         <Alignment value="Positive"/>
@@ -861,7 +896,10 @@
         <DurationOverride index="0" Duration="0.625">
             <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
         </DurationOverride>
-        <Modification MoveSpeedMinimum="3"/>
+        <Modification MoveSpeedMinimum="4">
+            <VitalRegenArray index="Life" value="15"/>
+            <VitalRegenArray index="Energy" value="3"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="TeleportMarker" parent="War3_Passive">
         <Requirements value="TeleportMarker"/>

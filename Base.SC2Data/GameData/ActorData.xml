@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CActorSimple id="AIct" parent="War3_SimpleCastAnim"/>
+    <CActorModel id="XIctEffect" parent="EffectArt">
+        <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="Abil.AIct.SourcePrepStart" Send="Create"/>
+        <On Terms="Abil.AIct.SourcePrepStop" Send="AnimBracketStop BSD"/>
+    </CActorModel>
     <CActorSimple id="AIob" parent="War3_AttackMissileSwap"/>
     <CActorModel id="AIobTarget" parent="TargetArtX">
         <HostSiteOps Ops="$weapon"/>
@@ -49,7 +55,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroDemonHunter.dds"/>
         <BarWidth value="75"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
@@ -61,7 +67,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnEvilIllidan.dds"/>
         <BarWidth value="75"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="125"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
@@ -121,7 +127,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnPriestessOfTheMoon.dds"/>
         <BarWidth value="112"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
@@ -133,7 +139,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroWarden.dds"/>
         <BarWidth value="75"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
         <BarOffset value="80"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
@@ -146,14 +152,29 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroTaurenChieftain.dds"/>
         <BarWidth value="100"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar110"/>
         <BarOffset value="100"/>
         <WalkAnimMoveSpeed value="1.9531"/>
     </CActorUnit>
+    <CActorAction id="ear21" parent="War3_AttackMissileSwapable"/>
+    <CActorMissile id="ear21LM" parent="War3_MissileSwapable" unitName="ear21LM"/>
     <CActorAction id="hkn21" parent="War3_AttackSwapable" WeaponSound="MetalMediumSlice"/>
+    <!--darkminion1-->
+    <CActorUnit id="ndr1" parent="War3_Army" unitSound="Skeleton" unitName="ndr1" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnSkeletonWarrior.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnSkeletonWarrior.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnSkeletonWarrior.dds"/>
+        <BarWidth value="50"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
     <CActorAction id="nft31" parent="War3_AttackMissileSwapable"/>
     <CActorMissile id="nft31LM" parent="War3_MissileSwapable" unitName="nft31LM"/>
     <CActorAction id="nlp21" parent="War3_AttackSwapable" WeaponSound="MetalMediumChop"/>
+    <CActorAction id="nltc1" parent="War3_AttackSwapable" WeaponSound="MetalMediumChop"/>
     <CActorAction id="nss21" parent="War3_AttackSwapable" WeaponSound="MetalLightSlice"/>
     <CActorUnit id="Hamg" parent="War3_Army" unitSound="HeroArchMage" unitName="Hamg" defType="NONE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHeroArchMage.dds"/>
@@ -163,7 +184,7 @@
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroArchMage.dds"/>
         <SoundArray index="Movement" value="HumanHeroArchMageMovement"/>
         <BarWidth value="75"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
@@ -176,7 +197,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnGhostMage.dds"/>
         <BarWidth value="75"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
@@ -188,7 +209,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroPaladin.dds"/>
         <BarWidth value="55"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
@@ -200,7 +221,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnGarithos.dds"/>
         <BarWidth value="80"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
@@ -212,7 +233,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroPaladin.dds"/>
         <BarWidth value="62"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
@@ -237,7 +258,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroPaladin.dds"/>
         <BarWidth value="55"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
@@ -261,7 +282,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnChaosBlademaster.dds"/>
         <BarWidth value="57"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
@@ -289,8 +310,8 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnPitLord.dds"/>
         <BarWidth value="150"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
-        <BarOffset value="90"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <BarOffset value="100"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <!--mannoroth-->
@@ -301,8 +322,8 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnMannoroth.dds"/>
         <BarWidth value="150"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
-        <BarOffset value="90"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <BarOffset value="100"/>
         <WalkAnimMoveSpeed value="1.9531"/>
     </CActorUnit>
     <!--seawitch-->
@@ -320,7 +341,7 @@
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnNagaSeaWitch.dds"/>
         <BarWidth value="100"/>
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
-        <BarOffset value="120"/>
+        <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <!--pitlord-->
@@ -335,7 +356,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnPitLord.dds"/>
         <BarWidth value="125"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="100"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
@@ -355,7 +376,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroBlademaster.dds"/>
         <BarWidth value="62"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
@@ -374,7 +395,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroBlademaster.dds"/>
         <BarWidth value="62"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
@@ -386,7 +407,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroFarseer.dds"/>
         <BarWidth value="100"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
@@ -434,7 +455,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroTaurenChieftain.dds"/>
         <BarWidth value="100"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar110"/>
         <BarOffset value="100"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
@@ -446,7 +467,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnThrall.dds"/>
         <BarWidth value="100"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
@@ -485,7 +506,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroCryptLord.dds"/>
         <BarWidth value="92"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
@@ -497,7 +518,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroDeathKnight.dds"/>
         <BarWidth value="92"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="100"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
@@ -509,7 +530,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroDeathKnight.dds"/>
         <BarWidth value="92"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="100"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
@@ -519,6 +540,18 @@
     </CActorUnit>
     <!--archer-->
     <CActorUnit id="earc" parent="War3_Army" unitSound="Archer" unitName="earc" defType="MEDIUM">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnArcher.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnArcher.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnArcher.dds"/>
+        <BarWidth value="50"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_NightElfLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <CActorUnit id="ear2" parent="War3_Army" unitSound="Archer" unitName="ear2" defType="MEDIUM">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnArcher.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnArcher.dds"/>
@@ -552,7 +585,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnBearForm.dds"/>
         <BarWidth value="125"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_NightElfLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -565,7 +598,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnDruidOfTheClaw.dds"/>
         <BarWidth value="100"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_NightElfLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -604,7 +637,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnNightElfRunner.dds"/>
         <BarWidth value="50"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_NightElfLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="1.4843"/>
@@ -617,7 +650,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHuntress.dds"/>
         <BarWidth value="75"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_NightElfLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.7343"/>
@@ -647,7 +680,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnFootman.dds"/>
         <BarWidth value="50"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_HumanLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -685,7 +718,7 @@
     </CActorUnit>
     <!--highelvenswordsman-->
     <CActorUnit id="hhes" parent="War3_Army" unitSound="HighElfSwordsman" unitName="hhes" defType="LARGE">
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnTheCaptain.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnTheCaptain.dds"/>
@@ -704,7 +737,7 @@
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnKnight.dds"/>
         <SoundArray index="Movement" value="HumanKnightMovement"/>
         <BarWidth value="70"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_HumanLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.7343"/>
@@ -717,7 +750,7 @@
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnKnight.dds"/>
         <SoundArray index="Movement" value="HumanKnightMovement"/>
         <BarWidth value="70"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_HumanLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.7343"/>
@@ -730,7 +763,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnMilitia.dds"/>
         <BarWidth value="50"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_HumanLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -770,7 +803,7 @@
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnSeigeEngine.dds"/>
         <SoundArray index="Movement" value="HumanSteamTankMovement"/>
         <BarWidth value="125"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="80"/>
         <WalkAnimMoveSpeed value="1.7187"/>
     </CActorUnit>
@@ -818,7 +851,7 @@
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnSeigeEngineWithMissles.dds"/>
         <SoundArray index="Movement" value="HumanSteamTankMovement"/>
         <BarWidth value="125"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <Remove Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Attack"/>
         <BarOffset value="80"/>
         <WalkAnimMoveSpeed value="1.7187"/>
@@ -853,7 +886,7 @@
     <CActorMissile id="BloodElfSorceress1LM" parent="War3_MissileSwapable" unitName="BloodElfSorceress1LM"/>
     <!--spellbreaker-->
     <CActorUnit id="hspt" parent="War3_Army" unitSound="SpellBreaker" unitName="hspt" defType="MEDIUM">
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnSpellBreaker.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnSpellBreaker.dds"/>
@@ -871,7 +904,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnSummonWaterElemental.dds"/>
         <BarWidth value="80"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
         <BarOffset value="120"/>
         <WalkAnimMoveSpeed value="1.7187"/>
     </CActorUnit>
@@ -882,14 +915,14 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnDoomGuard.dds"/>
         <BarWidth value="100"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar110"/>
         <BarOffset value="90"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <!--bloodelflieutenant-->
     <CActorUnit id="nbel" parent="War3_Army" unitSound="SpellBreaker" unitName="nbel" defType="LARGE">
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnTheCaptain.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnTheCaptain.dds"/>
@@ -907,8 +940,8 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnBanditLord.dds"/>
         <BarWidth value="62"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
-        <BarOffset value="100"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
@@ -920,7 +953,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnChaosGrunt.dds"/>
         <BarWidth value="50"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_UndeadLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -933,7 +966,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnChaosWolfRider.dds"/>
         <BarWidth value="80"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_UndeadLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.7343"/>
@@ -951,7 +984,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnChaosKotoBeast.dds"/>
         <BarWidth value="112"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_UndeadLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="1.7187"/>
@@ -964,7 +997,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnRevenant.dds"/>
         <BarWidth value="50"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonSmallDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -978,7 +1011,7 @@
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnDarkTrollShadowPriest.dds"/>
         <BarWidth value="75"/>
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
-        <BarOffset value="80"/>
+        <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
@@ -1003,8 +1036,8 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnFleshGolem.dds"/>
         <BarWidth value="150"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
-        <BarOffset value="60"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <BarOffset value="100"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_UndeadLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
@@ -1027,7 +1060,7 @@
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnForestTrollShadowPriest.dds"/>
         <BarWidth value="75"/>
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
-        <BarOffset value="80"/>
+        <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
@@ -1097,16 +1130,17 @@
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.1093"/>
         <WalkAnimTimeScalingAsFlyer value="1"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.500000 1.000000 ghostmorph"/>
     </CActorUnit>
     <!--gnoll1-->
-    <CActorUnit id="ngno" parent="War3_Army" unitSound="Gnoll" unitName="ngno" defType="LARGE">
+    <CActorUnit id="ngno" parent="War3_Army" unitSound="Gnoll" unitName="ngno" defType="SMALL">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnGnoll.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnGnoll.dds"/>
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnGnoll.dds"/>
         <BarWidth value="50"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -1119,7 +1153,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnGnollArcher.dds"/>
         <BarWidth value="50"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar120"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -1132,20 +1166,20 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnGnollKing.dds"/>
         <BarWidth value="50"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar120"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <!--gnoll3-->
-    <CActorUnit id="ngnw" parent="War3_Army" unitSound="Gnoll" unitName="ngnw" defType="MEDIUM">
+    <CActorUnit id="ngnw" parent="War3_Army" unitSound="Gnoll" unitName="ngnw" defType="NONE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnGnollWarden.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnGnollWarden.dds"/>
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnGnollWarden.dds"/>
         <BarWidth value="50"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar120"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -1175,8 +1209,8 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnSeaTurtleRed.dds"/>
         <BarWidth value="125"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
-        <BarOffset value="110"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
+        <BarOffset value="100"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
@@ -1188,7 +1222,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnBanditMage.dds"/>
         <BarWidth value="75"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_HumanLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -1200,7 +1234,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnBanditMage.dds"/>
         <BarWidth value="75"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_HumanLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -1236,7 +1270,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnLobstrokkGreen.dds"/>
         <BarWidth value="125"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonSmallDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -1249,7 +1283,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnLobstrokkRed.dds"/>
         <BarWidth value="70"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonSmallDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -1261,7 +1295,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnLobstrokkRed.dds"/>
         <BarWidth value="70"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonSmallDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -1274,7 +1308,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnLobstrokkBlue.dds"/>
         <BarWidth value="75"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonSmallDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -1360,7 +1394,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnMurgulBloodGill.dds"/>
         <BarWidth value="72"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonSmallDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -1378,7 +1412,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnNagaMyrmidon.dds"/>
         <BarWidth value="87"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar110"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -1394,7 +1428,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnNagaMyrmidon.dds"/>
         <BarWidth value="87"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar110"/>
         <BarOffset value="100"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
     </CActorUnit>
@@ -1410,7 +1444,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnMurgulTideWarrior.dds"/>
         <BarWidth value="57"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonSmallDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -1428,7 +1462,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnNagaMyrmidonRoyalGuard.dds"/>
         <BarWidth value="112"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar110"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
         <WalkAnimMoveSpeed value="2.5"/>
@@ -1444,7 +1478,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnNagaMyrmidonRoyalGuard.dds"/>
         <BarWidth value="112"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar110"/>
         <BarOffset value="100"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
     </CActorUnit>
@@ -1461,7 +1495,7 @@
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnNagaSummoner.dds"/>
         <BarWidth value="50"/>
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
-        <BarOffset value="160"/>
+        <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
@@ -1478,7 +1512,7 @@
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnSeaWitch.dds"/>
         <BarWidth value="50"/>
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
-        <BarOffset value="100"/>
+        <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
@@ -1490,7 +1524,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnNerubianQueen.dds"/>
         <BarWidth value="100"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.5"/>
@@ -1503,7 +1537,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnnerubianSpiderLord.dds"/>
         <BarWidth value="90"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.5"/>
@@ -1528,7 +1562,7 @@
     </CActorUnit>
     <!--deathrevenant-->
     <CActorUnit id="nrvd" parent="War3_Army" unitSound="Revenant" unitName="nrvd" defType="MEDIUM">
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnRevenant.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnRevenant.dds"/>
@@ -1579,7 +1613,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnAssassin.dds"/>
         <BarWidth value="57"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar80"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_NightElfLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.3437"/>
@@ -1591,7 +1625,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnAssassin.dds"/>
         <BarWidth value="57"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_NightElfLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.3437"/>
@@ -1648,7 +1682,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnSeaTurtleGreen.dds"/>
         <BarWidth value="100"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
         <BarOffset value="100"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -1665,7 +1699,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnSeaTurtleGreen.dds"/>
         <BarWidth value="125"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
         <BarOffset value="100"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -1699,7 +1733,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnNightElfRunner.dds"/>
         <BarWidth value="50"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_NightElfLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1875"/>
@@ -1713,7 +1747,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnWindSerpent.dds"/>
         <BarWidth value="87"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
         <BarOffset value="20"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
         <WalkAnimMoveSpeed value="2.7343"/>
@@ -1743,7 +1777,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnGrunt.dds"/>
         <BarWidth value="50"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -1794,7 +1828,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnKotoBeast.dds"/>
         <BarWidth value="112"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="1.7187"/>
@@ -1807,7 +1841,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnChaosWarlord.dds"/>
         <BarWidth value="50"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.7343"/>
@@ -1824,7 +1858,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnRaider.dds"/>
         <BarWidth value="80"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.7343"/>
@@ -1868,11 +1902,11 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnetherealformon.dds"/>
         <BarWidth value="57"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
-        <On Terms="ActorCreation" Send="SetOpacity 0.500000 0.000000 spiritwalkermorph"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.500000 1.000000 spiritwalkermorph"/>
     </CActorUnit>
     <CActorUnit id="ospw" parent="War3_Army" unitSound="SpiritWalker" unitName="ospw" defType="NONE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnSpiritWalker.dds"/>
@@ -1881,8 +1915,8 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnSpiritWalker.dds"/>
         <BarWidth value="57"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
-        <BarOffset value="110"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
+        <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
         <On Terms="ActorCreation" Send="SetOpacity 1.000000 1.000000 spiritwalkermorph"/>
@@ -1897,7 +1931,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnSpiritWolf.dds"/>
         <BarWidth value="62"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
@@ -1910,7 +1944,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnTauren.dds"/>
         <BarWidth value="80"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar110"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -1923,7 +1957,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnTauren.dds"/>
         <BarWidth value="80"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar110"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -1936,7 +1970,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnTauren.dds"/>
         <BarWidth value="80"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar110"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -1966,7 +2000,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnChaosWarlord.dds"/>
         <BarWidth value="50"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.7343"/>
@@ -1980,7 +2014,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnAbomination.dds"/>
         <BarWidth value="105"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="100"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_AbominationExplosion"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -2023,7 +2057,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnCryptFiend.dds"/>
         <BarWidth value="92"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -2050,7 +2084,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnGhoul.dds"/>
         <BarWidth value="55"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_UndeadLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
@@ -2115,9 +2149,10 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnObsidianStatue.dds"/>
         <BarWidth value="105"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.1093"/>
+        <On Terms="ActorCreation" Send="SetOpacity 1.000000 1.000000 obsidianstatuemorph"/>
     </CActorUnit>
     <CActorUnit id="uob2" parent="War3_Army" unitSound="ObsidianStatue" unitName="uob2" defType="LARGE">
         <AnimBlendTime value="0.300000"/>
@@ -2127,9 +2162,10 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnObsidianStatue.dds"/>
         <BarWidth value="105"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.1093"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.500000 1.000000 obsidianstatuemorph"/>
     </CActorUnit>
     <CActorAction id="uob21" parent="War3_AttackMissileSwapable"/>
     <CActorMissile id="uob21LM" parent="War3_MissileSwapable" unitName="uob21LM"/>
@@ -2141,7 +2177,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnSkeletonWarrior.dds"/>
         <BarWidth value="50"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
@@ -2165,4 +2201,9 @@
         <HostSiteOps Ops="SOpAttachHarnessSoft SOpShadow" HoldRotation="1"/>
     </CActorModel>
     <CActorSimple id="CallTide" parent="War3_SimpleCastAnim"/>
+    <CActorModel id="CallTideEffect" parent="EffectArt">
+        <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="Abil.CallTide.SourcePrepStart" Send="Create"/>
+        <On Terms="Abil.CallTide.SourcePrepStop" Send="AnimBracketStop BSD"/>
+    </CActorModel>
 </Catalog>

@@ -75,6 +75,13 @@
             </SectionArray>
         </InfoArray>
     </CAbilMorph>
+    <CAbilBehavior id="ANca">
+        <CycleMode value="Random"/>
+    </CAbilBehavior>
+    <CAbilBehavior id="ACce" parent="War3_Passive">
+        <EditorCategories value="Race:Creeps,AbilityorEffectType:Units"/>
+        <BehaviorArray value="ACce"/>
+    </CAbilBehavior>
     <CAbilEffectInstant id="ANlg">
         <Flags index="AutoCast" value="1"/>
         <Flags index="Transient" value="1"/>
@@ -102,7 +109,7 @@
         <Cost index="0">
             <Cooldown Location="Unit" TimeUse="30"/>
         </Cost>
-        <TargetFilters index="0" value="-;player,allies,air,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity,hero"/>
+        <TargetFilters index="0" value="-;player,allies,air,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSMarker"/>
             <SortArray value="TSLife"/>
@@ -112,7 +119,7 @@
         <AutoCastRange value="5"/>
         <AutoCastValidatorArray index="1" value="CasterHasSwimmingAmphibian"/>
         <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
-        <AutoCastValidatorArray value="EnemiesNearby1"/>
+        <AutoCastValidatorArray value="EnemiesNearby2"/>
         <PrepTime value="0.47"/>
         <FinishTime value="0.8"/>
     </CAbilEffectTarget>
@@ -154,7 +161,7 @@
     <!--Parasite(eredar) Dur=30 HeroDur= Buff=BNpa,BNpm cast=90-->
     <CAbilEffectTarget id="ACpa" parent="AW2_EffectTarget">
         <EditorCategories value="Race:Naga,AbilityorEffectType:Unit"/>
-        <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity,hero"/>
+        <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <Cost index="0">
             <Vital index="Energy" value="60"/>
             <Cooldown Location="Unit" TimeUse="60"/>
@@ -186,7 +193,7 @@
         <CastIntroTime value="0.33"/>
         <AutoCastRange value="8"/>
         <AutoCastValidatorArray value="noMarkers"/>
-        <AutoCastValidatorArray value="EnemiesNearby1"/>
+        <AutoCastValidatorArray value="EnemiesNearby2"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLife"/>
             <SortArray value="TSKillResourceTerrazineLargestFirst"/>
@@ -257,7 +264,7 @@
         </Cost>
         <CastOutroTime value="0.83"/>
         <Effect index="0" value="AEfk1Search"/>
-        <AutoCastValidatorArray value="EnemiesNearby1"/>
+        <AutoCastValidatorArray value="EnemiesNearby2"/>
         <AutoCastFilters value="Visible;-"/>
     </CAbilEffectInstant>
     <CAbilBuild id="AGbu" parent="War3_PowerBuild">
@@ -405,7 +412,7 @@
         <Cost index="0">
             <Cooldown Location="Unit" TimeUse="120"/>
         </Cost>
-        <PrepTime value="0.45"/>
+        <PrepTime value="2"/>
         <CastOutroTime value="1.08"/>
         <AutoCastValidatorArray value="EnemiesNearby4"/>
         <AutoCastFilters value="Visible;-"/>
@@ -495,12 +502,16 @@
         <LoadCargoEffect value="Bdig"/>
         <LoadValidatorArray value="HasnoCargoAbility"/>
     </CAbilTransport>
+    <CAbilBehavior id="Aeib" parent="War3_Passive">
+        <CmdButtonArray index="On" Requirements="Aeib"/>
+        <BehaviorArray value="Aeib"/>
+    </CAbilBehavior>
     <!--Faerie Fire Dur=90 HeroDur=60 Buff=Bfae-->
     <CAbilEffectTarget id="Afae" parent="AW2_EffectTarget">
         <EditorCategories value="Race:NightElf,AbilityorEffectType:Unit"/>
         <TargetFilters index="0" value="-;player,allies,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="30"/>
+            <Cooldown Location="Unit" TimeUse="15"/>
         </Cost>
         <Effect index="0" value="Bfae"/>
         <Range value="12"/>
@@ -556,7 +567,7 @@
         <EditorCategories value="Race:NightElf,AbilityorEffectType:Unit"/>
         <TargetFilters index="0" value="-;enemies,mechanical,wall,tree,Missile,debris,item,structure,ward,dead"/>
         <Cost index="0">
-            <Vital index="Energy" value="15"/>
+            <Vital index="Energy" value="20"/>
             <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <Effect index="0" value="Brej"/>
@@ -564,6 +575,7 @@
         <PrepTime value="0.5"/>
         <CastOutroTime value="1.17"/>
         <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="TargetLifeNotFull"/>
         <AutoCastValidatorArray value="NoRejuvination"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
@@ -599,7 +611,7 @@
         <Cost index="0">
             <Cooldown Location="Unit" TimeUse="120"/>
         </Cost>
-        <PrepTime value="0.45"/>
+        <PrepTime value="2"/>
         <CastOutroTime value="1.08"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastFilters value="Visible;-"/>
@@ -632,16 +644,16 @@
     <!--Pit Lord - Doom Buff=BNdo,BNdi-->
     <CAbilEffectTarget id="ANdo" parent="AW2_EffectTarget">
         <EditorCategories value="Race:Undead,AbilityorEffectType:Units"/>
-        <TargetFilters index="0" value="-;mechanical,wall,tree,Missile,debris,item,structure,ward,dead,Hidden,invulnerable,hero"/>
+        <TargetFilters index="0" value="-;mechanical,wall,tree,Missile,debris,item,structure,ward,dead,Hidden,invulnerable"/>
         <Cost index="0">
             <Vital index="Energy" value="60"/>
             <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
-        <Range value="13"/>
+        <Range value="24"/>
         <PrepTime value="0.75"/>
         <CastOutroTime value="0.51"/>
         <Effect index="0" value="BNdo"/>
-        <AutoCastRange value="13"/>
+        <AutoCastRange value="24"/>
         <AutoCastValidatorArray value="NoDoom"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby7"/>
@@ -809,7 +821,6 @@
     <CAbilEffectInstant id="AOsf" parent="AW2_EffectInstant">
         <EditorCategories value="Race:Orc,AbilityorEffectType:Units"/>
         <Cost index="0">
-            <Vital index="Energy" value="30"/>
             <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
         <PrepTime value="0.3"/>
@@ -820,21 +831,22 @@
     </CAbilEffectInstant>
     <!--Chieftain - Shock Wave Buff=BOsh-->
     <CAbilEffectTarget id="AOsh" parent="AW2_EffectTarget">
-        <TargetFilters index="0" value="-;player,allies,air,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity,hero"/>
+        <TargetFilters index="0" value="-;player,allies,air,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <Cost index="0">
             <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
-        <Range value="1"/>
+        <Range value="5"/>
         <PrepTime value="0.47"/>
         <FinishTime value="0.8"/>
         <Effect index="0" value="AOshTarget"/>
         <Alignment value="Negative"/>
-        <AutoCastRange value="1"/>
-        <AutoCastValidatorArray value="noMarkers"/>
-        <AutoCastValidatorArray value="EnemiesNearby1"/>
+        <AutoCastRange value="5"/>
+        <AutoCastValidatorArray value="EnemiesNearby2"/>
         <TargetSorts RequestCount="1">
-            <SortArray value="TSDistance"/>
+            <SortArray value="TSMarker"/>
+            <SortArray value="TSLife"/>
+            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
         </TargetSorts>
     </CAbilEffectTarget>
     <!--Shadow Hunter - Serpent Ward Buff=BOwd-->
@@ -861,7 +873,7 @@
         <PrepTime value="0.47"/>
         <FinishTime value="0.8"/>
         <Effect index="0" value="AOws1Search"/>
-        <AutoCastValidatorArray value="EnemiesNearby1"/>
+        <AutoCastValidatorArray value="EnemiesNearby2"/>
         <AutoCastFilters value="Visible;-"/>
     </CAbilEffectInstant>
     <!--Death Knight - Animate Dead Buff=BUan-->
@@ -966,7 +978,7 @@
         <AutoCastRange value="6"/>
         <AutoCastValidatorArray value="NoFrostArmor"/>
         <AutoCastValidatorArray value="noMarkers"/>
-        <AutoCastValidatorArray value="EnemiesNearby1"/>
+        <AutoCastValidatorArray value="EnemiesNearby2"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
             <SortArray value="TSKillResourceTerrazineLargestFirst"/>
@@ -1637,7 +1649,7 @@
     <!--War Stomp (creep) Dur=3 HeroDur=2 Buff=BPSE-->
     <CAbilEffectInstant id="Awrs" parent="AW2_EffectInstant">
         <Alignment value="Negative"/>
-        <EditorCategories value="Race:Orc,AbilityorEffectType:Units"/>
+        <EditorCategories value="Race:Undead,AbilityorEffectType:Units"/>
         <Cost index="0">
             <Vital index="Energy" value="60"/>
             <Cooldown Location="Unit" TimeUse="60"/>
@@ -1645,7 +1657,7 @@
         <PrepTime value="0.47"/>
         <FinishTime value="0.8"/>
         <Effect index="0" value="AOws1Search"/>
-        <AutoCastValidatorArray index="0" value="EnemiesNearby1"/>
+        <AutoCastValidatorArray value="EnemiesNearby2"/>
         <AutoCastFilters value="Visible;-"/>
     </CAbilEffectInstant>
     <CAbilBehavior id="Multishot" parent="War3_Passive">
@@ -1765,7 +1777,7 @@
     <!--Polymorph Dur=60 HeroDur=60 Buff=Bply-->
     <CAbilEffectTarget id="Aply" parent="AW2_EffectTarget">
         <EditorCategories value="Race:Human,AbilityorEffectType:Unit"/>
-        <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity,hero"/>
+        <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,hero"/>
         <Cost index="0">
             <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
@@ -1808,7 +1820,7 @@
         </CmdButtonArray>
         <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
         <Cost index="0">
-            <Vital index="Energy" value="5"/>
+            <Vital index="Energy" value="6"/>
             <Cooldown Location="Unit" TimeUse="10"/>
         </Cost>
         <Range value="13"/>

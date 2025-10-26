@@ -134,6 +134,7 @@ unitfilter gv_creepFilter;
 unitfilter gv_unitFilter;
 unitfilter gv_unitAndCreepFilter;
 unitfilter gv_pathBlockerFilter;
+unitfilter gv_villagerFilter;
 region[gv_venueMaximumCount + 1] gv_finalVenue;
 fixed[gv_venueMaximumCount + 1] gv_finalVenueFacing;
 revealer[gv_venueMaximumCount + 1][gv_playerMaximumIndex + 1] gv_finalVenueRevealer;
@@ -175,17 +176,18 @@ void InitGlobals () {
     gv_phalanxFilter = UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
     gv_portalFilter = UnitFilter((1 << c_targetFilterRawResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
     gv_buildingFilter = UnitFilter(0, (1 << (c_targetFilterRadar - 32)), (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
-    gv_creepFilter = UnitFilter((1 << c_targetFilterDestructible), (1 << (c_targetFilterMapBoss - 32)), (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
+    gv_creepFilter = UnitFilter(0, (1 << (c_targetFilterMapBoss - 32)), (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
     gv_unitFilter = UnitFilter(0, 0, (1 << c_targetFilterHover) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterMapBoss - 32)));
     gv_unitAndCreepFilter = UnitFilter(0, 0, (1 << c_targetFilterHover) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
     gv_pathBlockerFilter = UnitFilter((1 << c_targetFilterUser1), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
+    gv_villagerFilter = UnitFilter((1 << c_targetFilterDestructible), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
 }
 
 //--------------------------------------------------------------------------------------------------
 // Global Function Declarations
 //--------------------------------------------------------------------------------------------------
 void gf_ModInizialization (bool lp_debug);
-void gf_RoundStartLoop (bool lp_debug);
+void gf_RoundStartLoop (bool lp_debug, bool lp_debugOnlyBonusRound);
 void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug);
 void gf_TeamMemberSetAndTeamMemberCountSet ();
 void gf_TeamRoundRandomize ();
@@ -202,7 +204,7 @@ void gf_GameOverTestNotPassed ();
 void gf_ChangeTOD ();
 void gf_RestoreTOD ();
 void gf_ChangeWaterState ();
-void gf_RestoreWaterState ();
+void gf_RestoreWaterState (bool lp_wait);
 void gf_ReserveUnitCreation2 (int lp_player, int lp_phalanx);
 unitgroup gf_PlayerGetWorkers (int lp_player);
 int gf_PlayerGetTeam (int lp_player);
@@ -270,6 +272,7 @@ void gf_ReserveUnitCreationEnable (bool lp_option);
 void gf_ReserveUnitCreation (unit lp_unit, int lp_player, int lp_phalanx);
 void gf_SearchRadiusInFinalRoundSet (fixed lp_radius);
 void gf_IssueOrderAll (bool lp_periodic);
+void gf_RemoveVillagerAll ();
 unit gf_UnitGroupClosestPathingCostToPoint (point lp_point, unitgroup lp_unitGroup);
 bool gf_PlayerIsAlive (int lp_player, int lp_round);
 void gf_CountUnitEnable (bool lp_option);
@@ -282,6 +285,7 @@ void gf_VenueCameraPan (int lp_round);
 void gf_SetPhalanxHighlighted (int lp_player, bool lp_highlighted);
 void gf_KillScoreAdd (int lp_player, string lp_unitType);
 void gf_KillScoreUpdateAll ();
+void gf_KillScoreResetAll ();
 void gf_ScoreBoardRowColorUpdate (int lp_round);
 void gf_ScoreBoardSetName (int lp_round, bool lp_bonusRound);
 void gf_BuildingScoreUpdateAll ();
@@ -389,7 +393,7 @@ void gf_ModInizialization (bool lp_debug) {
     }
 }
 
-void gf_RoundStartLoop (bool lp_debug) {
+void gf_RoundStartLoop (bool lp_debug, bool lp_debugOnlyBonusRound) {
     int autoE4112BFC_ae;
     int autoE4112BFC_ai;
 
@@ -404,17 +408,22 @@ void gf_RoundStartLoop (bool lp_debug) {
         autoE4112BFC_ai = 1;
         lv_round = 1;
         for ( ; ( (autoE4112BFC_ai >= 0 && lv_round <= autoE4112BFC_ae) || (autoE4112BFC_ai <= 0 && lv_round >= autoE4112BFC_ae) ) ; lv_round += autoE4112BFC_ai ) {
-            if ((lp_debug == true)) {
-                lv_round = 1;
-            }
-
-            if ((gf_IsFinalRound(lv_round) == true)) {
-                gf_FinalVenueReplace();
+            if ((lp_debugOnlyBonusRound == true) && (lp_debug == true)) {
+                lv_round = 3;
             }
             else {
-                gf_VenueInitialReplace();
+                if ((lp_debug == true)) {
+                    lv_round = 1;
+                }
+
+                if ((gf_IsFinalRound(lv_round) == true)) {
+                    gf_FinalVenueReplace();
+                }
+                else {
+                    gf_VenueInitialReplace();
+                }
+                gf_RoundStart(lv_round, false, lp_debug);
             }
-            gf_RoundStart(lv_round, false, lp_debug);
             if ((gv_bonusRoundIsOn[lv_round] == true)) {
                 gf_BonusVenueReplace();
                 gf_RoundStart(lv_round, true, lp_debug);
@@ -464,6 +473,7 @@ void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug) {
         gf_PreviewEnable(false);
         gf_UnitTypeSetAll();
     }
+    gf_KillScoreResetAll();
     gf_KillScoreUpdateAll();
     gf_VenueRevealerEnable(lp_round, true);
     gf_PhalanxCounterEnable(true, true);
@@ -489,9 +499,9 @@ void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug) {
         gf_ObjectiveSetState(lp_round, c_objectiveStateCompleted);
     }
 
-    gf_RestoreWaterState();
+    gf_RestoreWaterState(false);
     gf_RestoreTOD();
-    Wait(2.0, c_timeGame);
+    Wait(1.0, c_timeGame);
 }
 
 void gf_TeamMemberSetAndTeamMemberCountSet () {
@@ -1015,7 +1025,7 @@ void gf_ChangeWaterState () {
     // Variable Initialization
 
     // Implementation
-    SoundPlayForPlayer(SoundLink("TidalGuardianWhat", -1), c_maxPlayers, PlayerGroupActive(), 100.0, 0.0);
+    SoundPlayForPlayer(SoundLink("TempleOfTidesWhat", -1), c_maxPlayers, PlayerGroupActive(), 100.0, 0.0);
     WaterSetState("AW2_Default|[Default]", 5.0, c_wtcLinear);
     Wait(2.0, c_timeGame);
     autoAF95B0B5_g = PlayerGroupActive(); 
@@ -1027,7 +1037,7 @@ void gf_ChangeWaterState () {
     TimerWindowShow(gv_callTideTimmerWindow, PlayerGroupActive(), true);
 }
 
-void gf_RestoreWaterState () {
+void gf_RestoreWaterState (bool lp_wait) {
     playergroup auto5475E430_g;
     int auto5475E430_p;
 
@@ -1044,9 +1054,13 @@ void gf_RestoreWaterState () {
         libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "Tide", 0);
     }
     TimerWindowShow(gv_callTideTimmerWindow, PlayerGroupActive(), false);
-    Wait(2.0, c_timeGame);
+    if ((lp_wait == true)) {
+        Wait(2.0, c_timeGame);
+    }
+    else {
+        Wait(gv_minimumPeriod, c_timeGame);
+    }
     if ((TechTreeUpgradeCount(PlayerGroupPlayer(PlayerGroupActive(), 1), "Tide", c_techCountCompleteOnly) == 0)) {
-        SoundPlayForPlayer(SoundLink("TempleOfTidesWhat", -1), c_maxPlayers, PlayerGroupActive(), 100.0, 0.0);
         WaterSetState("AW2_Default|Alternate Setting", 5.0, c_wtcLinear);
         libNtve_gf_SendActorMessageToGameRegion(RegionEntireMap(), "AnimGroupRemove Swim");
     }
@@ -2052,7 +2066,7 @@ void gf_UnitTypeSet (int lp_buildingRegion, int lp_phalanx) {
     }
     lv_unitIndex = 0;
     if ((gv_unitType[gv_playerAtBuildingRegion[lp_buildingRegion]][lp_phalanx][1] == null)) {
-        auto66B75B59_ae = 1;
+        auto66B75B59_ae = 6;
         auto66B75B59_ai = 1;
         lv_unitIndex = 1;
         for ( ; ( (auto66B75B59_ai >= 0 && lv_unitIndex <= auto66B75B59_ae) || (auto66B75B59_ai <= 0 && lv_unitIndex >= auto66B75B59_ae) ) ; lv_unitIndex += auto66B75B59_ai ) {
@@ -2091,22 +2105,7 @@ void gf_CreepUnitTypeSetAll () {
             auto57A507C1_ai = 1;
             lv_venue = 1;
             for ( ; ( (auto57A507C1_ai >= 0 && lv_venue <= auto57A507C1_ae) || (auto57A507C1_ai <= 0 && lv_venue >= auto57A507C1_ae) ) ; lv_venue += auto57A507C1_ai ) {
-                while ((gv_creepUnitType[lv_venue][lv_round] == null)) {
-                    lv_index = RandomInt(1, lv_count);
-                    lv_unitType = UserDataGetUnit(gv_creepUnitTypeUserType, ("1"), "UnitType", lv_index);
-                    if ((lv_unitType != null)) {
-                        gv_creepUnitType[lv_venue][lv_round] = lv_unitType;
-                        lv_description = StringExternal(CatalogFieldValueGet(c_gameCatalogUnit, gv_creepUnitType[lv_venue][lv_round], "Description", gv_playerAtVenue[lv_venue][lv_round]));
-                        lv_path = CatalogFieldValueGet(c_gameCatalogActor, (lv_unitType), "UnitIcon", gv_playerAtVenue[lv_venue][lv_round]);
-                        TextExpressionSetToken("Param/Expression/0E472FCC", "A", IntToText(lv_round));
-                        TextExpressionSetToken("Param/Expression/0E472FCC", "B", UnitTypeGetName(lv_unitType));
-                        TextExpressionSetToken("Param/Expression/4CA5E705", "A", lv_description);
-                        TextExpressionSetToken("Param/Expression/CEBDBACC", "A", IntToText(lv_round));
-                        TextExpressionSetToken("Param/Expression/CEBDBACC", "B", UnitTypeGetName(lv_unitType));
-                        HelpPanelAddTip(PlayerGroupSingle(gv_playerAtVenue[lv_venue][lv_round]), TextExpressionAssemble("Param/Expression/0E472FCC"), TextExpressionAssemble("Param/Expression/4CA5E705"), TextExpressionAssemble("Param/Expression/CEBDBACC"), (lv_path));
-                    }
-
-                }
+                gv_creepUnitType[lv_venue][lv_round] = "ngno";
             }
         }
 
@@ -2692,9 +2691,14 @@ void gf_ReserveUnitCreationEnable (bool lp_option) {
     TriggerEnable(gt_CreateReserveUnit, lp_option);
     TriggerEnable(gt_UnitDied, lp_option);
     TriggerEnable(gt_TideAddRemoveSwimmingPeriodic, lp_option);
-    Wait(0.0625, c_timeGame);
-    gf_IssueOrderAll(false);
-    Wait(5.0, c_timeGame);
+    if ((lp_option == true)) {
+        Wait(gv_minimumPeriod, c_timeGame);
+        gf_IssueOrderAll(false);
+        Wait(gv_minimumPeriod, c_timeGame);
+        gf_RemoveVillagerAll();
+        Wait(5.0, c_timeGame);
+    }
+
     TriggerEnable(gt_IssueOrderPeriodic, lp_option);
 }
 
@@ -2790,6 +2794,33 @@ void gf_IssueOrderAll (bool lp_periodic) {
         else {
             UnitIssueOrder(lv_unit, Order(AbilityCommand("stop", 0)), c_orderQueueReplace);
         }
+    }
+}
+
+void gf_RemoveVillagerAll () {
+    int autoB10614AA_ae;
+    int autoB10614AA_ai;
+    unitgroup auto6E772E87_g;
+    int auto6E772E87_u;
+
+    // Variable Declarations
+    int lv_player;
+    unit lv_unit;
+
+    // Variable Initialization
+
+    // Implementation
+    autoB10614AA_ae = gv_playerCount;
+    autoB10614AA_ai = 1;
+    lv_player = 1;
+    for ( ; ( (autoB10614AA_ai >= 0 && lv_player <= autoB10614AA_ae) || (autoB10614AA_ai <= 0 && lv_player >= autoB10614AA_ae) ) ; lv_player += autoB10614AA_ai ) {
+        auto6E772E87_g = UnitGroup(null, lv_player, gv_battlefield, gv_villagerFilter, 0);
+        auto6E772E87_u = 1;
+        for ( ; auto6E772E87_u <= UnitGroupCount(auto6E772E87_g, c_unitCountAll) ; auto6E772E87_u += BoolToInt(lv_unit == UnitGroupUnit(auto6E772E87_g, auto6E772E87_u)) ) {
+            lv_unit = UnitGroupUnit(auto6E772E87_g, auto6E772E87_u);
+            UnitRemove(lv_unit);
+        }
+        Wait(gv_minimumPeriod, c_timeGame);
     }
 }
 
@@ -3077,6 +3108,31 @@ void gf_KillScoreUpdateAll () {
     }
 }
 
+void gf_KillScoreResetAll () {
+    int auto2F12DB8F_ae;
+    int auto2F12DB8F_ai;
+
+    // Variable Declarations
+    int lv_maximumScore;
+    int lv_player;
+    int lv_column;
+    color lv_color;
+    int lv_row;
+
+    // Variable Initialization
+    lv_column = 3;
+    lv_color = Color(0,0,0);
+
+    // Implementation
+    lv_maximumScore = 0;
+    auto2F12DB8F_ae = gv_playerCount;
+    auto2F12DB8F_ai = 1;
+    lv_player = 1;
+    for ( ; ( (auto2F12DB8F_ai >= 0 && lv_player <= auto2F12DB8F_ae) || (auto2F12DB8F_ai <= 0 && lv_player >= auto2F12DB8F_ae) ) ; lv_player += auto2F12DB8F_ai ) {
+        gv_killScore[lv_player] = 0;
+    }
+}
+
 void gf_ScoreBoardRowColorUpdate (int lp_round) {
     int autoF6BB5F0E_ae;
     int autoF6BB5F0E_ai;
@@ -3190,6 +3246,7 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
 
     // Variable Declarations
     bool lv_debug;
+    bool lv_debugOnlyBonusRound;
     int lv_player;
 
     // Variable Initialization
@@ -3222,7 +3279,7 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
         lv_player = PlayerGroupPlayer(autoB199C2B0_g, autoB199C2B0_p);
         gf_WorkersSave(lv_player);
     }
-    gf_RoundStartLoop(lv_debug);
+    gf_RoundStartLoop(lv_debug, lv_debugOnlyBonusRound);
     return true;
 }
 
@@ -4411,7 +4468,7 @@ bool gt_CallTideRestoreWaterState_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    gf_RestoreWaterState();
+    gf_RestoreWaterState(true);
     return true;
 }
 
