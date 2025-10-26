@@ -308,6 +308,7 @@
     <CBehaviorBuff id="BCnr">
         <MaxStackCountPerCaster value="1"/>
         <EditorCategories value="Race:Orc,AbilityorEffectType:Units"/>
+        <MaxStackCount value="2"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="BEahDamageAbsorption" parent="War3_AuraBuff">
         <MaxStackCount value="0"/>
@@ -328,12 +329,12 @@
         <Modification>
             <DamageDealtFraction index="Ranged" value="0.25"/>
         </Modification>
-        <MaxStackCount value="0"/>
+        <MaxStackCount value="2"/>
         <MaxStackCountPerCaster value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="BHab1">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
-        <MaxStackCount value="0"/>
+        <MaxStackCount value="2"/>
         <MaxStackCountPerCaster value="1"/>
         <Modification>
             <VitalRegenArray index="Energy" value="0.5"/>
@@ -341,7 +342,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="BHad1">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
-        <MaxStackCount value="0"/>
+        <MaxStackCount value="2"/>
         <MaxStackCountPerCaster value="1"/>
         <Modification LifeArmorBonus="5"/>
     </CBehaviorBuff>
@@ -379,7 +380,7 @@
     </CBehaviorBuff>
     <!--AuraCommand-->
     <CBehaviorBuff id="BOac">
-        <MaxStackCount value="0"/>
+        <MaxStackCount value="2"/>
         <MaxStackCountPerCaster value="1"/>
         <Modification>
             <DamageDealtFraction index="Melee" value="0.25"/>
@@ -388,7 +389,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="BOae1">
         <EditorCategories value="Race:Orc,AbilityorEffectType:Units"/>
-        <MaxStackCount value="0"/>
+        <MaxStackCount value="2"/>
         <MaxStackCountPerCaster value="1"/>
         <Modification MoveSpeedMultiplier="1.25" AttackSpeedMultiplier="1.25"/>
     </CBehaviorBuff>
@@ -400,10 +401,10 @@
         </DurationOverride>
     </CBehaviorBuff>
     <CBehaviorBuff id="BUau1">
-        <MaxStackCount value="0"/>
+        <MaxStackCount value="2"/>
         <MaxStackCountPerCaster value="1"/>
         <Modification MoveSpeedMultiplier="1.25">
-            <VitalRegenArray index="Life" value="2.5"/>
+            <VitalRegenArray index="Life" value="5"/>
         </Modification>
         <EditorCategories value="Race:Undead,AbilityorEffectType:Units"/>
     </CBehaviorBuff>
@@ -422,7 +423,7 @@
     <!--AuraBlightRegen-->
     <CBehaviorBuff id="Babr">
         <EditorCategories value="Race:Undead,AbilityorEffectType:Units"/>
-        <MaxStackCount value="0"/>
+        <MaxStackCount value="2"/>
         <MaxStackCountPerCaster value="1"/>
         <Modification>
             <RateMultiplierArray index="Cooldown" value="1.25"/>
@@ -448,7 +449,7 @@
         <DurationOverride index="0" Duration="30">
             <ValidatorArray index="0" value="Hero"/>
         </DurationOverride>
-        <Modification AttackSpeedMultiplier="5">
+        <Modification AttackSpeedMultiplier="2.5">
             <DamageDealtFraction index="Melee" value="-0.5"/>
             <DamageDealtFraction index="Ranged" value="-0.5"/>
         </Modification>
@@ -462,7 +463,7 @@
         <DurationOverride index="0" Duration="30">
             <ValidatorArray index="0" value="Hero"/>
         </DurationOverride>
-        <Modification AttackSpeedMultiplier="5">
+        <Modification AttackSpeedMultiplier="2.5">
             <DamageDealtFraction index="Melee" value="-0.5"/>
             <DamageDealtFraction index="Ranged" value="-0.5"/>
         </Modification>
@@ -507,6 +508,11 @@
         </Modification>
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
     </CBehaviorBuff>
+    <!--AuraRegenLife-->
+    <CBehaviorBuff id="Boar">
+        <MaxStackCount value="0"/>
+        <MaxStackCountPerCaster value="1"/>
+    </CBehaviorBuff>
     <!--Polymorph-->
     <CBehaviorBuff id="Bply">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
@@ -548,11 +554,10 @@
     <!--SpiritLink-->
     <CBehaviorBuff id="Bspl">
         <EditorCategories value="Race:Orc,AbilityorEffectType:Units"/>
-        <Duration value="6"/>
-        <DurationOverride index="0" Duration="6">
+        <Duration value="5"/>
+        <DurationOverride index="0" Duration="5">
             <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
         </DurationOverride>
-        <MaxStackCount value="6"/>
     </CBehaviorBuff>
     <!--SlowPoison-->
     <CBehaviorBuff id="Bspo">

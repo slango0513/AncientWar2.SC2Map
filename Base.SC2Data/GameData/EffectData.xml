@@ -45,7 +45,7 @@
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CEffectEnumArea>
     <CEffectModifyUnit id="ACnrHealTick">
-        <VitalArray index="Life" Change="5" ChangeFraction="0"/>
+        <VitalArray index="Life" Change="10" ChangeFraction="0"/>
     </CEffectModifyUnit>
     <!--Neutral Regen (health only)-->
     <CEffectEnumArea id="ACnrSearch" parent="War3_AuraSearch" aura="BCnr"/>
@@ -80,6 +80,9 @@
     <CEffectDamage id="AOwsDamage1">
         <Amount value="50"/>
     </CEffectDamage>
+    <CEffectModifyUnit id="AoarHealTick">
+        <VitalArray index="Life" ChangeFraction="0.01"/>
+    </CEffectModifyUnit>
     <!--Aura - Regeneration (Ward) Buff=Boar-->
     <CEffectEnumArea id="AoarSearch">
         <AreaArray index="0" Radius="7.0312" Effect="Boar"/>

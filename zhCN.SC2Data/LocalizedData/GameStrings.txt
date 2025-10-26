@@ -120,7 +120,7 @@ Arpl/Ubertip=恢复附近友方<d ref="Effect,BrplHeal,RechargeVitalRate"/>点�
 Arpm/Ubertip=恢复附近友方<d ref="Behavior,Brpm,Modification.VitalRegenArray[Energy]" precision="1"/>点法力值。
 Asal/Ubertip=攻击敌方单位来掠取资源。每次命中能获得<d ref="-Behavior,Asal,DamageResponse.Cost.Resource[Custom]"/>木材。
 Aslo/Ubertip=减慢目标单位<d ref="1 - Behavior,Bslo,Modification.AttackSpeedMultiplier * 100"/>%的攻击速度和<d ref="1 - Behavior,Bslo,Modification.MoveSpeedMultiplier * 100"/>%的移动速度。<n/>持续<d ref="Behavior,Bslo,Duration"/>秒。
-Aspl/Ubertip=链接<d ref="Behavior,Bspl,MaxStackCount"/>个单位在一起。所有被灵魂连接作用的单位都可以将其90%受到的伤害转移到其他单位身上。<n/>持续<d ref="Behavior,Bspl,Duration"/>秒。
+Aspl/Ubertip=链接4个单位在一起。所有被灵魂连接作用的单位都可以将其50%受到的伤害转移到其他单位身上。<n/>持续<d ref="Behavior,Bspl,Duration"/>秒。
 Aspo/Ubertip=迟缓毒药攻击能造成每秒<d ref="Effect,BssdDPS,Amount"/>点的伤害，并在<d ref="Behavior,Bspo,Duration"/>秒内减慢敌人<d ref="1 - Behavior,Bspo,Modification.MoveSpeedMultiplier * 100"/>%的移动速度和<d ref="1 - Behavior,Bspo,Modification.AttackSpeedMultiplier * 100"/>%的攻击速度。
 Asud/Ubertip=出卖单位，返还<d ref="-Effect,Asud,SalvageFactor.Resource[Terrazine]*100"/>%的资源。
 Attribute002/Name=游戏属性 (AW2)
@@ -175,7 +175,6 @@ DOCSTR_0001=BracketOpen
 DOCSTR_0002=BracketOpen
 DOCSTR_0003=星灵单位
 DOCSTR_0004=星灵单位
-Defend/Name=防御
 Defend/Tip=防御
 Defend/Ubertip=激活后只会受到10%的穿刺攻击伤害。如果防御状态被激活，移动速度会变成<d ref="Behavior,Defend,Modification.MoveSpeedMultiplier * 100"/>%的常规速度。
 DefendUn/Tip=停止防御
@@ -285,7 +284,7 @@ Multishot/Ubertip=能对多个敌人连续射击。
 NagaFlag/Name=纳迦旗帜
 NagaFlag/Tip=放置纳迦旗帜
 Nbbc/Tip=升级到黑石氏族的剑圣
-Nbbc/Ubertip=敏捷系单位。具有掠夺和镜像技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+Nbbc/Ubertip=敏捷系单位，精于速杀落单的单位。具有掠夺和致命一击技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Nbrn/Tip=升级到黑暗游侠
 Nbrn/Ubertip=远程攻击单位。拥有艾露恩的赐福技能。还能施放黑暗箭。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c> 
 NightElfPhalanxPlaceholder/Name=NightElfPreviewer
@@ -334,18 +333,24 @@ Param/Expression/C345D910=Att=~A~ Race=~B~
 Param/Expression/CEBDBACC=奖励回合<c val="FFFF00">~A~</c>：<c val="FFFF00">~B~</c>
 Param/Expression/D3AC5439=VenueFinal=~A~ FinalRound=~B~ PlayerAtFinalVenue=~C~
 Param/Expression/E3B3FC74=Act PlxB=~A~ P=~B~ Plx=~C~
-Param/Expression/E469976D=第~I~回合：~A~~J~~B~，~C~~J~~D~，~E~~J~~F~，~G~~J~~H~。
+Param/Expression/E469976D=第~I~回合 ~A~~1~~B~~2~~C~~1~~D~~3~~E~~1~~F~~2~~G~~1~~H~。
 Param/Expression/E9329EDD=PlayerC ~A~ vs ~B~, ~C~ vs ~D~, ~E~ vs ~F~, ~G~ vs ~H~
 Param/Expression/EA367955=第~I~回合：~A~ vs ~B~，~C~ vs ~D~，~E~ vs ~F~，~G~ vs ~H~。
 Param/Expression/F33720A6=回合<c val="FFFF00">~A~</c>
 Param/Expression/F3F549EF=~A~~B~
 Param/Expression/FC66627E=PathCost=~A~ Distance=~B~
+Param/Value/15A47604= 
 Param/Value/317E0CA0=在整场比赛获胜！
 Param/Value/44054E35=
+Param/Value/54C1A907= - 
 Param/Value/58BD0FA7=计分板
 Param/Value/5F942B70=剩余时间
+Param/Value/7EA0BD11= vs 
 Param/Value/87E4737D=击杀奖励
+Param/Value/91BA9176= - 
 Param/Value/A4868C6E=建造奖励
+Param/Value/B3EEA70D= - 
+Param/Value/B744BA58= vs 
 Param/Value/C201E5C3=玩家
 Param/Value/C7A905FA=夜晚
 Param/Value/CC4C1E4D=潮汐

@@ -60,6 +60,7 @@ const int gv_venueGroupMaximumCount = (gv_teamMaximumCount/2);
 // Global Variables
 //--------------------------------------------------------------------------------------------------
 bool gv_isBonusRound;
+text[4] gv_objectiveTextSeparator;
 int[gv_roundMaximumCount + 1] gv_objective;
 unitfilter gv_asplTargetFilter;
 int gv_aOmiBaseImages;
@@ -191,6 +192,7 @@ void gf_TeamRoundRandomize ();
 void gf_VenueGroupRandomize ();
 void gf_TeamAtVenueSet ();
 void gf_PlayerAtVenueSet ();
+void gf_ObjectiveTextSeparatorSet (text lp_objectiveTextSeparator1, text lp_objectiveTextSeparator2, text lp_objectiveTextSeparator3);
 void gf_ObjectiveSetState (int lp_round, int lp_state);
 void gf_ObjectiveHideAll ();
 void gf_PlayerAtFinalVenueReplace (int lp_round);
@@ -298,9 +300,6 @@ trigger gt_AllianceInizialization;
 trigger gt_ScoreBoardInizialization;
 trigger gt_TimerInizialization;
 trigger gt_PlayerInizialization;
-trigger gt_AsplMarker;
-trigger gt_AsplSplitTemplate;
-trigger gt_AsplRegister;
 trigger gt_AOmiRemoveAllNonPermanent;
 trigger gt_AOmiLaunch;
 trigger gt_AOmiMarker;
@@ -357,8 +356,6 @@ void gf_ModInizialization (bool lp_debug) {
     TriggerEnable(libGAwX_gt_AOmiRemoveAllNonPermanent, false);
     TriggerEnable(libGAwX_gt_AOmiLaunch, false);
     TriggerEnable(libGAwX_gt_AOmiMarker, false);
-    TriggerEnable(libGAwX_gt_AsplMarker, false);
-    TriggerEnable(libGAwX_gt_AsplRegister, false);
     UISetResourceTradingAllowed(c_resourceTypeMinerals, false);
     UISetResourceTradingAllowed(c_resourceTypeVespene, false);
     UISetResourceTradingAllowed(c_resourceTypeTerrazine, false);
@@ -403,7 +400,6 @@ void gf_RoundStartLoop (bool lp_debug) {
 
     // Implementation
     if ((gv_testPassed == true)) {
-        gf_WorkerExchangeSetAutoCast(true);
         autoE4112BFC_ae = gv_roundCount;
         autoE4112BFC_ai = 1;
         lv_round = 1;
@@ -814,21 +810,31 @@ void gf_PlayerAtVenueSet () {
     for ( ; ( (autoAB7CD91B_ai >= 0 && lv_round <= autoAB7CD91B_ae) || (autoAB7CD91B_ai <= 0 && lv_round >= autoAB7CD91B_ae) ) ; lv_round += autoAB7CD91B_ai ) {
         TextExpressionSetToken("Param/Expression/E469976D", "I", IntToText(lv_round));
         TextExpressionSetToken("Param/Expression/E469976D", "A", TextWithColor(PlayerName(gv_playerAtVenue[1][lv_round]), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(gv_playerAtVenue[1][lv_round], false))));
-        TextExpressionSetToken("Param/Expression/E469976D", "J", StringExternal("Param/Value/EE8A9ECA"));
+        TextExpressionSetToken("Param/Expression/E469976D", "1", gv_objectiveTextSeparator[1]);
         TextExpressionSetToken("Param/Expression/E469976D", "B", TextWithColor(PlayerName(gv_playerAtVenue[2][lv_round]), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(gv_playerAtVenue[2][lv_round], false))));
+        TextExpressionSetToken("Param/Expression/E469976D", "2", gv_objectiveTextSeparator[2]);
         TextExpressionSetToken("Param/Expression/E469976D", "C", TextWithColor(PlayerName(gv_playerAtVenue[3][lv_round]), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(gv_playerAtVenue[3][lv_round], false))));
-        TextExpressionSetToken("Param/Expression/E469976D", "J", StringExternal("Param/Value/EE8A9ECA"));
+        TextExpressionSetToken("Param/Expression/E469976D", "1", gv_objectiveTextSeparator[1]);
         TextExpressionSetToken("Param/Expression/E469976D", "D", TextWithColor(PlayerName(gv_playerAtVenue[4][lv_round]), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(gv_playerAtVenue[4][lv_round], false))));
+        TextExpressionSetToken("Param/Expression/E469976D", "3", gv_objectiveTextSeparator[3]);
         TextExpressionSetToken("Param/Expression/E469976D", "E", TextWithColor(PlayerName(gv_playerAtVenue[5][lv_round]), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(gv_playerAtVenue[5][lv_round], false))));
-        TextExpressionSetToken("Param/Expression/E469976D", "J", StringExternal("Param/Value/EE8A9ECA"));
+        TextExpressionSetToken("Param/Expression/E469976D", "1", gv_objectiveTextSeparator[1]);
         TextExpressionSetToken("Param/Expression/E469976D", "F", TextWithColor(PlayerName(gv_playerAtVenue[6][lv_round]), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(gv_playerAtVenue[6][lv_round], false))));
+        TextExpressionSetToken("Param/Expression/E469976D", "2", gv_objectiveTextSeparator[2]);
         TextExpressionSetToken("Param/Expression/E469976D", "G", TextWithColor(PlayerName(gv_playerAtVenue[7][lv_round]), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(gv_playerAtVenue[7][lv_round], false))));
-        TextExpressionSetToken("Param/Expression/E469976D", "J", StringExternal("Param/Value/EE8A9ECA"));
+        TextExpressionSetToken("Param/Expression/E469976D", "1", gv_objectiveTextSeparator[1]);
         TextExpressionSetToken("Param/Expression/E469976D", "H", TextWithColor(PlayerName(gv_playerAtVenue[8][lv_round]), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(gv_playerAtVenue[8][lv_round], false))));
         ObjectiveCreate(TextExpressionAssemble("Param/Expression/E469976D"), StringToText(""), c_objectiveStateActive, true);
         ObjectiveSetState(ObjectiveLastCreated(), c_objectiveStateHidden);
         gv_objective[lv_round] = ObjectiveLastCreated();
     }
+}
+
+void gf_ObjectiveTextSeparatorSet (text lp_objectiveTextSeparator1, text lp_objectiveTextSeparator2, text lp_objectiveTextSeparator3) {
+    // Implementation
+    gv_objectiveTextSeparator[1] = lp_objectiveTextSeparator1;
+    gv_objectiveTextSeparator[2] = lp_objectiveTextSeparator2;
+    gv_objectiveTextSeparator[3] = lp_objectiveTextSeparator3;
 }
 
 void gf_ObjectiveSetState (int lp_round, int lp_state) {
@@ -3418,27 +3424,29 @@ bool gt_RoundInitialization_Func (bool testConds, bool runActions) {
 
     autoB7B0BFE0_val = lv_gameValue;
     if (autoB7B0BFE0_val == "0001") {
+        gf_ObjectiveTextSeparatorSet(StringExternal("Param/Value/B744BA58"), StringExternal("Param/Value/91BA9176"), StringExternal("Param/Value/54C1A907"));
         gf_RoundGoldSet(1, 90);
         gf_RoundGoldSet(2, 90);
-        gf_RoundGoldSet(3, 90);
+        gf_RoundGoldSet(3, 180);
         gf_BonusRoundSet(true, 3);
         gf_RoundGoldSet(4, 180);
-        gf_RoundGoldSet(5, 180);
-        gf_RoundGoldSet(6, 180);
-        gf_RoundGoldSet(7, 180);
+        gf_RoundGoldSet(5, 270);
+        gf_RoundGoldSet(6, 270);
+        gf_RoundGoldSet(7, 360);
         gf_BonusRoundSet(true, 7);
-        gf_RoundGoldSet(8, 270);
+        gf_RoundGoldSet(8, 360);
     }
     else if (autoB7B0BFE0_val == "0002") {
+        gf_ObjectiveTextSeparatorSet(StringExternal("Param/Value/15A47604"), StringExternal("Param/Value/7EA0BD11"), StringExternal("Param/Value/B3EEA70D"));
         gf_RoundGoldSet(1, 90);
         gf_RoundGoldSet(2, 90);
-        gf_RoundGoldSet(3, 90);
+        gf_RoundGoldSet(3, 180);
         gf_BonusRoundSet(true, 3);
         gf_RoundGoldSet(4, 180);
-        gf_RoundGoldSet(5, 180);
-        gf_RoundGoldSet(6, 180);
+        gf_RoundGoldSet(5, 270);
+        gf_RoundGoldSet(6, 270);
         gf_BonusRoundSet(true, 6);
-        gf_RoundGoldSet(7, 270);
+        gf_RoundGoldSet(7, 360);
     }
     else {
     }
@@ -3656,182 +3664,6 @@ bool gt_PlayerInizialization_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void gt_PlayerInizialization_Init () {
     gt_PlayerInizialization = TriggerCreate("gt_PlayerInizialization_Func");
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Aspl - Marker
-//--------------------------------------------------------------------------------------------------
-bool gt_AsplMarker_Func (bool testConds, bool runActions) {
-    int autoE8FAC191_n;
-    int autoE8FAC191_i;
-    unitgroup autoE7809A11_g;
-    int autoE7809A11_u;
-    unitgroup autoC9C94F84_g;
-    int autoC9C94F84_u;
-
-    // Variable Declarations
-    unitgroup lv_ug;
-    unit lv_target;
-    int lv_player;
-    unit lv_a;
-    unit lv_b;
-    unitgroup lv_unfitGroup;
-    unit lv_testUnit;
-    fixed lv_life;
-    unit lv_u;
-
-    // Variable Initialization
-    lv_ug = UnitGroupEmpty();
-    lv_target = EventPlayerEffectUsedUnit(c_effectUnitTarget);
-    lv_player = EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster);
-    lv_unfitGroup = UnitGroupEmpty();
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UnitBehaviorRemove(lv_target, libGAwX_gv_asplMarkerBuff, c_unitBehaviorCountAll);
-    Wait(0.0625, c_timeGame);
-    autoE8FAC191_n = (gv_asplMaxTargets-1);
-    for (autoE8FAC191_i = 1; autoE8FAC191_i <= autoE8FAC191_n; autoE8FAC191_i += 1) {
-        lv_life = 0.0;
-        UnitGroupLoopBegin(UnitGroupSearch(null, lv_player, UnitGetPosition(lv_target), gv_asplRadius, gv_asplTargetFilter, 0));
-        for ( ; !UnitGroupLoopDone() ; UnitGroupLoopStep() ) {
-            if ((UnitHasBehavior(UnitGroupLoopCurrent(), libGAwX_gv_asplMarkerBuff) == false) && (UnitGetPropertyFixed(UnitGroupLoopCurrent(), c_unitPropLife, c_unitPropCurrent) > lv_life) && (UnitGroupHasUnit(lv_ug, UnitGroupLoopCurrent()) == false)) {
-                lv_life = UnitGetPropertyFixed(UnitGroupLoopCurrent(), c_unitPropLife, c_unitPropCurrent);
-                lv_u = UnitGroupLoopCurrent();
-            }
-
-        }
-        UnitGroupLoopEnd();
-        UnitGroupAdd(lv_ug, lv_u);
-    }
-    UnitGroupAdd(lv_ug, lv_target);
-    autoE7809A11_g = lv_ug;
-    autoE7809A11_u = 1;
-    for ( ; autoE7809A11_u <= UnitGroupCount(autoE7809A11_g, c_unitCountAll) ; autoE7809A11_u += BoolToInt(lv_a == UnitGroupUnit(autoE7809A11_g, autoE7809A11_u)) ) {
-        lv_a = UnitGroupUnit(autoE7809A11_g, autoE7809A11_u);
-        autoC9C94F84_g = lv_ug;
-        autoC9C94F84_u = 1;
-        for ( ; autoC9C94F84_u <= UnitGroupCount(autoC9C94F84_g, c_unitCountAll) ; autoC9C94F84_u += BoolToInt(lv_b == UnitGroupUnit(autoC9C94F84_g, autoC9C94F84_u)) ) {
-            lv_b = UnitGroupUnit(autoC9C94F84_g, autoC9C94F84_u);
-            UnitCreateEffectUnit(lv_a, libGAwX_gv_asplMarkerEffect, lv_b);
-        }
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_AsplMarker_Init () {
-    gt_AsplMarker = TriggerCreate("gt_AsplMarker_Func");
-    TriggerAddEventPlayerEffectUsed(gt_AsplMarker, c_playerAny, libGAwX_gv_asplNoticeEffect);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Aspl - Split Template
-//--------------------------------------------------------------------------------------------------
-bool gt_AsplSplitTemplate_Func (bool testConds, bool runActions) {
-    int auto448A309B_ae;
-    int auto448A309B_ai;
-
-    // Variable Declarations
-    unit lv_u;
-    int lv_player;
-    int lv_stack;
-    fixed lv_originalDamage;
-    fixed lv_actuallDamage;
-    unit lv_damager;
-    fixed lv_mainDamage;
-    fixed lv_splitDamage;
-    unitgroup lv_linkedGroup;
-    unit lv_splitTarget;
-    int lv_i;
-
-    // Variable Initialization
-    lv_u = EventUnit();
-    lv_player = EventPlayer();
-    lv_stack = UnitBehaviorCount(lv_u, libGAwX_gv_asplMarkerBuff);
-    lv_originalDamage = EventUnitDamageAbsorbed();
-    lv_actuallDamage = EventUnitDamageAmount();
-    lv_damager = EventUnitDamageSourceUnit();
-    lv_mainDamage = (lv_originalDamage * gv_asplSplitFactor);
-    lv_linkedGroup = UnitGroupEmpty();
-
-    // Conditions
-    if (testConds) {
-        if (!((UnitIsAlive(lv_damager) == true))) {
-            return false;
-        }
-
-        if (!((lv_actuallDamage == 0.0))) {
-            return false;
-        }
-
-        if (!((lv_originalDamage != 0.0))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    if ((lv_stack > 0)) {
-        UnitDamage(lv_damager, libGAwX_gv_asplMainDamageEffect, lv_u, lv_mainDamage);
-        lv_splitDamage = ((lv_originalDamage - lv_mainDamage) / lv_stack);
-        auto448A309B_ae = (lv_stack - 1);
-        auto448A309B_ai = 1;
-        lv_i = 0;
-        for ( ; ( (auto448A309B_ai >= 0 && lv_i <= auto448A309B_ae) || (auto448A309B_ai <= 0 && lv_i >= auto448A309B_ae) ) ; lv_i += auto448A309B_ai ) {
-            lv_splitTarget = UnitBehaviorEffectUnit(lv_u, libGAwX_gv_asplMarkerBuff, c_effectUnitCaster, lv_i);
-            if ((UnitIsAlive(lv_splitTarget) == true)) {
-                UnitDamage(lv_damager, libGAwX_gv_asplSplitDamageEffect, lv_splitTarget, lv_splitDamage);
-            }
-
-        }
-    }
-    else {
-        UnitDamage(lv_damager, libGAwX_gv_asplMainDamageEffect, lv_u, lv_originalDamage);
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_AsplSplitTemplate_Init () {
-    gt_AsplSplitTemplate = TriggerCreate("gt_AsplSplitTemplate_Func");
-    TriggerEnable(gt_AsplSplitTemplate, false);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Aspl - Register
-//--------------------------------------------------------------------------------------------------
-bool gt_AsplRegister_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    trigger lv_trigger;
-    unit lv_u;
-    int lv_uid;
-
-    // Variable Initialization
-    lv_trigger = TriggerCreate("gt_AsplSplitTemplate_Func");;
-    lv_u = EventUnit();
-    lv_uid = UnitGetTag(lv_u);
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    GAw3_AddEventUnitDamaged(lv_trigger, lv_u, c_unitDamageTypeAny, c_unitDamageEither, null);
-    libGAwX_gf_SetUnitTriggerMarker(lv_u, libGAwX_gv_asplTriggerMarker, lv_trigger);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_AsplRegister_Init () {
-    gt_AsplRegister = TriggerCreate("gt_AsplRegister_Func");
-    TriggerAddEventUnitBehaviorChange(gt_AsplRegister, null, libGAwX_gv_asplMarkerBuff, c_unitBehaviorChangeActivate);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5294,9 +5126,6 @@ void InitTriggers () {
     gt_ScoreBoardInizialization_Init();
     gt_TimerInizialization_Init();
     gt_PlayerInizialization_Init();
-    gt_AsplMarker_Init();
-    gt_AsplSplitTemplate_Init();
-    gt_AsplRegister_Init();
     gt_AOmiRemoveAllNonPermanent_Init();
     gt_AOmiLaunch_Init();
     gt_AOmiMarker_Init();
