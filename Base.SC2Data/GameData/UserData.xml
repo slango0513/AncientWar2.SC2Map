@@ -225,6 +225,54 @@
                 <Field Id="Row"/>
             </Int>
         </Instances>
+        <Instances Id="BloodElfFlag">
+            <Int Int="6">
+                <Field Id="Row"/>
+            </Int>
+            <Int Int="6">
+                <Field Id="Column"/>
+            </Int>
+        </Instances>
+        <Instances Id="BloodElfFlag2">
+            <Int Int="15">
+                <Field Id="Column"/>
+            </Int>
+            <Int Int="6">
+                <Field Id="Row"/>
+            </Int>
+        </Instances>
+        <Instances Id="ChaosOrcFlag">
+            <Int Int="6">
+                <Field Id="Row"/>
+            </Int>
+            <Int Int="6">
+                <Field Id="Column"/>
+            </Int>
+        </Instances>
+        <Instances Id="ChaosOrcFlag2">
+            <Int Int="15">
+                <Field Id="Column"/>
+            </Int>
+            <Int Int="6">
+                <Field Id="Row"/>
+            </Int>
+        </Instances>
+        <Instances Id="DragonFlag">
+            <Int Int="6">
+                <Field Id="Row"/>
+            </Int>
+            <Int Int="6">
+                <Field Id="Column"/>
+            </Int>
+        </Instances>
+        <Instances Id="DragonFlag2">
+            <Int Int="15">
+                <Field Id="Column"/>
+            </Int>
+            <Int Int="6">
+                <Field Id="Row"/>
+            </Int>
+        </Instances>
     </CUser>
     <CUser id="PortalData">
         <Fields Id="Column" Type="Int"/>
@@ -1833,6 +1881,16 @@
                 <Field Id="Race"/>
             </GameLink>
         </Instances>
+        <Instances Id="0008">
+            <GameLink GameLink="BloodElf">
+                <Field Id="Race"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="0009">
+            <GameLink GameLink="ChaosOrc">
+                <Field Id="Race"/>
+            </GameLink>
+        </Instances>
         <Instances Id="[Override]0002">
             <GameLink GameLink="Human">
                 <Field Id="Race"/>
@@ -1985,6 +2043,57 @@
                 <Field Id="Previewer"/>
             </Unit>
         </Instances>
+        <Instances Id="BloodElf">
+            <AbilCmd Abil="BloodElfBuild">
+                <Field Id="Command"/>
+            </AbilCmd>
+            <AbilCmd Abil="BloodElfBuild" Cmd="1">
+                <Field Id="Command" Index="1"/>
+            </AbilCmd>
+            <Unit Unit="BloodElfFlag">
+                <Field Id="Phalanx"/>
+            </Unit>
+            <Unit Unit="BloodElfPreviewer">
+                <Field Id="Previewer"/>
+            </Unit>
+            <Unit Unit="BloodElfFlag2">
+                <Field Id="Phalanx" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ChaosOrc">
+            <AbilCmd Abil="ChaosOrcBuild">
+                <Field Id="Command"/>
+            </AbilCmd>
+            <AbilCmd Abil="ChaosOrcBuild" Cmd="1">
+                <Field Id="Command" Index="1"/>
+            </AbilCmd>
+            <Unit Unit="ChaosOrcFlag">
+                <Field Id="Phalanx"/>
+            </Unit>
+            <Unit Unit="ChaosOrcPreviewer">
+                <Field Id="Previewer"/>
+            </Unit>
+            <Unit Unit="ChaosOrcFlag2">
+                <Field Id="Phalanx" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="Dragon">
+            <AbilCmd Abil="DragonBuild">
+                <Field Id="Command"/>
+            </AbilCmd>
+            <AbilCmd Abil="DragonBuild" Cmd="1">
+                <Field Id="Command" Index="1"/>
+            </AbilCmd>
+            <Unit Unit="DragonFlag">
+                <Field Id="Phalanx"/>
+            </Unit>
+            <Unit Unit="DragonPreviewer">
+                <Field Id="Previewer"/>
+            </Unit>
+            <Unit Unit="DragonFlag2">
+                <Field Id="Phalanx" Index="1"/>
+            </Unit>
+        </Instances>
     </CUser>
     <CUser id="SkinSetWar3HD" parent="AW2_User"/>
     <CUser id="WorkerBuildAbilityData">
@@ -2017,6 +2126,16 @@
         </Instances>
         <Instances Id="ncg3">
             <GameLink GameLink="GoblinBuild">
+                <Field Id="Ability"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="nhew">
+            <GameLink GameLink="BloodElfBuild">
+                <Field Id="Ability"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="ncpn">
+            <GameLink GameLink="ChaosOrcBuild">
                 <Field Id="Ability"/>
             </GameLink>
         </Instances>

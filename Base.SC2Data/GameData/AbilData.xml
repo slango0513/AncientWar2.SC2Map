@@ -367,6 +367,45 @@
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
+    <CAbilBuild id="BloodElfBuild" parent="War3_PowerBuild">
+        <EditorCategories value="Race:BloodElf,AbilityorEffectType:Units"/>
+        <InfoArray index="Build1" Unit="BloodElfFlag">
+            <Button DefaultButtonFace="BloodElfFlag" Requirements="BuildPhalanx"/>
+        </InfoArray>
+        <InfoArray index="Build2" Unit="BloodElfFlag2">
+            <Button DefaultButtonFace="BloodElfFlag2" Requirements="BuildPhalanxFinal"/>
+        </InfoArray>
+        <InfoArray index="Build3" Unit="hsor">
+            <Button DefaultButtonFace="hsor" Requirements="BuildArmy"/>
+        </InfoArray>
+        <Range value="500"/>
+    </CAbilBuild>
+    <CAbilBuild id="ChaosOrcBuild" parent="War3_PowerBuild">
+        <EditorCategories value="Race:ChaosOrc,AbilityorEffectType:Units"/>
+        <InfoArray index="Build1" Unit="ChaosOrcFlag">
+            <Button DefaultButtonFace="ChaosOrcFlag" Requirements="BuildPhalanx"/>
+        </InfoArray>
+        <InfoArray index="Build2" Unit="ChaosOrcFlag2">
+            <Button DefaultButtonFace="ChaosOrcFlag2" Requirements="BuildPhalanxFinal"/>
+        </InfoArray>
+        <InfoArray index="Build3" Unit="hsor">
+            <Button DefaultButtonFace="hsor" Requirements="BuildArmy"/>
+        </InfoArray>
+        <Range value="500"/>
+    </CAbilBuild>
+    <CAbilBuild id="DragonBuild" parent="War3_PowerBuild">
+        <EditorCategories value="Race:Dragon,AbilityorEffectType:Units"/>
+        <InfoArray index="Build1" Unit="DragonFlag">
+            <Button DefaultButtonFace="DragonFlag" Requirements="BuildPhalanx"/>
+        </InfoArray>
+        <InfoArray index="Build2" Unit="DragonFlag2">
+            <Button DefaultButtonFace="DragonFlag2" Requirements="BuildPhalanxFinal"/>
+        </InfoArray>
+        <InfoArray index="Build3" Unit="nmyr">
+            <Button DefaultButtonFace="nmyr" Requirements="BuildArmy"/>
+        </InfoArray>
+        <Range value="500"/>
+    </CAbilBuild>
     <!--Tinkerer - Robo-Goblin (Level 0)-->
     <CAbilMorph id="ANrg" parent="AW2_Morph" unitID="Nrob">
         <EditorCategories value="Race:Goblin,AbilityorEffectType:Unit"/>
@@ -654,11 +693,25 @@
         <PrepTime value="0.5"/>
         <!--FinishTime value="1.67"/-->
         <Alignment value="Positive"/>
-        <Effect index="0" value="BHds1"/>
+        <Effect index="0" value="BHd2"/>
         <Flags index="Transient" value="1"/>
         <AutoCastValidatorArray index="0" value="AttackingOrInCombatWar3AndCasterLifeLT90Percent"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastFilters value="Self,Visible;-"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="AHd2" parent="AW2_EffectInstant">
+        <!--FinishTime value="1.67"/-->
+        <Alignment value="Positive"/>
+        <EditorCategories value="Race:Goblin,AbilityorEffectType:Units"/>
+        <Effect index="0" value="BHds1"/>
+        <Flags index="Transient" value="1"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="60"/>
+        </Cost>
+        <AutoCastFilters value="Self,Visible;-"/>
+        <AutoCastValidatorArray value="CasterLifeNotFull"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
+        <PrepTime value="0.5"/>
     </CAbilEffectInstant>
     <CAbilAugment id="AHfaAugment" parent="AW2_AttackAugment">
         <Name value="AHfa/Name"/>
