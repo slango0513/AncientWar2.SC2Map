@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CEffectModifyUnit default="1" id="AW2_Pawn"/>
     <CEffectCreatePersistent default="1" id="AW2_Multiattack">
         <WhichLocation Value="TargetUnit"/>
         <TimeScaleSource Value="Caster"/>
@@ -29,7 +30,21 @@
         <AttributeFactor index="divine" value="0"/>
         <AttributeFactor index="hero" value="0"/>
     </CEffectDamage>
+    <CEffectDamage default="1" id="AW2_PhysicSpellDamage" parent="War3_PhysicSpellDamage">
+        <AttributeFactor index="divine" value="0"/>
+        <AttributeFactor index="hero" value="0"/>
+    </CEffectDamage>
     <CEffectDamage default="1" id="AW2_ChaosDamage" parent="War3_ChaosDamage"/>
+    <CEffectDamage default="1" id="ANcsAOEDamageBase" parent="AW2_SiegeDamage">
+        <EditorCategories value="Race:Goblin"/>
+        <AreaArray Radius="1.5625" Fraction="1" Validator="CasterNoEngineeringUpgrade"/>
+        <AreaArray Radius="1.7968" Fraction="1" Validator="ANegLevel0AndCasterHasEngineeringUpgrade"/>
+        <AreaArray Radius="2.0312" Fraction="1" Validator="ANegLevel1"/>
+        <AreaArray Radius="2.2656" Fraction="1" Validator="ANegLevel2"/>
+        <SearchFilters value="-;player,allies,air,wall,tree,debris,item,ward,invulnerable"/>
+        <MaxCount value="12"/>
+        <KindSplash value="Ranged"/>
+    </CEffectDamage>
     <CEffectCreatePersistent default="1" id="AW2_Multishot">
         <Marker>
             <MatchFlags index="Id" value="1"/>
@@ -64,9 +79,22 @@
         <EffectArray index="0" value="BHbh"/>
         <EffectArray index="1" removed="1"/>
     </CEffectSet>
+    <CEffectCreatePersistent id="ANcsCP">
+        <PeriodCount value="6"/>
+        <PeriodicPeriodArray index="0" value="0.125"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="ANcsDamage1" parent="ANcsAOEDamageBase">
+        <ValidatorArray value="ANcsLevel0"/>
+        <Amount value="12"/>
+    </CEffectDamage>
+    <CEffectModifyUnit id="ANtmPawn" parent="AW2_Pawn"/>
     <!--Farseer - Far Sight effect=Xbdt-->
     <CEffectCreatePersistent id="AOfs1">
         <ExpireDelay value="15"/>
+    </CEffectCreatePersistent>
+    <!--Chieftain - Reincarnation effect=XOre cast=3-->
+    <CEffectCreatePersistent id="AOre">
+        <ExpireDelay value="2"/>
     </CEffectCreatePersistent>
     <CEffectApplyBehavior id="AOws1Dur">
         <Duration value="6"/>
@@ -100,15 +128,52 @@
     <CEffectSet id="Asds">
         <EffectArray value="AsdsCreatePersistent"/>
     </CEffectSet>
-    <CEffectDamage id="AsdsDamage">
-        <AreaArray index="0" Radius="1.9531" Bonus="300" Fraction="1"/>
-        <AreaArray index="1" removed="1"/>
-        <SearchFilters value="-;player,allies,air,wall,item,ethereal,dead,Hidden,invulnerable"/>
+    <CEffectSet id="AsdsGoblinLandMine">
+        <EditorCategories value="Race:Goblin"/>
+        <TargetLocationType value="UnitOrPoint"/>
+        <EffectArray value="SuicideImpactCaster"/>
+        <EffectArray value="AsdsGoblinLandMineDamage"/>
+    </CEffectSet>
+    <CEffectSet id="Asdg">
+        <EditorCategories value="Race:Goblin"/>
+        <TargetLocationType value="UnitOrPoint"/>
+        <EffectArray value="SuicideImpactCaster"/>
+        <EffectArray value="AsdgDamage"/>
+    </CEffectSet>
+    <CEffectDamage id="AsdsDamage" parent="AW2_SiegeDamage">
+        <AreaArray Radius="1.9531" Fraction="1"/>
+        <SearchFilters value="-;player,allies,air,wall,tree,Missile,item,ward,ethereal,dead,Hidden,invulnerable"/>
+        <Amount value="192"/>
+        <SearchFlags index="OffsetByUnitRadius" value="1"/>
+        <ImpactLocation Value="CasterUnitOrPoint"/>
+        <AttributeFactor index="fortified" value="2"/>
+        <Kind value="Melee"/>
+        <ExcludeArray index="0" removed="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="AsdsGoblinLandMineDamage" parent="AW2_SiegeDamage">
+        <AreaArray Radius="1.9531" Fraction="1"/>
+        <SearchFilters value="-;player,allies,air,wall,tree,Missile,item,ward,ethereal,dead,Hidden,invulnerable"/>
+        <Amount value="96"/>
+        <SearchFlags index="OffsetByUnitRadius" value="1"/>
+        <ImpactLocation Value="CasterUnitOrPoint"/>
+        <AttributeFactor index="fortified" value="2"/>
+        <Kind value="Melee"/>
+        <ExcludeArray index="0" removed="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="AsdgDamage" parent="AW2_SiegeDamage">
+        <AreaArray Radius="1.9531" Fraction="1"/>
+        <SearchFilters value="-;player,allies,air,wall,tree,Missile,item,ward,ethereal,dead,Hidden,invulnerable"/>
+        <Amount value="96"/>
+        <SearchFlags index="OffsetByUnitRadius" value="1"/>
+        <ImpactLocation Value="CasterUnitOrPoint"/>
+        <AttributeFactor index="fortified" value="2"/>
+        <Kind value="Melee"/>
+        <ExcludeArray index="0" removed="1"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="AsdsCreatePersistent">
         <WhichLocation Value="CasterUnit"/>
         <InitialEffect value="AsdsSearch"/>
-        <PeriodCount value="28"/>
+        <PeriodCount value="20"/>
         <PeriodicEffectArray value="AsdsSearch"/>
         <PeriodicPeriodArray value="0.0625"/>
     </CEffectCreatePersistent>
@@ -124,7 +189,9 @@
         <Amount value="1"/>
     </CEffectApplyForce>
     <CEffectApplyBehavior id="AsdsController">
-        <ValidatorArray index="0" value="NoSelfDestructController"/>
+        <ValidatorArray index="0" value="NonHero"/>
+        <ValidatorArray value="NonPowerfulMob"/>
+        <ValidatorArray value="NoSelfDestructController"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="AsdsSuicide"/>
     <CEffectApplyBehavior id="AsdsHeight"/>
@@ -136,6 +203,15 @@
         <Height value="-2.625"/>
         <HeightTime value="1"/>
     </CEffectModifyUnit>
+    <CEffectIssueOrder id="AtauOrderAttack">
+        <WhichUnit Effect="Btau"/>
+        <Target Effect="AtauSearch"/>
+    </CEffectIssueOrder>
+    <!--Taunt-->
+    <CEffectEnumArea id="AtauSearch">
+        <AreaArray index="0" Radius="15.625" Effect="Btau"/>
+        <MaxCount value="18"/>
+    </CEffectEnumArea>
     <CEffectApplyBehavior id="Bsds"/>
     <CEffectEnumArea id="AwarAoESearch" parent="War3_AbilSearch">
         <EditorCategories value="Race:Orc"/>
@@ -249,6 +325,9 @@
     <CEffectDamage id="BssdDPS">
         <Amount value="5"/>
     </CEffectDamage>
+    <CEffectApplyBehavior id="Btau" parent="War3_ApplyBuff">
+        <ValidatorArray value="NoTaunt"/>
+    </CEffectApplyBehavior>
     <CEffectSet id="CallTide">
         <EditorCategories value="Race:Naga"/>
     </CEffectSet>
@@ -264,7 +343,6 @@
     </CEffectSet>
     <CEffectSet id="AIsbSphereEffect">
         <EffectArray value="Bspo"/>
-        <EffectArray value="Bssd"/>
     </CEffectSet>
     <!--Pit Lord - Howl of Terror Buff=BNht-->
     <CEffectEnumArea id="ANhtSearch">
@@ -298,6 +376,7 @@
         <AreaArray index="0" Radius="0.5" Effect="AUimSearchImpactSet"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="AabrSearch" parent="War3_AuraSearch" aura="Babr"/>
+    <CEffectEnumArea id="EfficiencyAuraCasterSearch" parent="War3_AuraSearch" aura="EfficiencyAura"/>
     <CEffectCreateHealer id="Acn2">
         <RechargeVitalRate value="50"/>
     </CEffectCreateHealer>
@@ -321,6 +400,7 @@
     <CEffectApplyBehavior id="Babr" parent="War3_AuraBuff">
         <ValidatorArray value="IsUndead"/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="EfficiencyAura" parent="War3_AuraBuff"/>
     <CEffectDamage id="BaplDPS">
         <Amount value="5"/>
     </CEffectDamage>
@@ -374,6 +454,8 @@
         <Death value="Remove"/>
     </CEffectDamage>
     <CEffectSet id="AsalTriggerNotice"/>
+    <CEffectApplyBehavior id="Ahr3Resource"/>
+    <CEffectSet id="Ahr3TriggerNotice"/>
     <CEffectApplyBehavior id="BIpv" parent="War3_ApplyBuff">
         <WhichUnit Value="Caster"/>
     </CEffectApplyBehavior>
@@ -482,6 +564,14 @@
     <CEffectDamage id="Hvwd1" parent="AW2_PierceDamage">
         <Amount value="96"/>
     </CEffectDamage>
+    <CEffectDamage id="Nalc1" parent="AW2_SiegeDamage">
+        <Kind value="Melee"/>
+        <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectDamage id="Nalm1" parent="AW2_SiegeDamage">
+        <Kind value="Melee"/>
+        <Amount value="96"/>
+    </CEffectDamage>
     <CEffectDamage id="Nbbc1" parent="AW2_ChaosDamage">
         <Kind value="Melee"/>
         <Amount value="120"/>
@@ -503,6 +593,25 @@
     <CEffectDamage id="Nplh1" parent="AW2_PierceDamage">
         <Kind value="Melee"/>
         <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectDamage id="Nrob1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectDamage id="Nro21" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectDamage id="Ntin1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="24"/>
+    </CEffectDamage>
+    <CEffectDamage id="Ntin2" parent="AW2_SiegeDamage">
+        <EditorCategories value="Race:Goblin"/>
+        <AreaArray Radius="1.5625" Fraction="1"/>
+        <SearchFilters value="-;player,allies,air,wall,tree,debris,item,ward,invulnerable"/>
+        <MaxCount value="12"/>
+        <Amount value="12"/>
     </CEffectDamage>
     <CEffectDamage id="Obla1" parent="AW2_SiegeDamage">
         <Kind value="Melee"/>
@@ -554,6 +663,26 @@
         <Kind value="Melee"/>
         <Amount value="96"/>
     </CEffectDamage>
+    <CEffectIssueOrder id="OrderRoboGoblin">
+        <WhichUnit Value="Caster"/>
+        <Abil value="ANrg"/>
+        <ValidatorArray value="EnemiesNearby2"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="OrderRoboGoblinUn">
+        <WhichUnit Value="Caster"/>
+        <Abil value="ANrgUn"/>
+        <ValidatorArray value="NoEnemiesNearby2"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="OrderRoboGoblin2">
+        <WhichUnit Value="Caster"/>
+        <Abil value="ANr4"/>
+        <ValidatorArray value="EnemiesNearby2"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="OrderRoboGoblin2Un">
+        <WhichUnit Value="Caster"/>
+        <Abil value="ANr4Un"/>
+        <ValidatorArray value="NoEnemiesNearby2"/>
+    </CEffectIssueOrder>
     <CEffectIssueOrder id="OrderSubmerge1">
         <WhichUnit Value="Caster"/>
         <Abil value="Asb1"/>
@@ -610,7 +739,7 @@
         <CaseDefault value="Swimming"/>
     </CEffectSwitch>
     <CEffectDamage id="Ucrl1" parent="AW2_PierceDamage">
-        <Amount value="60"/>
+        <Amount value="72"/>
     </CEffectDamage>
     <CEffectDamage id="Udea1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
@@ -681,7 +810,23 @@
     <CEffectDamage id="hfoo1" parent="AW2_NormalDamage">
         <Amount value="12"/>
     </CEffectDamage>
+    <CEffectDamage id="ncgb1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="12"/>
+    </CEffectDamage>
+    <CEffectDamage id="ngbl1" parent="AW2_SiegeDamage">
+        <Amount value="96"/>
+        <Death value="Blast"/>
+        <Kind value="Melee"/>
+    </CEffectDamage>
+    <CEffectDamage id="ngir1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="96"/>
+    </CEffectDamage>
     <CEffectDamage id="ngsp1" parent="AW2_SiegeDamage">
+        <Amount value="12"/>
+    </CEffectDamage>
+    <CEffectDamage id="ngs21" parent="AW2_SiegeDamage">
         <Amount value="12"/>
     </CEffectDamage>
     <CEffectDamage id="negz1" parent="AW2_SiegeDamage">
@@ -886,6 +1031,13 @@
     <CEffectDamage id="ngnw1" parent="AW2_MagicDamage">
         <Amount value="48"/>
     </CEffectDamage>
+    <CEffectSet id="ngsp2"/>
+    <CEffectSet id="ngs22"/>
+    <CEffectSet id="negz2"/>
+    <CEffectSet id="nglm1"/>
+    <CEffectSet id="ngl21"/>
+    <CEffectSet id="ngl31"/>
+    <CEffectSet id="ncgb2"/>
     <CEffectSet id="nlpr1Crit">
         <EditorCategories value="Race:Naga"/>
         <EffectArray value="nlpr1"/>
@@ -1051,10 +1203,30 @@
         <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="nnwl1" parent="AW2_PierceDamage">
-        <Amount value="60"/>
+        <Amount value="72"/>
     </CEffectDamage>
     <CEffectDamage id="nnwr1" parent="AW2_PierceDamage">
-        <Amount value="60"/>
+        <Amount value="72"/>
+    </CEffectDamage>
+    <CEffectDamage id="noga1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectDamage id="nogl1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectDamage id="nogo1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="48"/>
+    </CEffectDamage>
+    <CEffectDamage id="nogr1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="48"/>
+    </CEffectDamage>
+    <CEffectDamage id="nomg1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="npn41" parent="AW2_SiegeDamage">
         <Kind value="Melee"/>
@@ -1229,7 +1401,7 @@
         <SearchFilters value="-;wall,tree,Missile,item,ward,ethereal,dead,invulnerable"/>
     </CEffectDamage>
     <CEffectDamage id="ucry1" parent="AW2_PierceDamage">
-        <Amount value="60"/>
+        <Amount value="72"/>
     </CEffectDamage>
     <CEffectDamage id="ugho1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>

@@ -21,6 +21,13 @@
     <const id="ethereal" path="SDamageResponse.TargetFilters" value="Stasis"/>
     <const id="invulnerable" path="SDamageResponse.TargetFilters" value="Invulnerable"/>
     <const id="debris" path="SDamageResponse.TargetFilters" value="Destructible"/>
+    <CBehaviorBuff default="1" id="AW2_TimeLife" parent="War3_Passive">
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <DisplayDuration index="Neutral" value="1"/>
+        <DisplayDuration index="Enemy" value="1"/>
+        <FinalEffect value="TimedLifeFate"/>
+    </CBehaviorBuff>
     <CBehaviorBuff default="1" id="AW2_UnitSwim">
         <DisableValidatorArray value="HasSwimmingAmphibian"/>
         <BehaviorFlags index="Permanent" value="1"/>
@@ -184,6 +191,12 @@
             <DamageDealtUnscaled index="Ranged" value="50"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="ANrg">
+        <Modification LifeArmorBonus="10">
+            <StateFlags index="Resistant" value="1"/>
+            <VitalMaxArray index="Life" value="900"/>
+        </Modification>
+    </CBehaviorBuff>
     <!--Blade Master - Critical Strike-->
     <CBehaviorBuff id="AOcr">
         <DisableValidatorArray index="0" removed="1"/>
@@ -257,6 +270,22 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="Aabr" parent="War3_AuraCaster">
         <Requirements value="Aabr"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BNcr1">
+        <Duration value="30"/>
+        <DurationOverride index="0" Duration="30">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Modification AttackSpeedMultiplier="2"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BNcs">
+        <Duration value="1"/>
+        <DurationOverride index="0" Duration="0.5">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EfficiencyAuraCaster" parent="War3_AuraCaster">
+        <Requirements value="EfficiencyAuraCaster"/>
     </CBehaviorBuff>
     <!--Aura - War Drums Buff=Bakb-->
     <CBehaviorBuff id="Aakb">
@@ -365,6 +394,56 @@
             <ValidatorArray index="0" value="Hero"/>
         </DurationOverride>
     </CBehaviorBuff>
+    <!--ClockwerkGoblin-->
+    <CBehaviorBuff id="BNcg">
+        <Duration value="15"/>
+        <DurationOverride index="0" Duration="15">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Btau">
+        <Duration value="30"/>
+        <DurationOverride index="0" Duration="15">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="AtauOrderAttack"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HighAttackTargetPriority" parent="War3_Passive">
+        <Modification AttackTargetPriority="21"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="nglmTimeLife" parent="AW2_TimeLife">
+        <EditorCategories value="Race:Goblin,AbilityorEffectType:Units"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btngoblinlandmine.dds"/>
+        <DurationOverride Duration="60">
+            <ValidatorArray value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Duration value="60"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ngl2TimeLife" parent="AW2_TimeLife">
+        <EditorCategories value="Race:Goblin,AbilityorEffectType:Units"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btngoblinlandmine.dds"/>
+        <DurationOverride Duration="60">
+            <ValidatorArray value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Duration value="60"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ngl3TimeLife" parent="AW2_TimeLife">
+        <EditorCategories value="Race:Goblin,AbilityorEffectType:Units"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btngoblinlandmine.dds"/>
+        <DurationOverride Duration="60">
+            <ValidatorArray value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Duration value="60"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="nfacTimeLife" parent="AW2_TimeLife">
+        <EditorCategories value="Race:Goblin,AbilityorEffectType:Units"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnpocketfactory.dds"/>
+        <DurationOverride Duration="60">
+            <ValidatorArray value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Duration value="60"/>
+    </CBehaviorBuff>
     <!--Corruption-->
     <CBehaviorBuff id="BIcb">
         <Modification LifeArmorBonus="-10"/>
@@ -443,6 +522,13 @@
         <Modification>
             <RateMultiplierArray index="Cooldown" value="1.25"/>
         </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EfficiencyAura" parent="War3_AuraBuff">
+        <EditorCategories value="Race:Goblin,AbilityorEffectType:Units"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnengineeringupgrade.dds"/>
+        <MaxStackCount value="2"/>
+        <MaxStackCountPerCaster value="1"/>
+        <Modification MoveSpeedMultiplier="1.25"/>
     </CBehaviorBuff>
     <!--AuraSlow-->
     <CBehaviorBuff id="Basl">
@@ -614,7 +700,7 @@
         <Requirements value="CountUnitController"/>
         <RemoveValidatorArray value="CountUnit"/>
         <RemoveValidatorArray value="PhalanxMarkerEqual0"/>
-        <Duration value="6"/>
+        <Duration value="3"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Defend" parent="War3_Passive">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
@@ -659,6 +745,22 @@
             <Kind index="Splash" value="0"/>
             <ValidatorArray value="NotSummonedUnit"/>
         </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Ahr3" parent="War3_Passive">
+        <EditorCategories value="Race:Goblin,AbilityorEffectType:Unit"/>
+        <DamageResponse Chance="1" Handled="Ahr3Resource" Location="Attacker">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Ranged" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <ValidatorArray value="NotSummonedUnit"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Ahr3Resource" parent="War3_Passive">
+        <EditorCategories value="Race:Goblin,AbilityorEffectType:Unit"/>
+        <Duration value="0.0625"/>
+        <Modification>
+            <DeathResponse Chance="1" Effect="Ahr3TriggerNotice"/>
+        </Modification>
     </CBehaviorBuff>
     <!--Pulverize-->
     <CBehaviorBuff id="Awar">
@@ -722,7 +824,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="CountUnit" parent="War3_Passive">
         <Requirements value="CountUnit"/>
-        <Period value="6"/>
+        <Period value="3"/>
         <PeriodicEffect value="CountUnitController"/>
         <DisableValidatorArray value="CountUnit"/>
         <DisableValidatorArray value="PhalanxMarkerEqual0"/>
@@ -812,6 +914,26 @@
         <Period value="0.0625"/>
         <PeriodicEffect value="OrderSubmerge1"/>
         <DisableValidatorArray value="HasSwimmingAmphibian"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="OrderRoboGoblin" parent="War3_Passive">
+        <Requirements value="OrderRoboGoblin"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="OrderRoboGoblin"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="OrderRoboGoblinUn" parent="War3_Passive">
+        <Requirements value="OrderRoboGoblinUn"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="OrderRoboGoblinUn"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="OrderRoboGoblin2" parent="War3_Passive">
+        <Requirements value="OrderRoboGoblin2"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="OrderRoboGoblin2"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="OrderRoboGoblin2Un" parent="War3_Passive">
+        <Requirements value="OrderRoboGoblin2Un"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="OrderRoboGoblin2Un"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="OrderEmerge1" parent="War3_Passive">
         <Requirements value="OrderEmerge1"/>
@@ -935,6 +1057,11 @@
             <StateFlags index="UnitAttrOnHover" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="AW2_Sationary" parent="War3_Passive">
+        <Modification>
+            <StateFlags index="Resistant" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="AIpvLeech" parent="War3_Passive">
         <EditorCategories value="Race:Undead,AbilityorEffectType:Units"/>
         <Duration value="0.0625"/>
@@ -1029,8 +1156,11 @@
     <CBehaviorBuff id="naga" parent="War3_UnitClass"/>
     <CBehaviorBuff id="Asds" parent="War3_Passive">
         <EditorCategories value="Race:Goblin,AbilityorEffectType:Unit"/>
-        <Requirements value="Asds"/>
         <DamageResponse Chance="1" Fatal="1" Handled="Asds"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Asdg" parent="War3_Passive">
+        <EditorCategories value="Race:Goblin,AbilityorEffectType:Unit"/>
+        <DamageResponse Chance="1" Fatal="1" Handled="Asdg"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AsdsController" parent="War3_Passive">
         <Duration value="2.375"/>

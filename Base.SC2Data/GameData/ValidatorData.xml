@@ -60,6 +60,9 @@
         <Find value="1"/>
         <Value value="HasDebuff"/>
     </CValidatorPlayerRequirement>
+    <CValidatorUnitCompareBehaviorCount id="NoTaunt">
+        <Behavior value="Btau"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitFilters id="NotVillager">
         <Filters value="-;Destructible"/>
     </CValidatorUnitFilters>
@@ -364,6 +367,10 @@
     <CValidatorUnitFilters id="CasterIsCloaked">
         <WhichUnit Value="Caster"/>
         <Filters value="Cloaked;-"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitFilters id="CasterIsUnit">
+        <WhichUnit Value="Caster"/>
+        <Filters value="-;Hover"/>
     </CValidatorUnitFilters>
     <CValidatorCombine id="CasterIsNotAttackingWar3">
         <CombineArray value="CasterIsAttackingWar3A"/>

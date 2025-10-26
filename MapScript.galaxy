@@ -311,9 +311,11 @@ trigger gt_AllianceInizialization;
 trigger gt_ScoreBoardInizialization;
 trigger gt_TimerInizialization;
 trigger gt_PlayerInizialization;
+trigger gt_Transmute;
 trigger gt_AOmiRemoveAllNonPermanent;
 trigger gt_AOmiLaunch;
 trigger gt_AOmiMarker;
+trigger gt_Harvest;
 trigger gt_Pillage;
 trigger gt_AegrElunesGraceRegister;
 trigger gt_AegrElunesGraceDamaged;
@@ -1045,6 +1047,7 @@ void gf_RestoreTOD () {
     }
     libGAwX_gf_SetWar3TimeOfDay("13:00:00");
     libGAwX_gf_PauseUnpauseTimeOfDayWar3(false);
+    Wait(gv_minimumPeriod, c_timeGame);
     Wait(gv_minimumPeriod, c_timeGame);
     libGAwX_gf_PauseUnpauseTimeOfDayWar3(true);
     ActorSend(libGAwX_gv_tODActor, "AnimClear Cover");
@@ -2548,7 +2551,7 @@ void gf_UnitCreate (int lp_player, point lp_point, string lp_unitType, unit lp_u
     // Variable Initialization
 
     // Implementation
-    UnitCreate(1, lp_unitType, c_unitCreateIgnorePlacement, lp_player, lp_point, UnitGetFacing(lp_unit));
+    UnitCreate(1, lp_unitType, 0, lp_player, lp_point, UnitGetFacing(lp_unit));
     UnitSetFacing(UnitLastCreated(), UnitGetFacing(lp_unit), 0.0);
     UnitSetCustomValue(UnitLastCreated(), gv_customValuePhalanx, UnitGetCustomValue(lp_unit, gv_customValuePhalanx));
     UnitBehaviorAdd(UnitLastCreated(), "PhalanxMarker", lp_unit, 1);
@@ -3353,7 +3356,6 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     int lv_player;
 
     // Variable Initialization
-    lv_debug = true;
 
     // Actions
     if (!runActions) {
@@ -3372,7 +3374,6 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
         lv_player = PlayerGroupPlayer(autoE8E91B19_g, autoE8E91B19_p);
         VisRevealArea(lv_player, RegionFromId(70), 0.0625, false);
         VisRevealArea(lv_player, RegionFromId(71), 0.0625, false);
-        libGAwX_gf_SetPlayerUIRace(lv_player, "Goblin");
     }
     libGAwX_gf_SetWar3TimeOfDay("13:00:00");
     libGAwX_gf_PauseUnpauseTimeOfDayWar3(true);
@@ -3830,6 +3831,38 @@ void gt_PlayerInizialization_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: Transmute
+//--------------------------------------------------------------------------------------------------
+bool gt_Transmute_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_player;
+    unit lv_targetUnit;
+    string lv_targetUnitType;
+    int lv_value;
+
+    // Variable Initialization
+    lv_player = EventPlayer();
+    lv_targetUnit = EventPlayerEffectUsedUnit(c_effectUnitTarget);
+    lv_targetUnitType = UnitGetType(lv_targetUnit);
+    lv_value = CatalogFieldValueGetAsInt(c_gameCatalogUnit, lv_targetUnitType, "KillResource[" + IntToString(3) + "]", lv_player);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    PlayerModifyPropertyInt(lv_player, c_playerPropCustom, c_playerPropOperAdd, lv_value);
+    gf_KillScoreAdd(lv_player, lv_value);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_Transmute_Init () {
+    gt_Transmute = TriggerCreate("gt_Transmute_Func");
+    TriggerAddEventPlayerEffectUsed(gt_Transmute, c_playerAny, "ANtmPawn");
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: AOmi - Remove All Non-Permanent
 //--------------------------------------------------------------------------------------------------
 bool gt_AOmiRemoveAllNonPermanent_Func (bool testConds, bool runActions) {
@@ -3976,6 +4009,38 @@ bool gt_AOmiMarker_Func (bool testConds, bool runActions) {
 void gt_AOmiMarker_Init () {
     gt_AOmiMarker = TriggerCreate("gt_AOmiMarker_Func");
     TriggerAddEventPlayerEffectUsed(gt_AOmiMarker, c_playerAny, "AOmiSpawnEffect");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Harvest
+//--------------------------------------------------------------------------------------------------
+bool gt_Harvest_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_player;
+    unit lv_targetUnit;
+    string lv_targetUnitType;
+    int lv_value;
+
+    // Variable Initialization
+    lv_player = EventPlayer();
+    lv_targetUnit = EventPlayerEffectUsedUnit(c_effectUnitTarget);
+    lv_targetUnitType = UnitGetType(lv_targetUnit);
+    lv_value = CatalogFieldValueGetAsInt(c_gameCatalogUnit, lv_targetUnitType, "KillResource[" + IntToString(3) + "]", lv_player);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    PlayerModifyPropertyInt(lv_player, c_playerPropCustom, c_playerPropOperAdd, lv_value);
+    gf_KillScoreAdd(lv_player, lv_value);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_Harvest_Init () {
+    gt_Harvest = TriggerCreate("gt_Harvest_Func");
+    TriggerAddEventPlayerEffectUsed(gt_Harvest, c_playerAny, "Ahr3TriggerNotice");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5130,7 +5195,7 @@ bool gt_UnitDied_Func (bool testConds, bool runActions) {
     }
 
     if ((UnitIsValid(lv_killUnit) == true)) {
-        if (((UnitFilterMatch(lv_killUnit, lv_killPlayer, gv_unitFilterScore) == true) || (UnitFilterMatch(lv_killUnit, lv_killPlayer, gv_creepFilterCcore) == true))) {
+        if ((lv_killPlayer != UnitGetOwner(lv_unit)) && ((UnitFilterMatch(lv_killUnit, lv_killPlayer, gv_unitFilterScore) == true) || (UnitFilterMatch(lv_killUnit, lv_killPlayer, gv_creepFilterCcore) == true))) {
             gf_KillScoreUnitAdd(lv_killPlayer, lv_unitType);
         }
 
@@ -5314,9 +5379,11 @@ void InitTriggers () {
     gt_ScoreBoardInizialization_Init();
     gt_TimerInizialization_Init();
     gt_PlayerInizialization_Init();
+    gt_Transmute_Init();
     gt_AOmiRemoveAllNonPermanent_Init();
     gt_AOmiLaunch_Init();
     gt_AOmiMarker_Init();
+    gt_Harvest_Init();
     gt_Pillage_Init();
     gt_AegrElunesGraceRegister_Init();
     gt_AegrElunesGraceDamaged_Init();
