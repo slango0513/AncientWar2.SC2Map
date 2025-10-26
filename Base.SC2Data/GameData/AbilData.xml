@@ -113,7 +113,7 @@
         <TargetFilters index="0" value="-;wall,tree,debris,item,ward,dead,invulnerable,hero"/>
         <Cost index="0">
             <Vital index="Energy" value="90"/>
-            <Cooldown Location="Unit" TimeStart="30" TimeUse="1"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <Range value="11"/>
         <PrepTime value="0.3"/>
@@ -125,6 +125,7 @@
         <AutoCastRange value="11"/>
         <AutoCastValidatorArray value="EnemiesNearby11"/>
         <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastValidatorArray value="TargetLifeGE750"/>
     </CAbilEffectTarget>
     <!--Rain of Fire (creep) Buff=BNrd,BNrf effect=XErf cast=1-->
     <CAbilEffectTarget id="ACrf" parent="AW2_EffectTarget">
@@ -158,7 +159,7 @@
         <Effect index="0" value="SoulBurnSearch"/>
         <Cost index="0">
             <Vital index="Energy" value="270"/>
-            <Cooldown Location="Unit" TimeStart="30" TimeUse="1"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <PrepTime value="0.5"/>
         <CastOutroTime value="1.08"/>
@@ -337,7 +338,7 @@
         <EditorCategories value="Race:Demon,AbilityorEffectType:Units"/>
         <Cost index="0">
             <Vital index="Energy" value="270"/>
-            <Cooldown Location="Unit" TimeStart="30" TimeUse="1"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <PrepTime value="1"/>
         <CastOutroTime value="2.4"/>
@@ -528,12 +529,12 @@
         <Cost index="0">
             <Cooldown Location="Unit" TimeUse="10"/>
         </Cost>
-        <Range value="6"/>
+        <Range value="9"/>
         <PrepTime value="0.6"/>
         <CastOutroTime value="0.2"/>
         <Effect index="0" value="AensMissile"/>
         <Alignment value="Negative"/>
-        <AutoCastRange value="6"/>
+        <AutoCastRange value="9"/>
         <AutoCastValidatorArray index="1" value="noMarkers"/>
     </CAbilEffectTarget>
     <CAbilBehavior id="ACnr" parent="War3_HeroAura">
@@ -2161,7 +2162,7 @@
         <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
         <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="60"/>
+            <Cooldown Location="Unit" TimeUse="30"/>
         </Cost>
         <Effect index="0" value="Bcri"/>
         <Range value="11"/>
@@ -2528,7 +2529,7 @@
         <EditorCategories value="Race:Orc,AbilityorEffectType:Unit"/>
         <TargetFilters index="0" value="-;player,allies,ground,wall,tree,debris,item,structure,ward,dead,invulnerable"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="10"/>
+            <Cooldown Location="Unit" TimeUse="15"/>
         </Cost>
         <Range value="9"/>
         <PrepTime value="0.6"/>

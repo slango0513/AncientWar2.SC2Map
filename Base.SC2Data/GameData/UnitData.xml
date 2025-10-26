@@ -972,13 +972,15 @@
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/DemonUnits"/>
         <AbilArray Link="DemonInventory"/>
+        <AbilArray Link="ACen"/>
         <AbilArray Link="ANht"/>
         <BehaviorArray Link="ANca"/>
         <BehaviorArray Link="ACsk"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
             <LayoutButtons Face="ANca" Type="Passive" Behavior="ANca" Row="2" Column="1"/>
-            <LayoutButtons Face="ANht" Type="AbilCmd" AbilCmd="ANht,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="ACen" Type="AbilCmd" AbilCmd="ACen,0" Row="2" Column="2"/>
+            <LayoutButtons Face="ANht" Type="AbilCmd" AbilCmd="ANht,Execute" Row="2" Column="3"/>
         </CardLayouts>
         <WeaponArray index="1" removed="1"/>
         <Name value="Nman/Propernames"/>
@@ -1027,6 +1029,7 @@
         <GlossaryCategory value="Unit/Category/DemonUnits"/>
         <AbilArray Link="DemonInventory"/>
         <AbilArray Link="UpgradeToNman"/>
+        <AbilArray Link="ACen"/>
         <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="ANca"/>
         <BehaviorArray Link="HeroPitLordRun"/>
@@ -1034,6 +1037,7 @@
             <LayoutButtons Face="Nman" Type="AbilCmd" AbilCmd="UpgradeToNman,0" Row="0" Column="0"/>
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
             <LayoutButtons Face="ANca" Type="Passive" Behavior="ANca" Row="2" Column="1"/>
+            <LayoutButtons Face="ACen" Type="AbilCmd" AbilCmd="ACen,0" Row="2" Column="2"/>
         </CardLayouts>
         <WeaponArray index="1" removed="1"/>
     </CUnit>
@@ -1637,8 +1641,8 @@
     <!--queen of suffering-->
     <CUnit id="ndqs" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
-        <CostResource index="gold" value="225"/>
-        <KillResource index="Custom" value="225"/>
+        <CostResource index="gold" value="270"/>
+        <KillResource index="Custom" value="270"/>
         <LifeStart value="5400"/>
         <LifeMax value="5400"/>
         <Speed value="2"/>
@@ -1648,12 +1652,14 @@
         <GlossaryCategory value="Unit/Category/DemonUnits"/>
         <AbilArray Link="DemonInventory"/>
         <AbilArray Link="ANch"/>
+        <BehaviorArray Link="ACsk"/>
+        <BehaviorArray Link="Suffering"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="Suffering" Type="Passive" Behavior="Suffering" Row="2" Column="0"/>
-            <LayoutButtons Face="ANch" Type="AbilCmd" AbilCmd="ANch,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="Suffering" Type="Passive" Behavior="Suffering" Row="2" Column="1"/>
+            <LayoutButtons Face="ANch" Type="AbilCmd" AbilCmd="ANch,Execute" Row="2" Column="2"/>
         </CardLayouts>
         <EnergyMax value="180"/>
-        <BehaviorArray Link="Suffering"/>
     </CUnit>
     <CUnit id="nzep2LM" parent="War3_Missile"/>
     <!--Khadgar's Gem of Health-->
@@ -2857,12 +2863,10 @@
         </CardLayouts>
         <CardLayouts index="3" CardId="Pur2">
             <LayoutButtons Face="Purchasefwss" Type="AbilCmd" AbilCmd="Purchasefwss,Train1" Row="2" Column="0"/>
-            <LayoutButtons Face="Purchaseblba" Type="AbilCmd" AbilCmd="Purchaseblba,Train1" Row="2" Column="1"/>
         </CardLayouts>
         <AbilArray Link="DragonBuild"/>
         <AbilArray Link="Purchaseoven"/>
         <AbilArray Link="Purchasefwss"/>
-        <AbilArray Link="Purchaseblba"/>
         <Speed value="3"/>
         <Radius value="0.3125"/>
         <Race value="Dragon"/>
@@ -3363,11 +3367,11 @@
     <CUnit id="ndkw" parent="AW2_Building" defType="FORT">
         <Attributes index="mechanical" value="1"/>
         <Attributes index="fort" value="1"/>
-        <LifeMax value="1200"/>
+        <LifeMax value="1800"/>
         <RepairTime value="20"/>
         <Radius value="1.5"/>
         <Race value="Demon"/>
-        <LifeStart value="1200"/>
+        <LifeStart value="1800"/>
         <AbilArray Link="ARal"/>
         <AbilArray Link="Aqu2"/>
         <CardLayouts index="0">
@@ -3387,8 +3391,8 @@
     <!--succubus-->
     <CUnit id="ndqn" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
-        <CostResource index="gold" value="75"/>
-        <KillResource index="Custom" value="75"/>
+        <CostResource index="gold" value="90"/>
+        <KillResource index="Custom" value="90"/>
         <LifeStart value="1800"/>
         <LifeMax value="1800"/>
         <Speed value="2"/>
@@ -3399,9 +3403,11 @@
         <AbilArray Link="DemonInventory"/>
         <AbilArray Link="UpgradeTondqs"/>
         <AbilArray Link="AUsl"/>
+        <BehaviorArray Link="ACsk"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ndqs" Type="AbilCmd" AbilCmd="UpgradeTondqs,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="AUsl" Type="AbilCmd" AbilCmd="AUsl,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="AUsl" Type="AbilCmd" AbilCmd="AUsl,Execute" Row="2" Column="1"/>
         </CardLayouts>
         <EnergyMax value="60"/>
         <EnergyStart value="60"/>
@@ -3746,18 +3752,18 @@
     <CUnit id="nfov" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="45"/>
-        <KillResource index="Custom" value="15"/>
-        <LifeStart value="600"/>
-        <LifeMax value="600"/>
+        <KillResource index="Custom" value="45"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
         <Speed value="2"/>
         <Race value="Demon"/>
         <Mover value="foot"/>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/DemonUnits"/>
         <AbilArray Link="DemonInventory"/>
-        <BehaviorArray Link="ANca"/>
+        <AbilArray Link="Acri"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ANca" Type="Passive" Behavior="ANca" Row="2" Column="0"/>
+            <LayoutButtons Face="Acri" Type="AbilCmd" AbilCmd="Acri,0" Row="2" Column="0"/>
         </CardLayouts>
     </CUnit>
     <!--forest troll high priest-->
@@ -5157,8 +5163,12 @@
         <CardLayouts index="2" CardId="Purc">
             <LayoutButtons Face="Purchasegldo" Type="AbilCmd" AbilCmd="Purchasegldo,Train1" Row="2" Column="0"/>
         </CardLayouts>
+        <CardLayouts index="3" CardId="Pur2">
+            <LayoutButtons Face="Purchaseblba" Type="AbilCmd" AbilCmd="Purchaseblba,Train1" Row="2" Column="0"/>
+        </CardLayouts>
         <AbilArray Link="DemonBuild"/>
         <AbilArray Link="Purchasegldo"/>
+        <AbilArray Link="Purchaseblba"/>
         <Speed value="3"/>
         <Radius value="0.3125"/>
         <Race value="Demon"/>
