@@ -19,11 +19,10 @@
         <CmdButtonArray index="Drop" Requirements="BuildArmy"/>
     </CAbilInventory>
     <CAbilBehavior default="1" id="AW2_Toggle" parent="War3_Passive">
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
         <Flags index="Toggle" value="1"/>
         <CmdButtonArray index="On" Requirements="">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
-        <CmdButtonArray index="Off">
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
     </CAbilBehavior>
@@ -46,9 +45,6 @@
     <CAbilBehavior default="1" id="AW2_Passive" parent="War3_Passive">
         <Flags index="Toggle" value="1"/>
         <CmdButtonArray index="On" Requirements="UseMorph">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
-        <CmdButtonArray index="Off">
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
     </CAbilBehavior>
@@ -130,6 +126,40 @@
         <CastOutroTime value="0.5"/>
         <TargetFilters index="0" value="-;wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
     </CAbilEffectTarget>
+    <!--Blood Mage - Siphon Mana Buff=Bdcb,Bdcl,Bdcm,Bdtb,Bdtl,Bdtm,Bdbb,Bdbl,Bdbm-->
+    <CAbilEffectTarget id="AHdr" parent="AW2_EffectTarget">
+        <TargetFilters index="0" value="HasEnergy;self,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="5"/>
+        </Cost>
+        <ProgressButtonArray index="Channel" value="AHdr"/>
+        <CancelableArray index="Channel" value="1"/>
+        <Range value="12"/>
+        <PrepTime value="0.5"/>
+        <FinishTime value="1"/>
+        <CastOutroTime value="1.08"/>
+        <Alignment value="Negative"/>
+        <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastValidatorArray value="EnemiesNearby6"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
+        </TargetSorts>
+    </CAbilEffectTarget>
+    <!--Phase Shift Dur=1.5 HeroDur=1.5 Buff=Bpsh-->
+    <CAbilEffectInstant id="Apsh" parent="AW2_EffectInstant">
+        <CmdButtonArray index="Execute" Requirements="Apsh"/>
+        <EditorCategories value="Race:Demon,AbilityorEffectType:Unit"/>
+        <PrepTime value="0.2"/>
+        <CastOutroTime value="0.51"/>
+        <Effect index="0" value="Bpsh"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <AutoCastValidatorArray index="0" value="CasterDamagedInCombat"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="5"/>
+        </Cost>
+        <AutoCastFilters value="Self,Visible;-"/>
+    </CAbilEffectInstant>
     <CAbilAugment id="ChargeKnight" parent="War3_Augment">
         <AbilCmd value="Aatk,Execute"/>
         <Cost>
@@ -206,11 +236,11 @@
         <Alignment value="Negative"/>
         <Effect index="0" value="ACtcSearch"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="6"/>
+            <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
         <AutoCastFilters value="Self,Visible;-"/>
-        <AutoCastValidatorArray value="GroundEnemiesNearby2"/>
-        <PrepTime value="0.47"/>
+        <AutoCastValidatorArray index="0" value="GroundEnemiesNearby2"/>
+        <PrepTime value="0.75"/>
         <FinishTime value="0.56"/>
     </CAbilEffectInstant>
     <!--Demon Hunter - Immolation Buff=BEim,BEia-->
@@ -279,7 +309,6 @@
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <Cost index="0">
             <Vital index="Energy" value="60"/>
-            <Cooldown Location="Unit" TimeUse="30"/>
         </Cost>
         <PrepTime value="0.67"/>
         <CastOutroTime value="0.4"/>
@@ -313,7 +342,7 @@
     <!--Blade Master - Wind Walk Buff=BOwk-->
     <CAbilEffectInstant id="AOwk" parent="AW2_EffectInstant">
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="15"/>
+            <Cooldown Location="Unit" TimeUse="10"/>
         </Cost>
         <Effect index="0" value="AOwk1"/>
         <PreEffectBehavior Behavior="" Count="0"/>
@@ -324,7 +353,7 @@
         <Effect index="0" value="AOwk1"/>
         <PreEffectBehavior Behavior="" Count="0"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="20"/>
+            <Cooldown Location="Unit" TimeUse="10"/>
         </Cost>
         <AutoCastFilters value="Self,Visible;Ally,Neutral,Enemy"/>
         <AutoCastValidatorArray index="0" value="GroundEnemiesNearby3"/>
@@ -848,7 +877,7 @@
     <CAbilEffectTarget id="AEbl" parent="AW2_EffectTarget">
         <EditorCategories value="Race:NightElf,AbilityorEffectType:Units"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="5"/>
+            <Cooldown Location="Unit" TimeUse="2"/>
         </Cost>
         <Range value="8"/>
         <CastOutroTime value="0.83"/>
@@ -1099,7 +1128,7 @@
     <CAbilEffectTarget id="Awfb" parent="AW2_EffectTarget">
         <EditorCategories value="Race:ChaosOrc,AbilityorEffectType:Units"/>
         <Cost index="0">
-            <Vital index="Energy" value="30"/>
+            <Vital index="Energy" value="20"/>
             <Cooldown Location="Unit" TimeUse="10"/>
         </Cost>
         <TargetSorts RequestCount="1">
@@ -1258,8 +1287,8 @@
         <InfoArray index="Build8" Unit="nerw">
             <Button DefaultButtonFace="nerw" Requirements="BuildArmy"/>
         </InfoArray>
-        <InfoArray index="Build9" Unit="nndr">
-            <Button DefaultButtonFace="nndr" Requirements="BuildArmy"/>
+        <InfoArray index="Build9" Unit="nndk">
+            <Button DefaultButtonFace="nndk" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build10" Unit="Edem">
             <Button DefaultButtonFace="Edem" Requirements="BuildArmy"/>
@@ -1481,9 +1510,6 @@
         <CmdButtonArray index="On" Requirements="">
             <Flags index="IgnoreUser" value="1"/>
         </CmdButtonArray>
-        <CmdButtonArray index="Off">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
     </CAbilBehavior>
     <CAbilBuild id="AHbu" parent="War3_PowerBuild">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
@@ -1589,7 +1615,7 @@
     <CAbilEffectInstant id="AHre" parent="AW2_EffectInstant">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <Cost index="0">
-            <Vital index="Energy" value="60"/>
+            <Vital index="Energy" value="30"/>
             <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <PrepTime value="0.5"/>
@@ -1603,7 +1629,6 @@
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <Cost index="0">
             <Vital index="Energy" value="60"/>
-            <Cooldown Location="Unit" TimeUse="30"/>
         </Cost>
         <PrepTime value="0.3"/>
         <CastOutroTime value="2.4"/>
@@ -1616,11 +1641,21 @@
         <Effect index="0" value="nsel"/>
         <Cost index="0">
             <Vital index="Energy" value="60"/>
-            <Cooldown Location="Unit" TimeUse="30"/>
         </Cost>
         <AutoCastFilters value="Self,Visible;-"/>
         <AutoCastValidatorArray index="0" value="EnemiesNearby8"/>
         <PrepTime value="0.3"/>
+        <CastOutroTime value="2.4"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="SummonDoomGuard" parent="AW2_EffectInstant">
+        <EditorCategories value="Race:ChaosOrc,AbilityorEffectType:Units"/>
+        <Effect index="0" value="nbal"/>
+        <Cost index="0">
+            <Vital index="Energy" value="60"/>
+        </Cost>
+        <AutoCastFilters value="Self,Visible;-"/>
+        <AutoCastValidatorArray index="0" value="EnemiesNearby10"/>
+        <PrepTime value="0.45"/>
         <CastOutroTime value="2.4"/>
     </CAbilEffectInstant>
     <!--ItemChangeTOD Dur=30 effect=XIct-->
@@ -1871,7 +1906,7 @@
         <PrepTime value="0.25"/>
         <FinishTime value="0.8"/>
         <Effect index="0" value="AOws1Search"/>
-        <AutoCastValidatorArray index="0" value="GroundEnemiesNearby3"/>
+        <AutoCastValidatorArray index="0" value="GroundEnemiesNearby2"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilBehavior id="Agyd" parent="AW2_Passive">
@@ -1942,7 +1977,7 @@
         <EditorCategories value="Race:Undead,AbilityorEffectType:Units"/>
         <TargetFilters index="0" value="-;mechanical,wall,tree,Missile,debris,item,structure,ward,dead,Hidden,invulnerable"/>
         <Cost index="0">
-            <Vital index="Energy" value="90"/>
+            <Vital index="Energy" value="60"/>
             <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <Range value="27"/>
@@ -1976,8 +2011,8 @@
         <CastOutroTime value="0.51"/>
         <Effect index="0" value="ANhtSearch"/>
         <CursorEffect value="ANhtSearch"/>
-        <AutoCastValidatorArray value="EnemiesNearby2"/>
-        <AutoCastFilters value="Visible;-"/>
+        <AutoCastValidatorArray index="0" value="EnemiesNearby2"/>
+        <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <!--Sea Witch - Mana Shield Buff=BNms-->
     <CAbilBehavior id="ANms" parent="AW2_Toggle">
@@ -1987,7 +2022,6 @@
         <CmdButtonArray index="On">
             <Flags index="IgnoreUser" value="0"/>
         </CmdButtonArray>
-        <Flags index="AutoCastOn" value="0"/>
     </CAbilBehavior>
     <!--Pit Lord - Rain of Fire Buff=BNrd,BNrf effect=XErf cast=1-->
     <CAbilEffectTarget id="ANrf" parent="AW2_EffectTarget">
@@ -2169,7 +2203,7 @@
         <PrepTime value="0.25"/>
         <FinishTime value="0.8"/>
         <Effect index="0" value="AOws1Search"/>
-        <AutoCastValidatorArray index="0" value="GroundEnemiesNearby3"/>
+        <AutoCastValidatorArray index="0" value="GroundEnemiesNearby2"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <!--Death Knight - Animate Dead Buff=BUan-->
@@ -3075,7 +3109,7 @@
         <PrepTime value="0.25"/>
         <FinishTime value="0.8"/>
         <Effect index="0" value="AOws1Search"/>
-        <AutoCastValidatorArray index="0" value="GroundEnemiesNearby3"/>
+        <AutoCastValidatorArray index="0" value="GroundEnemiesNearby2"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilBehavior id="Multishot" parent="War3_Passive">
@@ -3718,6 +3752,9 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeTonbzd" parent="AW2_Upgrade" toUnit="nbzd">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonndr" parent="AW2_Upgrade" toUnit="nndr">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToubdr" parent="AW2_Upgrade" toUnit="ubdr">

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CActorSimple id="ACt2" parent="War3_SimpleCastAnimWcArt">
+        <On index="0" Terms="Abil.ACt2.SourcePrepStart" Target="_Selectable" Send="AnimPlay spell Spell,Slam NonLooping -1.000000 -1.000000 1.000000 AsTimeScaleAbsolute"/>
+    </CActorSimple>
+    <CActorModel id="ACt2Caster">
+        <On Terms="Abil.ACt2.SourceCastStart" Send="Create"/>
+    </CActorModel>
     <!--Devour Buff=Bdig,Bdvv-->
     <CActorSimple id="Adev">
         <On Terms="UnitBirth.ndsa" Send="Create"/>
@@ -178,6 +184,7 @@
     <CActorSimple id="ACfn" parent="War3_SimpleCastAnim"/>
     <CActorSimple id="StellarFlare" parent="War3_SimpleCastAnim"/>
     <CActorSimple id="SummonSeaElemental" parent="War3_SimpleCastAnim"/>
+    <CActorSimple id="SummonDoomGuard" parent="War3_SimpleCastAnim"/>
     <CActorModel id="AarmTarget" parent="TargetArtX">
         <HostSiteOps Ops="SOpAttachHarnessSoft SOpShadow" HoldRotation="1"/>
         <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
@@ -899,15 +906,26 @@
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.3437"/>
     </CActorUnit>
+    <!--netherdrake-->
+    <CActorUnit id="nndk" parent="War3_Army" unitSound="NetherDragon" unitName="nndk" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnNetherDragon.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnNetherDragon.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnNetherDragon.dds"/>
+        <BarWidth value="87"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
+        <WalkAnimMoveSpeed value="2.7343"/>
+    </CActorUnit>
     <!--netherdragon-->
-    <CActorUnit id="nndr" parent="War3_Army" unitSound="NetherDragon" unitName="nndr" defType="SMALL">
+    <CActorUnit id="nndr" parent="War3_Army" unitSound="NetherDragon" unitName="nndr" defType="LARGE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnNetherDragon.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnNetherDragon.dds"/>
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnNetherDragon.dds"/>
         <BarWidth value="100"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar200"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.7343"/>
     </CActorUnit>
@@ -3261,6 +3279,10 @@
         <On index="89" removed="1"/>
         <On index="90" removed="1"/>
         <On index="91" removed="1"/>
+        <On index="92" removed="1"/>
+        <On index="93" removed="1"/>
+        <On index="94" removed="1"/>
+        <On index="95" removed="1"/>
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
         <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-NONE.tga"/>
     </CActorUnit>
@@ -3282,6 +3304,10 @@
         <On index="89" removed="1"/>
         <On index="90" removed="1"/>
         <On index="91" removed="1"/>
+        <On index="92" removed="1"/>
+        <On index="93" removed="1"/>
+        <On index="94" removed="1"/>
+        <On index="95" removed="1"/>
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
         <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-MEDIUM.tga"/>
     </CActorUnit>
@@ -3451,6 +3477,10 @@
         <On index="89" removed="1"/>
         <On index="90" removed="1"/>
         <On index="91" removed="1"/>
+        <On index="92" removed="1"/>
+        <On index="93" removed="1"/>
+        <On index="94" removed="1"/>
+        <On index="95" removed="1"/>
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
         <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-MEDIUM.tga"/>
     </CActorUnit>

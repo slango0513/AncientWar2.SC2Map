@@ -46,6 +46,26 @@
         </DamageResponse>
         <MaxStackCount value="0"/>
     </CBehaviorBuff>
+    <!--Bash (creep) Dur=2 HeroDur=2 Buff=BPSE-->
+    <CBehaviorBuff id="ACbh">
+        <DamageResponse Chance="0.5"/>
+    </CBehaviorBuff>
+    <!--CreepThunderClap-->
+    <CBehaviorBuff id="BCtc">
+        <Duration value="30"/>
+        <DurationOverride index="0" Duration="15">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <InitialEffect value=""/>
+        <Modification MoveSpeedMultiplier="0.5" AttackSpeedMultiplier="0.5"/>
+    </CBehaviorBuff>
+    <!--PhaseShift-->
+    <CBehaviorBuff id="Bpsh">
+        <Duration value="3"/>
+        <DurationOverride index="0" Duration="3">
+            <ValidatorArray index="0" value="Hero"/>
+        </DurationOverride>
+    </CBehaviorBuff>
     <CBehaviorBuff id="Preparing" parent="War3_Buff">
         <InfoFlags index="Hidden" value="1"/>
         <Duration value="8"/>
@@ -577,13 +597,6 @@
     <CBehaviorBuff id="Asth">
         <Requirements value=""/>
     </CBehaviorBuff>
-    <!--CreepThunderClap-->
-    <CBehaviorBuff id="BCtc">
-        <Duration value="30"/>
-        <DurationOverride index="0" Duration="15">
-            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
-        </DurationOverride>
-    </CBehaviorBuff>
     <CBehaviorBuff id="GoblinLandMineInvisibility" parent="War3_Passive">
         <EditorCategories value="Race:Goblin,AbilityorEffectType:Unit"/>
         <Duration value="10"/>
@@ -741,6 +754,20 @@
     <CBehaviorBuff id="SeaElemental" parent="War3_Buff">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnSeaElemental.dds"/>
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <Duration value="60"/>
+        <DurationOverride index="0" Duration="60">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <FinalEffect value="TimedLifeFate"/>
+        <Modification>
+            <StateFlags index="Summoned" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DoomGuard" parent="War3_Buff">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btndoomguard.dds"/>
+        <EditorCategories value="Race:Demon,AbilityorEffectType:Units"/>
         <DisplayDuration index="Self" value="1"/>
         <DisplayDuration index="Ally" value="1"/>
         <Duration value="60"/>
@@ -985,15 +1012,15 @@
         <EditorCategories value="Race:Naga,AbilityorEffectType:Unit"/>
         <DamageResponse>
             <Chance value="1"/>
-            <ClampMinimum value="10"/>
-            <ModifyAmount value="-20"/>
+            <ClampMinimum value="20"/>
+            <ModifyAmount value="-80"/>
             <TargetFilters value="-;player,neutral"/>
         </DamageResponse>
     </CBehaviorBuff>
     <!--Hardened Skin-->
     <CBehaviorBuff id="Assk">
         <Requirements value=""/>
-        <DamageResponse ClampMinimum="5" ModifyAmount="-20"/>
+        <DamageResponse ClampMinimum="30" ModifyAmount="-120"/>
     </CBehaviorBuff>
     <!--TornadoSpin Dur=12 HeroDur=6 Buff=Btsp,Btsa-->
     <CBehaviorBuff id="Atsp">
@@ -1049,8 +1076,8 @@
         <Modification LifeArmorBonus="5"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="BHbh">
-        <Duration value="3"/>
-        <DurationOverride index="0" Duration="1.5">
+        <Duration value="6"/>
+        <DurationOverride index="0" Duration="3">
             <ValidatorArray index="0" value="Hero"/>
         </DurationOverride>
     </CBehaviorBuff>

@@ -59,6 +59,16 @@
         <Compare value="LE"/>
         <Value value="25"/>
     </CValidatorUnitCompareVital>
+    <CValidatorUnitType id="IsGargoyle">
+        <Value value="ugar"/>
+    </CValidatorUnitType>
+    <CValidatorCombine id="IsGargoyleOrGhoul">
+        <CombineArray value="IsGargoyle"/>
+        <CombineArray value="IsGhoul"/>
+    </CValidatorCombine>
+    <CValidatorUnitType id="IsGhoul">
+        <Value value="ugho"/>
+    </CValidatorUnitType>
     <CValidatorUnitCompareBehaviorCount id="NoChargeKnightController">
         <Behavior value="ChargeKnightController"/>
     </CValidatorUnitCompareBehaviorCount>

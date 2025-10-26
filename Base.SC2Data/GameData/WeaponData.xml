@@ -108,7 +108,7 @@
         <Effect value="ndsa1LM"/>
         <TargetFilters value="Visible;wall,tree,Missile,dead,invulnerable,immunity"/>
         <RangeSlop value="1.9531"/>
-        <Period value="6"/>
+        <Period value="3"/>
         <DamagePoint value="0.5"/>
         <Backswing value="0.56"/>
     </CWeaponLegacy>
@@ -188,6 +188,25 @@
         <Period value="3"/>
         <DamagePoint value="0.3"/>
         <Backswing value="0.3"/>
+    </CWeaponLegacy>
+    <!--nether drake-->
+    <CWeaponLegacy id="nndk1" parent="msplash" atkType="CHAOS">
+        <Effect value="nndk1MultishotSet"/>
+        <MinScanRange value="4.6875"/>
+        <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
+        <Range value="3"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="3"/>
+        <DamagePoint value="0.4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="nndk2" parent="msplash" atkType="CHAOS">
+        <Effect value="nndk2LM"/>
+        <MinScanRange value="4.6875"/>
+        <TargetFilters value="Visible;ground,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,invulnerable"/>
+        <Range value="3"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="3"/>
+        <DamagePoint value="0.5"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="nskk1" parent="normal" atkType="PIERCE">
         <MinScanRange value="3.9062"/>
@@ -1489,7 +1508,7 @@
         <EditorCategories value="Race:Human"/>
         <TargetFilters value="Visible;ground,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,invulnerable"/>
         <RangeSlop value="1.9531"/>
-        <Period value="3"/>
+        <Period value="1.5"/>
         <DamagePoint value="0.03"/>
         <Backswing value="0.97"/>
     </CWeaponLegacy>
@@ -1500,7 +1519,7 @@
         <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
         <Range value="2"/>
         <RangeSlop value="0.9765"/>
-        <Period value="3"/>
+        <Period value="1.5"/>
         <DamagePoint value="0.633"/>
         <Backswing value="0.7"/>
     </CWeaponLegacy>
@@ -1590,11 +1609,13 @@
     </CWeaponLegacy>
     <!--nether dragon-->
     <CWeaponLegacy id="nndr1" parent="missile" atkType="CHAOS">
-        <Effect value="nndr1LM"/>
+        <Effect value="nndr1MultishotSet"/>
         <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
         <RangeSlop value="1.9531"/>
         <Period value="3"/>
         <DamagePoint value="0.4"/>
+        <MinScanRange value="4.6875"/>
+        <Range value="3"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="nndr2" parent="missile" atkType="CHAOS">
         <Effect value="nndr2LM"/>
@@ -1602,6 +1623,8 @@
         <RangeSlop value="1.9531"/>
         <Period value="3"/>
         <DamagePoint value="0.5"/>
+        <MinScanRange value="4.6875"/>
+        <Range value="3"/>
     </CWeaponLegacy>
     <!--Sea Giant Hunter-->
     <CWeaponLegacy id="nsgh1" parent="normal" atkType="PIERCE">
@@ -1628,7 +1651,7 @@
         <Effect value="nsll1LM"/>
         <TargetFilters value="Visible;wall,tree,Missile,dead,invulnerable,immunity"/>
         <RangeSlop value="1.9531"/>
-        <Period value="6"/>
+        <Period value="3"/>
         <DamagePoint value="0.5"/>
         <Backswing value="0.64"/>
     </CWeaponLegacy>
@@ -1637,7 +1660,7 @@
         <Effect value="nthl1LM"/>
         <TargetFilters value="Visible;wall,tree,Missile,dead,invulnerable,immunity"/>
         <RangeSlop value="1.9531"/>
-        <Period value="6"/>
+        <Period value="3"/>
         <DamagePoint value="0.5"/>
         <Backswing value="0.56"/>
     </CWeaponLegacy>
@@ -1679,7 +1702,7 @@
         <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
         <Range value="2"/>
         <RangeSlop value="0.9765"/>
-        <Period value="3"/>
+        <Period value="1.5"/>
         <DamagePoint value="0.633"/>
         <Backswing value="0.7"/>
     </CWeaponLegacy>
@@ -1757,7 +1780,7 @@
         <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
         <Range value="2"/>
         <RangeSlop value="0.9765"/>
-        <Period value="3"/>
+        <Period value="1.5"/>
         <DamagePoint value="0.633"/>
         <Backswing value="0.7"/>
     </CWeaponLegacy>
@@ -1886,7 +1909,7 @@
         <TargetFilters value="Visible;ground,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,invulnerable"/>
         <Range value="4"/>
         <RangeSlop value="1.9531"/>
-        <Period value="3"/>
+        <Period value="1.5"/>
         <DamagePoint value="0.125"/>
         <Backswing value="0.875"/>
         <Effect value="nzep2Search"/>
@@ -1897,7 +1920,7 @@
         <TargetFilters value="Visible;ground,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,invulnerable"/>
         <Range value="4"/>
         <RangeSlop value="1.9531"/>
-        <Period value="3"/>
+        <Period value="1.5"/>
         <DamagePoint value="0.125"/>
         <Backswing value="0.875"/>
         <Effect value="uarb2Search"/>
@@ -1937,11 +1960,11 @@
         <DamagePoint value="0.5"/>
     </CWeaponLegacy>
     <!--WaterElemental-->
-    <CWeaponLegacy id="hwat1" parent="missile" atkType="PIERCE">
+    <CWeaponLegacy id="hwat1" parent="missile" atkType="MAGIC">
         <Effect value="hwat1LM"/>
         <EditorCategories value="Race:Human"/>
         <MinScanRange value="4.6875"/>
-        <TargetFilters value="Visible;wall,tree,Missile,ethereal,dead,invulnerable"/>
+        <TargetFilters value="Visible;wall,tree,Missile,dead,invulnerable,immunity"/>
         <Range value="3"/>
         <RangeSlop value="1.9531"/>
         <Period value="3"/>
@@ -2611,10 +2634,10 @@
         <Backswing value="0.56"/>
     </CWeaponLegacy>
     <!--Sea Elemental-->
-    <CWeaponLegacy id="nsel1" parent="missile" atkType="PIERCE">
+    <CWeaponLegacy id="nsel1" parent="missile" atkType="MAGIC">
         <Effect value="nsel1LM"/>
         <MinScanRange value="4.6875"/>
-        <TargetFilters value="Visible;wall,tree,Missile,ethereal,dead,invulnerable"/>
+        <TargetFilters value="Visible;wall,tree,Missile,dead,invulnerable,immunity"/>
         <Range value="3"/>
         <RangeSlop value="1.9531"/>
         <Period value="3"/>
@@ -3129,7 +3152,7 @@
         <TargetFilters value="Visible;ground,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,invulnerable"/>
         <Range value="1"/>
         <RangeSlop value="1.9531"/>
-        <Period value="3"/>
+        <Period value="1.5"/>
         <DamagePoint value="0.33"/>
         <Backswing value="1"/>
     </CWeaponLegacy>
@@ -3139,7 +3162,7 @@
         <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
         <Range value="2"/>
         <RangeSlop value="1.9531"/>
-        <Period value="3"/>
+        <Period value="1.5"/>
         <DamagePoint value="0.633"/>
         <Backswing value="0.7"/>
         <Effect value="ugar2LM"/>
