@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
-    <const id="summoned" path="SDamageResponse.TargetFilters" value="Summoned"/>
-    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
     <const id="hero" path="SDamageResponse.TargetFilters" value="Resistant"/>
-    <const id="allies" path="SDamageResponse.TargetFilters" value="Ally"/>
+    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
+    <const id="summoned" path="SDamageResponse.TargetFilters" value="Summoned"/>
     <const id="air" path="SDamageResponse.TargetFilters" value="Air"/>
-    <const id="tree" path="SDamageResponse.TargetFilters" value="HarvestableResource"/>
+    <const id="allies" path="SDamageResponse.TargetFilters" value="Ally"/>
     <const id="item" path="SDamageResponse.TargetFilters" value="Item"/>
-    <const id="player" path="SDamageResponse.TargetFilters" value="Player"/>
+    <const id="tree" path="SDamageResponse.TargetFilters" value="HarvestableResource"/>
     <const id="ancient" path="SDamageResponse.TargetFilters" value="Psionic"/>
-    <const id="enemies" path="SDamageResponse.TargetFilters" value="Enemy"/>
+    <const id="player" path="SDamageResponse.TargetFilters" value="Player"/>
     <const id="structure" path="SDamageResponse.TargetFilters" value="PreventDefeat"/>
-    <const id="self" path="SDamageResponse.TargetFilters" value="Self"/>
-    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="enemies" path="SDamageResponse.TargetFilters" value="Enemy"/>
     <const id="mechanical" path="SDamageResponse.TargetFilters" value="Mechanical"/>
-    <const id="neutral" path="SDamageResponse.TargetFilters" value="Neutral"/>
+    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="self" path="SDamageResponse.TargetFilters" value="Self"/>
     <const id="ground" path="SDamageResponse.TargetFilters" value="Ground"/>
+    <const id="neutral" path="SDamageResponse.TargetFilters" value="Neutral"/>
     <const id="wall" path="SDamageResponse.TargetFilters" value="Hover"/>
     <const id="dead" path="SDamageResponse.TargetFilters" value="Dead"/>
     <const id="ethereal" path="SDamageResponse.TargetFilters" value="Stasis"/>
-    <const id="invulnerable" path="SDamageResponse.TargetFilters" value="Invulnerable"/>
     <const id="debris" path="SDamageResponse.TargetFilters" value="Destructible"/>
+    <const id="invulnerable" path="SDamageResponse.TargetFilters" value="Invulnerable"/>
     <CBehaviorBuff default="1" id="AW2_TimeLife" parent="War3_Passive">
         <DisplayDuration index="Self" value="1"/>
         <DisplayDuration index="Ally" value="1"/>
@@ -49,8 +49,7 @@
     <!--MaxManaBonus (Most)-->
     <CBehaviorBuff id="AIbm" parent="AW2_Item">
         <Modification>
-            <VitalMaxDecreaseAffectsCurrentArray index="Energy" value="1"/>
-            <VitalMaxArray index="Energy" value="60"/>
+            <VitalMaxArray index="Energy" value="150"/>
         </Modification>
     </CBehaviorBuff>
     <!--temporary attack speed increase,carry End-->
@@ -71,11 +70,61 @@
     <CBehaviorBuff id="AId4" parent="AW2_Item">
         <Modification LifeArmorBonus="8"/>
     </CBehaviorBuff>
+    <!--DefenseBonus (+7)-->
+    <CBehaviorBuff id="AId7" parent="AW2_Item">
+        <Modification LifeArmorBonus="14"/>
+    </CBehaviorBuff>
+    <!--Evasion-->
+    <CBehaviorBuff id="AIev" parent="AW2_Item">
+        <DamageResponse Chance="0.33" Handled="AEevMissDummy" ModifyFraction="0">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Splash" value="0"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <!--MaxLifeBonus (Greater)-->
+    <CBehaviorBuff id="AIl2" parent="AW2_Item">
+        <Modification>
+            <VitalMaxArray index="Life" value="500"/>
+        </Modification>
+    </CBehaviorBuff>
     <!--MaxManaBonus (Least)-->
     <CBehaviorBuff id="AImb" parent="AW2_Item">
         <Modification>
             <VitalMaxDecreaseAffectsCurrentArray index="Energy" value="1"/>
             <VitalMaxArray index="Energy" value="30"/>
+        </Modification>
+    </CBehaviorBuff>
+    <!--MoveSpeedBonus-->
+    <CBehaviorBuff id="AIms" parent="AW2_Item">
+        <Modification MoveSpeedBonus="0.5"/>
+    </CBehaviorBuff>
+    <!--max life bonus,carry End-->
+    <!--temporary max mana bonus,carry-->
+    <!--MaxManaBonus (Leastest, Really)-->
+    <CBehaviorBuff id="AImv" parent="AW2_Item">
+        <Modification>
+            <VitalMaxArray index="Energy" value="75"/>
+        </Modification>
+    </CBehaviorBuff>
+    <!--Runed Bracers-->
+    <CBehaviorBuff id="AIsr" parent="AW2_Item">
+        <DamageResponse Chance="1" ModifyFraction="0.5">
+            <Kind index="Melee" value="0"/>
+            <Kind index="Ranged" value="0"/>
+            <Kind index="Splash" value="0"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <!--AttackBonus +5-->
+    <CBehaviorBuff id="AItj" parent="AW2_Item">
+        <Modification>
+            <DamageDealtScaled index="Melee" value="5"/>
+            <DamageDealtScaled index="Ranged" value="5"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AItx" parent="AW2_Item">
+        <Modification>
+            <DamageDealtFraction index="Melee" value="0.5"/>
+            <DamageDealtFraction index="Ranged" value="0.5"/>
         </Modification>
     </CBehaviorBuff>
     <!--mana regeneration aura-->
@@ -150,16 +199,30 @@
             <DamageDealtScaled index="Ranged" value="12"/>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="AIgd" parent="AW2_SphereItem">
-        <Modification>
-            <DamageDealtScaled index="Melee" value="12"/>
-            <DamageDealtScaled index="Ranged" value="12"/>
-        </Modification>
-    </CBehaviorBuff>
+    <CBehaviorBuff id="AIgd" parent="AW2_SphereItem"/>
     <!--MaxLifeBonus (Least)-->
     <CBehaviorBuff id="AIlf" parent="AW2_Item">
         <Modification>
             <VitalMaxArray index="Life" value="150"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AIva" parent="AW2_Item">
+        <DamageResponse>
+            <Chance value="1"/>
+            <Handled value="AIvaLeech"/>
+            <Location value="Attacker"/>
+            <TargetFilters value="-;player,allies,neutral,mechanical,PreventReveal"/>
+            <Kind index="Spell" value="0"/>
+            <Kind index="Ranged" value="0"/>
+            <Kind index="Splash" value="0"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AIvaLeech" parent="War3_Passive">
+        <Duration value="0.0625"/>
+        <Modification>
+            <VitalDamageLeechArray index="Life">
+                <KindArray index="Melee" value="0.5"/>
+            </VitalDamageLeechArray>
         </Modification>
     </CBehaviorBuff>
     <!--Orb of Lightning-->
@@ -316,9 +379,48 @@
     <CBehaviorBuff id="Aflk">
         <Requirements value=""/>
     </CBehaviorBuff>
+    <!--temporary max mana bonus,carry End-->
+    <!--Regen Life-->
+    <CBehaviorBuff id="Arel" parent="AW2_Item">
+        <Modification>
+            <VitalRegenArray index="Life" value="5"/>
+        </Modification>
+    </CBehaviorBuff>
     <!--Resistant Skin-->
     <CBehaviorBuff id="Arsk">
         <Requirements value=""/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BHadI">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnarmorgolem.dds"/>
+        <Modification LifeArmorBonus="5"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BNdp" parent="War3_Buff">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnDizzy.dds"/>
+        <EditorCategories value="Race:Demon,AbilityorEffectType:Units"/>
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <Duration value="120"/>
+        <DurationOverride Duration="120">
+            <ValidatorArray value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <FinalEffect value="TimedLifeFate"/>
+        <Modification>
+            <StateFlags index="Summoned" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <!--SoulBurn-->
+    <CBehaviorBuff id="BNso">
+        <Modification>
+            <DamageDealtFraction index="Melee" value="-0.25"/>
+            <DamageDealtFraction index="Ranged" value="-0.25"/>
+        </Modification>
+    </CBehaviorBuff>
+    <!--AnimateDead-->
+    <CBehaviorBuff id="BUan">
+        <Duration value="30"/>
+        <DurationOverride index="0" Duration="30">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
     </CBehaviorBuff>
     <!--Curse-->
     <CBehaviorBuff id="Bcrs">
@@ -479,6 +581,9 @@
     <CBehaviorBuff id="EfficiencyAuraCaster" parent="War3_AuraCaster">
         <Requirements value="EfficiencyAuraCaster"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="FelDriveAuraCaster" parent="War3_AuraCaster">
+        <Requirements value="FelDriveAuraCaster"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="FrostAuraCaster" parent="War3_AuraCaster">
         <Requirements value="FrostAuraCaster"/>
     </CBehaviorBuff>
@@ -626,6 +731,13 @@
     <CBehaviorBuff id="BlueDragonSpawnMeddlerRun" parent="War3_UnitRun"/>
     <CBehaviorBuff id="HighAttackTargetPriority" parent="War3_Passive">
         <Modification AttackTargetPriority="21"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Suffering" parent="War3_Passive">
+        <Requirements value="Suffering"/>
+        <DamageResponse Chance="1" Handled="SufferingModifyUnit">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Splash" value="0"/>
+        </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="nglmTimeLife" parent="AW2_TimeLife">
         <EditorCategories value="Race:Goblin,AbilityorEffectType:Units"/>
@@ -851,7 +963,7 @@
         <MaxStackCount value="2"/>
         <MaxStackCountPerCaster value="1"/>
         <Modification>
-            <RateMultiplierArray index="Cooldown" value="1.25"/>
+            <RateMultiplierArray index="Cooldown" value="1.5"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="EfficiencyAura" parent="War3_AuraBuff">
@@ -859,7 +971,14 @@
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnengineeringupgrade.dds"/>
         <MaxStackCount value="2"/>
         <MaxStackCountPerCaster value="1"/>
-        <Modification MoveSpeedMultiplier="1.25"/>
+        <Modification MoveSpeedMinimum="2" MoveSpeedMultiplier="1.25"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FelDriveAura" parent="War3_AuraBuff">
+        <EditorCategories value="Race:Demon,AbilityorEffectType:Units"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnengineeringupgrade.dds"/>
+        <MaxStackCount value="2"/>
+        <MaxStackCountPerCaster value="1"/>
+        <Modification MoveSpeedMultiplier="1.25" AttackSpeedMultiplier="1.25"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="FrostAura" parent="War3_AuraBuff">
         <Alignment value="Negative"/>
@@ -892,6 +1011,10 @@
     <CBehaviorBuff id="Bblo">
         <EditorCategories value="Race:Orc,AbilityorEffectType:Units"/>
         <Modification MoveSpeedMultiplier="1.5" AttackSpeedMultiplier="1.5"/>
+        <Duration value="45"/>
+        <DurationOverride index="0" Duration="45">
+            <ValidatorArray index="0" value="Hero"/>
+        </DurationOverride>
     </CBehaviorBuff>
     <!--BerserkerRage-->
     <CBehaviorBuff id="Bbsk" parent="War3_Buff">
@@ -926,10 +1049,13 @@
     <CBehaviorBuff id="Bcri">
         <EditorCategories value="Race:Undead,AbilityorEffectType:Units"/>
         <Duration value="30"/>
-        <Modification MoveSpeedMultiplier="0.5"/>
+        <Modification MoveSpeedMultiplier="0.75" AttackSpeedMultiplier="0.75">
+            <DamageDealtFraction index="Melee" value="-0.25"/>
+            <DamageDealtFraction index="Ranged" value="-0.25"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="Bcsd1">
-        <Modification MoveSpeedMultiplier="0.5" AttackSpeedMultiplier="0.5"/>
+        <Modification MoveSpeedMultiplier="0.75" AttackSpeedMultiplier="0.75"/>
         <MaxStackCount value="1"/>
         <MaxStackCountPerCaster value="0"/>
         <Duration value="6"/>
@@ -958,7 +1084,7 @@
     </CBehaviorBuff>
     <!--Frost-->
     <CBehaviorBuff id="Bfro">
-        <Modification AttackSpeedMultiplier="0.5"/>
+        <Modification MoveSpeedMultiplier="0.75"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="BreathOfFire" parent="War3_Buff">
         <Alignment value="Negative"/>
@@ -1027,7 +1153,7 @@
     <CBehaviorBuff id="Bslo">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <Duration value="10"/>
-        <Modification MoveSpeedMultiplier="0.5" AttackSpeedMultiplier="0.5"/>
+        <Modification MoveSpeedMultiplier="0.75"/>
     </CBehaviorBuff>
     <!--SpiritLink-->
     <CBehaviorBuff id="Bspl">
@@ -1039,7 +1165,7 @@
     </CBehaviorBuff>
     <!--SlowPoison-->
     <CBehaviorBuff id="Bspo">
-        <Modification AttackSpeedMultiplier="0.5"/>
+        <Modification MoveSpeedMultiplier="0.75" AttackSpeedMultiplier="0.75"/>
         <Duration value="6"/>
         <DurationOverride index="0" Duration="3"/>
     </CBehaviorBuff>
@@ -1372,7 +1498,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="Swimming" parent="War3_Buff">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnsummonwaterelemental.dds"/>
-        <Modification MoveSpeedMaximum="1"/>
+        <Modification MoveSpeedMaximum="1.5"/>
         <Duration value="1.0625"/>
         <DurationOverride index="0" Duration="1.0625">
             <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
@@ -1386,7 +1512,7 @@
         <DurationOverride index="0" Duration="1.0625">
             <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
         </DurationOverride>
-        <Modification MoveSpeedMaximum="0.5"/>
+        <Modification MoveSpeedMaximum="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="SwimmingAmphibian" parent="War3_Buff">
         <Alignment value="Positive"/>
@@ -1397,7 +1523,7 @@
         </DurationOverride>
         <Modification MoveSpeedMinimum="3">
             <VitalRegenArray index="Life" value="15"/>
-            <VitalRegenArray index="Energy" value="2"/>
+            <VitalRegenArray index="Energy" value="1.5"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="TeleportMarker" parent="War3_Passive">

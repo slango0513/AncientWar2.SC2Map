@@ -12,6 +12,12 @@
         <WhichLocation Value="CasterUnit"/>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea default="1" id="AW2_2NonSleepingEnemiesNearby">
+        <AreaArray Compare="GT" Count="1"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Hover,Missile,Destructible,Dead,Hidden,Benign,Passive"/>
+        <WhichLocation Value="CasterUnit"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea default="1" id="AW2_2NonUnstoppableEnemiesNearby">
         <AreaArray Compare="GT" Count="1"/>
         <SearchFilters value="Visible;Player,Ally,Neutral,Hover,Missile,Destructible,Dead,Hidden,Unstoppable"/>
@@ -34,6 +40,17 @@
         <WhichLocation Value="CasterUnit"/>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
         <Compare value="Eq"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorUnitCompareVital default="1" id="TargetLifeGE250">
+        <Compare value="GE"/>
+        <Value value="250"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital default="1" id="TargetLifeLE25">
+        <Compare value="LE"/>
+        <Value value="25"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorLocationEnumArea id="2NonSleepingEnemiesNearby6" parent="AW2_2NonSleepingEnemiesNearby">
+        <AreaArray index="0" Compare="GT" Count="1" Radius="6"/>
     </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="2NonInvulnerableEnemiesNearby6" parent="AW2_2NonInvulnerableEnemiesNearby">
         <AreaArray index="0" Compare="GT" Count="1" Radius="6"/>
@@ -307,6 +324,9 @@
     <CValidatorUnitCompareBehaviorCount id="NoBreathOfFrost">
         <Behavior value="BCbf"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoSleep">
+        <Behavior value="BUsl"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NoHex">
         <Behavior value="BOhx"/>
     </CValidatorUnitCompareBehaviorCount>
@@ -411,6 +431,15 @@
     <CValidatorUnitMover id="TargetIsNotHover">
         <Value value="hover"/>
     </CValidatorUnitMover>
+    <CValidatorUnitCompareVital id="TargetLifeGE900" parent="TargetLifeGE250">
+        <Value value="900"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="TargetLifeGE750" parent="TargetLifeGE250">
+        <Value value="750"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="TargetLifeLE175" parent="TargetLifeLE25">
+        <Value value="175"/>
+    </CValidatorUnitCompareVital>
     <CValidatorUnitCompareAttackPriority id="UnitThreatenshfoo" parent="ThreatensUnit" unitLink="hfoo"/>
     <CValidatorUnitCompareAttackPriority id="UnitThreatenshhes" parent="ThreatensUnit" unitLink="hhes"/>
     <CValidatorUnitCompareAttackPriority id="UnitThreatensnbel" parent="ThreatensUnit" unitLink="nbel"/>

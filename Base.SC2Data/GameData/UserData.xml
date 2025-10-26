@@ -177,22 +177,6 @@
                 <Field Id="Column"/>
             </Int>
         </Instances>
-        <Instances Id="DemonFlag">
-            <Int Int="6">
-                <Field Id="Row"/>
-            </Int>
-            <Int Int="6">
-                <Field Id="Column"/>
-            </Int>
-        </Instances>
-        <Instances Id="DemonFlag2">
-            <Int Int="15">
-                <Field Id="Column"/>
-            </Int>
-            <Int Int="6">
-                <Field Id="Row"/>
-            </Int>
-        </Instances>
         <Instances Id="DraeneiFlag">
             <Int Int="6">
                 <Field Id="Row"/>
@@ -266,6 +250,22 @@
             </Int>
         </Instances>
         <Instances Id="DragonFlag2">
+            <Int Int="15">
+                <Field Id="Column"/>
+            </Int>
+            <Int Int="6">
+                <Field Id="Row"/>
+            </Int>
+        </Instances>
+        <Instances Id="DemonFlag">
+            <Int Int="6">
+                <Field Id="Row"/>
+            </Int>
+            <Int Int="6">
+                <Field Id="Column"/>
+            </Int>
+        </Instances>
+        <Instances Id="DemonFlag2">
             <Int Int="15">
                 <Field Id="Column"/>
             </Int>
@@ -1363,16 +1363,10 @@
         </Instances>
         <Instances Id="Nman">
             <Int Int="1">
-                <Field Id="Count" Index="1"/>
-            </Int>
-            <Int Int="2">
                 <Field Id="Count"/>
             </Int>
-            <Unit Unit="Nplh">
-                <Field Id="UnitType"/>
-            </Unit>
             <Unit Unit="Nman">
-                <Field Id="UnitType" Index="1"/>
+                <Field Id="UnitType"/>
             </Unit>
         </Instances>
         <Instances Id="nmyr">
@@ -2215,6 +2209,110 @@
                 <Field Id="UnitType"/>
             </Unit>
         </Instances>
+        <Instances Id="nfgu">
+            <Int Int="1">
+                <Field Id="Count"/>
+            </Int>
+            <Unit Unit="nfgu">
+                <Field Id="UnitType"/>
+            </Unit>
+        </Instances>
+        <Instances Id="nfov">
+            <Int Int="1">
+                <Field Id="Count"/>
+            </Int>
+            <Unit Unit="nfov">
+                <Field Id="UnitType"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ndqn">
+            <Int Int="1">
+                <Field Id="Count"/>
+            </Int>
+            <Unit Unit="ndqn">
+                <Field Id="UnitType"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ndqs">
+            <Int Int="1">
+                <Field Id="Count"/>
+            </Int>
+            <Unit Unit="ndqs">
+                <Field Id="UnitType"/>
+            </Unit>
+        </Instances>
+        <Instances Id="Udre">
+            <Int Int="1">
+                <Field Id="Count"/>
+            </Int>
+            <Unit Unit="Udre">
+                <Field Id="UnitType"/>
+            </Unit>
+        </Instances>
+        <Instances Id="Utic">
+            <Int Int="1">
+                <Field Id="Count"/>
+            </Int>
+            <Unit Unit="Utic">
+                <Field Id="UnitType"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ninm">
+            <Int Int="1">
+                <Field Id="Count"/>
+            </Int>
+            <Unit Unit="ninm">
+                <Field Id="UnitType"/>
+            </Unit>
+        </Instances>
+        <Instances Id="nina">
+            <Int Int="1">
+                <Field Id="Count"/>
+            </Int>
+            <Unit Unit="nina">
+                <Field Id="UnitType"/>
+            </Unit>
+        </Instances>
+        <Instances Id="nerw">
+            <Int Int="1">
+                <Field Id="Count"/>
+            </Int>
+            <Unit Unit="nerw">
+                <Field Id="UnitType"/>
+            </Unit>
+        </Instances>
+        <Instances Id="Uwar">
+            <Int Int="1">
+                <Field Id="Count"/>
+            </Int>
+            <Unit Unit="Uwar">
+                <Field Id="UnitType"/>
+            </Unit>
+        </Instances>
+        <Instances Id="Nklj">
+            <Int Int="1">
+                <Field Id="Count"/>
+            </Int>
+            <Unit Unit="Nklj">
+                <Field Id="UnitType"/>
+            </Unit>
+        </Instances>
+        <Instances Id="nndr">
+            <Int Int="1">
+                <Field Id="Count"/>
+            </Int>
+            <Unit Unit="nndr">
+                <Field Id="UnitType"/>
+            </Unit>
+        </Instances>
+        <Instances Id="Uvar">
+            <Int Int="1">
+                <Field Id="Count"/>
+            </Int>
+            <Unit Unit="Uvar">
+                <Field Id="UnitType"/>
+            </Unit>
+        </Instances>
     </CUser>
     <CUser id="RaceAttributeMapping">
         <Instances index="1" Id="0002">
@@ -2249,6 +2347,11 @@
         </Instances>
         <Instances Id="0010">
             <GameLink GameLink="Dragon">
+                <Field Id="Race"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="0011">
+            <GameLink GameLink="Demon">
                 <Field Id="Race"/>
             </GameLink>
         </Instances>
@@ -2369,23 +2472,6 @@
                 <Field Id="Worker"/>
             </Unit>
         </Instances>
-        <Instances Id="Demon">
-            <AbilCmd Abil="DemonBuild">
-                <Field Id="Command"/>
-            </AbilCmd>
-            <AbilCmd Abil="DemonBuild" Cmd="1">
-                <Field Id="Command" Index="1"/>
-            </AbilCmd>
-            <Unit Unit="DemonFlag">
-                <Field Id="Phalanx"/>
-            </Unit>
-            <Unit Unit="DemonFlag2">
-                <Field Id="Phalanx" Index="1"/>
-            </Unit>
-            <Unit Unit="DemonPreviewer">
-                <Field Id="Previewer"/>
-            </Unit>
-        </Instances>
         <Instances Id="Draenei">
             <AbilCmd Abil="DraeneiBuild">
                 <Field Id="Command"/>
@@ -2483,6 +2569,26 @@
                 <Field Id="Worker"/>
             </Unit>
         </Instances>
+        <Instances Id="Demon">
+            <AbilCmd Abil="DemonBuild">
+                <Field Id="Command"/>
+            </AbilCmd>
+            <AbilCmd Abil="DemonBuild" Cmd="1">
+                <Field Id="Command" Index="1"/>
+            </AbilCmd>
+            <Unit Unit="DemonFlag">
+                <Field Id="Phalanx"/>
+            </Unit>
+            <Unit Unit="DemonFlag2">
+                <Field Id="Phalanx" Index="1"/>
+            </Unit>
+            <Unit Unit="DemonPreviewer">
+                <Field Id="Previewer"/>
+            </Unit>
+            <Unit Unit="npfl">
+                <Field Id="Worker"/>
+            </Unit>
+        </Instances>
     </CUser>
     <CUser id="SkinSetWar3HD" parent="AW2_User"/>
     <CUser id="WorkerBuildAbilityData">
@@ -2530,6 +2636,11 @@
         </Instances>
         <Instances Id="Dragonspawn">
             <GameLink GameLink="DragonBuild">
+                <Field Id="Ability"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="npfl">
+            <GameLink GameLink="DemonBuild">
                 <Field Id="Ability"/>
             </GameLink>
         </Instances>

@@ -208,14 +208,22 @@
             <LayoutButtons Face="Purchaserat6" Type="AbilCmd" AbilCmd="Purchaserat6,Train1" Row="0" Column="1"/>
             <LayoutButtons Face="Purchaserat9" Type="AbilCmd" AbilCmd="Purchaserat9,Train1" Row="0" Column="2"/>
             <LayoutButtons Face="Purchaseratc" Type="AbilCmd" AbilCmd="Purchaseratc,Train1" Row="0" Column="3"/>
-            <LayoutButtons Face="Purchaserde0" Type="AbilCmd" AbilCmd="Purchaserde0,Train1" Row="1" Column="0"/>
-            <LayoutButtons Face="Purchaserde1" Type="AbilCmd" AbilCmd="Purchaserde1,Train1" Row="1" Column="1"/>
-            <LayoutButtons Face="Purchaserde2" Type="AbilCmd" AbilCmd="Purchaserde2,Train1" Row="1" Column="2"/>
-            <LayoutButtons Face="Purchaserde3" Type="AbilCmd" AbilCmd="Purchaserde3,Train1" Row="1" Column="3"/>
-            <LayoutButtons Face="Purchaserde4" Type="AbilCmd" AbilCmd="Purchaserde4,Train1" Row="1" Column="4"/>
-            <LayoutButtons Face="Purchasegcel" Type="AbilCmd" AbilCmd="Purchasegcel,Train1" Row="2" Column="0"/>
-            <LayoutButtons Face="Purchaseprvt" Type="AbilCmd" AbilCmd="Purchaseprvt,Train1" Row="2" Column="1"/>
-            <LayoutButtons Face="Purchasepenr" Type="AbilCmd" AbilCmd="Purchasepenr,Train1" Row="2" Column="2"/>
+            <LayoutButtons Face="Purchaseratf" Type="AbilCmd" AbilCmd="Purchaseratf,Train1" Row="0" Column="4"/>
+            <LayoutButtons Face="Purchasegcel" Type="AbilCmd" AbilCmd="Purchasegcel,Train1" Row="1" Column="0"/>
+            <LayoutButtons Face="Purchasebspd" Type="AbilCmd" AbilCmd="Purchasebspd,Train1" Row="1" Column="1"/>
+            <LayoutButtons Face="Purchasemodt" Type="AbilCmd" AbilCmd="Purchasemodt,Train1" Row="1" Column="2"/>
+        </CardLayouts>
+        <CardLayouts CardId="Pur2">
+            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
+            <LayoutButtons Face="Purchaserde0" Type="AbilCmd" AbilCmd="Purchaserde0,Train1" Row="0" Column="0"/>
+            <LayoutButtons Face="Purchaserde1" Type="AbilCmd" AbilCmd="Purchaserde1,Train1" Row="0" Column="1"/>
+            <LayoutButtons Face="Purchaserde2" Type="AbilCmd" AbilCmd="Purchaserde2,Train1" Row="0" Column="2"/>
+            <LayoutButtons Face="Purchaserde3" Type="AbilCmd" AbilCmd="Purchaserde3,Train1" Row="0" Column="3"/>
+            <LayoutButtons Face="Purchaserde4" Type="AbilCmd" AbilCmd="Purchaserde4,Train1" Row="0" Column="4"/>
+            <LayoutButtons Face="Purchaseprvt" Type="AbilCmd" AbilCmd="Purchaseprvt,Train1" Row="1" Column="0"/>
+            <LayoutButtons Face="Purchasepenr" Type="AbilCmd" AbilCmd="Purchasepenr,Train1" Row="1" Column="2"/>
+            <LayoutButtons Face="Purchaseevtl" Type="AbilCmd" AbilCmd="Purchaseevtl,Train1" Row="1" Column="3"/>
+            <LayoutButtons Face="Purchaserlif" Type="AbilCmd" AbilCmd="Purchaserlif,Train1" Row="1" Column="1"/>
         </CardLayouts>
         <AbilArray index="0" Link="move"/>
         <AbilArray Link="AInv"/>
@@ -226,14 +234,19 @@
         <AbilArray Link="Purchaserat6"/>
         <AbilArray Link="Purchaserat9"/>
         <AbilArray Link="Purchaseratc"/>
+        <AbilArray Link="Purchaseratf"/>
         <AbilArray Link="Purchaserde0"/>
         <AbilArray Link="Purchaserde1"/>
         <AbilArray Link="Purchaserde2"/>
         <AbilArray Link="Purchaserde3"/>
         <AbilArray Link="Purchaserde4"/>
         <AbilArray Link="Purchasegcel"/>
+        <AbilArray Link="Purchasebspd"/>
+        <AbilArray Link="Purchasemodt"/>
         <AbilArray Link="Purchaseprvt"/>
         <AbilArray Link="Purchasepenr"/>
+        <AbilArray Link="Purchaseevtl"/>
+        <AbilArray Link="Purchaserlif"/>
     </CUnit>
     <CUnit default="1" id="AW2_Phalanx" parent="War3_ArmyBase">
         <DeathRevealRadius value="0"/>
@@ -902,8 +915,29 @@
         <Footprint value="Previewer"/>
     </CUnit>
     <!--Kiljaeden-->
-    <CUnit id="Nklj">
+    <CUnit id="Nklj" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="270"/>
+        <CostResource index="lumber" value="10800"/>
+        <KillResource index="Custom" value="810"/>
+        <LifeStart value="10800"/>
+        <LifeMax value="10800"/>
+        <Speed value="2"/>
         <Race value="Demon"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/DemonUnits"/>
+        <AbilArray index="4" Link="DemonInventory"/>
+        <AbilArray Link="SoulBurn"/>
+        <BehaviorArray Link="ACsk"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="SoulBurn" Type="AbilCmd" AbilCmd="SoulBurn,0" Row="2" Column="1"/>
+        </CardLayouts>
+        <EnergyStart value="540"/>
+        <EnergyMax value="540"/>
+        <Name value="Nklj/Propernames"/>
+        <WeaponArray index="1" removed="1"/>
     </CUnit>
     <!--Magtheridon-->
     <CUnit id="Nmag" parent="AW2_Army" defType="LARGE">
@@ -913,13 +947,12 @@
         <LifeStart value="1800"/>
         <LifeMax value="1800"/>
         <Speed value="2"/>
-        <Race value="Undead"/>
+        <Race value="Demon"/>
         <Mover value="foot"/>
         <PlaneArray index="Ground" value="1"/>
-        <GlossaryCategory value="Unit/Category/UndeadUnits"/>
-        <AbilArray Link="Aiun"/>
+        <GlossaryCategory value="Unit/Category/DemonUnits"/>
+        <AbilArray Link="DemonInventory"/>
         <AbilArray Link="Aabr"/>
-        <BehaviorArray Link="undead"/>
         <BehaviorArray Link="HeroPitLordRun"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Aabr" Type="Passive" Behavior="Aabr" Row="2" Column="0"/>
@@ -930,20 +963,23 @@
     <!--mannoroth-->
     <CUnit id="Nman" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
-        <CostResource index="gold" value="225"/>
-        <KillResource index="Custom" value="75"/>
-        <LifeStart value="1800"/>
-        <LifeMax value="1800"/>
+        <CostResource index="gold" value="270"/>
+        <KillResource index="Custom" value="270"/>
+        <LifeStart value="6300"/>
+        <LifeMax value="6300"/>
         <Speed value="2"/>
-        <Race value="Undead"/>
+        <Race value="Demon"/>
         <Mover value="foot"/>
         <PlaneArray index="Ground" value="1"/>
-        <GlossaryCategory value="Unit/Category/UndeadUnits"/>
-        <AbilArray Link="Aiun"/>
+        <GlossaryCategory value="Unit/Category/DemonUnits"/>
+        <AbilArray Link="DemonInventory"/>
         <AbilArray Link="ANht"/>
-        <BehaviorArray Link="undead"/>
+        <BehaviorArray Link="ANca"/>
+        <BehaviorArray Link="ACsk"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ANht" Type="AbilCmd" AbilCmd="ANht,0" Row="2" Column="0"/>
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="ANca" Type="Passive" Behavior="ANca" Row="2" Column="1"/>
+            <LayoutButtons Face="ANht" Type="AbilCmd" AbilCmd="ANht,Execute" Row="2" Column="2"/>
         </CardLayouts>
         <WeaponArray index="1" removed="1"/>
         <Name value="Nman/Propernames"/>
@@ -981,25 +1017,24 @@
     <!--neutral pit lord-->
     <CUnit id="Nplh" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
-        <CostResource index="gold" value="75"/>
-        <KillResource index="Custom" value="75"/>
-        <LifeStart value="1800"/>
-        <LifeMax value="1800"/>
+        <CostResource index="gold" value="90"/>
+        <KillResource index="Custom" value="90"/>
+        <LifeStart value="2100"/>
+        <LifeMax value="2100"/>
         <Speed value="2"/>
-        <Race value="Undead"/>
+        <Race value="Demon"/>
         <Mover value="foot"/>
         <PlaneArray index="Ground" value="1"/>
-        <GlossaryCategory value="Unit/Category/UndeadUnits"/>
-        <AbilArray Link="Aiun"/>
-        <AbilArray Link="UpgradeToNmag"/>
+        <GlossaryCategory value="Unit/Category/DemonUnits"/>
+        <AbilArray Link="DemonInventory"/>
         <AbilArray Link="UpgradeToNman"/>
+        <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="ANca"/>
-        <BehaviorArray Link="undead"/>
         <BehaviorArray Link="HeroPitLordRun"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="Nmag" Type="AbilCmd" AbilCmd="UpgradeToNmag,0" Row="0" Column="0"/>
-            <LayoutButtons Face="Nman" Type="AbilCmd" AbilCmd="UpgradeToNman,0" Row="0" Column="1"/>
-            <LayoutButtons Face="ANca" Type="Passive" Behavior="ANca" Row="2" Column="0"/>
+            <LayoutButtons Face="Nman" Type="AbilCmd" AbilCmd="UpgradeToNman,0" Row="0" Column="0"/>
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="ANca" Type="Passive" Behavior="ANca" Row="2" Column="1"/>
         </CardLayouts>
         <WeaponArray index="1" removed="1"/>
     </CUnit>
@@ -1309,6 +1344,7 @@
         <EnergyStart value="60"/>
         <EnergyMax value="60"/>
         <PlaneArray index="Ground" value="1"/>
+        <BehaviorArray Link="War3_PowerfulMob"/>
     </CUnit>
     <!--HeroTaurenChieftain-->
     <CUnit id="Otch" parent="AW2_Army" defType="LARGE">
@@ -1369,6 +1405,10 @@
     <CUnit id="TODMarker">
         <Attributes index="wall" value="1"/>
     </CUnit>
+    <!--balnazzar-->
+    <CUnit id="Ubal">
+        <Race value="Demon"/>
+    </CUnit>
     <!--HeroCryptLord-->
     <CUnit id="Ucrl" parent="AW2_Army" defType="MEDIUM">
         <Attributes index="medium" value="1"/>
@@ -1413,6 +1453,33 @@
         <LifeArmor value="10"/>
         <WeaponArray index="1" removed="1"/>
     </CUnit>
+    <!--HeroDreadLord-->
+    <CUnit id="Udre" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="135"/>
+        <KillResource index="Custom" value="135"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
+        <Speed value="2"/>
+        <Race value="Demon"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/DemonUnits"/>
+        <AbilArray Link="DemonInventory"/>
+        <AbilArray Link="UpgradeToUtic"/>
+        <AbilArray Link="UpgradeToUvar"/>
+        <AbilArray Link="AUin"/>
+        <BehaviorArray Link="ACsk"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Utic" Type="AbilCmd" AbilCmd="UpgradeToUtic,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Uvar" Type="AbilCmd" AbilCmd="UpgradeToUvar,Execute" Row="0" Column="1"/>
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="AUin" Type="AbilCmd" AbilCmd="AUin,Execute" Row="2" Column="1"/>
+        </CardLayouts>
+        <WeaponArray index="1" removed="1"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
+    </CUnit>
     <!--dethecus-->
     <CUnit id="Udth">
         <Race value="Demon"/>
@@ -1443,13 +1510,76 @@
         <LifeArmor value="10"/>
         <WeaponArray index="1" removed="1"/>
     </CUnit>
+    <CUnit id="Nklj1LM" parent="War3_Missile"/>
+    <!--varimathras-->
+    <CUnit id="Uvar" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="405"/>
+        <KillResource index="Custom" value="405"/>
+        <LifeStart value="5400"/>
+        <LifeMax value="5400"/>
+        <Speed value="2"/>
+        <Race value="Demon"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/DemonUnits"/>
+        <AbilArray Link="DemonInventory"/>
+        <AbilArray Link="ANdo"/>
+        <AbilArray Link="AUav"/>
+        <BehaviorArray Link="ACsk"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ANdo" Type="AbilCmd" AbilCmd="ANdo,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="AUav" Type="Passive" Behavior="BUav1" Row="2" Column="2"/>
+        </CardLayouts>
+        <WeaponArray index="1" removed="1"/>
+        <Name value="Uvar/Propernames"/>
+        <EnergyStart value="180"/>
+        <EnergyMax value="180"/>
+    </CUnit>
+    <!--Ankh of Reincarnation-->
+    <CUnit id="ankh">
+        <LifeStart value="1"/>
+    </CUnit>
+    <!--Arcanite Shield-->
+    <CUnit id="arsh">
+        <LifeStart value="1"/>
+    </CUnit>
+    <!--Assassin's Blade-->
+    <CUnit id="asbl">
+        <LifeStart value="1"/>
+    </CUnit>
+    <!--Bladebane Armor-->
+    <CUnit id="blba" parent="AW2_Item">
+        <CostResource index="gold" value="150"/>
+    </CUnit>
+    <!--Runed Bracers-->
+    <CUnit id="brac">
+        <LifeMax value="1"/>
+    </CUnit>
+    <!--Boots of Speed-->
+    <CUnit id="bspd" parent="AW2_Item">
+        <CostResource index="gold" value="30"/>
+    </CUnit>
+    <!--Cloak of Flames-->
+    <CUnit id="clfm">
+        <LifeMax value="1"/>
+    </CUnit>
+    <!--Crown of the Deathlord-->
+    <CUnit id="crdt">
+        <LifeMax value="1"/>
+    </CUnit>
+    <!--Drek'thar's Spellbook-->
+    <CUnit id="dtsb" parent="AW2_Item">
+        <CostResource index="gold" value="195"/>
+    </CUnit>
     <!--Hippogryph Rider-->
     <CUnit id="ehpr" parent="AW2_Army" defType="SMALL">
         <Attributes index="small" value="1"/>
-        <CostResource index="gold" value="45"/>
-        <KillResource index="Custom" value="45"/>
-        <LifeStart value="450"/>
-        <LifeMax value="450"/>
+        <CostResource index="gold" value="75"/>
+        <KillResource index="Custom" value="75"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
         <Speed value="3"/>
         <Race value="NightElf"/>
         <AbilArray Link="Aien"/>
@@ -1465,21 +1595,167 @@
         <Height value="1.875"/>
         <Mover value="fly"/>
     </CUnit>
+    <!--Talisman of Evasion-->
+    <CUnit id="evtl" parent="AW2_Item">
+        <CostResource index="gold" value="60"/>
+    </CUnit>
+    <!--Frostguard-->
+    <CUnit id="frgd">
+        <LifeMax value="1"/>
+    </CUnit>
+    <!--Frostwyrm Skull Shield-->
+    <CUnit id="fwss" parent="AW2_Item">
+        <CostResource index="gold" value="150"/>
+    </CUnit>
+    <!--Glyph of Fortification-->
+    <CUnit id="gfor">
+        <LifeMax value="1"/>
+    </CUnit>
+    <!--Glyph of UltraVision-->
+    <CUnit id="guvi">
+        <LifeMax value="1"/>
+    </CUnit>
+    <!--Keg of Ale-->
+    <CUnit id="kgal">
+        <LifeMax value="1"/>
+    </CUnit>
+    <!--Killmaim-->
+    <CUnit id="klmm" parent="AW2_Item">
+        <CostResource index="gold" value="150"/>
+    </CUnit>
+    <!--Mindstaff-->
+    <CUnit id="mnsf">
+        <LifeMax value="1"/>
+    </CUnit>
+    <!--Mana Stone-->
+    <CUnit id="mnst">
+        <LifeMax value="1"/>
+    </CUnit>
+    <!--mask of death-->
+    <CUnit id="modt" parent="AW2_Item">
+        <CostResource index="gold" value="90"/>
+    </CUnit>
+    <!--queen of suffering-->
+    <CUnit id="ndqs" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="225"/>
+        <KillResource index="Custom" value="225"/>
+        <LifeStart value="5400"/>
+        <LifeMax value="5400"/>
+        <Speed value="2"/>
+        <Race value="Demon"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/DemonUnits"/>
+        <AbilArray Link="DemonInventory"/>
+        <AbilArray Link="ANch"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Suffering" Type="Passive" Behavior="Suffering" Row="2" Column="0"/>
+            <LayoutButtons Face="ANch" Type="AbilCmd" AbilCmd="ANch,Execute" Row="2" Column="1"/>
+        </CardLayouts>
+        <EnergyMax value="180"/>
+        <BehaviorArray Link="Suffering"/>
+    </CUnit>
     <CUnit id="nzep2LM" parent="War3_Missile"/>
+    <!--Khadgar's Gem of Health-->
+    <CUnit id="rhth" parent="AW2_Item">
+        <CostResource index="gold" value="150"/>
+    </CUnit>
+    <!--Ring of regeneration-->
+    <CUnit id="rlif" parent="AW2_Item">
+        <CostResource index="gold" value="30"/>
+    </CUnit>
+    <!--Rusty Mining Pick-->
+    <CUnit id="rump">
+        <LifeMax value="1"/>
+    </CUnit>
+    <!--Sobi Mask-->
+    <CUnit id="rwiz">
+        <LifeMax value="1"/>
+    </CUnit>
+    <!--Shield of the Deathlord-->
+    <CUnit id="shdt">
+        <LifeMax value="1"/>
+    </CUnit>
+    <!--Enchanted Shield-->
+    <CUnit id="shen">
+        <LifeMax value="1"/>
+    </CUnit>
+    <!--Searing Blade-->
+    <CUnit id="srbd">
+        <LifeMax value="1"/>
+    </CUnit>
+    <!--Serathil-->
+    <CUnit id="srtl">
+        <LifeMax value="1"/>
+    </CUnit>
+    <!--Sturdy War Axe-->
+    <CUnit id="stwa" parent="War3_Item">
+        <CostResource index="gold" value="75"/>
+    </CUnit>
+    <!--Goblin Night Scope-->
+    <CUnit id="tels">
+        <LifeMax value="1"/>
+    </CUnit>
+    <!--Tome of Sacrifices-->
+    <CUnit id="tmsc">
+        <LifeMax value="1"/>
+    </CUnit>
     <CUnit id="uarb2LM" parent="War3_Missile"/>
     <CUnit id="nbda1LM" parent="War3_Missile"/>
     <CUnit id="nbds1LM" parent="War3_Missile"/>
     <!--tichondrius-->
-    <CUnit id="Utic">
+    <CUnit id="Utic" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="405"/>
+        <KillResource index="Custom" value="405"/>
+        <LifeStart value="5400"/>
+        <LifeMax value="5400"/>
+        <Speed value="2"/>
         <Race value="Demon"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/DemonUnits"/>
+        <AbilArray Link="DemonInventory"/>
+        <AbilArray Link="ANrc"/>
+        <BehaviorArray Link="ACsk"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ANrc" Type="AbilCmd" AbilCmd="ANrc,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+        </CardLayouts>
+        <WeaponArray index="1" removed="1"/>
+        <Name value="Utic/Propernames"/>
+        <EnergyStart value="180"/>
+        <EnergyMax value="180"/>
     </CUnit>
     <!--vengyr-->
     <CUnit id="Uvng">
         <Race value="Demon"/>
     </CUnit>
     <!--archimonde-->
-    <CUnit id="Uwar">
+    <CUnit id="Uwar" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="270"/>
+        <CostResource index="lumber" value="10800"/>
+        <KillResource index="Custom" value="810"/>
+        <LifeStart value="10800"/>
+        <LifeMax value="10800"/>
+        <Speed value="2"/>
         <Race value="Demon"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/DemonUnits"/>
+        <AbilArray index="4" Link="DemonInventory"/>
+        <AbilArray Link="ANdp"/>
+        <BehaviorArray Link="ACsk"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="ANdp" Type="AbilCmd" AbilCmd="ANdp,0" Row="2" Column="1"/>
+        </CardLayouts>
+        <EnergyStart value="540"/>
+        <EnergyMax value="540"/>
+        <Name value="Uwar/Propernames"/>
+        <WeaponArray index="1" removed="1"/>
     </CUnit>
     <!--Archer-->
     <CUnit id="earc" parent="AW2_Army" defType="MEDIUM">
@@ -1760,6 +2036,14 @@
                 <Column value="1"/>
             </LayoutButtons>
             <LayoutButtons Face="nfl2" Type="AbilCmd" AbilCmd="AEbu,Build2" Row="0" Column="1"/>
+            <LayoutButtons>
+                <Face value="CmdPurchaseNightElf2"/>
+                <Type value="Submenu"/>
+                <Requirements value="ShowBuildArmy"/>
+                <SubmenuCardId value="Pur2"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
         </CardLayouts>
         <CardLayouts index="1" CardId="Buil">
             <LayoutButtons Face="nwat" Type="AbilCmd" AbilCmd="AEbu,Build5" Row="0" Column="0"/>
@@ -1773,7 +2057,7 @@
             <LayoutButtons Face="emtg" Type="AbilCmd" AbilCmd="AEbu,Build12" Row="0" Column="3"/>
         </CardLayouts>
         <CardLayouts index="2" CardId="Purc">
-            <LayoutButtons Face="Purchaseoven" Type="AbilCmd" AbilCmd="Purchaseoven,Train1" Row="0" Column="4"/>
+            <LayoutButtons Face="Purchaseoven" Type="AbilCmd" AbilCmd="Purchaseoven,Train1" Row="2" Column="0"/>
         </CardLayouts>
         <AbilArray Link="AEbu"/>
         <AbilArray Link="Purchaseoven"/>
@@ -1806,8 +2090,8 @@
         <CostResource index="gold" value="30"/>
     </CUnit>
     <!--Orb of Kil'jaeden-->
-    <CUnit id="gldo">
-        <Sight value="1"/>
+    <CUnit id="gldo" parent="AW2_Item">
+        <CostResource index="gold" value="150"/>
     </CUnit>
     <!--Arcane Tower-->
     <CUnit id="hatw" parent="AW2_Building" defType="FORT">
@@ -2162,6 +2446,14 @@
                 <Column value="1"/>
             </LayoutButtons>
             <LayoutButtons Face="fla2" Type="AbilCmd" AbilCmd="AHbu,Build2" Row="0" Column="1"/>
+            <LayoutButtons>
+                <Face value="CmdPurchaseHuman2"/>
+                <Type value="Submenu"/>
+                <Requirements value="ShowBuildArmy"/>
+                <SubmenuCardId value="Pur2"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
         </CardLayouts>
         <CardLayouts index="1" CardId="Buil">
             <LayoutButtons Face="hmil" Type="AbilCmd" AbilCmd="AHbu,Build13" Row="0" Column="0"/>
@@ -2176,10 +2468,14 @@
             <LayoutButtons Face="Gyrocopter" Type="AbilCmd" AbilCmd="AHbu,Build5" Row="1" Column="0"/>
         </CardLayouts>
         <CardLayouts index="2" CardId="Purc">
-            <LayoutButtons Face="Purchaseofir" Type="AbilCmd" AbilCmd="Purchaseofir,Train1" Row="0" Column="4"/>
+            <LayoutButtons Face="Purchaseofir" Type="AbilCmd" AbilCmd="Purchaseofir,Train1" Row="2" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="3" CardId="Pur2">
+            <LayoutButtons Face="Purchaserhth" Type="AbilCmd" AbilCmd="Purchaserhth,Train1" Row="2" Column="0"/>
         </CardLayouts>
         <AbilArray Link="AHbu"/>
         <AbilArray Link="Purchaseofir"/>
+        <AbilArray Link="Purchaserhth"/>
         <Speed value="3"/>
         <Radius value="0.3125"/>
         <Race value="Human"/>
@@ -2250,7 +2546,6 @@
         <AbilArray Link="UpgradeTozmar"/>
         <CardLayouts index="0">
             <LayoutButtons Face="zmar" Type="AbilCmd" AbilCmd="UpgradeTozmar,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="Ahra" Type="Passive" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/HumanUnits"/>
@@ -2341,8 +2636,8 @@
     <!--Blood Elf Spell Breaker-->
     <CUnit id="hspt" parent="AW2_Army" defType="MEDIUM">
         <Attributes index="medium" value="1"/>
-        <CostResource index="gold" value="180"/>
-        <KillResource index="Custom" value="30"/>
+        <CostResource index="gold" value="90"/>
+        <KillResource index="Custom" value="15"/>
         <LifeStart value="600"/>
         <LifeMax value="600"/>
         <Speed value="2"/>
@@ -2478,8 +2773,23 @@
         <WeaponArray index="1" removed="1"/>
     </CUnit>
     <!--doom guard-->
-    <CUnit id="nbal">
-        <Food value="1"/>
+    <CUnit id="nbal" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <LifeStart value="2100"/>
+        <LifeMax value="2100"/>
+        <Speed value="2"/>
+        <Race value="Undead"/>
+        <Mover value="foot"/>
+        <AbilArray Link="ACrf"/>
+        <BehaviorArray Link="undead"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ACrf" Type="AbilCmd" AbilCmd="ACrf,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+        <WeaponArray index="0" Link="nbal2"/>
+        <WeaponArray index="1" removed="1"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
     </CUnit>
     <!--blue dragonspawn apprentice-->
     <CUnit id="nbda" parent="AW2_Army" defType="NONE">
@@ -2527,6 +2837,14 @@
                 <Column value="1"/>
             </LayoutButtons>
             <LayoutButtons Face="DragonFlag2" Type="AbilCmd" AbilCmd="DragonBuild,Build2" Row="0" Column="1"/>
+            <LayoutButtons>
+                <Face value="CmdPurchaseDragon2"/>
+                <Type value="Submenu"/>
+                <Requirements value="ShowBuildArmy"/>
+                <SubmenuCardId value="Pur2"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
         </CardLayouts>
         <CardLayouts index="1" CardId="Buil">
             <LayoutButtons Face="nadw" Type="AbilCmd" AbilCmd="DragonBuild,Build3" Row="0" Column="0"/>
@@ -2540,10 +2858,16 @@
             <LayoutButtons Face="nbdr" Type="AbilCmd" AbilCmd="DragonBuild,Build5" Row="0" Column="4"/>
         </CardLayouts>
         <CardLayouts index="2" CardId="Purc">
-            <LayoutButtons Face="Purchaseoven" Type="AbilCmd" AbilCmd="Purchaseoven,Train1" Row="0" Column="4"/>
+            <LayoutButtons Face="Purchaseoven" Type="AbilCmd" AbilCmd="Purchaseoven,Train1" Row="2" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="3" CardId="Pur2">
+            <LayoutButtons Face="Purchasefwss" Type="AbilCmd" AbilCmd="Purchasefwss,Train1" Row="2" Column="0"/>
+            <LayoutButtons Face="Purchaseblba" Type="AbilCmd" AbilCmd="Purchaseblba,Train1" Row="2" Column="1"/>
         </CardLayouts>
         <AbilArray Link="DragonBuild"/>
         <AbilArray Link="Purchaseoven"/>
+        <AbilArray Link="Purchasefwss"/>
+        <AbilArray Link="Purchaseblba"/>
         <Speed value="3"/>
         <Radius value="0.3125"/>
         <Race value="Dragon"/>
@@ -2690,8 +3014,8 @@
     <!--blood elf lieutenant-->
     <CUnit id="nbel" parent="AW2_Army" defType="MEDIUM">
         <Attributes index="medium" value="1"/>
-        <CostResource index="gold" value="60"/>
-        <KillResource index="Custom" value="30"/>
+        <CostResource index="gold" value="30"/>
+        <KillResource index="Custom" value="15"/>
         <LifeStart value="600"/>
         <LifeMax value="600"/>
         <Speed value="2"/>
@@ -2845,6 +3169,14 @@
                 <Column value="1"/>
             </LayoutButtons>
             <LayoutButtons Face="GoblinFlag2" Type="AbilCmd" AbilCmd="GoblinBuild,Build2" Row="0" Column="1"/>
+            <LayoutButtons>
+                <Face value="CmdPurchaseGoblin2"/>
+                <Type value="Submenu"/>
+                <Requirements value="ShowBuildArmy"/>
+                <SubmenuCardId value="Pur2"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
         </CardLayouts>
         <CardLayouts index="1" CardId="Buil">
             <LayoutButtons Face="nogo" Type="AbilCmd" AbilCmd="GoblinBuild,Build8" Row="0" Column="0"/>
@@ -2859,10 +3191,10 @@
             <LayoutButtons Face="nzep" Type="AbilCmd" AbilCmd="GoblinBuild,Build12" Row="1" Column="1"/>
         </CardLayouts>
         <CardLayouts index="2" CardId="Purc">
-            <LayoutButtons Face="Purchaseoslo" Type="AbilCmd" AbilCmd="Purchaseoslo,Train1" Row="0" Column="4"/>
+            <LayoutButtons Face="Purchasefrhg" Type="AbilCmd" AbilCmd="Purchasefrhg,Train1" Row="2" Column="0"/>
         </CardLayouts>
         <AbilArray Link="GoblinBuild"/>
-        <AbilArray Link="Purchaseoslo"/>
+        <AbilArray Link="Purchasefrhg"/>
         <Speed value="3"/>
         <Radius value="0.3125"/>
         <Race value="Goblin"/>
@@ -2989,6 +3321,14 @@
                 <Column value="1"/>
             </LayoutButtons>
             <LayoutButtons Face="ChaosOrcFlag2" Type="AbilCmd" AbilCmd="ChaosOrcBuild,Build2" Row="0" Column="1"/>
+            <LayoutButtons>
+                <Face value="CmdPurchaseChaosOrc2"/>
+                <Type value="Submenu"/>
+                <Requirements value="ShowBuildArmy"/>
+                <SubmenuCardId value="Pur2"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
         </CardLayouts>
         <CardLayouts index="1" CardId="Buil">
             <LayoutButtons Face="Nbbc" Type="AbilCmd" AbilCmd="ChaosOrcBuild,Build8" Row="0" Column="1"/>
@@ -3002,10 +3342,10 @@
             <LayoutButtons Face="ndtp" Type="AbilCmd" AbilCmd="ChaosOrcBuild,Build10" Row="2" Column="0"/>
         </CardLayouts>
         <CardLayouts index="2" CardId="Purc">
-            <LayoutButtons Face="Purchaseoli2" Type="AbilCmd" AbilCmd="Purchaseoli2,Train1" Row="0" Column="4"/>
+            <LayoutButtons Face="Purchaseklmm" Type="AbilCmd" AbilCmd="Purchaseklmm,Train1" Row="2" Column="0"/>
         </CardLayouts>
         <AbilArray Link="ChaosOrcBuild"/>
-        <AbilArray Link="Purchaseoli2"/>
+        <AbilArray Link="Purchaseklmm"/>
         <Speed value="3"/>
         <Radius value="0.3125"/>
         <Race value="ChaosOrc"/>
@@ -3028,13 +3368,25 @@
         <Race value="BloodElf"/>
         <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
     </CUnit>
-    <!--dark portal (southeast)-->
-    <CUnit id="ndke">
-        <Race value="Demon"/>
-    </CUnit>
     <!--dark portal (southwest)-->
-    <CUnit id="ndkw">
+    <CUnit id="ndkw" parent="AW2_Building" defType="FORT">
+        <Attributes index="mechanical" value="1"/>
+        <Attributes index="fort" value="1"/>
+        <LifeMax value="1200"/>
+        <RepairTime value="20"/>
+        <Radius value="1.5"/>
         <Race value="Demon"/>
+        <LifeStart value="1200"/>
+        <AbilArray Link="ARal"/>
+        <AbilArray Link="Aqu2"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ninf" Type="AbilCmd" AbilCmd="ndkwTrain,Train1" Row="2" Column="0"/>
+            <LayoutButtons Face="nbal" Type="AbilCmd" AbilCmd="ndkwTrain,Train2" Row="2" Column="1"/>
+        </CardLayouts>
+        <MinimapRadius value="1.5"/>
+        <SeparationRadius value="1.5"/>
+        <InnerRadius value="1.5"/>
+        <Facing value="34.9914"/>
     </CUnit>
     <!--demon gate-->
     <CUnit id="ndmg">
@@ -3042,24 +3394,64 @@
         <LifeArmor value="1"/>
     </CUnit>
     <!--succubus-->
-    <CUnit id="ndqn">
+    <CUnit id="ndqn" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="75"/>
+        <KillResource index="Custom" value="75"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
+        <Speed value="2"/>
         <Race value="Demon"/>
-    </CUnit>
-    <!--maiden of pain-->
-    <CUnit id="ndqp">
-        <Race value="Demon"/>
-    </CUnit>
-    <!--queen of suffering-->
-    <CUnit id="ndqs">
-        <Race value="Demon"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/DemonUnits"/>
+        <AbilArray Link="DemonInventory"/>
+        <AbilArray Link="UpgradeTondqs"/>
+        <AbilArray Link="AUsl"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ndqs" Type="AbilCmd" AbilCmd="UpgradeTondqs,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="AUsl" Type="AbilCmd" AbilCmd="AUsl,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <EnergyMax value="60"/>
+        <EnergyStart value="60"/>
     </CUnit>
     <!--vile temptress-->
-    <CUnit id="ndqt">
+    <CUnit id="ndqt" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="15"/>
+        <KillResource index="Custom" value="15"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
+        <Speed value="2"/>
         <Race value="Demon"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/DemonUnits"/>
+        <AbilArray Link="DemonInventory"/>
+        <AbilArray Link="UpgradeTondqv"/>
+        <AbilArray Link="ACsi"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ndqv" Type="AbilCmd" AbilCmd="UpgradeTondqv,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="ACsi" Type="AbilCmd" AbilCmd="ACsi,0" Row="2" Column="0"/>
+        </CardLayouts>
     </CUnit>
     <!--vile tormentor-->
-    <CUnit id="ndqv">
+    <CUnit id="ndqv" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="45"/>
+        <KillResource index="Custom" value="15"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
+        <Speed value="2"/>
         <Race value="Demon"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/DemonUnits"/>
+        <AbilArray Link="DemonInventory"/>
+        <AbilArray Link="ACsi"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ACsi" Type="AbilCmd" AbilCmd="ACsi,0" Row="2" Column="0"/>
+        </CardLayouts>
     </CUnit>
     <!--DarkMinion1-->
     <CUnit id="ndr1" parent="AW2_Army" defType="LARGE">
@@ -3263,13 +3655,31 @@
     <CUnit id="nerd">
         <Race value="Demon"/>
     </CUnit>
-    <!--eredar sorceror-->
-    <CUnit id="ners">
-        <Race value="Demon"/>
-    </CUnit>
     <!--eredar warlock-->
-    <CUnit id="nerw">
+    <CUnit id="nerw" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="270"/>
+        <KillResource index="Custom" value="270"/>
+        <LifeStart value="3600"/>
+        <LifeMax value="3600"/>
+        <Speed value="2"/>
         <Race value="Demon"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/DemonUnits"/>
+        <AbilArray Link="DemonInventory"/>
+        <AbilArray Link="UpgradeToUwar"/>
+        <AbilArray Link="UpgradeToNklj"/>
+        <AbilArray Link="ACfd"/>
+        <BehaviorArray Link="ACsk"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Uwar" Type="AbilCmd" AbilCmd="UpgradeToUwar,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Nklj" Type="AbilCmd" AbilCmd="UpgradeToNklj,Execute" Row="0" Column="1"/>
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="ACfd" Type="AbilCmd" AbilCmd="ACfd,Execute" Row="2" Column="1"/>
+        </CardLayouts>
+        <EnergyStart value="180"/>
+        <EnergyMax value="180"/>
     </CUnit>
     <!--pocket factory-->
     <CUnit id="nfac" parent="AW2_Sationary" defType="FORT">
@@ -3294,12 +3704,6 @@
     <CUnit id="nfel">
         <Food value="1"/>
     </CUnit>
-    <!--bloodfiend (felguard)-->
-    <CUnit id="nfgb">
-        <Race value="Demon"/>
-        <Food value="1"/>
-        <ScoreMake value="1"/>
-    </CUnit>
     <!--flesh golem-->
     <CUnit id="nfgl" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
@@ -3313,18 +3717,33 @@
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/UndeadUnits"/>
         <AbilArray Link="Aiun"/>
-        <AbilArray Link="ACce"/>
+        <AbilArray Link="ANca"/>
         <BehaviorArray Link="undead"/>
         <BehaviorArray Link="Aap1"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ACce" Type="Passive" Behavior="ACce" Row="2" Column="0"/>
+            <LayoutButtons Face="ANca" Type="Passive" Behavior="ANca" Row="2" Column="0"/>
             <LayoutButtons Face="Aap1" Type="Passive" Behavior="Aap1" Row="2" Column="1"/>
         </CardLayouts>
     </CUnit>
     <!--felguard-->
-    <CUnit id="nfgu">
+    <CUnit id="nfgu" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="15"/>
+        <KillResource index="Custom" value="15"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
+        <Speed value="2"/>
         <Race value="Demon"/>
-        <Food value="1"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/DemonUnits"/>
+        <AbilArray Link="DemonInventory"/>
+        <AbilArray Link="UpgradeTonfov"/>
+        <BehaviorArray Link="ANca"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="nfov" Type="AbilCmd" AbilCmd="UpgradeTonfov,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="ANca" Type="Passive" Behavior="ANca" Row="2" Column="0"/>
+        </CardLayouts>
     </CUnit>
     <!--NightElf flag-->
     <CUnit id="nflg" parent="AW2_Phalanx">
@@ -3334,8 +3753,22 @@
         <BehaviorArray Link="CreateReserveUnit90"/>
     </CUnit>
     <!--overlord (felguard)-->
-    <CUnit id="nfov">
+    <CUnit id="nfov" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="45"/>
+        <KillResource index="Custom" value="45"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
+        <Speed value="2"/>
         <Race value="Demon"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/DemonUnits"/>
+        <AbilArray Link="DemonInventory"/>
+        <BehaviorArray Link="ANca"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ANca" Type="Passive" Behavior="ANca" Row="2" Column="0"/>
+        </CardLayouts>
     </CUnit>
     <!--forest troll high priest-->
     <CUnit id="nfsh" parent="AW2_Army" defType="NONE">
@@ -3661,9 +4094,9 @@
         <Speed value="2"/>
         <Race value="Creeps"/>
         <Mover value="foot"/>
-        <AbilArray Link="ACce"/>
+        <AbilArray Link="ANca"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ACce" Type="Passive" Behavior="ACce" Row="2" Column="0"/>
+            <LayoutButtons Face="ANca" Type="Passive" Behavior="ANca" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <Radius value="0.3125"/>
@@ -3831,6 +4264,14 @@
                 <Column value="1"/>
             </LayoutButtons>
             <LayoutButtons Face="BloodElfFlag2" Type="AbilCmd" AbilCmd="BloodElfBuild,Build2" Row="0" Column="1"/>
+            <LayoutButtons>
+                <Face value="CmdPurchaseBloodElf2"/>
+                <Type value="Submenu"/>
+                <Requirements value="ShowBuildArmy"/>
+                <SubmenuCardId value="Pur2"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
         </CardLayouts>
         <CardLayouts index="1" CardId="Buil">
             <LayoutButtons Face="hsor" Type="AbilCmd" AbilCmd="BloodElfBuild,Build3" Row="1" Column="0"/>
@@ -3843,10 +4284,14 @@
             <LayoutButtons Face="hpxe" Type="AbilCmd" AbilCmd="BloodElfBuild,Build9" Row="1" Column="4"/>
         </CardLayouts>
         <CardLayouts index="2" CardId="Purc">
-            <LayoutButtons Face="Purchaseofir" Type="AbilCmd" AbilCmd="Purchaseofir,Train1" Row="0" Column="4"/>
+            <LayoutButtons Face="Purchaseofir" Type="AbilCmd" AbilCmd="Purchaseofir,Train1" Row="2" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="3" CardId="Pur2">
+            <LayoutButtons Face="Purchasepmna" Type="AbilCmd" AbilCmd="Purchasepmna,Train1" Row="2" Column="0"/>
         </CardLayouts>
         <AbilArray Link="BloodElfBuild"/>
         <AbilArray Link="Purchaseofir"/>
+        <AbilArray Link="Purchasepmna"/>
         <Speed value="3"/>
         <Radius value="0.3125"/>
         <Race value="BloodElf"/>
@@ -3926,20 +4371,59 @@
     </CUnit>
     <CUnit id="nhy21LM" parent="War3_Missile"/>
     <!--infernal automaton-->
-    <CUnit id="nina">
+    <CUnit id="nina" parent="AW2_Army" defType="FORT">
+        <Attributes index="mechanical" value="1"/>
+        <Attributes index="fort" value="1"/>
+        <CostResource index="gold" value="225"/>
+        <KillResource index="Custom" value="225"/>
+        <LifeStart value="750"/>
+        <LifeMax value="750"/>
+        <Speed value="2"/>
         <Race value="Demon"/>
-    </CUnit>
-    <!--infernal contraption-->
-    <CUnit id="ninc">
-        <Race value="Demon"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/DemonUnits"/>
+        <AbilArray Link="DemonInventory"/>
+        <AbilArray Link="FelDriveAura"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="FelCannon" Type="Passive" Behavior="FelCannon" Row="2" Column="0"/>
+            <LayoutButtons Face="FelDriveAuraCaster" Type="Passive" Behavior="FelDriveAuraCaster" Row="2" Column="1"/>
+        </CardLayouts>
     </CUnit>
     <!--Infernal-->
-    <CUnit id="ninf">
-        <Food value="1"/>
+    <CUnit id="ninf" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <LifeStart value="2100"/>
+        <LifeMax value="2100"/>
+        <Speed value="2"/>
+        <Race value="Demon"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <DeathTime value="0"/>
+        <BehaviorArray Link="ANpi"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ANpi" Type="Passive" Behavior="ANpi" Row="2" Column="0"/>
+        </CardLayouts>
     </CUnit>
     <!--infernal machine-->
-    <CUnit id="ninm">
+    <CUnit id="ninm" parent="AW2_Army" defType="FORT">
+        <Attributes index="mechanical" value="1"/>
+        <Attributes index="fort" value="1"/>
+        <CostResource index="gold" value="75"/>
+        <KillResource index="Custom" value="75"/>
+        <LifeStart value="250"/>
+        <LifeMax value="250"/>
+        <Speed value="2"/>
         <Race value="Demon"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/DemonUnits"/>
+        <AbilArray Link="DemonInventory"/>
+        <AbilArray Link="UpgradeTonina"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="nina" Type="AbilCmd" AbilCmd="UpgradeTonina,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="FelCannon" Type="Passive" Behavior="FelCannon" Row="2" Column="0"/>
+        </CardLayouts>
     </CUnit>
     <!--ice troll priest-->
     <CUnit id="nitp" parent="AW2_Army" defType="NONE">
@@ -4097,9 +4581,9 @@
         <Speed value="2"/>
         <Race value="Creeps"/>
         <Mover value="foot"/>
-        <AbilArray Link="ACce"/>
+        <AbilArray Link="ANca"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ACce" Type="Passive" Behavior="ACce" Row="2" Column="0"/>
+            <LayoutButtons Face="ANca" Type="Passive" Behavior="ANca" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <Radius value="0.875"/>
@@ -4151,9 +4635,9 @@
         <Speed value="2"/>
         <Race value="Creeps"/>
         <Mover value="foot"/>
-        <AbilArray Link="ACce"/>
+        <AbilArray Link="ANca"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ACce" Type="Passive" Behavior="ACce" Row="2" Column="0"/>
+            <LayoutButtons Face="ANca" Type="Passive" Behavior="ANca" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
@@ -4178,6 +4662,14 @@
                 <Column value="1"/>
             </LayoutButtons>
             <LayoutButtons Face="NagaFlag2" Type="AbilCmd" AbilCmd="AGbu,Build2" Row="0" Column="1"/>
+            <LayoutButtons>
+                <Face value="CmdPurchaseNaga2"/>
+                <Type value="Submenu"/>
+                <Requirements value="ShowBuildArmy"/>
+                <SubmenuCardId value="Pur2"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
         </CardLayouts>
         <CardLayouts index="1" CardId="Buil">
             <LayoutButtons Face="nnmg" Type="AbilCmd" AbilCmd="AGbu,Build8" Row="0" Column="0"/>
@@ -4189,7 +4681,7 @@
             <LayoutButtons Face="nnsw" Type="AbilCmd" AbilCmd="AGbu,Build4" Row="2" Column="0"/>
         </CardLayouts>
         <CardLayouts index="2" CardId="Purc">
-            <LayoutButtons Face="Purchaseofro" Type="AbilCmd" AbilCmd="Purchaseofro,Train1" Row="0" Column="4"/>
+            <LayoutButtons Face="Purchaseofro" Type="AbilCmd" AbilCmd="Purchaseofro,Train1" Row="2" Column="0"/>
         </CardLayouts>
         <AbilArray Link="AGbu"/>
         <AbilArray Link="Purchaseofro"/>
@@ -4292,18 +4784,30 @@
         <FlagArray index="Movable" value="0"/>
         <Description value="nmyr/Ubertip"/>
     </CUnit>
-    <!--nether drake-->
-    <CUnit id="nndk">
-        <Race value="Demon"/>
-        <Food value="1"/>
-    </CUnit>
     <!--nether dragon-->
-    <CUnit id="nndr">
+    <CUnit id="nndr" parent="AW2_Army" defType="SMALL">
+        <Attributes index="small" value="1"/>
+        <CostResource index="gold" value="90"/>
+        <KillResource index="Custom" value="90"/>
+        <LifeStart value="1500"/>
+        <LifeMax value="1500"/>
+        <Speed value="3"/>
         <Race value="Demon"/>
-    </CUnit>
-    <!--nether dragon hatchling-->
-    <CUnit id="nnht">
-        <Race value="Demon"/>
+        <Mover value="fly"/>
+        <Height value="2.1875"/>
+        <AbilArray Link="DemonInventory"/>
+        <AbilArray Link="ACcr"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ACcr" Type="AbilCmd" AbilCmd="ACcr,0" Row="2" Column="0"/>
+        </CardLayouts>
+        <PlaneArray index="Air" value="1"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="ForceField" value="0"/>
+        <Collide index="Flying" value="1"/>
+        <GlossaryCategory value="Unit/Category/DemonUnits"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
+        <AttackTargetPriority value="21"/>
     </CUnit>
     <!--naga mur'gul reaver-->
     <CUnit id="nnmg" parent="AW2_Army" defType="SMALL">
@@ -4627,8 +5131,56 @@
         <EnergyMax value="60"/>
     </CUnit>
     <!--Fel Beast-->
-    <CUnit id="npfl">
+    <CUnit id="npfl" parent="AW2_Peon">
+        <CardLayouts index="0">
+            <LayoutButtons>
+                <Face value="CmdBuildDemon"/>
+                <Type value="Submenu"/>
+                <Requirements value="ShowBuildArmy"/>
+                <SubmenuCardId value="Buil"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons Face="DemonFlag" Type="AbilCmd" AbilCmd="DemonBuild,Build1" Row="0" Column="0"/>
+            <LayoutButtons>
+                <Face value="CmdPurchaseDemon"/>
+                <Type value="Submenu"/>
+                <Requirements value="ShowBuildArmy"/>
+                <SubmenuCardId value="Purc"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons Face="DemonFlag2" Type="AbilCmd" AbilCmd="DemonBuild,Build2" Row="0" Column="1"/>
+            <LayoutButtons>
+                <Face value="CmdPurchaseDemon2"/>
+                <Type value="Submenu"/>
+                <Requirements value="ShowBuildArmy"/>
+                <SubmenuCardId value="Pur2"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
+        </CardLayouts>
+        <CardLayouts index="1" CardId="Buil">
+            <LayoutButtons Face="nfgu" Type="AbilCmd" AbilCmd="DemonBuild,Build3" Row="0" Column="0"/>
+            <LayoutButtons Face="ndqn" Type="AbilCmd" AbilCmd="DemonBuild,Build4" Row="0" Column="1"/>
+            <LayoutButtons Face="Udre" Type="AbilCmd" AbilCmd="DemonBuild,Build6" Row="0" Column="2"/>
+            <LayoutButtons Face="Nplh" Type="AbilCmd" AbilCmd="DemonBuild,Build5" Row="0" Column="3"/>
+            <LayoutButtons Face="nndr" Type="AbilCmd" AbilCmd="DemonBuild,Build9" Row="1" Column="1"/>
+            <LayoutButtons Face="ninm" Type="AbilCmd" AbilCmd="DemonBuild,Build7" Row="1" Column="0"/>
+            <LayoutButtons Face="nerw" Type="AbilCmd" AbilCmd="DemonBuild,Build8" Row="2" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="2" CardId="Purc">
+            <LayoutButtons Face="Purchasegldo" Type="AbilCmd" AbilCmd="Purchasegldo,Train1" Row="2" Column="0"/>
+        </CardLayouts>
+        <AbilArray Link="DemonBuild"/>
+        <AbilArray Link="Purchasegldo"/>
+        <Speed value="3"/>
+        <Radius value="0.3125"/>
         <Race value="Demon"/>
+        <Mover value="foot"/>
+        <MinimapRadius value="0.3125"/>
+        <SeparationRadius value="0.3125"/>
+        <InnerRadius value="0.3125"/>
     </CUnit>
     <!--Fel Ravager-->
     <CUnit id="npfm">
@@ -4821,10 +5373,6 @@
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
     </CUnit>
-    <!--stormreaver apprentice-->
-    <CUnit id="nsra">
-        <Race value="Demon"/>
-    </CUnit>
     <!--stormreaver hermit-->
     <CUnit id="nsrh">
         <Race value="Demon"/>
@@ -4893,8 +5441,8 @@
         <Attributes index="mechanical" value="1"/>
         <CostResource index="gold" value="90"/>
         <KillResource index="Custom" value="90"/>
-        <LifeStart value="1200"/>
-        <LifeMax value="1200"/>
+        <LifeStart value="1500"/>
+        <LifeMax value="1500"/>
         <Speed value="1"/>
         <Race value="Goblin"/>
         <Mover value="fly"/>
@@ -4976,7 +5524,7 @@
     </CUnit>
     <!--Pendant of Mana-->
     <CUnit id="pmna" parent="AW2_Item">
-        <CostResource index="gold" value="120"/>
+        <CostResource index="gold" value="300"/>
     </CUnit>
     <!--air barge-->
     <CUnit id="uarb" parent="AW2_Army" defType="SMALL">
@@ -5117,11 +5665,11 @@
         <Speed value="2"/>
         <Race value="Creeps"/>
         <Mover value="foot"/>
-        <AbilArray Link="ACce"/>
+        <AbilArray Link="ANca"/>
         <BehaviorArray Link="ANth"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ANth" Type="Passive" Behavior="ANth" Row="2" Column="0"/>
-            <LayoutButtons Face="ACce" Type="Passive" Behavior="ACce" Row="2" Column="1"/>
+            <LayoutButtons Face="ANca" Type="Passive" Behavior="ANca" Row="2" Column="1"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <LifeArmor value="20"/>
@@ -5491,7 +6039,7 @@
         <Mover value="horse"/>
         <GlossaryCategory value="Unit/Category/OrcUnits"/>
         <AbilArray Link="ChaosOrcInventory"/>
-        <AbilArray Link="ACac"/>
+        <BehaviorArray Link="ACac"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ACac" Type="Passive" Behavior="ACac" Row="2" Column="0"/>
         </CardLayouts>
@@ -5519,6 +6067,14 @@
                 <Column value="1"/>
             </LayoutButtons>
             <LayoutButtons Face="ofl2" Type="AbilCmd" AbilCmd="AObu,Build2" Row="0" Column="1"/>
+            <LayoutButtons>
+                <Face value="CmdPurchaseOrc2"/>
+                <Type value="Submenu"/>
+                <Requirements value="ShowBuildArmy"/>
+                <SubmenuCardId value="Pur2"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
         </CardLayouts>
         <CardLayouts index="1" CardId="Buil">
             <LayoutButtons Face="ogru" Type="AbilCmd" AbilCmd="AObu,Build5" Row="0" Column="0"/>
@@ -5534,10 +6090,14 @@
             <LayoutButtons Face="Obla" Type="AbilCmd" AbilCmd="AObu,Build13" Row="0" Column="1"/>
         </CardLayouts>
         <CardLayouts index="2" CardId="Purc">
-            <LayoutButtons Face="Purchaseoli2" Type="AbilCmd" AbilCmd="Purchaseoli2,Train1" Row="0" Column="4"/>
+            <LayoutButtons Face="Purchaseoli2" Type="AbilCmd" AbilCmd="Purchaseoli2,Train1" Row="2" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="3" CardId="Pur2">
+            <LayoutButtons Face="Purchasedtsb" Type="AbilCmd" AbilCmd="Purchasedtsb,Train1" Row="2" Column="0"/>
         </CardLayouts>
         <AbilArray Link="AObu"/>
         <AbilArray Link="Purchaseoli2"/>
+        <AbilArray Link="Purchasedtsb"/>
         <Speed value="3"/>
         <Radius value="0.3125"/>
         <Race value="Orc"/>
@@ -5887,22 +6447,29 @@
                 <Column value="1"/>
             </LayoutButtons>
             <LayoutButtons Face="ufl2" Type="AbilCmd" AbilCmd="AUbu,Build2" Row="0" Column="1"/>
+            <LayoutButtons>
+                <Face value="CmdPurchaseUndead2"/>
+                <Type value="Submenu"/>
+                <Requirements value="ShowBuildArmy"/>
+                <SubmenuCardId value="Pur2"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
         </CardLayouts>
         <CardLayouts index="1" CardId="Buil">
             <LayoutButtons Face="ugho" Type="AbilCmd" AbilCmd="AUbu,Build12" Row="0" Column="0"/>
             <LayoutButtons Face="uabo" Type="AbilCmd" AbilCmd="AUbu,Build7" Row="0" Column="1"/>
             <LayoutButtons Face="Udea" Type="AbilCmd" AbilCmd="AUbu,Build10" Row="0" Column="2"/>
-            <LayoutButtons Face="Nplh" Type="AbilCmd" AbilCmd="AUbu,Build11" Row="0" Column="3"/>
             <LayoutButtons Face="ucry" Type="AbilCmd" AbilCmd="AUbu,Build6" Row="1" Column="0"/>
             <LayoutButtons Face="umtw" Type="AbilCmd" AbilCmd="AUbu,Build8" Row="1" Column="1"/>
             <LayoutButtons Face="uobs" Type="AbilCmd" AbilCmd="AUbu,Build9" Row="2" Column="0"/>
             <LayoutButtons Face="unec" Type="AbilCmd" AbilCmd="AUbu,Build5" Row="2" Column="1"/>
             <LayoutButtons Face="uban" Type="AbilCmd" AbilCmd="AUbu,Build4" Row="2" Column="2"/>
-            <LayoutButtons Face="ndrv" Type="AbilCmd" AbilCmd="AUbu,Build3" Row="0" Column="4"/>
             <LayoutButtons Face="ugrm" Type="AbilCmd" AbilCmd="AUbu,Build13" Row="1" Column="2"/>
+            <LayoutButtons Face="ndrv" Type="AbilCmd" AbilCmd="AUbu,Build3" Row="0" Column="3"/>
         </CardLayouts>
         <CardLayouts index="2" CardId="Purc">
-            <LayoutButtons Face="Purchaseocor" Type="AbilCmd" AbilCmd="Purchaseocor,Train1" Row="0" Column="4"/>
+            <LayoutButtons Face="Purchaseocor" Type="AbilCmd" AbilCmd="Purchaseocor,Train1" Row="2" Column="0"/>
         </CardLayouts>
         <AbilArray Link="AUbu"/>
         <AbilArray Link="Purchaseocor"/>
@@ -5927,13 +6494,11 @@
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/UndeadUnits"/>
         <AbilArray Link="Aiun"/>
-        <AbilArray Link="UpgradeTongh1"/>
         <AbilArray Link="UpgradeTouswb"/>
         <AbilArray Link="Acrs"/>
         <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ngh1" Type="AbilCmd" AbilCmd="UpgradeTongh1,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="uswb" Type="AbilCmd" AbilCmd="UpgradeTouswb,Execute" Row="0" Column="1"/>
+            <LayoutButtons Face="uswb" Type="AbilCmd" AbilCmd="UpgradeTouswb,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="Acrs" Type="AbilCmd" AbilCmd="Acrs,Execute" Row="2" Column="0"/>
         </CardLayouts>
         <Radius value="0.3125"/>
@@ -6132,10 +6697,12 @@
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/UndeadUnits"/>
         <AbilArray Link="Aiun"/>
-        <AbilArray Link="ANdo"/>
+        <AbilArray Link="Arai"/>
+        <AbilArray Link="Aabr"/>
         <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ANdo" Type="AbilCmd" AbilCmd="ANdo,0" Row="2" Column="0"/>
+            <LayoutButtons Face="Arai" Type="AbilCmd" AbilCmd="Arai,0" Row="2" Column="0"/>
+            <LayoutButtons Face="Aabr" Type="Passive" Behavior="Aabr" Row="2" Column="1"/>
         </CardLayouts>
         <Radius value="0.3125"/>
         <MinimapRadius value="0.3125"/>
@@ -6318,10 +6885,10 @@
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/UndeadUnits"/>
         <AbilArray Link="Aiun"/>
-        <AbilArray Link="ANch"/>
+        <AbilArray Link="Aps2"/>
         <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ANch" Type="AbilCmd" AbilCmd="ANch,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Aps2" Type="AbilCmd" AbilCmd="Aps2,Execute" Row="2" Column="0"/>
         </CardLayouts>
         <Radius value="0.3125"/>
         <MinimapRadius value="0.3125"/>
