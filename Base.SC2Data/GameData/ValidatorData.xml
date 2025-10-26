@@ -6,6 +6,12 @@
         <WhichLocation Value="CasterUnit"/>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea default="1" id="AW2_GroundEnemiesNearby">
+        <AreaArray Compare="GT" Count="0"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Air,Hover,Missile,Destructible,Dead,Hidden"/>
+        <WhichLocation Value="CasterUnit"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea default="1" id="AW2_2NonInvulnerableEnemiesNearby">
         <AreaArray Compare="GT" Count="1"/>
         <SearchFilters value="Visible;Player,Ally,Neutral,Hover,Missile,Destructible,Dead,Hidden,Invulnerable"/>
@@ -232,6 +238,9 @@
         <Find value="1"/>
         <Value value="CountUnit"/>
     </CValidatorPlayerRequirement>
+    <CValidatorLocationEnumArea id="GroundEnemiesNearby2" parent="AW2_GroundEnemiesNearby">
+        <AreaArray index="0" Compare="GT" Count="0" Radius="2"/>
+    </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="EnemiesNearby1" parent="AW2_EnemiesNearby">
         <AreaArray index="0" Compare="GT" Count="0" Radius="1"/>
     </CValidatorLocationEnumArea>
@@ -311,6 +320,11 @@
         <Value value="0"/>
         <Compare value="GT"/>
     </CValidatorUnitCompareField>
+    <CValidatorUnitCompareField id="KillResourceCustomGE30">
+        <Field value="KillResource[Custom]"/>
+        <Value value="30"/>
+        <Compare value="GE"/>
+    </CValidatorUnitCompareField>
     <CValidatorUnitCompareBehaviorCount id="NoPossession">
         <Behavior value="Bpos"/>
     </CValidatorUnitCompareBehaviorCount>
@@ -340,6 +354,9 @@
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NoSleep">
         <Behavior value="BUsl"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoDeathAndDecay">
+        <Behavior value="BUdd"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NoHex">
         <Behavior value="BOhx"/>
@@ -434,6 +451,11 @@
     <CValidatorLocationEnumArea id="TacticalAdefThreatSearchEmpty" parent="TacticalCloakThreatSearchEmpty" unitLink="hhes">
         <AreaArray index="0" Radius="7" Validator="UnitThreatenshhes"/>
     </CValidatorLocationEnumArea>
+    <CValidatorUnitCompareVital id="TargetEnergyGE30">
+        <Compare value="GE"/>
+        <Value value="30"/>
+        <Vital value="Energy"/>
+    </CValidatorUnitCompareVital>
     <CValidatorUnitMover id="TargetIsAmphibian">
         <Value value="amph"/>
         <Find value="1"/>
@@ -597,4 +619,8 @@
         <Value value="Otch"/>
         <Find value="0"/>
     </CValidatorUnitType>
+    <CValidatorUnitCompareBehaviorCount id="HasNoBOwkOrderAttackTargetMarker">
+        <Behavior value="BOwkOrderAttackTargetMarker"/>
+        <RequireOriginPlayer Value="Caster"/>
+    </CValidatorUnitCompareBehaviorCount>
 </Catalog>

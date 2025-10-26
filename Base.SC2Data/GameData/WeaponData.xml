@@ -24,6 +24,23 @@
         <DamagePoint value="0.3"/>
         <Backswing value="0.6"/>
     </CWeaponLegacy>
+    <!--Evil Illidan demon form-->
+    <CWeaponLegacy id="Eevm1" parent="missile" atkType="CHAOS">
+        <Effect value="Eevm1LM"/>
+        <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.26"/>
+        <Backswing value="0.64"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Eevm2" parent="missile" atkType="CHAOS">
+        <Effect value="Eevm2LM"/>
+        <TargetFilters value="Visible;ground,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,invulnerable"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.26"/>
+        <Backswing value="0.64"/>
+    </CWeaponLegacy>
     <!--furion-->
     <CWeaponLegacy id="Efur1" parent="missile" atkType="MAGIC">
         <Effect value="Efur1LM"/>
@@ -409,7 +426,7 @@
     <CWeaponLegacy id="Ofar1" parent="missile" atkType="MAGIC">
         <Effect value="Ofar1LM"/>
         <EditorCategories value="Race:Orc"/>
-        <TargetFilters value="Visible;wall,tree,Missile,ethereal,dead,invulnerable"/>
+        <TargetFilters value="Visible;wall,tree,Missile,dead,invulnerable,immunity"/>
         <RangeSlop value="1.9531"/>
         <Period value="1.5"/>
         <DamagePoint value="0.3"/>
@@ -465,7 +482,7 @@
     <!--thrall-->
     <CWeaponLegacy id="Othr1" parent="missile" atkType="MAGIC">
         <Effect value="Othr1LM"/>
-        <TargetFilters value="Visible;wall,tree,Missile,ethereal,dead,invulnerable"/>
+        <TargetFilters value="Visible;wall,tree,Missile,dead,invulnerable,immunity"/>
         <RangeSlop value="1.9531"/>
         <Period value="1.5"/>
         <DamagePoint value="0.3"/>
@@ -511,6 +528,18 @@
         <Period value="3"/>
         <DamagePoint value="0.56"/>
         <Backswing value="0.41"/>
+    </CWeaponLegacy>
+    <!--HeroLich-->
+    <CWeaponLegacy id="Ulic1" parent="missile" atkType="MAGIC">
+        <Effect value="Ulic1LM"/>
+        <EditorCategories value="Race:Undead"/>
+        <MinScanRange value="6"/>
+        <TargetFilters value="Visible;wall,tree,Missile,dead,invulnerable,immunity"/>
+        <Range value="6"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="3"/>
+        <DamagePoint value="0.46"/>
+        <Backswing value="0.54"/>
     </CWeaponLegacy>
     <!--tichondrius-->
     <CWeaponLegacy id="Utic1" parent="normal" atkType="NORMAL">
@@ -823,6 +852,17 @@
         <Period value="3"/>
         <DamagePoint value="0.53"/>
         <Backswing value="0.56"/>
+    </CWeaponLegacy>
+    <!--ancient hydra-->
+    <CWeaponLegacy id="nahy1" parent="missile" atkType="SIEGE">
+        <Effect value="nahy1MultishotSet"/>
+        <MinScanRange value="4"/>
+        <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
+        <Range value="4"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="6"/>
+        <DamagePoint value="0.7"/>
+        <Backswing value="0.3"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="nbal2" parent="normal" atkType="CHAOS">
         <MinScanRange value="4.6875"/>
@@ -1263,6 +1303,28 @@
         <DamagePoint value="0.633"/>
         <Backswing value="0.7"/>
     </CWeaponLegacy>
+    <!--hydra-->
+    <CWeaponLegacy id="nhyd1" parent="missile" atkType="SIEGE">
+        <Effect value="nhyd1MultishotSet"/>
+        <MinScanRange value="4"/>
+        <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
+        <Range value="4"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="6"/>
+        <DamagePoint value="0.7"/>
+        <Backswing value="0.3"/>
+    </CWeaponLegacy>
+    <!--hydra hatchling-->
+    <CWeaponLegacy id="nhyh1" parent="missile" atkType="SIEGE">
+        <Effect value="nhyh1MultishotSet"/>
+        <MinScanRange value="4"/>
+        <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
+        <Range value="4"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="6"/>
+        <DamagePoint value="0.7"/>
+        <Backswing value="0.3"/>
+    </CWeaponLegacy>
     <!--infernal automaton-->
     <CWeaponLegacy id="nina1" parent="msplash" atkType="CHAOS">
         <Effect value="nina1LM"/>
@@ -1320,6 +1382,26 @@
         <RangeSlop value="1.9531"/>
         <Period value="3"/>
         <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <!--Sea Giant Hunter-->
+    <CWeaponLegacy id="nsgh1" parent="normal" atkType="PIERCE">
+        <MinScanRange value="3.9062"/>
+        <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
+        <Range value="0.7812"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="3"/>
+        <DamagePoint value="0.6"/>
+        <Backswing value="0.56"/>
+    </CWeaponLegacy>
+    <!--Sea Giant-->
+    <CWeaponLegacy id="nsgn1" parent="normal" atkType="PIERCE">
+        <MinScanRange value="3.9062"/>
+        <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
+        <Range value="0.7812"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="3"/>
+        <DamagePoint value="0.6"/>
+        <Backswing value="0.56"/>
     </CWeaponLegacy>
     <!--dark wizard-->
     <CWeaponLegacy id="nwzd1" parent="missile" atkType="MAGIC">
@@ -2917,7 +2999,7 @@
         <Period value="1.5"/>
         <DamagePoint value="0.17"/>
         <Backswing value="0.7"/>
-        <DisplayAttackCount value="4"/>
+        <DisplayAttackCount value="3"/>
         <Effect value="zmar1Multiattack"/>
     </CWeaponLegacy>
 </Catalog>

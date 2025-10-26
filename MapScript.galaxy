@@ -146,6 +146,7 @@ unitfilter gv_unitFilter;
 unitfilter gv_unitFilterScore;
 unitfilter gv_unitAndCreepFilter;
 unitfilter gv_villagerFilter;
+region gv_battlefieldHighland;
 region[gv_venueMaximumCount + 1] gv_finalVenue;
 fixed[gv_venueMaximumCount + 1] gv_finalVenueFacing;
 revealer[gv_venueMaximumCount + 1][gv_playerMaximumIndex + 1] gv_finalVenueRevealer;
@@ -242,6 +243,7 @@ string gf_WorkerTypeGetAbility (string lp_unitType);
 int gf_UnitTypeGetPhalanxCapacity (string lp_unitType);
 fixed gf_PointGetVenueFacing (point lp_point);
 int gf_UnitTypeGetKillResource (string lp_unitType);
+int gf_ItemTypeGetCostResource (string lp_unitType);
 string gf_EffectAttackType (string lp_effect);
 void gf_SetTeamAlianceAll (int lp_option);
 void gf_WorkersSave (int lp_player);
@@ -252,6 +254,7 @@ void gf_BonusRoundSet (bool lp_on, int lp_round);
 void gf_GoldAdd (int lp_round);
 void gf_ValidRegionFillHidden ();
 void gf_BattlefieldSetAll (region lp_region);
+void gf_BattlefieldHighlandSet (region lp_region);
 void gf_BattlefieldRevealerEnable (bool lp_option);
 void gf_BattlefieldReset ();
 bool gf_RegionContainsPointWithOffset (point lp_point, region lp_region, int lp_x, int lp_y);
@@ -312,7 +315,8 @@ void gf_PlayerAtFinalVenueUpdate (int lp_player);
 void gf_StartLocationCameraPan ();
 void gf_VenueCameraPan (int lp_round);
 void gf_SetPhalanxHighlighted (int lp_player, bool lp_highlighted);
-void gf_KillScoreUnitAdd (int lp_player, string lp_unitType);
+void gf_KillScoreUnitAndItemAdd (int lp_player, unit lp_unit);
+void gf_KillResourceItemAdd (int lp_player, unit lp_unit);
 void gf_KillScoreAdd (int lp_player, int lp_value);
 void gf_KillScoreUpdateAll ();
 void gf_KillScoreResetAll ();
@@ -1497,6 +1501,17 @@ int gf_UnitTypeGetKillResource (string lp_unitType) {
     return lv_value;
 }
 
+int gf_ItemTypeGetCostResource (string lp_unitType) {
+    // Variable Declarations
+    int lv_value;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_value = CatalogFieldValueGetAsInt(c_gameCatalogUnit, lp_unitType, "CostResource[" + IntToString(2) + "]", c_playerAny);
+    return lv_value;
+}
+
 string gf_EffectAttackType (string lp_effect) {
     // Variable Declarations
     string lv_attackType;
@@ -1650,6 +1665,11 @@ void gf_BattlefieldSetAll (region lp_region) {
         VisRevealerEnable(VisRevealerLastCreated(), false);
         gv_battlefieldRevealer[lv_player] = VisRevealerLastCreated();
     }
+}
+
+void gf_BattlefieldHighlandSet (region lp_region) {
+    // Implementation
+    gv_battlefieldHighland = lp_region;
 }
 
 void gf_BattlefieldRevealerEnable (bool lp_option) {
@@ -2331,6 +2351,8 @@ void gf_UnitTypeSet (int lp_buildingRegion, int lp_phalanx, int lp_player) {
     int autoDE6BCDF4_ai;
     int auto7CE0FDBF_ae;
     int auto7CE0FDBF_ai;
+    int auto66B74A20_ae;
+    int auto66B74A20_ai;
     int auto97451579_ae;
     int auto97451579_ai;
     int auto66B75B59_ae;
@@ -2386,10 +2408,10 @@ void gf_UnitTypeSet (int lp_buildingRegion, int lp_phalanx, int lp_player) {
                                 lv_unitIndex += 1;
                                 gv_unitType[lp_player][lp_phalanx][lv_unitIndex] = lv_unitType;
                                 gv_buildingScore[lp_player] += gf_UnitTypeGetKillResource(lv_unitType);
-                                auto97451579_ae = gv_itemMaximumCountPerUnit;
-                                auto97451579_ai = 1;
+                                auto66B74A20_ae = gv_itemMaximumCountPerUnit;
+                                auto66B74A20_ai = 1;
                                 lv_itemIndex = 1;
-                                for ( ; ( (auto97451579_ai >= 0 && lv_itemIndex <= auto97451579_ae) || (auto97451579_ai <= 0 && lv_itemIndex >= auto97451579_ae) ) ; lv_itemIndex += auto97451579_ai ) {
+                                for ( ; ( (auto66B74A20_ai >= 0 && lv_itemIndex <= auto66B74A20_ae) || (auto66B74A20_ai <= 0 && lv_itemIndex >= auto66B74A20_ae) ) ; lv_itemIndex += auto66B74A20_ai ) {
                                     lv_itemType = UnitGetType(UnitInventoryItem(UnitGroupLoopCurrent(), lv_itemIndex));
                                     if ((lv_itemType != null)) {
                                         gv_itemType[lp_player][lp_phalanx][lv_unitIndex][lv_itemIndex] = lv_itemType;
@@ -2401,6 +2423,16 @@ void gf_UnitTypeSet (int lp_buildingRegion, int lp_phalanx, int lp_player) {
                         }
 
                     }
+                }
+                auto97451579_ae = gv_itemMaximumCountPerUnit;
+                auto97451579_ai = 1;
+                lv_itemIndex = 1;
+                for ( ; ( (auto97451579_ai >= 0 && lv_itemIndex <= auto97451579_ae) || (auto97451579_ai <= 0 && lv_itemIndex >= auto97451579_ae) ) ; lv_itemIndex += auto97451579_ai ) {
+                    lv_itemType = UnitGetType(UnitInventoryItem(UnitGroupLoopCurrent(), lv_itemIndex));
+                    if ((lv_itemType != null)) {
+                        gv_buildingScore[lp_player] += gf_ItemTypeGetCostResource(lv_itemType);
+                    }
+
                 }
             }
             UnitGroupLoopEnd();
@@ -3163,47 +3195,55 @@ void gf_IssueOrderAll (bool lp_periodic) {
     auto0529A0CC_u = 1;
     for ( ; auto0529A0CC_u <= UnitGroupCount(auto0529A0CC_g, c_unitCountAll) ; auto0529A0CC_u += BoolToInt(lv_unit == UnitGroupUnit(auto0529A0CC_g, auto0529A0CC_u)) ) {
         lv_unit = UnitGroupUnit(auto0529A0CC_g, auto0529A0CC_u);
-        lv_targetUnit = null;
-        lv_targetPoint = null;
-        UnitGroupClear(lv_targetUnitgroup);
-        if ((lp_periodic == true)) {
-            lv_region = gv_battlefield;
-        }
-        else {
-            if ((gf_IsFinalRound(gv_round) == true)) {
-                lv_region = RegionCircle(UnitGetPosition(lv_unit), gv_searchRadiusInFinalRound);
-            }
-            else {
-                lv_region = RegionCircle(UnitGetPosition(lv_unit), gv_searchRadius);
-            }
-        }
-        lv_targetUnitgroup = UnitGroupAlliance(UnitGetOwner(lv_unit), c_unitAllianceEnemy, lv_region, gv_unitAndCreepFilter, 0);
-        while ((UnitGroupCount(lv_targetUnitgroup, c_unitCountAlive) > 0)) {
+        if ((UnitFilterMatch(lv_unit, UnitGetOwner(lv_unit), UnitFilter(0, 0, (1 << c_targetFilterCloaked), 0)) == true)) {
+            lv_targetUnit = null;
+            lv_targetPoint = null;
+            UnitGroupClear(lv_targetUnitgroup);
             if ((lp_periodic == true)) {
-                lv_targetUnit = UnitGroupClosestToPoint(lv_targetUnitgroup, UnitGetPosition(lv_unit));
+                lv_region = gv_battlefield;
             }
             else {
                 if ((gf_IsFinalRound(gv_round) == true)) {
+                    lv_region = RegionCircle(UnitGetPosition(lv_unit), gv_searchRadiusInFinalRound);
+                }
+                else {
+                    lv_region = RegionCircle(UnitGetPosition(lv_unit), gv_searchRadius);
+                }
+            }
+            lv_targetUnitgroup = UnitGroupAlliance(UnitGetOwner(lv_unit), c_unitAllianceEnemy, lv_region, gv_unitAndCreepFilter, 0);
+            while ((UnitGroupCount(lv_targetUnitgroup, c_unitCountAlive) > 0)) {
+                if ((lp_periodic == true)) {
                     lv_targetUnit = UnitGroupClosestToPoint(lv_targetUnitgroup, UnitGetPosition(lv_unit));
                 }
                 else {
-                    lv_targetUnit = gf_UnitGroupClosestPathingCostToPoint(UnitGetPosition(lv_unit), lv_targetUnitgroup);
+                    if ((gf_IsFinalRound(gv_round) == true)) {
+                        lv_targetUnit = UnitGroupClosestToPoint(lv_targetUnitgroup, UnitGetPosition(lv_unit));
+                    }
+                    else {
+                        lv_targetUnit = gf_UnitGroupClosestPathingCostToPoint(UnitGetPosition(lv_unit), lv_targetUnitgroup);
+                    }
+                }
+                if ((UnitCanAttackTarget(lv_unit, lv_targetUnit) == true) && (UnitFilterMatch(lv_targetUnit, UnitGetOwner(lv_targetUnit), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterBenign - 32)) | (1 << (c_targetFilterPassive - 32)))) == true)) {
+                    lv_targetPoint = UnitGetPosition(lv_targetUnit);
+                    break;
+                }
+                else {
+                    UnitGroupRemove(lv_targetUnitgroup, lv_targetUnit);
                 }
             }
-            if ((UnitCanAttackTarget(lv_unit, lv_targetUnit) == true) && (UnitFilterMatch(lv_targetUnit, UnitGetOwner(lv_targetUnit), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterBenign - 32)) | (1 << (c_targetFilterPassive - 32)))) == true)) {
-                lv_targetPoint = UnitGetPosition(lv_targetUnit);
-                break;
+            if ((lp_periodic == false) && (RegionContainsPoint(gv_battlefieldHighland, UnitGetPosition(lv_unit)) == true) && (gf_IsFinalRound(gv_round) == true)) {
+                UnitIssueOrder(lv_unit, OrderTargetingPoint(AbilityCommand("Amov", 3), PointWithOffsetPolar(UnitGetPosition(lv_unit), 5.0, UnitGetFacing(lv_unit))), c_orderQueueReplace);
             }
             else {
-                UnitGroupRemove(lv_targetUnitgroup, lv_targetUnit);
+                if ((lv_targetPoint != null)) {
+                    UnitIssueOrder(lv_unit, OrderTargetingPoint(AbilityCommand("Amov", 3), lv_targetPoint), c_orderQueueReplace);
+                }
+                else {
+                    UnitIssueOrder(lv_unit, Order(AbilityCommand("stop", 0)), c_orderQueueReplace);
+                }
             }
         }
-        if ((lv_targetPoint != null)) {
-            UnitIssueOrder(lv_unit, OrderTargetingPoint(AbilityCommand("Amov", 3), lv_targetPoint), c_orderQueueReplace);
-        }
-        else {
-            UnitIssueOrder(lv_unit, Order(AbilityCommand("stop", 0)), c_orderQueueReplace);
-        }
+
     }
 }
 
@@ -3294,6 +3334,8 @@ void gf_CountUnit (int lp_team, bool lp_wait) {
     int auto3249AEFC_ai;
     unitgroup autoAEB5A592_g;
     int autoAEB5A592_u;
+    int auto94B120CD_ae;
+    int auto94B120CD_ai;
 
     // Variable Declarations
     int lv_team;
@@ -3301,6 +3343,8 @@ void gf_CountUnit (int lp_team, bool lp_wait) {
     int lv_player;
     unit lv_unit;
     string lv_effect;
+    int lv_itemIndex;
+    string lv_itemType;
 
     // Variable Initialization
     lv_effect = "CountUnitRemove";
@@ -3317,6 +3361,16 @@ void gf_CountUnit (int lp_team, bool lp_wait) {
             for ( ; autoAEB5A592_u <= UnitGroupCount(autoAEB5A592_g, c_unitCountAll) ; autoAEB5A592_u += BoolToInt(lv_unit == UnitGroupUnit(autoAEB5A592_g, autoAEB5A592_u)) ) {
                 lv_unit = UnitGroupUnit(autoAEB5A592_g, autoAEB5A592_u);
                 PlayerModifyPropertyInt(lv_player, c_playerPropCustom, c_playerPropOperAdd, gf_UnitTypeGetKillResource(UnitGetType(lv_unit)));
+                auto94B120CD_ae = gv_itemMaximumCountPerUnit;
+                auto94B120CD_ai = 1;
+                lv_itemIndex = 1;
+                for ( ; ( (auto94B120CD_ai >= 0 && lv_itemIndex <= auto94B120CD_ae) || (auto94B120CD_ai <= 0 && lv_itemIndex >= auto94B120CD_ae) ) ; lv_itemIndex += auto94B120CD_ai ) {
+                    lv_itemType = UnitGetType(UnitInventoryItem(lv_unit, lv_itemIndex));
+                    if ((lv_itemType != null)) {
+                        PlayerModifyPropertyInt(lv_player, c_playerPropCustom, c_playerPropOperAdd, gf_ItemTypeGetCostResource(lv_itemType));
+                    }
+
+                }
                 PlayerCreateEffectUnit(lv_player, lv_effect, lv_unit);
                 if ((lp_wait == true)) {
                     Wait(gv_minimumPeriod, c_timeGame);
@@ -3474,10 +3528,52 @@ void gf_SetPhalanxHighlighted (int lp_player, bool lp_highlighted) {
     UISetButtonHighlighted(PlayerGroupSingle(lp_player), gf_RaceGetBuildPhalanxCommand(PlayerRace(lp_player)), lp_highlighted);
 }
 
-void gf_KillScoreUnitAdd (int lp_player, string lp_unitType) {
+void gf_KillScoreUnitAndItemAdd (int lp_player, unit lp_unit) {
+    int autoB6C85501_ae;
+    int autoB6C85501_ai;
+
+    // Variable Declarations
+    string lv_itemType;
+    int lv_itemIndex;
+
+    // Variable Initialization
+
     // Implementation
-    gv_killScore[lp_player] += gf_UnitTypeGetKillResource(lp_unitType);
+    gv_killScore[lp_player] += gf_UnitTypeGetKillResource(UnitGetType(lp_unit));
+    autoB6C85501_ae = gv_itemMaximumCountPerUnit;
+    autoB6C85501_ai = 1;
+    lv_itemIndex = 1;
+    for ( ; ( (autoB6C85501_ai >= 0 && lv_itemIndex <= autoB6C85501_ae) || (autoB6C85501_ai <= 0 && lv_itemIndex >= autoB6C85501_ae) ) ; lv_itemIndex += autoB6C85501_ai ) {
+        lv_itemType = UnitGetType(UnitInventoryItem(lp_unit, lv_itemIndex));
+        if ((lv_itemType != null)) {
+            gv_killScore[lp_player] += gf_ItemTypeGetCostResource(lv_itemType);
+        }
+
+    }
     gf_KillScoreUpdateAll();
+}
+
+void gf_KillResourceItemAdd (int lp_player, unit lp_unit) {
+    int auto97C7AFFE_ae;
+    int auto97C7AFFE_ai;
+
+    // Variable Declarations
+    string lv_itemType;
+    int lv_itemIndex;
+
+    // Variable Initialization
+
+    // Implementation
+    auto97C7AFFE_ae = gv_itemMaximumCountPerUnit;
+    auto97C7AFFE_ai = 1;
+    lv_itemIndex = 1;
+    for ( ; ( (auto97C7AFFE_ai >= 0 && lv_itemIndex <= auto97C7AFFE_ae) || (auto97C7AFFE_ai <= 0 && lv_itemIndex >= auto97C7AFFE_ae) ) ; lv_itemIndex += auto97C7AFFE_ai ) {
+        lv_itemType = UnitGetType(UnitInventoryItem(lp_unit, lv_itemIndex));
+        if ((lv_itemType != null)) {
+            PlayerModifyPropertyInt(lp_player, c_playerPropCustom, c_playerPropOperAdd, gf_ItemTypeGetCostResource(lv_itemType));
+        }
+
+    }
 }
 
 void gf_KillScoreAdd (int lp_player, int lp_value) {
@@ -3849,6 +3945,7 @@ bool gt_VenueInizialization_Func (bool testConds, bool runActions) {
     else {
     }
     gf_BattlefieldSetAll(RegionFromId(37));
+    gf_BattlefieldHighlandSet(RegionFromId(76));
     return true;
 }
 
@@ -5645,13 +5742,11 @@ void gt_CountUnitControl_Init () {
 bool gt_UnitDied_Func (bool testConds, bool runActions) {
     // Variable Declarations
     unit lv_unit;
-    string lv_unitType;
     unit lv_killUnit;
     int lv_killPlayer;
 
     // Variable Initialization
     lv_unit = EventUnit();
-    lv_unitType = UnitGetType(lv_unit);
     lv_killUnit = libNtve_gf_KillingUnit();
     lv_killPlayer = libNtve_gf_KillingPlayer();
 
@@ -5673,12 +5768,13 @@ bool gt_UnitDied_Func (bool testConds, bool runActions) {
 
     if ((UnitIsValid(lv_killUnit) == true)) {
         if ((lv_killPlayer != UnitGetOwner(lv_unit)) && ((UnitFilterMatch(lv_killUnit, lv_killPlayer, gv_unitFilterScore) == true) || (UnitFilterMatch(lv_killUnit, lv_killPlayer, gv_creepFilterCcore) == true))) {
-            gf_KillScoreUnitAdd(lv_killPlayer, lv_unitType);
+            gf_KillScoreUnitAndItemAdd(lv_killPlayer, lv_unit);
+            gf_KillResourceItemAdd(lv_killPlayer, lv_unit);
         }
 
     }
     else {
-        gf_KillScoreUnitAdd(lv_killPlayer, lv_unitType);
+        gf_KillScoreUnitAndItemAdd(lv_killPlayer, lv_unit);
     }
     return true;
 }
