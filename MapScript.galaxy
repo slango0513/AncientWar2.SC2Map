@@ -413,6 +413,8 @@ void gf_ModInizialization (bool lp_debug) {
 }
 
 void gf_RoundStartLoop (bool lp_debug) {
+    int autoB26965AF_ae;
+    int autoB26965AF_ai;
     int autoE4112BFC_ae;
     int autoE4112BFC_ai;
 
@@ -424,22 +426,44 @@ void gf_RoundStartLoop (bool lp_debug) {
     // Implementation
     if ((gv_testPassed == true)) {
         gf_AddTip();
-        autoE4112BFC_ae = gv_roundCount;
-        autoE4112BFC_ai = 1;
-        lv_round = 1;
-        for ( ; ( (autoE4112BFC_ai >= 0 && lv_round <= autoE4112BFC_ae) || (autoE4112BFC_ai <= 0 && lv_round >= autoE4112BFC_ae) ) ; lv_round += autoE4112BFC_ai ) {
-            if ((gf_IsFinalRound(lv_round) == true)) {
-                gf_FinalVenueReplace();
-            }
-            else {
-                gf_VenueInitialReplace();
-            }
-            gf_RoundStart(lv_round, false, lp_debug);
-            if ((gv_bonusRoundIsOn[lv_round] == true)) {
-                gf_BonusVenueReplace();
-                gf_RoundStart(lv_round, true, lp_debug);
-            }
+        if ((lp_debug == true)) {
+            autoB26965AF_ae = gv_roundCount;
+            autoB26965AF_ai = 1;
+            lv_round = 1;
+            for ( ; ( (autoB26965AF_ai >= 0 && lv_round <= autoB26965AF_ae) || (autoB26965AF_ai <= 0 && lv_round >= autoB26965AF_ae) ) ; lv_round += autoB26965AF_ai ) {
+                lv_round = 1;
+                if ((gf_IsFinalRound(lv_round) == true)) {
+                    gf_FinalVenueReplace();
+                }
+                else {
+                    gf_VenueInitialReplace();
+                }
+                gf_RoundStart(lv_round, false, lp_debug);
+                if ((gv_bonusRoundIsOn[lv_round] == true)) {
+                    gf_BonusVenueReplace();
+                    gf_RoundStart(lv_round, true, lp_debug);
+                }
 
+            }
+        }
+        else {
+            autoE4112BFC_ae = gv_roundCount;
+            autoE4112BFC_ai = 1;
+            lv_round = 1;
+            for ( ; ( (autoE4112BFC_ai >= 0 && lv_round <= autoE4112BFC_ae) || (autoE4112BFC_ai <= 0 && lv_round >= autoE4112BFC_ae) ) ; lv_round += autoE4112BFC_ai ) {
+                if ((gf_IsFinalRound(lv_round) == true)) {
+                    gf_FinalVenueReplace();
+                }
+                else {
+                    gf_VenueInitialReplace();
+                }
+                gf_RoundStart(lv_round, false, lp_debug);
+                if ((gv_bonusRoundIsOn[lv_round] == true)) {
+                    gf_BonusVenueReplace();
+                    gf_RoundStart(lv_round, true, lp_debug);
+                }
+
+            }
         }
     }
 
@@ -3428,6 +3452,7 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     int lv_player;
 
     // Variable Initialization
+    lv_debug = true;
 
     // Actions
     if (!runActions) {
@@ -3446,6 +3471,7 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     for ( ; ( (autoCF83B040_ai >= 0 && lv_player <= autoCF83B040_ae) || (autoCF83B040_ai <= 0 && lv_player >= autoCF83B040_ae) ) ; lv_player += autoCF83B040_ai ) {
         VisRevealArea(lv_player, RegionFromId(70), 0.0625, false);
         VisRevealArea(lv_player, RegionFromId(71), 0.0625, false);
+        libGAwX_gf_SetPlayerUIRace(lv_player, "Dragon");
     }
     libGAwX_gf_SetWar3TimeOfDay("13:00:00");
     libGAwX_gf_PauseUnpauseTimeOfDayWar3(true);
@@ -3455,7 +3481,7 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     auto1222D8BF_ai = 1;
     lv_player = 1;
     for ( ; ( (auto1222D8BF_ai >= 0 && lv_player <= auto1222D8BF_ae) || (auto1222D8BF_ai <= 0 && lv_player >= auto1222D8BF_ae) ) ; lv_player += auto1222D8BF_ai ) {
-        if ((GameAttributeGameValue("2") == "0003")) {
+        if (((GameAttributeGameValue("2") == "0003") || (GameAttributeGameValue("2") == "0004"))) {
             libNtve_gf_CreateUnitsWithDefaultFacing(1, gf_RaceGetWorkerType(gv_secondRace[lv_player]), 0, lv_player, PlayerStartLocation(lv_player));
         }
 
@@ -3550,6 +3576,36 @@ bool gt_VenueInizialization_Func (bool testConds, bool runActions) {
         gf_CreepPointSet(PointFromId(1335332667), 8);
     }
     else if (auto480E4CF2_val == "0002") {
+        gf_VenueInitialSet(RegionFromId(25), 1, 90.0);
+        gf_VenueInitialSet(RegionFromId(26), 2, 90.0);
+        gf_VenueInitialSet(RegionFromId(27), 3, 270.0);
+        gf_VenueInitialSet(RegionFromId(28), 4, 270.0);
+        gf_VenueInitialSet(RegionFromId(29), 5, 270.0);
+        gf_VenueInitialSet(RegionFromId(30), 6, 270.0);
+        gf_VenueInitialSet(RegionFromId(31), 7, 90.0);
+        gf_VenueInitialSet(RegionFromId(32), 8, 90.0);
+        gf_BonusVenueSet(RegionFromId(25), 1, 90.0);
+        gf_BonusVenueSet(RegionFromId(26), 2, 90.0);
+        gf_BonusVenueSet(RegionFromId(29), 3, 270.0);
+        gf_BonusVenueSet(RegionFromId(30), 4, 270.0);
+        gf_BonusVenueSet(RegionFromId(33), 5, 0.0);
+        gf_BonusVenueSet(RegionFromId(42), 6, 0.0);
+        gf_BonusVenueSet(RegionFromId(35), 7, 180.0);
+        gf_BonusVenueSet(RegionFromId(44), 8, 180.0);
+        gf_FinalVenueSet(RegionFromId(72), 1, 0.0);
+        gf_FinalVenueSet(RegionFromId(74), 2, 0.0);
+        gf_FinalVenueSet(RegionFromId(73), 3, 180.0);
+        gf_FinalVenueSet(RegionFromId(75), 4, 180.0);
+        gf_CreepPointSet(PointFromId(1622943121), 1);
+        gf_CreepPointSet(PointFromId(529173248), 2);
+        gf_CreepPointSet(PointFromId(9096037), 3);
+        gf_CreepPointSet(PointFromId(537789621), 4);
+        gf_CreepPointSet(PointFromId(914766699), 5);
+        gf_CreepPointSet(PointFromId(924364117), 6);
+        gf_CreepPointSet(PointFromId(2024075559), 7);
+        gf_CreepPointSet(PointFromId(478594730), 8);
+    }
+    else if (auto480E4CF2_val == "0004") {
         gf_VenueInitialSet(RegionFromId(25), 1, 90.0);
         gf_VenueInitialSet(RegionFromId(26), 2, 90.0);
         gf_VenueInitialSet(RegionFromId(27), 3, 270.0);
@@ -3728,6 +3784,18 @@ bool gt_RoundInitialization_Func (bool testConds, bool runActions) {
         gf_BonusRoundSet(true, 6);
         gf_RoundGoldSet(7, 360);
     }
+    else if (autoB7B0BFE0_val == "0004") {
+        gf_ObjectiveTextSeparatorSet(StringExternal("Param/Value/AAB1976C"), StringExternal("Param/Value/3B6C9995"), StringExternal("Param/Value/C2CD87EE"));
+        gf_RoundGoldSet(1, 90);
+        gf_RoundGoldSet(2, 90);
+        gf_RoundGoldSet(3, 180);
+        gf_BonusRoundSet(true, 3);
+        gf_RoundGoldSet(4, 180);
+        gf_RoundGoldSet(5, 270);
+        gf_RoundGoldSet(6, 270);
+        gf_BonusRoundSet(true, 6);
+        gf_RoundGoldSet(7, 360);
+    }
     else {
     }
     gf_SearchRadiusSet(36.0);
@@ -3761,11 +3829,14 @@ bool gt_GameAttributeInizialization_Func (bool testConds, bool runActions) {
     if (auto4F0CCA57_val == "0001") {
         gv_teamCount = 8;
     }
+    else if (auto4F0CCA57_val == "0003") {
+        gv_teamCount = 8;
+    }
     else if (auto4F0CCA57_val == "0002") {
         gv_teamCount = 4;
     }
-    else if (auto4F0CCA57_val == "0003") {
-        gv_teamCount = 8;
+    else if (auto4F0CCA57_val == "0004") {
+        gv_teamCount = 4;
     }
     else {
     }
@@ -3778,13 +3849,17 @@ bool gt_GameAttributeInizialization_Func (bool testConds, bool runActions) {
         gv_finalRound = 8;
         gv_venueFinalEnd = 2;
     }
+    else if (auto6B7DF3F0_val == "0003") {
+        gv_finalRound = 8;
+        gv_venueFinalEnd = 2;
+    }
     else if (auto6B7DF3F0_val == "0002") {
         gv_finalRound = 7;
         gv_venueFinalEnd = 4;
     }
-    else if (auto6B7DF3F0_val == "0003") {
-        gv_finalRound = 8;
-        gv_venueFinalEnd = 2;
+    else if (auto6B7DF3F0_val == "0004") {
+        gv_finalRound = 7;
+        gv_venueFinalEnd = 4;
     }
     else {
     }
@@ -3944,6 +4019,11 @@ bool gt_PlayerInizialization_Func (bool testConds, bool runActions) {
             libGAwX_gf_SetPlayerUIRace(lv_player, libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue("3", lv_player)));
         }
         else if (autoFDE01903_val == "0003") {
+            libGAwX_gf_SetPlayerUIRace(lv_player, libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue("3", lv_player)));
+            lv_secondRaceFromRaceAttribute = libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue("4", lv_player));
+            gv_secondRace[lv_player] = gf_GenerateSecondRace(lv_player, lv_secondRaceFromRaceAttribute);
+        }
+        else if (autoFDE01903_val == "0004") {
             libGAwX_gf_SetPlayerUIRace(lv_player, libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue("3", lv_player)));
             lv_secondRaceFromRaceAttribute = libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue("4", lv_player));
             gv_secondRace[lv_player] = gf_GenerateSecondRace(lv_player, lv_secondRaceFromRaceAttribute);

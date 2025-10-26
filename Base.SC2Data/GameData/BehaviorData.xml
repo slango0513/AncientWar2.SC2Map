@@ -284,6 +284,18 @@
     <CBehaviorBuff id="Agyv">
         <Modification Detect="500"/>
     </CBehaviorBuff>
+    <!--BreathOfFrost-->
+    <CBehaviorBuff id="BCbf">
+        <Duration value="5"/>
+        <DurationOverride index="0" Duration="5">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Period value="1"/>
+        <PeriodicEffect value="BCbfDPS"/>
+        <Alignment value="Negative"/>
+        <TechAliasArray value="_Debuff"/>
+        <BehaviorCategories index="User1" value="1"/>
+    </CBehaviorBuff>
     <!--Banish-->
     <CBehaviorBuff id="BHbn">
         <Modification>
@@ -343,10 +355,10 @@
     </CBehaviorBuff>
     <!--PhoenixFire-->
     <CBehaviorBuff id="Bpxf">
-        <DurationOverride index="0" Duration="30">
+        <DurationOverride index="0" Duration="15">
             <ValidatorArray index="0" value="Hero"/>
         </DurationOverride>
-        <Duration value="60"/>
+        <Duration value="30"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Bwfb" parent="War3_Buff">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnfirebolt.dds"/>
@@ -414,8 +426,8 @@
         <EditorCategories value="Race:Naga,AbilityorEffectType:Unit"/>
         <DamageResponse>
             <Chance value="1"/>
-            <ClampMinimum value="50"/>
-            <ModifyAmount value="-10"/>
+            <ClampMinimum value="10"/>
+            <ModifyAmount value="-30"/>
             <TargetFilters value="-;player,neutral"/>
         </DamageResponse>
     </CBehaviorBuff>
@@ -497,6 +509,11 @@
         <Period value="0.0625"/>
         <PeriodicEffect value="AtauOrderAttack"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="BlueDragonSpawnApprenticeRun" parent="War3_UnitRun"/>
+    <CBehaviorBuff id="BlueDragonSpawnSorcerorRun" parent="War3_UnitRun"/>
+    <CBehaviorBuff id="BlueDragonSpawnWarriorRun" parent="War3_UnitRun"/>
+    <CBehaviorBuff id="BlueDragonSpawnOverseerRun" parent="War3_UnitRun"/>
+    <CBehaviorBuff id="BlueDragonSpawnMeddlerRun" parent="War3_UnitRun"/>
     <CBehaviorBuff id="HighAttackTargetPriority" parent="War3_Passive">
         <Modification AttackTargetPriority="21"/>
     </CBehaviorBuff>
@@ -599,18 +616,18 @@
     <CBehaviorBuff id="GyrocopterTimeLife" parent="AW2_TimeLife">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnFlyingMachine.dds"/>
-        <DurationOverride Duration="90">
+        <DurationOverride Duration="120">
             <ValidatorArray value="HeroOrPowerfulMob"/>
         </DurationOverride>
-        <Duration value="90"/>
+        <Duration value="120"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="hgyrTimeLife" parent="AW2_TimeLife">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnFlyingMachine.dds"/>
-        <DurationOverride Duration="90">
+        <DurationOverride Duration="120">
             <ValidatorArray value="HeroOrPowerfulMob"/>
         </DurationOverride>
-        <Duration value="90"/>
+        <Duration value="120"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="npgrTimeLife" parent="AW2_TimeLife">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
@@ -623,18 +640,18 @@
     <CBehaviorBuff id="nws1TimeLife" parent="AW2_TimeLife">
         <EditorCategories value="Race:BloodElf,AbilityorEffectType:Units"/>
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btndragonhawk.dds"/>
-        <DurationOverride Duration="90">
+        <DurationOverride Duration="120">
             <ValidatorArray value="HeroOrPowerfulMob"/>
         </DurationOverride>
-        <Duration value="90"/>
+        <Duration value="120"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="hdhwTimeLife" parent="AW2_TimeLife">
         <EditorCategories value="Race:BloodElf,AbilityorEffectType:Units"/>
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btndragonhawk.dds"/>
-        <DurationOverride Duration="90">
+        <DurationOverride Duration="120">
             <ValidatorArray value="HeroOrPowerfulMob"/>
         </DurationOverride>
-        <Duration value="90"/>
+        <Duration value="120"/>
     </CBehaviorBuff>
     <!--Corruption-->
     <CBehaviorBuff id="BIcb">
