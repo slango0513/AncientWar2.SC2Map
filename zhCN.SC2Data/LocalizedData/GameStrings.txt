@@ -285,6 +285,7 @@ BushidoUn/Tip=关闭武士道
 BushidoUn/Ubertip=关闭武士道。
 Button/Name/CmdBuildDemon=召唤建筑物
 Button/Name/CmdBuildGoblin=建造建筑物
+Button/Name/HonorShield=荣誉之盾
 Button/Tooltip/ndgt=防守型建筑物。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Bwfb/Buffubertip=该单位被击晕了，所以不能移动，攻击和施放魔法。
 Bwfb/Name=火球术
@@ -297,6 +298,9 @@ ChaosOrcFlag/Ubertip=放置混乱兽人旗帜。
 ChaosOrcFlag2/Name=混乱兽人旗帜
 ChaosOrcFlag2/Tip=放置混乱兽人旗帜(决赛)
 ChaosOrcFlag2/Ubertip=放置混乱兽人旗帜(决赛)。
+ChaosOrcShaman/Name=混乱兽人萨满
+ChaosOrcShaman/Tip=训练混乱兽人萨满
+ChaosOrcShaman/Ubertip=魔法单位，能施放嗜血。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 CmdBuildBloodElf/Tip=建造建筑物
 CmdBuildBloodElf/Ubertip=能显示出当前你所能建造的建筑物。
 CmdBuildChaosOrc/Tip=建造建筑物
@@ -398,7 +402,7 @@ DocInfo/PatchNote023=加入新单位蝠骑士。
 DocInfo/PatchNote024=龙：
 DocInfo/PatchNote025=复生后的萨菲隆不再自动损失生命值。
 DocInfo/PatchNote026=绿龙、蓝龙、红龙、青铜龙和黑龙不再造成溅射伤害。
-DocInfo/PatchNote027=永恒光环的时间流逝速度减缓降低到12.5%。
+DocInfo/PatchNote027=恶魔：
 DocInfo/PatchNote028=部队身上的物品加入价值计算系统。
 DocInfo/PatchNote029=决赛时布置在高地的部队现在会占领高地一小段时间。
 DocInfo/PatchNote030=人类：
@@ -425,24 +429,30 @@ DocInfo/PatchNote050=格罗姆·地狱咆哮获得新技能剑刃风暴，不再
 DocInfo/PatchNote051=恶魔：
 DocInfo/PatchNote052=加入新单位恶魔猎手。
 DocInfo/PatchNote053=魅魔类单位的价格降低1/6。
-DocInfo/PatchNote054=修复奖励单位存活3分钟后消失的漏洞，并且奖励单位现在会在3分钟后狂怒。
-DocInfo/PatchNote055=修复能够手动开启或关闭单位技能自动施放的漏洞。
-DocInfo/PatchNote056=兽人：
-DocInfo/PatchNote057=加入新单位加索克和纳兹格雷尔。
-DocInfo/PatchNote058=掠夺获得的木材增加到3。
-DocInfo/PatchNote059=纳迦：
-DocInfo/PatchNote060=上古多头蛇不再拥有技能潮湿光环。
-DocInfo/PatchNote061=海巨人不再拥有技能嘲讽。
-DocInfo/PatchNote062=粉碎的生命值恢复增加到75%。
-DocInfo/PatchNote063=远古猎歌现在只对精英单位有效，并且在原来的基础上新增法术攻击力加成。
-DocInfo/PatchNote064=地精：
-DocInfo/PatchNote065=嘲讽的单位数量减少到6个。
-DocInfo/PatchNote066=混乱兽人：
-DocInfo/PatchNote067=加入新单位卡加斯·刃拳和雷德·黑手。
-DocInfo/PatchNote068=龙：
-DocInfo/PatchNote069=蓝色龙人监军获得新技能潮湿光环，潮湿光环的每秒生命值恢复加成降低到0.75%。
-DocInfo/PatchNote070=恶魔：
-DocInfo/PatchNote071=地狱机器类单位的生命值降低40%。
+DocInfo/PatchNote054=加入随机物品系统，新的回合开始时一名工人能获得一件随机的物品。
+DocInfo/PatchNote055=修复奖励单位存活3分钟后消失的漏洞，并且奖励单位现在会在3分钟后狂怒。
+DocInfo/PatchNote056=修复能够手动开启或关闭单位技能自动施放的漏洞。
+DocInfo/PatchNote057=人类：
+DocInfo/PatchNote058=加入新单位狮鹫骑士。
+DocInfo/PatchNote059=兽人：
+DocInfo/PatchNote060=加入新单位加索克和纳兹格雷尔。
+DocInfo/PatchNote061=掠夺获得的木材增加到3。
+DocInfo/PatchNote062=暗影猎手的生命值降低到900。
+DocInfo/PatchNote063=血杀斧的生命吸取减少到25%。
+DocInfo/PatchNote064=纳迦：
+DocInfo/PatchNote065=上古多头蛇不再拥有技能潮湿光环。
+DocInfo/PatchNote066=海巨人不再拥有技能嘲讽。
+DocInfo/PatchNote067=粉碎的生命值恢复增加到100%。
+DocInfo/PatchNote068=远古猎歌现在只对精英单位有效，并且在原来的基础上新增法术攻击力加成。
+DocInfo/PatchNote069=地精：
+DocInfo/PatchNote070=嘲讽的单位数量减少到6个。
+DocInfo/PatchNote071=混乱兽人：
+DocInfo/PatchNote072=加入新单位卡加斯·刃拳和雷德·黑手。
+DocInfo/PatchNote073=加入新单位混乱兽人萨满。
+DocInfo/PatchNote074=火球术的法力值消耗降低到30点。
+DocInfo/PatchNote075=龙：
+DocInfo/PatchNote076=蓝色龙人监军获得新技能潮湿光环，潮湿光环的每秒生命值恢复加成降低到0.75%。
+DocInfo/PatchNote077=地狱机器类单位的生命值降低40%。
 DraeneiFlag/Name=德莱尼旗帜
 DraeneiFlag/Tip=放置德莱尼旗帜
 DraeneiFlag/Ubertip=放置德莱尼旗帜。
@@ -578,6 +588,8 @@ Hkal/Ubertip=远程攻击型魔法施放单位，精于对魔法的控制。具�
 Hlgr/Name=黑暗骑士
 Hlgr/Tip=升级到黑暗骑士
 Hlgr/Ubertip=骑兵，具有虔诚光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+HonorShield/Tip=荣誉之盾
+HonorShield/Ubertip=每次攻击地面单位或受到攻击将会提升<d ref="Behavior,HonorShield,Modification.DamageDealtUnscaled[Ranged]"/>点攻击及<d ref="Behavior,HonorShield,Modification.LifeArmorBonus"/>点护甲。
 Hpal/Tip=训练圣骑士
 Hpal/Ubertip=重型的近战单位，能施放圣光术。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 HumanPhalanxPlaceholder/Name=HumanPreviewer
@@ -590,10 +602,10 @@ Huth/Ubertip=重型的近战单位，能施放复活术。<n/><n/><c val="ffcc00
 Hvwd/Name=游侠
 Hvwd/Tip=升级到希尔瓦娜斯·风行者
 Hvwd/Ubertip=远程攻击单位，精于远程部队加强。拥有强击光环技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c> 
-InhibitionAura/Buffubertip=该单位对魔法免疫。
+InhibitionAura/Buffubertip=降低负性魔法的持续时间，并让该单位对某些特定魔法免疫。
 InhibitionAura/Name=抑制光环
 InhibitionAuraCaster/Tip=抑制光环
-InhibitionAuraCaster/Ubertip=能让周围友方骑兵单位对所有魔法免疫。
+InhibitionAuraCaster/Ubertip=能让周围友方骑兵单位对某些特定魔法免疫，并降低负性魔法的持续时间。
 InventoryNaga/Name=NagaInventory
 KargathBladefist/Name=卡加斯·刃拳
 KargathBladefist/Tip=卡加斯·刃拳
@@ -700,6 +712,7 @@ Param/Expression/4CA5E705=~A~
 Param/Expression/614CEEB0=TeamC ~A~ vs ~B~, ~C~ vs ~D~, ~E~ vs ~F~, ~G~ vs ~H~
 Param/Expression/6736687E=决赛
 Param/Expression/6D6635EF=GroupR ~A~ = ~B~, ~C~ = ~D~, ~E~ = ~F~, ~G~ = ~H~
+Param/Expression/70F14678=战网标识：~A~。
 Param/Expression/831164FF=~A~现在由电脑接管。
 Param/Expression/87F08C04=Reserve 1 ~A~ 2 ~B~ 3 ~C~ 4 ~D~ 5 ~E~ 6 ~F~ 7 ~G~ 8 ~H~
 Param/Expression/8BDDF43A=UT ~A~ Fc ~B~
@@ -707,6 +720,7 @@ Param/Expression/96727924=~A~
 Param/Expression/A093297C=游戏将在~A~秒后结束。
 Param/Expression/C24F66A3=PlxB=~A~ P=~B~ Plx=~C~
 Param/Expression/CEBDBACC=奖励回合<c val="FFFF00">~A~</c>：<c val="FFFF00">~B~</c>
+Param/Expression/DCB1FB3B=战网标识：~A~。
 Param/Expression/E469976D=第~I~回合 ~A~~1~~B~~2~~C~~1~~D~~3~~E~~1~~F~~2~~G~~1~~H~。
 Param/Expression/E9329EDD=PlayerC ~A~ vs ~B~, ~C~ vs ~D~, ~E~ vs ~F~, ~G~ vs ~H~
 Param/Expression/EA367955=第~I~回合：~A~ vs ~B~，~C~ vs ~D~，~E~ vs ~F~，~G~ vs ~H~。
@@ -736,7 +750,7 @@ Param/Value/A7A67DDB= -
 Param/Value/AAB1976C= 
 Param/Value/B3EEA70D= - 
 Param/Value/B744BA58= vs 
-Param/Value/BB55835D=与其他人讨论兵法、分享自己的战术和约战！<n/><c val="FFFF00">玩家交流QQ群：</c>417769011<n/><c val="FFFF00">Facebook：</c>Ancient War Official Group
+Param/Value/BB55835D=五一节小活动：<n/><c val="FFFF00">给牛头人、剑圣、先知和角鹰兽换新装！</c><n/>活动结束后公众皮肤撤销，<n/>只给获得资格的玩家保留(<c val="FFFF00">详情见群公告</c>)。<n/><n/>与其他人讨论兵法、分享自己的战术和约战！<n/><c val="FFFF00">玩家交流QQ群：</c>417769011<n/><c val="FFFF00">Facebook：</c>Ancient War Official Group
 Param/Value/BF89C086=玩家交流
 Param/Value/C201E5C3=玩家
 Param/Value/C2CD87EE= - 
@@ -940,6 +954,7 @@ hdhw/Tip=升级到龙鹰骑士
 hdhw/Ubertip=高速远程攻击骑兵。拥有空中锁镣技能，可以暂时禁锢和残废敌空中单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 hfoo/Name=步兵
 hfoo/Ubertip=防御型单位。拥有防御技能，有效地抵抗敌人的穿刺型攻击。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+hgry/Ubertip=威力巨大的飞行单位，由一个矮人锤手驾驭。具有风暴战锤和荣誉之盾技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 hgtw/Ubertip=防守型建筑物。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 hgyr/Tip=升级到飞行机器
 hgyr/Ubertip=快速移动的飞行机器，能有效地抵抗敌人的空中单位，具有高射炮火技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>

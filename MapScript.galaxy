@@ -207,6 +207,8 @@ void InitGlobals () {
 //--------------------------------------------------------------------------------------------------
 void gf_ModInizialization (bool lp_debug);
 void gf_RoundStartLoop (bool lp_debug);
+void gf_CreateRandomItem (int lp_round, bool lp_finalRound);
+void gf_UserSkinSet ();
 void gf_AddInfoAtBuildRegion (bool lp_clear);
 void gf_AddInfoAtBattleField (bool lp_clear);
 void gf_AddInfoVenue (bool lp_clear);
@@ -333,6 +335,7 @@ trigger gt_VenueInizialization;
 trigger gt_BuidingRegionInizialization;
 trigger gt_PreviewerPointInizialization;
 trigger gt_RoundInitialization;
+trigger gt_ShowPlayerHandle;
 trigger gt_GameAttributeInizialization;
 trigger gt_AllianceInizialization;
 trigger gt_ScoreBoardInizialization;
@@ -513,6 +516,80 @@ void gf_RoundStartLoop (bool lp_debug) {
 
 }
 
+void gf_CreateRandomItem (int lp_round, bool lp_finalRound) {
+    int autoB6C46589_ae;
+    int autoB6C46589_ai;
+
+    // Variable Declarations
+    int lv_player;
+    int lv_itemIndex;
+    string lv_item;
+    int lv_level;
+    int lv_min;
+    int lv_max;
+    unit lv_worker;
+
+    // Variable Initialization
+
+    // Implementation
+    autoB6C46589_ae = gv_playerCount;
+    autoB6C46589_ai = 1;
+    lv_player = 1;
+    for ( ; ( (autoB6C46589_ai >= 0 && lv_player <= autoB6C46589_ae) || (autoB6C46589_ai <= 0 && lv_player >= autoB6C46589_ae) ) ; lv_player += autoB6C46589_ai ) {
+        while (true) {
+            lv_itemIndex = RandomInt(1, UserDataFieldValueCount("ItemData", "Item"));
+            lv_item = UserDataGetUnit("ItemData", "1", "Item", lv_itemIndex);
+            if ((lv_item != null)) {
+                lv_level = (CatalogFieldValueGetAsInt(c_gameCatalogUnit, lv_item, "CostResource[" + IntToString(2) + "]", lv_player) / 15);
+                if ((lp_finalRound == true)) {
+                    lv_min = 8;
+                    lv_max = 20;
+                }
+                else {
+                    lv_min = (lp_round - 2);
+                    lv_max = lp_round;
+                }
+                if (((lv_level >= lv_min) && (lv_level <= lv_max))) {
+                    UnitInventoryCreate(UnitGroupUnit(gv_workers[lv_player], 1), lv_item);
+                    break;
+                }
+
+            }
+
+        }
+    }
+}
+
+void gf_UserSkinSet () {
+    int auto4447B836_ae;
+    int auto4447B836_ai;
+
+    // Variable Declarations
+    int lv_player;
+    string lv_playerHandle;
+
+    // Variable Initialization
+    lv_playerHandle = "";
+
+    // Implementation
+    auto4447B836_ae = gv_playerCount;
+    auto4447B836_ai = 1;
+    lv_player = 1;
+    for ( ; ( (auto4447B836_ai >= 0 && lv_player <= auto4447B836_ae) || (auto4447B836_ai <= 0 && lv_player >= auto4447B836_ae) ) ; lv_player += auto4447B836_ai ) {
+        if ((PlayerType(lv_player) == c_playerTypeUser)) {
+            if (true) {
+                libGAwX_gf_UseSkinSetForPlayer("SkinSetOwl", lv_player, true);
+            }
+
+            if (true) {
+                libGAwX_gf_UseSkinSetForPlayer("SkinSetPandarenBrewmaster", lv_player, true);
+            }
+
+        }
+
+    }
+}
+
 void gf_AddInfoAtBuildRegion (bool lp_clear) {
     // Implementation
     if ((lp_clear == false)) {
@@ -553,10 +630,11 @@ void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug) {
     if ((gf_IsFinalRound(lp_round) == true)) {
         if ((lp_round == (gv_roundCount-gv_finalRoundCount+1))) {
             gf_GoldAdd(lp_round);
+            gf_CreateRandomItem(lp_round, true);
             gf_BuildingRegionRevealerEnable(true, lp_debug);
             gf_PreviewEnable(true);
             gf_StartLocationCameraPan();
-            gf_TimerSet(120.0, lp_debug);
+            gf_TimerSet(150.0, lp_debug);
             gf_AIBuildingPosition();
             gf_BuildingRegionRevealerEnable(false, lp_debug);
             gf_PreviewEnable(false);
@@ -577,6 +655,7 @@ void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug) {
         }
 
         gf_GoldAdd(lp_round);
+        gf_CreateRandomItem(lp_round, false);
         gf_BuildingRegionRevealerEnable(true, lp_debug);
         gf_PreviewEnable(true);
         gf_StartLocationCameraPan();
@@ -3469,6 +3548,11 @@ void gf_DisplayMessageAll (int lp_round) {
             TextExpressionSetToken("Param/Expression/F3F549EF", "A", TextWithColor(PlayerName(lv_player), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lv_player, false))));
             TextExpressionSetToken("Param/Expression/F3F549EF", "B", lv_text);
             UIDisplayMessage(gv_uIPlayergroup, c_messageAreaSubtitle, TextExpressionAssemble("Param/Expression/F3F549EF"));
+            if ((gv_round == gv_roundCount)) {
+                TextExpressionSetToken("Param/Expression/DCB1FB3B", "A", StringToText(PlayerHandle(lv_player)));
+                UIDisplayMessage(PlayerGroupSingle(lv_player), c_messageAreaSubtitle, TextExpressionAssemble("Param/Expression/DCB1FB3B"));
+            }
+
         }
 
     }
@@ -3548,9 +3632,6 @@ void gf_SetPhalanxHighlighted (int lp_player, bool lp_highlighted) {
 }
 
 void gf_KillScoreUnitAndItemAdd (int lp_player, unit lp_unit) {
-    int autoB6C85501_ae;
-    int autoB6C85501_ai;
-
     // Variable Declarations
     string lv_itemType;
     int lv_itemIndex;
@@ -3559,16 +3640,6 @@ void gf_KillScoreUnitAndItemAdd (int lp_player, unit lp_unit) {
 
     // Implementation
     gv_killScore[lp_player] += gf_UnitTypeGetKillResource(UnitGetType(lp_unit));
-    autoB6C85501_ae = gv_itemMaximumCountPerUnit;
-    autoB6C85501_ai = 1;
-    lv_itemIndex = 1;
-    for ( ; ( (autoB6C85501_ai >= 0 && lv_itemIndex <= autoB6C85501_ae) || (autoB6C85501_ai <= 0 && lv_itemIndex >= autoB6C85501_ae) ) ; lv_itemIndex += autoB6C85501_ai ) {
-        lv_itemType = UnitGetType(UnitInventoryItem(lp_unit, lv_itemIndex));
-        if ((lv_itemType != null)) {
-            gv_killScore[lp_player] += gf_ItemTypeGetCostResource(lv_itemType);
-        }
-
-    }
     gf_KillScoreUpdateAll();
 }
 
@@ -4129,6 +4200,31 @@ bool gt_RoundInitialization_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void gt_RoundInitialization_Init () {
     gt_RoundInitialization = TriggerCreate("gt_RoundInitialization_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ShowPlayerHandle
+//--------------------------------------------------------------------------------------------------
+bool gt_ShowPlayerHandle_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_p;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TextExpressionSetToken("Param/Expression/70F14678", "A", StringToText(PlayerHandle(EventPlayer())));
+    UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, TextExpressionAssemble("Param/Expression/70F14678"));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_ShowPlayerHandle_Init () {
+    gt_ShowPlayerHandle = TriggerCreate("gt_ShowPlayerHandle_Func");
+    TriggerAddEventChatMessage(gt_ShowPlayerHandle, c_playerAny, "-ph", true);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6000,6 +6096,7 @@ void InitTriggers () {
     gt_BuidingRegionInizialization_Init();
     gt_PreviewerPointInizialization_Init();
     gt_RoundInitialization_Init();
+    gt_ShowPlayerHandle_Init();
     gt_GameAttributeInizialization_Init();
     gt_AllianceInizialization_Init();
     gt_ScoreBoardInizialization_Init();

@@ -334,7 +334,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHippogriff.dds"/>
         <BarWidth value="75"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="3.125"/>
     </CActorUnit>
@@ -375,6 +375,15 @@
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
+    <CActorAction id="hgry1">
+        <On Terms="Effect.hgry1LM2.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.hgry1LM3.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.hgry1LM4.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.hgry1LM5.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.hgry1LM6.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.hgry1LM7.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.hgry1LM8.Start; At Caster" Send="Create"/>
+    </CActorAction>
     <!--ancienthydra-->
     <CActorUnit id="nahy" parent="War3_Army" unitSound="AzureDragon" unitName="nahy" defType="LARGE">
         <On Terms="ActorCreation" Send="SetTintColor 255,255,125"/>
@@ -408,6 +417,7 @@
         <On Terms="Abil.ACrf.SourceChannelStart" Send="AnimPlay SpellLoop Stand,Victory PlayForever"/>
         <On Terms="Abil.ACrf.SourceChannelStop" Send="AnimClear SpellLoop"/>
     </CActorUnit>
+    <CActorAction id="BlackrockClan1" parent="War3_AttackSwapable" WeaponSound="MetalMediumSlice"/>
     <!--darkportalsw-->
     <CActorUnit id="ndkw" parent="War3_Building" unitSound="DarkPortal" unitName="ndkw" defType="FORT">
         <MinimapUseSelfColor value="0"/>
@@ -659,6 +669,8 @@
     </CActorUnit>
     <CActorAction id="nzep2" parent="War3_AttackMissileSwapable"/>
     <CActorMissile id="nzep2LM" parent="War3_MissileSwapable" unitName="nzep2LM"/>
+    <CActorMissile id="ChaosOrcShaman1LM" parent="War3_MissileSwapable" unitName="ChaosOrcShaman1LM"/>
+    <CActorAction id="KargathBladefist1" parent="War3_AttackSwapable" WeaponSound="MetalMediumChop"/>
     <!--trollbatrider-->
     <CActorUnit id="otbr" parent="War3_Army" unitSound="TrollBatrider" unitName="otbr" defType="SMALL">
         <DeathArray index="Normal" AnimProps="Death"/>
@@ -2029,7 +2041,7 @@
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnShadowHunter.dds"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.5"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
     </CActorUnit>
     <!--taurenchieftain-->
     <CActorUnit id="Otch" parent="War3_Army" unitSound="HeroTaurenChieftain" unitName="Otch" defType="LARGE">
@@ -2307,8 +2319,16 @@
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <!--gryphonrider-->
-    <CActorUnit id="hgry">
-        <AnimBlendTime value="3.000000"/>
+    <CActorUnit id="hgry" parent="War3_Army" unitSound="GryphonRider" unitName="hgry" defType="SMALL">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnGryphonRider.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnGryphonRider.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnGryphonRider.dds"/>
+        <BarWidth value="75"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar120"/>
+        <BarOffset value="20"/>
+        <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
     <!--flyingmachine-->
     <CActorUnit id="hgyr" parent="War3_Army" unitSound="Gyrocopter" unitName="hgyr" defType="LARGE">
@@ -3644,6 +3664,18 @@
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnShaman.dds"/>
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnShaman.dds"/>
+        <BarWidth value="57"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <CActorUnit id="ChaosOrcShaman" parent="War3_Army" unitSound="Shaman" unitName="ChaosOrcShaman" defType="NONE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnshamanmaster.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnshamanmaster.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnshamanmaster.dds"/>
         <BarWidth value="57"/>
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
         <BarOffset value="60"/>

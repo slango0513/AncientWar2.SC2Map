@@ -278,6 +278,9 @@
         </Cost>
         <BehaviorArray value="GoblinLandMineInvisibility"/>
     </CAbilBehavior>
+    <CAbilBehavior id="HonorShieldCaster" parent="AW2_Passive">
+        <BehaviorArray value="HonorShieldCaster"/>
+    </CAbilBehavior>
     <CAbilTrain id="Purchaseclfm">
         <InfoArray index="Train1">
             <Charge>
@@ -1003,8 +1006,8 @@
     <CAbilEffectTarget id="Awfb" parent="AW2_EffectTarget">
         <EditorCategories value="Race:ChaosOrc,AbilityorEffectType:Units"/>
         <Cost index="0">
-            <Vital index="Energy" value="60"/>
-            <Cooldown Location="Unit" TimeUse="1"/>
+            <Vital index="Energy" value="30"/>
+            <Cooldown Location="Unit" TimeUse="10"/>
         </Cost>
         <TargetSorts RequestCount="1">
             <SortArray value="TSMarker"/>
@@ -1093,6 +1096,9 @@
         </InfoArray>
         <InfoArray index="Build12" Unit="otbr">
             <Button DefaultButtonFace="otbr" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build13" Unit="ChaosOrcShaman">
+            <Button DefaultButtonFace="ChaosOrcShaman" Requirements="BuildArmy"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
@@ -1400,6 +1406,9 @@
         <InfoArray index="Build8" Unit="nhym">
             <Button DefaultButtonFace="nhym" Requirements="BuildArmy"/>
         </InfoArray>
+        <InfoArray index="Build9" Unit="hgry">
+            <Button DefaultButtonFace="hgry" Requirements="BuildArmyFinal"/>
+        </InfoArray>
         <InfoArray index="Build10" Unit="hmtm">
             <Button DefaultButtonFace="hmtm" Requirements="BuildArmy"/>
         </InfoArray>
@@ -1658,13 +1667,13 @@
             <Vital index="Energy" value="3"/>
             <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
-        <Range value="9"/>
+        <Range value="7"/>
         <AutoCastFilters value="Visible;Neutral,Enemy"/>
         <Flags index="AllowMovement" value="1"/>
         <Flags index="NoDeceleration" value="1"/>
         <Flags index="ReExecutable" value="1"/>
         <Flags index="Smart" value="1"/>
-        <AutoCastRange value="9"/>
+        <AutoCastRange value="7"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLife"/>
         </TargetSorts>
@@ -1673,8 +1682,8 @@
             <MismatchFlags index="CasterUnit" value="1"/>
         </Marker>
         <UseMarkerArray index="Approach" value="0"/>
+        <AutoCastValidatorArray index="1" value="HealingAutoCastTargetFilter"/>
         <AutoCastValidatorArray value="noMarkers"/>
-        <AutoCastValidatorArray value="HealingAutoCastTargetFilter"/>
         <PrepTime value="0.5"/>
         <CastOutroTime value="0.5"/>
     </CAbilEffectTarget>
@@ -2432,7 +2441,7 @@
             <Vital index="Energy" value="3"/>
             <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
-        <Range value="9"/>
+        <Range value="7"/>
         <PrepTime value="0.5"/>
         <CastOutroTime value="0.67"/>
         <TargetFilters index="0" value="-;enemies,mechanical,ancient,wall,tree,Missile,debris,item,structure,ward,dead"/>
@@ -2441,7 +2450,7 @@
         <Flags index="NoDeceleration" value="1"/>
         <Flags index="ReExecutable" value="1"/>
         <Flags index="Smart" value="1"/>
-        <AutoCastRange value="9"/>
+        <AutoCastRange value="7"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLife"/>
         </TargetSorts>
@@ -2825,13 +2834,13 @@
             <Vital index="Energy" value="3"/>
             <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
-        <Range value="9"/>
+        <Range value="7"/>
         <AutoCastFilters value="Visible;Neutral,Enemy"/>
         <Flags index="AllowMovement" value="1"/>
         <Flags index="NoDeceleration" value="1"/>
         <Flags index="ReExecutable" value="1"/>
         <Flags index="Smart" value="1"/>
-        <AutoCastRange value="9"/>
+        <AutoCastRange value="7"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLife"/>
         </TargetSorts>
@@ -2840,8 +2849,8 @@
             <MismatchFlags index="CasterUnit" value="1"/>
         </Marker>
         <UseMarkerArray index="Approach" value="0"/>
+        <AutoCastValidatorArray index="1" value="HealingAutoCastTargetFilter"/>
         <AutoCastValidatorArray value="noMarkers"/>
-        <AutoCastValidatorArray value="HealingAutoCastTargetFilter"/>
         <PrepTime value="0.5"/>
         <CastOutroTime value="0.5"/>
     </CAbilEffectTarget>

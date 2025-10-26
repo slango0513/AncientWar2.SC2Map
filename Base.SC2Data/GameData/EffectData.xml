@@ -89,7 +89,7 @@
     </CEffectDamage>
     <CEffectModifyUnit id="ACpvModifyUnit">
         <ImpactUnit Value="Caster"/>
-        <VitalArray index="Life" ChangeFraction="0.75"/>
+        <VitalArray index="Life" ChangeFraction="1"/>
     </CEffectModifyUnit>
     <CEffectSet id="ACpvSet">
         <EffectArray value="ACpvAoEDamage"/>
@@ -844,7 +844,7 @@
         <AreaArray index="2" removed="1"/>
     </CEffectDamage>
     <CEffectCreateHealer id="AheaHeal">
-        <RechargeVitalRate value="50"/>
+        <RechargeVitalRate value="75"/>
     </CEffectCreateHealer>
     <CEffectSet id="AraiSummonLv1">
         <EffectArray index="0" value="uske"/>
@@ -901,10 +901,10 @@
         <EditorCategories value="Race:Human"/>
     </CEffectSet>
     <CEffectCreateHealer id="Anh1Heal">
-        <RechargeVitalRate value="50"/>
+        <RechargeVitalRate value="75"/>
     </CEffectCreateHealer>
     <CEffectCreateHealer id="Anh2Heal">
-        <RechargeVitalRate value="100"/>
+        <RechargeVitalRate value="150"/>
     </CEffectCreateHealer>
     <CEffectDamage id="ApigDPS">
         <Amount value="25"/>
@@ -1418,6 +1418,7 @@
         <Amount value="120"/>
         <Kind value="Melee"/>
     </CEffectDamage>
+    <CEffectLaunchMissile id="ChaosOrcShaman1LM" parent="War3_Missile" weaponid="ChaosOrcShaman1"/>
     <CEffectSet id="otbr1MultishotSet">
         <EffectArray value="otbr1LM"/>
         <EffectArray value="otbr1MultishotSearch"/>
@@ -1693,8 +1694,88 @@
     <CEffectDamage id="negz1" parent="AW2_SiegeDamage">
         <Amount value="12"/>
     </CEffectDamage>
-    <CEffectDamage id="hgry1">
-        <ArmorReduction value="2"/>
+    <CEffectSet id="hgry1Set">
+        <EffectArray value="hgry1LM"/>
+        <EffectArray value="HonorShield"/>
+    </CEffectSet>
+    <CEffectSet id="hgry1ImpactSet2" parent="hgry1ImpactSet">
+        <EffectArray index="1" value="hgry1RectangeSearch2"/>
+    </CEffectSet>
+    <CEffectSet id="hgry1ImpactSet3" parent="hgry1ImpactSet">
+        <EffectArray index="1" value="hgry1RectangeSearch3"/>
+    </CEffectSet>
+    <CEffectSet id="hgry1ImpactSet4" parent="hgry1ImpactSet">
+        <EffectArray index="1" value="hgry1RectangeSearch4"/>
+    </CEffectSet>
+    <CEffectSet id="hgry1ImpactSet5" parent="hgry1ImpactSet">
+        <EffectArray index="1" value="hgry1RectangeSearch5"/>
+    </CEffectSet>
+    <CEffectSet id="hgry1ImpactSet6" parent="hgry1ImpactSet">
+        <EffectArray index="1" value="hgry1RectangeSearch6"/>
+    </CEffectSet>
+    <CEffectSet id="hgry1ImpactSet7" parent="hgry1ImpactSet">
+        <EffectArray index="1" value="hgry1RectangeSearch7"/>
+    </CEffectSet>
+    <CEffectSet id="hgry1ImpactSet8" parent="hgry1ImpactSet">
+        <EffectArray index="1" removed="1"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="hgry1LM2" parent="hgry1LM">
+        <ImpactEffect value="hgry1ImpactSet2"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="hgry1LM3" parent="hgry1LM">
+        <ImpactEffect value="hgry1ImpactSet3"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="hgry1LM4" parent="hgry1LM">
+        <ImpactEffect value="hgry1ImpactSet4"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="hgry1LM5" parent="hgry1LM">
+        <ImpactEffect value="hgry1ImpactSet5"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="hgry1LM6" parent="hgry1LM">
+        <ImpactEffect value="hgry1ImpactSet6"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="hgry1LM7" parent="hgry1LM">
+        <ImpactEffect value="hgry1ImpactSet7"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="hgry1LM8" parent="hgry1LM">
+        <ImpactEffect value="hgry1ImpactSet8"/>
+    </CEffectLaunchMissile>
+    <CEffectEnumArea id="hgry1RectangeSearch">
+        <TargetSorts RequestCount="1">
+            <SortArray index="0" value="TSRandom"/>
+        </TargetSorts>
+        <AreaArray index="0" Arc="360" Radius="1.5625" Effect="hgry1LM2"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="hgry1RectangeSearch2" parent="hgry1RectangeSearch">
+        <ValidatorArray value="noMarkers"/>
+        <AreaArray index="0" Arc="360" Radius="1.5625" Effect="hgry1LM3"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="hgry1RectangeSearch3" parent="hgry1RectangeSearch">
+        <ValidatorArray value="noMarkers"/>
+        <AreaArray index="0" Arc="360" Radius="1.5625" Effect="hgry1LM4"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="hgry1RectangeSearch4" parent="hgry1RectangeSearch">
+        <ValidatorArray value="noMarkers"/>
+        <AreaArray index="0" Arc="360" Radius="1.5625" Effect="hgry1LM5"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="hgry1RectangeSearch5" parent="hgry1RectangeSearch">
+        <ValidatorArray value="noMarkers"/>
+        <AreaArray index="0" Arc="360" Radius="1.5625" Effect="hgry1LM6"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="hgry1RectangeSearch6" parent="hgry1RectangeSearch">
+        <ValidatorArray value="noMarkers"/>
+        <AreaArray index="0" Arc="360" Radius="1.5625" Effect="hgry1LM7"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="hgry1RectangeSearch7" parent="hgry1RectangeSearch">
+        <ValidatorArray value="noMarkers"/>
+        <AreaArray index="0" Arc="360" Radius="1.5625" Effect="hgry1LM8"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="hgry1" parent="AW2_MagicDamage">
+        <Amount value="2"/>
+    </CEffectDamage>
+    <CEffectDamage id="hgry2" parent="AW2_MagicDamage">
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="hgyr1" parent="AW2_PierceDamage">
         <Amount value="96"/>
@@ -2350,6 +2431,9 @@
     <CEffectDamage id="oshm1" parent="AW2_MagicDamage">
         <Amount value="24"/>
     </CEffectDamage>
+    <CEffectDamage id="ChaosOrcShaman1" parent="AW2_MagicDamage">
+        <Amount value="24"/>
+    </CEffectDamage>
     <CEffectDamage id="osp11" parent="AW2_PierceDamage">
         <Amount value="48"/>
     </CEffectDamage>
@@ -2485,6 +2569,9 @@
         <PeriodicEffectArray value="zmar1"/>
     </CEffectCreatePersistent>
     <CEffectApplyBehavior id="FuryBuff" parent="War3_ApplyBuff">
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="HonorShield" parent="War3_ApplyBuff">
         <WhichUnit Value="Caster"/>
     </CEffectApplyBehavior>
 </Catalog>
