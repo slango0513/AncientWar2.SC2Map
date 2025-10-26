@@ -166,7 +166,6 @@ void gf_PlayerAtFinalVenueReplace (int lp_round);
 void gf_PlayerAtFinalVenueSet ();
 void gf_PlayerCountTest ();
 void gf_GameOverTestNotPassed ();
-string gf_GenerateRaceFromRaceAttribute (string lp_att);
 void gf_ReserveUnitCreation2 (int lp_player, int lp_phalanx);
 unitgroup gf_PlayerGetWorkers (int lp_player);
 int gf_PlayerGetTeam (int lp_player);
@@ -910,29 +909,6 @@ void gf_GameOverTestNotPassed () {
     }
 }
 
-string gf_GenerateRaceFromRaceAttribute (string lp_att) {
-    // Variable Declarations
-    string lv_ut;
-    string lv_race;
-    int lv_i;
-    int lv_c;
-
-    // Variable Initialization
-    lv_ut = "RaceAttributeMapping";
-    lv_race = UserDataGetGameLink(lv_ut, (lp_att), "Race", 1);
-    lv_c = UserDataInstanceCount(lv_ut);
-
-    // Implementation
-    if ((lv_race == null)) {
-        lv_race = UserDataGetGameLink(lv_ut, UserDataInstance(lv_ut, 5), "Race", 1);
-        TextExpressionSetToken("Param/Expression/C345D910", "A", StringToText(lp_att));
-        TextExpressionSetToken("Param/Expression/C345D910", "B", StringToText(lv_race));
-        TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/C345D910"), true);
-    }
-
-    return lv_race;
-}
-
 void gf_ReserveUnitCreation2 (int lp_player, int lp_phalanx) {
     // Variable Declarations
     unit lv_phalanxUnit;
@@ -991,7 +967,7 @@ abilcmd gf_RaceGetBuildPhalanxCommand (string lp_race) {
     abilcmd lv_command;
 
     // Variable Initialization
-    lv_command = UserDataGetAbilCmd(gv_raceUnitTypeUserType, (lp_race), "Command", 1);
+    lv_command = UserDataGetAbilCmd(gv_raceUnitTypeUserType, ((lp_race)), "Command", 1);
 
     // Implementation
     return lv_command;
@@ -1002,7 +978,7 @@ string gf_RaceGetPhalanxType (string lp_race) {
     string lv_unitType;
 
     // Variable Initialization
-    lv_unitType = UserDataGetUnit(gv_raceUnitTypeUserType, (lp_race), "Phalanx", 1);
+    lv_unitType = UserDataGetUnit(gv_raceUnitTypeUserType, ((lp_race)), "Phalanx", 1);
 
     // Implementation
     return lv_unitType;
@@ -1013,7 +989,7 @@ string gf_RaceGetPreviewerType (string lp_race) {
     string lv_unitType;
 
     // Variable Initialization
-    lv_unitType = UserDataGetUnit(gv_raceUnitTypeUserType, (lp_race), "Previewer", 1);
+    lv_unitType = UserDataGetUnit(gv_raceUnitTypeUserType, ((lp_race)), "Previewer", 1);
 
     // Implementation
     return lv_unitType;
@@ -1024,7 +1000,7 @@ string gf_WorkerTypeGetAbility (string lp_unitType) {
     string lv_ability;
 
     // Variable Initialization
-    lv_ability = UserDataGetGameLink(gv_workerBuildAbilityDataUserType, (lp_unitType), "Ability", 1);
+    lv_ability = UserDataGetGameLink(gv_workerBuildAbilityDataUserType, ((lp_unitType)), "Ability", 1);
 
     // Implementation
     return lv_ability;
@@ -3419,7 +3395,7 @@ bool gt_PlayerInizialization_Func (bool testConds, bool runActions) {
     autoD5DFB1DB_ai = 1;
     lv_player = 1;
     for ( ; ( (autoD5DFB1DB_ai >= 0 && lv_player <= autoD5DFB1DB_ae) || (autoD5DFB1DB_ai <= 0 && lv_player >= autoD5DFB1DB_ae) ) ; lv_player += autoD5DFB1DB_ai ) {
-        libGAwX_gf_SetPlayerUIRace(lv_player, gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue("[bnet:War3 Extra (GA)/0.0/60618,file:Mods\\WarCraft\\WarCraftDataAbil.SC2Mod]1", lv_player)));
+        libGAwX_gf_SetPlayerUIRace(lv_player, libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue("[bnet:War3 Extra (GA)/0.0/60618,file:Mods\\WarCraft\\WarCraftDataAbil.SC2Mod]1", lv_player)));
         PlayerSetState(lv_player, c_playerStateFoodIgnored, true);
         PlayerSetState(lv_player, c_playerStateShowWorldTip, true);
         PlayerOptionOverride(lv_player, "simplecommandcard", "0");
