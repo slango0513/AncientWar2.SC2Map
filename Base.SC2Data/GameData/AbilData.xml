@@ -101,7 +101,7 @@
         <AutoCastFilters value="Visible;Neutral,Enemy"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <PrepTime value="0.56"/>
         <CastOutroTime value="0.51"/>
@@ -110,14 +110,14 @@
     <CAbilEffectTarget id="ACbf" parent="AW2_EffectTarget">
         <Alignment value="Negative"/>
         <Cost index="0">
-            <Vital index="Energy" value="30"/>
+            <Vital index="Energy" value="60"/>
             <Cooldown Location="Unit" TimeUse="6"/>
         </Cost>
         <TargetFilters index="0" value="-;player,allies,wall,tree,debris,item,ward,dead,invulnerable,immunity"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSMarker"/>
             <SortArray value="TSLifeLargestFirst"/>
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <Range value="3"/>
         <AutoCastRange value="3"/>
@@ -138,7 +138,7 @@
         <TargetSorts RequestCount="1">
             <SortArray value="TSMarker"/>
             <SortArray value="TSLifeLargestFirst"/>
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <Range value="13"/>
         <AutoCastRange value="13"/>
@@ -153,18 +153,19 @@
         <TargetFilters index="0" value="-;mechanical,wall,tree,debris,item,structure,ward,ethereal,dead,invulnerable,immunity"/>
         <Cost index="0">
             <Vital index="Energy" value="60"/>
-            <Cooldown Location="Unit" TimeUse="1"/>
+            <Cooldown Location="Player" TimeUse="1"/>
         </Cost>
-        <Range value="13"/>
+        <Range value="8"/>
         <PrepTime value="0.5"/>
         <CastOutroTime value="1"/>
         <Effect index="0" value="AHbn1"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
-        <AutoCastRange value="13"/>
-        <AutoCastValidatorArray value="EnemiesNearby7"/>
+        <AutoCastRange value="8"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
+        <AutoCastValidatorArray value="2NonStasisEnemiesNearby8"/>
         <AutoCastValidatorArray value="noMarkers"/>
     </CAbilEffectTarget>
     <!--Blood Mage - Flame Strike Buff=BHfs effect=XHfs cast=1.33-->
@@ -182,7 +183,7 @@
         <CursorEffect value="AHfsFullDamageSearch"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <AutoCastRange value="10"/>
         <AutoCastValidatorArray value="EnemiesNearby7"/>
@@ -207,10 +208,21 @@
         <AutoCastValidatorArray value="noMarkers"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <AutoCastRange value="6"/>
     </CAbilEffectTarget>
+    <!--Taunt-->
+    <CAbilEffectInstant id="Atau" parent="AW2_EffectInstant">
+        <EditorCategories value="Race:NightElf,AbilityorEffectType:Unit"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="60"/>
+        </Cost>
+        <CastOutroTime value="3"/>
+        <Effect index="0" value="AtauSearch"/>
+        <AutoCastValidatorArray value="EnemiesNearby2"/>
+        <AutoCastFilters value="Self,Visible;-"/>
+    </CAbilEffectInstant>
     <CAbilTrain id="Purchaserde0" parent="AW2_MakeItem" unit="rde0"/>
     <CAbilTrain id="Purchaserde1" parent="AW2_MakeItem" unit="rde1"/>
     <CAbilTrain id="Purchaserde2" parent="AW2_MakeItem" unit="rde2"/>
@@ -225,7 +237,7 @@
         <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLife"/>
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
             <SortArray value="TSFarthestDistance"/>
         </TargetSorts>
         <Range value="11"/>
@@ -278,7 +290,7 @@
         <CastOutroTime value="0.4"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLife"/>
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <AutoCastRange value="9"/>
         <AutoCastValidatorArray value="EnemiesNearby6"/>
@@ -315,7 +327,7 @@
         <TargetSorts RequestCount="1">
             <SortArray value="TSMarker"/>
             <SortArray value="TSLife"/>
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <Range value="5"/>
         <AutoCastRange value="5"/>
@@ -374,7 +386,7 @@
         <Alignment value="Negative"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastValidatorArray value="NoFrost"/>
@@ -385,22 +397,22 @@
         <EditorCategories value="Race:Dragon,AbilityorEffectType:Units"/>
         <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <Cost index="0">
-            <Vital index="Energy" value="30"/>
+            <Vital index="Energy" value="60"/>
             <Cooldown Location="Unit" TimeUse="10"/>
         </Cost>
-        <Range value="9"/>
+        <Range value="8"/>
         <PrepTime value="0.4"/>
         <CastOutroTime value="1.1"/>
         <Alignment value="Negative"/>
         <Effect index="0" value="AUfn"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastValidatorArray value="NoFrost"/>
         <AutoCastValidatorArray value="noMarkers"/>
-        <AutoCastRange value="9"/>
+        <AutoCastRange value="8"/>
     </CAbilEffectTarget>
     <CAbilBehavior id="Aakb" parent="War3_Passive">
         <BehaviorArray value="Aakb"/>
@@ -447,7 +459,7 @@
         <AutoCastValidatorArray value="EnemiesNearby2"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLife"/>
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <TargetFilters index="0" value="-;air,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,invulnerable"/>
     </CAbilEffectTarget>
@@ -483,6 +495,9 @@
         <InfoArray index="Build11" Unit="nssn">
             <Button DefaultButtonFace="nssn" Requirements="BuildArmy"/>
         </InfoArray>
+        <InfoArray index="Build12" Unit="emtg">
+            <Button DefaultButtonFace="emtg" Requirements="BuildArmyFinal"/>
+        </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
     <!--Keeper - Entangling Roots Buff=BEer-->
@@ -501,7 +516,7 @@
         <AutoCastValidatorArray value="EnemiesNearby9"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
     </CAbilEffectTarget>
     <!--Warden - Fan of Knives-->
@@ -554,17 +569,17 @@
             <Vital index="Energy" value="60"/>
             <Cooldown Location="Unit" TimeUse="15"/>
         </Cost>
-        <Range value="11"/>
+        <Range value="10"/>
         <PrepTime value="0.3"/>
         <CastOutroTime value="15"/>
         <CursorEffect value="AclfSearch"/>
         <FinishTime value="1.03"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
-        <AutoCastRange value="11"/>
-        <AutoCastValidatorArray index="1" value="EnemiesNearby6"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray index="1" value="EnemiesNearby7"/>
         <AutoCastValidatorArray value="NoCloudOfFog"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <TargetFilters index="0" value="structure;wall,tree,Missile,debris,item,ward,dead,invulnerable,immunity"/>
@@ -580,15 +595,15 @@
             <Cooldown Location="Unit" TimeUse="10"/>
         </Cost>
         <Alignment value="Negative"/>
-        <Range value="11"/>
+        <Range value="10"/>
         <PrepTime value="0.3"/>
         <FinishTime value="1.03"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
-        <AutoCastRange value="11"/>
-        <AutoCastValidatorArray index="1" value="EnemiesNearby6"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray index="1" value="EnemiesNearby7"/>
         <AutoCastValidatorArray value="NoAerialShackles"/>
         <AutoCastValidatorArray value="noMarkers"/>
     </CAbilEffectTarget>
@@ -683,7 +698,7 @@
         <TargetSorts RequestCount="1">
             <SortArray value="TSMarker"/>
             <SortArray value="TSLifeLargestFirst"/>
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <Range value="13"/>
         <AutoCastRange value="13"/>
@@ -860,7 +875,7 @@
         <CastOutroTime value="0.5"/>
         <Effect index="0" value="ANtmMissile"/>
         <TargetSorts RequestCount="1">
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
             <SortArray value="TSLifeLargestFirst"/>
         </TargetSorts>
         <AutoCastRange value="6"/>
@@ -1181,6 +1196,17 @@
         <AutoCastValidatorArray value="EnemiesNearby3"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
+    <CAbilEffectInstant id="Sleep" parent="AW2_EffectInstant">
+        <EditorCategories value="Race:Dragon,AbilityorEffectType:Units"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="120"/>
+        </Cost>
+        <AutoCastFilters value="Self,Visible;-"/>
+        <AutoCastValidatorArray index="0" value="EnemiesNearby9"/>
+        <PrepTime value="3"/>
+        <CastOutroTime value="1.08"/>
+        <Effect index="0" value="SleepSearch"/>
+    </CAbilEffectInstant>
     <CAbilAugment id="ANbaAugment" parent="AW2_AttackAugment">
         <Name value="ANba/Name"/>
         <EditorCategories value="Race:NightElf,AbilityorEffectType:Units"/>
@@ -1226,19 +1252,21 @@
         <EditorCategories value="Race:NightElf,AbilityorEffectType:Unit"/>
         <TargetFilters index="0" value="-;player,allies,air,mechanical,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="60"/>
+            <Vital index="Energy" value="60"/>
+            <Cooldown Location="Player" TimeUse="1"/>
         </Cost>
-        <Range value="12"/>
+        <Range value="9"/>
         <PrepTime value="0.7"/>
         <CastOutroTime value="1.97"/>
         <Effect index="0" value="Bcyc"/>
-        <AutoCastRange value="12"/>
+        <AutoCastRange value="9"/>
+        <AutoCastValidatorArray value="EnemiesNearby6"/>
+        <AutoCastValidatorArray value="2NonInvulnerableEnemiesNearby9"/>
         <AutoCastValidatorArray value="NoCyclone"/>
         <AutoCastValidatorArray value="noMarkers"/>
-        <AutoCastValidatorArray value="EnemiesNearby6"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
     </CAbilEffectTarget>
     <!--Devour Buff=Bdig,Bdvv-->
@@ -1275,7 +1303,8 @@
         <EditorCategories value="Race:NightElf,AbilityorEffectType:Unit"/>
         <TargetFilters index="0" value="-;player,allies,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="15"/>
+            <Vital index="Energy" value="30"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <Effect index="0" value="Bfae"/>
         <Range value="12"/>
@@ -1287,7 +1316,7 @@
         <AutoCastValidatorArray value="EnemiesNearby6"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
     </CAbilEffectTarget>
     <CAbilInventory id="Aien" parent="AW2_UnitInventory">
@@ -1344,7 +1373,7 @@
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
         <TargetSorts RequestCount="1">
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
             <SortArray value="TSLife"/>
         </TargetSorts>
         <AutoCastFilters value="Visible;Neutral,Enemy"/>
@@ -1366,7 +1395,7 @@
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
         <TargetSorts RequestCount="1">
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
             <SortArray value="TSLife"/>
         </TargetSorts>
         <AutoCastFilters value="Visible;Neutral,Enemy"/>
@@ -1423,7 +1452,7 @@
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby8"/>
         <TargetSorts RequestCount="1">
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
             <SortArray value="TSLifeLargestFirst"/>
         </TargetSorts>
     </CAbilEffectTarget>
@@ -1496,7 +1525,7 @@
         <TargetFilters index="0" value="-;player,allies,air,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
             <SortArray value="TSRandom"/>
         </TargetSorts>
         <AutoCastRange value="6"/>
@@ -1595,7 +1624,7 @@
         <Effect index="0" value="ANhx1"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <AutoCastRange value="12"/>
         <AutoCastValidatorArray value="NoHex"/>
@@ -1631,7 +1660,7 @@
         <TargetSorts RequestCount="1">
             <SortArray value="TSMarker"/>
             <SortArray value="TSLife"/>
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
     </CAbilEffectTarget>
     <!--Shadow Hunter - Serpent Ward Buff=BOwd-->
@@ -1772,7 +1801,7 @@
         <AutoCastValidatorArray value="EnemiesNearby2"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <AutoCastFilters value="Visible;Neutral,Enemy"/>
     </CAbilEffectTarget>
@@ -1813,7 +1842,7 @@
         <PrepTime value="0.68"/>
         <CastOutroTime value="0.59"/>
         <AutoCastValidatorArray value="EnemiesNearby4"/>
-        <AutoCastFilters value="Visible;-"/>
+        <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilAttack id="Aatk">
         <CmdButtonArray index="Execute" Requirements="ShowDefaultButton">
@@ -1866,7 +1895,7 @@
         <AutoCastFilters value="Visible;Neutral,Enemy"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
     </CAbilEffectTarget>
     <!--Beserk Dur=12 HeroDur=12 Buff=Bbsk-->
@@ -1953,7 +1982,7 @@
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
         <TargetSorts RequestCount="1">
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
             <SortArray value="TSLifeLargestFirst"/>
         </TargetSorts>
     </CAbilEffectTarget>
@@ -1974,7 +2003,7 @@
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby8"/>
         <TargetSorts RequestCount="1">
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
             <SortArray value="TSLifeLargestFirst"/>
         </TargetSorts>
     </CAbilEffectTarget>
@@ -2084,7 +2113,7 @@
         <Flags index="Smart" value="1"/>
         <Flags index="TransientPreferred" value="1"/>
         <TargetSorts RequestCount="1">
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
             <SortArray value="TSLifeLargestFirst"/>
         </TargetSorts>
         <Alignment value="Positive"/>
@@ -2335,7 +2364,7 @@
         <ProducedUnitArray value="ohwd"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <AutoCastFilters value="Visible;Neutral,Enemy"/>
         <AutoCastRange value="9"/>
@@ -2465,7 +2494,7 @@
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby7"/>
         <TargetSorts RequestCount="1">
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
             <SortArray value="TSLifeLargestFirst"/>
         </TargetSorts>
         <AutoCastFilters value="Visible;Neutral,Enemy"/>
@@ -2487,7 +2516,7 @@
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby7"/>
         <TargetSorts RequestCount="1">
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
             <SortArray value="TSLifeLargestFirst"/>
         </TargetSorts>
         <AutoCastFilters value="Visible;Neutral,Enemy"/>
@@ -2687,7 +2716,7 @@
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby6"/>
         <TargetSorts RequestCount="1">
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
             <SortArray value="TSLife"/>
         </TargetSorts>
     </CAbilEffectTarget>
@@ -2706,7 +2735,7 @@
         <AutoCastValidatorArray value="EnemiesNearby8"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
     </CAbilEffectTarget>
     <!--Raise Dead Dur=40 HeroDur=40 Buff=Brai-->
@@ -2717,7 +2746,7 @@
         <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
         <Cost index="0">
             <Vital index="Energy" value="6"/>
-            <Cooldown Location="Unit" TimeUse="10"/>
+            <Cooldown Location="Unit" TimeUse="12"/>
         </Cost>
         <Range value="13"/>
         <PrepTime value="0.5"/>
@@ -2753,7 +2782,7 @@
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby6"/>
         <TargetSorts RequestCount="1">
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
             <SortArray value="TSLifeLargestFirst"/>
         </TargetSorts>
     </CAbilEffectTarget>
@@ -3074,13 +3103,13 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToubdr" parent="AW2_Upgrade" toUnit="ubdr">
-        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+        <CmdButtonArray index="Execute" Requirements="BuildArmyFinal"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeTonser" parent="AW2_Upgrade" toUnit="nser">
-        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+        <CmdButtonArray index="Execute" Requirements="BuildArmyFinal"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeTonthr" parent="AW2_Upgrade" toUnit="nthr">
-        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+        <CmdButtonArray index="Execute" Requirements="BuildArmyFinal"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeTonbds" parent="AW2_Upgrade" toUnit="nbds">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>

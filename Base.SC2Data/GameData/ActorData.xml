@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CActorSimple id="Sleep" parent="War3_SimpleCastAnim"/>
+    <CActorSimple id="DreamIllusion">
+        <On Terms="Behavior.DreamIllusion.On" Send="Create"/>
+        <On Terms="Behavior.DreamIllusion.Off" Send="Destroy"/>
+        <On Terms="ActorCreation" Target="_Selectable" Send="SetOpacity 0.750000 0.000000 DreamIllusion"/>
+        <On Terms="ActorDestruction" Target="_Selectable" Send="ClearOpacity 0.000000 DreamIllusion"/>
+    </CActorSimple>
     <CActorModel id="ACbfEffect" parent="EffectArt">
         <On Terms="Effect.ACbfSearch.Start; At Caster" Send="Create"/>
         <On Terms="ActorCreation" Send="Create ACbfMoverTarget"/>
@@ -187,6 +194,18 @@
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.7343"/>
     </CActorUnit>
+    <!--mountaingiant-->
+    <CActorUnit id="emtg" parent="War3_Army" unitSound="MountainGiant" unitName="emtg" defType="MEDIUM">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnMountainGiant.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnMountainGiant.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnMountainGiant.dds"/>
+        <BarWidth value="150"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar110"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
     <CActorAction id="nbda1" parent="War3_AttackMissileSwapable"/>
     <CActorMissile id="nbda1LM" parent="War3_MissileSwapable" unitName="nbda1LM"/>
     <CActorAction id="nbds1" parent="War3_AttackMissileSwapable"/>
@@ -198,6 +217,11 @@
         <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
         <On Terms="Abil.AIct.SourcePrepStart" Send="Create"/>
         <On Terms="Abil.AIct.SourcePrepStop" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorModel id="SleepEffect" parent="EffectArt">
+        <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="Abil.Sleep.SourcePrepStart" Send="Create"/>
+        <On Terms="Abil.Sleep.SourcePrepStop" Send="AnimBracketStop BSD"/>
     </CActorModel>
     <CActorSimple id="AIob" parent="War3_AttackMissileSwap"/>
     <CActorModel id="AIobTarget" parent="TargetArtX">
@@ -605,7 +629,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnBlueDragonSpawn.dds"/>
         <BarWidth value="110"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar110"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="1.4062"/>
@@ -763,6 +787,12 @@
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
         <BarOffset value="60"/>
     </CActorUnit>
+    <CActorAction id="nmgw1" parent="War3_AttackSwapable" WeaponSound="MetalHeavyBash"/>
+    <CActorAction id="nmgw2" parent="War3_AttackSwapable" WeaponSound="MetalHeavyBash"/>
+    <CActorAction id="nmgr1" parent="War3_AttackSwapable" WeaponSound="MetalHeavyBash"/>
+    <CActorAction id="nmgr2" parent="War3_AttackSwapable" WeaponSound="MetalHeavyBash"/>
+    <CActorAction id="nmgd1" parent="War3_AttackSwapable" WeaponSound="MetalHeavyBash"/>
+    <CActorAction id="nmgd2" parent="War3_AttackSwapable" WeaponSound="MetalHeavyBash"/>
     <CActorAction id="nmrv1" parent="War3_AttackSwapable" WeaponSound="MetalLightSlice"/>
     <CActorAction id="nnmg1" parent="War3_AttackSwapable" WeaponSound="MetalLightSlice"/>
     <!--owlbear-->
@@ -2480,39 +2510,42 @@
     </CActorUnit>
     <!--magnataurdestroyer-->
     <CActorUnit id="nmgd" parent="War3_MagnataurUnit" unitSound="Magnataur" unitName="nmgd" defType="LARGE">
+        <Scale value="1.500000"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnBlueMagnataur.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnBlueMagnataur.dds"/>
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnBlueMagnataur.dds"/>
         <BarWidth value="150"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar200"/>
         <BarOffset value="150"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.3437"/>
     </CActorUnit>
     <!--magnataurreaver-->
     <CActorUnit id="nmgr" parent="War3_MagnataurUnit" unitSound="Magnataur" unitName="nmgr" defType="LARGE">
+        <Scale value="1.375000"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnMagnataurBrown.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnMagnataurBrown.dds"/>
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnMagnataurBrown.dds"/>
         <BarWidth value="137"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar200"/>
         <BarOffset value="140"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.3437"/>
     </CActorUnit>
     <!--magnataurwarrior-->
     <CActorUnit id="nmgw" parent="War3_MagnataurUnit" unitSound="Magnataur" unitName="nmgw" defType="LARGE">
+        <Scale value="1.125000"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnMagnataur.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnMagnataur.dds"/>
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnMagnataur.dds"/>
         <BarWidth value="112"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar200"/>
         <BarOffset value="100"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.3437"/>

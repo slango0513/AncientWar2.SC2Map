@@ -101,10 +101,29 @@
     <CEffectDamage id="ACcbDamage" parent="War3_MagicSpellDamage">
         <Amount value="100"/>
     </CEffectDamage>
+    <CEffectApplyBehavior id="AUsl1HeroDur">
+        <Duration value="10"/>
+    </CEffectApplyBehavior>
     <CEffectIssueOrder id="OrderMorphToGargoyle">
         <EditorCategories value="Race:Undead"/>
         <Abil value="AstnUn"/>
     </CEffectIssueOrder>
+    <CEffectEnumArea id="SleepSearch" parent="War3_AbilSearch">
+        <SearchFilters value="-;player,allies,Structure,wall,tree,Missile,debris,item,ward,dead,Hidden,invulnerable,immunity"/>
+        <AreaArray Radius="500" Effect="SleepSet"/>
+        <TargetSorts>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSDistance"/>
+        </TargetSorts>
+        <MinCount value="1"/>
+        <MaxCount value="36"/>
+    </CEffectEnumArea>
+    <CEffectSet id="SleepSet">
+        <ValidatorArray value="IsNotDragon"/>
+        <EditorCategories value=""/>
+        <EffectArray value="AUsl"/>
+    </CEffectSet>
     <CEffectSet id="StellarFlare">
         <EffectArray value="AEsd"/>
     </CEffectSet>
@@ -135,13 +154,13 @@
     <!--Neutral Regen (health only)-->
     <CEffectEnumArea id="ACnrSearch" parent="War3_AuraSearch" aura="BCnr"/>
     <CEffectApplyBehavior id="AHbn1Dur">
-        <Duration value="10"/>
+        <Duration value="30"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="AHbn1HeroDur">
-        <Duration value="5"/>
+        <Duration value="15"/>
     </CEffectApplyBehavior>
     <CEffectDamage id="AHfsFullDamage1">
-        <Amount value="25"/>
+        <Amount value="20"/>
     </CEffectDamage>
     <CEffectEnumArea id="AHfsFullDamageSearch">
         <MaxCount value="12"/>
@@ -159,7 +178,7 @@
     <CEffectEnumArea id="ANflSearch">
         <TargetSorts>
             <SortArray index="0" value="TSLife"/>
-            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <MaxCount value="6"/>
     </CEffectEnumArea>
@@ -394,7 +413,7 @@
     <!--Paladin - Resurrection-->
     <CEffectEnumArea id="AHre">
         <TargetSorts>
-            <SortArray index="0" value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray index="0" value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <MinCount value="3"/>
         <MaxCount value="3"/>
@@ -531,7 +550,7 @@
     <!--Death Knight - Animate Dead Buff=BUan-->
     <CEffectEnumArea id="AUanSearch">
         <TargetSorts>
-            <SortArray index="0" value="TSKillResourceTerrazineLargestFirst"/>
+            <SortArray index="0" value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <MinCount value="6"/>
     </CEffectEnumArea>
@@ -974,13 +993,17 @@
     <CEffectDamage id="ehpr1" parent="AW2_PierceDamage">
         <Amount value="96"/>
     </CEffectDamage>
+    <CEffectDamage id="emtg1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="192"/>
+    </CEffectDamage>
     <CEffectCreateUnit id="nsel" parent="War3_SummonUnit">
         <EditorCategories value="Race:Human"/>
         <SpawnEffect value="SeaElemental"/>
     </CEffectCreateUnit>
     <CEffectDamage id="nadr1" parent="AW2_MagicDamage">
         <Amount value="576"/>
-        <AreaArray Radius="0.586" Fraction="1"/>
+        <AreaArray Radius="0.3906" Fraction="1"/>
         <SearchFilters value="-;player,allies,air,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
     </CEffectDamage>
     <CEffectDamage id="nadr2" parent="AW2_MagicDamage">
@@ -996,8 +1019,8 @@
     <CEffectDamage id="nbdr1" parent="AW2_ChaosDamage">
         <Amount value="192"/>
     </CEffectDamage>
-    <CEffectDamage id="nbdr2" parent="AW2_ChaosDamage">
-        <Amount value="192"/>
+    <CEffectDamage id="nbdr2" parent="AW2_PierceDamage">
+        <Amount value="288"/>
     </CEffectDamage>
     <CEffectDamage id="nbds1" parent="AW2_MagicDamage">
         <Amount value="288"/>
@@ -1112,12 +1135,12 @@
         <AreaArray Radius="0.3906" Fraction="1"/>
         <SearchFilters value="-;player,allies,air,wall,tree,Missile,item,ward,ethereal,dead,invulnerable"/>
     </CEffectDamage>
-    <CEffectDamage id="nbwm2" parent="AW2_ChaosDamage">
-        <Amount value="576"/>
+    <CEffectDamage id="nbwm2" parent="AW2_PierceDamage">
+        <Amount value="864"/>
     </CEffectDamage>
     <CEffectDamage id="nbzd1" parent="AW2_MagicDamage">
         <Amount value="288"/>
-        <AreaArray Radius="0.586" Fraction="1"/>
+        <AreaArray Radius="0.3906" Fraction="1"/>
         <SearchFilters value="-;player,allies,air,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
     </CEffectDamage>
     <CEffectDamage id="nbzd2" parent="AW2_MagicDamage">
@@ -1523,16 +1546,22 @@
         <Amount value="384"/>
     </CEffectDamage>
     <CEffectDamage id="nmgd2" parent="AW2_ChaosDamage">
+        <Kind value="Melee"/>
         <Amount value="384"/>
     </CEffectDamage>
     <CEffectDamage id="nmgr1" parent="AW2_ChaosDamage">
         <Kind value="Melee"/>
-        <Amount value="192"/>
+        <Amount value="768"/>
     </CEffectDamage>
     <CEffectDamage id="nmgr2" parent="AW2_ChaosDamage">
+        <Kind value="Melee"/>
+        <Amount value="768"/>
+    </CEffectDamage>
+    <CEffectDamage id="nmgw1" parent="AW2_ChaosDamage">
+        <Kind value="Melee"/>
         <Amount value="192"/>
     </CEffectDamage>
-    <CEffectDamage id="nmgw1" parent="AW2_NormalDamage">
+    <CEffectDamage id="nmgw2" parent="AW2_ChaosDamage">
         <Kind value="Melee"/>
         <Amount value="96"/>
     </CEffectDamage>
@@ -1625,16 +1654,16 @@
     </CEffectDamage>
     <CEffectDamage id="nser1" parent="AW2_ChaosDamage">
         <Amount value="1728"/>
-        <AreaArray Radius="0.3906" Fraction="1"/>
+        <AreaArray Radius="0.586" Fraction="1"/>
         <SearchFilters value="-;player,allies,air,wall,tree,Missile,item,ward,ethereal,dead,invulnerable"/>
     </CEffectDamage>
-    <CEffectDamage id="nser2" parent="AW2_ChaosDamage">
-        <Amount value="1728"/>
+    <CEffectDamage id="nser2" parent="AW2_PierceDamage">
+        <Amount value="2592"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="nser2LM" parent="War3_Missile" weaponid="nser2"/>
     <CEffectDamage id="nthr1" parent="AW2_SiegeDamage">
         <Amount value="1728"/>
-        <AreaArray Radius="0.3906" Fraction="1"/>
+        <AreaArray Radius="0.586" Fraction="1"/>
         <SearchFilters value="-;player,allies,air,wall,tree,Missile,item,ward,ethereal,dead,invulnerable"/>
         <AttributeFactor index="fortified" value="1"/>
     </CEffectDamage>
@@ -1681,6 +1710,8 @@
     <CEffectDamage id="ugar2" parent="AW2_PierceDamage">
         <Amount value="24"/>
     </CEffectDamage>
+    <CEffectSet id="ugrm1"/>
+    <CEffectSet id="ugrm2"/>
     <CEffectLaunchMissile id="zhyd1LM" parent="War3_Missile" weaponid="zhyd1"/>
     <CEffectSet id="nsnp1MultishotSet">
         <EffectArray value="nsnp1LM"/>

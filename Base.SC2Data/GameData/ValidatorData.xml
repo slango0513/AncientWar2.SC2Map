@@ -6,14 +6,49 @@
         <WhichLocation Value="CasterUnit"/>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea default="1" id="AW2_2NonInvulnerableEnemiesNearby">
+        <AreaArray Compare="GT" Count="1"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Hover,Missile,Destructible,Dead,Hidden,Invulnerable"/>
+        <WhichLocation Value="CasterUnit"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea default="1" id="AW2_2NonUnstoppableEnemiesNearby">
+        <AreaArray Compare="GT" Count="1"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Hover,Missile,Destructible,Dead,Hidden,Unstoppable"/>
+        <WhichLocation Value="CasterUnit"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea default="1" id="AW2_2NonStasisEnemiesNearby">
+        <AreaArray Compare="GT" Count="1"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Hover,Missile,Destructible,Stasis,Dead,Hidden"/>
+        <WhichLocation Value="CasterUnit"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea default="1" id="AW2_FriendiesNearby">
+        <AreaArray Compare="GT" Count="0"/>
+        <SearchFilters value="Visible;Self,Neutral,Enemy,Hover,Missile,Destructible,Dead,Hidden"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea default="1" id="AW2_NoEnemiesNearby">
         <SearchFilters value="Visible;Player,Ally,Neutral,Hover,Missile,Destructible,Dead,Hidden"/>
         <WhichLocation Value="CasterUnit"/>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
         <Compare value="Eq"/>
     </CValidatorLocationEnumArea>
-    <CValidatorLocationEnumArea id="2EnemiesNearby6" parent="AW2_EnemiesNearby">
+    <CValidatorLocationEnumArea id="2NonInvulnerableEnemiesNearby6" parent="AW2_2NonInvulnerableEnemiesNearby">
         <AreaArray index="0" Compare="GT" Count="1" Radius="6"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="2NonInvulnerableEnemiesNearby9" parent="AW2_2NonInvulnerableEnemiesNearby">
+        <AreaArray index="0" Compare="GT" Count="1" Radius="9"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="2NonUnstoppableEnemiesNearby5" parent="AW2_2NonUnstoppableEnemiesNearby">
+        <AreaArray index="0" Compare="GT" Count="1" Radius="5"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="2NonStasisEnemiesNearby5" parent="AW2_2NonStasisEnemiesNearby">
+        <AreaArray index="0" Compare="GT" Count="1" Radius="5"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="2NonStasisEnemiesNearby8" parent="AW2_2NonStasisEnemiesNearby">
+        <AreaArray index="0" Compare="GT" Count="1" Radius="8"/>
     </CValidatorLocationEnumArea>
     <CValidatorCombine id="CanUseAnyInventory">
         <CombineArray value="CanUseNagaInventory"/>
@@ -192,6 +227,9 @@
         <AreaArray index="0" Compare="GT" Count="0" Radius="5"/>
     </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="EnemiesNearby6" parent="AW2_EnemiesNearby">
+        <AreaArray index="0" Compare="GT" Count="0" Radius="6"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="FriendiesNearby6" parent="AW2_FriendiesNearby">
         <AreaArray index="0" Compare="GT" Count="0" Radius="6"/>
     </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="EnemiesNearby7" parent="AW2_EnemiesNearby">

@@ -351,6 +351,8 @@
         <Name value="Efur/Propernames"/>
         <GlossaryCategory value="Unit/Category/NightElfUnits"/>
         <WeaponArray index="1" removed="1"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
     </CUnit>
     <!--HeroKeeperoftheGrove-->
     <CUnit id="Ekee" parent="AW2_Army" defType="NONE">
@@ -417,6 +419,8 @@
         <Name value="Emns/Propernames"/>
         <GlossaryCategory value="Unit/Category/NightElfUnits"/>
         <WeaponArray index="1" removed="1"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
     </CUnit>
     <!--HeroMoonPriestess-->
     <CUnit id="Emoo" parent="AW2_Army" defType="NONE">
@@ -629,14 +633,18 @@
         <Race value="BloodElf"/>
         <Mover value="foot"/>
         <AbilArray Link="BloodElfInventory"/>
+        <AbilArray Link="AHbn"/>
         <AbilArray Link="Aarm"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="Aarm" Type="Passive" Behavior="Aarm" Row="2" Column="0"/>
+            <LayoutButtons Face="AHbn" Type="AbilCmd" AbilCmd="AHbn,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Aarm" Type="Passive" Behavior="Aarm" Row="2" Column="1"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
         <Name value="Hkal/Propernames"/>
         <WeaponArray index="1" removed="1"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
     </CUnit>
     <!--Lord Garithos-->
     <CUnit id="Hlgr" parent="AW2_Army" defType="LARGE">
@@ -1639,8 +1647,27 @@
         <CargoSize value="8"/>
     </CUnit>
     <!--Mountain Giant-->
-    <CUnit id="emtg">
-        <Food value="1"/>
+    <CUnit id="emtg" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
+        <CostResource index="lumber" value="3000"/>
+        <KillResource index="Custom" value="150"/>
+        <LifeStart value="2100"/>
+        <LifeMax value="2100"/>
+        <Speed value="2"/>
+        <Race value="NightElf"/>
+        <Mover value="foot"/>
+        <AbilArray Link="Aien"/>
+        <AbilArray Link="Atau"/>
+        <BehaviorArray Link="Arsk"/>
+        <BehaviorArray Link="Assk"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Atau" Type="AbilCmd" AbilCmd="Atau,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Arsk" Type="Passive" Behavior="Arsk" Row="2" Column="2"/>
+            <LayoutButtons Face="Assk" Type="Passive" Behavior="Assk" Row="2" Column="1"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/NightElfUnits"/>
+        <WeaponArray index="1" removed="1"/>
     </CUnit>
     <!--night elf courier-->
     <CUnit id="enec" parent="AW2_Army" defType="SMALL">
@@ -1741,6 +1768,7 @@
             <LayoutButtons Face="nowb" Type="AbilCmd" AbilCmd="AEbu,Build8" Row="1" Column="2"/>
             <LayoutButtons Face="edry" Type="AbilCmd" AbilCmd="AEbu,Build9" Row="1" Column="0"/>
             <LayoutButtons Face="ehpr" Type="AbilCmd" AbilCmd="AEbu,Build3" Row="1" Column="4"/>
+            <LayoutButtons Face="emtg" Type="AbilCmd" AbilCmd="AEbu,Build12" Row="0" Column="3"/>
         </CardLayouts>
         <CardLayouts index="2" CardId="Purc">
             <LayoutButtons Face="Purchaseoven" Type="AbilCmd" AbilCmd="Purchaseoven,Train1" Row="0" Column="4"/>
@@ -1852,6 +1880,7 @@
         <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
         <EnergyStart value="60"/>
         <EnergyMax value="60"/>
+        <AttackTargetPriority value="21"/>
     </CUnit>
     <!--Footman-->
     <CUnit id="hfoo" parent="AW2_Army" defType="LARGE">
@@ -1928,6 +1957,7 @@
         <Collide index="Flying" value="1"/>
         <GlossaryCategory value="Unit/Category/HumanUnits"/>
         <LifeRegenRate value="0"/>
+        <AttackTargetPriority value="21"/>
     </CUnit>
     <CUnit id="Gyrocopter" parent="AW2_Army" defType="LARGE">
         <Attributes index="mechanical" value="1"/>
@@ -1952,6 +1982,7 @@
         <Collide index="Flying" value="1"/>
         <GlossaryCategory value="Unit/Category/HumanUnits"/>
         <LifeRegenRate value="0"/>
+        <AttackTargetPriority value="21"/>
     </CUnit>
     <!--high elven swordsman-->
     <CUnit id="hhes" parent="AW2_Army" defType="LARGE">
@@ -2548,8 +2579,8 @@
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="270"/>
         <KillResource index="Custom" value="270"/>
-        <LifeStart value="6300"/>
-        <LifeMax value="6300"/>
+        <LifeStart value="5400"/>
+        <LifeMax value="5400"/>
         <Speed value="2"/>
         <Race value="Dragon"/>
         <Mover value="amph"/>
@@ -2560,9 +2591,9 @@
         <BehaviorArray Link="BlueDragonSpawnOverseerRun"/>
         <BehaviorArray Link="dragon"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="AHad" Type="Passive" Behavior="AHad" Row="2" Column="2"/>
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
             <LayoutButtons Face="ACbf" Type="AbilCmd" AbilCmd="ACbf,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="AHad" Type="Passive" Behavior="AHad" Row="2" Column="2"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/DragonUnits"/>
@@ -2583,12 +2614,10 @@
         <AbilArray Link="DragonInventory"/>
         <AbilArray Link="UpgradeTonbwm"/>
         <BehaviorArray Link="ACsk"/>
-        <BehaviorArray Link="Ansk"/>
         <BehaviorArray Link="dragon"/>
         <CardLayouts index="0">
             <LayoutButtons Face="nbwm" Type="AbilCmd" AbilCmd="UpgradeTonbwm,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
-            <LayoutButtons Face="Ansk" Type="Passive" Behavior="Ansk" Row="2" Column="1"/>
         </CardLayouts>
         <PlaneArray index="Air" value="1"/>
         <Collide index="Ground" value="0"/>
@@ -2628,8 +2657,8 @@
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="90"/>
         <KillResource index="Custom" value="90"/>
-        <LifeStart value="2100"/>
-        <LifeMax value="2100"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
         <Speed value="2"/>
         <Race value="Dragon"/>
         <Mover value="amph"/>
@@ -2724,12 +2753,10 @@
         <AbilArray Link="DragonInventory"/>
         <AbilArray Link="UpgradeTonser"/>
         <BehaviorArray Link="ACsk"/>
-        <BehaviorArray Link="Ansk"/>
         <BehaviorArray Link="dragon"/>
         <CardLayouts index="0">
             <LayoutButtons Face="nser" Type="AbilCmd" AbilCmd="UpgradeTonser,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
-            <LayoutButtons Face="Ansk" Type="Passive" Behavior="Ansk" Row="2" Column="1"/>
         </CardLayouts>
         <PlaneArray index="Air" value="1"/>
         <Collide index="Ground" value="0"/>
@@ -3670,7 +3697,6 @@
         <Height value="2.539"/>
         <AbilArray Link="DragonInventory"/>
         <AbilArray Link="UpgradeTonthr"/>
-        <AbilArray Link="AEah"/>
         <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="Acor"/>
         <BehaviorArray Link="dragon"/>
@@ -3678,15 +3704,13 @@
             <LayoutButtons Face="nthr" Type="AbilCmd" AbilCmd="UpgradeTonthr,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
             <LayoutButtons Face="Acor" Type="Passive" Behavior="Acor" Row="2" Column="1"/>
-            <LayoutButtons Face="AEah" Type="Passive" Behavior="AEah" Row="2" Column="2"/>
+            <LayoutButtons Face="Dream" Type="Passive" Row="2" Column="2"/>
         </CardLayouts>
         <PlaneArray index="Air" value="1"/>
         <Collide index="Ground" value="0"/>
         <Collide index="ForceField" value="0"/>
         <Collide index="Flying" value="1"/>
         <GlossaryCategory value="Unit/Category/DragonUnits"/>
-        <EnergyStart value="60"/>
-        <EnergyMax value="60"/>
         <AttackTargetPriority value="21"/>
     </CUnit>
     <!--Green Dragon Whelp-->
@@ -4062,9 +4086,9 @@
     <!--magnataur destroyer-->
     <CUnit id="nmgd" parent="AW2_Creep" defType="LARGE">
         <Attributes index="large" value="1"/>
-        <KillResource index="Custom" value="675"/>
-        <LifeStart value="16200"/>
-        <LifeMax value="16200"/>
+        <KillResource index="Custom" value="820"/>
+        <LifeStart value="12300"/>
+        <LifeMax value="12300"/>
         <Speed value="2"/>
         <Race value="Creeps"/>
         <Mover value="foot"/>
@@ -4073,7 +4097,6 @@
             <LayoutButtons Face="ACce" Type="Passive" Behavior="ACce" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
-        <LifeArmor value="10"/>
         <Radius value="0.875"/>
         <MinimapRadius value="0.875"/>
         <SeparationRadius value="0.875"/>
@@ -4082,18 +4105,13 @@
     <!--magnataur reaver-->
     <CUnit id="nmgr" parent="AW2_Creep" defType="LARGE">
         <Attributes index="large" value="1"/>
-        <KillResource index="Custom" value="225"/>
-        <LifeStart value="5400"/>
-        <LifeMax value="5400"/>
+        <KillResource index="Custom" value="800"/>
+        <LifeStart value="12000"/>
+        <LifeMax value="12000"/>
         <Speed value="2"/>
         <Race value="Creeps"/>
         <Mover value="foot"/>
-        <AbilArray Link="ACce"/>
-        <CardLayouts index="0">
-            <LayoutButtons Face="ACce" Type="Passive" Behavior="ACce" Row="2" Column="0"/>
-        </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
-        <LifeArmor value="10"/>
         <Radius value="0.75"/>
         <MinimapRadius value="0.75"/>
         <SeparationRadius value="0.75"/>
@@ -4122,14 +4140,17 @@
     <!--magnataur warrior-->
     <CUnit id="nmgw" parent="AW2_Creep" defType="LARGE">
         <Attributes index="large" value="1"/>
-        <KillResource index="Custom" value="75"/>
-        <LifeStart value="1800"/>
-        <LifeMax value="1800"/>
+        <KillResource index="Custom" value="360"/>
+        <LifeStart value="5400"/>
+        <LifeMax value="5400"/>
         <Speed value="2"/>
         <Race value="Creeps"/>
         <Mover value="foot"/>
+        <AbilArray Link="ACce"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ACce" Type="Passive" Behavior="ACce" Row="2" Column="0"/>
+        </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
-        <LifeArmor value="10"/>
     </CUnit>
     <!--naga peon-->
     <CUnit id="nmpe" parent="AW2_Peon">
@@ -4743,7 +4764,8 @@
     <!--searinox-->
     <CUnit id="nser" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
-        <CostResource index="gold" value="1215"/>
+        <CostResource index="gold" value="405"/>
+        <CostResource index="lumber" value="16200"/>
         <KillResource index="Custom" value="1215"/>
         <LifeStart value="18900"/>
         <LifeMax value="18900"/>
@@ -4753,11 +4775,9 @@
         <Height value="2.539"/>
         <AbilArray index="4" Link="DragonInventory"/>
         <BehaviorArray Link="ACsk"/>
-        <BehaviorArray Link="Ansk"/>
         <BehaviorArray Link="dragon"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
-            <LayoutButtons Face="Ansk" Type="Passive" Behavior="Ansk" Row="2" Column="1"/>
         </CardLayouts>
         <PlaneArray index="Air" value="1"/>
         <Collide index="Ground" value="0"/>
@@ -4831,7 +4851,8 @@
     <!--tharifas-->
     <CUnit id="nthr" parent="AW2_Army" defType="SMALL">
         <Attributes index="small" value="1"/>
-        <CostResource index="gold" value="810"/>
+        <CostResource index="gold" value="270"/>
+        <CostResource index="lumber" value="10800"/>
         <KillResource index="Custom" value="810"/>
         <LifeStart value="13500"/>
         <LifeMax value="13500"/>
@@ -4840,23 +4861,20 @@
         <Mover value="fly"/>
         <Height value="2.539"/>
         <AbilArray index="4" Link="DragonInventory"/>
-        <AbilArray Link="AEah"/>
+        <AbilArray Link="Sleep"/>
         <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="Acor"/>
         <BehaviorArray Link="dragon"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
             <LayoutButtons Face="Acor" Type="Passive" Behavior="Acor" Row="2" Column="1"/>
-            <LayoutButtons Face="AEah" Type="Passive" Behavior="AEah" Row="2" Column="2"/>
-            <LayoutButtons Face="Dream" Type="Passive" Row="2" Column="3"/>
+            <LayoutButtons Face="Sleep" Type="AbilCmd" AbilCmd="Sleep,Execute" Row="2" Column="2"/>
         </CardLayouts>
         <PlaneArray index="Air" value="1"/>
         <Collide index="Ground" value="0"/>
         <Collide index="ForceField" value="0"/>
         <Collide index="Flying" value="1"/>
         <GlossaryCategory value="Unit/Category/DragonUnits"/>
-        <EnergyStart value="180"/>
-        <EnergyMax value="180"/>
         <AttackTargetPriority value="21"/>
     </CUnit>
     <CUnit id="nthr2LM" parent="War3_Missile"/>
@@ -4954,11 +4972,13 @@
         <Collide index="Flying" value="1"/>
         <GlossaryCategory value="Unit/Category/DragonUnits"/>
         <AttackTargetPriority value="21"/>
+        <LifeRegenRate value="-450"/>
     </CUnit>
     <!--azurelore-->
     <CUnit id="ubdr" parent="AW2_Army" defType="SMALL">
         <Attributes index="small" value="1"/>
-        <CostResource index="gold" value="810"/>
+        <CostResource index="gold" value="270"/>
+        <CostResource index="lumber" value="10800"/>
         <KillResource index="Custom" value="810"/>
         <LifeStart value="13500"/>
         <LifeMax value="13500"/>
@@ -5262,6 +5282,7 @@
         <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
         <EnergyStart value="60"/>
         <EnergyMax value="60"/>
+        <AttackTargetPriority value="21"/>
     </CUnit>
     <!--Orb of Corruption-->
     <CUnit id="ocor" parent="AW2_Item">
@@ -5971,8 +5992,8 @@
     <CUnit id="ugar" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
         <KillResource index="Custom" value="30"/>
-        <LifeStart value="450"/>
-        <LifeMax value="450"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
         <Speed value="3"/>
         <Race value="Undead"/>
         <Mover value="fly"/>
@@ -5991,7 +6012,7 @@
         <AttackTargetPriority value="21"/>
         <DeathTime value="-1"/>
         <EffectArray index="Death" value="ImmortalityGargoyle"/>
-        <LifeRegenRate value="-5"/>
+        <LifeRegenRate value="-10"/>
     </CUnit>
     <!--Ghoul-->
     <CUnit id="ugho" parent="AW2_Army" defType="LARGE">
@@ -6039,6 +6060,7 @@
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/UndeadUnits"/>
+        <AttackTargetPriority value="21"/>
     </CUnit>
     <!--kelthuzad ghost-->
     <CUnit id="uktg" parent="AW2_Army" defType="NONE">

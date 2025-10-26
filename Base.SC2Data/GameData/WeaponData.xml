@@ -576,6 +576,17 @@
         <DamagePoint value="0.633"/>
         <Backswing value="0.337"/>
     </CWeaponLegacy>
+    <!--Mountain Giant-->
+    <CWeaponLegacy id="emtg1" parent="normal" atkType="NORMAL">
+        <EditorCategories value="Race:NightElf"/>
+        <MinScanRange value="3.9062"/>
+        <TargetFilters value="Visible;air,Missile,ethereal,dead,invulnerable"/>
+        <Range value="1"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="3"/>
+        <DamagePoint value="0.49"/>
+        <Backswing value="1"/>
+    </CWeaponLegacy>
     <!--Huntress-->
     <CWeaponLegacy id="esen1" parent="mbounce" atkType="NORMAL">
         <Effect value="esen1LM"/>
@@ -749,7 +760,7 @@
         <DamagePoint value="0.53"/>
         <Backswing value="0.56"/>
     </CWeaponLegacy>
-    <CWeaponLegacy id="nbdr2" parent="missile" atkType="CHAOS">
+    <CWeaponLegacy id="nbdr2" parent="missile" atkType="PIERCE">
         <Effect value="nbdr2LM"/>
         <MinScanRange value="4.6875"/>
         <TargetFilters value="Visible;ground,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,invulnerable"/>
@@ -787,7 +798,7 @@
         <DamagePoint value="0.94"/>
         <Backswing value="0.56"/>
     </CWeaponLegacy>
-    <CWeaponLegacy id="nbwm2" parent="missile" atkType="CHAOS">
+    <CWeaponLegacy id="nbwm2" parent="missile" atkType="PIERCE">
         <Effect value="nbwm2LM"/>
         <MinScanRange value="4.6875"/>
         <TargetFilters value="Visible;ground,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,invulnerable"/>
@@ -1637,16 +1648,16 @@
         <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
         <Range value="0.7812"/>
         <RangeSlop value="1.9531"/>
-        <Period value="1.5"/>
+        <Period value="3"/>
         <DamagePoint value="0.66"/>
         <Backswing value="0.84"/>
     </CWeaponLegacy>
-    <CWeaponLegacy id="nmgd2" parent="missile" atkType="CHAOS">
-        <MinScanRange value="12"/>
-        <TargetFilters value="Visible;ground,wall,tree,Missile,debris,item,ward,ethereal,dead,invulnerable"/>
-        <Range value="12"/>
+    <CWeaponLegacy id="nmgd2" parent="normal" atkType="CHAOS">
+        <MinScanRange value="3.9062"/>
+        <TargetFilters value="Visible;ground,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,invulnerable"/>
+        <Range value="0.7812"/>
         <RangeSlop value="1.9531"/>
-        <Period value="1.5"/>
+        <Period value="3"/>
         <DamagePoint value="0.66"/>
         <Backswing value="0.84"/>
     </CWeaponLegacy>
@@ -1656,26 +1667,35 @@
         <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
         <Range value="0.7812"/>
         <RangeSlop value="1.9531"/>
-        <Period value="1.5"/>
+        <Period value="3"/>
         <DamagePoint value="0.66"/>
         <Backswing value="0.84"/>
     </CWeaponLegacy>
-    <CWeaponLegacy id="nmgr2" parent="missile" atkType="CHAOS">
-        <MinScanRange value="12"/>
-        <TargetFilters value="Visible;ground,wall,tree,Missile,debris,item,ward,ethereal,dead,invulnerable"/>
-        <Range value="12"/>
+    <CWeaponLegacy id="nmgr2" parent="normal" atkType="CHAOS">
+        <MinScanRange value="3.9062"/>
+        <TargetFilters value="Visible;ground,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,invulnerable"/>
+        <Range value="0.7812"/>
         <RangeSlop value="1.9531"/>
-        <Period value="1.5"/>
+        <Period value="3"/>
         <DamagePoint value="0.66"/>
         <Backswing value="0.84"/>
     </CWeaponLegacy>
     <!--magnataur warrior-->
-    <CWeaponLegacy id="nmgw1" parent="normal" atkType="NORMAL">
+    <CWeaponLegacy id="nmgw1" parent="normal" atkType="CHAOS">
         <MinScanRange value="3.9062"/>
         <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
         <Range value="0.7812"/>
         <RangeSlop value="1.9531"/>
-        <Period value="1.5"/>
+        <Period value="3"/>
+        <DamagePoint value="0.66"/>
+        <Backswing value="0.84"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="nmgw2" parent="normal" atkType="CHAOS">
+        <MinScanRange value="3.9062"/>
+        <TargetFilters value="Visible;ground,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,invulnerable"/>
+        <Range value="0.7812"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="3"/>
         <DamagePoint value="0.66"/>
         <Backswing value="0.84"/>
     </CWeaponLegacy>
@@ -1926,7 +1946,7 @@
         <DamagePoint value="0.94"/>
         <Backswing value="0.56"/>
     </CWeaponLegacy>
-    <CWeaponLegacy id="nser2" parent="missile" atkType="CHAOS">
+    <CWeaponLegacy id="nser2" parent="missile" atkType="PIERCE">
         <Effect value="nser2LM"/>
         <MinScanRange value="4.6875"/>
         <TargetFilters value="Visible;ground,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,invulnerable"/>
@@ -2426,6 +2446,28 @@
         <DamagePoint value="0.633"/>
         <Backswing value="0.7"/>
         <Effect value="ugar2LM"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ugrm1" parent="missile" atkType="NORMAL">
+        <EditorCategories value="Race:Undead"/>
+        <MinScanRange value="3.9062"/>
+        <TargetFilters value="Visible;ground,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,invulnerable"/>
+        <Range value="1"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="3"/>
+        <DamagePoint value="0.33"/>
+        <Backswing value="1"/>
+        <Options index="CanInitiateAttackOrder" value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ugrm2" parent="missile" atkType="PIERCE">
+        <EditorCategories value="Race:Undead"/>
+        <MinScanRange value="3.9062"/>
+        <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
+        <Range value="2"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="3"/>
+        <DamagePoint value="0.633"/>
+        <Backswing value="0.7"/>
+        <Options index="CanInitiateAttackOrder" value="0"/>
     </CWeaponLegacy>
     <!--Ghoul-->
     <CWeaponLegacy id="ugho1" parent="normal" atkType="NORMAL">

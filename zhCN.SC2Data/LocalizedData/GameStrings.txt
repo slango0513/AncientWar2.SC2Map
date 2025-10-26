@@ -34,7 +34,7 @@ AHd2/Tip=激活圣盾术
 AHd2/Ubertip=在<d ref="Effect,BHd2,Duration"/>秒内使得该单位对所有的攻击免疫。
 AHds/Ubertip=在<d ref="Effect,BHds1,Duration"/>秒内使得圣骑士对所有的攻击免疫。
 AHfa/Ubertip=增加<d ref="Behavior,AHfa1,Modification.DamageDealtUnscaled[Melee]"/>点的火焰伤害。
-AHfs/Ubertip=召唤出一道巨大的火柱，持续时间为3秒，每秒对敌方的地面单位造成<d ref="Effect,AHfsFullDamage1,Amount"/>点的伤害。在火焰慢慢熄灭的过程中，敌方单位将持续受到极度轻微的伤害。
+AHfs/Ubertip=召唤出一道巨大的火柱，持续时间为3秒，每秒对敌方的地面单位造成<d ref="Effect,AHfsFullDamage1,Amount * 3"/>点的伤害。在火焰慢慢熄灭的过程中，敌方单位将持续受到极度轻微的伤害。
 AHhb/Ubertip=圣光术能治疗友方单位<d ref="Effect,AHhbHeal1,RechargeVitalRate"/>点的生命值或者对敌方的亡灵单位造成一半的伤害。
 AHre/Ubertip=复活周围<d ref="Effect,AHre,MaxCount"/>个友方单位。
 AHwe/Ubertip=召唤出一个具有<d ref="Unit,hwat,LifeStart"/>生命值的水元素来帮大魔法师进行战斗。攻击力为<d ref="Effect,hwat1,Amount"/>点。<n/>持续</c><d ref="Behavior,BHwe,Duration"/>秒。<n/><n/><c val="ffcc00">能攻击地面和空中单位。
@@ -175,7 +175,10 @@ AsdsPassive/Ubertip=死亡时对一定区域造成伤害，爆炸产生的冲击
 Aslo/Ubertip=减慢目标单位<d ref="1 - Behavior,Bslo,Modification.AttackSpeedMultiplier * 100"/>%的攻击速度和<d ref="1 - Behavior,Bslo,Modification.MoveSpeedMultiplier * 100"/>%的移动速度。<n/>持续<d ref="Behavior,Bslo,Duration"/>秒。
 Aspl/Ubertip=链接4个单位在一起。所有被灵魂连接作用的单位都可以将其50%受到的伤害转移到其他单位身上。<n/>持续<d ref="Behavior,Bspl,Duration"/>秒。
 Aspo/Ubertip=迟缓毒药攻击能造成每秒<d ref="Effect,BssdDPS,Amount"/>点的伤害，并在<d ref="Behavior,Bspo,Duration"/>秒内减慢敌人<d ref="1 - Behavior,Bspo,Modification.MoveSpeedMultiplier * 100"/>%的移动速度和<d ref="1 - Behavior,Bspo,Modification.AttackSpeedMultiplier * 100"/>%的攻击速度。
+Assk/Ubertip=降低所有施加在山岭巨人身上的伤害<d ref="-Behavior,Assk,DamageResponse.ModifyAmount"/>点。攻击不能低于<d ref="Behavior,Assk,DamageResponse.ClampMinimum"/>点。
+Astn/Ubertip=将石像鬼变成一尊雕像。<n/>石像鬼在这种状态下不能攻击敌人。
 Asud/Ubertip=出卖单位，返还<d ref="-Effect,Asud,SalvageFactor.Resource[Terrazine]*100"/>%的资源。
+Atau/Ubertip=最近的<d ref="Effect,AtauSearch,MaxCount"/>个单位会强迫攻击这个单位。<n/>持续<d ref="Behavior,Btau,Duration"/>秒。
 Attribute002/Name=游戏属性 (AW2)
 Attribute002/Value001/Name=混战
 Attribute002/Value002/Name=2V2V2V2
@@ -330,7 +333,9 @@ DragonFlag2/Tip=放置龙旗帜(决赛)
 DragonFlag2/Ubertip=放置龙旗帜(决赛)。
 Dragonspawn/Name=龙人
 Dream/Tip=梦境
-Dream/Ubertip=萨里法斯能创造一个梦境并使对手陷入其中。梦境是现实世界的倒影，做梦者将会和自身的影子进行无休止的战斗。<n/>造梦者无法在战斗中出现，也无法被引入梦境。
+Dream/Ubertip=绿龙能创造一个梦境并使对手陷入其中。梦境是现实世界的倒影，做梦者将会和自身的影子进行战斗。<n/>造梦者无法在战斗中出现，也无法被引入梦境。<n/><n/><c val="ffcc00">在奖励回合和决赛中无效。</c>
+DreamIllusion/Buffubertip=该单位是做梦者的幻象。
+DreamIllusion/Name=梦境幻象
 Edem/Tip=训练恶魔猎手
 Eevi/Tip=升级到伊利丹
 Effect/Name/AIpv=AIpv
@@ -354,6 +359,8 @@ Effect/Name/OrderSubmerge1=OrderSubmerge1
 Effect/Name/PhalanxMarker=PhalanxMarker
 Effect/Name/PhalanxMarkerCopy=PhalanxMarkerCopy
 Effect/Name/PhalanxMarkerRemove=PhalanxMarkerRemove
+Effect/Name/SleepSearch=SleepSearch
+Effect/Name/SleepSet=SleepSet
 Effect/Name/SubmergeTeleport=SubmergeTeleport
 Effect/Name/Swimming=Swimming
 Effect/Name/SwimmingAmphibian=SwimmingAmphibian
@@ -412,7 +419,7 @@ Hjai/Propernames=吉安娜
 Hjai/Tip=升级到吉安娜
 Hjai/Ubertip=基本的远程攻击单位，能施放变羊术。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 Hkal/Tip=升级到凯尔
-Hkal/Ubertip=远程攻击型魔法施放单位，精于对魔法的控制。具有法力恢复光环技能。<n/><n/><c val="ffcc00">攻击地面和空中单位。</c>
+Hkal/Ubertip=远程攻击型魔法施放单位，精于对魔法的控制。具有放逐术和法力恢复光环技能。<n/><n/><c val="ffcc00">攻击地面和空中单位。</c>
 Hlgr/Name=黑暗骑士
 Hlgr/Tip=升级到黑暗骑士
 Hlgr/Ubertip=骑兵，具有虔诚光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
@@ -514,7 +521,6 @@ Othr/Ubertip=高速远程攻击骑兵，能召唤幽魂之狼。<n/><n/><c val="
 Param/Expression/07B716C9=需要共~A~名用户或电脑玩家，每个队伍需要~B~名玩家，游戏将在~C~秒后结束。
 Param/Expression/0DD76344=Plx ~A~ UT ~B~ Counter ~C~
 Param/Expression/0E472FCC=奖励回合<c val="FFFF00">~A~</c>：<c val="FFFF00">~B~</c>
-Param/Expression/24CA9989=P~A~<-~B~
 Param/Expression/2BCCABE1=奖励回合<c val="FFFF00">~A~</c>
 Param/Expression/2F7B45C0=RoundR ~A~ = ~B~, ~C~ = ~D~, ~E~ = ~F~, ~G~ = ~H~, ~I~ = ~J~, ~K~ = ~L~, ~M~ = ~N~
 Param/Expression/4CA5E705=~A~
@@ -580,6 +586,9 @@ RotationSystemUn/Tip=关闭轮换制
 RotationSystemUn/Ubertip=关闭轮换制。
 SeaElemental/Buffubertip=召唤单位容易遭到驱散。
 SeaElemental/Name=海元素
+Sleep/Name=睡眠
+Sleep/Tip=睡眠
+Sleep/Ubertip=在<d ref="Effect,AUsl1Dur,Duration"/>秒内使最多<d ref="Effect,SleepSearch,MaxCount"/>个非龙族单位处于睡眠状态。该单位被攻击以后会自动醒来。
 StellarFlare/Name=恒星耀斑
 StellarFlare/Tip=恒星耀斑
 StellarFlare/Ubertip=对敌人造成<d ref="Effect,AEsfDamage,Amount"/>点的伤害。
@@ -692,6 +701,7 @@ edot/Ubertip=基本的远程攻击单位。<n/><n/><c val="ffcc00">能攻击地�
 edry/Ubertip=远程攻击单位，具有多重射击技能。她的毒性攻击能减慢敌人的速度并慢慢地消耗敌人的生命值。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ehpr/Tip=训练角鹰兽骑士
 ehpr/Ubertip=弓箭手骑乘在了角鹰兽上面就成为了角鹰兽骑士。拥有艾露恩的赐福技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+emtg/Ubertip=大型的近战单位，善于吸收敌人的进攻。具有嘲讽、硬化皮肤和抗性皮肤技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 enec/Tip=升级到暗夜精灵信使
 enec/Ubertip=基本的地面单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 esen/Ubertip=高速远程攻击骑兵，具有月刃技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
@@ -744,7 +754,7 @@ nbda/Ubertip=远程攻击型魔法施放单位，具有抗性皮肤和冰霜新�
 nbdo/Tip=升级到蓝龙人监军
 nbdo/Ubertip=<c val="ffcc00">精英</c><n/>近战型的魔法施放单位，具有抗性皮肤、冰霜呼吸和虔诚光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nbdr/Tip=训练黑色雏龙
-nbdr/Ubertip=重型的远程攻击飞行单位，具有抗性皮肤和硬化皮肤技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+nbdr/Ubertip=重型的远程攻击飞行单位，能有效地抵抗敌人的空中单位。具有抗性皮肤技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nbds/Tip=升级到蓝色龙人巫师
 nbds/Ubertip=<c val="ffcc00">精英</c><n/>远程攻击型魔法施放单位，具有抗性皮肤、冰霜新星和法力恢复光环。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nbdw/Ubertip=近战型的魔法施放单位，具有抗性皮肤和冰霜呼吸技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
@@ -752,7 +762,7 @@ nbel/Ubertip=精灵战士，被训练来消灭法师。拥有魔法防御技能�
 nbld/Tip=升级到强盗头子
 nbld/Ubertip=高速骑兵，具有震荡波技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nbwm/Tip=升级到黑龙
-nbwm/Ubertip=<c val="ffcc00">精英</c><n/>重型的远程攻击飞行单位，具有抗性皮肤和硬化皮肤技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+nbwm/Ubertip=<c val="ffcc00">精英</c><n/>重型的远程攻击飞行单位，能有效地抵抗敌人的空中单位。具有抗性皮肤技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nbzd/Tip=升级到青铜龙
 nbzd/Ubertip=<c val="ffcc00">精英</c><n/>远程攻击飞行单位，具有抗性皮肤和永恒光环技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nbzw/Tip=训练青铜雏龙
@@ -799,7 +809,7 @@ nftr/Tip=升级到森林巨魔
 nftt/Tip=训练森林巨魔捕兽者
 nftt/Ubertip=远程攻击单位。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ngbl/Tip=升级到地精爆破工
-ngbl/Ubertip=重型的近战单位，由钢铁做成，擅长采集木材。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+ngbl/Ubertip=重型的近战单位，由钢铁做成，擅长采集木材，还能施放圣盾术。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ngh1/Tip=升级到幽灵
 ngh1/Ubertip=魔法单位，能施放占据。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ngir/Tip=训练地精伐木机
@@ -815,7 +825,7 @@ ngns/Ubertip=轻型远程攻击单位，具有多重射击技能，能射出毒�
 ngnv/Ubertip=重型近战单位，具有分裂攻击技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ngnw/Ubertip=轻型远程攻击单位，具有多重射击技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ngrd/Tip=升级到绿龙
-ngrd/Ubertip=<c val="ffcc00">精英</c><n/>远程攻击飞行单位，具有抗性皮肤、腐蚀吐息和荆棘光环技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+ngrd/Ubertip=<c val="ffcc00">精英</c><n/>远程攻击飞行单位，具有抗性皮肤、腐蚀吐息和梦境技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ngrw/Tip=训练绿色雏龙
 ngrw/Ubertip=远程攻击飞行单位，具有抗性皮肤和腐蚀吐息技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ngs2/Name=地精工兵
@@ -881,7 +891,7 @@ nrvd/Ubertip=防御型单位，能施放霜甲术。<n/><n/><c val="ffcc00">能�
 nrwm/Tip=升级到红龙
 nrwm/Ubertip=<c val="ffcc00">精英</c><n/>远程攻击飞行单位，具有抗性皮肤、火焰吐息和生命恢复光环技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nser/Tip=升级到塞瑞诺克斯
-nser/Ubertip=<c val="ffcc00">世界精英</c><n/>耐萨里奥的守护者，具有抗性皮肤和硬化皮肤技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+nser/Ubertip=<c val="ffcc00">世界精英</c><n/>耐萨里奥的守护者，具有抗性皮肤技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nsnp/Tip=训练海龙
 nsnp/Ubertip=远程攻击单位，有着毒性攻击，可以缓慢和伤害敌单位。拥有潜水技能，可以隐藏在水中。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nss2/Name=暗夜精灵刺客
@@ -889,7 +899,7 @@ nssn/Name=暗夜精灵刺客
 nssn/Tip=训练刺客
 nssn/Ubertip=防御型单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nthr/Tip=升级到萨里法斯
-nthr/Ubertip=<c val="ffcc00">世界精英</c><n/>伊瑟拉的守护者，具有抗性皮肤、腐蚀吐息和荆棘光环技能，还拥有梦境技能，可以使敌人陷入最可怕的噩梦。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+nthr/Ubertip=<c val="ffcc00">世界精英</c><n/>伊瑟拉的守护者，具有抗性皮肤和腐蚀吐息技能，还拥有睡眠技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ntr2/Name=海龟
 ntr3/Name=海龟
 ntrd/Ubertip=重型近战两栖单位，具有分裂攻击和尖刺外壳技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
