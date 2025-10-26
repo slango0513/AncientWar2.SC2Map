@@ -396,9 +396,8 @@ void gf_ModInizialization (bool lp_debug) {
     TriggerEnable(libGAw3_gt_ChangeOwerToCreep, false);
     TriggerEnable(libGAwX_gt_RegisterChannelingUnits, false);
     TriggerEnable(libGAwX_gt_ChannelStopCancel, false);
-    TriggerEnable(libGAwX_gt_AdefDefendInitRegister, false);
+    TriggerEnable(libGAwX_gt_AbilClassDefendDamageAbosorbed, false);
     TriggerEnable(libGAwX_gt_moonMoonstoneChangeTOD, false);
-    TriggerEnable(libGAwX_gt_AegrElunesGraceRegister, false);
     TriggerEnable(libGAwX_gt_AOmiRemoveAllNonPermanent, false);
     TriggerEnable(libGAwX_gt_AOmiLaunch, false);
     TriggerEnable(libGAwX_gt_AOmiMarker, false);
@@ -448,6 +447,7 @@ void gf_RoundStartLoop (bool lp_debug) {
 
     // Implementation
     if ((gv_testPassed == true)) {
+        gf_UserSkinSet();
         gf_AddTip();
         gf_AddInfoAtBuildRegion(false);
         if ((lp_debug == true)) {
