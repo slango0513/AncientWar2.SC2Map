@@ -43,6 +43,36 @@
     </CEffectModifyUnit>
     <!--Neutral Regen (health only)-->
     <CEffectEnumArea id="ACnrSearch" parent="War3_AuraSearch" aura="BCnr"/>
+    <CEffectEnumArea id="AEahSearch">
+        <AreaArray index="0" Radius="7.0312" Effect="BEahSet"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="AEfk1Damage">
+        <Amount value="25"/>
+    </CEffectDamage>
+    <!--Warden - Fan of Knives-->
+    <CEffectEnumArea id="AEfk1Search">
+        <MaxCount value="4294967295"/>
+    </CEffectEnumArea>
+    <!--Roar Dur=45 HeroDur=45 Buff=Broa-->
+    <CEffectEnumArea id="AroaSearch">
+        <AreaArray index="0" Radius="7.0312" Effect="Broa"/>
+    </CEffectEnumArea>
+    <CEffectSet id="BEahSet">
+        <EffectArray value="BEah"/>
+        <EffectArray value="BEahDamageAbsorption"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="BEahDamageAbsorption" parent="War3_AuraBuff"/>
+    <CEffectModifyUnit id="BEahManaLoss">
+        <LaunchUnit Value="Target"/>
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Energy" Change="-3"/>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="AEer1Dur">
+        <Duration value="15"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AEer1HeroDur">
+        <Duration value="5"/>
+    </CEffectApplyBehavior>
     <CEffectDamage id="AHbhExtraDamage">
         <Amount value="50"/>
     </CEffectDamage>
@@ -124,6 +154,12 @@
     </CEffectSet>
     <CEffectDamage id="BdigDPS">
         <Amount value="30"/>
+    </CEffectDamage>
+    <CEffectCreateHealer id="BrejHealTick">
+        <RechargeVitalRate value="75"/>
+    </CEffectCreateHealer>
+    <CEffectDamage id="BssdDPS">
+        <Amount value="10"/>
     </CEffectDamage>
     <CEffectSet id="CallTide">
         <EditorCategories value="Race:Naga"/>
@@ -287,20 +323,64 @@
     <CEffectIssueOrder id="CritterFleeIssueOrder">
         <Abil value="Amov"/>
     </CEffectIssueOrder>
+    <CEffectDamage id="Edem1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="120"/>
+    </CEffectDamage>
+    <CEffectDamage id="Eevi1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="120"/>
+    </CEffectDamage>
     <CEffectDamage id="Efur1" parent="AW2_MagicDamage">
         <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="Ekee1" parent="AW2_PierceDamage">
         <Amount value="12"/>
     </CEffectDamage>
+    <CEffectSet id="Ekee1MultishotSet">
+        <EffectArray value="Ekee1LM"/>
+        <EffectArray value="Ekee1Multishot"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="Ekee1Multishot" parent="AW2_Multishot">
+        <PeriodCount value="3"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <Marker Link="Effect/Ekee1LM"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="Ekee1MultishotSearch" parent="AW2_MultishotSearch">
+        <AreaArray index="0" MaxCount="1" Radius="9" Effect="Ekee1LM"/>
+        <SearchFilters value="Visible;player,allies,neutral,wall,tree,Missile,item,ethereal,dead,Hidden,invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
+    </CEffectEnumArea>
     <CEffectDamage id="Ekgg1" parent="AW2_PierceDamage">
         <Amount value="12"/>
     </CEffectDamage>
+    <CEffectSet id="Ekgg1MultishotSet">
+        <EffectArray value="Ekgg1LM"/>
+        <EffectArray value="Ekgg1Multishot"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="Ekgg1Multishot" parent="AW2_Multishot">
+        <PeriodCount value="3"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <Marker Link="Effect/Ekgg1LM"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="Ekgg1MultishotSearch" parent="AW2_MultishotSearch">
+        <AreaArray index="0" MaxCount="1" Radius="9" Effect="Ekgg1LM"/>
+        <SearchFilters value="Visible;player,allies,neutral,wall,tree,Missile,item,ethereal,dead,Hidden,invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
+    </CEffectEnumArea>
     <CEffectDamage id="Emns1" parent="AW2_MagicDamage">
         <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="Emoo1" parent="AW2_NormalDamage">
         <Amount value="120"/>
+    </CEffectDamage>
+    <CEffectDamage id="Ewar1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="12"/>
     </CEffectDamage>
     <CEffectDamage id="Hamg1" parent="AW2_MagicDamage">
         <Amount value="96"/>
@@ -440,6 +520,14 @@
         <SearchFilters value="-;air,wall,tree,Missile,item,ward,ethereal,dead,invulnerable"/>
         <Death value="Blast"/>
     </CEffectDamage>
+    <CEffectDamage id="ebal2" parent="AW2_SiegeDamage">
+        <Amount value="48"/>
+        <AreaArray Radius="0.1953" Fraction="1"/>
+        <AreaArray Radius="0.3906" Fraction="0.4"/>
+        <AreaArray Radius="1.1718" Fraction="0.25"/>
+        <SearchFilters value="-;air,wall,Missile,item,ward,ethereal,dead,invulnerable"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
     <CEffectDamage id="edcm1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
         <Amount value="96"/>
@@ -451,12 +539,17 @@
     <CEffectDamage id="edot1" parent="AW2_MagicDamage">
         <Amount value="24"/>
     </CEffectDamage>
+    <CEffectSet id="edry1MultishotSet">
+        <EffectArray value="edry1LM"/>
+        <EffectArray value="edry1Multishot"/>
+    </CEffectSet>
     <CEffectCreatePersistent id="edry1Multishot" parent="AW2_Multishot">
-        <PeriodCount value="3"/>
+        <PeriodCount value="2"/>
         <PeriodicPeriodArray value="0.125"/>
+        <Marker Link="Effect/edry1LM"/>
     </CEffectCreatePersistent>
     <CEffectEnumArea id="edry1MultishotSearch" parent="AW2_MultishotSearch">
-        <AreaArray index="0" MaxCount="1" Radius="7" Effect="edry1LM"/>
+        <AreaArray index="0" MaxCount="1" Radius="9" Effect="edry1LM"/>
         <SearchFilters value="Visible;player,allies,neutral,wall,tree,Missile,item,ethereal,dead,Hidden,invulnerable"/>
         <TargetSorts>
             <SortArray value="TSLifeLargestFirst"/>
@@ -573,6 +666,10 @@
     <CEffectDamage id="nckb1" parent="AW2_ChaosDamage">
         <Amount value="36"/>
     </CEffectDamage>
+    <CEffectDamage id="ndr11" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="24"/>
+    </CEffectDamage>
     <CEffectDamage id="ndrv1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
         <Amount value="24"/>
@@ -610,12 +707,17 @@
         <Kind value="Melee"/>
         <Amount value="96"/>
     </CEffectDamage>
+    <CEffectSet id="ngns1MultishotSet">
+        <EffectArray value="ngns1LM"/>
+        <EffectArray value="ngns1Multishot"/>
+    </CEffectSet>
     <CEffectCreatePersistent id="ngns1Multishot" parent="AW2_Multishot">
         <PeriodCount value="9"/>
         <PeriodicPeriodArray value="0"/>
+        <Marker Link="Effect/ngns1LM"/>
     </CEffectCreatePersistent>
     <CEffectEnumArea id="ngns1MultishotSearch" parent="AW2_MultishotSearch">
-        <AreaArray index="0" MaxCount="1" Radius="12" Effect="ngns1LM"/>
+        <AreaArray index="0" MaxCount="1" Radius="15" Effect="ngns1LM"/>
         <SearchFilters value="Visible;player,allies,neutral,wall,tree,Missile,item,ethereal,dead,Hidden,invulnerable"/>
         <TargetSorts>
             <SortArray value="TSLifeLargestFirst"/>
@@ -628,12 +730,17 @@
         <Kind value="Melee"/>
         <Amount value="96"/>
     </CEffectDamage>
+    <CEffectSet id="ngnw1MultishotSet">
+        <EffectArray value="ngnw1LM"/>
+        <EffectArray value="ngnw1Multishot"/>
+    </CEffectSet>
     <CEffectCreatePersistent id="ngnw1Multishot" parent="AW2_Multishot">
         <PeriodCount value="9"/>
         <PeriodicPeriodArray value="0"/>
+        <Marker Link="Effect/ngnw1LM"/>
     </CEffectCreatePersistent>
     <CEffectEnumArea id="ngnw1MultishotSearch" parent="AW2_MultishotSearch">
-        <AreaArray index="0" MaxCount="1" Radius="12" Effect="ngnw1LM"/>
+        <AreaArray index="0" MaxCount="1" Radius="15" Effect="ngnw1LM"/>
         <SearchFilters value="Visible;player,allies,neutral,wall,tree,Missile,item,dead,Hidden,invulnerable,immunity"/>
         <TargetSorts>
             <SortArray value="TSLifeLargestFirst"/>
@@ -800,9 +907,14 @@
         <Kind value="Melee"/>
         <Amount value="24"/>
     </CEffectDamage>
+    <CEffectSet id="nsnp1MultishotSet">
+        <EffectArray value="nsnp1LM"/>
+        <EffectArray value="nsnp1Multishot"/>
+    </CEffectSet>
     <CEffectCreatePersistent id="nsnp1Multishot" parent="AW2_Multishot">
         <PeriodCount value="3"/>
         <PeriodicPeriodArray value="0.125"/>
+        <Marker Link="Effect/nsnp1LM"/>
     </CEffectCreatePersistent>
     <CEffectEnumArea id="nsnp1MultishotSearch" parent="AW2_MultishotSearch">
         <AreaArray index="0" MaxCount="1" Radius="8" Effect="nsnp1LM"/>
@@ -813,6 +925,13 @@
     </CEffectEnumArea>
     <CEffectDamage id="nsnp1" parent="AW2_PierceDamage">
         <Amount value="12"/>
+    </CEffectDamage>
+    <CEffectDamage id="nssn1" parent="AW2_PierceDamage">
+        <Amount value="24"/>
+    </CEffectDamage>
+    <CEffectDamage id="nss21" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="ntrd1" parent="AW2_ChaosDamage">
         <Kind value="Melee"/>
@@ -829,17 +948,6 @@
         <Amount value="24"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="ntrs1LM" parent="War3_Missile" weaponid="ntrs1"/>
-    <CEffectCreatePersistent id="ntrt1Multishot" parent="AW2_Multishot">
-        <PeriodCount value="3"/>
-        <PeriodicPeriodArray value="0"/>
-    </CEffectCreatePersistent>
-    <CEffectEnumArea id="ntrt1MultishotSearch" parent="AW2_MultishotSearch">
-        <AreaArray index="0" MaxCount="1" Radius="12" Effect="ntrt1LM"/>
-        <SearchFilters value="Visible;player,allies,neutral,wall,tree,Missile,item,ethereal,dead,Hidden,invulnerable"/>
-        <TargetSorts>
-            <SortArray value="TSDistance"/>
-        </TargetSorts>
-    </CEffectEnumArea>
     <CEffectDamage id="ntrt1" parent="AW2_PierceDamage">
         <Amount value="24"/>
     </CEffectDamage>
@@ -869,6 +977,10 @@
         <PeriodicPeriodArray value="0.35"/>
     </CEffectCreatePersistent>
     <CEffectDamage id="nwat1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="24"/>
+    </CEffectDamage>
+    <CEffectDamage id="enec1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
         <Amount value="24"/>
     </CEffectDamage>

@@ -61,6 +61,12 @@
     <CBehaviorBuff id="AHbh1">
         <DamageResponse Chance="0.25"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="AHfa1">
+        <Modification>
+            <DamageDealtUnscaled index="Melee" value="100"/>
+            <DamageDealtUnscaled index="Ranged" value="100"/>
+        </Modification>
+    </CBehaviorBuff>
     <!--continuous Defense Bonus,carry End-->
     <!--ATK Bonus Start-->
     <!--AttackBonus-->
@@ -172,6 +178,12 @@
         <DamageResponse Chance="0.5"/>
         <Modification CriticalAttackChanceScaledBonus="0.5"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="ANfa1">
+        <Modification>
+            <DamageDealtUnscaled index="Melee" value="50"/>
+            <DamageDealtUnscaled index="Ranged" value="50"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="AW2_Building" parent="War3_Passive">
         <Requirements value="AW2_Building"/>
         <Modification>
@@ -238,8 +250,21 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="Adef">
         <Modification MoveSpeedMultiplier="0.5"/>
+        <Requirements value=""/>
+    </CBehaviorBuff>
+    <!--Elune's Grace-->
+    <CBehaviorBuff id="Aegr">
+        <Requirements value=""/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Afsh">
+        <Requirements value=""/>
+    </CBehaviorBuff>
+    <!--Impaling Bolt-->
+    <CBehaviorBuff id="Aimp">
+        <Requirements value=""/>
+    </CBehaviorBuff>
+    <!--Moon Glaive-->
+    <CBehaviorBuff id="Amgl">
         <Requirements value=""/>
     </CBehaviorBuff>
     <!--Orb of Venom (Poison Attack) Dur=6 HeroDur=6 Buff=BIpb,BIpd-->
@@ -275,6 +300,27 @@
         <MaxStackCountPerCaster value="1"/>
         <EditorCategories value="Race:Orc,AbilityorEffectType:Units"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="BEahDamageAbsorption" parent="War3_AuraBuff">
+        <MaxStackCount value="0"/>
+        <MaxStackCountPerCaster value="1"/>
+        <DamageResponse Chance="1" Handled="BEahManaLoss" ModifyFraction="0">
+            <ExcludeEffectArray value="BaplDPS"/>
+            <ExcludeEffectArray value="BssdDPS"/>
+            <ExcludeEffectArray value="BpsdDPS"/>
+            <ExcludeEffectArray value="BIpdDPS"/>
+            <ExcludeEffectArray value="BNdoDPS"/>
+            <ExcludeEffectArray value="BNsoDPS1"/>
+        </DamageResponse>
+        <DisableValidatorArray value="CasterEnergyGE3"/>
+        <RemoveValidatorArray value="CasterNotDead"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BEar1">
+        <Modification>
+            <DamageDealtFraction index="Ranged" value="0.5"/>
+        </Modification>
+        <MaxStackCount value="0"/>
+        <MaxStackCountPerCaster value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="BHab1">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <MaxStackCount value="0"/>
@@ -298,6 +344,10 @@
     <!--Corruption-->
     <CBehaviorBuff id="BIcb">
         <Modification LifeArmorBonus="-10"/>
+    </CBehaviorBuff>
+    <!--BlackArrow-->
+    <CBehaviorBuff id="BNba">
+        <Duration value="3"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="BNht1">
         <Modification>
@@ -369,7 +419,11 @@
         <Modification MoveSpeedMultiplier="0.5"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Bcsd1">
-        <Modification MoveSpeedMultiplier="0.5"/>
+        <Modification MoveSpeedMultiplier="0.5" AttackSpeedMultiplier="0.5"/>
+    </CBehaviorBuff>
+    <!--FaerieFire-->
+    <CBehaviorBuff id="Bfae">
+        <Modification LifeArmorBonus="-10"/>
     </CBehaviorBuff>
     <!--Frost-->
     <CBehaviorBuff id="Bfro">
@@ -390,6 +444,15 @@
         <DurationOverride index="0" Duration="15">
             <ValidatorArray index="0" value="Hero"/>
         </DurationOverride>
+    </CBehaviorBuff>
+    <!--Roar-->
+    <CBehaviorBuff id="Broa">
+        <MaxStackCount value="0"/>
+        <MaxStackCountPerCaster value="1"/>
+        <Modification>
+            <DamageDealtFraction index="Melee" value="0.5"/>
+            <DamageDealtFraction index="Ranged" value="0.5"/>
+        </Modification>
     </CBehaviorBuff>
     <!--ReplenishLife-->
     <CBehaviorBuff id="Brpl">
@@ -419,6 +482,10 @@
         <DurationOverride index="0" Duration="15">
             <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
         </DurationOverride>
+    </CBehaviorBuff>
+    <!--SlowPoison-->
+    <CBehaviorBuff id="Bspo">
+        <Modification AttackSpeedMultiplier="0.5"/>
     </CBehaviorBuff>
     <!--TornadoSpin-->
     <CBehaviorBuff id="Btsp">

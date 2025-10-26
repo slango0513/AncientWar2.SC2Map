@@ -2,14 +2,8 @@
 <Catalog>
     <CUser default="1" id="AW2_User"/>
     <CUser id="AbilityDataDefendElunesGrace">
-        <Instances index="1" Id="Adef">
-            <Fixed index="0" Fixed="0.2998">
-                <Field Id="Chance To Deflect (Piercing)"/>
-            </Fixed>
-            <Fixed index="1" removed="1"/>
-        </Instances>
         <Instances Id="Defend">
-            <Fixed Fixed="0.5">
+            <Fixed Fixed="0.0998">
                 <Field Id="Damage Taken (Piercing)"/>
             </Fixed>
             <GameLink GameLink="DefendVisualDummy">
@@ -20,7 +14,7 @@
             </GameLink>
         </Instances>
         <Instances Id="Amdf">
-            <Fixed Fixed="0.2998">
+            <Fixed Fixed="0.75">
                 <Field Id="Chance To Deflect (Magic)"/>
             </Fixed>
             <GameLink GameLink="Amdf">
@@ -30,8 +24,18 @@
                 <Field Id="Deflect Effect"/>
             </GameLink>
         </Instances>
+        <Instances Id="[Override]Adef">
+            <Fixed Fixed="0.75">
+                <Field Id="Chance To Deflect (Piercing)"/>
+            </Fixed>
+        </Instances>
     </CUser>
     <CUser id="AbilityDataThornsAuraThornyShield">
+        <Instances Id="[Override]AEah">
+            <Fixed Fixed="0.5">
+                <Field Id="Damage To Attakers"/>
+            </Fixed>
+        </Instances>
         <Instances Id="[Override]ANth">
             <Fixed Fixed="1">
                 <Field Id="Damage To Attakers"/>
@@ -307,6 +311,20 @@
             <Int Int="3">
                 <Field Id="Count"/>
             </Int>
+            <Unit Unit="nwat">
+                <Field Id="UnitType"/>
+            </Unit>
+        </Instances>
+        <Instances Id="enec">
+            <Int Int="6">
+                <Field Id="Count"/>
+            </Int>
+            <Int Int="3">
+                <Field Id="Count" Index="1"/>
+            </Int>
+            <Unit Unit="enec">
+                <Field Id="UnitType" Index="1"/>
+            </Unit>
             <Unit Unit="nwat">
                 <Field Id="UnitType"/>
             </Unit>
@@ -1401,6 +1419,50 @@
             </Unit>
             <Unit Unit="nhyc">
                 <Field Id="UnitType" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="nssn">
+            <Int Int="2">
+                <Field Id="Count"/>
+            </Int>
+            <Unit Unit="nssn">
+                <Field Id="UnitType"/>
+            </Unit>
+        </Instances>
+        <Instances Id="Ewar">
+            <Int Int="5">
+                <Field Id="Count"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="Count" Index="1"/>
+            </Int>
+            <Unit Unit="nss2">
+                <Field Id="UnitType"/>
+            </Unit>
+            <Unit Unit="Ewar">
+                <Field Id="UnitType" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="Edem">
+            <Int Int="1">
+                <Field Id="Count"/>
+            </Int>
+            <Unit Unit="Edem">
+                <Field Id="UnitType"/>
+            </Unit>
+        </Instances>
+        <Instances Id="Eevi">
+            <Int Int="2">
+                <Field Id="Count"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="Count" Index="1"/>
+            </Int>
+            <Unit Unit="Eevi">
+                <Field Id="UnitType" Index="1"/>
+            </Unit>
+            <Unit Unit="Edem">
+                <Field Id="UnitType"/>
             </Unit>
         </Instances>
     </CUser>
