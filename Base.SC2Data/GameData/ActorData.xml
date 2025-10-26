@@ -866,12 +866,30 @@
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
     <!--chaosgrunt-->
-    <CActorUnit id="nchg">
+    <CActorUnit id="nchg" parent="War3_Army" unitSound="ChaosGrunt" unitName="nchg" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnChaosGrunt.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnChaosGrunt.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnChaosGrunt.dds"/>
+        <BarWidth value="50"/>
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_UndeadLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <!--chaoswolfrider-->
-    <CActorUnit id="nchr">
+    <CActorUnit id="nchr" parent="War3_Army" unitSound="Wolfrider" unitName="nchr" defType="SMALL">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnChaosWolfRider.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnChaosWolfRider.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnChaosWolfRider.dds"/>
+        <BarWidth value="80"/>
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_UndeadLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.7343"/>
     </CActorUnit>
     <!--chaoswarlock-->
     <CActorUnit id="nchw" defType="NONE">
@@ -1222,7 +1240,7 @@
         <WalkAnimMoveSpeed value="1.4843"/>
     </CActorUnit>
     <!--murgulreaver-->
-    <CActorUnit id="nmrv" parent="War3_Army" unitSound="Murloc" unitName="nmrv" defType="LARGE">
+    <CActorUnit id="nmrv" parent="War3_Army" unitSound="Murloc" unitName="nmrv" defType="SMALL">
         <On Terms="Behavior.MurgulReaverSwim.On" Send="AnimGroupApply Swim"/>
         <On Terms="Behavior.MurgulReaverSwim.Off" Send="AnimGroupRemove Swim"/>
         <On Terms="Behavior.MurgulReaverSwim.On" Send="SetWalkAnimMoveSpeed 3.5"/>
@@ -1272,7 +1290,7 @@
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
     </CActorUnit>
     <!--nagamurgul-->
-    <CActorUnit id="nnmg" parent="War3_Army" unitSound="Murloc" unitName="nnmg" defType="LARGE">
+    <CActorUnit id="nnmg" parent="War3_Army" unitSound="Murloc" unitName="nnmg" defType="SMALL">
         <On Terms="Behavior.NagaMurgulReaverSwim.On" Send="AnimGroupApply Swim"/>
         <On Terms="Behavior.NagaMurgulReaverSwim.Off" Send="AnimGroupRemove Swim"/>
         <On Terms="Behavior.NagaMurgulReaverSwim.On" Send="SetWalkAnimMoveSpeed 3.5"/>
@@ -1600,8 +1618,17 @@
         <PlacementModel value="War3_OrcCaptureFlag"/>
     </CActorUnit>
     <!--grunt-->
-    <CActorUnit id="ogru">
+    <CActorUnit id="ogru" parent="War3_Army" unitSound="Grunt" unitName="ogru" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnGrunt.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnGrunt.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnGrunt.dds"/>
+        <BarWidth value="50"/>
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <!--headhunter-->
     <CActorUnit id="ohun">
@@ -1621,9 +1648,17 @@
         <StatusBarFlags index="Custom" value="0"/>
     </CActorUnit>
     <!--wolfrider-->
-    <CActorUnit id="orai" defType="SMALL">
+    <CActorUnit id="orai" parent="War3_Army" unitSound="Wolfrider" unitName="orai" defType="SMALL">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnRaider.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnRaider.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnRaider.dds"/>
+        <BarWidth value="80"/>
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
-        <LifeArmorIcon value="Assets\Textures\UI\Widgets\Console\Human\infocard-armor-SMALL.tga"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.7343"/>
     </CActorUnit>
     <!--shaman-->
     <CActorUnit id="oshm">

@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
-    <const id="summoned" path="SDamageResponse.TargetFilters" value="Summoned"/>
-    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
     <const id="hero" path="SDamageResponse.TargetFilters" value="Resistant"/>
-    <const id="allies" path="SDamageResponse.TargetFilters" value="Ally"/>
+    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
+    <const id="summoned" path="SDamageResponse.TargetFilters" value="Summoned"/>
     <const id="air" path="SDamageResponse.TargetFilters" value="Air"/>
-    <const id="tree" path="SDamageResponse.TargetFilters" value="HarvestableResource"/>
+    <const id="allies" path="SDamageResponse.TargetFilters" value="Ally"/>
     <const id="item" path="SDamageResponse.TargetFilters" value="Item"/>
-    <const id="player" path="SDamageResponse.TargetFilters" value="Player"/>
+    <const id="tree" path="SDamageResponse.TargetFilters" value="HarvestableResource"/>
     <const id="ancient" path="SDamageResponse.TargetFilters" value="Psionic"/>
-    <const id="enemies" path="SDamageResponse.TargetFilters" value="Enemy"/>
+    <const id="player" path="SDamageResponse.TargetFilters" value="Player"/>
     <const id="structure" path="SDamageResponse.TargetFilters" value="PreventDefeat"/>
-    <const id="self" path="SDamageResponse.TargetFilters" value="Self"/>
-    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="enemies" path="SDamageResponse.TargetFilters" value="Enemy"/>
     <const id="mechanical" path="SDamageResponse.TargetFilters" value="Mechanical"/>
-    <const id="neutral" path="SDamageResponse.TargetFilters" value="Neutral"/>
+    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="self" path="SDamageResponse.TargetFilters" value="Self"/>
     <const id="ground" path="SDamageResponse.TargetFilters" value="Ground"/>
+    <const id="neutral" path="SDamageResponse.TargetFilters" value="Neutral"/>
     <const id="wall" path="SDamageResponse.TargetFilters" value="Hover"/>
     <const id="dead" path="SDamageResponse.TargetFilters" value="Dead"/>
     <const id="ethereal" path="SDamageResponse.TargetFilters" value="Stasis"/>
-    <const id="invulnerable" path="SDamageResponse.TargetFilters" value="Invulnerable"/>
     <const id="debris" path="SDamageResponse.TargetFilters" value="Destructible"/>
+    <const id="invulnerable" path="SDamageResponse.TargetFilters" value="Invulnerable"/>
     <CBehaviorBuff default="1" id="AW2_UnitSwim">
         <DisableValidatorArray value="HasSwimmingAmphibian"/>
         <BehaviorFlags index="Permanent" value="1"/>
@@ -313,10 +313,11 @@
         </DamageResponse>
         <DisableValidatorArray value="CasterEnergyGE3"/>
         <RemoveValidatorArray value="CasterNotDead"/>
+        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="BEar1">
         <Modification>
-            <DamageDealtFraction index="Ranged" value="0.5"/>
+            <DamageDealtFraction index="Ranged" value="0.25"/>
         </Modification>
         <MaxStackCount value="0"/>
         <MaxStackCountPerCaster value="1"/>
@@ -421,9 +422,17 @@
     <CBehaviorBuff id="Bcsd1">
         <Modification MoveSpeedMultiplier="0.5" AttackSpeedMultiplier="0.5"/>
     </CBehaviorBuff>
+    <!--Cyclone-->
+    <CBehaviorBuff id="Bcyc">
+        <Duration value="12"/>
+    </CBehaviorBuff>
     <!--FaerieFire-->
     <CBehaviorBuff id="Bfae">
         <Modification LifeArmorBonus="-10"/>
+        <Duration value="30"/>
+        <DurationOverride index="0" Duration="10">
+            <ValidatorArray index="0" value="Hero"/>
+        </DurationOverride>
     </CBehaviorBuff>
     <!--Frost-->
     <CBehaviorBuff id="Bfro">
@@ -440,8 +449,8 @@
     <!--Polymorph-->
     <CBehaviorBuff id="Bply">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
-        <Duration value="15"/>
-        <DurationOverride index="0" Duration="15">
+        <Duration value="10"/>
+        <DurationOverride index="0" Duration="10">
             <ValidatorArray index="0" value="Hero"/>
         </DurationOverride>
     </CBehaviorBuff>
@@ -472,7 +481,7 @@
     <!--Slow-->
     <CBehaviorBuff id="Bslo">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
-        <Duration value="15"/>
+        <Duration value="10"/>
         <Modification MoveSpeedMultiplier="0.5" AttackSpeedMultiplier="0.5"/>
     </CBehaviorBuff>
     <!--SpiritLink-->

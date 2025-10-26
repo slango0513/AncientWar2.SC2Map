@@ -3129,6 +3129,7 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     int lv_player;
 
     // Variable Initialization
+    lv_debug = true;
 
     // Actions
     if (!runActions) {
@@ -3147,10 +3148,7 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
         lv_player = PlayerGroupPlayer(autoE8E91B19_g, autoE8E91B19_p);
         VisRevealArea(lv_player, RegionFromId(70), 0.0625, false);
         VisRevealArea(lv_player, RegionFromId(71), 0.0625, false);
-        if ((PlayerRace(lv_player) == "Orc")) {
-            libGAwX_gf_SetPlayerUIRace(lv_player, "Undead");
-        }
-
+        libGAwX_gf_SetPlayerUIRace(lv_player, "Orc");
     }
     libGAwX_gf_SetWar3TimeOfDay("13:00:00");
     libGAwX_gf_PauseUnpauseTimeOfDayWar3(true);
