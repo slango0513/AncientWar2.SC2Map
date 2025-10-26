@@ -46,8 +46,6 @@ const int gv_venueGroupMaximumCount = (gv_teamMaximumCount/2);
 //--------------------------------------------------------------------------------------------------
 bool gv_isBonusRound;
 int[gv_roundMaximumCount + 1] gv_objective;
-int gv_teamFinal;
-int gv_teamFinalInitial;
 unitgroup gv_adefGroup;
 unitgroup gv_defendGroup;
 unitgroup gv_amdfGroup;
@@ -114,6 +112,8 @@ unitfilter gv_pathBlockerFilter;
 region[gv_venueMaximumCount + 1] gv_finalVenue;
 fixed[gv_venueMaximumCount + 1] gv_finalVenueFacing;
 revealer[gv_venueMaximumCount + 1][gv_playerMaximumIndex + 1] gv_finalVenueRevealer;
+int gv_venueFinal;
+int gv_finalRound;
 
 void InitGlobals () {
     int init_i;
@@ -149,18 +149,18 @@ void InitGlobals () {
 //--------------------------------------------------------------------------------------------------
 // Global Function Declarations
 //--------------------------------------------------------------------------------------------------
-void gf_RoundStartLoop (bool lp_debug);
 void gf_ModInizialization (bool lp_debug);
+void gf_RoundStartLoop (bool lp_debug);
 void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug);
 void gf_TeamMemberSetAndTeamMemberCountSet ();
 void gf_TeamRoundRandomize ();
 void gf_VenueGroupRandomize ();
 void gf_TeamAtVenueSet ();
 void gf_PlayerAtVenueSet ();
-int gf_FinalRoundGetRound (int lp_finalRound);
 void gf_ObjectiveSetState (int lp_round, int lp_state);
-void gf_TeamAliveFinalInitialSet ();
-void gf_PlayerAtFinalVenueSet (int lp_round);
+void gf_ObjectiveHideAll ();
+void gf_PlayerAtFinalVenueReplace (int lp_round);
+void gf_PlayerAtFinalVenueSet ();
 void gf_PlayerCountTest ();
 void gf_GameOverTestNotPassed ();
 void gf_ReserveUnitCreation2 (int lp_player, int lp_phalanx);
@@ -230,6 +230,7 @@ void gf_CountUnitEnable (bool lp_option);
 void gf_CountUnit (int lp_team, bool lp_wait);
 void gf_GameOver (int lp_team);
 void gf_DisplayMessageAll (int lp_round);
+void gf_PlayerAtFinalVenueUpdate (int lp_player);
 void gf_StartLocationCameraPan ();
 void gf_VenueCameraPan (int lp_round);
 void gf_SetPhalanxHighlighted (int lp_player, bool lp_highlighted);
@@ -280,38 +281,6 @@ trigger gt_DebugUnitRemoveAll;
 //--------------------------------------------------------------------------------------------------
 // Global Functions
 //--------------------------------------------------------------------------------------------------
-void gf_RoundStartLoop (bool lp_debug) {
-    int autoE4112BFC_ae;
-    int autoE4112BFC_ai;
-
-    // Variable Declarations
-    int lv_round;
-
-    // Variable Initialization
-
-    // Implementation
-    if ((gv_testPassed == true)) {
-        autoE4112BFC_ae = gv_roundCount;
-        autoE4112BFC_ai = 1;
-        lv_round = 1;
-        for ( ; ( (autoE4112BFC_ai >= 0 && lv_round <= autoE4112BFC_ae) || (autoE4112BFC_ai <= 0 && lv_round >= autoE4112BFC_ae) ) ; lv_round += autoE4112BFC_ai ) {
-            if ((gf_IsFinalRound(lv_round) == true)) {
-                gf_FinalVenueReplace();
-            }
-            else {
-                gf_VenueInitialReplace();
-            }
-            gf_RoundStart(lv_round, false, lp_debug);
-            if ((gv_bonusRoundIsOn[lv_round] == true)) {
-                gf_BonusVenueReplace();
-                gf_RoundStart(lv_round, true, lp_debug);
-            }
-
-        }
-    }
-
-}
-
 void gf_ModInizialization (bool lp_debug) {
     bool auto0BE103AA_val;
 
@@ -353,6 +322,38 @@ void gf_ModInizialization (bool lp_debug) {
     }
 }
 
+void gf_RoundStartLoop (bool lp_debug) {
+    int autoE4112BFC_ae;
+    int autoE4112BFC_ai;
+
+    // Variable Declarations
+    int lv_round;
+
+    // Variable Initialization
+
+    // Implementation
+    if ((gv_testPassed == true)) {
+        autoE4112BFC_ae = gv_roundCount;
+        autoE4112BFC_ai = 1;
+        lv_round = 1;
+        for ( ; ( (autoE4112BFC_ai >= 0 && lv_round <= autoE4112BFC_ae) || (autoE4112BFC_ai <= 0 && lv_round >= autoE4112BFC_ae) ) ; lv_round += autoE4112BFC_ai ) {
+            if ((gf_IsFinalRound(lv_round) == true)) {
+                gf_FinalVenueReplace();
+            }
+            else {
+                gf_VenueInitialReplace();
+            }
+            gf_RoundStart(lv_round, false, lp_debug);
+            if ((gv_bonusRoundIsOn[lv_round] == true)) {
+                gf_BonusVenueReplace();
+                gf_RoundStart(lv_round, true, lp_debug);
+            }
+
+        }
+    }
+
+}
+
 void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug) {
     // Implementation
     gv_round = lp_round;
@@ -371,13 +372,14 @@ void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug) {
             gf_BuildingRegionRevealerEnable(false, lp_debug);
             gf_PreviewEnable(false);
             gf_UnitTypeSetAll();
-            gf_TeamAliveFinalInitialSet();
+            gf_PlayerAtFinalVenueSet();
+            gf_ObjectiveHideAll();
         }
 
-        gf_PlayerAtFinalVenueSet(lp_round);
+        gf_PlayerAtFinalVenueReplace(lp_round);
     }
     else {
-        if ((lp_bonusRound == false)) {
+        if ((lp_bonusRound == false) && (gf_IsFinalRound(lp_round) == false)) {
             gf_ObjectiveSetState(lp_round, c_objectiveStateActive);
         }
 
@@ -411,7 +413,7 @@ void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug) {
     gf_CountUnitEnable(true);
     TriggerWaitForTrigger(gt_CountUnitControl, false);
     gf_ReserveUnitCreationEnable(false);
-    if ((lp_bonusRound == false)) {
+    if ((lp_bonusRound == false) && (gf_IsFinalRound(lp_round) == false)) {
         gf_ObjectiveSetState(lp_round, c_objectiveStateCompleted);
     }
 
@@ -751,17 +753,6 @@ void gf_PlayerAtVenueSet () {
     }
 }
 
-int gf_FinalRoundGetRound (int lp_finalRound) {
-    // Variable Declarations
-    int lv_round;
-
-    // Variable Initialization
-
-    // Implementation
-    lv_round = (gv_roundCount-gv_finalRoundCount+lp_finalRound);
-    return lv_round;
-}
-
 void gf_ObjectiveSetState (int lp_round, int lp_state) {
     int autoB9DBF1D6_ae;
     int autoB9DBF1D6_ai;
@@ -789,25 +780,25 @@ void gf_ObjectiveSetState (int lp_round, int lp_state) {
     ObjectiveSetState(gv_objective[lp_round], lp_state);
 }
 
-void gf_TeamAliveFinalInitialSet () {
+void gf_ObjectiveHideAll () {
+    int autoCB0C3514_ae;
+    int autoCB0C3514_ai;
+
     // Variable Declarations
-    int lv_team;
+    int lv_round;
 
     // Variable Initialization
 
     // Implementation
-    lv_team = RandomInt(1, gv_teamCount);
-    gv_teamAlive[1] = lv_team;
-    gv_teamFinalInitial = lv_team;
+    autoCB0C3514_ae = (gv_roundCount-gv_finalRoundCount);
+    autoCB0C3514_ai = 1;
+    lv_round = 1;
+    for ( ; ( (autoCB0C3514_ai >= 0 && lv_round <= autoCB0C3514_ae) || (autoCB0C3514_ai <= 0 && lv_round >= autoCB0C3514_ae) ) ; lv_round += autoCB0C3514_ai ) {
+        ObjectiveSetState(gv_objective[lv_round], c_objectiveStateHidden);
+    }
 }
 
-void gf_PlayerAtFinalVenueSet (int lp_round) {
-    int auto80E628EE_ae;
-    int auto80E628EE_ai;
-    int auto52504407_ae;
-    int auto52504407_ai;
-    int auto35E2EF6A_ae;
-    int auto35E2EF6A_ai;
+void gf_PlayerAtFinalVenueReplace (int lp_round) {
     int auto7C0175FA_ae;
     int auto7C0175FA_ai;
 
@@ -819,37 +810,45 @@ void gf_PlayerAtFinalVenueSet (int lp_round) {
     // Variable Initialization
 
     // Implementation
-    auto80E628EE_ae = gv_venueMaximumCount;
-    auto80E628EE_ai = 1;
-    lv_venue = 1;
-    for ( ; ( (auto80E628EE_ai >= 0 && lv_venue <= auto80E628EE_ae) || (auto80E628EE_ai <= 0 && lv_venue >= auto80E628EE_ae) ) ; lv_venue += auto80E628EE_ai ) {
-        gv_playerAtFinalVenue[lv_venue][lp_round] = -1;
-    }
-    lv_venue = 0;
-    auto52504407_ae = gv_teamMemberCount;
-    auto52504407_ai = 1;
-    lv_teamMember = 1;
-    for ( ; ( (auto52504407_ai >= 0 && lv_teamMember <= auto52504407_ae) || (auto52504407_ai <= 0 && lv_teamMember >= auto52504407_ae) ) ; lv_teamMember += auto52504407_ai ) {
-        lv_venue += 1;
-        gv_playerAtFinalVenue[lv_venue][lp_round] = PlayerGroupPlayer(gv_teamGroup[gv_teamAlive[1]], lv_teamMember);
-    }
-    gv_teamFinal += 1;
-    if ((gv_teamGroup[gv_teamFinal] == gv_teamGroup[gv_teamFinalInitial])) {
-        gv_teamFinal += 1;
-    }
-
-    auto35E2EF6A_ae = gv_teamMemberCount;
-    auto35E2EF6A_ai = 1;
-    lv_teamMember = 1;
-    for ( ; ( (auto35E2EF6A_ai >= 0 && lv_teamMember <= auto35E2EF6A_ae) || (auto35E2EF6A_ai <= 0 && lv_teamMember >= auto35E2EF6A_ae) ) ; lv_teamMember += auto35E2EF6A_ai ) {
-        lv_venue += 1;
-        gv_playerAtFinalVenue[lv_venue][lp_round] = PlayerGroupPlayer(gv_teamGroup[gv_teamFinal], lv_teamMember);
-    }
     auto7C0175FA_ae = gv_venueMaximumCount;
     auto7C0175FA_ai = 1;
     lv_venue = 1;
     for ( ; ( (auto7C0175FA_ai >= 0 && lv_venue <= auto7C0175FA_ae) || (auto7C0175FA_ai <= 0 && lv_venue >= auto7C0175FA_ae) ) ; lv_venue += auto7C0175FA_ai ) {
-        gv_playerAtVenue[lv_venue][lp_round] = gv_playerAtFinalVenue[lv_venue][lp_round];
+        if ((lv_venue <= (gv_teamMemberCount*2))) {
+            gv_playerAtVenue[lv_venue][lp_round] = gv_playerAtFinalVenue[lv_venue][lp_round];
+        }
+        else {
+            gv_playerAtVenue[lv_venue][lp_round] = -1;
+        }
+    }
+}
+
+void gf_PlayerAtFinalVenueSet () {
+    int autoF989A9BE_ae;
+    int autoF989A9BE_ai;
+    int auto6323E5A5_ae;
+    int auto6323E5A5_ai;
+
+    // Variable Declarations
+    int lv_team;
+    int lv_teamMember;
+    int lv_round;
+    int lv_venue;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_round = RandomInt(1, gv_teamRoundCount);
+    autoF989A9BE_ae = gv_teamCount;
+    autoF989A9BE_ai = 1;
+    lv_team = 1;
+    for ( ; ( (autoF989A9BE_ai >= 0 && lv_team <= autoF989A9BE_ae) || (autoF989A9BE_ai <= 0 && lv_team >= autoF989A9BE_ae) ) ; lv_team += autoF989A9BE_ai ) {
+        auto6323E5A5_ae = gv_teamMemberCount;
+        auto6323E5A5_ai = 1;
+        lv_teamMember = 1;
+        for ( ; ( (auto6323E5A5_ai >= 0 && lv_teamMember <= auto6323E5A5_ae) || (auto6323E5A5_ai <= 0 && lv_teamMember >= auto6323E5A5_ae) ) ; lv_teamMember += auto6323E5A5_ai ) {
+            gf_PlayerAtFinalVenueUpdate(PlayerGroupPlayer(gv_teamGroup[gv_teamAtVenue[lv_team][lv_round]], lv_teamMember));
+        }
     }
 }
 
@@ -2722,6 +2721,21 @@ void gf_DisplayMessageAll (int lp_round) {
     }
 }
 
+void gf_PlayerAtFinalVenueUpdate (int lp_player) {
+    // Implementation
+    if (gv_venueFinal >= (gv_teamMemberCount*2)) {
+        gv_venueFinal = 1;
+    }
+    else {
+        gv_venueFinal = gv_venueFinal + 1;
+    }
+    gv_playerAtFinalVenue[gv_venueFinal][gv_finalRound] = lp_player;
+    if ((gv_venueFinal == (gv_teamMemberCount*2))) {
+        gv_finalRound += 1;
+    }
+
+}
+
 void gf_StartLocationCameraPan () {
     int auto1B6851A4_ae;
     int auto1B6851A4_ai;
@@ -2944,7 +2958,6 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     int lv_player;
 
     // Variable Initialization
-    lv_debug = true;
 
     // Actions
     if (!runActions) {
@@ -3221,6 +3234,7 @@ void gt_RoundInitialization_Init () {
 //--------------------------------------------------------------------------------------------------
 bool gt_GameAttributeInizialization_Func (bool testConds, bool runActions) {
     string auto4F0CCA57_val;
+    string auto6B7DF3F0_val;
 
     // Variable Declarations
     int lv_round;
@@ -3245,6 +3259,15 @@ bool gt_GameAttributeInizialization_Func (bool testConds, bool runActions) {
     gv_teamMemberCount = (gv_playerCount/gv_teamCount);
     gv_finalRoundCount = (gv_teamCount-1);
     gv_roundCount = (gv_playerCount-gv_teamMemberCount+gv_finalRoundCount);
+    auto6B7DF3F0_val = GameAttributeGameValue("2");
+    if (auto6B7DF3F0_val == "0001") {
+        gv_finalRound = 8;
+    }
+    else if (auto6B7DF3F0_val == "0002") {
+        gv_finalRound = 7;
+    }
+    else {
+    }
     return true;
 }
 
@@ -4175,10 +4198,8 @@ bool gt_CountUnit_Func (bool testConds, bool runActions) {
     int auto35B8E170_ai;
     int auto3E46C7A4_ae;
     int auto3E46C7A4_ai;
-    int auto5E5272DF_ae;
-    int auto5E5272DF_ai;
-    int autoF9514C22_ae;
-    int autoF9514C22_ai;
+    int autoFDA1AC7B_ae;
+    int autoFDA1AC7B_ai;
     int auto206E7D71_ae;
     int auto206E7D71_ai;
     int autoC3985A16_ae;
@@ -4228,18 +4249,19 @@ bool gt_CountUnit_Func (bool testConds, bool runActions) {
     }
     if ((gv_isBonusRound == false)) {
         if ((lv_teamCountAlive == 1)) {
-            auto5E5272DF_ae = gv_teamMaximumCount;
-            auto5E5272DF_ai = 1;
-            lv_team = 1;
-            for ( ; ( (auto5E5272DF_ai >= 0 && lv_team <= auto5E5272DF_ae) || (auto5E5272DF_ai <= 0 && lv_team >= auto5E5272DF_ae) ) ; lv_team += auto5E5272DF_ai ) {
-                gv_teamAlive[lv_team] = 0;
+            gv_teamAlive[1] = lv_teamAlive[1];
+            if ((gf_IsFinalRound(gv_round) == true)) {
+                if ((gv_round != gv_roundCount)) {
+                    autoFDA1AC7B_ae = gv_teamMemberCount;
+                    autoFDA1AC7B_ai = 1;
+                    lv_teamMember = 1;
+                    for ( ; ( (autoFDA1AC7B_ai >= 0 && lv_teamMember <= autoFDA1AC7B_ae) || (autoFDA1AC7B_ai <= 0 && lv_teamMember >= autoFDA1AC7B_ae) ) ; lv_teamMember += autoFDA1AC7B_ai ) {
+                        gf_PlayerAtFinalVenueUpdate(PlayerGroupPlayer(gv_teamGroup[gv_teamAlive[1]], lv_teamMember));
+                    }
+                }
+
             }
-            autoF9514C22_ae = lv_teamCountAlive;
-            autoF9514C22_ai = 1;
-            lv_team = 1;
-            for ( ; ( (autoF9514C22_ai >= 0 && lv_team <= autoF9514C22_ae) || (autoF9514C22_ai <= 0 && lv_team >= autoF9514C22_ae) ) ; lv_team += autoF9514C22_ai ) {
-                gv_teamAlive[lv_team] = lv_teamAlive[lv_team];
-            }
+
             gf_DisplayMessageAll(gv_round);
             if ((gf_IsFinalRound(gv_round) == true)) {
                 lv_wait = false;
