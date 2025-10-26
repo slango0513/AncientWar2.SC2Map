@@ -101,7 +101,8 @@
         <Alignment value="Negative"/>
         <Effect index="0" value="ACbfTarget"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="15"/>
+            <Vital index="Energy" value="30"/>
+            <Cooldown Location="Unit" TimeUse="5"/>
         </Cost>
         <TargetFilters index="0" value="-;player,allies,air,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <TargetSorts RequestCount="1">
@@ -112,8 +113,29 @@
         <Range value="2"/>
         <AutoCastRange value="2"/>
         <AutoCastValidatorArray value="EnemiesNearby1"/>
+        <AutoCastValidatorArray value="NoBreathOfFrost"/>
         <PrepTime value="0.47"/>
         <FinishTime value="0.8"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="ACcb" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Dragon,AbilityorEffectType:Units"/>
+        <Cost index="0">
+            <Vital index="Energy" value="60"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </Cost>
+        <Effect index="0" value="ACcbMissile"/>
+        <TargetFilters index="0" value="-;wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSMarker"/>
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSKillResourceTerrazineLargestFirst"/>
+        </TargetSorts>
+        <Range value="13"/>
+        <AutoCastRange value="13"/>
+        <AutoCastValidatorArray value="EnemiesNearby7"/>
+        <AutoCastValidatorArray value="NoFrostBolt"/>
+        <PrepTime value="1"/>
+        <CastOutroTime value="1"/>
     </CAbilEffectTarget>
     <!--Blood Mage - Banish Buff=BHbn-->
     <CAbilEffectTarget id="AHbn" parent="AW2_EffectTarget">
@@ -297,7 +319,7 @@
         <Effect index="0" value="AensMissile"/>
         <Alignment value="Negative"/>
         <AutoCastRange value="6"/>
-        <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastValidatorArray index="1" value="noMarkers"/>
     </CAbilEffectTarget>
     <CAbilBehavior id="ACnr" parent="War3_HeroAura">
         <CmdButtonArray index="On" Requirements="ACnr"/>
@@ -328,8 +350,8 @@
         <EditorCategories value="Race:Dragon,AbilityorEffectType:Units"/>
         <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <Cost index="0">
-            <Vital index="Energy" value="15"/>
-            <Cooldown Location="Unit" TimeUse="5"/>
+            <Vital index="Energy" value="30"/>
+            <Cooldown Location="Unit" TimeUse="10"/>
         </Cost>
         <Range value="9"/>
         <PrepTime value="0.4"/>
@@ -509,6 +531,9 @@
         <AutoCastValidatorArray value="noMarkers"/>
         <TargetFilters index="0" value="structure;wall,tree,Missile,debris,item,ward,dead,invulnerable,immunity"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="Advc" parent="AW2_EffectTarget"/>
+    <CAbilEffectTarget id="Alit" parent="AW2_EffectTarget"/>
+    <CAbilEffectTarget id="ACls" parent="AW2_EffectTarget"/>
     <CAbilEffectTarget id="Amls" parent="AW2_EffectTarget">
         <EditorCategories value="Race:BloodElf,AbilityorEffectType:Units"/>
         <TargetFilters index="0" value="-;player,allies,neutral,ground,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
@@ -558,6 +583,47 @@
             <VitalFraction index="Life" value="-1"/>
         </Cost>
         <InfoArray index="0" Unit="hphx">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0.7"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Delay" value="0.5"/>
+                <DurationArray index="Duration" value="0.3"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0.5"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToUndeadAzurelore" parent="AW2_Morph" unitID="ubdd">
+        <Flags index="Automatic" value="1"/>
+        <Flags index="Birth" value="1"/>
+        <Flags index="WaitUntilStopped" value="0"/>
+        <InfoArray index="0" Unit="ubdd">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0.7"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Delay" value="0.5"/>
+                <DurationArray index="Duration" value="0.3"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0.5"/>
+            </SectionArray>
+        </InfoArray>
+        <ValidatorArray value="AzureloreNearDeath"/>
+        <Cost>
+            <VitalFraction index="Life" value="-1"/>
+        </Cost>
+        <ErrorAlert value=""/>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToAzurelore" parent="AW2_Morph" unitID="ubdr">
+        <Flags index="Birth" value="1"/>
+        <Flags index="SuppressMovement" value="1"/>
+        <Cost>
+            <VitalFraction index="Life" value="-1"/>
+        </Cost>
+        <InfoArray index="0" Unit="ubdr">
             <SectionArray index="Actor">
                 <DurationArray index="Duration" value="0.7"/>
             </SectionArray>
@@ -691,9 +757,6 @@
         </InfoArray>
         <InfoArray index="Build9" Unit="nbda">
             <Button DefaultButtonFace="nbda" Requirements="BuildArmy"/>
-        </InfoArray>
-        <InfoArray index="Build10" Unit="nbdm">
-            <Button DefaultButtonFace="nbdm" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build11" Unit="edot">
             <Button DefaultButtonFace="edot" Requirements="BuildArmy"/>
@@ -1048,13 +1111,26 @@
     <CAbilEffectInstant id="AHwe" parent="AW2_EffectInstant">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="60"/>
+            <Vital index="Energy" value="60"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <PrepTime value="0.3"/>
         <CastOutroTime value="2.4"/>
         <Effect index="0" value="hwat"/>
-        <AutoCastValidatorArray value="EnemiesNearby5"/>
-        <AutoCastFilters value="Visible;-"/>
+        <AutoCastValidatorArray index="0" value="EnemiesNearby8"/>
+        <AutoCastFilters value="Self,Visible;-"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="SummonSeaElemental" parent="AW2_EffectInstant">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
+        <Effect index="0" value="nsel"/>
+        <Cost index="0">
+            <Vital index="Energy" value="60"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </Cost>
+        <AutoCastFilters value="Self,Visible;-"/>
+        <AutoCastValidatorArray index="0" value="EnemiesNearby8"/>
+        <PrepTime value="0.3"/>
+        <CastOutroTime value="2.4"/>
     </CAbilEffectInstant>
     <!--ItemChangeTOD Dur=30 effect=XIct-->
     <!--Preservation-->
@@ -1065,8 +1141,8 @@
         </Cost>
         <PrepTime value="2"/>
         <CastOutroTime value="1.08"/>
-        <AutoCastValidatorArray value="EnemiesNearby4"/>
-        <AutoCastFilters value="Visible;-"/>
+        <AutoCastValidatorArray value="EnemiesNearby3"/>
+        <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilAugment id="ANbaAugment" parent="AW2_AttackAugment">
         <Name value="ANba/Name"/>
@@ -1666,8 +1742,11 @@
     <CAbilBehavior id="EfficiencyAura" parent="War3_HeroAura">
         <BehaviorArray value="EfficiencyAuraCaster"/>
     </CAbilBehavior>
-    <CAbilBehavior id="ACac" parent="War3_HeroAura">
-        <BehaviorArray value="ACac"/>
+    <CAbilBehavior id="FrostAura" parent="War3_HeroAura">
+        <BehaviorArray value="FrostAuraCaster"/>
+    </CAbilBehavior>
+    <CAbilBehavior id="EternityAura" parent="War3_HeroAura">
+        <BehaviorArray value="EternityAuraCaster"/>
     </CAbilBehavior>
     <CAbilInteract id="Aall">
         <Range value="1"/>
@@ -2188,13 +2267,13 @@
         <Cost index="0">
             <Cooldown Location="Unit" TimeUse="10"/>
         </Cost>
-        <Range value="6"/>
+        <Range value="9"/>
         <PrepTime value="0.6"/>
         <CastOutroTime value="0.2"/>
         <Effect index="0" value="AensMissile"/>
         <Alignment value="Negative"/>
-        <AutoCastRange value="6"/>
-        <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastRange value="9"/>
+        <AutoCastValidatorArray index="1" value="noMarkers"/>
     </CAbilEffectTarget>
     <!--Healing Ward Dur=30 HeroDur=30 Buff=Bhwd-->
     <CAbilEffectTarget id="Ahwd" parent="AW2_EffectTarget">

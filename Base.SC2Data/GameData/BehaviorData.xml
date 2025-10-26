@@ -277,7 +277,34 @@
     <CBehaviorBuff id="Abof">
         <Requirements value=""/>
     </CBehaviorBuff>
+    <!--NE Abil-->
+    <CBehaviorBuff id="Acor">
+        <Requirements value=""/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="Aflk">
+        <Requirements value=""/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SeaElemental" parent="War3_Buff">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnSeaElemental.dds"/>
+        <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <Duration value="60"/>
+        <DurationOverride index="0" Duration="60">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <FinalEffect value="TimedLifeFate"/>
+        <Modification>
+            <StateFlags index="Summoned" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BreathOfFireCaster" parent="War3_Sphere">
+        <EditorCategories value="Race:Dragon,AbilityorEffectType:Unit"/>
+        <Requirements value="BreathOfFireCaster"/>
+        <DamageResponse Handled="BreathOfFire" TargetFilters="-;Structure,wall,tree,debris,item,ward,dead,invulnerable"/>
+    </CBehaviorBuff>
+    <!--Freezing Breath Dur=5 HeroDur=5 Buff=Bfrz-->
+    <CBehaviorBuff id="Afrz">
         <Requirements value=""/>
     </CBehaviorBuff>
     <!--Detect (Gyrocopter)-->
@@ -346,6 +373,13 @@
             </VitalDamageLeechArray>
         </Modification>
     </CBehaviorBuff>
+    <!--EnsnareAir-->
+    <CBehaviorBuff id="Bena">
+        <Duration value="30"/>
+        <DurationOverride index="0" Duration="15">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+    </CBehaviorBuff>
     <CBehaviorBuff id="Bmlt">
         <Duration value="20"/>
     </CBehaviorBuff>
@@ -355,10 +389,9 @@
     </CBehaviorBuff>
     <!--PhoenixFire-->
     <CBehaviorBuff id="Bpxf">
-        <DurationOverride index="0" Duration="15">
+        <DurationOverride index="0" Duration="5">
             <ValidatorArray index="0" value="Hero"/>
         </DurationOverride>
-        <Duration value="30"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Bwfb" parent="War3_Buff">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnfirebolt.dds"/>
@@ -376,8 +409,30 @@
             <BehaviorLinkDisableArray value="HostileSleeperAlert"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="BCcb" parent="War3_Buff">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnfrostbolt.dds"/>
+        <BehaviorCategories index="User1" value="1"/>
+        <TechAliasArray value="_Debuff"/>
+        <Duration value="10"/>
+        <DurationOverride index="0" Duration="5">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Modification>
+            <ModifyFlags index="DisableAbils" value="1"/>
+            <StateFlags index="Stun" value="1"/>
+            <AbilClassEnableArray index="CAbilBehavior" value="1"/>
+            <BehaviorLinkDisableArray value="HostileSleeperAlert"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="EfficiencyAuraCaster" parent="War3_AuraCaster">
         <Requirements value="EfficiencyAuraCaster"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FrostAuraCaster" parent="War3_AuraCaster">
+        <Requirements value="FrostAuraCaster"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EternityAuraCaster" parent="War3_AuraCaster">
+        <Requirements value="EternityAuraCaster"/>
     </CBehaviorBuff>
     <!--Aura - War Drums Buff=Bakb-->
     <CBehaviorBuff id="Aakb">
@@ -613,21 +668,19 @@
         </DurationOverride>
         <Duration value="60"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="GyrocopterTimeLife" parent="AW2_TimeLife">
+    <CBehaviorBuff id="GyrocopterTimeLife" parent="War3_Buff">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnFlyingMachine.dds"/>
-        <DurationOverride Duration="120">
-            <ValidatorArray value="HeroOrPowerfulMob"/>
-        </DurationOverride>
-        <Duration value="120"/>
+        <Modification>
+            <VitalRegenArray index="Life" value="-5"/>
+        </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="hgyrTimeLife" parent="AW2_TimeLife">
+    <CBehaviorBuff id="hgyrTimeLife" parent="War3_Buff">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnFlyingMachine.dds"/>
-        <DurationOverride Duration="120">
-            <ValidatorArray value="HeroOrPowerfulMob"/>
-        </DurationOverride>
-        <Duration value="120"/>
+        <Modification>
+            <VitalRegenArray index="Life" value="-5"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="npgrTimeLife" parent="AW2_TimeLife">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
@@ -739,6 +792,28 @@
         <MaxStackCountPerCaster value="1"/>
         <Modification MoveSpeedMultiplier="1.25"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="FrostAura" parent="War3_AuraBuff">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnFreezingBreath.dds"/>
+        <Modification>
+            <ModifyFlags index="SuppressMoving" value="1"/>
+            <ModifyFlags index="SuppressTurning" value="1"/>
+        </Modification>
+        <Alignment value="Negative"/>
+        <TechAliasArray value="_Debuff"/>
+        <BehaviorCategories index="User1" value="1"/>
+        <DurationOverride Duration="1">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EternityAura" parent="War3_AuraBuff">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnwispsplode.dds"/>
+        <BehaviorCategories index="User1" value="1"/>
+        <TechAliasArray value="_Debuff"/>
+        <MaxStackCount value="2"/>
+        <MaxStackCountPerCaster value="1"/>
+        <Modification TimeScale="0.75"/>
+    </CBehaviorBuff>
     <!--AuraSlow-->
     <CBehaviorBuff id="Basl">
         <Duration value="6"/>
@@ -815,6 +890,19 @@
     <!--Frost-->
     <CBehaviorBuff id="Bfro">
         <Modification AttackSpeedMultiplier="0.5"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BreathOfFire" parent="War3_Buff">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnfirebolt.dds"/>
+        <BehaviorCategories index="User1" value="1"/>
+        <EditorCategories value="Race:Dragon,AbilityorEffectType:Units"/>
+        <TechAliasArray value="_Debuff"/>
+        <Duration value="10"/>
+        <DurationOverride index="0" Duration="5">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Period value="1"/>
+        <PeriodicEffect value="BreathOfFireDPS"/>
     </CBehaviorBuff>
     <!--HealingWard-->
     <CBehaviorBuff id="Bhwd">
@@ -1361,6 +1449,7 @@
         <Modification Height="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="naga" parent="War3_UnitClass"/>
+    <CBehaviorBuff id="dragon" parent="War3_UnitClass"/>
     <CBehaviorBuff id="Asds" parent="War3_Passive">
         <EditorCategories value="Race:Goblin,AbilityorEffectType:Unit"/>
         <DamageResponse Chance="1" Fatal="1" Handled="Asds"/>

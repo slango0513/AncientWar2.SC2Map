@@ -5,6 +5,7 @@
         <ScaleMax value="1.875000,1.875000,1.875000"/>
         <ScaleMin value="1.875000,1.875000,1.875000"/>
     </CModel>
+    <CModel id="BreathOfFire" parent="War3_BreathOfFireDamage"/>
     <CModel id="Bsds" parent="War3_ThunderclapTarget"/>
     <CModel id="Bwfb" parent="War3_ThunderclapTarget"/>
     <CModel id="Nro2" parent="War3_HeroTinker">
@@ -22,9 +23,10 @@
     </CModel>
     <CModel id="Nti3_Portrait" parent="War3_HeroTinker_Portrait"/>
     <CModel id="Ogld">
-        <ScaleMax value="1.125000,1.125000,1.125000"/>
-        <ScaleMin value="1.125000,1.125000,1.125000"/>
+        <ScaleMax value="0.937500,0.937500,0.937500"/>
+        <ScaleMin value="0.937500,0.937500,0.937500"/>
     </CModel>
+    <CModel id="Ogld1LM" parent="War3_IllidanMissile"/>
     <CModel id="SelfDestructCaster" parent="War3_Spell" race="Goblin">
         <Model value="Assets\Abilities\Spells\Orc\War3_WarStompCaster\War3_WarStompCaster.m3"/>
         <Events>
@@ -68,7 +70,11 @@
         <ScaleMax value="0.937500,0.937500,0.937500"/>
         <ScaleMin value="0.937500,0.937500,0.937500"/>
     </CModel>
+    <CModel id="nadw1LM" parent="War3_ZigguratFrostMissile"/>
+    <CModel id="nadw2LM" parent="War3_ZigguratFrostMissile"/>
     <CModel id="nbda1LM" parent="War3_LichMissile"/>
+    <CModel id="nbdr1LM" parent="War3_AvengerMissile"/>
+    <CModel id="nbdr2LM" parent="War3_AvengerMissile"/>
     <CModel id="nbds">
         <ScaleMax value="0.937500,0.937500,0.937500"/>
         <ScaleMin value="0.937500,0.937500,0.937500"/>
@@ -79,6 +85,15 @@
     <CModel id="AabrTarget" parent="War3_UnholyAura"/>
     <CModel id="EfficiencyAuraTarget" parent="War3_CommandAura"/>
     <CModel id="EfficiencyAura" parent="War3_GeneralAuraTarget"/>
+    <CModel id="War3_FrostAura" parent="War3_Spell" race="Dragon">
+        <Model value="Assets\Doodads\SnowBase_Fog_Mountain_Lower\SnowBase_Fog_Mountain_Lower.m3"/>
+    </CModel>
+    <CModel id="FrostAuraTarget" parent="War3_FrostAura">
+        <AnimSpeed value="1.500000"/>
+    </CModel>
+    <CModel id="FrostAura" parent="War3_FreezingBreathTargetArt"/>
+    <CModel id="EternityAuraTarget" parent="War3_ObsidianRegenAura"/>
+    <CModel id="EternityAura" parent="War3_GeneralAuraTarget"/>
     <CModel id="Bbs2" parent="War3_BloodLustTarget"/>
     <CModel id="Bbs2Target" parent="War3_BloodLustTarget">
         <Events>
@@ -221,8 +236,8 @@
     </CModel>
     <CModel id="nbdo_Portrait" parent="War3_DragonSpawnPurple_Portrait"/>
     <CModel id="nbdr">
-        <ScaleMax value="0.500000,0.500000,0.500000"/>
-        <ScaleMin value="0.500000,0.500000,0.500000"/>
+        <ScaleMax value="0.625000,0.625000,0.625000"/>
+        <ScaleMin value="0.625000,0.625000,0.625000"/>
     </CModel>
     <CModel id="Dragonspawn" parent="War3_DragonSpawnPurple">
         <SelectionRadius value="0.637681"/>
@@ -235,8 +250,8 @@
     </CModel>
     <CModel id="nbdw_Portrait" parent="War3_DragonSpawnBlue_Portrait"/>
     <CModel id="nbwm">
-        <ScaleMax value="0.937500,0.937500,0.937500"/>
-        <ScaleMin value="0.937500,0.937500,0.937500"/>
+        <ScaleMax value="1.125000,1.125000,1.125000"/>
+        <ScaleMin value="1.125000,1.125000,1.125000"/>
     </CModel>
     <CModel id="nbzd">
         <ScaleMax value="0.937500,0.937500,0.937500"/>
@@ -246,6 +261,8 @@
         <ScaleMax value="0.500000,0.500000,0.500000"/>
         <ScaleMin value="0.500000,0.500000,0.500000"/>
     </CModel>
+    <CModel id="nbzw1LM" parent="War3_FarseerMissile"/>
+    <CModel id="nbzw2LM" parent="War3_FarseerMissile"/>
     <CModel id="nchw1LM" parent="War3_IllidanMissile"/>
     <CModel id="ndtp1LM" parent="War3_AvengerMissile"/>
     <CModel id="nfac">
@@ -261,6 +278,8 @@
         <ScaleMax value="0.937500,0.937500,0.937500"/>
         <ScaleMin value="0.937500,0.937500,0.937500"/>
     </CModel>
+    <CModel id="ngrw1LM" parent="War3_ChimaeraAcidMissile"/>
+    <CModel id="ngrw2LM" parent="War3_ChimaeraAcidMissile"/>
     <CModel id="nowb1LM" parent="War3_ProcMissile"/>
     <CModel id="nowk">
         <ScaleMax value="0.937500,0.937500,0.937500"/>
@@ -398,18 +417,26 @@
         <ScaleMin value="0.937500,0.937500,0.937500"/>
     </CModel>
     <CModel id="nser">
-        <ScaleMax value="0.937500,0.937500,0.937500"/>
-        <ScaleMin value="0.937500,0.937500,0.937500"/>
+        <ScaleMax value="1.350000,1.350000,1.350000"/>
+        <ScaleMin value="1.350000,1.350000,1.350000"/>
     </CModel>
+    <CModel id="nser1LM" parent="War3_RedDragonMissile"/>
+    <CModel id="nser2LM" parent="War3_RedDragonMissile"/>
     <CModel id="nthr">
-        <ScaleMax value="0.937500,0.937500,0.937500"/>
-        <ScaleMin value="0.937500,0.937500,0.937500"/>
+        <ScaleMax value="1.125000,1.125000,1.125000"/>
+        <ScaleMin value="1.125000,1.125000,1.125000"/>
     </CModel>
+    <CModel id="nthr1LM" parent="War3_ChimaeraAcidMissile"/>
+    <CModel id="nthr2LM" parent="War3_GreenDragonMissile"/>
     <CModel id="ntr2_Portrait" parent="War3_SeaTurtle_Portrait"/>
     <CModel id="ntr3_Portrait" parent="War3_SeaTurtle_Portrait"/>
-    <CModel id="ubdr">
+    <CModel id="ubdd">
         <ScaleMax value="0.937500,0.937500,0.937500"/>
         <ScaleMin value="0.937500,0.937500,0.937500"/>
+    </CModel>
+    <CModel id="ubdr">
+        <ScaleMax value="1.125000,1.125000,1.125000"/>
+        <ScaleMin value="1.125000,1.125000,1.125000"/>
     </CModel>
     <CModel id="zhyd1LM" parent="War3_snapMissile"/>
     <CModel id="nss2" parent="War3_Assassin">

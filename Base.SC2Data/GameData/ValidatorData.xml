@@ -90,6 +90,10 @@
     <CValidatorUnitFilters id="NotVillager">
         <Filters value="-;Destructible"/>
     </CValidatorUnitFilters>
+    <CValidatorUnitCompareVital id="AzureloreNearDeath">
+        <Compare value="LE"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareVital>
     <CValidatorCombine id="SubmergeValidator">
         <CombineArray value="CliffLevelEqualOrLesserEnemiesNearby5"/>
         <CombineArray value="NotAttackingAndNotInCombatWar3"/>
@@ -126,6 +130,14 @@
         <Compare value="GT"/>
         <Behavior value="naga"/>
         <ResultFailed value="Error,Errors/Targetnaga"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="IsNotDragon">
+        <Behavior value="dragon"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="IsDragon">
+        <Compare value="GT"/>
+        <Behavior value="dragon"/>
+        <ResultFailed value="Error,Errors/Targetdragon"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareSpeed id="KodoRun">
         <Value value="2.25"/>
@@ -238,6 +250,9 @@
     <CValidatorUnitCompareBehaviorCount id="NoFireBolt">
         <Behavior value="Bwfb"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoFrostBolt">
+        <Behavior value="BCcb"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NoPolymorph">
         <Behavior value="Bply"/>
     </CValidatorUnitCompareBehaviorCount>
@@ -246,6 +261,9 @@
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NoDoom">
         <Behavior value="BNdo"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="BreathOfFrost">
+        <Behavior value="BCbf"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NoHex">
         <Behavior value="BOhx"/>
