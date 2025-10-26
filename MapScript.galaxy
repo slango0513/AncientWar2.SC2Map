@@ -37,8 +37,6 @@ const fixed gv_callTideDuration = 30.0;
 const fixed gv_minimumPeriod = 0.0625;
 const int gv_customValuePhalanx = 1;
 const string gv_workerBuildAbilityDataUserType = "WorkerBuildAbilityData";
-const string gv_raceAttributeMapping = "RaceAttributeMapping";
-const string gv_raceAttributeMappingAW2 = "AW2_RaceAttributeMapping";
 const string gv_raceUnitTypeUserType = "RaceUnitTypeMapping";
 const string gv_unitTypeUserType = "ArmyTypeData";
 const string gv_phalanxUserType = "PhalanxData";
@@ -213,8 +211,7 @@ void gf_PlayerAtFinalVenueReplace (int lp_round);
 void gf_PlayerAtFinalVenueSet ();
 void gf_PlayerCountTest ();
 void gf_GameOverTestNotPassed ();
-string gf_GenerateRaceFromRaceAttributeAW2 (string lp_att);
-string gf_GenerateSecondRaceFromRaceAttribute (string lp_att, int lp_player);
+string gf_GenerateSecondRace (int lp_player, string lp_secondRaceFromRaceAttribute);
 void gf_AddTip ();
 void gf_ChangeTOD ();
 void gf_RestoreTOD ();
@@ -1011,43 +1008,32 @@ void gf_GameOverTestNotPassed () {
     }
 }
 
-string gf_GenerateRaceFromRaceAttributeAW2 (string lp_att) {
+string gf_GenerateSecondRace (int lp_player, string lp_secondRaceFromRaceAttribute) {
     // Variable Declarations
     string lv_ut;
-    string lv_race;
-    int lv_i;
     int lv_c;
+    string lv_race;
+    string lv_secondRace;
 
     // Variable Initialization
-    lv_ut = gv_raceAttributeMappingAW2;
-    lv_race = UserDataGetGameLink(lv_ut, ("lp_att"), "Race", 1);
+    lv_ut = "RaceAttributeMapping";
     lv_c = UserDataInstanceCount(lv_ut);
 
     // Implementation
-    if ((lv_race == null)) {
-        lv_race = UserDataGetGameLink(lv_ut, UserDataInstance(lv_ut, RandomInt(1, lv_c)), "Race", 1);
+    if ((lp_secondRaceFromRaceAttribute != PlayerRace(lp_player))) {
+        lv_secondRace = lp_secondRaceFromRaceAttribute;
     }
+    else {
+        while (true) {
+            lv_race = UserDataGetGameLink(lv_ut, UserDataInstance(lv_ut, RandomInt(1, lv_c)), "Race", 1);
+            if ((lv_race != PlayerRace(lp_player))) {
+                lv_secondRace = lv_race;
+                break;
+            }
 
-    return lv_race;
-}
-
-string gf_GenerateSecondRaceFromRaceAttribute (string lp_att, int lp_player) {
-    // Variable Declarations
-    string lv_ut;
-    string lv_race;
-    int lv_i;
-    int lv_c;
-
-    // Variable Initialization
-    lv_ut = gv_raceAttributeMapping;
-    lv_race = UserDataGetGameLink(lv_ut, ("lp_att"), "Race", 1);
-    lv_c = UserDataInstanceCount(lv_ut);
-
-    // Implementation
-    while (((lv_race == null) || (lv_race == PlayerRace(lp_player)))) {
-        lv_race = UserDataGetGameLink(lv_ut, UserDataInstance(lv_ut, RandomInt(1, lv_c)), "Race", 1);
+        }
     }
-    return lv_race;
+    return lv_secondRace;
 }
 
 void gf_AddTip () {
@@ -3464,11 +3450,11 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     auto1222D8BF_ai = 1;
     lv_player = 1;
     for ( ; ( (auto1222D8BF_ai >= 0 && lv_player <= auto1222D8BF_ae) || (auto1222D8BF_ai <= 0 && lv_player >= auto1222D8BF_ae) ) ; lv_player += auto1222D8BF_ai ) {
-        gf_WorkersSave(lv_player);
         if ((GameAttributeGameValue("2") == "0003")) {
             libNtve_gf_CreateUnitsWithDefaultFacing(1, gf_RaceGetWorkerType(gv_secondRace[lv_player]), 0, lv_player, PlayerStartLocation(lv_player));
         }
 
+        gf_WorkersSave(lv_player);
         if ((PlayerGroupHasPlayer(gv_aIGroup, lv_player) == true)) {
             gf_WorkerExchangeSetAutoCast(lv_player, true);
         }
@@ -3932,6 +3918,7 @@ bool gt_PlayerInizialization_Func (bool testConds, bool runActions) {
 
     // Variable Declarations
     int lv_player;
+    string lv_secondRaceFromRaceAttribute;
 
     // Variable Initialization
 
@@ -3946,14 +3933,15 @@ bool gt_PlayerInizialization_Func (bool testConds, bool runActions) {
     for ( ; ( (autoD5DFB1DB_ai >= 0 && lv_player <= autoD5DFB1DB_ae) || (autoD5DFB1DB_ai <= 0 && lv_player >= autoD5DFB1DB_ae) ) ; lv_player += autoD5DFB1DB_ai ) {
         autoFDE01903_val = GameAttributeGameValue("2");
         if (autoFDE01903_val == "0001") {
-            libGAwX_gf_SetPlayerUIRace(lv_player, gf_GenerateRaceFromRaceAttributeAW2(GameAttributePlayerValue("3", lv_player)));
+            libGAwX_gf_SetPlayerUIRace(lv_player, libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue("3", lv_player)));
         }
         else if (autoFDE01903_val == "0002") {
-            libGAwX_gf_SetPlayerUIRace(lv_player, gf_GenerateRaceFromRaceAttributeAW2(GameAttributePlayerValue("3", lv_player)));
+            libGAwX_gf_SetPlayerUIRace(lv_player, libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue("3", lv_player)));
         }
         else if (autoFDE01903_val == "0003") {
-            libGAwX_gf_SetPlayerUIRace(lv_player, gf_GenerateRaceFromRaceAttributeAW2(GameAttributePlayerValue("3", lv_player)));
-            gv_secondRace[lv_player] = gf_GenerateSecondRaceFromRaceAttribute(GameAttributePlayerValue("[bnet:War3 Extra (GA)/0.0/60618,file:Mods\\WarCraft\\WarCraftDataAbil.SC2Mod]1", lv_player), lv_player);
+            libGAwX_gf_SetPlayerUIRace(lv_player, libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue("3", lv_player)));
+            lv_secondRaceFromRaceAttribute = libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue("4", lv_player));
+            gv_secondRace[lv_player] = gf_GenerateSecondRace(lv_player, lv_secondRaceFromRaceAttribute);
         }
         else {
         }
