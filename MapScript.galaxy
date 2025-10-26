@@ -123,6 +123,7 @@ int gv_round;
 int gv_finalRoundCount;
 bool gv_testPassed;
 fixed gv_searchRadiusInFinalRound;
+fixed gv_searchRadius;
 unit[gv_playerMaximumIndex + 1][gv_phalanxMaximumCount + 1] gv_phalanx;
 string[gv_playerMaximumIndex + 1][gv_phalanxMaximumCount + 1] gv_phalanxBuff;
 playergroup gv_uIPlayergroup;
@@ -131,7 +132,9 @@ unitfilter gv_phalanxFilter;
 unitfilter gv_portalFilter;
 unitfilter gv_buildingFilter;
 unitfilter gv_creepFilter;
+unitfilter gv_creepFilterCcore;
 unitfilter gv_unitFilter;
+unitfilter gv_unitFilterScore;
 unitfilter gv_unitAndCreepFilter;
 unitfilter gv_pathBlockerFilter;
 unitfilter gv_villagerFilter;
@@ -177,7 +180,9 @@ void InitGlobals () {
     gv_portalFilter = UnitFilter((1 << c_targetFilterRawResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
     gv_buildingFilter = UnitFilter(0, (1 << (c_targetFilterRadar - 32)), (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
     gv_creepFilter = UnitFilter(0, (1 << (c_targetFilterMapBoss - 32)), (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
+    gv_creepFilterCcore = UnitFilter(0, (1 << (c_targetFilterMapBoss - 32)), (1 << c_targetFilterMissile), (1 << (c_targetFilterHidden - 32)));
     gv_unitFilter = UnitFilter(0, 0, (1 << c_targetFilterHover) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterMapBoss - 32)));
+    gv_unitFilterScore = UnitFilter(0, 0, (1 << c_targetFilterHover) | (1 << c_targetFilterMissile), (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterMapBoss - 32)));
     gv_unitAndCreepFilter = UnitFilter(0, 0, (1 << c_targetFilterHover) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
     gv_pathBlockerFilter = UnitFilter((1 << c_targetFilterUser1), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
     gv_villagerFilter = UnitFilter((1 << c_targetFilterDestructible), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
@@ -271,6 +276,7 @@ void gf_ReserveUnitIndexResetAll ();
 void gf_ReserveUnitCreationEnable (bool lp_option);
 void gf_ReserveUnitCreation (unit lp_unit, int lp_player, int lp_phalanx);
 void gf_SearchRadiusInFinalRoundSet (fixed lp_radius);
+void gf_SearchRadiusSet (fixed lp_radius);
 void gf_IssueOrderAll (bool lp_periodic);
 void gf_RemoveVillagerAll ();
 unit gf_UnitGroupClosestPathingCostToPoint (point lp_point, unitgroup lp_unitGroup);
@@ -283,7 +289,8 @@ void gf_PlayerAtFinalVenueUpdate (int lp_player);
 void gf_StartLocationCameraPan ();
 void gf_VenueCameraPan (int lp_round);
 void gf_SetPhalanxHighlighted (int lp_player, bool lp_highlighted);
-void gf_KillScoreAdd (int lp_player, string lp_unitType);
+void gf_KillScoreUnitAdd (int lp_player, string lp_unitType);
+void gf_KillScoreAdd (int lp_player, int lp_value);
 void gf_KillScoreUpdateAll ();
 void gf_KillScoreResetAll ();
 void gf_ScoreBoardRowColorUpdate (int lp_round);
@@ -307,6 +314,7 @@ trigger gt_PlayerInizialization;
 trigger gt_AOmiRemoveAllNonPermanent;
 trigger gt_AOmiLaunch;
 trigger gt_AOmiMarker;
+trigger gt_Pillage;
 trigger gt_AegrElunesGraceRegister;
 trigger gt_AegrElunesGraceDamaged;
 trigger gt_AdefDefendInitRegister;
@@ -998,16 +1006,43 @@ void gf_GameOverTestNotPassed () {
 }
 
 void gf_ChangeTOD () {
+    int autoF846AAF6_ae;
+    int autoF846AAF6_ai;
+
+    // Variable Declarations
+    int lv_player;
+    int lv_controller;
+
+    // Variable Initialization
+
     // Implementation
-    TimerWindowShow(gv_moonstoneTimmerWindow, PlayerGroupActive(), true);
+    autoF846AAF6_ae = gv_playerCount;
+    autoF846AAF6_ai = 1;
+    lv_player = 1;
+    for ( ; ( (autoF846AAF6_ai >= 0 && lv_player <= autoF846AAF6_ae) || (autoF846AAF6_ai <= 0 && lv_player >= autoF846AAF6_ae) ) ; lv_player += autoF846AAF6_ai ) {
+        TimerWindowShow(gv_moonstoneTimmerWindow, PlayerGroupSingle(lv_player), true);
+    }
     libGAwX_gf_SetWar3TimeOfDay("00");
     libGAwX_gf_PauseUnpauseTimeOfDayWar3(true);
     ActorSend(libGAwX_gv_tODActor, "AnimPlay Cover Cover");
 }
 
 void gf_RestoreTOD () {
+    int auto74679AE6_ae;
+    int auto74679AE6_ai;
+
+    // Variable Declarations
+    int lv_player;
+
+    // Variable Initialization
+
     // Implementation
-    TimerWindowShow(gv_moonstoneTimmerWindow, PlayerGroupActive(), false);
+    auto74679AE6_ae = gv_playerCount;
+    auto74679AE6_ai = 1;
+    lv_player = 1;
+    for ( ; ( (auto74679AE6_ai >= 0 && lv_player <= auto74679AE6_ae) || (auto74679AE6_ai <= 0 && lv_player >= auto74679AE6_ae) ) ; lv_player += auto74679AE6_ai ) {
+        TimerWindowShow(gv_moonstoneTimmerWindow, PlayerGroupSingle(lv_player), false);
+    }
     libGAwX_gf_SetWar3TimeOfDay("13:00:00");
     libGAwX_gf_PauseUnpauseTimeOfDayWar3(false);
     Wait(gv_minimumPeriod, c_timeGame);
@@ -1016,51 +1051,62 @@ void gf_RestoreTOD () {
 }
 
 void gf_ChangeWaterState () {
-    playergroup autoAF95B0B5_g;
-    int autoAF95B0B5_p;
+    int autoDEB66CD8_ae;
+    int autoDEB66CD8_ai;
+    int autoC85DD91D_ae;
+    int autoC85DD91D_ai;
 
     // Variable Declarations
     int lv_player;
+    int lv_controller;
 
     // Variable Initialization
 
     // Implementation
-    SoundPlayForPlayer(SoundLink("TempleOfTidesWhat", -1), c_maxPlayers, PlayerGroupActive(), 100.0, 0.0);
+    autoDEB66CD8_ae = gv_playerCount;
+    autoDEB66CD8_ai = 1;
+    lv_player = 1;
+    for ( ; ( (autoDEB66CD8_ai >= 0 && lv_player <= autoDEB66CD8_ae) || (autoDEB66CD8_ai <= 0 && lv_player >= autoDEB66CD8_ae) ) ; lv_player += autoDEB66CD8_ai ) {
+        SoundPlayForPlayer(SoundLink("TempleOfTidesWhat", -1), c_maxPlayers, PlayerGroupSingle(lv_player), 100.0, 0.0);
+    }
     WaterSetState("AW2_Default|[Default]", 5.0, c_wtcLinear);
     Wait(2.0, c_timeGame);
-    autoAF95B0B5_g = PlayerGroupActive(); 
-    autoAF95B0B5_p = 1;
-    for ( ; autoAF95B0B5_p <= PlayerGroupCount(autoAF95B0B5_g) ; autoAF95B0B5_p += BoolToInt(lv_player == PlayerGroupPlayer(autoAF95B0B5_g, autoAF95B0B5_p)) ) {
-        lv_player = PlayerGroupPlayer(autoAF95B0B5_g, autoAF95B0B5_p);
+    libNtve_gf_SetUpgradeLevelForPlayer(lv_controller, "Tide", 1);
+    autoC85DD91D_ae = gv_playerCount;
+    autoC85DD91D_ai = 1;
+    lv_player = 1;
+    for ( ; ( (autoC85DD91D_ai >= 0 && lv_player <= autoC85DD91D_ae) || (autoC85DD91D_ai <= 0 && lv_player >= autoC85DD91D_ae) ) ; lv_player += autoC85DD91D_ai ) {
         libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "Tide", 1);
+        TimerWindowShow(gv_callTideTimmerWindow, PlayerGroupSingle(lv_player), true);
     }
-    TimerWindowShow(gv_callTideTimmerWindow, PlayerGroupActive(), true);
 }
 
 void gf_RestoreWaterState (bool lp_wait) {
-    playergroup auto5475E430_g;
-    int auto5475E430_p;
+    int autoDFEE984D_ae;
+    int autoDFEE984D_ai;
 
     // Variable Declarations
     int lv_player;
+    int lv_controller;
 
     // Variable Initialization
 
     // Implementation
-    auto5475E430_g = PlayerGroupActive(); 
-    auto5475E430_p = 1;
-    for ( ; auto5475E430_p <= PlayerGroupCount(auto5475E430_g) ; auto5475E430_p += BoolToInt(lv_player == PlayerGroupPlayer(auto5475E430_g, auto5475E430_p)) ) {
-        lv_player = PlayerGroupPlayer(auto5475E430_g, auto5475E430_p);
+    libNtve_gf_SetUpgradeLevelForPlayer(lv_controller, "Tide", 0);
+    autoDFEE984D_ae = gv_playerCount;
+    autoDFEE984D_ai = 1;
+    lv_player = 1;
+    for ( ; ( (autoDFEE984D_ai >= 0 && lv_player <= autoDFEE984D_ae) || (autoDFEE984D_ai <= 0 && lv_player >= autoDFEE984D_ae) ) ; lv_player += autoDFEE984D_ai ) {
         libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "Tide", 0);
+        TimerWindowShow(gv_callTideTimmerWindow, PlayerGroupSingle(lv_player), false);
     }
-    TimerWindowShow(gv_callTideTimmerWindow, PlayerGroupActive(), false);
     if ((lp_wait == true)) {
         Wait(2.0, c_timeGame);
     }
     else {
         Wait(gv_minimumPeriod, c_timeGame);
     }
-    if ((TechTreeUpgradeCount(PlayerGroupPlayer(PlayerGroupActive(), 1), "Tide", c_techCountCompleteOnly) == 0)) {
+    if ((TechTreeUpgradeCount(lv_controller, "Tide", c_techCountCompleteOnly) == 0)) {
         WaterSetState("AW2_Default|Alternate Setting", 5.0, c_wtcLinear);
         libNtve_gf_SendActorMessageToGameRegion(RegionEntireMap(), "AnimGroupRemove Swim");
     }
@@ -2784,6 +2830,11 @@ void gf_SearchRadiusInFinalRoundSet (fixed lp_radius) {
     gv_searchRadiusInFinalRound = lp_radius;
 }
 
+void gf_SearchRadiusSet (fixed lp_radius) {
+    // Implementation
+    gv_searchRadius = lp_radius;
+}
+
 void gf_IssueOrderAll (bool lp_periodic) {
     unitgroup auto0529A0CC_g;
     int auto0529A0CC_u;
@@ -2812,7 +2863,12 @@ void gf_IssueOrderAll (bool lp_periodic) {
             lv_region = gv_battlefield;
         }
         else {
-            lv_region = RegionCircle(UnitGetPosition(lv_unit), gv_searchRadiusInFinalRound);
+            if ((gf_IsFinalRound(gv_round) == true)) {
+                lv_region = RegionCircle(UnitGetPosition(lv_unit), gv_searchRadiusInFinalRound);
+            }
+            else {
+                lv_region = RegionCircle(UnitGetPosition(lv_unit), gv_searchRadius);
+            }
         }
         lv_targetUnitgroup = UnitGroupAlliance(UnitGetOwner(lv_unit), c_unitAllianceEnemy, lv_region, gv_unitAndCreepFilter, 0);
         while ((UnitGroupCount(lv_targetUnitgroup, c_unitCountAlive) > 0)) {
@@ -2862,7 +2918,6 @@ void gf_RemoveVillagerAll () {
             lv_unit = UnitGroupUnit(auto6E772E87_g, auto6E772E87_u);
             UnitRemove(lv_unit);
         }
-        Wait(gv_minimumPeriod, c_timeGame);
     }
 }
 
@@ -3106,9 +3161,15 @@ void gf_SetPhalanxHighlighted (int lp_player, bool lp_highlighted) {
     UISetButtonHighlighted(PlayerGroupSingle(lp_player), gf_RaceGetBuildPhalanxCommand(PlayerRace(lp_player)), lp_highlighted);
 }
 
-void gf_KillScoreAdd (int lp_player, string lp_unitType) {
+void gf_KillScoreUnitAdd (int lp_player, string lp_unitType) {
     // Implementation
     gv_killScore[lp_player] += gf_UnitTypeGetKillResource(lp_unitType);
+    gf_KillScoreUpdateAll();
+}
+
+void gf_KillScoreAdd (int lp_player, int lp_value) {
+    // Implementation
+    gv_killScore[lp_player] += lp_value;
     gf_KillScoreUpdateAll();
 }
 
@@ -3292,6 +3353,7 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     int lv_player;
 
     // Variable Initialization
+    lv_debug = true;
 
     // Actions
     if (!runActions) {
@@ -3310,6 +3372,7 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
         lv_player = PlayerGroupPlayer(autoE8E91B19_g, autoE8E91B19_p);
         VisRevealArea(lv_player, RegionFromId(70), 0.0625, false);
         VisRevealArea(lv_player, RegionFromId(71), 0.0625, false);
+        libGAwX_gf_SetPlayerUIRace(lv_player, "Goblin");
     }
     libGAwX_gf_SetWar3TimeOfDay("13:00:00");
     libGAwX_gf_PauseUnpauseTimeOfDayWar3(true);
@@ -3549,6 +3612,7 @@ bool gt_RoundInitialization_Func (bool testConds, bool runActions) {
     }
     else {
     }
+    gf_SearchRadiusSet(36.0);
     gf_SearchRadiusInFinalRoundSet(115.0);
     return true;
 }
@@ -3912,6 +3976,33 @@ bool gt_AOmiMarker_Func (bool testConds, bool runActions) {
 void gt_AOmiMarker_Init () {
     gt_AOmiMarker = TriggerCreate("gt_AOmiMarker_Func");
     TriggerAddEventPlayerEffectUsed(gt_AOmiMarker, c_playerAny, "AOmiSpawnEffect");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Pillage
+//--------------------------------------------------------------------------------------------------
+bool gt_Pillage_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_player;
+    int lv_value;
+
+    // Variable Initialization
+    lv_player = EventPlayer();
+    lv_value = CatalogFieldValueGetAsInt(c_gameCatalogBehavior, "Asal", "DamageResponse.Cost.Resource[" + IntToString(3) + "]", lv_player);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    gf_KillScoreAdd(lv_player, (-lv_value));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_Pillage_Init () {
+    gt_Pillage = TriggerCreate("gt_Pillage_Func");
+    TriggerAddEventPlayerEffectUsed(gt_Pillage, c_playerAny, "AsalTriggerNotice");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5039,16 +5130,13 @@ bool gt_UnitDied_Func (bool testConds, bool runActions) {
     }
 
     if ((UnitIsValid(lv_killUnit) == true)) {
-        if (((UnitFilterMatch(lv_killUnit, lv_killPlayer, gv_unitFilter) == true) || (UnitFilterMatch(lv_killUnit, lv_killPlayer, gv_creepFilter) == true))) {
-            if (true) {
-                gf_KillScoreAdd(lv_killPlayer, lv_unitType);
-            }
-
+        if (((UnitFilterMatch(lv_killUnit, lv_killPlayer, gv_unitFilterScore) == true) || (UnitFilterMatch(lv_killUnit, lv_killPlayer, gv_creepFilterCcore) == true))) {
+            gf_KillScoreUnitAdd(lv_killPlayer, lv_unitType);
         }
 
     }
     else {
-        gf_KillScoreAdd(lv_killPlayer, lv_unitType);
+        gf_KillScoreUnitAdd(lv_killPlayer, lv_unitType);
     }
     return true;
 }
@@ -5098,6 +5186,7 @@ bool gt_DebugKeyPressed_Func (bool testConds, bool runActions) {
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "opeo", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "uaco", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "nmpe", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "ncg3", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
         PlayerModifyPropertyInt(lv_player, c_playerPropTerrazine, c_playerPropOperSetTo, 100000);
         PlayerModifyPropertyInt(lv_player, c_playerPropCustom, c_playerPropOperSetTo, 100000);
         PlayerGroupClear(gv_aIGroup);
@@ -5228,6 +5317,7 @@ void InitTriggers () {
     gt_AOmiRemoveAllNonPermanent_Init();
     gt_AOmiLaunch_Init();
     gt_AOmiMarker_Init();
+    gt_Pillage_Init();
     gt_AegrElunesGraceRegister_Init();
     gt_AegrElunesGraceDamaged_Init();
     gt_AdefDefendInitRegister_Init();

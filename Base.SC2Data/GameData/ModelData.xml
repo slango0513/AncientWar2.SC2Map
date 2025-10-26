@@ -1,9 +1,38 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CModel id="AOwsCaster">
+        <ScaleMax value="1.875000,1.875000,1.875000"/>
+        <ScaleMin value="1.875000,1.875000,1.875000"/>
+    </CModel>
+    <CModel id="Bsds" parent="War3_ThunderclapTarget"/>
+    <CModel id="SelfDestructCaster" parent="War3_Spell" race="Goblin">
+        <Model value="Assets\Abilities\Spells\Orc\War3_WarStompCaster\War3_WarStompCaster.m3"/>
+        <Events>
+            <Anim value="Stand"/>
+            <Type value="Sound"/>
+            <Time value="0.033000"/>
+            <Payload value="SND_AHTC"/>
+        </Events>
+        <Events>
+            <Anim value="Stand"/>
+            <Type value="FootprintLeft"/>
+            <Time value="0.133000"/>
+            <Payload value="UBR_SelfDestruct"/>
+        </Events>
+    </CModel>
+    <CModel id="AsdsCaster" parent="SelfDestructCaster">
+        <ScaleMax value="1.875000,1.875000,1.875000"/>
+        <ScaleMin value="1.875000,1.875000,1.875000"/>
+    </CModel>
     <CModel id="Nman">
         <ScaleMax value="0.703125,0.703125,0.703125"/>
         <ScaleMin value="0.703125,0.703125,0.703125"/>
     </CModel>
+    <CModel id="UBR_THND">
+        <ScaleMax value="3.600000,3.600000,3.600000"/>
+        <ScaleMin value="3.600000,3.600000,3.600000"/>
+    </CModel>
+    <CModel id="UBR_SelfDestruct" parent="War3_Splat_ThunderClap"/>
     <CModel id="XIctEffect" parent="War3_StarfallCaster"/>
     <CModel id="CallTideEffect" parent="War3_StarfallCaster"/>
     <CModel id="AabrTarget" parent="War3_UnholyAura"/>
@@ -49,6 +78,9 @@
     <CModel id="HumanPreviewer" parent="War3_Item">
         <Model value="Assets\Objects\Splats\War3_Human_Uber_Splat\War3_Human_Uber_Splat.m3"/>
     </CModel>
+    <CModel id="DraeneiPreviewer" parent="War3_Item">
+        <Model value="Assets\Objects\Splats\War3_Human_Uber_Splat\War3_Human_Uber_Splat.m3"/>
+    </CModel>
     <CModel id="NightElfPreviewer" parent="War3_Item">
         <Model value="Assets\Objects\Splats\War3_NightElf_Uber_Splat\War3_NightElf_Uber_Splat.m3"/>
     </CModel>
@@ -58,7 +90,13 @@
     <CModel id="OrcPreviewer" parent="War3_Item">
         <Model value="Assets\Objects\Splats\War3_Orc_Uber_Splat\War3_Orc_Uber_Splat.m3"/>
     </CModel>
+    <CModel id="GoblinPreviewer" parent="War3_Item">
+        <Model value="Assets\Objects\Splats\War3_Orc_Uber_Splat\War3_Orc_Uber_Splat.m3"/>
+    </CModel>
     <CModel id="UndeadPreviewer" parent="War3_Item">
+        <Model value="Assets\Objects\Splats\War3_Undead_Uber_Splat\War3_Undead_Uber_Splat.m3"/>
+    </CModel>
+    <CModel id="DemonPreviewer" parent="War3_Item">
         <Model value="Assets\Objects\Splats\War3_Undead_Uber_Splat\War3_Undead_Uber_Splat.m3"/>
     </CModel>
     <CModel id="Ucrl">
@@ -67,6 +105,17 @@
     </CModel>
     <CModel id="War3_NagaCaptureFlag" parent="War3_Item">
         <Model value="Assets\Objects\InventoryItems\War3_NightElfCaptureFlag\War3_NightElfCaptureFlag.m3"/>
+    </CModel>
+    <CModel id="War3_DemonCaptureFlag" parent="War3_Item">
+        <Model value="Assets\Objects\InventoryItems\War3_UndeadCaptureFlag\War3_UndeadCaptureFlag.m3"/>
+    </CModel>
+    <CModel id="War3_DraeneiCaptureFlag" parent="War3_Item">
+        <Model value="Assets\Objects\InventoryItems\War3_HumanCaptureFlag\War3_HumanCaptureFlag.m3"/>
+    </CModel>
+    <CModel id="War3_GoblinCaptureFlag" parent="War3_Item">
+        <Model value="Assets\Objects\InventoryItems\War3_OrcCaptureFlag\War3_OrcCaptureFlag.m3"/>
+        <ScaleMax value="1.200000,1.200000,1.200000"/>
+        <ScaleMin value="1.200000,1.200000,1.200000"/>
     </CModel>
     <CModel id="War3_OrcCaptureFlag">
         <ScaleMax value="1.200000,1.200000,1.200000"/>

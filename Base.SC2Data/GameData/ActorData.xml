@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
     <CActorSimple id="AIct" parent="War3_SimpleCastAnim"/>
+    <CActorModel id="Bsds" parent="War3_Buff">
+        <HostSiteOps Ops="$overhead"/>
+    </CActorModel>
     <CActorModel id="XIctEffect" parent="EffectArt">
         <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
         <On Terms="Abil.AIct.SourcePrepStart" Send="Create"/>
@@ -13,10 +16,14 @@
         <On Terms="Behavior.AIob.On" Send="Create"/>
         <On Terms="Behavior.AIob.Off" Send="Destroy"/>
     </CActorModel>
-    <CActorSimple id="ACcv" parent="War3_SimpleCastAnim"/>
-    <CActorModel id="AOwsCaster">
-        <Scale value="2.500000"/>
+    <CActorSimple id="AIsb" parent="War3_AttackMissileSwap"/>
+    <CActorModel id="AIsbTarget" parent="TargetArtX">
+        <HostSiteOps Ops="$weapon"/>
+        <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="Behavior.AIsb.On" Send="Create"/>
+        <On Terms="Behavior.AIsb.Off" Send="Destroy"/>
     </CActorModel>
+    <CActorSimple id="ACcv" parent="War3_SimpleCastAnim"/>
     <CActorSimple id="Absk" parent="War3_SimpleCastAnim"/>
     <CActorSimple id="Abs2" parent="War3_SimpleCastAnim"/>
     <CActorModel id="Bbs2" parent="War3_Buff">
@@ -29,6 +36,9 @@
     </CActorModel>
     <CActorModel id="DefendCaster" parent="CasterArt">
         <On Terms="Effect.DefendVisualDummy.Start; At Caster" Send="Create"/>
+    </CActorModel>
+    <CActorModel id="AsdsCaster" parent="CasterArt">
+        <On Terms="Effect.Asds.Start; At Caster" Send="Create"/>
     </CActorModel>
     <CActorSimple id="Defend" parent="War3_ChannelAnim">
         <On Terms="Behavior.Defend.On" Send="Create"/>
@@ -158,6 +168,8 @@
     </CActorUnit>
     <CActorAction id="ear21" parent="War3_AttackMissileSwapable"/>
     <CActorMissile id="ear21LM" parent="War3_MissileSwapable" unitName="ear21LM"/>
+    <CActorAction id="ngsp1" parent="War3_AttackSwapable" WeaponSound="MetalLightSlice"/>
+    <CActorAction id="negz1" parent="War3_AttackSwapable" WeaponSound="MetalLightSlice"/>
     <CActorAction id="hkn21" parent="War3_AttackSwapable" WeaponSound="MetalMediumSlice"/>
     <!--darkminion1-->
     <CActorUnit id="ndr1" parent="War3_Army" unitSound="Skeleton" unitName="ndr1" defType="LARGE">
@@ -173,6 +185,21 @@
     </CActorUnit>
     <CActorAction id="nft31" parent="War3_AttackMissileSwapable"/>
     <CActorMissile id="nft31LM" parent="War3_MissileSwapable" unitName="nft31LM"/>
+    <!--goblinsapper-->
+    <CActorUnit id="ngsp" parent="War3_Army" unitSound="GoblinSapper" unitName="ngsp" defType="LARGE">
+        <DeathArray index="Normal" AnimProps="Death"/>
+        <DeathArray index="Impact" AnimProps="Death,Spell"/>
+        <Macros index="2" removed="1"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnGoblinSapper.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnGoblinSapper.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnGoblinSapper.dds"/>
+        <BarWidth value="50"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
     <CActorAction id="nlp21" parent="War3_AttackSwapable" WeaponSound="MetalMediumChop"/>
     <CActorAction id="nltc1" parent="War3_AttackSwapable" WeaponSound="MetalMediumChop"/>
     <!--murgulshadowcaster-->
@@ -505,6 +532,10 @@
         <Model value="HumanPreviewer"/>
         <Scale value="4.000000"/>
     </CActorUnit>
+    <CActorUnit id="DraeneiPreviewer" parent="War3_Item" unitName="DraeneiPreviewer">
+        <Model value="DraeneiPreviewer"/>
+        <Scale value="4.000000"/>
+    </CActorUnit>
     <CActorUnit id="NightElfPreviewer" parent="War3_Item" unitName="NightElfPreviewer">
         <Model value="NightElfPreviewer"/>
         <Scale value="4.000000"/>
@@ -515,6 +546,18 @@
     </CActorUnit>
     <CActorUnit id="OrcPreviewer" parent="War3_Item" unitName="OrcPreviewer">
         <Model value="OrcPreviewer"/>
+        <Scale value="4.000000"/>
+    </CActorUnit>
+    <CActorUnit id="GoblinPreviewer" parent="War3_Item" unitName="GoblinPreviewer">
+        <Model value="GoblinPreviewer"/>
+        <Scale value="4.000000"/>
+    </CActorUnit>
+    <CActorUnit id="UndeadPreviewer" parent="War3_Item" unitName="UndeadPreviewer">
+        <Model value="UndeadPreviewer"/>
+        <Scale value="4.000000"/>
+    </CActorUnit>
+    <CActorUnit id="DemonPreviewer" parent="War3_Item" unitName="DemonPreviewer">
+        <Model value="DemonPreviewer"/>
         <Scale value="4.000000"/>
     </CActorUnit>
     <!--cryptlord-->
@@ -552,10 +595,6 @@
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="100"/>
         <WalkAnimMoveSpeed value="2.5"/>
-    </CActorUnit>
-    <CActorUnit id="UndeadPreviewer" parent="War3_Item" unitName="UndeadPreviewer">
-        <Model value="UndeadPreviewer"/>
-        <Scale value="4.000000"/>
     </CActorUnit>
     <!--archer-->
     <CActorUnit id="earc" parent="War3_Army" unitSound="Archer" unitName="earc" defType="MEDIUM">
@@ -1093,6 +1132,42 @@
         <PortraitModel value="War3_NagaCaptureFlag"/>
         <BuildModel value="War3_NagaCaptureFlag"/>
         <PlacementModel value="War3_NagaCaptureFlag"/>
+    </CActorUnit>
+    <CActorUnit id="DemonFlag" parent="War3_Item" unitName="DemonFlag" art="Assets\Textures\BTN\Renee_war3_btnUndeadCaptureFlag.dds">
+        <Model value="War3_DemonCaptureFlag"/>
+        <PortraitModel value="War3_DemonCaptureFlag"/>
+        <BuildModel value="War3_DemonCaptureFlag"/>
+        <PlacementModel value="War3_DemonCaptureFlag"/>
+    </CActorUnit>
+    <CActorUnit id="DemonFlag2" parent="War3_Item" unitName="DemonFlag2" art="Assets\Textures\BTN\Renee_war3_btnUndeadCaptureFlag.dds">
+        <Model value="War3_DemonCaptureFlag"/>
+        <PortraitModel value="War3_DemonCaptureFlag"/>
+        <BuildModel value="War3_DemonCaptureFlag"/>
+        <PlacementModel value="War3_DemonCaptureFlag"/>
+    </CActorUnit>
+    <CActorUnit id="DraeneiFlag" parent="War3_Item" unitName="DraeneiFlag" art="Assets\Textures\BTN\Renee_war3_btnHumanCaptureFlag.dds">
+        <Model value="War3_DraeneiCaptureFlag"/>
+        <PortraitModel value="War3_DraeneiCaptureFlag"/>
+        <BuildModel value="War3_DraeneiCaptureFlag"/>
+        <PlacementModel value="War3_DraeneiCaptureFlag"/>
+    </CActorUnit>
+    <CActorUnit id="DraeneiFlag2" parent="War3_Item" unitName="DraeneiFlag2" art="Assets\Textures\BTN\Renee_war3_btnHumanCaptureFlag.dds">
+        <Model value="War3_DraeneiCaptureFlag"/>
+        <PortraitModel value="War3_DraeneiCaptureFlag"/>
+        <BuildModel value="War3_DraeneiCaptureFlag"/>
+        <PlacementModel value="War3_DraeneiCaptureFlag"/>
+    </CActorUnit>
+    <CActorUnit id="GoblinFlag" parent="War3_Item" unitName="GoblinFlag" art="Assets\Textures\BTN\Renee_war3_btnOrcCaptureFlag.dds">
+        <Model value="War3_GoblinCaptureFlag"/>
+        <PortraitModel value="War3_GoblinCaptureFlag"/>
+        <BuildModel value="War3_GoblinCaptureFlag"/>
+        <PlacementModel value="War3_GoblinCaptureFlag"/>
+    </CActorUnit>
+    <CActorUnit id="GoblinFlag2" parent="War3_Item" unitName="GoblinFlag2" art="Assets\Textures\BTN\Renee_war3_btnOrcCaptureFlag.dds">
+        <Model value="War3_GoblinCaptureFlag"/>
+        <PortraitModel value="War3_GoblinCaptureFlag"/>
+        <BuildModel value="War3_GoblinCaptureFlag"/>
+        <PlacementModel value="War3_GoblinCaptureFlag"/>
     </CActorUnit>
     <!--foresttrollhighpriest-->
     <CActorUnit id="nfsh" parent="War3_Army" unitSound="ForestTrollShadowPriest" unitName="nfsh" defType="NONE">
@@ -2282,6 +2357,19 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHydralisk.dds"/>
         <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--marine-->
+    <CActorUnit id="zmar" parent="War3_Army" unitSound="TerranMarine" unitName="zmar" defType="MEDIUM">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnMarine.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnMarine.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnMarine.dds"/>
+        <BarWidth value="50"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_HumanLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
 </Catalog>

@@ -298,6 +298,109 @@
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
+    <!--Self Destruct Dur=.1 HeroDur=.1-->
+    <CAbilEffectTarget id="Asds" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Goblin,AbilityorEffectType:Unit"/>
+        <TargetFilters index="0" value="-;air,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
+        <CastOutroTime value="0.51"/>
+        <Flags index="Smart" value="1"/>
+        <SmartValidatorArray value="IsEnemy"/>
+        <CastIntroTime value="0.1"/>
+        <CursorEffect value="AsdsDamage"/>
+        <AINotifyEffect value="AsdsDamage"/>
+        <AutoCastRange value="6"/>
+        <Range value="0.5"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="CountUnit">
+        <Effect index="0" value="CountUnitTriggerNotice"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Cost>
+            <Cooldown Location="Global" TimeUse="0.0625"/>
+        </Cost>
+        <AutoCastFilters value="Visible;Ally,Neutral,Enemy"/>
+        <AutoCastValidatorArray value="CountUnit"/>
+        <AutoCastValidatorArray value="PhalanxMarkerEqual0"/>
+        <AutoCastValidatorArray value="CasterHasCountUnitController"/>
+    </CAbilEffectInstant>
+    <CAbilBuild id="DemonBuild" parent="War3_PowerBuild">
+        <EditorCategories value="Race:Demon,AbilityorEffectType:Units"/>
+        <InfoArray index="Build1" Unit="DemonFlag">
+            <Button DefaultButtonFace="DemonFlag" Requirements="BuildPhalanx"/>
+        </InfoArray>
+        <InfoArray index="Build2" Unit="DemonFlag2">
+            <Button DefaultButtonFace="DemonFlag2" Requirements="BuildPhalanxFinal"/>
+        </InfoArray>
+        <InfoArray index="Build3" Unit="nmyr">
+            <Button DefaultButtonFace="nmyr" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build4" Unit="nnsw">
+            <Button DefaultButtonFace="nnsw" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build5" Unit="nlpr">
+            <Button DefaultButtonFace="nlpr" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build6" Unit="ntrs">
+            <Button DefaultButtonFace="ntrs" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build7" Unit="nsnp">
+            <Button DefaultButtonFace="nsnp" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build8" Unit="nnmg">
+            <Button DefaultButtonFace="nnmg" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build9" Unit="nmsc">
+            <Button DefaultButtonFace="nmsc" Requirements="BuildArmy"/>
+        </InfoArray>
+        <Range value="500"/>
+    </CAbilBuild>
+    <CAbilBuild id="DraeneiBuild" parent="War3_PowerBuild">
+        <EditorCategories value="Race:Draenei,AbilityorEffectType:Units"/>
+        <InfoArray index="Build1" Unit="DraeneiFlag">
+            <Button DefaultButtonFace="DraeneiFlag" Requirements="BuildPhalanx"/>
+        </InfoArray>
+        <InfoArray index="Build2" Unit="DraeneiFlag2">
+            <Button DefaultButtonFace="DraeneiFlag2" Requirements="BuildPhalanxFinal"/>
+        </InfoArray>
+        <InfoArray index="Build3" Unit="nmyr">
+            <Button DefaultButtonFace="nmyr" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build4" Unit="nnsw">
+            <Button DefaultButtonFace="nnsw" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build5" Unit="nlpr">
+            <Button DefaultButtonFace="nlpr" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build6" Unit="ntrs">
+            <Button DefaultButtonFace="ntrs" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build7" Unit="nsnp">
+            <Button DefaultButtonFace="nsnp" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build8" Unit="nnmg">
+            <Button DefaultButtonFace="nnmg" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build9" Unit="nmsc">
+            <Button DefaultButtonFace="nmsc" Requirements="BuildArmy"/>
+        </InfoArray>
+        <Range value="500"/>
+    </CAbilBuild>
+    <CAbilBuild id="GoblinBuild" parent="War3_PowerBuild">
+        <EditorCategories value="Race:Goblin,AbilityorEffectType:Units"/>
+        <InfoArray index="Build1" Unit="GoblinFlag">
+            <Button DefaultButtonFace="GoblinFlag" Requirements="BuildPhalanx"/>
+        </InfoArray>
+        <InfoArray index="Build2" Unit="GoblinFlag2">
+            <Button DefaultButtonFace="GoblinFlag2" Requirements="BuildPhalanxFinal"/>
+        </InfoArray>
+        <InfoArray index="Build3" Unit="ngir">
+            <Button DefaultButtonFace="ngir" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build4" Unit="ngsp">
+            <Button DefaultButtonFace="ngsp" Requirements="BuildArmy"/>
+        </InfoArray>
+        <Range value="500"/>
+    </CAbilBuild>
     <!--Paladin - Devotion Aura Buff=BHad-->
     <CAbilBehavior id="AHad">
         <CmdButtonArray index="On" Requirements="">
@@ -1258,7 +1361,18 @@
         <InfoArray/>
     </CAbilInventory>
     <CAbilInventory id="NagaInventory" parent="AW2_UnitInventory">
-        <Name value="InventoryNaga/Name"/>
+        <InfoArray/>
+        <InfoArray/>
+    </CAbilInventory>
+    <CAbilInventory id="GoblinInventory" parent="AW2_UnitInventory">
+        <InfoArray/>
+        <InfoArray/>
+    </CAbilInventory>
+    <CAbilInventory id="DemonInventory" parent="AW2_UnitInventory">
+        <InfoArray/>
+        <InfoArray/>
+    </CAbilInventory>
+    <CAbilInventory id="DraeneiInventory" parent="AW2_UnitInventory">
         <InfoArray/>
         <InfoArray/>
     </CAbilInventory>
@@ -1713,6 +1827,12 @@
             <Button Requirements="BuildArmy"/>
         </InfoArray>
     </CAbilTrain>
+    <CAbilTrain id="Purchaseoslo" parent="War3_MakeItem" unit="oslo">
+        <InfoArray index="Train1">
+            <Charge CountMax="1" CountStart="1"/>
+            <Button Requirements="BuildArmy"/>
+        </InfoArray>
+    </CAbilTrain>
     <CAbilTrain id="Purchaseoven" parent="War3_MakeItem" unit="oven">
         <InfoArray index="Train1">
             <Charge CountMax="1" CountStart="1"/>
@@ -2119,6 +2239,12 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeTozcso" parent="AW2_Upgrade" toUnit="zcso">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTozmar" parent="AW2_Upgrade" toUnit="zmar">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonegz" parent="AW2_Upgrade" toUnit="negz">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
 </Catalog>

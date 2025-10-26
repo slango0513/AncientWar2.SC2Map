@@ -129,14 +129,6 @@
                 <Field Id="Row"/>
             </Int>
         </Instances>
-        <Instances Id="NagaFlag">
-            <Int Int="6">
-                <Field Id="Column"/>
-            </Int>
-            <Int Int="6">
-                <Field Id="Row"/>
-            </Int>
-        </Instances>
         <Instances Id="fla2">
             <Int Int="15">
                 <Field Id="Column"/>
@@ -169,6 +161,14 @@
                 <Field Id="Row"/>
             </Int>
         </Instances>
+        <Instances Id="NagaFlag">
+            <Int Int="6">
+                <Field Id="Column"/>
+            </Int>
+            <Int Int="6">
+                <Field Id="Row"/>
+            </Int>
+        </Instances>
         <Instances Id="NagaFlag2">
             <Int Int="6">
                 <Field Id="Row"/>
@@ -177,12 +177,52 @@
                 <Field Id="Column"/>
             </Int>
         </Instances>
-        <Instances Id="fla3">
-            <Int Int="9">
+        <Instances Id="DemonFlag">
+            <Int Int="6">
                 <Field Id="Row"/>
             </Int>
             <Int Int="6">
                 <Field Id="Column"/>
+            </Int>
+        </Instances>
+        <Instances Id="DemonFlag2">
+            <Int Int="15">
+                <Field Id="Column"/>
+            </Int>
+            <Int Int="6">
+                <Field Id="Row"/>
+            </Int>
+        </Instances>
+        <Instances Id="DraeneiFlag">
+            <Int Int="6">
+                <Field Id="Row"/>
+            </Int>
+            <Int Int="6">
+                <Field Id="Column"/>
+            </Int>
+        </Instances>
+        <Instances Id="DraeneiFlag2">
+            <Int Int="15">
+                <Field Id="Column"/>
+            </Int>
+            <Int Int="6">
+                <Field Id="Row"/>
+            </Int>
+        </Instances>
+        <Instances Id="GoblinFlag">
+            <Int Int="6">
+                <Field Id="Row"/>
+            </Int>
+            <Int Int="6">
+                <Field Id="Column"/>
+            </Int>
+        </Instances>
+        <Instances Id="GoblinFlag2">
+            <Int Int="15">
+                <Field Id="Column"/>
+            </Int>
+            <Int Int="6">
+                <Field Id="Row"/>
             </Int>
         </Instances>
     </CUser>
@@ -1557,14 +1597,14 @@
                 <Field Id="UnitType" Index="1"/>
             </Unit>
         </Instances>
-        <Instances Id="zcso">
+        <Instances Id="zmar">
             <Int Int="4">
                 <Field Id="Count"/>
             </Int>
             <Int Int="2">
                 <Field Id="Count" Index="1"/>
             </Int>
-            <Unit Unit="zcso">
+            <Unit Unit="zmar">
                 <Field Id="UnitType" Index="1"/>
             </Unit>
             <Unit Unit="hrif">
@@ -1577,6 +1617,36 @@
             </Int>
             <Unit Unit="nmsc">
                 <Field Id="UnitType"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ngir">
+            <Int Int="1">
+                <Field Id="Count"/>
+            </Int>
+            <Unit Unit="ngir">
+                <Field Id="UnitType"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ngsp">
+            <Int Int="2">
+                <Field Id="Count"/>
+            </Int>
+            <Unit Unit="ngsp">
+                <Field Id="UnitType"/>
+            </Unit>
+        </Instances>
+        <Instances Id="negz">
+            <Int Int="5">
+                <Field Id="Count"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="Count" Index="1"/>
+            </Int>
+            <Unit Unit="ngsp">
+                <Field Id="UnitType"/>
+            </Unit>
+            <Unit Unit="negz">
+                <Field Id="UnitType" Index="1"/>
             </Unit>
         </Instances>
     </CUser>
@@ -1593,6 +1663,11 @@
         <Instances index="4" Id="0005"/>
         <Instances Id="0006">
             <GameLink GameLink="Naga">
+                <Field Id="Race"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="0007">
+            <GameLink GameLink="Goblin">
                 <Field Id="Race"/>
             </GameLink>
         </Instances>
@@ -1697,6 +1772,57 @@
                 <Field Id="Phalanx" Index="1"/>
             </Unit>
         </Instances>
+        <Instances Id="Demon">
+            <AbilCmd Abil="DemonBuild">
+                <Field Id="Command"/>
+            </AbilCmd>
+            <AbilCmd Abil="DemonBuild" Cmd="1">
+                <Field Id="Command" Index="1"/>
+            </AbilCmd>
+            <Unit Unit="DemonFlag">
+                <Field Id="Phalanx"/>
+            </Unit>
+            <Unit Unit="DemonFlag2">
+                <Field Id="Phalanx" Index="1"/>
+            </Unit>
+            <Unit Unit="DemonPreviewer">
+                <Field Id="Previewer"/>
+            </Unit>
+        </Instances>
+        <Instances Id="Draenei">
+            <AbilCmd Abil="DraeneiBuild">
+                <Field Id="Command"/>
+            </AbilCmd>
+            <AbilCmd Abil="DraeneiBuild" Cmd="1">
+                <Field Id="Command" Index="1"/>
+            </AbilCmd>
+            <Unit Unit="DraeneiFlag">
+                <Field Id="Phalanx"/>
+            </Unit>
+            <Unit Unit="DraeneiFlag2">
+                <Field Id="Phalanx" Index="1"/>
+            </Unit>
+            <Unit Unit="DraeneiPreviewer">
+                <Field Id="Previewer"/>
+            </Unit>
+        </Instances>
+        <Instances Id="Goblin">
+            <AbilCmd Abil="GoblinBuild">
+                <Field Id="Command"/>
+            </AbilCmd>
+            <AbilCmd Abil="GoblinBuild" Cmd="1">
+                <Field Id="Command" Index="1"/>
+            </AbilCmd>
+            <Unit Unit="GoblinFlag">
+                <Field Id="Phalanx"/>
+            </Unit>
+            <Unit Unit="GoblinFlag2">
+                <Field Id="Phalanx" Index="1"/>
+            </Unit>
+            <Unit Unit="GoblinPreviewer">
+                <Field Id="Previewer"/>
+            </Unit>
+        </Instances>
     </CUser>
     <CUser id="SkinSetWar3HD" parent="AW2_User"/>
     <CUser id="WorkerBuildAbilityData">
@@ -1724,6 +1850,11 @@
         </Instances>
         <Instances Id="nmpe">
             <GameLink GameLink="AGbu">
+                <Field Id="Ability"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="ncg3">
+            <GameLink GameLink="GoblinBuild">
                 <Field Id="Ability"/>
             </GameLink>
         </Instances>

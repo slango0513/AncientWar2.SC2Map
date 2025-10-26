@@ -17,10 +17,28 @@
     </CValidatorLocationEnumArea>
     <CValidatorCombine id="CanUseAnyInventory">
         <CombineArray value="CanUseNagaInventory"/>
+        <CombineArray value="CanUseDemonInventory"/>
+        <CombineArray value="CanUseDraeneiInventory"/>
+        <CombineArray value="CanUseGoblinInventory"/>
     </CValidatorCombine>
     <CValidatorUnitOrder id="CanUseNagaInventory">
         <WhichUnit Value="Target"/>
         <AbilLink value="NagaInventory"/>
+        <AbilCmdIndex value="2"/>
+    </CValidatorUnitOrder>
+    <CValidatorUnitOrder id="CanUseDemonInventory">
+        <WhichUnit Value="Target"/>
+        <AbilLink value="DemonInventory"/>
+        <AbilCmdIndex value="2"/>
+    </CValidatorUnitOrder>
+    <CValidatorUnitOrder id="CanUseDraeneiInventory">
+        <WhichUnit Value="Target"/>
+        <AbilLink value="DraeneiInventory"/>
+        <AbilCmdIndex value="2"/>
+    </CValidatorUnitOrder>
+    <CValidatorUnitOrder id="CanUseGoblinInventory">
+        <WhichUnit Value="Target"/>
+        <AbilLink value="GoblinInventory"/>
         <AbilCmdIndex value="2"/>
     </CValidatorUnitOrder>
     <CValidatorLocationCompareCliffLevel id="CasterCliffLevelEqualOrLesser">
@@ -28,6 +46,11 @@
         <WhichLocation Value="TargetUnit"/>
         <OtherLocation Value="CasterUnit"/>
     </CValidatorLocationCompareCliffLevel>
+    <CValidatorUnitCompareBehaviorCount id="CasterHasCountUnitController">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Behavior value="CountUnitController"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorCombine id="EmergeValidator">
         <CombineArray value="EnemiesNearby1"/>
         <CombineArray value="NoEnemiesNearby9"/>
@@ -386,4 +409,7 @@
         <Value value="3"/>
         <Vital value="Energy"/>
     </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareBehaviorCount id="NoSelfDestructController">
+        <Behavior value="AsdsController"/>
+    </CValidatorUnitCompareBehaviorCount>
 </Catalog>

@@ -95,6 +95,48 @@
     <CEffectEnumArea id="AroaSearch">
         <AreaArray index="0" Radius="7.0312" Effect="Broa"/>
     </CEffectEnumArea>
+    <!--Creep Abi-->
+    <!--Self Destruct Dur=.1 HeroDur=.1-->
+    <CEffectSet id="Asds">
+        <EffectArray value="AsdsCreatePersistent"/>
+    </CEffectSet>
+    <CEffectDamage id="AsdsDamage">
+        <AreaArray index="0" Radius="1.9531" Bonus="300" Fraction="1"/>
+        <AreaArray index="1" removed="1"/>
+        <SearchFilters value="-;player,allies,air,wall,item,ethereal,dead,Hidden,invulnerable"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="AsdsCreatePersistent">
+        <WhichLocation Value="CasterUnit"/>
+        <InitialEffect value="AsdsSearch"/>
+        <PeriodCount value="28"/>
+        <PeriodicEffectArray value="AsdsSearch"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="AsdsSearch">
+        <SearchFilters value="-;player,allies,air,wall,item,ethereal,dead,Hidden,invulnerable"/>
+        <AreaArray Radius="0.5" RadiusBonus="0.25" Effect="AsdsSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="AsdsSet">
+        <EffectArray value="AsdsApplyForce"/>
+        <EffectArray value="AsdsController"/>
+    </CEffectSet>
+    <CEffectApplyForce id="AsdsApplyForce">
+        <Amount value="1"/>
+    </CEffectApplyForce>
+    <CEffectApplyBehavior id="AsdsController">
+        <ValidatorArray index="0" value="NoSelfDestructController"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AsdsSuicide"/>
+    <CEffectApplyBehavior id="AsdsHeight"/>
+    <CEffectModifyUnit id="AsdsRaise">
+        <Height value="2.625"/>
+        <HeightTime value="0.75"/>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="AsdsLower">
+        <Height value="-2.625"/>
+        <HeightTime value="1"/>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="Bsds"/>
     <CEffectEnumArea id="AwarAoESearch" parent="War3_AbilSearch">
         <EditorCategories value="Race:Orc"/>
         <SearchFilters value="-;player,allies,air,wall,tree,item,structure,ward,ethereal,dead,invulnerable"/>
@@ -221,7 +263,8 @@
         <EffectArray value="BIgd"/>
     </CEffectSet>
     <CEffectSet id="AIsbSphereEffect">
-        <EffectArray value="BIsb"/>
+        <EffectArray value="Bspo"/>
+        <EffectArray value="Bssd"/>
     </CEffectSet>
     <!--Pit Lord - Howl of Terror Buff=BNht-->
     <CEffectEnumArea id="ANhtSearch">
@@ -287,6 +330,9 @@
     <CEffectCreateHealer id="BrplHeal">
         <RechargeVitalRate value="25"/>
     </CEffectCreateHealer>
+    <CEffectApplyBehavior id="CountUnitController">
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
     <CEffectSet id="DefendVisualDummy">
         <EditorCategories value="Race:Human"/>
     </CEffectSet>
@@ -410,7 +456,7 @@
     </CEffectDamage>
     <CEffectDamage id="Ewar1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
-        <Amount value="12"/>
+        <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="Hamg1" parent="AW2_MagicDamage">
         <Amount value="96"/>
@@ -633,6 +679,12 @@
         <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="hfoo1" parent="AW2_NormalDamage">
+        <Amount value="12"/>
+    </CEffectDamage>
+    <CEffectDamage id="ngsp1" parent="AW2_SiegeDamage">
+        <Amount value="12"/>
+    </CEffectDamage>
+    <CEffectDamage id="negz1" parent="AW2_SiegeDamage">
         <Amount value="12"/>
     </CEffectDamage>
     <CEffectDamage id="hgry1">
@@ -978,7 +1030,7 @@
         <Amount value="12"/>
     </CEffectDamage>
     <CEffectDamage id="nmsc1" parent="AW2_MagicDamage">
-        <Amount value="24"/>
+        <Amount value="12"/>
     </CEffectDamage>
     <CEffectDamage id="nmyr1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
@@ -1044,7 +1096,7 @@
     </CEffectDamage>
     <CEffectDamage id="nss21" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
-        <Amount value="12"/>
+        <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="ntrd1" parent="AW2_ChaosDamage">
         <Kind value="Melee"/>
@@ -1251,4 +1303,14 @@
     <CEffectDamage id="zhyd1" parent="AW2_PierceDamage">
         <Amount value="12"/>
     </CEffectDamage>
+    <CEffectDamage id="zmar1" parent="AW2_PierceDamage">
+        <Amount value="12"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="zmar1Multiattack" parent="AW2_Multiattack">
+        <PeriodCount value="4"/>
+        <PeriodicPeriodArray value="0.2"/>
+        <PeriodicPeriodArray value="0.2"/>
+        <PeriodicPeriodArray value="0.2"/>
+        <PeriodicEffectArray value="zmar1"/>
+    </CEffectCreatePersistent>
 </Catalog>

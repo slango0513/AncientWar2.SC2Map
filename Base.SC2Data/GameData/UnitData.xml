@@ -581,6 +581,27 @@
         <BehaviorArray Link="Previewer"/>
         <Footprint value="flag"/>
     </CUnit>
+    <CUnit id="DemonPreviewer" parent="War3_Item" defType="">
+        <FogVisibility value="Snapshot"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <BehaviorArray Link="Previewer"/>
+        <Footprint value="flag"/>
+    </CUnit>
+    <CUnit id="DraeneiPreviewer" parent="War3_Item" defType="">
+        <FogVisibility value="Snapshot"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <BehaviorArray Link="Previewer"/>
+        <Footprint value="flag"/>
+    </CUnit>
+    <CUnit id="GoblinPreviewer" parent="War3_Item" defType="">
+        <FogVisibility value="Snapshot"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <BehaviorArray Link="Previewer"/>
+        <Footprint value="flag"/>
+    </CUnit>
     <!--Magtheridon-->
     <CUnit id="Nmag" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
@@ -1714,7 +1735,9 @@
         <Race value="Human"/>
         <Mover value="foot"/>
         <AbilArray Link="Aihn"/>
+        <AbilArray Link="UpgradeTozmar"/>
         <CardLayouts index="0">
+            <LayoutButtons Face="zmar" Type="AbilCmd" AbilCmd="UpgradeTozmar,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="Ahra" Type="Passive" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
@@ -1908,6 +1931,108 @@
         <GlossaryWeakArray value="ohun"/>
         <GlossaryWeakArray value="uban"/>
     </CUnit>
+    <!--Clockwerk Goblin (lvl 4)-->
+    <CUnit id="ncg3" parent="AW2_Peon">
+        <CardLayouts CardId="">
+            <LayoutButtons>
+                <Face value="CmdBuildGoblin"/>
+                <Type value="Submenu"/>
+                <AbilCmd value=""/>
+                <Behavior value=""/>
+                <Requirements value="ShowBuildArmy"/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value="Buil"/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="GoblinFlag"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="GoblinBuild,Build1"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value=""/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="CmdPurchaseGoblin"/>
+                <Type value="Submenu"/>
+                <AbilCmd value=""/>
+                <Behavior value=""/>
+                <Requirements value="ShowBuildArmy"/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value="Purc"/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="GoblinFlag2"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="GoblinBuild,Build2"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <SubmenuAbilState value=""/>
+                <SubmenuCardId value=""/>
+                <SubmenuFullSubCmdValidation value="0"/>
+                <SubmenuIsSticky value="0"/>
+                <ShowInGlossary value="1"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons Face="Anei" Type="AbilCmd" AbilCmd="Aall,Designate" Row="2" Column="4"/>
+            <LayoutButtons Face="ANgl" Type="AbilCmd" AbilCmd="ANgl,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="ANlg" Type="AbilCmd" AbilCmd="ANlg,Execute" Row="2" Column="1"/>
+        </CardLayouts>
+        <CardLayouts CardId="Buil">
+            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
+            <LayoutButtons Face="ngir" Type="AbilCmd" AbilCmd="GoblinBuild,Build3" Row="0" Column="0"/>
+            <LayoutButtons Face="ngsp" Type="AbilCmd" AbilCmd="GoblinBuild,Build4" Row="0" Column="1"/>
+        </CardLayouts>
+        <CardLayouts CardId="Purc">
+            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
+            <LayoutButtons Face="Purchaserat3" Type="AbilCmd" AbilCmd="Purchaserat3,Train1" Row="0" Column="0"/>
+            <LayoutButtons Face="Purchaserat6" Type="AbilCmd" AbilCmd="Purchaserat6,Train1" Row="0" Column="1"/>
+            <LayoutButtons Face="Purchaserat9" Type="AbilCmd" AbilCmd="Purchaserat9,Train1" Row="0" Column="2"/>
+            <LayoutButtons Face="Purchaseratc" Type="AbilCmd" AbilCmd="Purchaseratc,Train1" Row="0" Column="3"/>
+            <LayoutButtons Face="Purchaseratf" Type="AbilCmd" AbilCmd="Purchaseratf,Train1" Row="0" Column="4"/>
+            <LayoutButtons Face="Purchaseoslo" Type="AbilCmd" AbilCmd="Purchaseoslo,Train1" Row="1" Column="0"/>
+            <LayoutButtons Face="Purchasegcel" Type="AbilCmd" AbilCmd="Purchasegcel,Train1" Row="2" Column="0"/>
+            <LayoutButtons Face="Purchasefrhg" Type="AbilCmd" AbilCmd="Purchasefrhg,Train1" Row="2" Column="1"/>
+            <LayoutButtons Face="Purchaseprvt" Type="AbilCmd" AbilCmd="Purchaseprvt,Train1" Row="2" Column="2"/>
+        </CardLayouts>
+        <AbilArray Link="AInv"/>
+        <AbilArray Link="ANgl"/>
+        <AbilArray Link="ANlg"/>
+        <AbilArray Link="GoblinBuild"/>
+        <AbilArray Link="Aall"/>
+        <AbilArray Link="Purchaseoslo"/>
+        <AbilArray Link="Purchasegcel"/>
+        <AbilArray Link="Purchasefrhg"/>
+        <AbilArray Link="Purchaserat3"/>
+        <AbilArray Link="Purchaserat6"/>
+        <AbilArray Link="Purchaserat9"/>
+        <AbilArray Link="Purchaseratc"/>
+        <AbilArray Link="Purchaseratf"/>
+        <AbilArray Link="Purchaseprvt"/>
+        <Speed value="2"/>
+        <Radius value="0.3125"/>
+        <Race value="Goblin"/>
+        <Mover value="foot"/>
+        <MinimapRadius value="0.3125"/>
+        <SeparationRadius value="0.3125"/>
+        <InnerRadius value="0.3125"/>
+    </CUnit>
     <!--chaos grunt-->
     <CUnit id="nchg" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
@@ -2040,6 +2165,24 @@
         <EnergyMax value="60"/>
         <EnergyStart value="60"/>
         <PlaneArray index="Ground" value="1"/>
+    </CUnit>
+    <!--engineer gazlowe-->
+    <CUnit id="negz" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="180"/>
+        <KillResource index="Custom" value="30"/>
+        <LifeStart value="300"/>
+        <LifeMax value="300"/>
+        <Speed value="2"/>
+        <Race value="Goblin"/>
+        <Mover value="foot"/>
+        <AbilArray Link="GoblinInventory"/>
+        <BehaviorArray Link="Asds"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Asds" Type="Passive" Behavior="Asds" Row="2" Column="0"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/GoblinUnits"/>
     </CUnit>
     <!--emissary-->
     <CUnit id="nemi" parent="AW2_Army" defType="NONE">
@@ -2251,6 +2394,21 @@
         <SeparationRadius value="0.3125"/>
         <InnerRadius value="0.3125"/>
     </CUnit>
+    <!--goblin shredder-->
+    <CUnit id="ngir" parent="AW2_Army" defType="LARGE">
+        <Attributes index="mechanical" value="1"/>
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="15"/>
+        <KillResource index="Custom" value="15"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
+        <Speed value="2"/>
+        <Race value="Goblin"/>
+        <Mover value="foot"/>
+        <AbilArray Link="GoblinInventory"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/GoblinUnits"/>
+    </CUnit>
     <!--Gnoll Robber-->
     <CUnit id="ngno" parent="AW2_Creep" defType="SMALL">
         <Attributes index="small" value="1"/>
@@ -2322,6 +2480,26 @@
         <MinimapRadius value="0.375"/>
         <SeparationRadius value="0.375"/>
         <InnerRadius value="0.375"/>
+    </CUnit>
+    <!--GoblinSapper-->
+    <CUnit id="ngsp" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="60"/>
+        <KillResource index="Custom" value="30"/>
+        <LifeStart value="300"/>
+        <LifeMax value="300"/>
+        <Speed value="2"/>
+        <Race value="Goblin"/>
+        <Mover value="foot"/>
+        <AbilArray Link="GoblinInventory"/>
+        <AbilArray Link="UpgradeTonegz"/>
+        <BehaviorArray Link="Asds"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="negz" Type="AbilCmd" AbilCmd="UpgradeTonegz,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Asds" Type="Passive" Behavior="Asds" Row="2" Column="0"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/GoblinUnits"/>
     </CUnit>
     <!--high elven archer-->
     <CUnit id="nhea" parent="AW2_Army" defType="MEDIUM">
@@ -2745,6 +2923,10 @@
         <BehaviorArray Link="MurgulShadowcasterSwim"/>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
     </CUnit>
     <!--mur'gul snarecaster-->
     <CUnit id="nmsn">
@@ -3687,8 +3869,8 @@
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--Orb of Slow-->
-    <CUnit id="oslo">
-        <Sight value="1"/>
+    <CUnit id="oslo" parent="AW2_Item">
+        <CostResource index="gold" value="90"/>
     </CUnit>
     <!--serpent $ward 1-->
     <CUnit id="osp1" parent="War3_Sationary" defType="NONE">
@@ -4139,6 +4321,24 @@
     <CUnit id="NagaFlag2" parent="AW2_Phalanx">
         <BehaviorArray Link="CreateReserveUnit90"/>
     </CUnit>
+    <CUnit id="DemonFlag" parent="AW2_Phalanx">
+        <BehaviorArray Link="CreateReserveUnit36"/>
+    </CUnit>
+    <CUnit id="DemonFlag2" parent="AW2_Phalanx">
+        <BehaviorArray Link="CreateReserveUnit90"/>
+    </CUnit>
+    <CUnit id="DraeneiFlag" parent="AW2_Phalanx">
+        <BehaviorArray Link="CreateReserveUnit36"/>
+    </CUnit>
+    <CUnit id="DraeneiFlag2" parent="AW2_Phalanx">
+        <BehaviorArray Link="CreateReserveUnit90"/>
+    </CUnit>
+    <CUnit id="GoblinFlag" parent="AW2_Phalanx">
+        <BehaviorArray Link="CreateReserveUnit36"/>
+    </CUnit>
+    <CUnit id="GoblinFlag2" parent="AW2_Phalanx">
+        <BehaviorArray Link="CreateReserveUnit90"/>
+    </CUnit>
     <!--Gargoyle-->
     <CUnit id="ugar">
         <Food value="3"/>
@@ -4420,5 +4620,19 @@
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
+    </CUnit>
+    <!--Marine-->
+    <CUnit id="zmar" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
+        <CostResource index="gold" value="180"/>
+        <KillResource index="Custom" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Human"/>
+        <Mover value="foot"/>
+        <AbilArray Link="Aihn"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/HumanUnits"/>
     </CUnit>
 </Catalog>
