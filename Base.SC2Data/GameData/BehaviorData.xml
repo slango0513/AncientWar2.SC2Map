@@ -2609,15 +2609,17 @@
     <CBehaviorBuff id="AW2_Fury">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnunholyfrenzy.dds"/>
         <ExpireEffect value="FuryBuff"/>
+        <Duration value="180"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="FuryBuff" parent="War3_Passive">
         <Requirements value="FuryBuff"/>
         <MaxStackCount value="6"/>
-        <Period value="5"/>
+        <Period value="10"/>
         <PeriodicEffect value="FuryBuff"/>
-        <Modification AttackSpeedMultiplier="1.5">
-            <DamageDealtUnscaled index="Melee" value="192"/>
-            <DamageDealtUnscaled index="Ranged" value="192"/>
+        <Modification AttackSpeedMultiplier="1.25">
+            <DamageDealtScaled index="Melee" value="192"/>
+            <DamageDealtScaled index="Ranged" value="192"/>
+            <BehaviorLinkDisableArray value="BprgPause"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="nondamager" parent="War3_UnitClass"/>
@@ -2630,8 +2632,8 @@
     <CBehaviorBuff id="HonorShield" parent="War3_Passive">
         <MaxStackCount value="0"/>
         <Modification LifeArmorBonus="1">
-            <DamageDealtUnscaled index="Melee" value="2"/>
-            <DamageDealtUnscaled index="Ranged" value="2"/>
+            <DamageDealtScaled index="Melee" value="2"/>
+            <DamageDealtScaled index="Ranged" value="2"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="AEblTempInvulnerable" parent="War3_Passive">

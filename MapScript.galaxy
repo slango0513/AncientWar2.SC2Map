@@ -3212,7 +3212,7 @@ void gf_UnitCreate (int lp_player, point lp_point, string lp_unitType, unit lp_u
     UnitSetCustomValue(UnitLastCreated(), gv_customValuePhalanx, UnitGetCustomValue(lp_unit, gv_customValuePhalanx));
     UnitBehaviorAdd(UnitLastCreated(), "PhalanxMarker", lp_unit, 1);
     if ((gv_isBonusRound == false)) {
-        UnitCreateEffectUnit(UnitLastCreated(), "AW2_Fury", UnitLastCreated());
+        UnitBehaviorAdd(UnitLastCreated(), "AW2_Fury", UnitLastCreated(), 1);
     }
 
     auto80647215_ae = UnitBehaviorCountAll(lp_unit);
@@ -6415,7 +6415,7 @@ bool gt_UpdateFuryDuration_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    UnitBehaviorSetDurationRemaining(lv_unit, "AW2_Fury", CatalogFieldValueGetAsInt(c_gameCatalogEffect, "AW2_Fury", "Duration", UnitGetOwner(lv_unit)));
+    UnitBehaviorSetDurationRemaining(lv_unit, "AW2_Fury", CatalogFieldValueGetAsInt(c_gameCatalogBehavior, "AW2_Fury", "Duration", UnitGetOwner(lv_unit)));
     return true;
 }
 
