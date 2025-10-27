@@ -194,6 +194,9 @@
         <On Terms="Behavior.BUavI.On" Send="Create"/>
         <On Terms="Behavior.BUavI.Off" Send="AnimBracketStop BSD"/>
     </CActorModel>
+    <CActorModel id="ShadowAura" parent="War3_Buff">
+        <HostSiteOps Ops="$origin"/>
+    </CActorModel>
     <CActorModel id="BUavSpecial">
         <On Terms="Effect.BUavILeech.Start; At Source" Send="Create"/>
         <On Terms="Effect.BUavILeechNonHero.Start; At Source" Send="Create"/>
@@ -5105,10 +5108,6 @@
         <On Terms="Behavior.ObsidianAuraCaster.Off" Send="AnimBracketStop BSD"/>
         <On Terms="Behavior.ObsidianAuraItemCaster.On" Send="Create"/>
         <On Terms="Behavior.ObsidianAuraItemCaster.Off" Send="AnimBracketStop BSD"/>
-    </CActorModel>
-    <CActorModel id="ShadownAura" parent="War3_Buff">
-        <HostSiteOps Ops="$origin"/>
-        <Model value="ShadowAura"/>
     </CActorModel>
     <CActorModel id="ShadowAuraTarget" parent="TargetArtX">
         <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>

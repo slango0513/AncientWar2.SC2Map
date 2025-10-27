@@ -1236,6 +1236,8 @@
         <Duration value="0.0625"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ShadowAuraLeech" parent="War3_Passive">
+        <MaxStackCount value="2"/>
+        <MaxStackCountPerCaster value="1"/>
         <Modification>
             <VitalDamageLeechArray index="Energy">
                 <KindArray index="Melee" value="0.0075"/>
@@ -1244,6 +1246,8 @@
         <Duration value="0.0625"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ShadowAuraLeechNonHero" parent="War3_Passive">
+        <MaxStackCount value="2"/>
+        <MaxStackCountPerCaster value="1"/>
         <Modification>
             <VitalDamageLeechArray index="Energy">
                 <KindArray index="Melee" value="0.015"/>
@@ -1352,7 +1356,6 @@
         <Requirements value="EfficiencyAuraCaster"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ShadowAuraCaster" parent="AW2_AuraCaster">
-        <Name value="DominationAuraCaster/Name"/>
         <Requirements value="ShadowAuraCaster"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="InhibitionAuraCaster" parent="AW2_AuraCaster">
@@ -1899,7 +1902,7 @@
         <MaxStackCountPerCaster value="1"/>
         <Modification MoveSpeedMinimum="2" MoveSpeedMultiplier="1.5"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="DominationAura" parent="War3_AuraBuff">
+    <CBehaviorBuff id="ShadowAura" parent="War3_AuraBuff">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnamuletofthewild.dds"/>
         <EditorCategories value="Race:Demon,AbilityorEffectType:Units"/>
         <MaxStackCount value="2"/>
