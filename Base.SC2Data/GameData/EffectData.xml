@@ -100,7 +100,7 @@
         <SearchFilters value="-;player,allies,air,wall,tree,Missile,debris,item,structure,ward,dead,Hidden,invulnerable,Passive"/>
     </CEffectEnumArea>
     <CEffectApplyBehavior id="DestinyBondBuff" parent="War3_ApplyBuff">
-        <ValidatorArray value="KillResourceCustomLE135"/>
+        <ValidatorArray value="NonHero"/>
         <ValidatorArray value="HasNoDestinyBondBuff"/>
     </CEffectApplyBehavior>
     <CEffectDamage id="Nbst1" parent="AW2_NormalDamage">
@@ -311,6 +311,9 @@
     <CEffectDamage id="TimedLifeFateTower" parent="TimedLifeFate">
         <Name value="Effect/Name/TimedLifeFateTower"/>
     </CEffectDamage>
+    <CEffectModifyUnit id="War3_MissileHigherGroundMiss">
+        <Chance value="0.33"/>
+    </CEffectModifyUnit>
     <CEffectDamage id="nbt11" parent="AW2_SiegeDamage">
         <Amount value="144"/>
         <AreaArray Radius="1.1718" Fraction="1"/>
@@ -2120,8 +2123,16 @@
         <Kind value="Melee"/>
         <Amount value="288"/>
     </CEffectDamage>
+    <CEffectLaunchMissile id="nbdo2LM" parent="War3_Missile" weaponid="nbdo2"/>
+    <CEffectDamage id="nbdo2" parent="AW2_MagicDamage">
+        <Amount value="288"/>
+    </CEffectDamage>
     <CEffectDamage id="nbdw1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
+        <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="nbdw2LM" parent="War3_Missile" weaponid="nbdw2"/>
+    <CEffectDamage id="nbdw2" parent="AW2_MagicDamage">
         <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="nbwm1" parent="AW2_ChaosDamage">
