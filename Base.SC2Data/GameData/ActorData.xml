@@ -1,8 +1,114 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CActorModel id="HandOfFreedomCaster" parent="CasterArt"/>
+    <CActorModel id="HandOfFreedomTarget" parent="War3_Buff">
+        <HostSiteOps Ops="$overhead"/>
+        <On index="3" Terms="Behavior.HandOfFreedom.On" Send="Create"/>
+        <On index="4" Terms="Behavior.HandOfFreedom.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorSimple id="HandOfFreedom" parent="War3_SimpleCastAnimWcArt"/>
+    <CActorModel id="ANmdTarget">
+        <On Terms="Effect.AnmoImpact.Start; At Target" Send="Create"/>
+    </CActorModel>
+    <CActorModel id="XNmoEffect">
+        <On Terms="Effect.ANmo.Start" Send="Create"/>
+        <On Terms="Effect.ANmo.Stop" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="Create EffectSoundLooped MonsoonLoop"/>
+    </CActorModel>
+    <CActorModel id="BNmo" parent="War3_Buff">
+        <HostSiteOps Ops="$chest"/>
+    </CActorModel>
+    <CActorSimple id="ANmo" parent="War3_SimpleCastAnim"/>
+    <CActorModel id="DivineProtectionTarget" parent="War3_Buff">
+        <HostSiteOps Ops="$chest"/>
+        <On index="3" Terms="Behavior.DivineProtection.On" Send="Create"/>
+        <On index="4" Terms="Behavior.DivineProtection.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorSimple id="DivineProtection" parent="War3_SimpleCastAnim" effectsound="InnerFireCast"/>
+    <CActorSimple id="BlessingOfMight" parent="War3_SimpleCastAnim" effectsound="InnerFireCast"/>
+    <CActorModel id="BlessingOfMightTarget" parent="War3_Buff">
+        <HostSiteOps Ops="$origin"/>
+        <On index="3" Terms="Behavior.BlessingOfMight.On" Send="Create"/>
+        <On index="4" Terms="Behavior.BlessingOfMight.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorSimple id="HolyWrath" parent="War3_SimpleCastAnim"/>
+    <CActorModel id="HolyWrathSpecial" parent="SpecialArt">
+        <On Terms="Effect.HolyWrathDamage.Start; At Target" Send="Create"/>
+    </CActorModel>
+    <CActorAction id="HolyWrathMissileAttack" parent="War3_GenericMissileAttack" effectImpact="HolyWrathMissileImpactSet" effectLaunch="HolyWrathMissile" missile="HolyWrathMissile"/>
+    <CActorMissile id="HolyWrathMissile" parent="War3_Missile" unitName="HolyWrathMissile"/>
+    <CActorSimple id="HolyRadiance" parent="War3_SimpleCastAnim"/>
+    <CActorModel id="HolyRadianceTarget" parent="TargetArtX">
+        <On Terms="Effect.HolyRadianceHeal.Start; At Target" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetCastShadows"/>
+    </CActorModel>
+    <CActorModel id="HolyRadianceTarget2" parent="TargetArtX">
+        <On Terms="Effect.HolyRadianceHeal.Start; At Target" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetCastShadows"/>
+    </CActorModel>
+    <!--margoth-->
+    <CActorUnit id="Hmgd" parent="War3_Army" unitSound="HeroPaladin" unitName="Hmgd" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHeroPaladin.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnHeroPaladin.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroPaladin.dds"/>
+        <BarWidth value="55"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--arthas-->
+    <CActorUnit id="Hart" parent="War3_Army" unitSound="Arthas" unitName="Hart" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnArthas.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnArthas.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnArthas.dds"/>
+        <BarWidth value="55"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--paladinboss1-->
+    <CActorUnit id="Hpb1" parent="War3_Army" unitSound="HeroPaladin" unitName="Hpb1" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHeroPaladin.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnHeroPaladin.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroPaladin.dds"/>
+        <BarWidth value="55"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--arthaswithfrostmourne-->
+    <CActorUnit id="Harf" parent="War3_Army" unitSound="Arthas" unitName="Harf" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnArthas.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnArthas.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnArthas.dds"/>
+        <BarWidth value="55"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
     <CActorModel id="BCtb" parent="War3_Buff">
         <HostSiteOps Ops="$overhead"/>
     </CActorModel>
+    <!--admiralproudmoore-->
+    <CActorUnit id="Hapm" parent="War3_Army" unitSound="Proudmoore" unitName="Hapm" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnproudmoore.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnHeroPaladin.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnproudmoore.dds"/>
+        <BarWidth value="55"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
     <!--sasquatch-->
     <CActorUnit id="nsqt" parent="War3_Army" unitSound="Wendigo" unitName="nsqt" defType="LARGE">
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar200"/>
@@ -3346,6 +3452,42 @@
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
+    <CActorUnit id="PaladinHoly" parent="War3_Army" unitSound="HeroPaladin" unitName="PaladinHoly" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHeroPaladin.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnHeroPaladin.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroPaladin.dds"/>
+        <BarWidth value="62"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <CActorUnit id="PaladinRetribution" parent="War3_Army" unitSound="HeroPaladin" unitName="PaladinRetribution" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHeroPaladin.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnHeroPaladin.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroPaladin.dds"/>
+        <BarWidth value="62"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <CActorUnit id="PaladinProtection" parent="War3_Army" unitSound="HeroPaladin" unitName="PaladinProtection" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHeroPaladin.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnHeroPaladin.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroPaladin.dds"/>
+        <BarWidth value="62"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <CActorAction id="PaladinProtection1" parent="War3_AttackSwapable" WeaponSound="MetalHeavyBash"/>
+    <CActorAction id="PaladinHoly1" parent="War3_AttackSwapable" WeaponSound="MetalHeavyBash"/>
+    <CActorAction id="PaladinRetribution1" parent="War3_AttackSwapable" WeaponSound="MetalHeavyBash"/>
     <!--jaina-->
     <CActorUnit id="Hjai" parent="War3_Army" unitSound="Jaina" unitName="Hjai" defType="NONE">
         <!--On Terms="ActorCreation" Send="Create "/-->
@@ -3355,7 +3497,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnJaina.dds"/>
         <BarWidth value="75"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
@@ -3721,6 +3863,22 @@
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="1.7187"/>
     </CActorUnit>
+    <CActorUnit id="Ballista" parent="War3_Army" unitSound="Ballista" unitName="Ballista" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnGlaiveThrower.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnGlaiveThrower.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnGlaiveThrower.dds"/>
+        <BarWidth value="150"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="1.7187"/>
+    </CActorUnit>
+    <CActorAction id="Ballista1" parent="War3_AttackMissileSwapable"/>
+    <CActorMissile id="Ballista1LM" parent="War3_MissileSwapable" unitName="Ballista1LM"/>
+    <CActorAction id="Ballista2" parent="War3_AttackMissileSwapable"/>
+    <CActorMissile id="Ballista2LM" parent="War3_MissileSwapable" unitName="Ballista2LM"/>
+    <CActorAction id="ebsh1" parent="War3_AttackMissileSwapable"/>
     <!--druidoftheclawmorphed-->
     <CActorUnit id="edcm" parent="War3_Army" unitSound="DruidOfTheClawMorphed" unitName="edcm" defType="LARGE">
         <On Terms="ActorCreation" Send="AnimGroupApply Alternate {} {} Instant"/>
@@ -5725,6 +5883,60 @@
     </CActorModel>
     <CActorModel id="PressureAura" parent="War3_Buff">
         <HostSiteOps Ops="$origin"/>
+    </CActorModel>
+    <CActorModel id="InsightAura" parent="War3_Buff">
+        <HostSiteOps Ops="$origin"/>
+    </CActorModel>
+    <CActorModel id="InsightAuraTarget" parent="TargetArtX">
+        <HostSiteOps Ops="SOpAttachHarnessSoft SOpShadow" HoldRotation="1"/>
+        <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="Behavior.InsightAuraCaster.On" Send="Create"/>
+        <On Terms="Behavior.InsightAuraCaster.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorModel id="RighteousnessAura" parent="War3_Buff">
+        <HostSiteOps Ops="$origin"/>
+    </CActorModel>
+    <CActorModel id="RighteousnessAuraTarget" parent="TargetArtX">
+        <HostSiteOps Ops="SOpAttachHarnessSoft SOpShadow" HoldRotation="1"/>
+        <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="Behavior.RighteousnessAuraCaster.On" Send="Create"/>
+        <On Terms="Behavior.RighteousnessAuraCaster.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorModel id="KingsAura" parent="War3_Buff">
+        <HostSiteOps Ops="$origin"/>
+    </CActorModel>
+    <CActorModel id="KingsAuraTarget" parent="TargetArtX">
+        <HostSiteOps Ops="SOpAttachHarnessSoft SOpShadow" HoldRotation="1"/>
+        <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="Behavior.KingsAuraCaster.On" Send="Create"/>
+        <On Terms="Behavior.KingsAuraCaster.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorModel id="CrusaderAura" parent="War3_Buff">
+        <HostSiteOps Ops="$origin"/>
+    </CActorModel>
+    <CActorModel id="CrusaderAuraTarget" parent="TargetArtX">
+        <HostSiteOps Ops="SOpAttachHarnessSoft SOpShadow" HoldRotation="1"/>
+        <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="Behavior.CrusaderAuraCaster.On" Send="Create"/>
+        <On Terms="Behavior.CrusaderAuraCaster.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorModel id="AvengingWrathAura" parent="War3_Buff">
+        <HostSiteOps Ops="$origin"/>
+    </CActorModel>
+    <CActorModel id="AvengingWrathAuraTarget" parent="TargetArtX">
+        <HostSiteOps Ops="SOpAttachHarnessSoft SOpShadow" HoldRotation="1"/>
+        <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="Behavior.AvengingWrathAuraCaster.On" Send="Create"/>
+        <On Terms="Behavior.AvengingWrathAuraCaster.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorModel id="GuardianAura" parent="War3_Buff">
+        <HostSiteOps Ops="$origin"/>
+    </CActorModel>
+    <CActorModel id="GuardianAuraTarget" parent="TargetArtX">
+        <HostSiteOps Ops="SOpAttachHarnessSoft SOpShadow" HoldRotation="1"/>
+        <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="Behavior.GuardianAuraCaster.On" Send="Create"/>
+        <On Terms="Behavior.GuardianAuraCaster.Off" Send="AnimBracketStop BSD"/>
     </CActorModel>
     <CActorModel id="FlameTowerAuraTarget" parent="TargetArtX">
         <HostSiteOps Ops="SOpAttachHarnessSoft SOpShadow" HoldRotation="1"/>

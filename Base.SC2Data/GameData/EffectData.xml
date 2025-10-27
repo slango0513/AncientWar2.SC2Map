@@ -117,9 +117,41 @@
         <EffectArray value="ndkw"/>
         <EffectArray value="ndke"/>
     </CEffectSet>
+    <CEffectCreatePersistent id="ANmo">
+        <PeriodicEffectArray value="ANmoSearch"/>
+        <PeriodicPeriodArray value="1"/>
+        <InitialDelay value="0.5"/>
+        <PeriodCount value="10"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="ANmoSearch" parent="War3_AbilSearch">
+        <SearchFilters value="-;player,allies,wall,tree,Missile,debris,item,structure,ward,dead,Hidden,invulnerable,immunity"/>
+        <AreaArray Radius="5.4687" Effect="AnmoImpact"/>
+        <AINotifyFlags index="HurtEnemy" value="1"/>
+        <AINotifyFlags index="MinorDanger" value="1"/>
+        <TargetSorts>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectDamage id="ANmoDamage" parent="War3_SpellDamage">
+        <Amount value="10"/>
+    </CEffectDamage>
     <CEffectSet id="ANmr">
         <EffectArray value="BNmr"/>
     </CEffectSet>
+    <!--Sanctuary Buff=BNsa-->
+    <CEffectSet id="ANsa">
+        <ValidatorArray index="0" removed="1"/>
+    </CEffectSet>
+    <CEffectEnumArea id="ANsaTarget">
+        <SearchFilters value="-;neutral,enemies,wall,tree,Missile,debris,item,ward,dead,Hidden"/>
+        <TargetSorts>
+            <SortArray index="0" value="TSDistance"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectTeleport id="ANsaTeleport">
+        <ValidatorArray value="IsHjai"/>
+        <TeleportFlags index="TestCliff" value="1"/>
+    </CEffectTeleport>
     <!--Howl of Terror Dur=10 HeroDur=10 Buff=BNht-->
     <CEffectEnumArea id="AchtSearch">
         <AreaArray index="0" Radius="7.0312" Effect="BNht"/>
@@ -141,6 +173,15 @@
     <CEffectModifyUnit id="AfbkManaLoseUnit">
         <VitalArray index="Energy" Change="-6"/>
     </CEffectModifyUnit>
+    <CEffectSet id="AnmoImpact">
+        <EffectArray value="ANmoDamage"/>
+        <EffectArray value="BNmo"/>
+        <EffectArray value="DispelEnemyBuffs"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="BNmo" parent="War3_ApplyBuff">
+        <ValidatorArray value="NotBuilding_War3"/>
+        <EditorCategories value="Race:Human,AbilityorEffectType:Hero"/>
+    </CEffectApplyBehavior>
     <CEffectApplyBehavior id="BNcs">
         <ValidatorArray value="NonMechanical"/>
     </CEffectApplyBehavior>
@@ -198,11 +239,51 @@
         <EffectArray value="ChargeMagnataurDamage"/>
         <EffectArray value="ChargeMagnataurStun"/>
     </CEffectSet>
+    <CEffectApplyBehavior id="DivineProtection" parent="War3_ApplyBuff"/>
+    <CEffectApplyBehavior id="BlessingOfMight" parent="War3_ApplyBuff"/>
     <CEffectSet id="EternityAuraSet">
         <EditorCategories value=""/>
         <EffectArray value="EternityAura"/>
         <EffectArray value="EternityAuraHero"/>
     </CEffectSet>
+    <CEffectDamage id="Hapm1" parent="War3_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectDamage id="Harf1" parent="War3_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectDamage id="Hart1" parent="War3_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectDamage id="Hmgd1" parent="War3_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="HolyRadiance">
+        <PeriodCount value="6"/>
+        <PeriodicEffectArray value="HolyRadianceSearch"/>
+        <PeriodicPeriodArray value="0.125"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="HolyRadianceSearch" parent="War3_AbilSearchRadiusExt">
+        <SearchFilters value="-;neutral,enemies,mechanical,wall,tree,Missile,debris,item,structure,ward,dead,Hidden"/>
+        <TargetSorts>
+            <SortArray value="TSLife"/>
+        </TargetSorts>
+        <AreaArray Radius="7.0312" Effect="HolyRadianceHeal"/>
+        <MinCount value="1"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="HolyWrathApplyBuff" parent="War3_ApplyBuff">
+        <ValidatorArray value="IsUndead"/>
+        <Behavior value="HolyWrath"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="Hpb11" parent="War3_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="96"/>
+    </CEffectDamage>
     <CEffectDamage id="Nfir1" parent="AW2_MagicDamage">
         <Amount value="96"/>
     </CEffectDamage>
@@ -379,14 +460,14 @@
         <Kind value="Melee"/>
         <Amount value="192"/>
     </CEffectDamage>
-    <CEffectDamage id="nggr1" parent="AW2_NormalDamage">
+    <CEffectDamage id="nggr1" parent="AW2_SiegeDamage">
         <Kind value="Melee"/>
         <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="nggr2" parent="AW2_SiegeDamage">
         <Amount value="192"/>
     </CEffectDamage>
-    <CEffectDamage id="ngst1" parent="AW2_NormalDamage">
+    <CEffectDamage id="ngst1" parent="AW2_SiegeDamage">
         <Kind value="Melee"/>
         <Amount value="96"/>
     </CEffectDamage>
@@ -452,6 +533,18 @@
         <ValidatorArray value="Hero"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="ShadowAuraLeechNonHero" parent="War3_ApplyBuff">
+        <WhichUnit Value="Source"/>
+        <ValidatorArray value="NonHero"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="InsightAuraLeechSet">
+        <EffectArray value="InsightAuraLeech"/>
+        <EffectArray value="InsightAuraLeechNonHero"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="InsightAuraLeech" parent="War3_ApplyBuff">
+        <WhichUnit Value="Source"/>
+        <ValidatorArray value="Hero"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="InsightAuraLeechNonHero" parent="War3_ApplyBuff">
         <WhichUnit Value="Source"/>
         <ValidatorArray value="NonHero"/>
     </CEffectApplyBehavior>
@@ -1542,7 +1635,7 @@
         <Amount value="75"/>
     </CEffectDamage>
     <CEffectModifyUnit id="ACnrHealTick">
-        <VitalArray index="Life" Change="10" ChangeFraction="0"/>
+        <VitalArray index="Life" Change="15" ChangeFraction="0"/>
     </CEffectModifyUnit>
     <!--Neutral Regen (health only)-->
     <CEffectEnumArea id="ACnrSearch" parent="War3_AuraSearch" aura="BCnr"/>
@@ -1685,6 +1778,15 @@
     <CEffectEnumArea id="AroaSearch">
         <AreaArray index="0" Radius="7.0312" Effect="Broa"/>
     </CEffectEnumArea>
+    <CEffectEnumArea id="HandOfFreedomSearch" parent="War3_AbilSearch">
+        <EditorCategories value="Race:Human"/>
+        <AreaArray Radius="7.0312" Effect="HandOfFreedom"/>
+        <SearchFilters value="-;neutral,enemies,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="HandOfFreedom" parent="War3_ApplyBuff">
+        <EditorCategories value="Race:Human"/>
+    </CEffectApplyBehavior>
     <!--Creep Abi-->
     <!--Self Destruct Dur=.1 HeroDur=.1-->
     <CEffectSet id="Asds">
@@ -1844,6 +1946,11 @@
     </CEffectDamage>
     <CEffectCreateHealer id="AHhbHeal1">
         <RechargeVitalRate value="500"/>
+    </CEffectCreateHealer>
+    <CEffectCreateHealer id="HolyRadianceHeal" parent="War3_InstantHeal">
+        <ValidatorArray value="HolyRadianceHealTarget"/>
+        <EditorCategories value="Race:Human"/>
+        <RechargeVitalRate value="100"/>
     </CEffectCreateHealer>
     <!--Paladin - Resurrection-->
     <CEffectEnumArea id="AHre">
@@ -2113,6 +2220,18 @@
         <ValidatorArray value="Hero"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="FelDriveAura" parent="War3_AuraBuff"/>
+    <CEffectApplyBehavior id="InsightAura" parent="War3_AuraBuff"/>
+    <CEffectEnumArea id="InsightAuraCasterSearch" parent="War3_AuraSearch" aura="InsightAura"/>
+    <CEffectApplyBehavior id="RighteousnessAura" parent="War3_AuraBuff"/>
+    <CEffectEnumArea id="RighteousnessAuraCasterSearch" parent="War3_AuraSearch" aura="RighteousnessAura"/>
+    <CEffectApplyBehavior id="KingsAura" parent="War3_AuraBuff"/>
+    <CEffectEnumArea id="KingsAuraCasterSearch" parent="War3_AuraSearch" aura="KingsAura"/>
+    <CEffectApplyBehavior id="CrusaderAura" parent="War3_AuraBuff"/>
+    <CEffectEnumArea id="CrusaderAuraCasterSearch" parent="War3_AuraSearch" aura="CrusaderAura"/>
+    <CEffectApplyBehavior id="AvengingWrathAura" parent="War3_AuraBuff"/>
+    <CEffectEnumArea id="AvengingWrathAuraCasterSearch" parent="War3_AuraSearch" aura="AvengingWrathAura"/>
+    <CEffectApplyBehavior id="GuardianAura" parent="War3_AuraBuff"/>
+    <CEffectEnumArea id="GuardianAuraCasterSearch" parent="War3_AuraSearch" aura="GuardianAura"/>
     <CEffectDamage id="BaplDPS">
         <Amount value="10"/>
     </CEffectDamage>
@@ -2799,6 +2918,22 @@
         <SearchFilters value="-;player,allies,air,wall,Missile,item,ward,ethereal,dead,invulnerable"/>
         <Death value="Blast"/>
     </CEffectDamage>
+    <CEffectLaunchMissile id="Ballista1LM" parent="War3_Missile_aline" weaponid="Ballista1"/>
+    <CEffectLaunchMissile id="Ballista2LM" parent="War3_Missile_aline" weaponid="Ballista2"/>
+    <CEffectDamage id="Ballista1" parent="AW2_SiegeDamage">
+        <Amount value="48"/>
+        <AreaArray Radius="0.1953" Fraction="1"/>
+        <AreaArray Radius="0.3906" Fraction="0.4"/>
+        <AreaArray Radius="1.1718" Fraction="0.25"/>
+        <SearchFilters value="-;air,wall,tree,Missile,item,ward,ethereal,dead,invulnerable"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
+    <CEffectDamage id="Ballista2" parent="AW2_SiegeDamage">
+        <Amount value="48"/>
+        <AreaArray Radius="1.1718" Fraction="1"/>
+        <SearchFilters value="-;player,allies,air,wall,Missile,item,ward,ethereal,dead,invulnerable"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
     <CEffectDamage id="edcm1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
         <Amount value="96"/>
@@ -3405,6 +3540,18 @@
         <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="Hpal1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectDamage id="PaladinProtection1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectDamage id="PaladinHoly1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectDamage id="PaladinRetribution1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
         <Amount value="96"/>
     </CEffectDamage>
@@ -4061,4 +4208,31 @@
         <Kind value="Melee"/>
         <Amount value="48"/>
     </CEffectDamage>
+    <CEffectLaunchMissile id="HolyWrathMissile" parent="War3_AbilMissile"/>
+    <CEffectSet id="HolyWrathMissileImpactSet">
+        <EditorCategories value="Race:Human"/>
+        <EffectArray value="HolyWrathDamage"/>
+        <EffectArray value="HolyWrathApplyBuff"/>
+    </CEffectSet>
+    <CEffectDamage id="HolyWrathDamage" parent="War3_MagicSpellDamage">
+        <EditorCategories value="Race:Human"/>
+        <AINotifyFlags index="HelpFriend" value="1"/>
+        <Amount value="50"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="HolyWrathSearch" parent="War3_AbilSearchRadiusExt">
+        <SearchFilters value="-;player,allies,wall,tree,Missile,debris,item,structure,ward,dead,Hidden,invulnerable,immunity"/>
+        <TargetSorts>
+            <SortArray value="TSMarker"/>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
+        <AreaArray MaxCount="1" Radius="7.0312" Effect="HolyWrathMissile"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="HolyWrath">
+        <PeriodCount value="6"/>
+        <PeriodicEffectArray value="HolyWrathSearch"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <Marker Link="Effect/HolyWrathMissile">
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+    </CEffectCreatePersistent>
 </Catalog>

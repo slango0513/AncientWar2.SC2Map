@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CModel id="HandOfFreedomCaster" parent="War3_AIdaCaster"/>
+    <CModel id="HandOfFreedomTarget" parent="War3_AIdaTarget"/>
+    <CModel id="BNmo" parent="War3_ForkedLightningTarget"/>
+    <CModel id="BlessingOfMightTarget" parent="War3_AIsmTarget"/>
+    <CModel id="DivineProtectionTarget" parent="War3_PurificationTarget"/>
+    <CModel id="HolyRadianceTarget" parent="War3_Spell">
+        <Model value="Assets\Abilities\Spells\Undead\War3_ReplenishHealthCaster\War3_ReplenishHealthCaster.m3"/>
+        <Events Anim="Birth" Type="Sound" Payload="SND_AHHB"/>
+    </CModel>
+    <CModel id="HolyRadianceTarget2" parent="War3_Spell">
+        <Model value="Assets\Abilities\Spells\Human\War3_HealTarget\War3_HealTarget.m3"/>
+    </CModel>
+    <CModel id="PaladinProtection_Portrait" parent="War3_HeroPaladin_Portrait"/>
+    <CModel id="PaladinProtection" parent="War3_HeroPaladin"/>
+    <CModel id="PaladinProtection1LM" parent="War3_Missile"/>
+    <CModel id="PaladinHoly_Portrait" parent="War3_HeroPaladin_Portrait"/>
+    <CModel id="PaladinHoly" parent="War3_HeroPaladin"/>
+    <CModel id="PaladinHoly1LM" parent="War3_Missile"/>
+    <CModel id="PaladinRetribution_Portrait" parent="War3_HeroPaladin_Portrait"/>
+    <CModel id="PaladinRetribution" parent="War3_HeroPaladin"/>
+    <CModel id="PaladinRetribution1LM" parent="War3_Missile"/>
+    <CModel id="Ballista_Portrait" parent="War3_Ballista_Portrait"/>
+    <CModel id="Ballista" parent="War3_Ballista">
+        <SelectionRadius value="1.000000"/>
+    </CModel>
+    <CModel id="Ballista1LM" parent="War3_BallistaMissile"/>
+    <CModel id="Ballista2LM" parent="War3_BallistaMissile"/>
     <CModel id="BCtb" parent="War3_ThunderBoltTarget"/>
     <CModel id="ACtnStun" parent="War3_ThunderclapTarget"/>
     <CModel id="CurseOfFleshTarget" parent="War3_CurseTarget"/>
@@ -27,6 +54,9 @@
         <SelectionRadius value="0.383333"/>
     </CModel>
     <CModel id="RitssynFlamescowl_Portrait" parent="War3_ChaosWarlock_Portrait"/>
+    <CModel id="XNmoEffect">
+        <Model value="Assets\Doodads\RainEmitterLarge\RainEmitterLarge.m3"/>
+    </CModel>
     <CModel id="dilidili" parent="War3_DruidOfTheClaw">
         <Model value="Assets\Units\NightElf\War3_DruidoftheClaw\War3_DruidoftheClaw.m3"/>
         <SelectionRadius value="0.666667"/>
@@ -106,17 +136,17 @@
         <ScaleMax value="1.620000,1.620000,1.620000"/>
         <ScaleMin value="1.620000,1.620000,1.620000"/>
     </CModel>
-    <CModel id="nmam">
-        <ScaleMax value="0.625000,0.625000,0.625000"/>
-        <ScaleMin value="0.625000,0.625000,0.625000"/>
+    <CModel id="nmgd">
+        <ScaleMax value="0.875000,0.875000,0.875000"/>
+        <ScaleMin value="0.875000,0.875000,0.875000"/>
     </CModel>
-    <CModel id="nmdr">
-        <ScaleMax value="0.625000,0.625000,0.625000"/>
-        <ScaleMin value="0.625000,0.625000,0.625000"/>
+    <CModel id="nmgr">
+        <ScaleMax value="0.875000,0.875000,0.875000"/>
+        <ScaleMin value="0.875000,0.875000,0.875000"/>
     </CModel>
-    <CModel id="nmit">
-        <ScaleMax value="0.625000,0.625000,0.625000"/>
-        <ScaleMin value="0.625000,0.625000,0.625000"/>
+    <CModel id="nmgw">
+        <ScaleMax value="0.875000,0.875000,0.875000"/>
+        <ScaleMin value="0.875000,0.875000,0.875000"/>
     </CModel>
     <CModel id="nnwq">
         <ScaleMax value="0.625000,0.625000,0.625000"/>
@@ -195,9 +225,7 @@
         <ScaleMax value="1.875000,1.875000,1.875000"/>
         <ScaleMin value="1.875000,1.875000,1.875000"/>
     </CModel>
-    <CModel id="AimpTarget" parent="War3_FlyingMachineImpact">
-        <Model value="Assets\Abilities\Weapons\War3_HydraliskImpact\War3_HydraliskImpact.m3"/>
-    </CModel>
+    <CModel id="AimpTarget" parent="War3_BallistaImpact"/>
     <CModel id="MoraleBoosting" parent="War3_RoarTarget"/>
     <CModel id="ChargingKnight" parent="War3_SpeedTarget"/>
     <CModel id="ChargingMammoth" parent="War3_SpeedTarget"/>
@@ -213,7 +241,6 @@
     <!--Weapon Missile&Impact FX-->
     <CModel id="Hamg1LM" parent="War3_LichMissile"/>
     <CModel id="Hgam1LM" parent="War3_LichMissile"/>
-    <CModel id="Hjai1LM" parent="War3_SorceressMissile"/>
     <CModel id="Nklj">
         <ScaleMax value="1.350000,1.350000,1.350000"/>
         <ScaleMin value="1.350000,1.350000,1.350000"/>
@@ -459,6 +486,18 @@
     <CModel id="ObsidianAuraTarget" parent="War3_ObsidianRegenAura"/>
     <CModel id="ObsidianAura" parent="War3_GeneralAuraTarget"/>
     <CModel id="ShadowAuraTarget" parent="War3_ObsidianRegenAura"/>
+    <CModel id="InsightAuraTarget" parent="War3_VampiricAura"/>
+    <CModel id="InsightAura" parent="War3_GeneralAuraTarget"/>
+    <CModel id="RighteousnessAuraTarget" parent="War3_CommandAura"/>
+    <CModel id="RighteousnessAura" parent="War3_GeneralAuraTarget"/>
+    <CModel id="KingsAuraTarget" parent="War3_DevotionAura"/>
+    <CModel id="KingsAura" parent="War3_GeneralAuraTarget"/>
+    <CModel id="CrusaderAuraTarget" parent="War3_UnholyAura"/>
+    <CModel id="CrusaderAura" parent="War3_GeneralAuraTarget"/>
+    <CModel id="AvengingWrathAuraTarget" parent="War3_CommandAura"/>
+    <CModel id="AvengingWrathAura" parent="War3_GeneralAuraTarget"/>
+    <CModel id="GuardianAuraTarget" parent="War3_CommandAura"/>
+    <CModel id="GuardianAura" parent="War3_GeneralAuraTarget"/>
     <CModel id="War3_FrostAura" parent="War3_Spell" race="Dragon">
         <Model value="Assets\Doodads\SnowBase_Fog_Mountain_Lower\SnowBase_Fog_Mountain_Lower.m3"/>
     </CModel>
@@ -945,5 +984,243 @@
         <Occlusion value="Show"/>
         <SelectionRadius value="0.555400"/>
         <ShadowRadius value="0.555400"/>
+    </CModel>
+    <CModel id="War3_Catapult" parent="War3_Unit" race="Orc">
+        <SquibTypeDefault value="Wood"/>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintLeft"/>
+            <Attachment value="Ref_Foot Right"/>
+            <Payload value="FPT_FWR0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintLeft"/>
+            <Time value="0.389000"/>
+            <Attachment value="Ref_Foot Right"/>
+            <Payload value="FPT_FWR0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintLeft"/>
+            <Time value="0.778000"/>
+            <Attachment value="Ref_Foot Right"/>
+            <Payload value="FPT_FWR0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintLeft"/>
+            <Time value="1.167000"/>
+            <Attachment value="Ref_Foot Right"/>
+            <Payload value="FPT_FWR0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintLeft"/>
+            <Time value="1.556000"/>
+            <Attachment value="Ref_Foot Right"/>
+            <Payload value="FPT_FWR0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintLeft"/>
+            <Time value="1.945000"/>
+            <Attachment value="Ref_Foot Right"/>
+            <Payload value="FPT_FWR0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintLeft"/>
+            <Time value="0.833000"/>
+            <Attachment value="Ref_Foot Right"/>
+            <Payload value="FPT_FWR0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintLeft"/>
+            <Time value="2.000000"/>
+            <Attachment value="Ref_Foot Right"/>
+            <Payload value="FPT_FWR0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintLeft"/>
+            <Time value="0.832000"/>
+            <Attachment value="Ref_Foot Right"/>
+            <Payload value="FPT_FWR0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintLeft"/>
+            <Time value="1.832000"/>
+            <Attachment value="Ref_Foot Right"/>
+            <Payload value="FPT_FWR0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintLeft"/>
+            <Attachment value="Ref_Foot Left"/>
+            <Payload value="FPT_FWL0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintLeft"/>
+            <Time value="0.389000"/>
+            <Attachment value="Ref_Foot Left"/>
+            <Payload value="FPT_FWL0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintLeft"/>
+            <Time value="0.778000"/>
+            <Attachment value="Ref_Foot Left"/>
+            <Payload value="FPT_FWL0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintLeft"/>
+            <Time value="1.167000"/>
+            <Attachment value="Ref_Foot Left"/>
+            <Payload value="FPT_FWL0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintLeft"/>
+            <Time value="1.556000"/>
+            <Attachment value="Ref_Foot Left"/>
+            <Payload value="FPT_FWL0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintLeft"/>
+            <Time value="1.945000"/>
+            <Attachment value="Ref_Foot Left"/>
+            <Payload value="FPT_FWL0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintLeft"/>
+            <Time value="0.500000"/>
+            <Attachment value="Ref_Foot Left"/>
+            <Payload value="FPT_FWL0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintLeft"/>
+            <Time value="1.700000"/>
+            <Attachment value="Ref_Foot Left"/>
+            <Payload value="FPT_FWL0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintLeft"/>
+            <Time value="0.499000"/>
+            <Attachment value="Ref_Foot Left"/>
+            <Payload value="FPT_FWL0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintLeft"/>
+            <Time value="1.499000"/>
+            <Attachment value="Ref_Foot Left"/>
+            <Payload value="FPT_FWL0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintRight"/>
+            <Time value="0.195000"/>
+            <Attachment value="Ref_Foot Left Rear"/>
+            <Payload value="FPT_FWL0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintRight"/>
+            <Time value="0.584000"/>
+            <Attachment value="Ref_Foot Left"/>
+            <Payload value="FPT_FWL0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintRight"/>
+            <Time value="0.972000"/>
+            <Attachment value="Ref_Foot Left"/>
+            <Payload value="FPT_FWL0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintRight"/>
+            <Time value="1.361000"/>
+            <Attachment value="Ref_Foot Left"/>
+            <Payload value="FPT_FWL0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintRight"/>
+            <Time value="1.750000"/>
+            <Attachment value="Ref_Foot Left"/>
+            <Payload value="FPT_FWL0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintRight"/>
+            <Time value="2.139000"/>
+            <Attachment value="Ref_Foot Left"/>
+            <Payload value="FPT_FWL0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintRight"/>
+            <Time value="0.195000"/>
+            <Attachment value="Ref_Foot Right Rear"/>
+            <Payload value="FPT_FWR0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintRight"/>
+            <Time value="0.584000"/>
+            <Attachment value="Ref_Foot Right"/>
+            <Payload value="FPT_FWR0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintRight"/>
+            <Time value="0.972000"/>
+            <Attachment value="Ref_Foot Right"/>
+            <Payload value="FPT_FWR0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintRight"/>
+            <Time value="1.361000"/>
+            <Attachment value="Ref_Foot Right"/>
+            <Payload value="FPT_FWR0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintRight"/>
+            <Time value="1.750000"/>
+            <Attachment value="Ref_Foot Right"/>
+            <Payload value="FPT_FWR0"/>
+        </Events>
+        <Events>
+            <Anim value="Walk"/>
+            <Type value="FootprintRight"/>
+            <Time value="2.139000"/>
+            <Attachment value="Ref_Foot Right"/>
+            <Payload value="FPT_FWR0"/>
+        </Events>
+        <Events Anim="Death" Type="Sound" Payload="SND_DCAT"/>
+        <Events Anim="Attack" Type="Sound" Payload="SND_KCAT"/>
+    </CModel>
+    <CModel id="ncat" parent="War3_Catapult">
+        <SelectionRadius value="0.916667"/>
+        <ScaleMax value="0.937500,0.937500,0.937500"/>
+        <ScaleMin value="0.937500,0.937500,0.937500"/>
+    </CModel>
+    <CModel id="ncat_Portrait" parent="War3_Catapult"/>
+    <CModel id="HolyWrathMissile" parent="War3_FaerieDragonMissile"/>
+    <CModel id="HolyWrathSpecial" parent="War3_Spell">
+        <Model value="Assets\Abilities\Spells\Orc\War3_HealingWaveTarget\War3_HealingWaveTarget.m3"/>
+        <Events Anim="Birth" Type="Sound" Payload="ItemIllusion"/>
     </CModel>
 </Catalog>

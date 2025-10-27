@@ -257,6 +257,128 @@
         <AutoCastValidatorArray value="EnemiesNearby8"/>
         <AutoCastFilters value="Self,Visible;Neutral,Enemy"/>
     </CAbilEffectInstant>
+    <!--Mountain King - Thunder Bolt Buff=BPSE-->
+    <CAbilEffectTarget id="AHtb" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:ChaosOrc,AbilityorEffectType:Units"/>
+        <Cost index="0">
+            <Vital index="Energy" value="30"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </Cost>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSMarker"/>
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
+        </TargetSorts>
+        <Range value="11"/>
+        <AutoCastRange value="11"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
+        <AutoCastValidatorArray value="NoBHtb"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <PrepTime value="0.4"/>
+        <CastOutroTime value="0.5"/>
+        <TargetFilters index="0" value="-;wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
+        <Effect index="0" value="AHtbMissile"/>
+    </CAbilEffectTarget>
+    <!--Sanctuary Buff=BNsa-->
+    <CAbilEffectTarget id="ANsa" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
+        <Cost index="0">
+            <Vital index="Energy" value="10"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </Cost>
+        <TargetFilters index="0" value="-;self,neutral,enemies,mechanical,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSLife"/>
+        </TargetSorts>
+        <Range value="6"/>
+        <AutoCastFilters value="Visible;-"/>
+        <AutoCastRange value="6"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastValidatorArray value="SanctuaryAutoCastValidator"/>
+        <AutoCastValidatorArray value="HasNoBNsa"/>
+        <AutoCastValidatorArray value="HasHjai"/>
+        <AutoCastValidatorArray value="IsNotHjai"/>
+        <PrepTime value="0.05"/>
+        <CastOutroTime value="1.67"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="HolyRadiance" parent="AW2_EffectInstant">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Unit"/>
+        <Cost index="0">
+            <Vital index="Energy" value="10"/>
+            <Cooldown Location="Unit" TimeUse="5"/>
+        </Cost>
+        <AutoCastFilters value="Self,Visible;Neutral,Enemy"/>
+        <AutoCastValidatorArray value="DamagedNonUndeadFriendNearBy"/>
+        <AutoCastValidatorArray value="EnemiesNearby8"/>
+        <PrepTime value="0.5"/>
+        <CastOutroTime value="1.67"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="HolyWrath" parent="AW2_EffectInstant">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Unit"/>
+        <Cost index="0">
+            <Vital index="Energy" value="10"/>
+            <Cooldown Location="Unit" TimeUse="5"/>
+        </Cost>
+        <AutoCastFilters value="Self,Visible;Neutral,Enemy"/>
+        <AutoCastValidatorArray value="EnemiesNearby3"/>
+        <PrepTime value="0.5"/>
+        <CastOutroTime value="1.67"/>
+        <AINotifyEffect value="HolyWrathApplyBuff"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="ANmo" parent="AW2_EffectInstant">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Unit"/>
+        <Cost index="0">
+            <Vital index="Energy" value="60"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </Cost>
+        <AutoCastFilters value="Self,Visible;Neutral,Enemy"/>
+        <AutoCastValidatorArray value="EnemiesNearby3"/>
+        <PrepTime value="0.5"/>
+        <CastOutroTime value="1.67"/>
+        <AINotifyEffect value="HolyWrathApplyBuff"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="DivineProtection" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
+        <Cost index="0">
+            <Vital index="Energy" value="10"/>
+            <Cooldown Location="Unit" TimeUse="5"/>
+        </Cost>
+        <TargetFilters index="0" value="-;self,neutral,enemies,mechanical,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
+            <SortArray value="TSLife"/>
+        </TargetSorts>
+        <Range value="6"/>
+        <AutoCastFilters value="Visible;-"/>
+        <AutoCastRange value="6"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastValidatorArray value="HasNoBlessingOfMight"/>
+        <PrepTime value="0.5"/>
+        <CastOutroTime value="1.67"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="BlessingOfMight" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
+        <Cost index="0">
+            <Vital index="Energy" value="30"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </Cost>
+        <TargetFilters index="0" value="-;self,neutral,enemies,mechanical,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
+            <SortArray value="TSEnergy"/>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
+        <Range value="9"/>
+        <AutoCastFilters value="Visible;-"/>
+        <AutoCastRange value="9"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastValidatorArray value="HasNoBlessingOfMight"/>
+        <PrepTime value="0.5"/>
+        <CastOutroTime value="1.67"/>
+    </CAbilEffectTarget>
     <!--Blood Mage - Siphon Mana Buff=Bdcb,Bdcl,Bdcm,Bdtb,Bdtl,Bdtm,Bdbb,Bdbl,Bdbm-->
     <CAbilEffectTarget id="AHdr" parent="AW2_EffectTarget">
         <TargetFilters index="0" value="HasEnergy;self,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable"/>
@@ -2196,14 +2318,16 @@
         <InfoArray index="Build13" Unit="hmil">
             <Button DefaultButtonFace="hmil" Requirements="BuildArmy"/>
         </InfoArray>
+        <InfoArray index="Build14" Unit="Hjai">
+            <Button DefaultButtonFace="Hjai" Requirements="BuildArmy"/>
+        </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
     <!--Paladin - Divine Shield Buff=BHds-->
     <CAbilEffectInstant id="AHds" parent="AW2_EffectInstant">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <Cost index="0">
-            <Vital index="Energy" value="30"/>
-            <Cooldown Location="Unit" TimeUse="60"/>
+            <Cooldown Location="Unit" TimeUse="120"/>
         </Cost>
         <PrepTime value="0.5"/>
         <!--FinishTime value="1.67"/-->
@@ -2583,6 +2707,19 @@
         <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
+    <CAbilEffectInstant id="HandOfFreedom" parent="AW2_EffectInstant">
+        <Alignment value="Positive"/>
+        <EditorCategories value="Race:Human,AbilityorEffectType:Unit"/>
+        <Effect index="0" value="HandOfFreedomSearch"/>
+        <Flags index="BestUnit" value="1"/>
+        <Cost index="0">
+            <Vital index="Energy" value="60"/>
+        </Cost>
+        <AutoCastFilters value="Self,Visible;-"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
+        <PrepTime value="0.05"/>
+        <CastOutroTime value="1.17"/>
+    </CAbilEffectInstant>
     <CAbilAugment id="BladeMasterSlamControl" parent="AW2_AttackAugment">
         <Cost>
             <Charge TimeUse="0.0625"/>
@@ -2909,7 +3046,7 @@
         <EditorCategories value="Race:Undead,AbilityorEffectType:Units"/>
         <Cost index="0">
             <Vital index="Energy" value="60"/>
-            <Cooldown Location="Unit" TimeUse="60"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <PrepTime value="0.452"/>
         <CastOutroTime value="1.008"/>
@@ -3078,6 +3215,24 @@
     </CAbilBehavior>
     <CAbilBehavior id="EternityAura" parent="War3_HeroAura">
         <BehaviorArray value="EternityAuraCaster"/>
+    </CAbilBehavior>
+    <CAbilBehavior id="InsightAura" parent="War3_HeroAura">
+        <BehaviorArray value="InsightAuraCaster"/>
+    </CAbilBehavior>
+    <CAbilBehavior id="RighteousnessAura" parent="War3_HeroAura">
+        <BehaviorArray value="RighteousnessAuraCaster"/>
+    </CAbilBehavior>
+    <CAbilBehavior id="KingsAura" parent="War3_HeroAura">
+        <BehaviorArray value="KingsAuraCaster"/>
+    </CAbilBehavior>
+    <CAbilBehavior id="CrusaderAura" parent="War3_HeroAura">
+        <BehaviorArray value="CrusaderAuraCaster"/>
+    </CAbilBehavior>
+    <CAbilBehavior id="AvengingWrathAura" parent="War3_HeroAura">
+        <BehaviorArray value="AvengingWrathAuraCaster"/>
+    </CAbilBehavior>
+    <CAbilBehavior id="GuardianAura" parent="War3_HeroAura">
+        <BehaviorArray value="GuardianAuraCaster"/>
     </CAbilBehavior>
     <CAbilInteract id="Aall">
         <Range value="500"/>
@@ -4686,6 +4841,7 @@
     <CAbilEffectTarget id="ACtn" parent="AW2_EffectTarget">
         <TargetFilters index="0" value="-;wall,tree,Missile,debris,item,ward,dead,Hidden"/>
         <Cost index="0">
+            <Vital index="Energy" value="6"/>
             <Cooldown Location="Unit" TimeUse="12"/>
         </Cost>
         <Range value="36"/>
@@ -4728,15 +4884,33 @@
     <CAbilMorph id="UpgradeTonmgd" parent="AW2_Upgrade" toUnit="nmgd">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
+    <CAbilMorph id="UpgradeToBallista" parent="AW2_Upgrade" toUnit="Ballista">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
     <CAbilEffectTarget id="FleeCentaurArcher" parent="AW2_EffectTarget">
         <Flags index="Transient" value="1"/>
         <Range value="2"/>
         <AutoCastRange value="2"/>
         <Cost index="0">
-            <Charge CountMax="150" CountStart="150" CountUse="1"/>
+            <Charge CountMax="75" CountStart="75" CountUse="1"/>
             <Cooldown Location="Abil" TimeUse="1"/>
         </Cost>
         <Arc value="360"/>
         <TargetFilters index="0" value="-;player,allies,wall,tree,Missile,debris,item,structure,ward,dead"/>
     </CAbilEffectTarget>
+    <CAbilMorph id="UpgradeToHapm" parent="AW2_Upgrade" toUnit="Hapm">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToHarf" parent="AW2_Upgrade" toUnit="Harf">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToHpb1" parent="AW2_Upgrade" toUnit="Hpb1">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToHmgd" parent="AW2_Upgrade" toUnit="Hmgd">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToHart" parent="AW2_Upgrade" toUnit="Hart">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
 </Catalog>

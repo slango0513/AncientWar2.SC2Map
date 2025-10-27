@@ -162,6 +162,10 @@
         <CombineArray value="KillResourceCustomGT0"/>
         <CombineArray value="TargetLifeGT100"/>
     </CValidatorCombine>
+    <CValidatorCombine id="SanctuaryAutoCastValidator">
+        <CombineArray value="LifeLTOneQuarter"/>
+        <CombineArray value="TargetLifeLE100"/>
+    </CValidatorCombine>
     <CValidatorUnitCompareVital id="TargetLifeLE100">
         <Compare value="LE"/>
         <Value value="100"/>
@@ -179,6 +183,12 @@
     <CValidatorUnitCompareBehaviorCount id="HasNoAssk">
         <Behavior value="Assk"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="HasNoDivineProtection">
+        <Behavior value="DivineProtection"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="HasNoBlessingOfMight">
+        <Behavior value="BlessingOfMight"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="HasNoBNmr">
         <Behavior value="BNmr"/>
     </CValidatorUnitCompareBehaviorCount>
@@ -189,6 +199,13 @@
     </CValidatorCombine>
     <CValidatorUnitType id="IsGargoyle">
         <Value value="ugar"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="IsHjai">
+        <Value value="Hjai"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="IsNotHjai">
+        <Value value="Hjai"/>
+        <Find value="0"/>
     </CValidatorUnitType>
     <CValidatorCombine id="IsGargoyleOrGhoul">
         <CombineArray value="IsGargoyle"/>
@@ -559,6 +576,9 @@
     <CValidatorUnitCompareBehaviorCount id="NoThunderBolt">
         <Behavior value="BCtb"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="HasNoBNsa">
+        <Behavior value="BNsa"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NoPossession">
         <Behavior value="Bpos"/>
     </CValidatorUnitCompareBehaviorCount>
@@ -597,6 +617,9 @@
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NoHex">
         <Behavior value="BOhx"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoBHtb">
+        <Behavior value="BHtb"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NoEntanglingRoots">
         <Behavior value="BEer"/>
@@ -961,7 +984,46 @@
             <Validator value="IsForgottenOne"/>
         </AreaArray>
     </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="HasHjai" parent="AW2_FriendiesNearby">
+        <AreaArray index="0">
+            <Compare value="GT"/>
+            <Count value="0"/>
+            <Radius value="500"/>
+            <Validator value="IsHjai"/>
+        </AreaArray>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="HasHjai5" parent="AW2_FriendiesNearby">
+        <AreaArray index="0">
+            <Compare value="GT"/>
+            <Count value="0"/>
+            <Radius value="5"/>
+            <Validator value="IsHjai"/>
+        </AreaArray>
+    </CValidatorLocationEnumArea>
     <CValidatorUnitCompareBehaviorCount id="IsNotRecentlyRecalled">
         <Behavior value="RecentlyRecalled"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="HolyRadianceHealTarget">
+        <Type value="And"/>
+        <CombineArray value="HolyRadianceFriendFilter"/>
+        <CombineArray value="IsNotUndead"/>
+        <CombineArray value="TargetLifeNotFull"/>
+    </CValidatorCombine>
+    <CValidatorUnitFilters id="HolyRadianceFriendFilter">
+        <Filters value="-;Enemy"/>
+    </CValidatorUnitFilters>
+    <CValidatorLocationEnumArea id="DamagedNonUndeadFriendNearBy">
+        <WhichLocation Value="CasterUnit"/>
+        <AreaArray Radius="5.4687" Validator="HealingNonUndeadAutoCastTargetFilter"/>
+        <SearchFlags index="OffsetByUnitRadius" value="1"/>
+        <SearchFilters value="-;Neutral,Enemy,Mechanical,Hover,HarvestableResource,Destructible,Item,PreventDefeat,Buried,Dead,Hidden"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorCombine id="HealingNonUndeadAutoCastTargetFilter">
+        <CombineArray value="NotFullLife"/>
+        <CombineArray value="NotNegativeLifeRegen"/>
+        <CombineArray value="NotHidden"/>
+        <CombineArray value="NotHallucinationTarget"/>
+        <CombineArray value="IsNotUndead"/>
+        <Type value="And"/>
+    </CValidatorCombine>
 </Catalog>
