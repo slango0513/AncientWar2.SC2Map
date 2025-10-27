@@ -69,11 +69,16 @@
         <Name value="Effect/Name/AW2_SelfDestroyDPS"/>
         <Marker Link="Effect/SelfDestroyDPS"/>
     </CEffectDamage>
+    <!--Ancestral Spirit-->
+    <CEffectEnumArea id="Aast">
+        <AreaArray index="0" Radius="7.0312" Effect="AastRevive"/>
+    </CEffectEnumArea>
+    <CEffectLaunchMissile id="RitssynFlamescowl1LM" parent="War3_Missile" weaponid="nchw1"/>
     <CEffectApplyBehavior id="ACsiDur">
-        <Duration value="30"/>
+        <Duration value="20"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="ACsiHeroDur">
-        <Duration value="15"/>
+        <Duration value="10"/>
     </CEffectApplyBehavior>
     <!--Silence(Creep) Dur=40 HeroDur=8.5 Buff=BNsi-->
     <CEffectEnumArea id="ACsiSearch">
@@ -148,7 +153,9 @@
         <SpawnEffect value="BurningSmokeTimeLife"/>
         <SpawnUnit value="BurningSmoke"/>
         <ValidatorArray value="NoBurningSmokeNearby1"/>
+        <SpawnOwner Value="Caster"/>
     </CEffectCreateUnit>
+    <CEffectRemoveBehavior id="RemoveAllPurgableBuffTrigger"/>
     <CEffectCreateUnit id="nsko" parent="War3_SummonUnit">
         <EditorCategories value="Race:ChaosOrc"/>
         <SpawnEffect value="Brai"/>
@@ -237,6 +244,10 @@
         <Amount value="12"/>
     </CEffectDamage>
     <CEffectDamage id="odkt1" parent="AW2_ChaosDamage">
+        <Amount value="24"/>
+    </CEffectDamage>
+    <CEffectDamage id="ucs11" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
         <Amount value="24"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="ushd1LM" parent="War3_Missile" weaponid="ushd1"/>
@@ -1340,9 +1351,7 @@
         <AreaArray index="1" removed="1"/>
     </CEffectEnumArea>
     <!--TornadoSpin Dur=12 HeroDur=6 Buff=Btsp,Btsa-->
-    <CEffectEnumArea id="AtspSearch">
-        <AreaArray index="0" MaxCount="1" Radius="1" Effect="AtspBuffSet"/>
-    </CEffectEnumArea>
+    <CEffectEnumArea id="AtspSearch"/>
     <CEffectDamage id="BEerDPS1">
         <Amount value="10"/>
     </CEffectDamage>
@@ -1898,7 +1907,7 @@
         <CaseDefault value="Swimming"/>
     </CEffectSwitch>
     <CEffectDamage id="Ucrl1" parent="AW2_PierceDamage">
-        <Amount value="72"/>
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="Udea1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
@@ -2085,7 +2094,7 @@
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CEffectEnumArea>
     <CEffectDamage id="otbr1" parent="AW2_SiegeDamage">
-        <Amount value="12"/>
+        <Amount value="24"/>
         <AreaArray Radius="1.1718" Fraction="1"/>
         <SearchFilters value="-;player,allies,air,wall,Missile,item,ward,ethereal,dead,invulnerable"/>
         <Death value="Blast"/>
@@ -2624,6 +2633,9 @@
     <CEffectDamage id="nchw1" parent="AW2_ChaosDamage">
         <Amount value="96"/>
     </CEffectDamage>
+    <CEffectDamage id="RitssynFlamescowl1" parent="AW2_ChaosDamage">
+        <Amount value="96"/>
+    </CEffectDamage>
     <CEffectDamage id="nckb1" parent="AW2_ChaosDamage">
         <Amount value="24"/>
     </CEffectDamage>
@@ -2913,10 +2925,10 @@
         <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="nnwl1" parent="AW2_PierceDamage">
-        <Amount value="72"/>
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="nnwr1" parent="AW2_PierceDamage">
-        <Amount value="72"/>
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="noga1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
@@ -3230,7 +3242,7 @@
         <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="ucry1" parent="AW2_PierceDamage">
-        <Amount value="72"/>
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="ugho1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>

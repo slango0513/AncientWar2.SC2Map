@@ -224,6 +224,22 @@
         <InfoArray/>
         <InfoArray/>
     </CAbilInventory>
+    <!--Crypt Lord - Carrion Scarabs Buff=BUcb-->
+    <CAbilEffectInstant id="AUcb" parent="AW2_EffectInstant">
+        <EditorCategories value="Race:Undead,AbilityorEffectType:Hero"/>
+        <TargetFilters value="Dead;Hover,Heroic,HarvestableResource,Destructible,Item,Buried,Invulnerable"/>
+        <DefaultError value="MustTargetUnit,Errors/Cantfindcorpse"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="30"/>
+        </Cost>
+        <Range value="7.0312"/>
+        <PrepTime value="0.4"/>
+        <CastOutroTime value="1.1"/>
+        <AutoCastRange value="7.0312"/>
+        <Alignment value="Positive"/>
+        <AutoCastFilters value="Visible;-"/>
+        <AutoCastValidatorArray value="AUcbMarkerLessThan5"/>
+    </CAbilEffectInstant>
     <CAbilBehavior id="ShockWavePassive" parent="AW2_Passive">
         <BehaviorArray value="ShockWavePassive"/>
     </CAbilBehavior>
@@ -912,10 +928,10 @@
     <!--Abolish Magic (Creep, 1,2 pos)-->
     <CAbilEffectTarget id="ACd2" parent="AW2_EffectTarget">
         <EditorCategories value="Race:Orc,AbilityorEffectType:Unit"/>
-        <TargetFilters index="0" value="-;wall,Missile,debris,item,structure,dead"/>
+        <TargetFilters index="0" value="-;wall,Missile,debris,item,structure,dead,immunity"/>
         <Cost index="0">
-            <Vital index="Energy" value="6"/>
-            <Cooldown Location="Unit" TimeUse="15"/>
+            <Vital index="Energy" value="10"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <Range value="11"/>
         <PrepTime value="0.5"/>
@@ -1298,10 +1314,9 @@
             <SortArray value="TSLifeLargestFirst"/>
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
-        <Range value="15"/>
-        <AutoCastRange value="15"/>
-        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
-        <AutoCastValidatorArray value="EnemiesNearby12"/>
+        <Range value="11"/>
+        <AutoCastRange value="11"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastValidatorArray value="NoFireBolt"/>
         <PrepTime value="1"/>
         <CastOutroTime value="1"/>
@@ -1861,8 +1876,7 @@
         </Cost>
         <PrepTime value="2"/>
         <CastOutroTime value="1.08"/>
-        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
-        <AutoCastValidatorArray value="EnemiesNearby3"/>
+        <AutoCastValidatorArray value="EnemiesNearby6"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="Sleep" parent="AW2_EffectInstant">
@@ -2150,7 +2164,7 @@
         </Cost>
         <PrepTime value="2"/>
         <CastOutroTime value="0.5"/>
-        <AutoCastValidatorArray value="EnemiesNearby8"/>
+        <AutoCastValidatorArray value="EnemiesNearby6"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="AIpv" parent="AW2_EffectInstant">
@@ -2637,8 +2651,6 @@
         </Cost>
         <PrepTime value="0.68"/>
         <CastOutroTime value="0.59"/>
-        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
-        <AutoCastValidatorArray value="EnemiesNearby4"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilAttack id="Aatk">
@@ -4136,6 +4148,9 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToKnightLordBloodvalor" parent="AW2_Upgrade" toUnit="KnightLordBloodvalor">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToRitssynFlamescowl" parent="AW2_Upgrade" toUnit="RitssynFlamescowl">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
 </Catalog>

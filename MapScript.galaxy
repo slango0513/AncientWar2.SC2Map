@@ -1425,6 +1425,7 @@ void gf_RestoreTOD () {
     // Variable Initialization
 
     // Implementation
+    libNtve_gf_StopTimer(gv_moonstoneTimer);
     lv_player = 1;
     for ( ; ( (auto74679AE6_ai >= 0 && lv_player <= auto74679AE6_ae) || (auto74679AE6_ai < 0 && lv_player >= auto74679AE6_ae) ) ; lv_player += auto74679AE6_ai ) {
         TimerWindowShow(gv_moonstoneTimmerWindow, PlayerGroupSingle(lv_player), false);

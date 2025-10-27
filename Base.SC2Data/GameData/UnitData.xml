@@ -316,7 +316,12 @@
             <LayoutButtons index="3" removed="1"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="RitssynFlamescowl1LM" parent="War3_Missile"/>
     <CUnit id="Pelekeiki1LM" parent="War3_Missile"/>
+    <!--watery minion cliffrunner-->
+    <CUnit id="ncfs">
+        <Race value="Naga"/>
+    </CUnit>
     <!--skeletal orc-->
     <CUnit id="nsko" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
@@ -331,6 +336,14 @@
         <InnerRadius value="0.375"/>
         <PlaneArray index="Ground" value="1"/>
         <DeathTime value="0"/>
+    </CUnit>
+    <!--watery minion snarecaster-->
+    <CUnit id="nsns">
+        <Race value="Naga"/>
+    </CUnit>
+    <!--watery minion tidewarrior-->
+    <CUnit id="ntws">
+        <Race value="Naga"/>
     </CUnit>
     <!--lesser voidwalker-->
     <CUnit id="nvdl" parent="AW2_Army" defType="MEDIUM">
@@ -347,6 +360,21 @@
         <PlaneArray index="Ground" value="1"/>
         <BehaviorArray Link="hover"/>
         <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
+    </CUnit>
+    <!--carrion scarab level 1-->
+    <CUnit id="ucs1" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
+        <LifeStart value="250"/>
+        <LifeMax value="250"/>
+        <Speed value="2"/>
+        <Race value="Undead"/>
+        <Mover value="foot"/>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <PlaneArray index="Ground" value="1"/>
+        <DeathTime value="0"/>
     </CUnit>
     <CUnit id="ushd1LM" parent="War3_Missile"/>
     <!--Mal'furion-->
@@ -1685,10 +1713,12 @@
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/UndeadUnits"/>
         <AbilArray Link="Aiun"/>
+        <AbilArray Link="AUcb"/>
         <BehaviorArray Link="undead"/>
         <WeaponArray index="1" removed="1"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="AUim" Type="Passive" Row="2" Column="0"/>
+            <LayoutButtons Face="AUcb" Type="AbilCmd" AbilCmd="AUcb,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="AUim" Type="Passive" Row="2" Column="1"/>
         </CardLayouts>
     </CUnit>
     <!--HeroDeathKnight-->
@@ -3733,8 +3763,8 @@
         <Race value="BloodElf"/>
         <PlaneArray index="Ground" value="1"/>
         <Attributes index="small" value="1"/>
-        <LifeStart value="1800"/>
-        <LifeMax value="1800"/>
+        <LifeStart value="1500"/>
+        <LifeMax value="1500"/>
         <LifeArmor value="10"/>
         <Mover value="horse"/>
         <Speed value="3"/>
@@ -3758,8 +3788,8 @@
         <Race value="BloodElf"/>
         <PlaneArray index="Ground" value="1"/>
         <Attributes index="large" value="1"/>
-        <LifeStart value="1800"/>
-        <LifeMax value="1800"/>
+        <LifeStart value="1500"/>
+        <LifeMax value="1500"/>
         <LifeArmor value="10"/>
         <Mover value="horse"/>
         <Speed value="2"/>
@@ -3775,14 +3805,14 @@
         <EnergyStart value="60"/>
         <EnergyMax value="60"/>
         <EnergyRegenDelay value="10"/>
-        <EnergyRegenRate value="5"/>
+        <EnergyRegenRate value="10"/>
     </CUnit>
     <CUnit id="SolanarBloodwrath" parent="AW2_Army" defType="SMALL">
         <Race value="BloodElf"/>
         <PlaneArray index="Ground" value="1"/>
         <Attributes index="small" value="1"/>
-        <LifeStart value="1800"/>
-        <LifeMax value="1800"/>
+        <LifeStart value="1500"/>
+        <LifeMax value="1500"/>
         <LifeArmor value="10"/>
         <Mover value="horse"/>
         <Speed value="3"/>
@@ -3804,8 +3834,8 @@
         <Race value="BloodElf"/>
         <PlaneArray index="Ground" value="1"/>
         <Attributes index="small" value="1"/>
-        <LifeStart value="1800"/>
-        <LifeMax value="1800"/>
+        <LifeStart value="1500"/>
+        <LifeMax value="1500"/>
         <LifeArmor value="10"/>
         <Mover value="horse"/>
         <Speed value="2"/>
@@ -3822,7 +3852,7 @@
         <EnergyStart value="60"/>
         <EnergyMax value="60"/>
         <EnergyRegenDelay value="10"/>
-        <EnergyRegenRate value="5"/>
+        <EnergyRegenRate value="10"/>
     </CUnit>
     <!--Militia-->
     <CUnit id="hmil" parent="AW2_Army" defType="LARGE">
@@ -4814,19 +4844,21 @@
         </CardLayouts>
     </CUnit>
     <!--ChaosWarlock-->
-    <CUnit id="nchw" parent="AW2_Army" defType="NONE">
-        <Attributes index="none" value="1"/>
+    <CUnit id="nchw" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
         <CostResource index="gold" value="60"/>
         <KillResource index="Custom" value="30"/>
-        <LifeStart value="25"/>
-        <LifeMax value="25"/>
+        <LifeStart value="250"/>
+        <LifeMax value="250"/>
         <Speed value="2"/>
         <Race value="ChaosOrc"/>
         <Mover value="foot"/>
         <GlossaryCategory value="Unit/Category/ChaosOrcUnits"/>
         <AbilArray Link="ChaosOrcInventory"/>
+        <AbilArray Link="UpgradeToRitssynFlamescowl"/>
         <AbilArray Link="Awfb"/>
         <CardLayouts index="0">
+            <LayoutButtons Face="RitssynFlamescowl" Type="AbilCmd" AbilCmd="UpgradeToRitssynFlamescowl,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="Awfb" Type="AbilCmd" AbilCmd="Awfb,0" Row="2" Column="0"/>
         </CardLayouts>
         <Radius value="0.375"/>
@@ -4836,6 +4868,31 @@
         <EnergyMax value="60"/>
         <EnergyStart value="60"/>
         <PlaneArray index="Ground" value="1"/>
+    </CUnit>
+    <CUnit id="RitssynFlamescowl" parent="AW2_Army" defType="MEDIUM">
+        <Race value="ChaosOrc"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Attributes index="medium" value="1"/>
+        <LifeStart value="250"/>
+        <LifeMax value="250"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
+        <Mover value="foot"/>
+        <Speed value="2"/>
+        <CostResource index="gold" value="180"/>
+        <KillResource index="Custom" value="30"/>
+        <AbilArray Link="ChaosOrcInventory"/>
+        <AbilArray Link="Awfb"/>
+        <AbilArray Link="Aabr"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Awfb" Type="AbilCmd" AbilCmd="Awfb,0" Row="2" Column="0"/>
+            <LayoutButtons Face="Aabr" Type="Passive" Behavior="Aabr" Row="2" Column="1"/>
+        </CardLayouts>
+        <Radius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <GlossaryCategory value="Unit/Category/ChaosOrcUnits"/>
     </CUnit>
     <!--Chaos Kodo Beast-->
     <CUnit id="nckb" parent="AW2_Army" defType="NONE">
@@ -7102,19 +7159,21 @@
     </CUnit>
     <CUnit id="nthr2LM" parent="War3_Missile"/>
     <!--War2Warlock-->
-    <CUnit id="nw2w" parent="AW2_Army" defType="NONE">
-        <Attributes index="none" value="1"/>
+    <CUnit id="nw2w" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
         <CostResource index="gold" value="60"/>
         <KillResource index="Custom" value="30"/>
-        <LifeStart value="25"/>
-        <LifeMax value="25"/>
+        <LifeStart value="250"/>
+        <LifeMax value="250"/>
         <Speed value="2"/>
-        <Race value="Orc"/>
+        <Race value="ChaosOrc"/>
         <Mover value="foot"/>
-        <GlossaryCategory value="Unit/Category/OrcUnits"/>
-        <AbilArray Link="Aion"/>
+        <GlossaryCategory value="Unit/Category/ChaosOrcUnits"/>
+        <AbilArray Link="ChaosOrcInventory"/>
+        <AbilArray Link="UpgradeTonchw"/>
         <AbilArray Link="Awfb"/>
         <CardLayouts index="0">
+            <LayoutButtons Face="nchw" Type="AbilCmd" AbilCmd="UpgradeTonchw,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="Awfb" Type="AbilCmd" AbilCmd="Awfb,0" Row="2" Column="0"/>
         </CardLayouts>
         <Radius value="0.375"/>
@@ -8390,11 +8449,13 @@
         <AbilArray Link="UpgradeTonnwl"/>
         <AbilArray Link="UpgradeTonnwr"/>
         <AbilArray Link="UpgradeToUcrl"/>
+        <AbilArray Link="AUcb"/>
         <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
             <LayoutButtons Face="nnwl" Type="AbilCmd" AbilCmd="UpgradeTonnwl,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="nnwr" Type="AbilCmd" AbilCmd="UpgradeTonnwr,Execute" Row="0" Column="1"/>
             <LayoutButtons Face="Ucrl" Type="AbilCmd" AbilCmd="UpgradeToUcrl,Execute" Row="0" Column="2"/>
+            <LayoutButtons Face="AUcb" Type="AbilCmd" AbilCmd="AUcb,Execute" Row="2" Column="0"/>
         </CardLayouts>
     </CUnit>
     <!--Undead flag-->
