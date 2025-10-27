@@ -396,6 +396,7 @@ trigger gt_AutoCastAlwaysOnEnable;
 trigger gt_CountUnit;
 trigger gt_CountUnitControl;
 trigger gt_UnitDied;
+trigger gt_UpdateFuryDuration;
 trigger gt_DebugControlPressed;
 trigger gt_DebugKeyPressed;
 trigger gt_DebugUnitRemove;
@@ -426,6 +427,8 @@ void gf_ModInizialization (bool lp_debug) {
     TriggerEnable(libGAwX_gt_AraiSummonCount, false);
     TriggerEnable(libGAwX_gt_AIrmRegen, false);
     TriggerEnable(libGAwX_gt_AIrnRegen, false);
+    TriggerEnable(libGAwX_gt_AOshAOs2MaxTargets, false);
+    TriggerEnable(libGAwX_gt_AUcsMaxTargets, false);
     UISetResourceTradingAllowed(c_resourceTypeMinerals, false);
     UISetResourceTradingAllowed(c_resourceTypeVespene, false);
     UISetResourceTradingAllowed(c_resourceTypeTerrazine, false);
@@ -3155,6 +3158,7 @@ void gf_UnitCreate (int lp_player, point lp_point, string lp_unitType, unit lp_u
     UnitSetFacing(UnitLastCreated(), UnitGetFacing(lp_unit), 0.0);
     UnitSetCustomValue(UnitLastCreated(), gv_customValuePhalanx, UnitGetCustomValue(lp_unit, gv_customValuePhalanx));
     UnitBehaviorAdd(UnitLastCreated(), "PhalanxMarker", lp_unit, 1);
+    UnitCreateEffectUnit(UnitLastCreated(), "AW2_Fury", UnitLastCreated());
     auto80647215_ae = UnitBehaviorCountAll(lp_unit);
     lv_index = 1;
     for ( ; ( (auto80647215_ai >= 0 && lv_index <= auto80647215_ae) || (auto80647215_ai < 0 && lv_index >= auto80647215_ae) ) ; lv_index += auto80647215_ai ) {
@@ -6336,6 +6340,47 @@ void gt_UnitDied_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: UpdateFuryDuration
+//--------------------------------------------------------------------------------------------------
+bool gt_UpdateFuryDuration_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_unit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_unit = EventUnit();
+
+    // Conditions
+    if (testConds) {
+        if (!((EventUnitPropertyChangeFixed() < 0.0))) {
+            return false;
+        }
+
+        if (!((UnitGetPropertyFixed(lv_unit, c_unitPropLife, c_unitPropCurrent) >= 10.0))) {
+            return false;
+        }
+
+        if (!((UnitFilterMatch(lv_unit, UnitGetOwner(lv_unit), gv_unitFilter) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorSetDurationRemaining(lv_unit, "AW2_Fury", CatalogFieldValueGetAsInt(c_gameCatalogEffect, "AW2_Fury", "Duration", UnitGetOwner(lv_unit)));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_UpdateFuryDuration_Init () {
+    gt_UpdateFuryDuration = TriggerCreate("gt_UpdateFuryDuration_Func");
+    TriggerAddEventUnitProperty(gt_UpdateFuryDuration, null, c_unitPropLife);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: DebugControlPressed
 //--------------------------------------------------------------------------------------------------
 bool gt_DebugControlPressed_Func (bool testConds, bool runActions) {
@@ -6649,6 +6694,7 @@ void InitTriggers () {
     gt_CountUnit_Init();
     gt_CountUnitControl_Init();
     gt_UnitDied_Init();
+    gt_UpdateFuryDuration_Init();
     gt_DebugControlPressed_Init();
     gt_DebugKeyPressed_Init();
     gt_DebugUnitRemove_Init();

@@ -80,8 +80,33 @@
         <SearchFilters value="-;player,allies,wall,tree,Missile,debris,item,ward,dead,Hidden,invulnerable,immunity"/>
         <MaxCount value="4294967295"/>
     </CEffectEnumArea>
+    <CEffectEnumArea id="AOshSearch">
+        <MaxCount value="4294967295"/>
+    </CEffectEnumArea>
+    <!--Chieftain - Shock Wave Buff=BOsh-->
+    <CEffectCreatePersistent id="AOshTarget">
+        <PeriodicOffsetArray index="0" value="0,-9,0"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="AUcsDamage1">
+        <Amount value="20"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="AUcsSearch">
+        <MaxCount value="4294967295"/>
+    </CEffectEnumArea>
+    <CEffectSet id="AUcsSearchImpactSet1">
+        <EffectArray value="AUcsDamage1"/>
+        <EffectArray value="AUcsHeal1"/>
+    </CEffectSet>
+    <!--Dreadlord - Carrion Swarm Buff=BUcs-->
+    <CEffectCreatePersistent id="AUcsTarget">
+        <PeriodicOffsetArray index="0" value="0,-9,0"/>
+    </CEffectCreatePersistent>
     <CEffectApplyBehavior id="AUsl1Dur">
         <Duration value="15"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AW2_Fury">
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="180"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="BUavILeech" parent="War3_ApplyBuff">
         <WhichUnit Value="Source"/>
@@ -330,6 +355,11 @@
     </CEffectDamage>
     <CEffectCreateHealer id="AUdcHeal1">
         <RechargeVitalRate value="450"/>
+    </CEffectCreateHealer>
+    <CEffectCreateHealer id="AUcsHeal1" parent="War3_InstantHeal">
+        <RechargeVitalRate value="200"/>
+        <ValidatorArray value="AUcsLevel0"/>
+        <PeriodCount value="1"/>
     </CEffectCreateHealer>
     <CEffectEnumArea id="AfraSearch" parent="War3_AbilSearch">
         <SearchFilters value="-;player,allies,Structure,wall,tree,Missile,debris,item,ward,dead,Hidden,invulnerable,immunity"/>
@@ -1222,7 +1252,6 @@
         <EditorCategories value="Race:Naga"/>
         <AreaArray Radius="0.9765" Effect="ACcvSearchImpact"/>
         <SearchFilters value="-;player,allies,neutral,air,wall,tree,Missile,debris,item,ward,dead,Hidden,invulnerable,immunity"/>
-        <MaxCount value="12"/>
     </CEffectEnumArea>
     <CEffectSet id="ACcvSearchImpact">
         <EditorCategories value="Race:Naga"/>
@@ -1309,7 +1338,7 @@
         <WhichUnit Value="Source"/>
     </CEffectApplyBehavior>
     <CEffectDamage id="AOshDamage1">
-        <Amount value="50"/>
+        <Amount value="20"/>
     </CEffectDamage>
     <CEffectDamage id="ACcvDamage" parent="War3_MagicSpellDamage">
         <EditorCategories value="Race:Naga"/>
@@ -2643,7 +2672,7 @@
         <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="nhyc1" parent="AW2_PierceDamage">
-        <Amount value="48"/>
+        <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="nhym1" parent="AW2_MagicDamage">
         <Amount value="96"/>
@@ -2967,19 +2996,19 @@
         <Amount value="192"/>
     </CEffectDamage>
     <CEffectDamage id="ntrs1" parent="AW2_PierceDamage">
-        <Amount value="48"/>
+        <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="ntr21" parent="AW2_PierceDamage">
-        <Amount value="48"/>
+        <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="ntr31" parent="AW2_PierceDamage">
-        <Amount value="48"/>
+        <Amount value="24"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="ntrs1LM" parent="War3_Missile" weaponid="ntrs1"/>
     <CEffectLaunchMissile id="ntr21LM" parent="War3_Missile" weaponid="ntr21"/>
     <CEffectLaunchMissile id="ntr31LM" parent="War3_Missile" weaponid="ntr31"/>
     <CEffectDamage id="ntrt1" parent="AW2_PierceDamage">
-        <Amount value="48"/>
+        <Amount value="24"/>
     </CEffectDamage>
     <CEffectCreateUnit id="nvdl" parent="AW2_SummonUnit">
         <SpawnCount value="3"/>

@@ -183,6 +183,31 @@
         <InfoArray/>
         <InfoArray/>
     </CAbilInventory>
+    <CAbilBehavior id="ShockWavePassive" parent="AW2_Passive">
+        <BehaviorArray value="ShockWavePassive"/>
+    </CAbilBehavior>
+    <CAbilBehavior id="CarrionSwarmPassive" parent="AW2_Passive">
+        <BehaviorArray value="CarrionSwarmPassive"/>
+    </CAbilBehavior>
+    <!--Dreadlord - Carrion Swarm Buff=BUcs-->
+    <CAbilEffectTarget id="AUcs" parent="AW2_EffectTarget">
+        <Alignment value="Negative"/>
+        <Effect index="0" value="AUcsTarget"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="2"/>
+        </Cost>
+        <TargetFilters index="0" value="-;player,allies,air,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSMarker"/>
+            <SortArray value="TSLife"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
+        </TargetSorts>
+        <Range value="6"/>
+        <AutoCastRange value="6"/>
+        <AutoCastValidatorArray value="GroundEnemiesNearby2"/>
+        <PrepTime value="0.3"/>
+        <CastOutroTime value="1.53"/>
+    </CAbilEffectTarget>
     <!--Phase Shift Dur=1.5 HeroDur=1.5 Buff=Bpsh-->
     <CAbilEffectInstant id="Apsh" parent="AW2_EffectInstant">
         <CmdButtonArray index="Execute" Requirements="Apsh"/>
@@ -871,6 +896,7 @@
         <Alignment value="Negative"/>
         <AutoCastRange value="9"/>
         <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastValidatorArray value="CasterCliffLevelEqualOrGreater"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
         </TargetSorts>
@@ -1782,7 +1808,7 @@
         </Cost>
         <AutoCastFilters value="Self,Visible;-"/>
         <AutoCastValidatorArray value="EnemiesNearby6"/>
-        <PrepTime value="4"/>
+        <PrepTime value="5"/>
         <CastOutroTime value="1.08"/>
         <Effect index="0" value="SleepSearch"/>
     </CAbilEffectInstant>
@@ -2304,7 +2330,7 @@
         <TargetFilters index="0" value="-;player,allies,air,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="60"/>
+            <Cooldown Location="Unit" TimeUse="30"/>
         </Cost>
         <Range value="5"/>
         <PrepTime value="0.47"/>
@@ -3072,6 +3098,7 @@
             <MismatchFlags index="CasterUnit" value="1"/>
         </Marker>
         <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastValidatorArray value="CasterCliffLevelEqualOrGreater"/>
         <Effect index="0" value="AwebMissile"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
@@ -3096,6 +3123,7 @@
         <Alignment value="Negative"/>
         <AutoCastRange value="9"/>
         <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastValidatorArray value="CasterCliffLevelEqualOrGreater"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
         </TargetSorts>

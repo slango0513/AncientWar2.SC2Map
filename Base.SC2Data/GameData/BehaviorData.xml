@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
-    <const id="hero" path="SDamageResponse.TargetFilters" value="Resistant"/>
-    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
     <const id="summoned" path="SDamageResponse.TargetFilters" value="Summoned"/>
-    <const id="air" path="SDamageResponse.TargetFilters" value="Air"/>
+    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
+    <const id="hero" path="SDamageResponse.TargetFilters" value="Resistant"/>
     <const id="allies" path="SDamageResponse.TargetFilters" value="Ally"/>
-    <const id="item" path="SDamageResponse.TargetFilters" value="Item"/>
+    <const id="air" path="SDamageResponse.TargetFilters" value="Air"/>
     <const id="tree" path="SDamageResponse.TargetFilters" value="HarvestableResource"/>
-    <const id="ancient" path="SDamageResponse.TargetFilters" value="Psionic"/>
+    <const id="item" path="SDamageResponse.TargetFilters" value="Item"/>
     <const id="player" path="SDamageResponse.TargetFilters" value="Player"/>
-    <const id="structure" path="SDamageResponse.TargetFilters" value="PreventDefeat"/>
+    <const id="ancient" path="SDamageResponse.TargetFilters" value="Psionic"/>
     <const id="enemies" path="SDamageResponse.TargetFilters" value="Enemy"/>
-    <const id="mechanical" path="SDamageResponse.TargetFilters" value="Mechanical"/>
-    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="structure" path="SDamageResponse.TargetFilters" value="PreventDefeat"/>
     <const id="self" path="SDamageResponse.TargetFilters" value="Self"/>
-    <const id="ground" path="SDamageResponse.TargetFilters" value="Ground"/>
+    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="mechanical" path="SDamageResponse.TargetFilters" value="Mechanical"/>
     <const id="neutral" path="SDamageResponse.TargetFilters" value="Neutral"/>
+    <const id="ground" path="SDamageResponse.TargetFilters" value="Ground"/>
     <const id="wall" path="SDamageResponse.TargetFilters" value="Hover"/>
     <const id="dead" path="SDamageResponse.TargetFilters" value="Dead"/>
     <const id="ethereal" path="SDamageResponse.TargetFilters" value="Stasis"/>
-    <const id="debris" path="SDamageResponse.TargetFilters" value="Destructible"/>
     <const id="invulnerable" path="SDamageResponse.TargetFilters" value="Invulnerable"/>
+    <const id="debris" path="SDamageResponse.TargetFilters" value="Destructible"/>
     <CBehaviorBuff default="1" id="AW2_TimeLife" parent="War3_Passive">
         <DisplayDuration index="Self" value="1"/>
         <DisplayDuration index="Ally" value="1"/>
@@ -73,6 +73,22 @@
     <CBehaviorBuff id="AIba">
         <PeriodicEffect value="AIabSearch"/>
     </CBehaviorBuff>
+    <!--DefenseBonus (+10)-->
+    <CBehaviorBuff id="AId0">
+        <Modification LifeArmorBonus="30"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShockWavePassive" parent="War3_Passive">
+        <DamageResponse Chance="0.25" Handled="AOshTarget" Location="Attacker">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Splash" value="0"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CarrionSwarmPassive" parent="War3_Passive">
+        <DamageResponse Chance="0.25" Handled="AUcsTarget" Location="Attacker">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Splash" value="0"/>
+        </DamageResponse>
+    </CBehaviorBuff>
     <!--MaxManaBonus (Most)-->
     <CBehaviorBuff id="AIbm">
         <RemoveValidatorArray index="0" removed="1"/>
@@ -87,7 +103,7 @@
     </CBehaviorBuff>
     <!--DefenseBonus (+8)-->
     <CBehaviorBuff id="AId8" parent="AW2_Item">
-        <Modification LifeArmorBonus="16"/>
+        <Modification LifeArmorBonus="24"/>
     </CBehaviorBuff>
     <!--Defend (Item)-->
     <CBehaviorBuff id="AIdd">
@@ -118,13 +134,13 @@
     <!--ItemRegenMana, Trigger Notice-->
     <CBehaviorBuff id="AIrm" parent="AW2_Item">
         <Modification>
-            <VitalRegenArray index="Energy" value="1"/>
+            <VitalRegenArray index="Energy" value="0.5"/>
         </Modification>
     </CBehaviorBuff>
     <!--ItemRegenMana lesser, Trigger Notice-->
     <CBehaviorBuff id="AIrn" parent="AW2_Item">
         <Modification>
-            <VitalRegenArray index="Energy" value="0.5"/>
+            <VitalRegenArray index="Energy" value="0.25"/>
         </Modification>
     </CBehaviorBuff>
     <!--Permanent Immolation Dur=1 HeroDur=1 Buff=BNpi-->
@@ -223,16 +239,18 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="Posterior" parent="War3_Buff">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btninvulnerable.dds"/>
+        <MaxStackCount value="2"/>
+        <MaxStackCountPerCaster value="1"/>
         <Duration value="8"/>
         <DurationOverride index="0" Duration="8">
             <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
         </DurationOverride>
+        <ExpireEffect value="PosteriorMoveSpeed"/>
         <Modification>
             <ModifyFlags index="SuppressMoving" value="1"/>
             <AbilClassDisableArray index="CAbilMove" value="1"/>
             <AbilLinkDisableArray value="PosteriorStrategy"/>
         </Modification>
-        <ExpireEffect value="PosteriorMoveSpeed"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="PosteriorMoveSpeed" parent="War3_Buff">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btninvulnerable.dds"/>
@@ -240,7 +258,9 @@
         <DurationOverride index="0" Duration="60">
             <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
         </DurationOverride>
-        <Modification MoveSpeedMultiplier="1.5" AttackSpeedMultiplier="1.5"/>
+        <Modification MoveSpeedMultiplier="1.25" AttackSpeedMultiplier="1.25"/>
+        <MaxStackCount value="2"/>
+        <MaxStackCountPerCaster value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ShieldWallPassive" parent="War3_Passive">
         <Requirements value="ShieldWallPassive"/>
@@ -472,23 +492,23 @@
     <!--continuous Defense Bonus,carry-->
     <!--DefenseBonus (+1)-->
     <CBehaviorBuff id="AId1" parent="AW2_Item">
-        <Modification LifeArmorBonus="2"/>
+        <Modification LifeArmorBonus="3"/>
     </CBehaviorBuff>
     <!--DefenseBonus (+2)-->
     <CBehaviorBuff id="AId2" parent="AW2_Item">
-        <Modification LifeArmorBonus="4"/>
+        <Modification LifeArmorBonus="6"/>
     </CBehaviorBuff>
     <!--DefenseBonus (+3)-->
     <CBehaviorBuff id="AId3" parent="AW2_Item">
-        <Modification LifeArmorBonus="6"/>
+        <Modification LifeArmorBonus="9"/>
     </CBehaviorBuff>
     <!--DefenseBonus (+4)-->
     <CBehaviorBuff id="AId4" parent="AW2_Item">
-        <Modification LifeArmorBonus="8"/>
+        <Modification LifeArmorBonus="12"/>
     </CBehaviorBuff>
     <!--DefenseBonus (+7)-->
     <CBehaviorBuff id="AId7" parent="AW2_Item">
-        <Modification LifeArmorBonus="14"/>
+        <Modification LifeArmorBonus="21"/>
     </CBehaviorBuff>
     <!--Evasion-->
     <CBehaviorBuff id="AIev" parent="AW2_Item">
@@ -587,7 +607,7 @@
     </CBehaviorBuff>
     <!--DefenseBonus (+5)-->
     <CBehaviorBuff id="AId5" parent="AW2_Item">
-        <Modification LifeArmorBonus="10"/>
+        <Modification LifeArmorBonus="15"/>
     </CBehaviorBuff>
     <!--Creep Abil End-->
     <!--Item Abil Start-->
@@ -1253,9 +1273,6 @@
             <ExcludeEffectArray value="Opgh1CritKill"/>
             <ExcludeEffectArray value="ACfdDamage"/>
             <ExcludeEffectArray value="DestinyBondKill"/>
-            <ExcludeEffectArray value="nndk1"/>
-            <ExcludeEffectArray value="nndr1"/>
-            <ValidatorArray value="HasNoHardenedSkin"/>
         </DamageResponse>
     </CBehaviorBuff>
     <!--Hardened Skin-->
@@ -1269,9 +1286,6 @@
             <ExcludeEffectArray value="Opgh1CritKill"/>
             <ExcludeEffectArray value="ACfdDamage"/>
             <ExcludeEffectArray value="DestinyBondKill"/>
-            <ExcludeEffectArray value="nndk1"/>
-            <ExcludeEffectArray value="nndr1"/>
-            <ValidatorArray value="HasNoHardenedSkin"/>
         </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="DragonScale" parent="War3_Passive">
@@ -2512,12 +2526,17 @@
         </DurationOverride>
         <ExpireEffect value="FuryBuff"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="AW2_Fury">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnunholyfrenzy.dds"/>
+        <ExpireEffect value="FuryBuff"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="FuryBuff" parent="War3_Passive">
         <Requirements value="FuryBuff"/>
-        <MaxStackCount value="5"/>
+        <MaxStackCount value="6"/>
         <Period value="5"/>
         <PeriodicEffect value="FuryBuff"/>
-        <Modification AttackSpeedMultiplier="1.3" LifeArmorBonus="1">
+        <Modification AttackSpeedMultiplier="1.5">
             <DamageDealtUnscaled index="Melee" value="192"/>
             <DamageDealtUnscaled index="Ranged" value="192"/>
         </Modification>

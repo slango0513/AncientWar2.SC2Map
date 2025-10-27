@@ -2979,13 +2979,20 @@
         <GlossaryCategory value="Unit/Category/DemonUnits"/>
         <AbilArray Link="DemonInventory"/>
         <AbilArray Link="ANrc"/>
-        <AbilArray Link="AOre"/>
+        <AbilArray Link="CarrionSwarmPassive"/>
         <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ANrc" Type="AbilCmd" AbilCmd="ANrc,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
-            <LayoutButtons Face="AOre" Type="Passive" Behavior="AOre" Row="2" Column="2"/>
+            <LayoutButtons>
+                <Face value="CarrionSwarm"/>
+                <Type value="Passive"/>
+                <AbilCmd value="AOsh,Execute"/>
+                <Behavior value="CarrionSwarmPassive"/>
+                <Row value="2"/>
+                <Column value="2"/>
+            </LayoutButtons>
         </CardLayouts>
         <WeaponArray index="1" removed="1"/>
         <Name value="Utic/Propernames"/>
@@ -3372,7 +3379,7 @@
     </CUnit>
     <!--Gloves of Haste-->
     <CUnit id="gcel" parent="AW2_Item">
-        <CostResource index="gold" value="30"/>
+        <CostResource index="gold" value="60"/>
     </CUnit>
     <!--Orb of Kil'jaeden-->
     <CUnit id="gldo" parent="AW2_Item">
@@ -4378,10 +4385,17 @@
         <Race value="Human"/>
         <Mover value="horse"/>
         <AbilArray Link="Aihn"/>
-        <AbilArray Link="AOsh"/>
+        <AbilArray Link="ShockWavePassive"/>
         <AbilArray Link="ChargeKnight"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="AOsh" Type="AbilCmd" AbilCmd="AOsh,Execute" Row="2" Column="1"/>
+            <LayoutButtons>
+                <Face value="ShockWave"/>
+                <Type value="Passive"/>
+                <AbilCmd value="AOsh,Execute"/>
+                <Behavior value="ShockWavePassive"/>
+                <Row value="2"/>
+                <Column value="1"/>
+            </LayoutButtons>
             <LayoutButtons Face="ChargeKnight" Type="AbilCmd" AbilCmd="ChargeKnight,Execute" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
