@@ -69,6 +69,9 @@
         <Name value="Effect/Name/AW2_SelfDestroyDPS"/>
         <Marker Link="Effect/SelfDestroyDPS"/>
     </CEffectDamage>
+    <CEffectDamage id="AEsfDamage">
+        <Amount value="150"/>
+    </CEffectDamage>
     <CEffectCreatePersistent id="AHmt">
         <ExpireDelay value="5"/>
     </CEffectCreatePersistent>
@@ -87,7 +90,6 @@
     </CEffectEnumArea>
     <CEffectTeleport id="AHmtTeleport">
         <TeleportFlags index="TestCliff" value="1"/>
-        <TeleportEffect value="Btrv"/>
     </CEffectTeleport>
     <CEffectSet id="AIvaLeechSet">
         <EditorCategories value=""/>
@@ -294,6 +296,9 @@
     <CEffectApplyBehavior id="BNbr" parent="War3_ApplyBuff"/>
     <CEffectEnumArea id="BlshSearch">
         <SearchFilters value="-;player,allies,air,wall,tree,Missile,debris,item,structure,ward,dead,Hidden,invulnerable,Passive"/>
+        <AINotifyFlags index="HurtFriend" value="0"/>
+        <AINotifyFlags index="HurtEnemy" value="0"/>
+        <ExcludeArray index="0" removed="1"/>
     </CEffectEnumArea>
     <CEffectApplyBehavior id="DestinyBondBuff" parent="War3_ApplyBuff">
         <ValidatorArray value="NonHero"/>
@@ -580,9 +585,7 @@
         <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="net21" parent="AW2_MagicDamage">
-        <Amount value="192"/>
-        <AreaArray Radius="1.1718" Fraction="1"/>
-        <SearchFilters value="-;player,allies,ground,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,Hidden,invulnerable"/>
+        <Amount value="576"/>
     </CEffectDamage>
     <!--Firelord - Summon Lava Spawn Buff=BNlm-->
     <CEffectCreateUnit id="nlv1">
@@ -866,9 +869,11 @@
     <CEffectApplyBehavior id="Cyclone" parent="War3_ApplyBuff"/>
     <CEffectDamage id="Eevm1" parent="AW2_ChaosDamage">
         <Amount value="288"/>
+        <Kind value="Melee"/>
     </CEffectDamage>
     <CEffectDamage id="Eevm2" parent="AW2_ChaosDamage">
         <Amount value="288"/>
+        <Kind value="Melee"/>
     </CEffectDamage>
     <CEffectDamage id="Etyr1" parent="AW2_NormalDamage">
         <Amount value="96"/>
@@ -1331,7 +1336,7 @@
         <EditorCategories value="Race:Draenei"/>
     </CEffectApplyBehavior>
     <CEffectDamage id="BmltDamage">
-        <Amount value="15"/>
+        <Amount value="50"/>
     </CEffectDamage>
     <CEffectApplyBehavior id="Bsds"/>
     <CEffectEnumArea id="AwarAoESearch" parent="War3_AbilSearch">

@@ -359,6 +359,10 @@
     <CUnit id="ncfs">
         <Race value="Naga"/>
     </CUnit>
+    <!--dalaran mutant-->
+    <CUnit id="ndmu">
+        <Race value="Draenei"/>
+    </CUnit>
     <!--skeletal orc-->
     <CUnit id="nsko" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
@@ -396,7 +400,12 @@
         <InnerRadius value="0.3125"/>
         <PlaneArray index="Ground" value="1"/>
         <BehaviorArray Link="hover"/>
+        <BehaviorArray Link="elemental"/>
         <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
+    </CUnit>
+    <!--Zombie-->
+    <CUnit id="nzom">
+        <Race value="Draenei"/>
     </CUnit>
     <!--carrion scarab level 1-->
     <CUnit id="ucs1" parent="AW2_Army" defType="MEDIUM">
@@ -484,16 +493,19 @@
         <Mover value="foot"/>
         <AbilArray Link="DemonInventory"/>
         <AbilArray Link="AEmb"/>
-        <AbilArray Link="AEvi"/>
+        <AbilArray Link="AEim"/>
         <AbilArray Link="AEev"/>
+        <AbilArray Link="AEvi"/>
         <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="OrderEvilIllidan"/>
         <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
             <LayoutButtons Face="AEmb" Type="AbilCmd" AbilCmd="AEmb,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="AEev" Type="Passive" Behavior="AEev1" Row="2" Column="2"/>
-            <LayoutButtons Face="AEvi" Type="AbilCmd" AbilCmd="AEvi,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="AEim" Type="AbilCmd" AbilCmd="AEim,0" Row="2" Column="2"/>
+            <LayoutButtons Face="AEimUn" Type="AbilCmd" AbilCmd="AEim,1" Row="2" Column="2"/>
+            <LayoutButtons Face="AEev" Type="Passive" Behavior="AEev1" Row="2" Column="3"/>
+            <LayoutButtons Face="AEvi" Type="AbilCmd" AbilCmd="AEvi,Execute" Row="1" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/DemonUnits"/>
@@ -513,16 +525,17 @@
         <Mover value="foot"/>
         <AbilArray Link="DemonInventory"/>
         <AbilArray Link="AEmb"/>
-        <AbilArray Link="AEviUn"/>
         <AbilArray Link="AEev"/>
+        <AbilArray Link="AEviUn"/>
         <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="OrderEvilIllidanUn"/>
         <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
             <LayoutButtons Face="AEmb" Type="AbilCmd" AbilCmd="AEmb,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="AEev" Type="Passive" Behavior="AEev1" Row="2" Column="2"/>
-            <LayoutButtons Face="AEvi" Type="AbilCmd" AbilCmd="AEviUn,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="Warglaive" Type="Passive" AbilCmd="AEim,On" Row="2" Column="2"/>
+            <LayoutButtons Face="AEev" Type="Passive" Behavior="AEev1" Row="2" Column="3"/>
+            <LayoutButtons Face="AEvi" Type="AbilCmd" AbilCmd="AEviUn,Execute" Row="1" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/DemonUnits"/>
@@ -2574,10 +2587,12 @@
     <!--granite golem-->
     <CUnit id="nggr">
         <Food value="4"/>
+        <Race value="Draenei"/>
     </CUnit>
     <!--mud golem-->
     <CUnit id="ngrk">
         <Food value="3"/>
+        <Race value="Draenei"/>
     </CUnit>
     <!--hydra-->
     <CUnit id="nhyd" parent="AW2_Army" defType="LARGE">
@@ -2625,6 +2640,7 @@
         <Mover value="foot"/>
         <DeathTime value="0"/>
         <PlaneArray index="Ground" value="1"/>
+        <BehaviorArray Link="elemental"/>
     </CUnit>
     <!--nether drake-->
     <CUnit id="nndk" parent="AW2_Army" defType="LARGE">
@@ -2862,6 +2878,7 @@
         <InnerRadius value="0.375"/>
         <PlaneArray index="Ground" value="1"/>
         <BehaviorArray Link="hover"/>
+        <BehaviorArray Link="elemental"/>
         <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ushd" Type="AbilCmd" AbilCmd="UpgradeToushd,Execute" Row="0" Column="0"/>
@@ -4231,6 +4248,7 @@
         <Mover value="amph"/>
         <DeathTime value="0"/>
         <PlaneArray index="Ground" value="1"/>
+        <BehaviorArray Link="elemental"/>
     </CUnit>
     <!--Scout Tower-->
     <CUnit id="hwtw" parent="AW2_Building" defType="FORT">
@@ -4492,6 +4510,7 @@
         <GlossaryCategory value="Unit/Category/DragonUnits"/>
         <EnergyStart value="180"/>
         <EnergyMax value="180"/>
+        <WeaponArray index="1" removed="1"/>
     </CUnit>
     <CUnit id="nbdo2LM" parent="War3_Missile"/>
     <!--black dragon whelp-->
@@ -4570,6 +4589,7 @@
         <GlossaryCategory value="Unit/Category/DragonUnits"/>
         <EnergyStart value="60"/>
         <EnergyMax value="60"/>
+        <WeaponArray index="1" removed="1"/>
     </CUnit>
     <CUnit id="nbdw2LM" parent="War3_Missile"/>
     <!--blood elf engineer-->
@@ -5170,7 +5190,7 @@
     </CUnit>
     <!--dalaran reject-->
     <CUnit id="ndrj">
-        <Race value="BloodElf"/>
+        <Race value="Draenei"/>
         <Food value="3"/>
     </CUnit>
     <!--revenant of the depths-->
@@ -7139,6 +7159,7 @@
         <Mover value="amph"/>
         <DeathTime value="0"/>
         <PlaneArray index="Ground" value="1"/>
+        <BehaviorArray Link="elemental"/>
         <BehaviorArray Link="ACbh"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ACbh" Type="Passive" Behavior="ACbh" Row="2" Column="0"/>
@@ -7171,7 +7192,7 @@
     <CUnit id="nser2LM" parent="War3_Missile"/>
     <!--sludge flinger-->
     <CUnit id="nslf">
-        <Race value="BloodElf"/>
+        <Race value="Draenei"/>
     </CUnit>
     <!--stormreaver hermit-->
     <CUnit id="nsrh">
@@ -7525,6 +7546,7 @@
         <AbilArray Link="Spawnnvdl"/>
         <BehaviorArray Link="Atru"/>
         <BehaviorArray Link="hover"/>
+        <BehaviorArray Link="elemental"/>
         <Mover value="foot"/>
         <Radius value="0.375"/>
         <MinimapRadius value="0.375"/>
