@@ -223,8 +223,9 @@
             <LayoutButtons Face="Purchaserde4" Type="AbilCmd" AbilCmd="Purchaserde4,Train1" Row="0" Column="4"/>
             <LayoutButtons Face="Purchaseprvt" Type="AbilCmd" AbilCmd="Purchaseprvt,Train1" Row="1" Column="0"/>
             <LayoutButtons Face="Purchasepenr" Type="AbilCmd" AbilCmd="Purchasepenr,Train1" Row="1" Column="2"/>
-            <LayoutButtons Face="Purchaseevtl" Type="AbilCmd" AbilCmd="Purchaseevtl,Train1" Row="1" Column="3"/>
-            <LayoutButtons Face="Purchaserlif" Type="AbilCmd" AbilCmd="Purchaserlif,Train1" Row="1" Column="1"/>
+            <LayoutButtons Face="Purchaseevtl" Type="AbilCmd" AbilCmd="Purchaseevtl,Train1" Row="1" Column="4"/>
+            <LayoutButtons Face="Purchasehlst" Type="AbilCmd" AbilCmd="Purchasehlst,Train1" Row="1" Column="1"/>
+            <LayoutButtons Face="Purchasemnst" Type="AbilCmd" AbilCmd="Purchasemnst,Train1" Row="1" Column="3"/>
         </CardLayouts>
         <AbilArray index="0" Link="move"/>
         <AbilArray Link="AInv"/>
@@ -246,7 +247,8 @@
         <AbilArray Link="Purchaseprvt"/>
         <AbilArray Link="Purchasepenr"/>
         <AbilArray Link="Purchaseevtl"/>
-        <AbilArray Link="Purchaserlif"/>
+        <AbilArray Link="Purchasehlst"/>
+        <AbilArray Link="Purchasemnst"/>
         <AbilArray Link="UpgradeItemLevel"/>
     </CUnit>
     <CUnit default="1" id="AW2_Phalanx" parent="War3_ArmyBase">
@@ -1764,6 +1766,10 @@
     <CUnit id="asbl">
         <LifeStart value="1"/>
     </CUnit>
+    <!--Ancestral Staff-->
+    <CUnit id="axas" parent="AW2_Item">
+        <CostResource index="gold" value="135"/>
+    </CUnit>
     <!--Bladebane Armor-->
     <CUnit id="blba" parent="AW2_Item">
         <CostResource index="gold" value="150"/>
@@ -1780,13 +1786,17 @@
     <CUnit id="clfm" parent="AW2_Item">
         <CostResource index="gold" value="45"/>
     </CUnit>
+    <!--Celestial Orb of Souls-->
+    <CUnit id="cosl">
+        <LifeStart value="1"/>
+    </CUnit>
     <!--Crown of the Deathlord-->
     <CUnit id="crdt">
         <LifeMax value="1"/>
     </CUnit>
     <!--Drek'thar's Spellbook-->
     <CUnit id="dtsb" parent="AW2_Item">
-        <CostResource index="gold" value="195"/>
+        <CostResource index="gold" value="135"/>
     </CUnit>
     <!--Hippogryph-->
     <CUnit id="ehip" parent="AW2_Army" defType="SMALL">
@@ -1867,9 +1877,25 @@
     <CUnit id="gfor">
         <LifeMax value="1"/>
     </CUnit>
+    <!--Grimoire of Souls-->
+    <CUnit id="grsl">
+        <LifeMax value="1"/>
+    </CUnit>
+    <!--Soul Gem-->
+    <CUnit id="gsou">
+        <LifeMax value="1"/>
+    </CUnit>
     <!--Glyph of UltraVision-->
     <CUnit id="guvi">
         <LifeMax value="1"/>
+    </CUnit>
+    <!--Health Stone-->
+    <CUnit id="hlst" parent="AW2_Item">
+        <CostResource index="gold" value="30"/>
+    </CUnit>
+    <!--Holy Relic-->
+    <CUnit id="horl" parent="AW2_Item">
+        <CostResource index="gold" value="135"/>
     </CUnit>
     <!--pack horse-->
     <CUnit id="hrdh" parent="War3_ArmyBase">
@@ -1907,8 +1933,8 @@
         <MinimapRadius value="0.3125"/>
     </CUnit>
     <!--Keg of Ale-->
-    <CUnit id="kgal">
-        <LifeMax value="1"/>
+    <CUnit id="kgal" parent="AW2_Item">
+        <CostResource index="gold" value="120"/>
     </CUnit>
     <!--Killmaim-->
     <CUnit id="klmm" parent="AW2_Item">
@@ -1931,8 +1957,8 @@
         <LifeMax value="1"/>
     </CUnit>
     <!--Mana Stone-->
-    <CUnit id="mnst">
-        <LifeMax value="1"/>
+    <CUnit id="mnst" parent="AW2_Item">
+        <CostResource index="gold" value="30"/>
     </CUnit>
     <!--mask of death-->
     <CUnit id="modt" parent="AW2_Item">
@@ -2773,19 +2799,23 @@
     </CUnit>
     <!--Ring of regeneration-->
     <CUnit id="rlif" parent="AW2_Item">
-        <CostResource index="gold" value="30"/>
+        <CostResource index="gold" value="60"/>
     </CUnit>
     <!--Rusty Mining Pick-->
     <CUnit id="rump">
         <LifeMax value="1"/>
     </CUnit>
     <!--Sobi Mask-->
-    <CUnit id="rwiz">
-        <LifeMax value="1"/>
+    <CUnit id="rwiz" parent="AW2_Item">
+        <CostResource index="gold" value="60"/>
     </CUnit>
     <!--Scourge Bone Chimes-->
     <CUnit id="sbch" parent="AW2_Item">
         <CostResource index="gold" value="45"/>
+    </CUnit>
+    <!--Scepter of Healing-->
+    <CUnit id="schl">
+        <LifeMax value="1"/>
     </CUnit>
     <!--Shield of the Deathlord-->
     <CUnit id="shdt">
@@ -2799,13 +2829,21 @@
     <CUnit id="shhn" parent="AW2_Item">
         <CostResource index="gold" value="150"/>
     </CUnit>
+    <!--Sacrificial Skull-->
+    <CUnit id="skul" parent="AW2_Item">
+        <CostResource index="gold" value="45"/>
+    </CUnit>
+    <!--Amulet of Spell Shield-->
+    <CUnit id="spsh" parent="AW2_Item">
+        <CostResource index="gold" value="45"/>
+    </CUnit>
     <!--Searing Blade-->
     <CUnit id="srbd">
         <LifeMax value="1"/>
     </CUnit>
     <!--Serathil-->
-    <CUnit id="srtl">
-        <LifeMax value="1"/>
+    <CUnit id="srtl" parent="AW2_Item">
+        <CostResource index="gold" value="135"/>
     </CUnit>
     <!--Sturdy War Axe-->
     <CUnit id="stwa" parent="War3_Item">
@@ -2816,8 +2854,8 @@
         <LifeMax value="1"/>
     </CUnit>
     <!--Tome of Sacrifices-->
-    <CUnit id="tmsc">
-        <LifeMax value="1"/>
+    <CUnit id="tmsc" parent="AW2_Item">
+        <CostResource index="gold" value="135"/>
     </CUnit>
     <CUnit id="uarb2LM" parent="War3_Missile"/>
     <CUnit id="nbda1LM" parent="War3_Missile"/>
@@ -3194,8 +3232,12 @@
         <CardLayouts index="2" CardId="Purc">
             <LayoutButtons Face="Purchaseoven" Type="AbilCmd" AbilCmd="Purchaseoven,Train1" Row="2" Column="0"/>
         </CardLayouts>
+        <CardLayouts index="3" CardId="Pur2">
+            <LayoutButtons Face="Purchaserlif" Type="AbilCmd" AbilCmd="Purchaserlif,Train1" Row="2" Column="0"/>
+        </CardLayouts>
         <AbilArray Link="AEbu"/>
         <AbilArray Link="Purchaseoven"/>
+        <AbilArray Link="Purchaserlif"/>
         <Speed value="3"/>
         <Radius value="0.3125"/>
         <Race value="NightElf"/>
@@ -3218,7 +3260,7 @@
     </CUnit>
     <!--Firehand Gauntlets-->
     <CUnit id="frhg" parent="AW2_Item">
-        <CostResource index="gold" value="150"/>
+        <CostResource index="gold" value="135"/>
     </CUnit>
     <!--Gloves of Haste-->
     <CUnit id="gcel" parent="AW2_Item">
@@ -3573,8 +3615,8 @@
         <Attributes index="fort" value="1"/>
         <CostResource index="lumber" value="3000"/>
         <KillResource index="Custom" value="150"/>
-        <LifeStart value="1800"/>
-        <LifeMax value="1800"/>
+        <LifeStart value="2100"/>
+        <LifeMax value="2100"/>
         <Speed value="2"/>
         <Race value="Human"/>
         <Mover value="foot"/>
@@ -3726,8 +3768,8 @@
         <Attributes index="fort" value="1"/>
         <CostResource index="lumber" value="3000"/>
         <KillResource index="Custom" value="150"/>
-        <LifeStart value="1800"/>
-        <LifeMax value="1800"/>
+        <LifeStart value="2100"/>
+        <LifeMax value="2100"/>
         <Speed value="2"/>
         <Race value="Human"/>
         <Mover value="foot"/>
@@ -4363,8 +4405,12 @@
         <CardLayouts index="2" CardId="Purc">
             <LayoutButtons Face="Purchasefrhg" Type="AbilCmd" AbilCmd="Purchasefrhg,Train1" Row="2" Column="0"/>
         </CardLayouts>
+        <CardLayouts index="3" CardId="Pur2">
+            <LayoutButtons Face="Purchasekgal" Type="AbilCmd" AbilCmd="Purchasekgal,Train1" Row="2" Column="0"/>
+        </CardLayouts>
         <AbilArray Link="GoblinBuild"/>
         <AbilArray Link="Purchasefrhg"/>
+        <AbilArray Link="Purchasekgal"/>
         <Speed value="3"/>
         <Radius value="0.3125"/>
         <Race value="Goblin"/>
@@ -4567,6 +4613,7 @@
         </CardLayouts>
         <CardLayouts index="2" CardId="Purc">
             <LayoutButtons Face="Purchaseklmm" Type="AbilCmd" AbilCmd="Purchaseklmm,Train1" Row="2" Column="0"/>
+            <LayoutButtons Face="Purchasesrtl" Type="AbilCmd" AbilCmd="Purchasesrtl,Train1" Row="2" Column="1"/>
         </CardLayouts>
         <CardLayouts index="3" CardId="Pur2">
             <LayoutButtons Face="Purchaseclfm" Type="AbilCmd" AbilCmd="Purchaseclfm,Train1" Row="2" Column="0"/>
@@ -4574,6 +4621,7 @@
         <AbilArray Link="ChaosOrcBuild"/>
         <AbilArray Link="Purchaseklmm"/>
         <AbilArray Link="Purchaseclfm"/>
+        <AbilArray Link="Purchasesrtl"/>
         <Speed value="3"/>
         <Radius value="0.3125"/>
         <Race value="ChaosOrc"/>
@@ -5528,10 +5576,14 @@
         </CardLayouts>
         <CardLayouts index="3" CardId="Pur2">
             <LayoutButtons Face="Purchasepmna" Type="AbilCmd" AbilCmd="Purchasepmna,Train1" Row="2" Column="0"/>
+            <LayoutButtons Face="Purchaserwiz" Type="AbilCmd" AbilCmd="Purchaserwiz,Train1" Row="2" Column="1"/>
+            <LayoutButtons Face="Purchasespsh" Type="AbilCmd" AbilCmd="Purchasespsh,Train1" Row="2" Column="2"/>
         </CardLayouts>
         <AbilArray Link="BloodElfBuild"/>
         <AbilArray Link="Purchaseofir"/>
         <AbilArray Link="Purchasepmna"/>
+        <AbilArray Link="Purchaserwiz"/>
+        <AbilArray Link="Purchasespsh"/>
         <Speed value="3"/>
         <Radius value="0.3125"/>
         <Race value="BloodElf"/>
@@ -6803,11 +6855,11 @@
     </CUnit>
     <!--Pendant of Energy-->
     <CUnit id="penr" parent="AW2_Item">
-        <CostResource index="gold" value="60"/>
+        <CostResource index="gold" value="45"/>
     </CUnit>
     <!--Pendant of Mana-->
     <CUnit id="pmna" parent="AW2_Item">
-        <CostResource index="gold" value="300"/>
+        <CostResource index="gold" value="135"/>
     </CUnit>
     <!--air barge-->
     <CUnit id="uarb" parent="AW2_Army" defType="SMALL">
@@ -6930,6 +6982,10 @@
     <!--Warsong Battle Drums-->
     <CUnit id="ward" parent="AW2_Item">
         <CostResource index="gold" value="45"/>
+    </CUnit>
+    <!--Wand of Lightning Shield-->
+    <CUnit id="wlsd">
+        <LifeMax value="1"/>
     </CUnit>
     <CUnit id="zhyd1LM" parent="War3_Missile"/>
     <!--night elf assassin-->

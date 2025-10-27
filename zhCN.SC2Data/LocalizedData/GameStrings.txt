@@ -50,7 +50,7 @@ AHds/Ubertip=在<d ref="Effect,BHds1,Duration"/>秒内使得圣骑士对所有�
 AHfa/Ubertip=增加<d ref="Behavior,AHfa1,Modification.DamageDealtUnscaled[Melee]"/>点的火焰伤害。
 AHfs/Ubertip=召唤出一道巨大的火柱，持续时间为3秒，每秒对敌方的地面单位造成<d ref="Effect,AHfsFullDamage1,Amount * 3"/>点的伤害。在火焰慢慢熄灭的过程中，敌方单位将持续受到极度轻微的伤害。
 AHhb/Ubertip=圣光术能治疗友方单位<d ref="Effect,AHhbHeal1,RechargeVitalRate"/>点的生命值或者对敌方的亡灵单位造成一半的伤害。
-AHre/Ubertip=复活周围<d ref="Effect,AHre,MaxCount"/>个友方单位。
+AHre/Ubertip=复活周围<d ref="Effect,AHre,MaxCount"/>个友方非精英单位。
 AHwe/Ubertip=召唤出一个具有<d ref="Unit,hwat,LifeStart"/>生命值的水元素来帮大魔法师进行战斗。攻击力为<d ref="Effect,hwat1,Amount"/>点。<n/>持续</c><d ref="Behavior,BHwe,Duration"/>秒。<n/><n/><c val="ffcc00">能攻击地面和空中单位。
 AIct/Tip=变更昼夜
 AIct/Ubertip=制造日蚀，阻挡阳光，以创造人造夜晚。<n/>在夜晚，增加受月神庇护的单位每秒<d ref="Behavior,Moonlight,Modification.VitalRegenArray[Life]"/>点的生命恢复速度和每秒<d ref="Behavior,Moonlight,Modification.VitalRegenArray[Energy]" precision="1"/>点的法力值恢复速度，并且远程攻击范围增加<d ref="Behavior,Moonlight,Modification.RangedWeaponRange"/>。<n/>持续30秒。
@@ -123,7 +123,7 @@ AUfn/Ubertip=对敌人造成<d ref="Effect,AUfnDamage1,Amount"/>点的常规伤�
 AUim/Ubertip=地穴领主每次攻击时以巨爪震击地面，射出一道直线形尖刺波，造成伤害，并将其轨迹上的敌地面单位抛入空中，使他们晕眩<d ref="Effect,AUim1Dur,Duration"/>秒。
 AUsl/Ubertip=在<d ref="Effect,AUsl1Dur,Duration"/>秒内使目标单位处于睡眠状态。该单位被攻击以后会自动醒来。
 AW2_Army/Name=AW2_Army
-Aabr/Ubertip=让周围友方单位加快其<d ref="Behavior,Babr,Modification.RateMultiplierArray[Cooldown] - 1 * 100"/>%的冷却速度。不能和荒芜一起发挥作用。
+Aabr/Ubertip=让周围友方单位加快其<d ref="Behavior,Babr,Modification.RateMultiplierArray[Cooldown] - 1 * 100"/>%的冷却速度。
 Aakb/Ubertip=能增加周围友方单位<d ref="Behavior,Bakb,Modification.DamageDealtFraction[Melee] * 100" precision="1"/>%的攻击力。
 Aapl/Ubertip=用疾病来感染周围的敌人。疾病之云每秒能对敌人造成<d ref="Effect,BaplDPS,Amount"/>点的伤害。<n/>持续<d ref="Behavior,Bapl,Duration"/>秒。
 Aarm/Tip=法力恢复光环
@@ -157,6 +157,7 @@ Adef/Ubertip=激活以拥有75%的概率反弹穿刺攻击。如果防御状态�
 Adev/Ubertip=吞噬敌方目标单位，将其慢慢咀嚼，每秒对其造成<d ref="Effect,BdigDPS,Amount"/>点的伤害。在咀嚼目标的过程中，如果遭到杀害，那么它肚中的被吞噬单位就会从中跳出来。
 Advc/Tip=Advc
 Aegr/Ubertip=减少来自穿刺攻击的伤害到原来的50%，并减少来自魔法攻击的伤害到原来的50%。
+Aeib/Name=强化弓
 Aeib/Tip=强化弓
 Aeib/Ubertip=增加弓箭手<d ref="Behavior,Aeib,Modification.RangedWeaponRange"/>的攻击范围。
 Aens/Ubertip=能将一个目标空中单位固定在地面上，使其在<d ref="Behavior,Bena,Duration"/>秒内不能移动。
@@ -269,6 +270,8 @@ BNdp/Name=空间之门
 BNta/Buffubertip=这个单位被嘲讽过了，现在暂时对此免疫。
 BNta/Name=嘲讽
 Babr/Buffubertip=该单位处在荒芜光环的作用之下，因此其冷却速度加快了。
+BabrItem/Buffubertip=该单位处在荒芜光环的作用之下，因此其冷却速度加快了。
+BabrItem/Name=荒芜光环
 Bbs2/Buffubertip=该单位处于狂暴状态，因此攻击速度得到了加强，但是同时伤害也会降低。
 Bbs2/Name=狂暴
 Bbsk/Buffubertip=该单位处于狂暴状态，因此攻击速度得到了加强，但是同时伤害也会降低。
@@ -277,6 +280,7 @@ Behavior/Name/AW2_PathingBlocker=AW2_PathingBlocker
 Behavior/Name/Ahr3=采集
 Behavior/Name/Asa2=掠夺
 Behavior/Name/BOwk1=疾风步
+Behavior/Name/BabrItem=荒芜光环
 Behavior/Name/Building=Building
 Behavior/Name/EfficiencyAura=效率光环
 Behavior/Name/PhalanxMarker=PhalanxMarker
@@ -416,6 +420,7 @@ DeathTowerAura/Buffubertip=该单位处于死亡之塔光环的作用之下，�
 DeathTowerAura/Name=死亡之塔光环
 DeathTowerAuraCaster/Tip=死亡之塔光环
 DeathTowerAuraCaster/Ubertip=增加所有友方召唤单位<d ref="Behavior,DeathTowerAura,Modification.VitalMaxFractionArray[Life] * 100"/>%的最大生命值。
+Defend/Name=防御
 Defend/Tip=防御
 Defend/Ubertip=激活后只会受到10%的穿刺攻击伤害。如果防御状态被激活，移动速度会变成<d ref="Behavior,Defend,Modification.MoveSpeedMultiplier * 100"/>%的常规速度。
 DefendUn/Tip=停止防御
@@ -425,6 +430,7 @@ DemonFlag/Ubertip=放置恶魔旗帜。
 DemonFlag2/Name=恶魔旗帜
 DemonFlag2/Tip=放置恶魔旗帜(决赛)
 DemonFlag2/Ubertip=放置恶魔旗帜(决赛)。
+DestinyBond/Name=同命
 DestinyBond/Tip=同命
 DestinyBond/Ubertip=与敌人同归于尽。杀死自己的非精英单位将在<d ref="Behavior,DestinyBondBuff,Duration"/>秒后死亡。
 DestinyBondBuff/Buffubertip=该单位受到同命的影响，将在一段时间后死亡。
@@ -611,7 +617,7 @@ DocInfo/PatchNote176=加入新单位兽王。
 DocInfo/PatchNote177=恶魔：
 DocInfo/PatchNote178=石槌食人魔类单位、石槌酋长类单位与石槌法师类单位经过重新设计。
 DocInfo/PatchNote179=伊利丹的对空攻击伤害增加到288点。
-DocInfo/PatchNote180=加入大量新随机物品。
+DocInfo/PatchNote180=加入大量新物品。
 DocInfo/PatchNote181=黑暗之门现在会在战斗开始时立即施放，并且所召唤的空间之门计入单位结算。
 DocInfo/PatchNote182=加入货运马，允许出卖物品。
 DocInfo/PatchNote183=人类：
@@ -627,15 +633,25 @@ DocInfo/PatchNote192=血精灵：
 DocInfo/PatchNote193=高等精灵防御塔的回收时间缩短到30秒。
 DocInfo/PatchNote194=恶魔：
 DocInfo/PatchNote195=魅惑现在能对低血量单位施放。
-DocInfo/PatchNote196=人类：
-DocInfo/PatchNote197=加入新物品荣耀之盾。
-DocInfo/PatchNote198=龙：
-DocInfo/PatchNote199=睡眠的施法时间增加到4秒。
-DocInfo/PatchNote200=恶魔：
-DocInfo/PatchNote201=地狱幼龙不再具有技能相位变换。
-DocInfo/PatchNote202=修复地狱火与末日守卫不属于召唤单位的漏洞。
-DocInfo/PatchNote203=德莱尼：
-DocInfo/PatchNote204=德莱尼追踪者类单位的生命值减少到25点。
+DocInfo/PatchNote196=调整恢复指环、能量坠饰、法力坠饰、德雷克塔尔的法术书与火拳手套的价格与效果。
+DocInfo/PatchNote197=人类：
+DocInfo/PatchNote198=加入新物品荣耀之盾。
+DocInfo/PatchNote199=暗夜精灵：
+DocInfo/PatchNote200=恢复指环现在是暗夜精灵的专属物品。
+DocInfo/PatchNote201=血精灵：
+DocInfo/PatchNote202=加入新物品魔法阻挡护符与索比面具。
+DocInfo/PatchNote203=混乱兽人：
+DocInfo/PatchNote204=加入新物品塞拉希尔。
+DocInfo/PatchNote205=黑暗巨魔捕兽者类单位的攻击次数增加到2次，伤害降低到36点。
+DocInfo/PatchNote206=地精：
+DocInfo/PatchNote207=加入新物品麦酒桶。
+DocInfo/PatchNote208=龙：
+DocInfo/PatchNote209=睡眠的施法时间增加到4秒。
+DocInfo/PatchNote210=恶魔：
+DocInfo/PatchNote211=地狱幼龙不再具有技能相位变换。
+DocInfo/PatchNote212=修复地狱火与末日守卫不属于召唤单位的漏洞。
+DocInfo/PatchNote213=德莱尼：
+DocInfo/PatchNote214=德莱尼追踪者类单位的生命值减少到25点。
 DoomGuard/Buffubertip=末日守卫强大无比。
 DoomGuard/Name=末日守卫
 DraeneiFlag/Name=德莱尼旗帜
@@ -644,6 +660,7 @@ DraeneiFlag/Ubertip=放置德莱尼旗帜。
 DraeneiFlag2/Name=德莱尼旗帜
 DraeneiFlag2/Tip=放置德莱尼旗帜(决赛)
 DraeneiFlag2/Ubertip=放置德莱尼旗帜(决赛)。
+DraeniStalkerInvisibility/Name=隐形
 DraeniStalkerInvisibility/Tip=隐形
 DraeniStalkerInvisibility/Ubertip=使德莱尼追踪者隐形。<n/>持续<d ref="Behavior,DraeniStalkerInvisibility,Duration"/>秒。
 DragonFlag/Name=龙旗帜
@@ -781,6 +798,7 @@ GoblinFlag/Ubertip=放置地精旗帜。
 GoblinFlag2/Name=地精旗帜
 GoblinFlag2/Tip=放置地精旗帜(决赛)
 GoblinFlag2/Ubertip=放置地精旗帜(决赛)。
+GoblinLandMineInvisibility/Name=隐形
 GoblinLandMineInvisibility/Tip=隐形
 GoblinLandMineInvisibility/Ubertip=使地精地雷隐形。<n/>持续<d ref="Behavior,GoblinLandMineInvisibility,Duration"/>秒。
 Gyrocopter/Name=矮人直升机
@@ -806,6 +824,7 @@ Hlgr/Tip=升级到黑暗骑士
 Hlgr/Ubertip=骑兵，具有冲锋和虔诚光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 HonorShield/Tip=荣誉之盾
 HonorShield/Ubertip=每次攻击地面单位或受到攻击将会提升<d ref="Behavior,HonorShield,Modification.DamageDealtUnscaled[Ranged]"/>点攻击及<d ref="Behavior,HonorShield,Modification.LifeArmorBonus"/>点护甲。
+HonorShieldCaster/Name=荣誉之盾
 Hpal/Tip=训练圣骑士
 Hpal/Ubertip=重型的近战单位，能施放圣光术。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 HumanPhalanxPlaceholder/Name=HumanPreviewer
@@ -912,6 +931,7 @@ ObsidianAura/Buffubertip=该单位处于黑曜石光环的作用之下，因此�
 ObsidianAura/Name=黑曜石光环
 ObsidianAuraCaster/Tip=黑曜石光环
 ObsidianAuraCaster/Ubertip=一种能增加周围友方单位<d ref="Behavior,ObsidianAura,Modification.DamageDealtFraction[Spell] * 100"/>%法术攻击力的光环。
+ObsidianAuraItem/Name=黑曜石光环
 Ocbh/Tip=升级到凯恩·血蹄
 Ocbh/Ubertip=重型的近战单位，具有战争践踏技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Ofar/Tip=训练先知
@@ -1165,6 +1185,7 @@ WindWalk/Ubertip=使得德莱尼追踪者在<d ref="Behavior,BOwk1,Duration"/>�
 afac/Ubertip=增加附近远程攻击型单位<d ref="Behavior,BEarI,Modification.DamageDealtFraction[Ranged] * 100"/>%的攻击力。<n/>不能和强击光环同时使用。
 ajen/Ubertip=增加附近单位<d ref="Behavior,BOae,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度和<d ref="Behavior,BOae,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度。<n/>不能和耐久光环同时使用。
 arsh/Ubertip=减少所受的<d ref="1 - Behavior,AIdd,DamageResponse.ModifyFraction * 100"/>%远程伤害。并增加<d ref="Behavior,AId0,Modification.LifeArmorBonus"/>点护甲值。
+axas/Ubertip=<c val="ff8c00">神器</c><n/>能增加每秒<d ref="Behavior,Arlg,Modification.VitalRegenArray[Life]"/>点的生命值恢复速度，并加快英雄和其周围的单位<d ref="Behavior,BOae,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击和<d ref="Behavior,BOae,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度。<n/>不能和耐久光环一起使用。<n/><n/><c val="ffcc00">历史</c><n/><c val="ffdead">巫医几代人的名字都被刻在了这个杖上。持有这个法杖的人能在危急的时刻求助于他们的知识和指导。</c>
 blba/Ubertip=提高周围单位<d ref="Behavior,BHadI,Modification.LifeArmorBonus"/>点护甲值。增加<d ref="Behavior,AId7,Modification.LifeArmorBonus"/>点护甲值。
 bspd/Ubertip=能增加<d ref="Behavior,AIms,Modification.MoveSpeedBonus * 100"/>%的移动速度。
 clfm/Description=让单位处于烈焰之中。
@@ -1219,11 +1240,13 @@ hhes/Tip=升级到剑士
 hhes/Ubertip=防御型单位。拥有防御技能，有效地抵抗敌人的穿刺型攻击。还有盾墙技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 hkn2/Name=骑士
 hkni/Ubertip=高速骑兵，具有冲锋技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+hlst/Ubertip=提高每秒<d ref="Behavior,Arll,Modification.VitalRegenArray[Life]"/>点生命值恢复速度。
 hmil/Tip=训练民兵
 hmil/Ubertip=基本的防御型单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 hmpr/Tip=升级到牧师
 hmpr/Ubertip=魔法单位，能施放心灵之火。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 hmtm/Ubertip=远距离攻城单位，具有碎片攻击技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+horl/Ubertip=一件强大的神器，兽人萨满的圣物。<n/>能增加<d ref="Behavior,SpellDamageBonus,Modification.DamageDealtFraction[Spell] * 100"/>%的法术攻击力。还能提高周围单位<d ref="Behavior,BOae,Modification.AttackSpeedMultiplier - 1 * 100"/>%的进攻速度和<d ref="Behavior,BOae,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度。<n/>不能和耐久光环一起使用。
 hphx/Tip=训练凤凰
 hphx/Ubertip=召唤一只强大的凤凰。凤凰全身燃烧剧烈的火焰，烧伤附近的敌人。具有抗性皮肤。当凤凰死后，会变成一只蛋，可以再次孵化成凤凰。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 hpxe/Tip=训练凤凰蛋
@@ -1235,11 +1258,13 @@ hspt/Tip=升级到破法者
 hspt/Ubertip=精灵战士，被训练来消灭法师。拥有魔法防御技能，还能施放魔法盗取，可以操纵魔法效果为你所用。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 hwtw/Tip=建造哨塔
 hwtw/Ubertip=基本的建筑物。
+kgal/Ubertip=提高每秒<d ref="Behavior,Arel,Modification.VitalRegenArray[Life]"/>点生命恢复速度和每秒<d ref="Behavior,AIrm,Modification.VitalRegenArray[Energy]" precision="2"/>法力恢复速度。
 klmm/Ubertip=<c val="ff8c00">神器</c><n/>增加<d ref="Behavior,AItx,Modification.DamageDealtFraction[Melee] * 100"/>%的攻击力。并能吸取生命值。<n/><c val="ffcc00">历史</c><n/><c val="ffdead">当德塞瑞尼发现他的爱人奥鲁娜投进了别人的怀抱，他去贫瘠之地好好地痛苦了一把。一把斧子就像响应他的召唤一样突然从沙子里飞出。德塞瑞尼拿着它杀死了奥鲁娜和她的情人。随后他用最大的力气把这把斧子投向了大海的深处。</c>
 kpin/Ubertip=使得周围单位的法力值恢复速度加快<d ref="Behavior,BHabI,Modification.VitalRegenArray[Energy]" precision="2"/> 。<n/>不能和辉煌光环同时使用。
 lgdh/Ubertip=增加附近单位<d ref="Behavior,BUauI,Modification.VitalRegenArray[Life]"/>的生命值恢复速度和<d ref="Behavior,BUauI,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度。<n/>不能和邪恶光环同时使用。
 lhst/Ubertip=令周围的单位增加<d ref="Behavior,BHadI,Modification.LifeArmorBonus"/>点护甲值。<n/>不能和虔诚光环同时使用。
 mnsf/Ubertip=增加<d ref="Behavior,AI2m,Modification.VitalMaxArray[Energy]"/>点法力值。并增加其周围的单位的法力恢复速度。
+mnst/Ubertip=提高每秒<d ref="Behavior,AIrn,Modification.VitalRegenArray[Energy]" precision="2"/>点法力值恢复速度。
 modt/Ubertip=能将<d ref="Behavior,AIvaLeech,Modification.VitalDamageLeechArray[Life].KindArray[Melee] * 100"/>%对敌人造成的伤害转换成自己的生命值。
 nadr/Tip=升级到蓝龙
 nadr/Ubertip=<c val="ffcc00">精英</c><n/>远程攻击飞行单位，具有抗性皮肤、冰霜呼吸和法力恢复光环技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
@@ -1314,6 +1339,7 @@ nerw/Ubertip=<c val="ffcc00">精英</c><n/>远程攻击型魔法施放单位，�
 net1/Ubertip=防守型建筑物，射出能量之箭，擅长于对付敌人的空中单位，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 net2/Ubertip=防守型建筑物，擅长于对付敌人的空中单位，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nfac/Tip=建造口袋工厂
+nfacTimeLife/Name=nfacTimeLife
 nfgl/Tip=升级到血肉傀儡
 nfgl/Ubertip=重型的近战单位，具有分裂攻击和疾病之云技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nfgu/Tip=训练恶魔守卫
@@ -1541,8 +1567,13 @@ rde4/Tip=购买防护之戒 +<d ref="Behavior,AId5,Modification.LifeArmorBonus"/
 rde4/Ubertip=增加<d ref="Behavior,AId5,Modification.LifeArmorBonus"/>点护甲值。
 rhth/Ubertip=增加<d ref="Behavior,AIl2,Modification.VitalMaxArray[Life]"/>点生命值。
 rlif/Ubertip=提高每秒<d ref="Behavior,Arel,Modification.VitalRegenArray[Life]"/>点生命值恢复速度。
+rwiz/Ubertip=提高每秒<d ref="Behavior,AIrm,Modification.VitalRegenArray[Energy]" precision="2"/>点的法力值恢复速度。
 sbch/Ubertip=使得附近的近战型单位能将他们自己<d ref="Behavior,BUav1Leech,Modification.VitalDamageLeechArray[Life].KindArray[Melee] * 100"/>%的攻击力转换成生命值。<n/>不能和吸血光环同时使用。
 shhn/Ubertip=<c val="8b00ff">精良</c><n/>增加周围单位<d ref="Behavior,BOacI,Modification.DamageDealtFraction[Melee] * 100"/>%的攻击力。同时增加<d ref="Behavior,AId7,Modification.LifeArmorBonus"/>点护甲值。
+skul/Ubertip=让周围友方单位加快其<d ref="Behavior,BabrItem,Modification.RateMultiplierArray[Cooldown] - 1 * 100"/>%的冷却速度。不能和荒芜光环一起发挥作用。
+spsh/Ubertip=每隔40秒就阻止敌人向自己施放魔法。
+srtl/Ubertip=<c val="ff8c00">神器</c><n/>增加<d ref="Behavior,AIs2,Modification.AttackSpeedMultiplier - 1 * 100"/>%攻击速度和<d ref="Behavior,AItf,Modification.DamageDealtScaled[Melee]"/>点攻击力。<n/><c val="ffcc00">历史</c><n/><c val="ffdead">这柄巨大的战斧是为德拉诺的卡斯德拉克所造的。并在血河战争中被使用。随着暗疮氏族的灭亡，这把战斧也最终不知去向。纳兹格雷尔是卡斯德拉克唯一还健在的亲戚。</c>
+tmsc/Ubertip=<c val="8b00ff">精良</c><n/>让周围友方单位加快其<d ref="Behavior,BabrItem,Modification.RateMultiplierArray[Cooldown] - 1 * 100"/>%的冷却速度。不能和荒芜光环一起发挥作用。在装备之后也能增加<d ref="Behavior,AImv,Modification.VitalMaxArray[Energy]"/>点法力值。
 uabo/Ubertip=重型的近战单位，具有食尸和疾病之云技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 uarb/Tip=升级到飞艇
 uarb/Ubertip=缓慢移动的飞艇，能有效地抵抗敌人的空中单位，具有多重射击技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>

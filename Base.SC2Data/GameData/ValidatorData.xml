@@ -87,12 +87,26 @@
         <CombineArray index="2" value="NotHaveBOae4"/>
         <CombineArray index="3" removed="1"/>
     </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="NotHaveBabr">
+        <Behavior value="Babr"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NotHaveObsidianAura">
+        <Behavior value="ObsidianAura"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NotHaveBHab1">
         <Behavior value="BHab1"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NotHaveBOac">
         <Behavior value="BOac"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="ObsidianAuraItemRemove">
+        <Type value="And"/>
+        <CombineArray value="NotHaveObsidianAura"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BabrItemRemove">
+        <Type value="And"/>
+        <CombineArray value="NotHaveBabr"/>
+    </CValidatorCombine>
     <CValidatorCombine id="BEarIRemove">
         <Type value="And"/>
         <CombineArray value="NotHaveBEar"/>

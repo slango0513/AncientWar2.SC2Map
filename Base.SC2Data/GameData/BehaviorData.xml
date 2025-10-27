@@ -62,6 +62,14 @@
     <CBehaviorBuff id="AIba">
         <PeriodicEffect value="AIabSearch"/>
     </CBehaviorBuff>
+    <!--MaxManaBonus (Most)-->
+    <CBehaviorBuff id="AIbm">
+        <RemoveValidatorArray index="0" removed="1"/>
+        <Modification>
+            <VitalMaxDecreaseAffectsCurrentArray index="Energy" value="0"/>
+            <VitalMaxArray index="Energy" value="90"/>
+        </Modification>
+    </CBehaviorBuff>
     <!--ItemAuraCommand Buff=BOac-->
     <CBehaviorBuff id="AIcd">
         <PeriodicEffect value="AIacSearch"/>
@@ -74,9 +82,48 @@
     <CBehaviorBuff id="AIdd">
         <DamageResponse ModifyFraction="0.75"/>
     </CBehaviorBuff>
+    <!--MaxManaBonus (Least)-->
+    <CBehaviorBuff id="AImb">
+        <RemoveValidatorArray index="0" removed="1"/>
+        <Modification>
+            <VitalMaxArray index="Energy" value="30"/>
+        </Modification>
+    </CBehaviorBuff>
+    <!--max life bonus,carry End-->
+    <!--temporary max mana bonus,carry-->
+    <!--MaxManaBonus (Leastest, Really)-->
+    <CBehaviorBuff id="AImv">
+        <RemoveValidatorArray index="0" removed="1"/>
+        <Modification>
+            <VitalMaxDecreaseAffectsCurrentArray index="Energy" value="0"/>
+            <VitalMaxArray index="Energy" value="60"/>
+        </Modification>
+    </CBehaviorBuff>
+    <!--ItemRegenMana, Trigger Notice-->
+    <CBehaviorBuff id="AIrm" parent="AW2_Item">
+        <Modification>
+            <VitalRegenArray index="Energy" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <!--ItemRegenMana lesser, Trigger Notice-->
+    <CBehaviorBuff id="AIrn" parent="AW2_Item">
+        <Modification>
+            <VitalRegenArray index="Energy" value="0.5"/>
+        </Modification>
+    </CBehaviorBuff>
     <!--Permanent Immolation Dur=1 HeroDur=1 Buff=BNpi-->
     <CBehaviorBuff id="ANpi">
         <PeriodicEffect value="ANpiSearch"/>
+    </CBehaviorBuff>
+    <!--Spell Shield Buff=BNss-->
+    <CBehaviorBuff id="ANss">
+        <RemoveValidatorArray index="0" removed="1"/>
+    </CBehaviorBuff>
+    <!--Regen Life-->
+    <CBehaviorBuff id="Arll" parent="AW2_Item">
+        <Modification>
+            <VitalRegenArray index="Life" value="5"/>
+        </Modification>
     </CBehaviorBuff>
     <!--ItemCloakOfFlames-->
     <CBehaviorBuff id="BIcf">
@@ -400,12 +447,6 @@
             <Kind index="Splash" value="0"/>
         </DamageResponse>
     </CBehaviorBuff>
-    <!--MaxManaBonus (Most)-->
-    <CBehaviorBuff id="AIbm" parent="AW2_Item">
-        <Modification>
-            <VitalMaxArray index="Energy" value="150"/>
-        </Modification>
-    </CBehaviorBuff>
     <!--ItemCloakOfFlames Dur=1 HeroDur=1 Buff=BIcf-->
     <CBehaviorBuff id="AIcf" parent="AW2_Item"/>
     <!--temporary attack speed increase,carry End-->
@@ -443,24 +484,9 @@
             <VitalMaxArray index="Life" value="500"/>
         </Modification>
     </CBehaviorBuff>
-    <!--MaxManaBonus (Least)-->
-    <CBehaviorBuff id="AImb" parent="AW2_Item">
-        <Modification>
-            <VitalMaxDecreaseAffectsCurrentArray index="Energy" value="1"/>
-            <VitalMaxArray index="Energy" value="30"/>
-        </Modification>
-    </CBehaviorBuff>
     <!--MoveSpeedBonus-->
     <CBehaviorBuff id="AIms" parent="AW2_Item">
         <Modification MoveSpeedBonus="0.5"/>
-    </CBehaviorBuff>
-    <!--max life bonus,carry End-->
-    <!--temporary max mana bonus,carry-->
-    <!--MaxManaBonus (Leastest, Really)-->
-    <CBehaviorBuff id="AImv" parent="AW2_Item">
-        <Modification>
-            <VitalMaxArray index="Energy" value="75"/>
-        </Modification>
     </CBehaviorBuff>
     <!--Runed Bracers-->
     <CBehaviorBuff id="AIsr" parent="AW2_Item">
@@ -520,6 +546,11 @@
         <Modification>
             <DamageDealtScaled index="Melee" value="3"/>
             <DamageDealtScaled index="Ranged" value="3"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SpellDamageBonus" parent="AW2_Item">
+        <Modification>
+            <DamageDealtFraction index="Spell" value="1"/>
         </Modification>
     </CBehaviorBuff>
     <!--Orb of Corruption Dur=5 HeroDur=5 Buff=BIcb-->
@@ -726,6 +757,9 @@
     <CBehaviorBuff id="Aabr" parent="War3_AuraCaster">
         <Requirements value="Aabr"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="AabrItem" parent="War3_AuraCaster">
+        <Requirements value="AabrItem"/>
+    </CBehaviorBuff>
     <!--Balls of Fire Dur=2.51 HeroDur=1.01 Buff=Bbof effect=Xbof-->
     <CBehaviorBuff id="Abof">
         <Requirements value=""/>
@@ -772,7 +806,12 @@
     <!--Regen Life-->
     <CBehaviorBuff id="Arel" parent="AW2_Item">
         <Modification>
-            <VitalRegenArray index="Life" value="5"/>
+            <VitalRegenArray index="Life" value="10"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Arlg" parent="AW2_Item">
+        <Modification>
+            <VitalRegenArray index="Life" value="15"/>
         </Modification>
     </CBehaviorBuff>
     <!--Resistant Skin-->
@@ -1116,6 +1155,9 @@
     <CBehaviorBuff id="ObsidianAuraCaster" parent="War3_AuraCaster">
         <Requirements value="ObsidianAuraCaster"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="ObsidianAuraItemCaster" parent="War3_AuraCaster">
+        <Requirements value="ObsidianAuraItemCaster"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="FelDriveAuraCaster" parent="War3_AuraCaster">
         <Requirements value="FelDriveAuraCaster"/>
     </CBehaviorBuff>
@@ -1178,6 +1220,13 @@
             <ClampMinimum value="20"/>
             <ModifyAmount value="-80"/>
             <TargetFilters value="-;player,neutral"/>
+            <ExcludeEffectArray value="Nbbc1CritKill"/>
+            <ExcludeEffectArray value="Obl21CritKill"/>
+            <ExcludeEffectArray value="Obla1CritKill"/>
+            <ExcludeEffectArray value="Ogrh1CritKill"/>
+            <ExcludeEffectArray value="Opgh1CritKill"/>
+            <ExcludeEffectArray value="ACfdDamage"/>
+            <ExcludeEffectArray value="DestinyBondKill"/>
             <ValidatorArray value="HasNoHardenedSkin"/>
         </DamageResponse>
     </CBehaviorBuff>
@@ -1185,6 +1234,13 @@
     <CBehaviorBuff id="Assk">
         <Requirements value=""/>
         <DamageResponse ClampMinimum="30" ModifyAmount="-120">
+            <ExcludeEffectArray value="Nbbc1CritKill"/>
+            <ExcludeEffectArray value="Obl21CritKill"/>
+            <ExcludeEffectArray value="Obla1CritKill"/>
+            <ExcludeEffectArray value="Ogrh1CritKill"/>
+            <ExcludeEffectArray value="Opgh1CritKill"/>
+            <ExcludeEffectArray value="ACfdDamage"/>
+            <ExcludeEffectArray value="DestinyBondKill"/>
             <ValidatorArray value="HasNoHardenedSkin"/>
         </DamageResponse>
     </CBehaviorBuff>
@@ -1563,6 +1619,12 @@
             <RateMultiplierArray index="Cooldown" value="1.5"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="BabrItem" parent="War3_AuraBuff">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnRegenerationAura.dds"/>
+        <Modification>
+            <RateMultiplierArray index="Cooldown" value="1.5"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="FlameTowerAura" parent="War3_AuraBuff">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnadvancedflametower.dds"/>
         <EditorCategories value="Race:Draenei,AbilityorEffectType:Units"/>
@@ -1672,6 +1734,12 @@
         <EditorCategories value="Race:Undead,AbilityorEffectType:Units"/>
         <MaxStackCount value="2"/>
         <MaxStackCountPerCaster value="1"/>
+        <Modification>
+            <DamageDealtFraction index="Spell" value="0.5"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ObsidianAuraItem" parent="War3_AuraBuff">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnicecrownobelisk.dds"/>
         <Modification>
             <DamageDealtFraction index="Spell" value="0.5"/>
         </Modification>

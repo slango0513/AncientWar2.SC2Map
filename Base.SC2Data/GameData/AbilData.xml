@@ -43,7 +43,6 @@
         <UninterruptibleArray index="Cast" value="1"/>
         <UninterruptibleArray index="Channel" value="1"/>
         <UninterruptibleArray index="Finish" value="1"/>
-        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
     </CAbilEffectInstant>
     <CAbilBehavior default="1" id="AW2_Passive" parent="War3_Passive">
         <Flags index="Toggle" value="1"/>
@@ -65,7 +64,6 @@
         <UninterruptibleArray index="Cast" value="1"/>
         <UninterruptibleArray index="Channel" value="1"/>
         <UninterruptibleArray index="Finish" value="1"/>
-        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
     </CAbilEffectTarget>
     <CAbilAugment default="1" id="AW2_AttackAugment" parent="War3_AttackAugment">
         <Flags index="AutoCastOn" value="1"/>
@@ -108,6 +106,7 @@
         </TargetSorts>
         <Range value="9"/>
         <AutoCastRange value="9"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastValidatorArray value="NoBreathOfFire"/>
         <PrepTime value="0.5"/>
@@ -126,6 +125,7 @@
         </TargetSorts>
         <Range value="6"/>
         <AutoCastRange value="6"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
         <CastOutroTime value="0.5"/>
         <TargetFilters index="0" value="-;wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
@@ -144,6 +144,7 @@
         <CastOutroTime value="1.08"/>
         <Alignment value="Negative"/>
         <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby6"/>
         <TargetSorts RequestCount="1">
@@ -166,7 +167,7 @@
         <CastOutroTime value="0.51"/>
         <Effect index="0" value="Bpsh"/>
         <AutoCastAcquireLevel value="Defensive"/>
-        <AutoCastValidatorArray index="0" value="CasterDamagedInCombat"/>
+        <AutoCastValidatorArray value="CasterDamagedInCombat"/>
         <Cost index="0">
             <Cooldown Location="Unit" TimeUse="5"/>
         </Cost>
@@ -193,6 +194,7 @@
         <PrepTime value="0.5"/>
         <CastOutroTime value="0.5"/>
         <AutoCastRange value="13"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="NoCripple"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby7"/>
@@ -217,6 +219,7 @@
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <AutoCastRange value="11"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby11"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="TargetLifeGE750"/>
@@ -242,6 +245,7 @@
             <SortArray value="TSRandom"/>
         </TargetSorts>
         <AutoCastRange value="6"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="noMarkers"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="ACt2" parent="AW2_EffectInstant">
@@ -251,7 +255,7 @@
             <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
         <AutoCastFilters value="Self,Visible;-"/>
-        <AutoCastValidatorArray index="0" value="GroundEnemiesNearby2"/>
+        <AutoCastValidatorArray value="GroundEnemiesNearby2"/>
         <PrepTime value="0.75"/>
         <FinishTime value="0.56"/>
     </CAbilEffectInstant>
@@ -273,7 +277,7 @@
         <CastOutroTime value="0.47"/>
         <Effect index="0" value="AEmb1"/>
         <AutoCastRange value="12"/>
-        <AutoCastValidatorArray index="1" value="EnemiesNearby12"/>
+        <AutoCastValidatorArray value="EnemiesNearby12"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="TargetEnergyGE30"/>
         <TargetSorts RequestCount="1">
@@ -326,7 +330,7 @@
         <PrepTime value="0.67"/>
         <CastOutroTime value="0.4"/>
         <Effect index="0" value="nlv1"/>
-        <AutoCastValidatorArray index="0" value="EnemiesNearby8"/>
+        <AutoCastValidatorArray value="EnemiesNearby8"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <!--Firelord - Soul Burn Buff=BNso-->
@@ -350,7 +354,6 @@
         </TargetSorts>
         <AutoCastFilters value="Visible;Neutral,Enemy"/>
         <AutoCastRange value="7"/>
-        <AutoCastValidatorArray index="1" removed="1"/>
     </CAbilEffectTarget>
     <!--Blade Master - Wind Walk Buff=BOwk-->
     <CAbilEffectInstant id="AOwk" parent="AW2_EffectInstant">
@@ -360,7 +363,7 @@
         <Effect index="0" value="AOwk1"/>
         <PreEffectBehavior Behavior="" Count="0"/>
         <AutoCastFilters value="Self,Visible;Ally,Neutral,Enemy"/>
-        <AutoCastValidatorArray index="0" value="GroundEnemiesNearby3"/>
+        <AutoCastValidatorArray value="GroundEnemiesNearby3"/>
     </CAbilEffectInstant>
     <CAbilBehavior id="DestinyBond" parent="AW2_Passive">
         <BehaviorArray value="DestinyBond"/>
@@ -393,7 +396,7 @@
             <Cooldown Location="Unit" TimeUse="10"/>
         </Cost>
         <AutoCastFilters value="Self,Visible;Ally,Neutral,Enemy"/>
-        <AutoCastValidatorArray index="0" value="GroundEnemiesNearby3"/>
+        <AutoCastValidatorArray value="GroundEnemiesNearby3"/>
     </CAbilEffectInstant>
     <!--Blade Master - Bladestorm Buff=BOww-->
     <CAbilEffectInstant id="AOww" parent="AW2_EffectInstant">
@@ -404,9 +407,12 @@
         <CastOutroTime value="0.51"/>
         <Effect index="0" value="BOww"/>
         <AutoCastFilters value="Self,Visible;Ally,Neutral,Enemy"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="3GroundEnemiesNearby2"/>
     </CAbilEffectInstant>
-    <CAbilEffectTarget id="Ache" parent="AW2_EffectTarget"/>
+    <CAbilEffectTarget id="Ache" parent="AW2_EffectTarget">
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+    </CAbilEffectTarget>
     <!--Unstable Concoction-->
     <CAbilEffectTarget id="Auco" parent="AW2_EffectTarget">
         <EditorCategories value="Race:ChaosOrc,AbilityorEffectType:Unit"/>
@@ -419,7 +425,7 @@
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <AutoCastRange value="6"/>
-        <AutoCastValidatorArray index="1" value="EnemiesNearby4"/>
+        <AutoCastValidatorArray value="EnemiesNearby4"/>
     </CAbilEffectTarget>
     <CAbilBehavior id="GoblinLandMineInvisibility" parent="AW2_Passive">
         <Cost>
@@ -457,7 +463,7 @@
         <PrepTime value="4"/>
         <CastOutroTime value="1.08"/>
         <AutoCastFilters value="Self,Visible;-"/>
-        <AutoCastValidatorArray index="0" value="EnemiesNearby6"/>
+        <AutoCastValidatorArray value="EnemiesNearby6"/>
     </CAbilEffectInstant>
     <!--Dreadlord - Sleep Buff=BUsl,BUsp,Bust-->
     <CAbilEffectTarget id="AUsl" parent="AW2_EffectTarget">
@@ -475,6 +481,7 @@
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <AutoCastRange value="6"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby2"/>
         <AutoCastValidatorArray value="NoSleep"/>
         <AutoCastValidatorArray value="noMarkers"/>
@@ -510,6 +517,7 @@
         </Cost>
         <Range value="6"/>
         <AutoCastRange value="6"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="NoBloodlust"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby2"/>
@@ -537,6 +545,7 @@
         </TargetSorts>
         <Range value="3"/>
         <AutoCastRange value="3"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby2"/>
         <AutoCastValidatorArray value="NoBreathOfFrost"/>
         <PrepTime value="0.4"/>
@@ -558,6 +567,7 @@
         </TargetSorts>
         <Range value="13"/>
         <AutoCastRange value="13"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby7"/>
         <AutoCastValidatorArray value="NoFrostBolt"/>
         <PrepTime value="1"/>
@@ -580,6 +590,7 @@
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <AutoCastRange value="8"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastValidatorArray value="2NonStasisEnemiesNearby8"/>
         <AutoCastValidatorArray value="noMarkers"/>
@@ -602,6 +613,7 @@
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby7"/>
         <AutoCastValidatorArray value="noMarkers"/>
     </CAbilEffectTarget>
@@ -619,6 +631,7 @@
         <PrepTime value="0.4"/>
         <CastOutroTime value="0.5"/>
         <Effect index="0" value="ANabMissile"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby2"/>
         <AutoCastValidatorArray value="NoAcidBomb"/>
         <AutoCastValidatorArray value="noMarkers"/>
@@ -637,7 +650,6 @@
         <PrepTime value="1"/>
         <CastOutroTime value="1.08"/>
         <Effect index="0" value="ndkw"/>
-        <AutoCastValidatorArray index="0" removed="1"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <!--Dreadlord - Inferno Buff=BNin-->
@@ -652,7 +664,7 @@
         <CastOutroTime value="1.53"/>
         <CursorEffect value="AUinSearchCursor"/>
         <Alignment value="Negative"/>
-        <AutoCastValidatorArray index="1" value="EnemiesNearby5"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastRange value="5"/>
         <TargetFilters index="0" value="-;player,allies,air,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable"/>
     </CAbilEffectTarget>
@@ -667,7 +679,7 @@
         <CastOutroTime value="1.53"/>
         <CursorEffect value="AUinSearchCursor"/>
         <Alignment value="Negative"/>
-        <AutoCastValidatorArray index="1" value="EnemiesNearby5"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastRange value="5"/>
         <TargetFilters index="0" value="-;player,allies,air,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable"/>
         <Effect index="0" value="ANrcCreatePersistent"/>
@@ -688,7 +700,7 @@
         </Cost>
         <CastOutroTime value="3"/>
         <Effect index="0" value="AtauSearch"/>
-        <AutoCastValidatorArray index="0" value="EnemiesNearby2"/>
+        <AutoCastValidatorArray value="EnemiesNearby2"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilEffectTarget id="StellarFlare" parent="AW2_EffectTarget">
@@ -705,6 +717,7 @@
         </TargetSorts>
         <Range value="11"/>
         <AutoCastRange value="11"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastValidatorArray value="NoStarfall"/>
         <AutoCastValidatorArray value="noMarkers"/>
@@ -727,6 +740,7 @@
         <Alignment value="Positive"/>
         <Effect index="0" value="BNcr1"/>
         <AutoCastFilters value="Self,Visible;-"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby6"/>
         <AutoCastValidatorArray value="CasterHasNoChemicalRage"/>
     </CAbilEffectInstant>
@@ -741,6 +755,7 @@
         <PrepTime value="0.53"/>
         <CastOutroTime value="0.5"/>
         <CursorEffect value="ANcsStunSearchCursor"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
     </CAbilEffectTarget>
     <!--Sea Witch - Forked Lightning-->
     <CAbilEffectTarget id="ANfl" parent="AW2_EffectTarget">
@@ -756,6 +771,7 @@
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <AutoCastRange value="9"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby6"/>
         <AutoCastValidatorArray value="noMarkers"/>
     </CAbilEffectTarget>
@@ -794,7 +810,7 @@
         </TargetSorts>
         <Range value="5"/>
         <AutoCastRange value="5"/>
-        <AutoCastValidatorArray index="1" value="CasterHasSwimmingAmphibian"/>
+        <AutoCastValidatorArray value="CasterHasSwimmingAmphibian"/>
         <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="GroundEnemiesNearby2"/>
         <PrepTime value="0.47"/>
@@ -814,7 +830,7 @@
         <Effect index="0" value="DispelAllEnemyBuffsAndFriendDebuffAndHurtEnemySummoned300AndDispelOwl"/>
         <AutoCastFilters value="Visible;-"/>
         <AutoCastRange value="11"/>
-        <AutoCastValidatorArray index="1" value="SummonedEnemyOrEnemyHasPurgableBuffOrFriendHasPurgableDebuff"/>
+        <AutoCastValidatorArray value="SummonedEnemyOrEnemyHasPurgableBuffOrFriendHasPurgableDebuff"/>
         <AutoCastValidatorArray value="noMarkers"/>
     </CAbilEffectTarget>
     <!--Ensnare (Creep) Dur=10 HeroDur=5 Buff=Bena,Beng-->
@@ -830,7 +846,7 @@
         <Effect index="0" value="AensMissile"/>
         <Alignment value="Negative"/>
         <AutoCastRange value="9"/>
-        <AutoCastValidatorArray index="1" value="noMarkers"/>
+        <AutoCastValidatorArray value="noMarkers"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
         </TargetSorts>
@@ -855,6 +871,7 @@
             <SortArray value="TSLifeLargestFirst"/>
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastValidatorArray value="NoFrost"/>
         <AutoCastValidatorArray value="noMarkers"/>
@@ -876,6 +893,7 @@
             <SortArray value="TSLifeLargestFirst"/>
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastValidatorArray value="NoFrost"/>
         <AutoCastValidatorArray value="noMarkers"/>
@@ -901,6 +919,7 @@
         <CastOutroTime value="0.51"/>
         <Effect index="0" value="ACpaMissile"/>
         <AutoCastRange value="27"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="NoBNpaACpa"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby7"/>
@@ -922,7 +941,7 @@
         <EffectRange index="0" value="0,7.8125"/>
         <CastIntroTime value="0.33"/>
         <AutoCastRange value="8"/>
-        <AutoCastValidatorArray index="1" value="noMarkers"/>
+        <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="GroundEnemiesNearby3"/>
         <AutoCastValidatorArray value="NotSummonedUnit"/>
         <TargetSorts RequestCount="1">
@@ -979,6 +998,7 @@
         <PrepTime value="0.7"/>
         <CastOutroTime value="0.8"/>
         <AutoCastRange value="13"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="NoEntanglingRoots"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby9"/>
@@ -995,6 +1015,7 @@
         </Cost>
         <CastOutroTime value="0.83"/>
         <Effect index="0" value="AEfk1Search"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="GroundEnemiesNearby2"/>
         <AutoCastFilters value="Visible;-"/>
     </CAbilEffectInstant>
@@ -1053,14 +1074,20 @@
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <AutoCastRange value="10"/>
-        <AutoCastValidatorArray index="1" value="EnemiesNearby7"/>
+        <AutoCastValidatorArray value="EnemiesNearby7"/>
         <AutoCastValidatorArray value="NoCloudOfFog"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <TargetFilters index="0" value="structure;wall,tree,Missile,debris,item,ward,dead,invulnerable,immunity"/>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="Advc" parent="AW2_EffectTarget"/>
-    <CAbilEffectTarget id="Alit" parent="AW2_EffectTarget"/>
-    <CAbilEffectTarget id="ACls" parent="AW2_EffectTarget"/>
+    <CAbilEffectTarget id="Advc" parent="AW2_EffectTarget">
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Alit" parent="AW2_EffectTarget">
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="ACls" parent="AW2_EffectTarget">
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="Amls" parent="AW2_EffectTarget">
         <EditorCategories value="Race:BloodElf,AbilityorEffectType:Units"/>
         <TargetFilters index="0" value="-;player,allies,neutral,ground,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
@@ -1077,7 +1104,7 @@
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <AutoCastRange value="10"/>
-        <AutoCastValidatorArray index="1" value="EnemiesNearby7"/>
+        <AutoCastValidatorArray value="EnemiesNearby7"/>
         <AutoCastValidatorArray value="NoAerialShackles"/>
         <AutoCastValidatorArray value="noMarkers"/>
     </CAbilEffectTarget>
@@ -1176,6 +1203,7 @@
         </TargetSorts>
         <Range value="13"/>
         <AutoCastRange value="13"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby7"/>
         <AutoCastValidatorArray value="NoFireBolt"/>
         <PrepTime value="1"/>
@@ -1400,6 +1428,7 @@
             <SortArray value="TSLifeLargestFirst"/>
         </TargetSorts>
         <AutoCastRange value="6"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby2"/>
         <AutoCastValidatorArray value="noMarkers"/>
     </CAbilEffectTarget>
@@ -1414,7 +1443,7 @@
         <CastOutroTime value="10"/>
         <Effect index="0" value="BOvc"/>
         <FinishTime value="1.07"/>
-        <AutoCastValidatorArray index="0" value="EnemiesNearbyInvisibleIncluded5"/>
+        <AutoCastValidatorArray value="EnemiesNearbyInvisibleIncluded5"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <!--Self Destruct (Clockwerk Goblins) Dur=.1 HeroDur=.1-->
@@ -1434,6 +1463,7 @@
             <SortArray value="TSMarker"/>
             <SortArray value="TSLife"/>
         </TargetSorts>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby6"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="AsdsGoblinLandMine" parent="AW2_EffectTarget">
@@ -1447,7 +1477,7 @@
         <CastOutroTime value="0.51"/>
         <CursorEffect value="AsdsDamage"/>
         <CmdButtonArray index="Execute" Requirements="Asds"/>
-        <AutoCastValidatorArray index="1" value="IsEnemy"/>
+        <AutoCastValidatorArray value="IsEnemy"/>
         <AutoCastValidatorArray value="TargetIsNotHover"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="CountUnit">
@@ -1611,7 +1641,7 @@
         <Alignment value="Positive"/>
         <Effect index="0" value="BHd2"/>
         <Flags index="Transient" value="1"/>
-        <AutoCastValidatorArray index="0" value="AttackingOrInCombatWar3AndCasterLifeLT90Percent"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3AndCasterLifeLT90Percent"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
@@ -1625,6 +1655,7 @@
             <Cooldown Location="Unit" TimeUse="120"/>
         </Cost>
         <AutoCastFilters value="Self,Visible;-"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="CasterLifeNotFull"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
         <PrepTime value="0.5"/>
@@ -1654,7 +1685,7 @@
             <SortArray value="TSLife"/>
         </TargetSorts>
         <AutoCastFilters value="Visible;-"/>
-        <AutoCastValidatorArray index="1" value="EnemiesNearby5"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
     </CAbilEffectTarget>
     <!--Paladin - Resurrection-->
     <CAbilEffectInstant id="AHre" parent="AW2_EffectInstant">
@@ -1666,8 +1697,7 @@
         <PrepTime value="0.5"/>
         <CastOutroTime value="1.67"/>
         <Alignment value="Positive"/>
-        <AutoCastValidatorArray value="EnemiesNearby5"/>
-        <AutoCastFilters value="Visible;-"/>
+        <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <!--Arch Mage - Water Elemental Buff=BHwe-->
     <CAbilEffectInstant id="AHwe" parent="AW2_EffectInstant">
@@ -1678,7 +1708,7 @@
         <PrepTime value="0.3"/>
         <CastOutroTime value="2.4"/>
         <Effect index="0" value="hwat"/>
-        <AutoCastValidatorArray index="0" value="EnemiesNearby8"/>
+        <AutoCastValidatorArray value="EnemiesNearby8"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="SummonSeaElemental" parent="AW2_EffectInstant">
@@ -1688,7 +1718,7 @@
             <Vital index="Energy" value="60"/>
         </Cost>
         <AutoCastFilters value="Self,Visible;-"/>
-        <AutoCastValidatorArray index="0" value="EnemiesNearby8"/>
+        <AutoCastValidatorArray value="EnemiesNearby8"/>
         <PrepTime value="0.3"/>
         <CastOutroTime value="2.4"/>
     </CAbilEffectInstant>
@@ -1699,7 +1729,7 @@
             <Vital index="Energy" value="60"/>
         </Cost>
         <AutoCastFilters value="Self,Visible;-"/>
-        <AutoCastValidatorArray index="0" value="EnemiesNearby10"/>
+        <AutoCastValidatorArray value="EnemiesNearby10"/>
         <PrepTime value="0.45"/>
         <CastOutroTime value="2.4"/>
     </CAbilEffectInstant>
@@ -1712,6 +1742,7 @@
         </Cost>
         <PrepTime value="2"/>
         <CastOutroTime value="1.08"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby3"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
@@ -1721,7 +1752,7 @@
             <Cooldown Location="Unit" TimeUse="120"/>
         </Cost>
         <AutoCastFilters value="Self,Visible;-"/>
-        <AutoCastValidatorArray index="0" value="EnemiesNearby6"/>
+        <AutoCastValidatorArray value="EnemiesNearby6"/>
         <PrepTime value="4"/>
         <CastOutroTime value="1.08"/>
         <Effect index="0" value="SleepSearch"/>
@@ -1732,7 +1763,7 @@
             <Cooldown Location="Unit" TimeUse="120"/>
         </Cost>
         <AutoCastFilters value="Self,Visible;-"/>
-        <AutoCastValidatorArray index="0" value="EnemiesNearby5"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
         <PrepTime value="0.5"/>
         <CastOutroTime value="1.17"/>
         <Alignment value="Positive"/>
@@ -1745,7 +1776,6 @@
             <Charge CountMax="1" CountStart="1" CountUse="1"/>
         </Cost>
         <AutoCastFilters value="Self,Visible;-"/>
-        <AutoCastValidatorArray index="0" removed="1"/>
         <PrepTime value="0.3"/>
         <CastOutroTime value="1.08"/>
     </CAbilEffectInstant>
@@ -1774,6 +1804,7 @@
         <LevelButtonTooltip index="1" removed="1"/>
         <LevelButtonTooltip index="2" removed="1"/>
         <AutoCastRange value="11"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="IsCloakedOrHallucination"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <TargetFilters index="0" value="-;wall,tree,Missile,debris,item,dead,invulnerable"/>
@@ -1786,7 +1817,7 @@
         </Cost>
         <PrepTime value="0.3"/>
         <CastOutroTime value="0.51"/>
-        <AutoCastValidatorArray index="0" value="CasterInCombatOrCasterHasDebuff"/>
+        <AutoCastValidatorArray value="CasterInCombatOrCasterHasDebuff"/>
         <AutoCastFilters value="Visible;-"/>
     </CAbilEffectInstant>
     <!--Cyclone Dur=20 HeroDur=6 Buff=Bcyc,Bcy2-->
@@ -1802,6 +1833,7 @@
         <CastOutroTime value="1.97"/>
         <Effect index="0" value="Bcyc"/>
         <AutoCastRange value="9"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby6"/>
         <AutoCastValidatorArray value="2NonInvulnerableEnemiesNearby9"/>
         <AutoCastValidatorArray value="NoCyclone"/>
@@ -1853,6 +1885,7 @@
         <PrepTime value="0.7"/>
         <CastOutroTime value="1.97"/>
         <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="NoFaerieFire"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby6"/>
@@ -1894,7 +1927,7 @@
             <MismatchFlags index="CasterUnit" value="1"/>
         </Marker>
         <UseMarkerArray index="Approach" value="0"/>
-        <AutoCastValidatorArray index="1" value="HealingAutoCastTargetFilter"/>
+        <AutoCastValidatorArray value="HealingAutoCastTargetFilter"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <PrepTime value="0.5"/>
         <CastOutroTime value="0.5"/>
@@ -1912,6 +1945,7 @@
         <PrepTime value="0.5"/>
         <CastOutroTime value="1.17"/>
         <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="TargetLifeNotFull"/>
         <AutoCastValidatorArray value="NoRejuvination"/>
         <AutoCastValidatorArray value="noMarkers"/>
@@ -1934,6 +1968,7 @@
         <PrepTime value="0.5"/>
         <CastOutroTime value="1.17"/>
         <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="TargetLifeNotFull"/>
         <AutoCastValidatorArray value="NoRejuvination"/>
         <AutoCastValidatorArray value="noMarkers"/>
@@ -1955,7 +1990,7 @@
         <Effect index="0" value="AroaSearch"/>
         <Alignment value="Positive"/>
         <Flags index="BestUnit" value="1"/>
-        <AutoCastValidatorArray index="0" value="EnemiesNearby5"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilAugment id="BladeMasterSlamControl" parent="AW2_AttackAugment">
@@ -1974,7 +2009,7 @@
         <PrepTime value="0.25"/>
         <FinishTime value="0.8"/>
         <Effect index="0" value="AOws1Search"/>
-        <AutoCastValidatorArray index="0" value="GroundEnemiesNearby2"/>
+        <AutoCastValidatorArray value="GroundEnemiesNearby2"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilBehavior id="Agyd" parent="AW2_Passive">
@@ -1993,7 +2028,7 @@
         </Cost>
         <PrepTime value="2"/>
         <CastOutroTime value="0.5"/>
-        <AutoCastValidatorArray index="0" value="EnemiesNearby8"/>
+        <AutoCastValidatorArray value="EnemiesNearby8"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="AIpv" parent="AW2_EffectInstant">
@@ -2001,6 +2036,7 @@
             <Charge CountMax="1" CountStart="1" CountUse="1"/>
         </Cost>
         <AutoCastFilters value="Visible;-"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
     </CAbilEffectInstant>
     <!--Dark Ranger - Charm-->
     <CAbilEffectTarget id="ANch" parent="AW2_EffectTarget">
@@ -2015,7 +2051,7 @@
         <CastOutroTime value="0.5"/>
         <Effect index="0" value="BNchSet"/>
         <AutoCastRange value="9"/>
-        <AutoCastValidatorArray index="1" value="EnemiesNearby5"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="KillResourceCustomGT0OrTargetLifeGT100"/>
         <TargetSorts RequestCount="1">
@@ -2033,7 +2069,7 @@
         <PrepTime value="2"/>
         <CastOutroTime value="0.5"/>
         <AutoCastRange value="6"/>
-        <AutoCastValidatorArray index="1" value="EnemiesNearby2"/>
+        <AutoCastValidatorArray value="EnemiesNearby2"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
@@ -2053,7 +2089,7 @@
         <CastOutroTime value="0.51"/>
         <Effect index="0" value="BNdo"/>
         <AutoCastRange value="36"/>
-        <AutoCastValidatorArray index="1" value="EnemiesNearby5"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastValidatorArray value="NoDoom"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <TargetSorts RequestCount="1">
@@ -2079,7 +2115,7 @@
         <CastOutroTime value="0.51"/>
         <Effect index="0" value="ANhtSearch"/>
         <CursorEffect value="ANhtSearch"/>
-        <AutoCastValidatorArray index="0" value="EnemiesNearby2"/>
+        <AutoCastValidatorArray value="EnemiesNearby2"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <!--Sea Witch - Mana Shield Buff=BNms-->
@@ -2112,6 +2148,7 @@
             <SortArray value="TSRandom"/>
         </TargetSorts>
         <AutoCastRange value="6"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="noMarkers"/>
     </CAbilEffectTarget>
     <!--Taunt(Creep)-->
@@ -2121,7 +2158,7 @@
         </Cost>
         <CastOutroTime value="3"/>
         <Effect index="0" value="ANtaSearch"/>
-        <AutoCastValidatorArray index="0" value="EnemiesNearby2"/>
+        <AutoCastValidatorArray value="EnemiesNearby2"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilBuild id="AObu" parent="War3_PowerBuild">
@@ -2180,6 +2217,7 @@
         <!--PrepTime value="0.3"/-->
         <Alignment value="Negative"/>
         <CastOutroTime value="1.07"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
     </CAbilEffectTarget>
     <!--Farseer - Earthquake Buff=BOeq,BOea effect=XOeq-->
     <CAbilEffectTarget id="AOeq">
@@ -2211,6 +2249,7 @@
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="NoHex"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby7"/>
@@ -2224,6 +2263,7 @@
         <PrepTime value="0.3"/>
         <CastOutroTime value="1.07"/>
         <Effect index="0" value="osw1"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
@@ -2240,6 +2280,7 @@
         <Effect index="0" value="AOshTarget"/>
         <Alignment value="Negative"/>
         <AutoCastRange value="5"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="GroundEnemiesNearby2"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSMarker"/>
@@ -2260,6 +2301,7 @@
         <Effect index="0" value="osp1"/>
         <ProducedUnitArray value="osp1"/>
         <Alignment value="Positive"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
     </CAbilEffectTarget>
     <!--Chieftain - War Stomp Buff=BPSE-->
     <CAbilEffectInstant id="AOws" parent="AW2_EffectInstant">
@@ -2271,7 +2313,7 @@
         <PrepTime value="0.25"/>
         <FinishTime value="0.8"/>
         <Effect index="0" value="AOws1Search"/>
-        <AutoCastValidatorArray index="0" value="GroundEnemiesNearby2"/>
+        <AutoCastValidatorArray value="GroundEnemiesNearby2"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <!--Death Knight - Animate Dead Buff=BUan-->
@@ -2286,6 +2328,7 @@
         <Alignment value="Positive"/>
         <AINotifyEffect value="AUanSearch"/>
         <Effect index="0" value="AUanSearch"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
@@ -2351,7 +2394,7 @@
             <SortArray value="TSLife"/>
         </TargetSorts>
         <AutoCastFilters value="Visible;-"/>
-        <AutoCastValidatorArray index="1" value="EnemiesNearby5"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
     </CAbilEffectTarget>
     <!--Lich - Death and Decay Buff=BUdd effect=XUdd-->
     <CAbilEffectTarget id="AUdd" parent="AW2_EffectTarget">
@@ -2373,6 +2416,7 @@
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <AutoCastRange value="9"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="NoDeathAndDecay"/>
         <AutoCastValidatorArray value="noMarkers"/>
     </CAbilEffectTarget>
@@ -2386,6 +2430,7 @@
         <Range value="6"/>
         <Effect index="0" value="BUfa1"/>
         <AutoCastRange value="6"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="NoFrostArmor"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby2"/>
@@ -2467,6 +2512,7 @@
         </Cost>
         <PrepTime value="0.68"/>
         <CastOutroTime value="0.59"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby4"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
@@ -2530,6 +2576,7 @@
         <PrepTime value="0.6"/>
         <CastOutroTime value="1.4"/>
         <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="NoBloodlust"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby7"/>
@@ -2550,6 +2597,7 @@
         <Effect index="0" value="Bbsk"/>
         <PrepTime value="0.5"/>
         <CastOutroTime value="0.5"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby6"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
@@ -2561,6 +2609,7 @@
         </Cost>
         <PrepTime value="0.5"/>
         <CastOutroTime value="0.5"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby6"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
@@ -2578,7 +2627,7 @@
         </CmdButtonArray>
         <ProgressButtonArray index="Channel" value="Acan"/>
         <FinishTime value="0.51"/>
-        <AutoCastValidatorArray index="0" value="NotAttackingAndNotInCombatWar3"/>
+        <AutoCastValidatorArray value="NotAttackingAndNotInCombatWar3"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="NoEnemiesNearby5"/>
         <TargetSorts>
@@ -2600,7 +2649,7 @@
         </CmdButtonArray>
         <ProgressButtonArray index="Channel" value="Acn2"/>
         <FinishTime value="0.51"/>
-        <AutoCastValidatorArray index="0" value="NotAttackingAndNotInCombatWar3"/>
+        <AutoCastValidatorArray value="NotAttackingAndNotInCombatWar3"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="NoEnemiesNearby5"/>
         <TargetSorts>
@@ -2621,6 +2670,7 @@
         <PrepTime value="0.5"/>
         <CastOutroTime value="0.5"/>
         <AutoCastRange value="11"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="NoCripple"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
@@ -2642,6 +2692,7 @@
         <Effect index="0" value="Bcrs"/>
         <Flags index="AllowMovement" value="1"/>
         <AutoCastRange value="13"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="NoCurse"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby8"/>
@@ -2678,7 +2729,6 @@
         <Flags index="BestUnit" value="0"/>
         <Flags index="Transient" value="1"/>
         <Arc value="360"/>
-        <AutoCastValidatorArray index="1" removed="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="Ahea" parent="AW2_EffectTarget">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
@@ -2700,7 +2750,7 @@
             <SortArray value="TSLife"/>
         </TargetSorts>
         <Alignment value="Positive"/>
-        <AutoCastValidatorArray index="1" value="HealingAutoCastTargetFilter"/>
+        <AutoCastValidatorArray value="HealingAutoCastTargetFilter"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <Marker>
             <MismatchFlags index="CasterUnit" value="1"/>
@@ -2770,6 +2820,7 @@
         </TargetSorts>
         <Alignment value="Positive"/>
         <Effect index="0" value="Binf"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="NoInnerFire"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
@@ -2789,7 +2840,7 @@
         <PrepTime value="0.5"/>
         <FinishTime value="0.51"/>
         <Alignment value="Positive"/>
-        <AutoCastValidatorArray index="0" value="DamagedFriendNearBy"/>
+        <AutoCastValidatorArray value="DamagedFriendNearBy"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
         <CastOutroTime value="1"/>
         <AutoCastFilters value="Self,Visible;-"/>
@@ -2807,7 +2858,7 @@
         <FinishTime value="0.51"/>
         <Alignment value="Positive"/>
         <CastOutroTime value="1"/>
-        <AutoCastValidatorArray index="0" value="NotFullManaFriendNearBy"/>
+        <AutoCastValidatorArray value="NotFullManaFriendNearBy"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
@@ -2933,7 +2984,7 @@
         <PrepTime value="0.3"/>
         <CastOutroTime value="0.51"/>
         <AutoCastFilters value="Visible;Neutral"/>
-        <AutoCastValidatorArray index="1" value="noMarkers"/>
+        <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
     </CAbilEffectTarget>
     <!--Stone Form Dur=.5 cast=.7-->
@@ -2988,7 +3039,7 @@
         <Marker>
             <MismatchFlags index="CasterUnit" value="1"/>
         </Marker>
-        <AutoCastValidatorArray index="1" value="noMarkers"/>
+        <AutoCastValidatorArray value="noMarkers"/>
         <Effect index="0" value="AwebMissile"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
@@ -3012,7 +3063,7 @@
         <Effect index="0" value="AensMissile"/>
         <Alignment value="Negative"/>
         <AutoCastRange value="9"/>
-        <AutoCastValidatorArray index="1" value="noMarkers"/>
+        <AutoCastValidatorArray value="noMarkers"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
         </TargetSorts>
@@ -3033,6 +3084,7 @@
         <ProducedUnitArray value="ohwd"/>
         <AutoCastFilters value="Self,Visible;-"/>
         <AutoCastRange value="9"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby7"/>
     </CAbilEffectTarget>
@@ -3047,7 +3099,6 @@
         <Cost index="0">
             <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
-        <AutoCastValidatorArray index="1" removed="1"/>
     </CAbilEffectTarget>
     <!--Lightning Shield Dur=20 HeroDur=20 Buff=Blsh,Blsa-->
     <CAbilEffectTarget id="Alsh" parent="AW2_EffectTarget">
@@ -3060,7 +3111,7 @@
         <CastOutroTime value="1.4"/>
         <Range value="8"/>
         <AutoCastRange value="8"/>
-        <AutoCastValidatorArray index="1" value="NoLightningShield"/>
+        <AutoCastValidatorArray value="NoLightningShield"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby12"/>
         <TargetSorts RequestCount="1">
@@ -3115,7 +3166,7 @@
             <MismatchFlags index="CasterUnit" value="1"/>
         </Marker>
         <UseMarkerArray index="Approach" value="0"/>
-        <AutoCastValidatorArray index="1" value="HealingAutoCastTargetFilter"/>
+        <AutoCastValidatorArray value="HealingAutoCastTargetFilter"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <PrepTime value="0.5"/>
         <CastOutroTime value="0.5"/>
@@ -3149,7 +3200,7 @@
         </TargetSorts>
         <AutoCastFilters value="Visible;Neutral,Enemy"/>
         <AutoCastRange value="8"/>
-        <AutoCastValidatorArray index="1" value="noMarkers"/>
+        <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby6"/>
         <AutoCastValidatorArray value="TargetLifeGT25"/>
     </CAbilEffectTarget>
@@ -3165,6 +3216,7 @@
         <CastOutroTime value="0.5"/>
         <Effect index="0" value="Buhf"/>
         <AutoCastRange value="13"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="TargetLifeGE200"/>
         <AutoCastValidatorArray value="NoUnholyFrenzy"/>
         <AutoCastValidatorArray value="noMarkers"/>
@@ -3188,6 +3240,7 @@
         <CastOutroTime value="0.5"/>
         <Effect index="0" value="Buhf"/>
         <AutoCastRange value="13"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="TargetLifeGE200"/>
         <AutoCastValidatorArray value="NoUnholyFrenzy"/>
         <AutoCastValidatorArray value="noMarkers"/>
@@ -3210,12 +3263,18 @@
         <PrepTime value="0.25"/>
         <FinishTime value="0.8"/>
         <Effect index="0" value="AOws1Search"/>
-        <AutoCastValidatorArray index="0" value="GroundEnemiesNearby2"/>
+        <AutoCastValidatorArray value="GroundEnemiesNearby2"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilBehavior id="Multishot" parent="War3_Passive">
         <CmdButtonArray index="On" Requirements="Multishot"/>
     </CAbilBehavior>
+    <CAbilTrain id="Purchasesrtl" parent="AW2_MakeItem" unit="srtl"/>
+    <CAbilTrain id="Purchasespsh" parent="AW2_MakeItem" unit="spsh"/>
+    <CAbilTrain id="Purchasekgal" parent="AW2_MakeItem" unit="kgal"/>
+    <CAbilTrain id="Purchasehlst" parent="AW2_MakeItem" unit="hlst"/>
+    <CAbilTrain id="Purchasemnst" parent="AW2_MakeItem" unit="mnst"/>
+    <CAbilTrain id="Purchaserwiz" parent="AW2_MakeItem" unit="rwiz"/>
     <CAbilTrain id="Purchaserde0" parent="AW2_MakeItem" unit="rde0"/>
     <CAbilTrain id="Purchaserde1" parent="AW2_MakeItem" unit="rde1"/>
     <CAbilTrain id="Purchaserde2" parent="AW2_MakeItem" unit="rde2"/>
@@ -3452,6 +3511,7 @@
         <Alignment value="Negative"/>
         <Effect index="0" value="Bply"/>
         <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="NoPolymorph"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby6"/>
@@ -3470,6 +3530,7 @@
         <CancelableArray index="Channel" value="1"/>
         <FinishTime value="0.83"/>
         <AutoCastRange value="14"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="NoPossession"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby8"/>
@@ -3496,7 +3557,7 @@
         <AutoCastRange value="8"/>
         <Flags index="WaitToSpend" value="1"/>
         <DefaultError value="MustTargetUnit,Errors/Cantfindcorpse"/>
-        <AutoCastValidatorArray index="0" value="SkeletonsLE96"/>
+        <AutoCastValidatorArray value="SkeletonsLE96"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby7"/>
         <Effect index="0" value="AraiEx"/>
@@ -3519,6 +3580,7 @@
         <Alignment value="Negative"/>
         <Effect index="0" value="Bslo"/>
         <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="NoSlow"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby6"/>

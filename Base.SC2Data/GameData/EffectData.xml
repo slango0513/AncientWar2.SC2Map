@@ -501,8 +501,9 @@
         <Flags index="NoUnscaledDealtBonus" value="1"/>
         <SearchFilters value="-;player,allies,air,wall,tree,Missile,debris,item,structure,ward,dead,Hidden,invulnerable"/>
     </CEffectDamage>
-    <CEffectDamage id="ACfdDamage">
-        <Flags index="Kill" value="1"/>
+    <CEffectDamage id="ACfdDamage" parent="War3_MagicSpellDamage">
+        <EditorCategories value="Race:Demon"/>
+        <VitalFractionMax index="Life" value="1"/>
     </CEffectDamage>
     <CEffectSet id="ACfdImpactSet">
         <EffectArray value="ACfdDummy"/>
@@ -1274,6 +1275,7 @@
         <AreaArray index="0" Radius="0.5" Effect="AUimSearchImpactSet"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="AabrSearch" parent="War3_AuraSearch" aura="Babr"/>
+    <CEffectEnumArea id="AabrItemSearch" parent="War3_AuraSearch" aura="BabrItem"/>
     <CEffectEnumArea id="FlameTowerAuraCasterSearch" parent="War3_AuraSearch" aura="FlameTowerAura">
         <SearchFilters value="structure;neutral,enemies,wall,tree,Missile,debris,item,ward,dead,Hidden"/>
     </CEffectEnumArea>
@@ -1297,6 +1299,7 @@
     <CEffectEnumArea id="HumidityAuraCasterSearch" parent="War3_AuraSearch" aura="HumidityAura"/>
     <CEffectEnumArea id="PressureAuraCasterSearch" parent="War3_AuraSearch" aura="PressureAura"/>
     <CEffectEnumArea id="ObsidianAuraCasterSearch" parent="War3_AuraSearch" aura="ObsidianAura"/>
+    <CEffectEnumArea id="ObsidianAuraItemCasterSearch" parent="War3_AuraSearch" aura="ObsidianAuraItem"/>
     <CEffectEnumArea id="FrostAuraCasterSearch" parent="War3_AuraSearch" aura="FrostAura">
         <SearchFilters value="-;air,wall,tree,Missile,debris,item,ward,dead,Hidden"/>
     </CEffectEnumArea>
@@ -1337,6 +1340,7 @@
         <Amount value="15"/>
     </CEffectDamage>
     <CEffectApplyBehavior id="Babr" parent="War3_AuraBuff"/>
+    <CEffectApplyBehavior id="BabrItem" parent="War3_AuraBuff"/>
     <CEffectApplyBehavior id="FlameTowerAura" parent="War3_AuraBuff"/>
     <CEffectApplyBehavior id="ColdTowerAura" parent="War3_AuraBuff"/>
     <CEffectApplyBehavior id="BoulderTowerAura" parent="War3_AuraBuff"/>
@@ -1355,6 +1359,7 @@
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="PressureAura" parent="War3_AuraBuff"/>
     <CEffectApplyBehavior id="ObsidianAura" parent="War3_AuraBuff"/>
+    <CEffectApplyBehavior id="ObsidianAuraItem" parent="War3_AuraBuff"/>
     <CEffectApplyBehavior id="FrostAura" parent="War3_AuraBuff">
         <Chance value="0.33"/>
         <ValidatorArray value="IsNotDragon"/>
@@ -2144,14 +2149,24 @@
     <CEffectDamage id="ndgt1" parent="AW2_MagicDamage">
         <Amount value="96"/>
     </CEffectDamage>
+    <CEffectCreatePersistent id="ndtb1Multiattack" parent="AW2_Multiattack">
+        <PeriodCount value="2"/>
+        <PeriodicPeriodArray value="0.4"/>
+        <PeriodicEffectArray value="ndtb1LM"/>
+    </CEffectCreatePersistent>
     <CEffectDamage id="ndtb1" parent="AW2_NormalDamage">
-        <Amount value="48"/>
+        <Amount value="36"/>
     </CEffectDamage>
     <CEffectDamage id="ndth1" parent="AW2_MagicDamage">
         <Amount value="24"/>
     </CEffectDamage>
+    <CEffectCreatePersistent id="ndtt1Multiattack" parent="AW2_Multiattack">
+        <PeriodCount value="2"/>
+        <PeriodicPeriodArray value="0.4"/>
+        <PeriodicEffectArray value="ndtt1LM"/>
+    </CEffectCreatePersistent>
     <CEffectDamage id="ndtt1" parent="AW2_NormalDamage">
-        <Amount value="48"/>
+        <Amount value="36"/>
     </CEffectDamage>
     <CEffectDamage id="negt1" parent="AW2_MagicDamage">
         <Amount value="24"/>
