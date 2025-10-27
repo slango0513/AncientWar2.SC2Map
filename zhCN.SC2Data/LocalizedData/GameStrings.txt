@@ -12,6 +12,7 @@ ACcv/Ubertip=发射出一道巨大的能量波，对一线上的敌人造成<d r
 ACen/Ubertip=将敌方的某个空中单位捕获到地面能动弹。被诱捕的空中单位能像地面单位一样遭到攻击。<n/>持续<d ref="Behavior,Bena,Duration"/>秒。
 ACev/Ubertip=给予<d ref="Behavior,AEev1,DamageResponse.Chance * 100"/>%的几率躲避敌人的攻击。
 ACfn/Ubertip=冲击目标单位群，造成<d ref="Effect,AUfnDamage1,Amount"/>点常规伤害和<d ref="Effect,AUfnDamage1,Amount + Effect,AUfnDamage1,AreaArray[0].Bonus"/>点新星伤害。并在<d ref="Effect,AUfn1Dur,Duration"/>秒内减慢他们的攻击和移动速度。
+ACmi/Ubertip=在<d ref="Effect,ACmi1,Duration"/>秒内让该单位对所有魔法免疫。
 ACnr/Tip=生命恢复光环
 ACnr/Ubertip=能加快周围友方单位每秒<d ref="Effect,ACnrHealTick,VitalArray[Life].Change"/>点的生命值恢复速度。
 ACpa/Ubertip=用一个致命的寄生虫折磨目标单位。如果命中单位死亡，一个风蛇将会从尸体上诞生。
@@ -162,6 +163,7 @@ Adef/Ubertip=激活以拥有75%的概率反弹穿刺攻击。如果防御状态�
 Adev/Ubertip=吞噬敌方目标单位，将其慢慢咀嚼，每秒对其造成<d ref="Effect,BdigDPS,Amount"/>点的伤害。在咀嚼目标的过程中，如果遭到杀害，那么它肚中的被吞噬单位就会从中跳出来。
 Advc/Tip=Advc
 Aegr/Ubertip=减少所受的<d ref="1 - Behavior,Aegr,DamageResponse.ModifyFraction * 100"/>%远程伤害。
+Aeib/Name=强化弓
 Aeib/Tip=强化弓
 Aeib/Ubertip=增加弓箭手<d ref="Behavior,Aeib,Modification.RangedWeaponRange"/>的攻击范围。
 Aens/Ubertip=能将一个目标空中单位固定在地面上，使其在<d ref="Behavior,Bena,Duration"/>秒内不能移动。
@@ -430,6 +432,7 @@ DeathTowerAura/Buffubertip=该单位处于死亡之塔光环的作用之下，�
 DeathTowerAura/Name=死亡之塔光环
 DeathTowerAuraCaster/Tip=死亡之塔光环
 DeathTowerAuraCaster/Ubertip=增加所有友方召唤单位<d ref="Behavior,DeathTowerAura,Modification.VitalMaxFractionArray[Life] * 100"/>%的最大生命值。
+Defend/Name=防御
 Defend/Tip=防御
 Defend/Ubertip=激活后只会受到10%的穿刺攻击伤害。如果防御状态被激活，移动速度会变成<d ref="Behavior,Defend,Modification.MoveSpeedMultiplier * 100"/>%的常规速度。
 DefendUn/Tip=停止防御
@@ -439,6 +442,7 @@ DemonFlag/Ubertip=放置恶魔旗帜。
 DemonFlag2/Name=恶魔旗帜
 DemonFlag2/Tip=放置恶魔旗帜(决赛)
 DemonFlag2/Ubertip=放置恶魔旗帜(决赛)。
+DestinyBond/Name=同命
 DestinyBond/Tip=同命
 DestinyBond/Ubertip=与敌人同归于尽。杀死自己的单位将在<d ref="Behavior,DestinyBondBuff,Duration"/>秒后死亡。
 DestinyBondBuff/Buffubertip=该单位受到同命的影响，将在一段时间后死亡。
@@ -667,6 +671,8 @@ DocInfo/PatchNote218=修复技能闪避(伊利丹)无效的漏洞，并且伊利
 DocInfo/PatchNote219=混乱之雨所召唤的地狱火获得新技能魔法防护，数量减少到3个。
 DocInfo/PatchNote220=德莱尼：
 DocInfo/PatchNote221=德莱尼追踪者类单位的生命值减少到100点。
+DocInfo/PatchNote222=恶魔：
+DocInfo/PatchNote223=瓦里玛萨斯获得新技能魔法防护。
 DocInfo/PatchNote224=混乱兽人：
 DocInfo/PatchNote225=修复部分具有吸血效果的技能对机械单位有效的漏洞。
 DocInfo/PatchNote226=人类：
@@ -683,6 +689,8 @@ DocInfo/PatchNote236=末日降临的法力值消耗增加到90点，并且不再
 DocInfo/PatchNote237=德莱尼：
 DocInfo/PatchNote238=火焰吐息不再对建筑有效。
 DocInfo/PatchNote239=黑暗攻击现在产生一个次级虚空行者。
+DocInfo/PatchNote240=提克迪奥斯获得新技能支配光环与魔法防护。
+DocInfo/PatchNote241=空间之门的训练时间增加到20秒。
 DocInfo/PatchNote249=尝试修复特定情况下游戏无法继续的漏洞，所有单位将在未受到伤害180秒后狂怒，伤害与攻击速度提高。
 DocInfo/PatchNote250=所有物品的护甲加成效果提高50%。
 DocInfo/PatchNote251=法力宝石、索比面具与麦酒桶的法力恢复加成效果降低到原来的50%。
@@ -690,12 +698,16 @@ DocInfo/PatchNote252=调整急速手套的价格。
 DocInfo/PatchNote253=调整火拳手套、狂暴者头盔与塞拉希尔的攻击速度加成效果。
 DocInfo/PatchNote254=人类：
 DocInfo/PatchNote255=震荡波经过重新设计。
-DocInfo/PatchNote256=龙：
-DocInfo/PatchNote257=睡眠的施法时间增加到5秒，持续时间缩短到15秒。
-DocInfo/PatchNote258=地精：
-DocInfo/PatchNote259=降低后发制人的效果，并且现在能叠加2层。
-DocInfo/PatchNote260=恶魔：
-DocInfo/PatchNote261=提克迪奥斯获得新技能腐臭蜂群。
+DocInfo/PatchNote256=暗夜精灵：
+DocInfo/PatchNote257=月之女祭司与泰兰德的攻击间歇缩短到1.5秒。
+DocInfo/PatchNote258=龙：
+DocInfo/PatchNote259=睡眠的施法时间增加到5秒，持续时间缩短到15秒。
+DocInfo/PatchNote260=地精：
+DocInfo/PatchNote261=降低后发制人的效果，并且现在能叠加2层。
+DominationAura/Buffubertip=该单位处在支配光环的作用之下，因此其攻击力得到了加强，其法术攻击力得到了增强。
+DominationAura/Name=支配光环
+DominationAuraCaster/Tip=支配光环
+DominationAuraCaster/Ubertip=能增加周围友方召唤单位<d ref="Behavior,DominationAura,Modification.DamageDealtFraction[Melee] * 100" precision="1"/>%的攻击力和<d ref="Behavior,DominationAura,Modification.DamageDealtFraction[Spell] * 100"/>%法术攻击力。
 DoomGuard/Buffubertip=末日守卫强大无比。
 DoomGuard/Name=末日守卫
 DraeneiFlag/Name=德莱尼旗帜
@@ -704,6 +716,7 @@ DraeneiFlag/Ubertip=放置德莱尼旗帜。
 DraeneiFlag2/Name=德莱尼旗帜
 DraeneiFlag2/Tip=放置德莱尼旗帜(决赛)
 DraeneiFlag2/Ubertip=放置德莱尼旗帜(决赛)。
+DraeniStalkerInvisibility/Name=隐形
 DraeniStalkerInvisibility/Tip=隐形
 DraeniStalkerInvisibility/Ubertip=使德莱尼追踪者隐形。<n/>持续<d ref="Behavior,DraeniStalkerInvisibility,Duration"/>秒。
 DragonFlag/Name=龙旗帜
@@ -848,6 +861,7 @@ GoblinFlag/Ubertip=放置地精旗帜。
 GoblinFlag2/Name=地精旗帜
 GoblinFlag2/Tip=放置地精旗帜(决赛)
 GoblinFlag2/Ubertip=放置地精旗帜(决赛)。
+GoblinLandMineInvisibility/Name=隐形
 GoblinLandMineInvisibility/Tip=隐形
 GoblinLandMineInvisibility/Ubertip=使地精地雷隐形。<n/>持续<d ref="Behavior,GoblinLandMineInvisibility,Duration"/>秒。
 Gyrocopter/Name=矮人直升机
@@ -877,6 +891,7 @@ Hlgr/Tip=升级到黑暗骑士
 Hlgr/Ubertip=骑兵，具有冲锋和虔诚光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 HonorShield/Tip=荣誉之盾
 HonorShield/Ubertip=每次攻击地面单位或受到攻击将会提升<d ref="Behavior,HonorShield,Modification.DamageDealtUnscaled[Ranged]"/>点攻击及<d ref="Behavior,HonorShield,Modification.LifeArmorBonus"/>点护甲。
+HonorShieldCaster/Name=荣誉之盾
 Hpal/Tip=训练圣骑士
 Hpal/Ubertip=重型的近战单位，能施放圣光术。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 HumanPhalanxPlaceholder/Name=HumanPreviewer
@@ -1052,7 +1067,7 @@ Param/Value/93A8605D=进阶提示
 Param/Value/A4868C6E=建造奖励
 Param/Value/B3EEA70D= - 
 Param/Value/B744BA58= vs 
-Param/Value/BB55835D=与其他人讨论兵法、分享自己的战术和约战！<n/><c val="FFFF00">玩家交流QQ群：</c>417769011<n/><c val="FFFF00">Facebook：</c>Ancient War Official Group
+Param/Value/BB55835D=与其他人讨论兵法、分享自己的战术和约战！<n/><c val="FFFF00">玩家交流QQ群：</c>417769011<n/><c val="FFFF00">Facebook：</c>Ancient War Official Group<n/><c val="FF00FF">古代战争II第一届冠军赛报名中！</c><n/><c val="FFFF00">时间：</c>4月29/30日/5月1日
 Param/Value/BF89C086=玩家交流
 Param/Value/C201E5C3=玩家
 Param/Value/C7A905FA=夜晚
@@ -1212,21 +1227,21 @@ UserData/CreepUnitTypeData/Table_ArmorType_001=中甲
 UserData/CreepUnitTypeData/Table_WeaponType=普通
 UserData/CreepUnitTypeData/Table_WeaponType_001=穿刺
 Utic/Tip=升级到提克迪奥斯
-Utic/Ubertip=<c val="ffcc00">精英</c><n/>近战型的魔法施放单位，善于控制战场。具有抗性皮肤、混乱之雨和腐臭蜂群技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+Utic/Ubertip=<c val="ffcc00">精英</c><n/>近战型的魔法施放单位，善于控制战场。具有抗性皮肤和支配光环技能，还能施放魔法防护和混乱之雨。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Uvar/Tip=升级到瓦里玛萨斯
-Uvar/Ubertip=<c val="ffcc00">精英</c><n/>近战型的魔法施放单位，善于控制战场。具有抗性皮肤和吸血光环技能，还能施放末日降临。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+Uvar/Ubertip=<c val="ffcc00">精英</c><n/>近战型的魔法施放单位，善于控制战场。具有抗性皮肤和吸血光环技能，还能施放魔法防护和末日降临。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Uwar/Tip=升级到阿克蒙德
 Uwar/Ubertip=<c val="ffcc00">世界精英</c><n/>萨格拉斯的部下，指挥着燃烧军团与泰坦世界为敌。具有抗性皮肤技能，还能开启黑暗之门。<n/><n/><c val="ffcc00">攻击地面和空中单位。</c>
 Variant001/ModeDesc=所有玩家混战，直至一名玩家胜出。
 Variant001/ModeName=混战
 Variant002/ModeDesc=所有玩家混战，直至一名玩家胜出。双种族模式适合对各个种族有所了解到进阶玩家。
-Variant002/ModeName=混战(双种族|无奖励回合)
+Variant002/ModeName=混战|双族|无奖励
 Variant003/ModeDesc=所有玩家混战，直至一名玩家胜出。双种族模式适合对各个种族有所了解到进阶玩家。
-Variant003/ModeName=混战(双种族)
+Variant003/ModeName=混战|双族
 Variant004/ModeDesc=4组2人小队的争斗。双种族模式适合对各个种族有所了解到进阶玩家。
-Variant004/ModeName=2V2V2V2(双种族)
+Variant004/ModeName=双打|双族
 Variant005/ModeDesc=4组2人小队的争斗。双种族模式适合对各个种族有所了解到进阶玩家。
-Variant005/ModeName=2V2V2V2(双种族|无奖励回合)
+Variant005/ModeName=双打|双族|无奖励
 WESTRING_RACE_BLOODELF=血精灵
 WESTRING_RACE_CHAOSORC=混乱兽人
 WESTRING_RACE_DEMON=恶魔
@@ -1412,6 +1427,7 @@ nerw/Ubertip=<c val="ffcc00">精英</c><n/>远程攻击型魔法施放单位，�
 net1/Ubertip=防守型建筑物，射出能量之箭，擅长于对付敌人的空中单位，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 net2/Ubertip=防守型建筑物，擅长于对付敌人的空中单位，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nfac/Tip=建造口袋工厂
+nfacTimeLife/Name=口袋工厂
 nfgl/Tip=升级到血肉傀儡
 nfgl/Ubertip=重型的近战单位，具有分裂攻击和疾病之云技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nfgu/Tip=训练恶魔守卫
@@ -1441,11 +1457,14 @@ ngh1/Ubertip=魔法单位，能施放占据。<n/><n/><c val="ffcc00">能攻击�
 ngir/Tip=训练地精伐木机
 ngir/Ubertip=重型的近战单位，由钢铁做成，擅长采集木材。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ngl2/Name=地精地雷
+ngl2TimeLife/Name=地精地雷
 ngl3/Name=地精地雷
 ngl3/Tip=升级到地精地雷
 ngl3/Ubertip=如果有敌人靠近地雷，则地雷就会自动爆炸从而对一定范围内的单位都造成伤害。具有隐形技能。
+ngl3TimeLife/Name=地精地雷
 nglm/Tip=建造地精地雷
 nglm/Ubertip=如果有敌人靠近地雷，则地雷就会自动爆炸从而对一定范围内的单位都造成伤害。
+nglmTimeLife/Name=地精地雷
 ngno/Ubertip=重型近战单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ngns/Ubertip=轻型远程攻击单位，具有多重射击技能，能射出毒箭。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ngnv/Ubertip=重型近战单位，具有分裂攻击技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
@@ -1483,6 +1502,7 @@ nltc/Ubertip=重型的近战单位，能够召唤潮汐。<n/><n/><c val="ffcc00
 nmed/Tip=升级到麦迪文
 nmgd/Ubertip=重型的近战单位，具有分裂攻击技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nmgr/Ubertip=重型的近战单位，具有分裂攻击技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+nmgvTimeLife/Name=魔法宝库
 nmgw/Ubertip=重型的近战单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nmrv/Tip=升级到鱼人掠夺者
 nmrv/Ubertip=基本的两栖单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
@@ -1521,6 +1541,7 @@ nowk/Tip=升级到狂暴枭兽
 nowk/Ubertip=远程攻击型魔法施放单位，具有战争践踏技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 npgr/Tip=建造能量发生器
 npgr/Ubertip=能加快周围友方单位的法力值恢复速度。
+npgrTimeLife/Name=能量发生器
 nrdk/Tip=训练红色雏龙
 nrdk/Ubertip=远程攻击飞行单位，具有抗性皮肤和火焰吐息技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nrvd/Tip=升级到死亡亡魂

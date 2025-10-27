@@ -634,7 +634,7 @@
         <SearchFilters value="-;player,allies,air,wall,tree,Missile,debris,item,structure,ward,dead,Hidden,invulnerable"/>
     </CEffectDamage>
     <CEffectDamage id="ANrfDamage1">
-        <Amount value="45"/>
+        <Amount value="50"/>
     </CEffectDamage>
     <CEffectSet id="ACch">
         <EffectArray value="BNch"/>
@@ -1385,6 +1385,7 @@
     <CEffectEnumArea id="PressureAuraCasterSearch" parent="War3_AuraSearch" aura="PressureAura"/>
     <CEffectEnumArea id="ObsidianAuraCasterSearch" parent="War3_AuraSearch" aura="ObsidianAura"/>
     <CEffectEnumArea id="ObsidianAuraItemCasterSearch" parent="War3_AuraSearch" aura="ObsidianAuraItem"/>
+    <CEffectEnumArea id="DominationAuraCasterSearch" parent="War3_AuraSearch" aura="DominationAura"/>
     <CEffectEnumArea id="FrostAuraCasterSearch" parent="War3_AuraSearch" aura="FrostAura">
         <SearchFilters value="-;air,wall,tree,Missile,debris,item,ward,dead,Hidden"/>
     </CEffectEnumArea>
@@ -1412,6 +1413,14 @@
     <CEffectCreateHealer id="AheaHeal">
         <RechargeVitalRate value="75"/>
     </CEffectCreateHealer>
+    <CEffectApplyBehavior id="ACmiBase">
+        <EditorCategories value="Race:Demon"/>
+        <Behavior value="ACmi"/>
+        <Flags index="UseDuration" value="1"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ACmi1" parent="ACmiBase">
+        <Duration value="45"/>
+    </CEffectApplyBehavior>
     <CEffectApplyBehavior id="BHds1">
         <Duration value="45"/>
     </CEffectApplyBehavior>
@@ -1445,6 +1454,9 @@
     <CEffectApplyBehavior id="PressureAura" parent="War3_AuraBuff"/>
     <CEffectApplyBehavior id="ObsidianAura" parent="War3_AuraBuff"/>
     <CEffectApplyBehavior id="ObsidianAuraItem" parent="War3_AuraBuff"/>
+    <CEffectApplyBehavior id="DominationAura" parent="War3_AuraBuff">
+        <ValidatorArray value="IsSummonedUnit"/>
+    </CEffectApplyBehavior>
     <CEffectApplyBehavior id="FrostAura" parent="War3_AuraBuff">
         <Chance value="0.33"/>
         <ValidatorArray value="IsNotDragon"/>

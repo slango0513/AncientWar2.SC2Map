@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CActorSimple id="ACmi" parent="War3_SimpleCastAnim"/>
+    <CActorModel id="ACmiTarget" parent="War3_Buff">
+        <HostSiteOps Ops="$overhead"/>
+        <On Terms="Behavior.ACmi.On" Send="Create"/>
+        <On Terms="Behavior.ACmi.Off" Send="Destroy"/>
+    </CActorModel>
     <CActorModel id="FuryBuffSpecial" parent="War3_Buff">
         <HostSiteOps Ops="$hand,right"/>
         <On index="3" Terms="Behavior.FuryBuff.On" Send="Create"/>
@@ -21,12 +27,6 @@
     </CActorUnit>
     <CActorAction id="ushd1" parent="War3_AttackMissileSwapable"/>
     <CActorMissile id="ushd1LM" parent="War3_MissileSwapable" unitName="ushd1LM"/>
-    <CActorModel id="ACmi">
-        <On Terms="Behavior.ACmi.On" Send="Create"/>
-        <On Terms="Behavior.ACmi.Off" Send="Destroy"/>
-        <On Terms="ActorCreation" Send="Create EffectSoundOneShot ManaShieldCastSound"/>
-        <AutoScaleFromSelectionFactor value="1.500000"/>
-    </CActorModel>
     <CActorModel id="BEar">
         <On Terms="Behavior.BEarI.On" Send="Create"/>
         <On Terms="Behavior.BEarI.Off" Send="AnimBracketStop BSD"/>
@@ -4821,6 +4821,15 @@
         <On Terms="Behavior.ObsidianAuraCaster.Off" Send="AnimBracketStop BSD"/>
         <On Terms="Behavior.ObsidianAuraItemCaster.On" Send="Create"/>
         <On Terms="Behavior.ObsidianAuraItemCaster.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorModel id="DominationAura" parent="War3_Buff">
+        <HostSiteOps Ops="$origin"/>
+    </CActorModel>
+    <CActorModel id="DominationAuraTarget" parent="TargetArtX">
+        <HostSiteOps Ops="SOpAttachHarnessSoft SOpShadow" HoldRotation="1"/>
+        <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="Behavior.DominationAuraCaster.On" Send="Create"/>
+        <On Terms="Behavior.DominationAuraCaster.Off" Send="AnimBracketStop BSD"/>
     </CActorModel>
     <CActorModel id="FrostAura" parent="War3_Buff">
         <HostSiteOps Ops="$origin"/>

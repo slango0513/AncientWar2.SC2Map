@@ -1780,12 +1780,14 @@
         <AbilArray Link="DemonInventory"/>
         <AbilArray Link="ANdo"/>
         <AbilArray Link="AUav"/>
+        <AbilArray Link="ACmi"/>
         <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ANdo" Type="AbilCmd" AbilCmd="ANdo,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="AUav" Type="Passive" Behavior="BUav1" Row="2" Column="1"/>
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
-            <LayoutButtons Face="AUav" Type="Passive" Behavior="BUav1" Row="2" Column="2"/>
+            <LayoutButtons Face="ACmi" Type="AbilCmd" AbilCmd="ACmi,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="ANdo" Type="AbilCmd" AbilCmd="ANdo,Execute" Row="2" Column="3"/>
         </CardLayouts>
         <WeaponArray index="1" removed="1"/>
         <Name value="Uvar/Propernames"/>
@@ -2979,20 +2981,15 @@
         <GlossaryCategory value="Unit/Category/DemonUnits"/>
         <AbilArray Link="DemonInventory"/>
         <AbilArray Link="ANrc"/>
-        <AbilArray Link="CarrionSwarmPassive"/>
+        <AbilArray Link="DominationAura"/>
+        <AbilArray Link="ACmi"/>
         <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ANrc" Type="AbilCmd" AbilCmd="ANrc,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="DominationAuraCaster" Type="Passive" Behavior="DominationAuraCaster" Row="2" Column="1"/>
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
-            <LayoutButtons>
-                <Face value="CarrionSwarm"/>
-                <Type value="Passive"/>
-                <AbilCmd value="AOsh,Execute"/>
-                <Behavior value="CarrionSwarmPassive"/>
-                <Row value="2"/>
-                <Column value="2"/>
-            </LayoutButtons>
+            <LayoutButtons Face="ACmi" Type="AbilCmd" AbilCmd="ACmi,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="ANrc" Type="AbilCmd" AbilCmd="ANrc,Execute" Row="2" Column="3"/>
         </CardLayouts>
         <WeaponArray index="1" removed="1"/>
         <Name value="Utic/Propernames"/>

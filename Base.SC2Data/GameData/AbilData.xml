@@ -1715,6 +1715,20 @@
         <AutoCastValidatorArray value="EnemiesNearby5"/>
         <PrepTime value="0.5"/>
     </CAbilEffectInstant>
+    <CAbilEffectInstant id="ACmi" parent="AW2_EffectInstant">
+        <Alignment value="Positive"/>
+        <EditorCategories value="Race:Demon,AbilityorEffectType:Units"/>
+        <Effect index="0" value="ACmi1"/>
+        <Flags index="Transient" value="1"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="120"/>
+        </Cost>
+        <AutoCastFilters value="Self,Visible;-"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+        <AutoCastValidatorArray value="CasterLifeNotFull"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
+        <PrepTime value="0.5"/>
+    </CAbilEffectInstant>
     <CAbilAugment id="AHfaAugment" parent="AW2_AttackAugment">
         <Name value="AHfa/Name"/>
         <Cost>
@@ -2518,6 +2532,9 @@
     </CAbilBehavior>
     <CAbilBehavior id="EfficiencyAura" parent="War3_HeroAura">
         <BehaviorArray value="EfficiencyAuraCaster"/>
+    </CAbilBehavior>
+    <CAbilBehavior id="DominationAura" parent="War3_HeroAura">
+        <BehaviorArray value="DominationAuraCaster"/>
     </CAbilBehavior>
     <CAbilBehavior id="InhibitionAura" parent="War3_HeroAura">
         <BehaviorArray value="InhibitionAuraCaster"/>
@@ -3397,7 +3414,7 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilTrain id="ndkwTrain" parent="War3_Train">
-        <InfoArray index="Train1" Time="15" Effect="BNin360s">
+        <InfoArray index="Train1" Time="20" Effect="BNin360s">
             <Button DefaultButtonFace="ninf">
                 <Flags index="IgnoreUser" value="1"/>
             </Button>
@@ -3405,7 +3422,7 @@
             <Flags index="AutoCast" value="1"/>
             <Flags index="AutoCastOn" value="1"/>
         </InfoArray>
-        <InfoArray index="Train2" Time="15" Effect="DoomGuard360s">
+        <InfoArray index="Train2" Time="20" Effect="DoomGuard360s">
             <Button DefaultButtonFace="nbal">
                 <Flags index="IgnoreUser" value="1"/>
             </Button>
