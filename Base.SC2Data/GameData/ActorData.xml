@@ -1,5 +1,39 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CActorSimple id="ANbr" parent="War3_SimpleCastAnimWcArt"/>
+    <CActorModel id="BNbr" parent="War3_Buff">
+        <HostSiteOps Ops="$overhead"/>
+        <Model value="Broa"/>
+    </CActorModel>
+    <CActorModel id="ANbrCaster" parent="CasterArt">
+        <Model value="AroaCaster"/>
+    </CActorModel>
+    <CActorSimple id="PosteriorStrategy" parent="War3_SimpleCastAnimWcArt"/>
+    <CActorModel id="Posterior" parent="War3_Buff">
+        <HostSiteOps Ops="$overhead"/>
+        <Model value="Bdef"/>
+    </CActorModel>
+    <CActorModel id="PosteriorStrategyCaster" parent="CasterArt">
+        <Model value="AIdaCaster"/>
+    </CActorModel>
+    <CActorModel id="ANpi" parent="War3_Buff">
+        <Model value="BEim"/>
+    </CActorModel>
+    <CActorModel id="AIcf" parent="War3_Buff">
+        <Model value="BEim"/>
+    </CActorModel>
+    <CActorModel id="ANpiSpecial" parent="SpecialArt">
+        <HostSiteOps Ops="$head"/>
+        <On Terms="Effect.ANpiDPS.Start; At Target" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <Model value="BEimSpecial"/>
+    </CActorModel>
+    <CActorModel id="AIcfSpecial" parent="SpecialArt">
+        <HostSiteOps Ops="$head"/>
+        <On Terms="Effect.AIcfDPS.Start; At Target" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <Model value="BEimSpecial"/>
+    </CActorModel>
     <CActorSimple id="ACt2" parent="War3_SimpleCastAnimWcArt">
         <On index="0" Terms="Abil.ACt2.SourcePrepStart" Target="_Selectable" Send="AnimPlay spell Spell,Slam NonLooping -1.000000 -1.000000 1.000000 AsTimeScaleAbsolute"/>
     </CActorSimple>
@@ -45,6 +79,26 @@
     </CActorModel>
     <CActorSound id="MoraleBoostingSearch" parent="SoundOneShot">
         <On Terms="Effect.MoraleBoostingSearch.Start" Send="Create"/>
+    </CActorSound>
+    <!--rexxar-->
+    <CActorUnit id="Orex" parent="War3_Army" unitSound="Beastmaster" unitName="Orex" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnBeastmaster.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnBeastmaster.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnBeastmaster.dds"/>
+        <BarWidth value="100"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar120"/>
+        <BarOffset value="90"/>
+        <WalkAnimMoveSpeed value="2.5"/>
+    </CActorUnit>
+    <CActorModel id="ShieldWall" parent="War3_Buff">
+        <HostSiteOps Ops="$overhead"/>
+        <Model value="Bdef"/>
+    </CActorModel>
+    <CActorSound id="ShieldWallSound" parent="SoundOneShot">
+        <On Terms="Effect.ShieldWall.Start" Send="Create"/>
+        <Sound value="ManaShieldCastSound"/>
     </CActorSound>
     <CActorSimple id="WindWalk" parent="War3_AbilSoundOnly" effectsound="WindWalk"/>
     <CActorModel id="AgydSpecial1" parent="SpecialArt"/>
@@ -2008,7 +2062,7 @@
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
     <!--stonemaulmagi-->
-    <CActorUnit id="nogn" parent="War3_Army" unitSound="Ogre" unitName="nogn" defType="LARGE">
+    <CActorUnit id="nogn" parent="War3_Army" unitSound="Ogre" unitName="nogn" defType="NONE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnOgreMagi.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnOgreMagi.dds"/>
@@ -2021,7 +2075,7 @@
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <!--stonemaulogre-->
-    <CActorUnit id="nogo" parent="War3_Army" unitSound="OgreOneHead" unitName="nogo" defType="LARGE">
+    <CActorUnit id="nogo" parent="War3_Army" unitSound="OgreOneHead" unitName="nogo" defType="NONE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnOneHeadedOgre.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnOneHeadedOgre.dds"/>
@@ -2034,7 +2088,7 @@
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <!--ogre1-->
-    <CActorUnit id="nogr" parent="War3_Army" unitSound="Ogre" unitName="nogr" defType="LARGE">
+    <CActorUnit id="nogr" parent="War3_Army" unitSound="Ogre" unitName="nogr" defType="NONE">
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar80"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnOgre.dds"/>
         <GroupIcon>
@@ -2046,7 +2100,7 @@
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <!--ogremagi-->
-    <CActorUnit id="nomg" parent="War3_Army" unitSound="Ogre" unitName="nomg" defType="LARGE">
+    <CActorUnit id="nomg" parent="War3_Army" unitSound="Ogre" unitName="nomg" defType="NONE">
         <On Terms="ActorCreation" Send="SetTintColor 255,255,150"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnOgreMagi.dds"/>
         <GroupIcon>

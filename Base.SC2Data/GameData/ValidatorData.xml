@@ -159,8 +159,7 @@
         <AbilLink value="DragonInventory"/>
         <AbilCmdIndex value="2"/>
     </CValidatorUnitOrder>
-    <CValidatorLocationCompareCliffLevel id="CasterCliffLevelEqualOrLesser">
-        <Compare value="LE"/>
+    <CValidatorLocationCompareCliffLevel id="CasterCliffLevelEqual">
         <WhichLocation Value="TargetUnit"/>
         <OtherLocation Value="CasterUnit"/>
     </CValidatorLocationCompareCliffLevel>
@@ -184,6 +183,9 @@
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NoBNta">
         <Behavior value="BNta"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoLightningShield">
+        <Behavior value="Blsh"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NoCloudOfFog">
         <Behavior value="Bclf"/>
@@ -357,7 +359,7 @@
             <Compare value="GT"/>
             <Count value="0"/>
             <Radius value="5"/>
-            <Validator value="CasterCliffLevelEqualOrLesser"/>
+            <Validator value="CasterCliffLevelEqual"/>
         </AreaArray>
     </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="CliffLevelEqualOrLesserEnemiesNearby15" parent="AW2_EnemiesNearby">
@@ -365,7 +367,7 @@
             <Compare value="GT"/>
             <Count value="0"/>
             <Radius value="15"/>
-            <Validator value="CasterCliffLevelEqualOrLesser"/>
+            <Validator value="CasterCliffLevelEqual"/>
         </AreaArray>
     </CValidatorLocationEnumArea>
     <CValidatorUnitCompareField id="IsRangedUnit">

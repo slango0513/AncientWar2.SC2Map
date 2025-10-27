@@ -65,6 +65,38 @@
         </TargetSorts>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CEffectEnumArea>
+    <CEffectEnumArea id="ANbrSearch" parent="War3_AbilSearch">
+        <AreaArray Radius="7.0312" Effect="BNbr"/>
+        <SearchFilters value="-;neutral,enemies,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="ANpiSearch" parent="War3_AbilSearchRadiusExt">
+        <AreaArray Radius="1.25" Effect="ANpiDPS"/>
+        <SearchFilters value="-;player,allies,air,mechanical,wall,tree,debris,item,structure,ward,dead,Hidden,invulnerable,Passive,immunity"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="AIcfSearch" parent="War3_AbilSearchRadiusExt">
+        <AreaArray Radius="1.25" Effect="AIcfDPS"/>
+        <SearchFilters value="-;player,allies,air,mechanical,wall,tree,debris,item,structure,ward,dead,Hidden,invulnerable,Passive,immunity"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="BNbr" parent="War3_ApplyBuff"/>
+    <CEffectEnumArea id="BlshSearch">
+        <SearchFilters value="-;player,allies,air,wall,tree,Missile,debris,item,structure,ward,dead,Hidden,invulnerable,Passive"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="Orex1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="Posterior" parent="War3_ApplyBuff"/>
+    <CEffectSet id="PosteriorStrategySet">
+        <EffectArray value="Posterior"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="RemoveBlsh">
+        <BehaviorLink value="Blsh"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="ShieldWall" parent="War3_ApplyBuff">
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
     <CEffectEnumArea id="SubmergeTeleportSearch">
         <SearchFilters value="-;player,allies,air,wall,tree,Missile,debris,item,structure,ward,dead,Hidden,invulnerable"/>
         <AreaArray Radius="11" Effect="SubmergeTeleport"/>
@@ -74,7 +106,7 @@
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <MaxCount value="1"/>
-        <ValidatorArray value="CasterCliffLevelEqualOrLesser"/>
+        <ValidatorArray value="CasterCliffLevelEqual"/>
         <ImpactLocation Value="CasterUnit"/>
     </CEffectEnumArea>
     <CEffectSet id="SubmergeTeleportDummy"/>
@@ -150,7 +182,13 @@
         <AreaArray index="1" removed="1"/>
     </CEffectDamage>
     <CEffectDamage id="BEimDPS1">
-        <Amount value="15"/>
+        <Amount value="20"/>
+    </CEffectDamage>
+    <CEffectDamage id="AIcfDPS" parent="War3_MagicSpellDamage">
+        <Amount value="10"/>
+    </CEffectDamage>
+    <CEffectDamage id="ANpiDPS" parent="War3_MagicSpellDamage">
+        <Amount value="20"/>
     </CEffectDamage>
     <CEffectApplyBehavior id="BNbf">
         <ValidatorArray index="2" removed="1"/>
@@ -500,7 +538,8 @@
     </CEffectCreatePersistent>
     <!--Cannibalize Dur=33 HeroDur=33-->
     <CEffectCreateHealer id="Acan">
-        <RechargeVitalRate value="20"/>
+        <RechargeVitalRate value="30"/>
+        <RechargeVitalMax value="300"/>
     </CEffectCreateHealer>
     <CEffectModifyUnit id="AoarHealTick">
         <VitalArray index="Life" ChangeFraction="0.015"/>
@@ -703,6 +742,10 @@
         </TargetSorts>
         <MinCount value="1"/>
         <MaxCount value="36"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="PosteriorStrategySearch" parent="War3_AbilSearch">
+        <SearchFilters value="-;neutral,enemies,wall,tree,Missile,debris,item,dead"/>
+        <AreaArray Radius="500" Effect="PosteriorStrategySet"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="SoulBurnSearch" parent="War3_AbilSearch">
         <SearchFilters value="-;player,allies,Structure,wall,tree,Missile,debris,item,ward,dead,Hidden,invulnerable,immunity"/>
@@ -995,9 +1038,17 @@
     <CEffectDamage id="BNab1DPS">
         <Amount value="10"/>
     </CEffectDamage>
+    <CEffectModifyUnit id="BNab1DPSTick">
+        <EditorCategories value="Race:Goblin"/>
+        <VitalArray index="Life" ChangeFraction="-0.01"/>
+    </CEffectModifyUnit>
     <CEffectDamage id="BNabS1DPS">
         <Amount value="5"/>
     </CEffectDamage>
+    <CEffectModifyUnit id="BNabS1DPSTick">
+        <EditorCategories value="Race:Goblin"/>
+        <VitalArray index="Life" ChangeFraction="-0.005"/>
+    </CEffectModifyUnit>
     <CEffectApplyBehavior id="BreathOfFire" parent="War3_ApplyBuff">
         <EditorCategories value="Race:Dragon"/>
     </CEffectApplyBehavior>
@@ -1222,6 +1273,7 @@
     </CEffectEnumArea>
     <CEffectCreateHealer id="Acn2">
         <RechargeVitalRate value="100"/>
+        <RechargeVitalMax value="1500"/>
     </CEffectCreateHealer>
     <CEffectDamage id="AfshSphereEffect">
         <AreaArray index="0" Radius="1.9531" Bonus="12" Fraction="1"/>
@@ -1335,9 +1387,6 @@
     <CEffectApplyBehavior id="BIpv" parent="War3_ApplyBuff">
         <WhichUnit Value="Caster"/>
     </CEffectApplyBehavior>
-    <CEffectDamage id="BlshDPS">
-        <Amount value="10"/>
-    </CEffectDamage>
     <CEffectDamage id="CountUnitRemove">
         <Flags index="Kill" value="1"/>
         <Flags index="NoBehaviorResponse" value="1"/>
@@ -2620,11 +2669,11 @@
     </CEffectDamage>
     <CEffectDamage id="nogo1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
-        <Amount value="48"/>
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="nogr1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
-        <Amount value="48"/>
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="nomg1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>

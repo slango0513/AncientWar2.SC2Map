@@ -1448,6 +1448,29 @@
         <BehaviorArray Link="Previewer"/>
         <Footprint value="Previewer"/>
     </CUnit>
+    <!--Rexxar-->
+    <CUnit id="Orex" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="lumber" value="3000"/>
+        <KillResource index="Custom" value="150"/>
+        <BehaviorArray Link="War3_PowerfulMob"/>
+        <LifeStart value="2700"/>
+        <LifeMax value="2700"/>
+        <Speed value="2"/>
+        <Race value="Goblin"/>
+        <Mover value="foot"/>
+        <AbilArray Link="GoblinInventory"/>
+        <AbilArray Link="PosteriorStrategy"/>
+        <AbilArray Link="ANbr"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="PosteriorStrategy" Type="AbilCmd" AbilCmd="PosteriorStrategy,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="ANbr" Type="AbilCmd" AbilCmd="ANbr,Execute" Row="2" Column="1"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/GoblinUnits"/>
+        <WeaponArray index="1" removed="1"/>
+        <Name value="Orex/Propernames"/>
+    </CUnit>
     <!--HeroShadowHunter-->
     <CUnit id="Oshd" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
@@ -3224,8 +3247,8 @@
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="30"/>
         <KillResource index="Custom" value="15"/>
-        <LifeStart value="500"/>
-        <LifeMax value="500"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
         <Speed value="2"/>
         <Race value="Human"/>
         <Mover value="foot"/>
@@ -3348,8 +3371,8 @@
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="90"/>
         <KillResource index="Custom" value="15"/>
-        <LifeStart value="500"/>
-        <LifeMax value="500"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
         <Speed value="2"/>
         <Race value="Human"/>
         <Mover value="foot"/>
@@ -3358,6 +3381,7 @@
         <CardLayouts index="0">
             <LayoutButtons Face="Adef" Type="AbilCmd" AbilCmd="Adef,On" Row="2" Column="0"/>
             <LayoutButtons Face="AdefUn" Type="AbilCmd" AbilCmd="Adef,Off" Row="2" Column="0"/>
+            <LayoutButtons Face="ShieldWall" Type="Passive" Behavior="ShieldWallPassive" Row="2" Column="1"/>
         </CardLayouts>
         <Radius value="0.375"/>
         <MinimapRadius value="0.375"/>
@@ -3371,6 +3395,7 @@
         <GlossaryWeakArray value="hsor"/>
         <GlossaryWeakArray value="nhym"/>
         <GlossaryWeakArray value="unec"/>
+        <BehaviorArray Link="ShieldWallPassive"/>
     </CUnit>
     <!--Knight-->
     <CUnit id="hkni" parent="AW2_Army" defType="SMALL">
@@ -3739,8 +3764,8 @@
         <Attributes index="medium" value="1"/>
         <CostResource index="gold" value="90"/>
         <KillResource index="Custom" value="15"/>
-        <LifeStart value="500"/>
-        <LifeMax value="500"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
         <Speed value="2"/>
         <Race value="BloodElf"/>
         <Mover value="foot"/>
@@ -4137,8 +4162,8 @@
         <Attributes index="medium" value="1"/>
         <CostResource index="gold" value="30"/>
         <KillResource index="Custom" value="15"/>
-        <LifeStart value="500"/>
-        <LifeMax value="500"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
         <Speed value="2"/>
         <Race value="BloodElf"/>
         <Mover value="foot"/>
@@ -4329,6 +4354,7 @@
             <LayoutButtons Face="ngsp" Type="AbilCmd" AbilCmd="GoblinBuild,Build4" Row="2" Column="2"/>
             <LayoutButtons Face="nogn" Type="AbilCmd" AbilCmd="GoblinBuild,Build10" Row="2" Column="3"/>
             <LayoutButtons Face="nzep" Type="AbilCmd" AbilCmd="GoblinBuild,Build12" Row="1" Column="1"/>
+            <LayoutButtons Face="Orex" Type="AbilCmd" AbilCmd="GoblinBuild,Build13" Row="0" Column="4"/>
         </CardLayouts>
         <CardLayouts index="2" CardId="Purc">
             <LayoutButtons Face="Purchasefrhg" Type="AbilCmd" AbilCmd="Purchasefrhg,Train1" Row="2" Column="0"/>
@@ -6286,8 +6312,8 @@
         <GlossaryCategory value="Unit/Category/GoblinUnits"/>
     </CUnit>
     <!--Stonemaul Magi-->
-    <CUnit id="nogn" parent="AW2_Army" defType="LARGE">
-        <Attributes index="large" value="1"/>
+    <CUnit id="nogn" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
         <CostResource index="gold" value="60"/>
         <KillResource index="Custom" value="30"/>
         <LifeStart value="600"/>
@@ -6298,9 +6324,11 @@
         <AbilArray Link="GoblinInventory"/>
         <AbilArray Link="UpgradeTonomg"/>
         <AbilArray Link="ACbb"/>
+        <AbilArray Link="Alsh"/>
         <CardLayouts index="0">
             <LayoutButtons Face="nomg" Type="AbilCmd" AbilCmd="UpgradeTonomg,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="ACbb" Type="AbilCmd" AbilCmd="ACbb,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Alsh" Type="AbilCmd" AbilCmd="Alsh,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="ACbb" Type="AbilCmd" AbilCmd="ACbb,Execute" Row="2" Column="1"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/GoblinUnits"/>
@@ -6308,44 +6336,50 @@
         <EnergyMax value="60"/>
     </CUnit>
     <!--Stonemaul Ogre-->
-    <CUnit id="nogo" parent="AW2_Army" defType="LARGE">
-        <Attributes index="large" value="1"/>
-        <CostResource index="gold" value="60"/>
-        <KillResource index="Custom" value="30"/>
-        <LifeStart value="1200"/>
-        <LifeMax value="1200"/>
+    <CUnit id="nogo" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="75"/>
+        <KillResource index="Custom" value="75"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
         <Speed value="2"/>
         <Race value="Goblin"/>
         <Mover value="foot"/>
         <AbilArray Link="GoblinInventory"/>
         <AbilArray Link="UpgradeTonogr"/>
+        <AbilArray Link="ACen"/>
+        <BehaviorArray Link="Ansk"/>
         <CardLayouts index="0">
             <LayoutButtons Face="nogr" Type="AbilCmd" AbilCmd="UpgradeTonogr,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Ansk" Type="Passive" Behavior="Ansk" Row="2" Column="0"/>
+            <LayoutButtons Face="ACen" Type="AbilCmd" AbilCmd="ACen,0" Row="2" Column="1"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/GoblinUnits"/>
     </CUnit>
     <!--Ogre Warrior-->
-    <CUnit id="nogr" parent="AW2_Army" defType="LARGE">
-        <Attributes index="large" value="1"/>
-        <CostResource index="gold" value="180"/>
-        <KillResource index="Custom" value="30"/>
-        <LifeStart value="1200"/>
-        <LifeMax value="1200"/>
+    <CUnit id="nogr" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="225"/>
+        <KillResource index="Custom" value="75"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
         <Speed value="2"/>
         <Race value="Goblin"/>
         <Mover value="foot"/>
         <AbilArray Link="GoblinInventory"/>
         <AbilArray Link="ACen"/>
+        <BehaviorArray Link="Ansk"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ACen" Type="AbilCmd" AbilCmd="ACen,0" Row="2" Column="0"/>
+            <LayoutButtons Face="Ansk" Type="Passive" Behavior="Ansk" Row="2" Column="0"/>
+            <LayoutButtons Face="ACen" Type="AbilCmd" AbilCmd="ACen,0" Row="2" Column="1"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/GoblinUnits"/>
     </CUnit>
     <!--ogre magi-->
-    <CUnit id="nomg" parent="AW2_Army" defType="LARGE">
-        <Attributes index="large" value="1"/>
+    <CUnit id="nomg" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
         <CostResource index="gold" value="180"/>
         <KillResource index="Custom" value="30"/>
         <LifeStart value="600"/>
@@ -6354,9 +6388,11 @@
         <Race value="Goblin"/>
         <Mover value="foot"/>
         <AbilArray Link="GoblinInventory"/>
+        <AbilArray Link="Alsh"/>
         <AbilArray Link="ANab"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ANab" Type="AbilCmd" AbilCmd="ANab,0" Row="2" Column="0"/>
+            <LayoutButtons Face="Alsh" Type="AbilCmd" AbilCmd="Alsh,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="ANab" Type="AbilCmd" AbilCmd="ANab,0" Row="2" Column="1"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/GoblinUnits"/>
@@ -8086,13 +8122,13 @@
     </CUnit>
     <!--PH Change End-->
     <CUnit id="ughoCorpseGravy" parent="ugho">
-        <LifeStart value="200"/>
-        <LifeMax value="200"/>
+        <LifeStart value="300"/>
+        <LifeMax value="300"/>
     </CUnit>
     <!--PH Change-->
     <CUnit id="ughoHarvesting" parent="ugho">
-        <LifeStart value="200"/>
-        <LifeMax value="200"/>
+        <LifeStart value="300"/>
+        <LifeMax value="300"/>
     </CUnit>
     <!--GargoyleMorphed-->
     <CUnit id="ugrm" parent="AW2_Sationary" defType="NONE">

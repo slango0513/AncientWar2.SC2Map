@@ -226,7 +226,7 @@
         <EditorCategories value="Race:Demon,AbilityorEffectType:Units"/>
         <Cost index="0">
             <Vital index="Energy" value="60"/>
-            <Cooldown Location="Unit" TimeUse="6"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <Range value="6"/>
         <Alignment value="Negative"/>
@@ -237,7 +237,7 @@
         <CastOutroTime value="6"/>
         <TargetFilters index="0" value="-;player,allies,air,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <TargetSorts RequestCount="1">
-            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSLife"/>
             <SortArray value="TSKillResourceCustomLargestFirst"/>
             <SortArray value="TSRandom"/>
         </TargetSorts>
@@ -587,8 +587,8 @@
         <EditorCategories value="Race:Creeps,AbilityorEffectType:Units"/>
         <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <Cost index="0">
-            <Vital index="Energy" value="15"/>
-            <Cooldown Location="Unit" TimeUse="15"/>
+            <Vital index="Energy" value="30"/>
+            <Cooldown Location="Unit" TimeUse="30"/>
         </Cost>
         <Range value="6"/>
         <PrepTime value="0.4"/>
@@ -903,7 +903,6 @@
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <TargetFilters index="0" value="-;air,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,invulnerable"/>
-        <PostEffectBehavior Behavior="AEblTempInvulnerable" Count="1"/>
     </CAbilEffectTarget>
     <CAbilBuild id="AEbu" parent="War3_Build">
         <EditorCategories value="Race:Nightelf,AbilityorEffectType:Units"/>
@@ -1515,6 +1514,9 @@
         <InfoArray index="Build12" Unit="nzep">
             <Button DefaultButtonFace="nzep" Requirements="BuildArmy"/>
         </InfoArray>
+        <InfoArray index="Build13" Unit="Orex">
+            <Button DefaultButtonFace="Orex" Requirements="BuildArmyFinal"/>
+        </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
     <!--Paladin - Devotion Aura Buff=BHad-->
@@ -1692,6 +1694,29 @@
         <PrepTime value="3"/>
         <CastOutroTime value="1.08"/>
         <Effect index="0" value="SleepSearch"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="ANbr" parent="AW2_EffectInstant">
+        <EditorCategories value="Race:Goblin,AbilityorEffectType:Units"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeStart="15" TimeUse="120"/>
+        </Cost>
+        <AutoCastFilters value="Self,Visible;-"/>
+        <AutoCastValidatorArray index="0" removed="1"/>
+        <PrepTime value="0.5"/>
+        <CastOutroTime value="1.17"/>
+        <Alignment value="Positive"/>
+        <Effect index="0" value="ANbrSearch"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="PosteriorStrategy" parent="AW2_EffectInstant">
+        <EditorCategories value="Race:Goblin,AbilityorEffectType:Units"/>
+        <Effect index="0" value="PosteriorStrategySearch"/>
+        <Cost index="0">
+            <Charge CountMax="1" CountStart="1" CountUse="1"/>
+        </Cost>
+        <AutoCastFilters value="Self,Visible;-"/>
+        <AutoCastValidatorArray index="0" removed="1"/>
+        <PrepTime value="0.3"/>
+        <CastOutroTime value="1.08"/>
     </CAbilEffectInstant>
     <CAbilAugment id="ANbaAugment" parent="AW2_AttackAugment">
         <Name value="ANba/Name"/>
@@ -1899,7 +1924,7 @@
         <Effect index="0" value="AroaSearch"/>
         <Alignment value="Positive"/>
         <Flags index="BestUnit" value="1"/>
-        <AutoCastValidatorArray value="EnemiesNearby5"/>
+        <AutoCastValidatorArray index="0" value="EnemiesNearby5"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <CAbilAugment id="BladeMasterSlamControl" parent="AW2_AttackAugment">
@@ -1992,11 +2017,11 @@
             <Vital index="Energy" value="60"/>
             <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
-        <Range value="27"/>
+        <Range value="36"/>
         <PrepTime value="0.75"/>
         <CastOutroTime value="0.51"/>
         <Effect index="0" value="BNdo"/>
-        <AutoCastRange value="27"/>
+        <AutoCastRange value="36"/>
         <AutoCastValidatorArray index="1" value="EnemiesNearby5"/>
         <AutoCastValidatorArray value="NoDoom"/>
         <AutoCastValidatorArray value="noMarkers"/>
@@ -2580,7 +2605,7 @@
         <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
         <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="30"/>
+            <Cooldown Location="Unit" TimeUse="15"/>
         </Cost>
         <Range value="14"/>
         <PrepTime value="0.5"/>
@@ -3008,17 +3033,25 @@
         <AutoCastValidatorArray index="1" removed="1"/>
     </CAbilEffectTarget>
     <!--Lightning Shield Dur=20 HeroDur=20 Buff=Blsh,Blsa-->
-    <CAbilEffectTarget id="Alsh">
-        <CmdButtonArray index="Execute" Requirements="">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
-        <CmdButtonArray index="Cancel">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
+    <CAbilEffectTarget id="Alsh" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Goblin,AbilityorEffectType:Unit"/>
+        <TargetFilters index="0" value="-;neutral,enemies,air,wall,tree,debris,item,structure,ward,dead,immunity"/>
         <Cost index="0">
-            <Vital index="Energy" value="0"/>
-            <Cooldown Location="Unit" TimeUse="30"/>
+            <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
+        <PrepTime value="0.6"/>
+        <CastOutroTime value="1.4"/>
+        <Range value="8"/>
+        <AutoCastRange value="8"/>
+        <AutoCastValidatorArray index="1" value="NoLightningShield"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastValidatorArray value="EnemiesNearby12"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSLife"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
+        </TargetSorts>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
+        <Effect index="0" value="Blsh"/>
     </CAbilEffectTarget>
     <CAbilBehavior id="Amdf" parent="AW2_Toggle">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
@@ -3223,7 +3256,7 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilTrain id="ndkwTrain" parent="War3_Train">
-        <InfoArray index="Train1" Time="15">
+        <InfoArray index="Train1" Time="10">
             <Button DefaultButtonFace="ninf">
                 <Flags index="IgnoreUser" value="1"/>
             </Button>
@@ -3231,7 +3264,7 @@
             <Flags index="AutoCast" value="1"/>
             <Flags index="AutoCastOn" value="1"/>
         </InfoArray>
-        <InfoArray index="Train2" Time="15">
+        <InfoArray index="Train2" Time="10">
             <Button DefaultButtonFace="nbal">
                 <Flags index="IgnoreUser" value="1"/>
             </Button>
