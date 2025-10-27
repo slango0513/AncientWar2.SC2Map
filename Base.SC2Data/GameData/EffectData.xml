@@ -91,7 +91,9 @@
     <CEffectLaunchMissile id="dtt21LM" parent="War3_Missile" weaponid="dtt21"/>
     <CEffectApplyBehavior id="BOacI" parent="War3_AuraBuff"/>
     <CEffectApplyBehavior id="BUavI" parent="War3_AuraBuff"/>
-    <CEffectEnumArea id="AIavSearch" parent="War3_AuraSearch" aura="BUavI"/>
+    <CEffectEnumArea id="AIavSearch" parent="War3_AuraSearch" aura="BUavI">
+        <SearchFilters value="-;neutral,enemies,mechanical,wall,tree,Missile,debris,item,structure,ward,dead,Hidden"/>
+    </CEffectEnumArea>
     <CEffectEnumArea id="AIacSearch" parent="War3_AuraSearch" aura="BOacI"/>
     <CEffectEnumArea id="AIabSearch" parent="War3_AuraSearch" aura="BHabI"/>
     <CEffectEnumArea id="AIarSearch" parent="War3_AuraSearch" aura="BEarI"/>
@@ -340,7 +342,7 @@
         <Name value="Effect/Name/TimedLifeFateTower"/>
     </CEffectDamage>
     <CEffectModifyUnit id="War3_MissileHigherGroundMiss">
-        <Chance value="0.67"/>
+        <Chance value="0.33"/>
     </CEffectModifyUnit>
     <CEffectDamage id="nbt11" parent="AW2_SiegeDamage">
         <Amount value="144"/>
