@@ -56,6 +56,37 @@
             <StateFlags index="SuppressLifeRegen" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="BHtb">
+        <Duration value="10"/>
+        <DurationOverride index="0" Duration="5">
+            <ValidatorArray index="0" value="Hero"/>
+        </DurationOverride>
+    </CBehaviorBuff>
+    <!--ThunderClap-->
+    <CBehaviorBuff id="BHtc">
+        <Duration value="30"/>
+        <DurationOverride index="0" Duration="15">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+    </CBehaviorBuff>
+    <!--BreathOfFire-->
+    <CBehaviorBuff id="BNbf">
+        <Duration value="6"/>
+        <DurationOverride index="0" Duration="3">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+    </CBehaviorBuff>
+    <!--HowlOfTerror-->
+    <CBehaviorBuff id="BNht">
+        <Modification>
+            <DamageDealtFraction index="Melee" value="-0.5"/>
+            <DamageDealtFraction index="Ranged" value="-0.5"/>
+        </Modification>
+        <Duration value="30"/>
+        <DurationOverride index="0" Duration="30">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+    </CBehaviorBuff>
     <!--PoisonAttackStackInfo-->
     <CBehaviorBuff id="Bpsi">
         <Duration value="6"/>
@@ -505,17 +536,80 @@
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnanimalwartraining.dds"/>
         <DisplayDuration index="Self" value="1"/>
         <DisplayDuration index="Ally" value="1"/>
-        <Duration value="3"/>
-        <DurationOverride index="0" Duration="3">
+        <Duration value="2"/>
+        <DurationOverride index="0" Duration="2">
             <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
         </DurationOverride>
         <Period value="0.0625"/>
         <PeriodicEffect value="ChargeKnightSearch"/>
-        <Modification MoveSpeedMultiplier="1.25" WeaponRange="-500"/>
+        <Modification MoveSpeedMultiplier="1.5" WeaponRange="-500">
+            <AbilClassDisableArray index="CAbilEffectInstant" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
+        </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="ChargingKnightRemover" parent="War3_Buff">
+    <CBehaviorBuff id="ChargingMammoth" parent="War3_Buff">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnanimalwartraining.dds"/>
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <Duration value="2"/>
+        <DurationOverride index="0" Duration="2">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="ChargeMammothSearch"/>
+        <Modification MoveSpeedMultiplier="1.5" WeaponRange="-500">
+            <AbilClassDisableArray index="CAbilEffectInstant" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ChargingMagnataur" parent="War3_Buff">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnanimalwartraining.dds"/>
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <Duration value="2"/>
+        <DurationOverride index="0" Duration="2">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="ChargeMagnataurSearch"/>
+        <Modification MoveSpeedMultiplier="1.5" WeaponRange="-500">
+            <AbilClassDisableArray index="CAbilEffectInstant" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ChargingCentaur" parent="War3_Buff">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnanimalwartraining.dds"/>
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <Duration value="2"/>
+        <DurationOverride index="0" Duration="2">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="ChargeCentaurSearch"/>
+        <Modification MoveSpeedMultiplier="1.5" WeaponRange="-500">
+            <AbilClassDisableArray index="CAbilEffectInstant" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ChargingKnightRemover">
         <Duration value="0.0625"/>
         <ExpireEffect value="ChargingKnightRemover"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ChargingMammothRemover">
+        <Duration value="0.0625"/>
+        <ExpireEffect value="ChargingMammothRemover"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ChargingMagnataurRemover">
+        <Duration value="0.0625"/>
+        <ExpireEffect value="ChargingMagnataurRemover"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ChargingCentaurRemover">
+        <Duration value="0.0625"/>
+        <ExpireEffect value="ChargingCentaurRemover"/>
         <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="MoraleBoosting" parent="War3_Buff">
@@ -527,7 +621,7 @@
             <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
         </DurationOverride>
         <Modification>
-            <DamageDealtFraction index="Spell" value="0.5"/>
+            <DamageDealtFraction index="Spell" value="0.25"/>
             <DamageDealtFraction index="Melee" value="0.25"/>
             <DamageDealtFraction index="Ranged" value="0.25"/>
         </Modification>
@@ -543,9 +637,57 @@
             <ModifyFlags index="DisableAbils" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="ChargeMammothStun" parent="War3_Buff">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnanimalwartraining.dds"/>
+        <BehaviorCategories index="Stun" value="1"/>
+        <Duration value="1"/>
+        <DurationOverride index="0" Duration="0.5">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Modification>
+            <ModifyFlags index="DisableAbils" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ChargeMagnataurStun" parent="War3_Buff">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnanimalwartraining.dds"/>
+        <BehaviorCategories index="Stun" value="1"/>
+        <Duration value="1"/>
+        <DurationOverride index="0" Duration="0.5">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Modification>
+            <ModifyFlags index="DisableAbils" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ChargeCentaurStun" parent="War3_Buff">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnanimalwartraining.dds"/>
+        <BehaviorCategories index="Stun" value="1"/>
+        <Duration value="1"/>
+        <DurationOverride index="0" Duration="0.5">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Modification>
+            <ModifyFlags index="DisableAbils" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="ChargeKnightController">
         <Duration value="2.375"/>
         <InitialEffect value="ChargeKnightHeight"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ChargeMammothController">
+        <Duration value="2.375"/>
+        <InitialEffect value="ChargeMammothHeight"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ChargeMagnataurController">
+        <Duration value="2.375"/>
+        <InitialEffect value="ChargeMagnataurHeight"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ChargeCentaurController">
+        <Duration value="2.375"/>
+        <InitialEffect value="ChargeCentaurHeight"/>
         <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ChargeKnightHeight">
@@ -555,6 +697,45 @@
         <InitialEffect value="ChargeKnightRaise"/>
         <PeriodicEffect value="ChargeKnightLower"/>
         <FinalEffect value="ChargeKnightStun"/>
+        <Modification>
+            <ModifyFlags index="DisableAbils" value="1"/>
+            <StateFlags index="SuppressCollision" value="1"/>
+        </Modification>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ChargeMammothHeight">
+        <Duration value="1.5"/>
+        <Period value="0.5"/>
+        <PeriodCount value="1"/>
+        <InitialEffect value="ChargeMammothRaise"/>
+        <PeriodicEffect value="ChargeMammothLower"/>
+        <FinalEffect value="ChargeMammothFinalSet"/>
+        <Modification>
+            <ModifyFlags index="DisableAbils" value="1"/>
+            <StateFlags index="SuppressCollision" value="1"/>
+        </Modification>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ChargeMagnataurHeight">
+        <Duration value="1.5"/>
+        <Period value="0.5"/>
+        <PeriodCount value="1"/>
+        <InitialEffect value="ChargeMagnataurRaise"/>
+        <PeriodicEffect value="ChargeMagnataurLower"/>
+        <FinalEffect value="ChargeMagnataurFinalSet"/>
+        <Modification>
+            <ModifyFlags index="DisableAbils" value="1"/>
+            <StateFlags index="SuppressCollision" value="1"/>
+        </Modification>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ChargeCentaurHeight">
+        <Duration value="1.5"/>
+        <Period value="0.5"/>
+        <PeriodCount value="1"/>
+        <InitialEffect value="ChargeCentaurRaise"/>
+        <PeriodicEffect value="ChargeCentaurLower"/>
+        <FinalEffect value="ChargeCentaurStun"/>
         <Modification>
             <ModifyFlags index="DisableAbils" value="1"/>
             <StateFlags index="SuppressCollision" value="1"/>
@@ -782,8 +963,8 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="AHfa1">
         <Modification>
-            <DamageDealtUnscaled index="Melee" value="100"/>
-            <DamageDealtUnscaled index="Ranged" value="100"/>
+            <DamageDealtUnscaled index="Melee" value="50"/>
+            <DamageDealtUnscaled index="Ranged" value="50"/>
         </Modification>
     </CBehaviorBuff>
     <!--continuous Defense Bonus,carry End-->
@@ -928,6 +1109,9 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="ANbh">
         <DamageResponse Chance="1"/>
+        <Modification CriticalAttackChanceScaledBonus="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ANb2" parent="AHbhBase">
         <Modification CriticalAttackChanceScaledBonus="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ANfa1">
@@ -1407,6 +1591,20 @@
         <TechAliasArray value="_Debuff"/>
         <TechAliasArray value="_PurgableDebuff"/>
         <BehaviorCategories index="User1" value="1"/>
+        <Modification>
+            <ModifyFlags index="DisableAbils" value="1"/>
+            <StateFlags index="Stun" value="1"/>
+            <AbilClassEnableArray index="CAbilBehavior" value="1"/>
+            <BehaviorLinkDisableArray value="HostileSleeperAlert"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ACtnStun" parent="War3_Buff">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btntentacle.dds"/>
+        <Duration value="4"/>
+        <DurationOverride index="0" Duration="2">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
         <Modification>
             <ModifyFlags index="DisableAbils" value="1"/>
             <StateFlags index="Stun" value="1"/>
@@ -2696,15 +2894,6 @@
     <CBehaviorBuff id="ntrd" parent="War3_Passive">
         <DamageResponse Chance="1" Fatal="1" Handled="ntrh"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="nmgw" parent="War3_Passive">
-        <DamageResponse Chance="1" Fatal="1" Handled="nmgr"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="nmgr" parent="War3_Passive">
-        <DamageResponse Chance="1" Fatal="1" Handled="nmgd"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="nmgd" parent="War3_Passive">
-        <DamageResponse Chance="1" Fatal="1" Handled="nmgw"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="ngno" parent="War3_Passive">
         <DamageResponse Chance="1" Fatal="1" Handled="ngnv"/>
     </CBehaviorBuff>
@@ -2913,7 +3102,7 @@
         <DurationOverride index="0" Duration="6">
             <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
         </DurationOverride>
-        <Period value="1"/>
+        <Period value="3.0625"/>
         <InitialEffect value="TrueFulfillmentStopInitialSet"/>
         <PeriodicEffect value="TrueFulfillmentAttackSearch"/>
         <ExpireEffect value="TrueFulfillmentEndSet"/>
@@ -2961,8 +3150,8 @@
     <CBehaviorBuff id="RecentlyRecalled" parent="War3_Buff">
         <Alignment value="Negative"/>
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnwandofshadowsight.dds"/>
-        <Duration value="15"/>
-        <DurationOverride index="0" Duration="15">
+        <Duration value="60"/>
+        <DurationOverride index="0" Duration="60">
             <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
         </DurationOverride>
     </CBehaviorBuff>
@@ -2978,5 +3167,36 @@
         <Modification>
             <StateFlags index="Summoned" value="1"/>
         </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="nsqt" parent="War3_Passive">
+        <DamageResponse Chance="1" Fatal="1" Handled="nwns"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="nwns" parent="War3_Passive">
+        <DamageResponse Chance="1" Fatal="1" Handled="nsqt"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BCtb" parent="War3_Buff">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btngolemstormbolt.dds"/>
+        <BehaviorCategories index="User1" value="1"/>
+        <TechAliasArray value="_Debuff"/>
+        <TechAliasArray value="_PurgableDebuff"/>
+        <Duration value="10"/>
+        <DurationOverride index="0" Duration="5">
+            <ValidatorArray index="0" value="Hero"/>
+        </DurationOverride>
+        <Modification>
+            <ModifyFlags index="DisableAbils" value="1"/>
+            <StateFlags index="Stun" value="1"/>
+            <BehaviorLinkDisableArray value="HostileSleeperAlert"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FleeingCentaurArcher">
+        <Duration value="1"/>
+        <FinalEffect value="FleeCentaurArcherIssueStopOrder"/>
+        <Modification>
+            <ModifyFlags index="DisableWeapons" value="1"/>
+            <StateFlags index="SuppressThreat" value="1"/>
+        </Modification>
+        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
 </Catalog>

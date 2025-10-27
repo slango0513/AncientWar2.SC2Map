@@ -65,6 +65,11 @@
         <UninterruptibleArray index="Channel" value="1"/>
         <UninterruptibleArray index="Finish" value="1"/>
     </CAbilEffectTarget>
+    <CAbilAugment default="1" id="AW2_Augment" parent="War3_Augment">
+        <CmdButtonArray index="Execute">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
+    </CAbilAugment>
     <CAbilAugment default="1" id="AW2_AttackAugment" parent="War3_AttackAugment">
         <Flags index="AutoCastOn" value="1"/>
         <CmdButtonArray index="Execute" Requirements="">
@@ -207,6 +212,27 @@
         <AutoCastValidatorArray value="EnemiesNearby1"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
+    <!--Thunder Bolt (Creep) Dur=2 HeroDur=2 Buff=BPSE-->
+    <CAbilEffectTarget id="ACtb" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:ChaosOrc,AbilityorEffectType:Units"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="30"/>
+        </Cost>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSMarker"/>
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
+        </TargetSorts>
+        <Range value="11"/>
+        <AutoCastRange value="11"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
+        <AutoCastValidatorArray value="NoThunderBolt"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <PrepTime value="0.47"/>
+        <CastOutroTime value="0.56"/>
+        <TargetFilters index="0" value="-;wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
+        <Effect index="0" value="ACtbMissile"/>
+    </CAbilEffectTarget>
     <!--Demon Hunter - Evasion-->
     <CAbilBehavior id="AEev" parent="AW2_Passive">
         <EditorCategories value="Race:Nightelf,AbilityorEffectType:Unit"/>
@@ -273,6 +299,18 @@
             <SortArray value="TSLife"/>
         </TargetSorts>
     </CAbilEffectTarget>
+    <!--Mountain King - Thunder Clap Buff=BHtc-->
+    <CAbilEffectInstant id="AHtc" parent="AW2_EffectInstant">
+        <Alignment value="Negative"/>
+        <Effect index="0" value="AHtc1Search"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="60"/>
+        </Cost>
+        <AutoCastFilters value="Self,Visible;-"/>
+        <AutoCastValidatorArray value="GroundEnemiesNearby2"/>
+        <PrepTime value="0.4"/>
+        <CastOutroTime value="0.5"/>
+    </CAbilEffectInstant>
     <CAbilInventory id="AInv" parent="AW2_UnitInventory">
         <InfoArray/>
         <InfoArray/>
@@ -381,6 +419,19 @@
         <AbilSetId value="burrow"/>
         <ValidatorArray value="CasterLifeLT50Percent"/>
     </CAbilMorph>
+    <!--Howl of Terror Dur=10 HeroDur=10 Buff=BNht-->
+    <CAbilEffectInstant id="Acht" parent="AW2_EffectInstant">
+        <Cost index="0">
+            <Vital index="Energy" value="60"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </Cost>
+        <PrepTime value="0.3"/>
+        <CastOutroTime value="0.51"/>
+        <Effect index="0" value="AchtSearch"/>
+        <CursorEffect value="AchtSearch"/>
+        <AutoCastValidatorArray value="EnemiesNearby2"/>
+        <AutoCastFilters value="Self,Visible;-"/>
+    </CAbilEffectInstant>
     <CAbilMorph id="BurrowArachanthidEarthBorer" parent="AW2_Morph" unitID="ArachanthidEarthBorerBurrowed">
         <AbilSetId value="burrow"/>
         <Cost>
@@ -469,7 +520,28 @@
         </Cost>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
-    <CAbilAugment id="ChargeKnight" parent="War3_Augment">
+    <CAbilAugment id="ChargeKnight" parent="AW2_Augment">
+        <AbilCmd value="Aatk,Execute"/>
+        <Cost>
+            <Cooldown TimeUse="60"/>
+        </Cost>
+        <AutoCastFilters value="Visible;Air,Hover,HarvestableResource,Missile,Destructible,Item,PreventDefeat,Stasis,Dead,Invulnerable"/>
+    </CAbilAugment>
+    <CAbilAugment id="ChargeMammoth" parent="AW2_Augment">
+        <AbilCmd value="Aatk,Execute"/>
+        <Cost>
+            <Cooldown TimeUse="60"/>
+        </Cost>
+        <AutoCastFilters value="Visible;Air,Hover,HarvestableResource,Missile,Destructible,Item,PreventDefeat,Stasis,Dead,Invulnerable"/>
+    </CAbilAugment>
+    <CAbilAugment id="ChargeMagnataur" parent="AW2_Augment">
+        <AbilCmd value="Aatk,Execute"/>
+        <Cost>
+            <Cooldown TimeUse="60"/>
+        </Cost>
+        <AutoCastFilters value="Visible;Air,Hover,HarvestableResource,Missile,Destructible,Item,PreventDefeat,Stasis,Dead,Invulnerable"/>
+    </CAbilAugment>
+    <CAbilAugment id="ChargeCentaur" parent="AW2_Augment">
         <AbilCmd value="Aatk,Execute"/>
         <Cost>
             <Cooldown TimeUse="60"/>
@@ -706,6 +778,40 @@
             <Button Requirements="UpgradeItemLevel3"/>
         </InfoArray>
     </CAbilResearch>
+    <CAbilResearch id="VoteBonusUnitType1" parent="War3_Research">
+        <InfoArray index="Research1" Time="0" Upgrade="BonusUnitType1">
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+            <Button DefaultButtonFace="nsqt" Requirements="VoteBonusUnitType1"/>
+        </InfoArray>
+        <InfoArray index="Research2" Time="0" Upgrade="BonusUnitType12">
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+            <Button DefaultButtonFace="nwen" Requirements="VoteBonusUnitType1"/>
+        </InfoArray>
+        <InfoArray index="Research3" Time="0" Upgrade="BonusUnitType13">
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+            <Button DefaultButtonFace="njg1" Requirements="VoteBonusUnitType1"/>
+        </InfoArray>
+    </CAbilResearch>
+    <CAbilResearch id="VoteBonusUnitType2" parent="War3_Research">
+        <InfoArray index="Research1" Time="0" Upgrade="BonusUnitType2">
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+            <Button DefaultButtonFace="nsqe" Requirements="VoteBonusUnitType2"/>
+        </InfoArray>
+        <InfoArray index="Research2" Time="0" Upgrade="BonusUnitType22">
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+            <Button DefaultButtonFace="nwns" Requirements="VoteBonusUnitType2"/>
+        </InfoArray>
+        <InfoArray index="Research3" Time="0" Upgrade="BonusUnitType23">
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+            <Button DefaultButtonFace="njgb" Requirements="VoteBonusUnitType2"/>
+        </InfoArray>
+    </CAbilResearch>
     <!--Workaround!-->
     <CAbilPawn id="War3_Pawn">
         <Range value="500"/>
@@ -733,6 +839,7 @@
     </CAbilEffectInstant>
     <CAbilEffectTarget id="Ache" parent="AW2_EffectTarget">
         <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+        <Effect index="0" value="AcheMissile"/>
     </CAbilEffectTarget>
     <!--Unstable Concoction-->
     <CAbilEffectTarget id="Auco" parent="AW2_EffectTarget">
@@ -944,14 +1051,14 @@
             <Vital index="Energy" value="60"/>
             <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
-        <TargetFilters index="0" value="-;mechanical,wall,item,structure,ward,invulnerable,immunity,hero"/>
+        <TargetFilters index="0" value="-;mechanical,wall,item,structure,ward,invulnerable,immunity"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
-        <Range value="10"/>
-        <AutoCastRange value="10"/>
-        <AutoCastValidatorArray value="EnemiesNearby7"/>
+        <Range value="15"/>
+        <AutoCastRange value="15"/>
+        <AutoCastValidatorArray value="EnemiesNearby10"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <PrepTime value="0.5"/>
         <CastOutroTime value="1"/>
@@ -1650,41 +1757,26 @@
         <InfoArray index="Build2" Unit="CentaurFlag2">
             <Button DefaultButtonFace="CentaurFlag2" Requirements="BuildPhalanxFinal"/>
         </InfoArray>
-        <InfoArray index="Build3" Unit="owar">
-            <Button DefaultButtonFace="owar" Requirements="BuildArmy"/>
+        <InfoArray index="Build4" Unit="nmam">
+            <Button DefaultButtonFace="nmam" Requirements="BuildArmy"/>
         </InfoArray>
-        <InfoArray index="Build4" Unit="nchg">
-            <Button DefaultButtonFace="nchg" Requirements="BuildArmy"/>
+        <InfoArray index="Build5" Unit="nkob">
+            <Button DefaultButtonFace="nkob" Requirements="BuildArmy"/>
         </InfoArray>
-        <InfoArray index="Build5" Unit="nchr">
-            <Button DefaultButtonFace="nchr" Requirements="BuildArmy"/>
+        <InfoArray index="Build6" Unit="nkog">
+            <Button DefaultButtonFace="nkog" Requirements="BuildArmy"/>
         </InfoArray>
-        <InfoArray index="Build6" Unit="nchw">
-            <Button DefaultButtonFace="nchw" Requirements="BuildArmy"/>
+        <InfoArray index="Build7" Unit="ncea">
+            <Button DefaultButtonFace="ncea" Requirements="BuildArmy"/>
         </InfoArray>
-        <InfoArray index="Build7" Unit="nckb">
-            <Button DefaultButtonFace="nckb" Requirements="BuildArmy"/>
+        <InfoArray index="Build8" Unit="ncen">
+            <Button DefaultButtonFace="ncen" Requirements="BuildArmy"/>
         </InfoArray>
-        <InfoArray index="Build8" Unit="Nbbc">
-            <Button DefaultButtonFace="Nbbc" Requirements="BuildArmy"/>
+        <InfoArray index="Build9" Unit="ngst">
+            <Button DefaultButtonFace="ngst" Requirements="BuildArmy"/>
         </InfoArray>
-        <InfoArray index="Build9" Unit="ndtt">
-            <Button DefaultButtonFace="ndtt" Requirements="BuildArmy"/>
-        </InfoArray>
-        <InfoArray index="Build10" Unit="ndtp">
-            <Button DefaultButtonFace="ndtp" Requirements="BuildArmy"/>
-        </InfoArray>
-        <InfoArray index="Build11" Unit="ocat">
-            <Button DefaultButtonFace="ocat" Requirements="BuildArmyFinal"/>
-        </InfoArray>
-        <InfoArray index="Build12" Unit="otbr">
-            <Button DefaultButtonFace="otbr" Requirements="BuildArmy"/>
-        </InfoArray>
-        <InfoArray index="Build13" Unit="ChaosOrcShaman">
-            <Button DefaultButtonFace="ChaosOrcShaman" Requirements="BuildArmy"/>
-        </InfoArray>
-        <InfoArray index="Build14" Unit="nsrn">
-            <Button DefaultButtonFace="nsrn" Requirements="BuildArmy"/>
+        <InfoArray index="Build10" Unit="nmgw">
+            <Button DefaultButtonFace="nmgw" Requirements="BuildArmy"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
@@ -1819,17 +1911,14 @@
         <InfoArray index="Build7" Unit="nanw">
             <Button DefaultButtonFace="nanw" Requirements="BuildArmy"/>
         </InfoArray>
-        <InfoArray index="Build8" Unit="Nfir">
-            <Button DefaultButtonFace="Nfir" Requirements="BuildArmyFinal"/>
-        </InfoArray>
         <InfoArray index="Build9" Unit="nlv1">
             <Button DefaultButtonFace="nlv1" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build10" Unit="nsty">
             <Button DefaultButtonFace="nsty" Requirements="BuildArmy"/>
         </InfoArray>
-        <InfoArray index="Build11" Unit="nubw">
-            <Button DefaultButtonFace="nubw" Requirements="BuildArmy"/>
+        <InfoArray index="Build11" Unit="nubr">
+            <Button DefaultButtonFace="nubr" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build12" Unit="nssp">
             <Button DefaultButtonFace="nssp" Requirements="BuildArmy"/>
@@ -2156,9 +2245,6 @@
     </CAbilEffectInstant>
     <CAbilAugment id="AHfaAugment" parent="AW2_AttackAugment">
         <Name value="AHfa/Name"/>
-        <Cost>
-            <Vital index="Energy" value="6"/>
-        </Cost>
         <AutoCastFilters value="Visible;Player,Ally,Hover,HarvestableResource,Destructible,Item,PreventDefeat,Buried,Invulnerable,Unstoppable"/>
         <EditorCategories value="Race:Draenei,AbilityorEffectType:Units"/>
     </CAbilAugment>
@@ -4600,16 +4686,57 @@
     <CAbilEffectTarget id="ACtn" parent="AW2_EffectTarget">
         <TargetFilters index="0" value="-;wall,tree,Missile,debris,item,ward,dead,Hidden"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="6"/>
+            <Cooldown Location="Unit" TimeUse="12"/>
         </Cost>
         <Range value="36"/>
         <PrepTime value="0.4"/>
         <CastOutroTime value="0.5"/>
         <TargetSorts RequestCount="1">
-            <SortArray value="TSFarthestDistance"/>
+            <SortArray value="TSRandom"/>
         </TargetSorts>
         <AutoCastRange value="36"/>
         <AutoCastValidatorArray value="EnemiesNearby30"/>
         <AutoCastValidatorArray value="noMarkers"/>
+    </CAbilEffectTarget>
+    <CAbilMorph id="UpgradeTonfot" parent="AW2_Upgrade" toUnit="nfot">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonmdr" parent="AW2_Upgrade" toUnit="nmdr">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonmit" parent="AW2_Upgrade" toUnit="nmit">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTozshv" parent="AW2_Upgrade" toUnit="zshv">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToncim" parent="AW2_Upgrade" toUnit="ncim">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToncnk" parent="AW2_Upgrade" toUnit="ncnk">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonggr" parent="AW2_Upgrade" toUnit="nggr">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonkol" parent="AW2_Upgrade" toUnit="nkol">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonmgr" parent="AW2_Upgrade" toUnit="nmgr">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonmgd" parent="AW2_Upgrade" toUnit="nmgd">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilEffectTarget id="FleeCentaurArcher" parent="AW2_EffectTarget">
+        <Flags index="Transient" value="1"/>
+        <Range value="2"/>
+        <AutoCastRange value="2"/>
+        <Cost index="0">
+            <Charge CountMax="150" CountStart="150" CountUse="1"/>
+            <Cooldown Location="Abil" TimeUse="1"/>
+        </Cost>
+        <Arc value="360"/>
+        <TargetFilters index="0" value="-;player,allies,wall,tree,Missile,debris,item,structure,ward,dead"/>
     </CAbilEffectTarget>
 </Catalog>

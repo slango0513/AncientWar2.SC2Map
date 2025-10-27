@@ -216,6 +216,8 @@
                 <Column value="0"/>
             </LayoutButtons>
             <LayoutButtons Face="UpgradeItemLevel3" Type="AbilCmd" AbilCmd="UpgradeItemLevel,Research3" Row="1" Column="0"/>
+            <LayoutButtons Face="VoteBonusUnitType1" Type="Submenu" SubmenuCardId="Bonu" Row="1" Column="3"/>
+            <LayoutButtons Face="VoteBonusUnitType2" Type="Submenu" SubmenuCardId="Bon2" Row="1" Column="4"/>
         </CardLayouts>
         <CardLayouts CardId="Buil">
             <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
@@ -244,6 +246,18 @@
             <LayoutButtons Face="Purchasehlst" Type="AbilCmd" AbilCmd="Purchasehlst,Train1" Row="1" Column="1"/>
             <LayoutButtons Face="Purchasemnst" Type="AbilCmd" AbilCmd="Purchasemnst,Train1" Row="1" Column="3"/>
         </CardLayouts>
+        <CardLayouts CardId="Bonu">
+            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
+            <LayoutButtons Face="nsqt" Type="AbilCmd" AbilCmd="VoteBonusUnitType1,Research1" Row="0" Column="0"/>
+            <LayoutButtons Face="nwen" Type="AbilCmd" AbilCmd="VoteBonusUnitType1,Research2" Row="0" Column="1"/>
+            <LayoutButtons Face="njg1" Type="AbilCmd" AbilCmd="VoteBonusUnitType1,Research3" Row="0" Column="2"/>
+        </CardLayouts>
+        <CardLayouts CardId="Bon2">
+            <LayoutButtons Face="CmdCancel" Type="CancelSubmenu" Row="2" Column="4"/>
+            <LayoutButtons Face="nsqe" Type="AbilCmd" AbilCmd="VoteBonusUnitType2,Research1" Row="0" Column="0"/>
+            <LayoutButtons Face="nwns" Type="AbilCmd" AbilCmd="VoteBonusUnitType2,Research2" Row="0" Column="1"/>
+            <LayoutButtons Face="njgb" Type="AbilCmd" AbilCmd="VoteBonusUnitType2,Research3" Row="0" Column="2"/>
+        </CardLayouts>
         <AbilArray index="0" Link="move"/>
         <AbilArray Link="AInv"/>
         <AbilArray Link="ANgl"/>
@@ -267,6 +281,8 @@
         <AbilArray Link="Purchasehlst"/>
         <AbilArray Link="Purchasemnst"/>
         <AbilArray Link="UpgradeItemLevel"/>
+        <AbilArray Link="VoteBonusUnitType1"/>
+        <AbilArray Link="VoteBonusUnitType2"/>
     </CUnit>
     <CUnit default="1" id="AW2_Phalanx" parent="War3_ArmyBase">
         <DeathRevealRadius value="0"/>
@@ -513,6 +529,50 @@
         </CardLayouts>
         <GlossaryCategory value="Unit/Category/OldGodUnits"/>
     </CUnit>
+    <!--CentaurArcher-->
+    <CUnit id="ncea" parent="AW2_Army" defType="SMALL">
+        <Attributes index="small" value="1"/>
+        <CostResource index="gold" value="75"/>
+        <KillResource index="Custom" value="75"/>
+        <LifeStart value="900"/>
+        <LifeMax value="900"/>
+        <Speed value="3"/>
+        <Race value="Centaur"/>
+        <Mover value="horse"/>
+        <AbilArray Link="CentaurInventory"/>
+        <AbilArray Link="UpgradeToncim"/>
+        <AbilArray Link="FleeCentaurArcher"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ncim" Type="AbilCmd" AbilCmd="UpgradeToncim,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="FleeCentaurArcher" Type="AbilCmd" AbilCmd="FleeCentaurArcher,0" Row="2" Column="0"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/CentaurUnits"/>
+        <LifeArmor value="10"/>
+    </CUnit>
+    <!--Centaur outrunner-->
+    <CUnit id="ncen" parent="AW2_Army" defType="SMALL">
+        <Attributes index="small" value="1"/>
+        <CostResource index="gold" value="75"/>
+        <KillResource index="Custom" value="75"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
+        <Speed value="3"/>
+        <Race value="Centaur"/>
+        <Mover value="horse"/>
+        <AbilArray Link="CentaurInventory"/>
+        <AbilArray Link="UpgradeToncnk"/>
+        <AbilArray Link="ChargeCentaur"/>
+        <AbilArray Link="Aens"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ncnk" Type="AbilCmd" AbilCmd="UpgradeToncnk,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="ChargeCentaur" Type="AbilCmd" AbilCmd="ChargeCentaur,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Aens" Type="AbilCmd" AbilCmd="Aens,0" Row="2" Column="1"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/CentaurUnits"/>
+        <LifeArmor value="10"/>
+    </CUnit>
     <!--centaur drudge-->
     <CUnit id="ncer" parent="AW2_Peon">
         <CardLayouts index="0">
@@ -544,29 +604,24 @@
             </LayoutButtons>
         </CardLayouts>
         <CardLayouts index="1" CardId="Buil">
-            <LayoutButtons Face="Nbbc" Type="AbilCmd" AbilCmd="CentaurBuild,Build8" Row="0" Column="1"/>
-            <LayoutButtons Face="nchr" Type="AbilCmd" AbilCmd="CentaurBuild,Build5" Row="0" Column="2"/>
-            <LayoutButtons Face="owar" Type="AbilCmd" AbilCmd="CentaurBuild,Build3" Row="0" Column="3"/>
-            <LayoutButtons Face="nchg" Type="AbilCmd" AbilCmd="CentaurBuild,Build4" Row="0" Column="0"/>
-            <LayoutButtons Face="ndtt" Type="AbilCmd" AbilCmd="CentaurBuild,Build9" Row="1" Column="0"/>
-            <LayoutButtons Face="nckb" Type="AbilCmd" AbilCmd="CentaurBuild,Build7" Row="1" Column="1"/>
-            <LayoutButtons Face="nchw" Type="AbilCmd" AbilCmd="CentaurBuild,Build6" Row="1" Column="2"/>
-            <LayoutButtons Face="ocat" Type="AbilCmd" AbilCmd="CentaurBuild,Build11" Row="1" Column="3"/>
-            <LayoutButtons Face="ndtp" Type="AbilCmd" AbilCmd="CentaurBuild,Build10" Row="2" Column="0"/>
-            <LayoutButtons Face="ChaosOrcShaman" Type="AbilCmd" AbilCmd="CentaurBuild,Build13" Row="2" Column="1"/>
-            <LayoutButtons Face="nsrn" Type="AbilCmd" AbilCmd="CentaurBuild,Build14" Row="2" Column="2"/>
-            <LayoutButtons Face="otbr" Type="AbilCmd" AbilCmd="CentaurBuild,Build12" Row="0" Column="4"/>
+            <LayoutButtons Face="nkob" Type="AbilCmd" AbilCmd="CentaurBuild,Build5" Row="0" Column="0"/>
+            <LayoutButtons Face="ncen" Type="AbilCmd" AbilCmd="CentaurBuild,Build8" Row="0" Column="1"/>
+            <LayoutButtons Face="nmam" Type="AbilCmd" AbilCmd="CentaurBuild,Build4" Row="0" Column="2"/>
+            <LayoutButtons Face="nmgw" Type="AbilCmd" AbilCmd="CentaurBuild,Build10" Row="0" Column="3"/>
+            <LayoutButtons Face="ncea" Type="AbilCmd" AbilCmd="CentaurBuild,Build7" Row="1" Column="0"/>
+            <LayoutButtons Face="nkog" Type="AbilCmd" AbilCmd="CentaurBuild,Build6" Row="2" Column="0"/>
+            <LayoutButtons Face="ngst" Type="AbilCmd" AbilCmd="CentaurBuild,Build9" Row="0" Column="4"/>
         </CardLayouts>
         <CardLayouts index="2" CardId="Purc">
             <LayoutButtons Face="Purchaseklmm" Type="AbilCmd" AbilCmd="Purchaseklmm,Train1" Row="2" Column="0"/>
             <LayoutButtons Face="Purchasesrtl" Type="AbilCmd" AbilCmd="Purchasesrtl,Train1" Row="2" Column="1"/>
         </CardLayouts>
         <CardLayouts index="3" CardId="Pur2">
-            <LayoutButtons Face="Purchaseclfm" Type="AbilCmd" AbilCmd="Purchaseclfm,Train1" Row="2" Column="0"/>
+            <LayoutButtons Face="Purchaseblba" Type="AbilCmd" AbilCmd="Purchaseblba,Train1" Row="2" Column="0"/>
         </CardLayouts>
         <AbilArray Link="CentaurBuild"/>
         <AbilArray Link="Purchaseklmm"/>
-        <AbilArray Link="Purchaseclfm"/>
+        <AbilArray Link="Purchaseblba"/>
         <AbilArray Link="Purchasesrtl"/>
         <Speed value="3"/>
         <Radius value="0.3125"/>
@@ -579,6 +634,52 @@
     <!--watery minion cliffrunner-->
     <CUnit id="ncfs">
         <Race value="Naga"/>
+    </CUnit>
+    <!--Centaur impaler-->
+    <CUnit id="ncim" parent="AW2_Army" defType="SMALL">
+        <Attributes index="small" value="1"/>
+        <CostResource index="gold" value="225"/>
+        <KillResource index="Custom" value="75"/>
+        <LifeStart value="900"/>
+        <LifeMax value="900"/>
+        <Speed value="3"/>
+        <Race value="Centaur"/>
+        <Mover value="horse"/>
+        <AbilArray Link="CentaurInventory"/>
+        <AbilArray Link="FleeCentaurArcher"/>
+        <AbilArray Link="AEar"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="FleeCentaurArcher" Type="AbilCmd" AbilCmd="FleeCentaurArcher,0" Row="2" Column="0"/>
+            <LayoutButtons Face="AEar1" Type="Passive" Behavior="AEar" Row="2" Column="1"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/CentaurUnits"/>
+        <LifeArmor value="10"/>
+    </CUnit>
+    <!--centaur sorceror-->
+    <CUnit id="ncks">
+        <Race value="Centaur"/>
+    </CUnit>
+    <!--centaur khan-->
+    <CUnit id="ncnk" parent="AW2_Army" defType="SMALL">
+        <Attributes index="small" value="1"/>
+        <CostResource index="gold" value="225"/>
+        <KillResource index="Custom" value="75"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
+        <Speed value="3"/>
+        <Race value="Centaur"/>
+        <Mover value="horse"/>
+        <AbilArray Link="CentaurInventory"/>
+        <AbilArray Link="ChargeCentaur"/>
+        <AbilArray Link="AOws"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ChargeCentaur" Type="AbilCmd" AbilCmd="ChargeCentaur,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="AOws" Type="AbilCmd" AbilCmd="AOws,Execute" Row="2" Column="1"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/CentaurUnits"/>
+        <LifeArmor value="10"/>
     </CUnit>
     <!--deer-->
     <CUnit id="nder" parent="AW2_Peon">
@@ -664,6 +765,10 @@
     <CUnit id="ndmu">
         <Race value="Draenei"/>
     </CUnit>
+    <!--Dog-->
+    <CUnit id="ndog">
+        <Race value="Centaur"/>
+    </CUnit>
     <!--Dune Worm-->
     <CUnit id="ndwm" parent="AW2_Peon">
         <CardLayouts index="0">
@@ -698,14 +803,13 @@
             <LayoutButtons Face="nslm" Type="AbilCmd" AbilCmd="OldGodBuild,Build3" Row="0" Column="0"/>
             <LayoutButtons Face="nsty" Type="AbilCmd" AbilCmd="OldGodBuild,Build10" Row="0" Column="1"/>
             <LayoutButtons Face="nanw" Type="AbilCmd" AbilCmd="OldGodBuild,Build7" Row="0" Column="2"/>
-            <LayoutButtons Face="nubw" Type="AbilCmd" AbilCmd="OldGodBuild,Build11" Row="0" Column="3"/>
+            <LayoutButtons Face="nubr" Type="AbilCmd" AbilCmd="OldGodBuild,Build11" Row="0" Column="3"/>
             <LayoutButtons Face="nvdw" Type="AbilCmd" AbilCmd="OldGodBuild,Build4" Row="1" Column="0"/>
             <LayoutButtons Face="nnwr" Type="AbilCmd" AbilCmd="OldGodBuild,Build5" Row="1" Column="1"/>
             <LayoutButtons Face="hwat" Type="AbilCmd" AbilCmd="OldGodBuild,Build14" Row="1" Column="2"/>
             <LayoutButtons Face="nlv1" Type="AbilCmd" AbilCmd="OldGodBuild,Build9" Row="1" Column="3"/>
             <LayoutButtons Face="nssp" Type="AbilCmd" AbilCmd="OldGodBuild,Build12" Row="1" Column="4"/>
-            <LayoutButtons Face="Nfir" Type="AbilCmd" AbilCmd="OldGodBuild,Build8" Row="2" Column="0"/>
-            <LayoutButtons Face="nfgo" Type="AbilCmd" AbilCmd="OldGodBuild,Build13" Row="2" Column="1"/>
+            <LayoutButtons Face="nfgo" Type="AbilCmd" AbilCmd="OldGodBuild,Build13" Row="2" Column="0"/>
         </CardLayouts>
         <CardLayouts index="2" CardId="Purc">
             <LayoutButtons Face="PurchaseOrbOfArcane" Type="AbilCmd" AbilCmd="PurchaseOrbOfArcane,Train1" Row="2" Column="0"/>
@@ -760,6 +864,10 @@
         <Mover value="amph"/>
         <Acceleration value="0"/>
         <DeathTime value="0"/>
+        <Radius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <MinimapRadius value="0.375"/>
     </CUnit>
     <!--faceless one deathbringer-->
     <CUnit id="nfod" parent="AW2_Army" defType="LARGE">
@@ -786,6 +894,139 @@
         <WeaponArray index="1" removed="1"/>
         <EnergyStart value="60"/>
         <EnergyMax value="60"/>
+    </CUnit>
+    <!--faceless one trickster-->
+    <CUnit id="nfor">
+        <Race value="OldGod"/>
+    </CUnit>
+    <!--faceless one terror-->
+    <CUnit id="nfot" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="405"/>
+        <KillResource index="Custom" value="135"/>
+        <LifeStart value="2700"/>
+        <LifeMax value="2700"/>
+        <Speed value="2"/>
+        <Race value="OldGod"/>
+        <Mover value="amph"/>
+        <AbilArray Link="OldGodInventory"/>
+        <AbilArray Link="Acht"/>
+        <BehaviorArray Link="ACsk"/>
+        <BehaviorArray Link="VoidRecall"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="VoidRecall" Type="Passive" Behavior="VoidRecall" Row="2" Column="1"/>
+            <LayoutButtons Face="Acht" Type="AbilCmd" AbilCmd="Acht,Execute" Row="2" Column="2"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/OldGodUnits"/>
+        <WeaponArray index="0" Link="nfot2"/>
+        <WeaponArray index="1" removed="1"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
+    </CUnit>
+    <!--mud golem-->
+    <CUnit id="ngrk">
+        <Race value="Centaur"/>
+        <Food value="3"/>
+    </CUnit>
+    <!--rock golem-->
+    <CUnit id="ngst" parent="AW2_Army" defType="FORT">
+        <Attributes index="fort" value="1"/>
+        <CostResource index="gold" value="75"/>
+        <KillResource index="Custom" value="75"/>
+        <LifeStart value="1200"/>
+        <LifeMax value="1200"/>
+        <Speed value="2"/>
+        <Race value="Centaur"/>
+        <Mover value="foot"/>
+        <AbilArray Link="CentaurInventory"/>
+        <AbilArray Link="UpgradeTonggr"/>
+        <AbilArray Link="ACtb"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="nggr" Type="AbilCmd" AbilCmd="UpgradeTonggr,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="ACtb" Type="AbilCmd" AbilCmd="ACtb,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/CentaurUnits"/>
+    </CUnit>
+    <!--Jungle Stalker-->
+    <CUnit id="njg1">
+        <LifeRegenRate value="5"/>
+    </CUnit>
+    <!--Enranged Jungle Stalker-->
+    <CUnit id="njgb">
+        <Speed value="5"/>
+    </CUnit>
+    <!--Kobold-->
+    <CUnit id="nkob" parent="AW2_Army" defType="SMALL">
+        <Attributes index="small" value="1"/>
+        <CostResource index="gold" value="15"/>
+        <KillResource index="Custom" value="15"/>
+        <LifeStart value="750"/>
+        <LifeMax value="750"/>
+        <Speed value="2"/>
+        <Race value="Centaur"/>
+        <Mover value="foot"/>
+        <AbilArray Link="CentaurInventory"/>
+        <AbilArray Link="UpgradeTozshv"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="zshv" Type="AbilCmd" AbilCmd="UpgradeTozshv,Execute" Row="0" Column="0"/>
+        </CardLayouts>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/CentaurUnits"/>
+    </CUnit>
+    <!--Kobold Geomancer-->
+    <CUnit id="nkog" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="30"/>
+        <KillResource index="Custom" value="15"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Centaur"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/CentaurUnits"/>
+        <AbilArray Link="CentaurInventory"/>
+        <AbilArray Link="Acrs"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Acrs" Type="AbilCmd" AbilCmd="Acrs,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+    </CUnit>
+    <!--kobold taskmaster-->
+    <CUnit id="nkol" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="90"/>
+        <KillResource index="Custom" value="15"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
+        <Speed value="2"/>
+        <Race value="Centaur"/>
+        <Mover value="foot"/>
+        <AbilArray Link="CentaurInventory"/>
+        <AbilArray Link="Amdf"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Amdf" Type="AbilCmd" AbilCmd="Amdf,On" Row="2" Column="0"/>
+            <LayoutButtons Face="AmdfUn" Type="AbilCmd" AbilCmd="Amdf,Off" Row="2" Column="0"/>
+        </CardLayouts>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/CentaurUnits"/>
+    </CUnit>
+    <!--kobold tunneler-->
+    <CUnit id="nkot">
+        <Race value="Centaur"/>
     </CUnit>
     <!--LavaSpawn2-->
     <CUnit id="nlv2" parent="AW2_Army" defType="LARGE">
@@ -829,6 +1070,70 @@
         <DeathTime value="10"/>
         <BehaviorArray Link="BNlm"/>
     </CUnit>
+    <!--Mammoth-->
+    <CUnit id="nmam" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="90"/>
+        <KillResource index="Custom" value="90"/>
+        <LifeStart value="2100"/>
+        <LifeMax value="2100"/>
+        <Speed value="2"/>
+        <Race value="Centaur"/>
+        <Mover value="foot"/>
+        <AbilArray Link="CentaurInventory"/>
+        <AbilArray Link="UpgradeTonmdr"/>
+        <AbilArray Link="ChargeMammoth"/>
+        <BehaviorArray Link="ACsk"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="nmdr" Type="AbilCmd" AbilCmd="UpgradeTonmdr,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="ChargeMammoth" Type="AbilCmd" AbilCmd="ChargeMammoth,Execute" Row="2" Column="1"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/CentaurUnits"/>
+    </CUnit>
+    <!--Dire Mammoth-->
+    <CUnit id="nmdr" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="270"/>
+        <KillResource index="Custom" value="90"/>
+        <LifeStart value="2100"/>
+        <LifeMax value="2100"/>
+        <Speed value="2"/>
+        <Race value="Centaur"/>
+        <Mover value="foot"/>
+        <AbilArray Link="CentaurInventory"/>
+        <AbilArray Link="ChargeMammoth"/>
+        <AbilArray Link="ANht"/>
+        <BehaviorArray Link="ACsk"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="ChargeMammoth" Type="AbilCmd" AbilCmd="ChargeMammoth,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="ANht" Type="AbilCmd" AbilCmd="ANht,Execute" Row="2" Column="2"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/CentaurUnits"/>
+    </CUnit>
+    <!--Icetusk Mammoth-->
+    <CUnit id="nmit" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="270"/>
+        <KillResource index="Custom" value="90"/>
+        <LifeStart value="2100"/>
+        <LifeMax value="2100"/>
+        <Speed value="2"/>
+        <Race value="Centaur"/>
+        <Mover value="foot"/>
+        <AbilArray Link="CentaurInventory"/>
+        <AbilArray Link="ChargeMammoth"/>
+        <BehaviorArray Link="ACsk"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="ChargeMammoth" Type="AbilCmd" AbilCmd="ChargeMammoth,Execute" Row="2" Column="1"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/CentaurUnits"/>
+    </CUnit>
     <!--nerubian queen-->
     <CUnit id="nnwq" parent="AW2_Army" defType="MEDIUM">
         <Attributes index="medium" value="1"/>
@@ -846,6 +1151,10 @@
         <CardLayouts index="0">
             <LayoutButtons Face="Aspd" Type="AbilCmd" AbilCmd="Aspd,0" Row="2" Column="0"/>
         </CardLayouts>
+    </CUnit>
+    <!--Rat-->
+    <CUnit id="nrat">
+        <Race value="Centaur"/>
     </CUnit>
     <!--skeletal orc-->
     <CUnit id="nsko" parent="AW2_Army" defType="LARGE">
@@ -954,6 +1263,29 @@
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
+    <!--elder sasquatch-->
+    <CUnit id="nsqe">
+        <EnergyRegenRate value="2"/>
+    </CUnit>
+    <!--sasquatch-->
+    <CUnit id="nsqt" parent="AW2_Creep" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <KillResource index="Custom" value="600"/>
+        <LifeStart value="14000"/>
+        <LifeMax value="14000"/>
+        <Speed value="2"/>
+        <Race value="Creeps"/>
+        <Mover value="foot"/>
+        <AbilArray Link="ANca"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ANca" Type="Passive" Behavior="ANca" Row="2" Column="0"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+        <Radius value="0.75"/>
+        <MinimapRadius value="0.75"/>
+        <SeparationRadius value="0.75"/>
+        <InnerRadius value="0.75"/>
+    </CUnit>
     <!--spitting spider-->
     <CUnit id="nssp" parent="AW2_Army" defType="MEDIUM">
         <Attributes index="medium" value="1"/>
@@ -1023,6 +1355,36 @@
     <CUnit id="ntws">
         <Race value="Naga"/>
     </CUnit>
+    <!--unbroken darkhunter-->
+    <CUnit id="nubk">
+        <Race value="OldGod"/>
+    </CUnit>
+    <!--unbroken rager-->
+    <CUnit id="nubr" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="135"/>
+        <KillResource index="Custom" value="135"/>
+        <LifeStart value="2700"/>
+        <LifeMax value="2700"/>
+        <Speed value="2"/>
+        <Race value="OldGod"/>
+        <Mover value="amph"/>
+        <AbilArray Link="UpgradeTonfot"/>
+        <AbilArray Link="OldGodInventory"/>
+        <AbilArray Link="ACbb"/>
+        <BehaviorArray Link="ACsk"/>
+        <BehaviorArray Link="VoidRecall"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="nfot" Type="AbilCmd" AbilCmd="UpgradeTonfot,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="VoidRecall" Type="Passive" Behavior="VoidRecall" Row="2" Column="1"/>
+            <LayoutButtons Face="ACbb" Type="AbilCmd" AbilCmd="ACbb,0" Row="2" Column="2"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/OldGodUnits"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
+    </CUnit>
     <!--unbroken darkweaver-->
     <CUnit id="nubw" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
@@ -1065,6 +1427,31 @@
         <BehaviorArray Link="hover"/>
         <BehaviorArray Link="elemental"/>
         <GlossaryCategory value="Unit/Category/OldGodUnits"/>
+    </CUnit>
+    <!--Wendigo-->
+    <CUnit id="nwen">
+        <LifeArmor value="23"/>
+    </CUnit>
+    <!--Wendigo shaman-->
+    <CUnit id="nwns" parent="AW2_Creep" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <KillResource index="Custom" value="600"/>
+        <LifeStart value="14000"/>
+        <LifeMax value="14000"/>
+        <Speed value="2"/>
+        <Race value="Creeps"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Radius value="0.75"/>
+        <MinimapRadius value="0.75"/>
+        <SeparationRadius value="0.75"/>
+        <InnerRadius value="0.75"/>
+        <AbilArray Link="ACbb"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ACbb" Type="AbilCmd" AbilCmd="ACbb,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
     </CUnit>
     <!--Zombie-->
     <CUnit id="nzom">
@@ -1449,6 +1836,7 @@
         <GlossaryStrongArray value="otau"/>
         <GlossaryStrongArray value="uabo"/>
         <GlossaryWeakArray value="hspt"/>
+        <LifeArmor value="10"/>
     </CUnit>
     <!--antonidus-->
     <CUnit id="Hant" parent="AW2_Army" defType="NONE">
@@ -1461,14 +1849,17 @@
         <Race value="BloodElf"/>
         <Mover value="horse"/>
         <AbilArray Link="BloodElfInventory"/>
+        <AbilArray Link="FleeCentaurArcher"/>
         <AbilArray Link="AHab"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="AHab1" Type="Passive" Behavior="AHab" Row="2" Column="0"/>
+            <LayoutButtons Face="FleeCentaurArcher" Type="AbilCmd" AbilCmd="FleeCentaurArcher,0" Row="2" Column="0"/>
+            <LayoutButtons Face="AHab1" Type="Passive" Behavior="AHab" Row="2" Column="1"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
         <WeaponArray index="1" removed="1"/>
         <Name value="Hant/Propernames"/>
+        <LifeArmor value="10"/>
     </CUnit>
     <!--HeroBloodMage-->
     <CUnit id="Hblm" parent="AW2_Army" defType="NONE">
@@ -1504,9 +1895,11 @@
         <Race value="Human"/>
         <Mover value="horse"/>
         <AbilArray Link="Aihn"/>
+        <AbilArray Link="FleeCentaurArcher"/>
         <AbilArray Link="AHab"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="AHab1" Type="Passive" Behavior="AHab" Row="2" Column="0"/>
+            <LayoutButtons Face="FleeCentaurArcher" Type="AbilCmd" AbilCmd="FleeCentaurArcher,0" Row="2" Column="0"/>
+            <LayoutButtons Face="AHab1" Type="Passive" Behavior="AHab" Row="2" Column="1"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <WeaponArray index="1" removed="1"/>
@@ -1516,6 +1909,7 @@
         <GlossaryStrongArray value="otau"/>
         <GlossaryStrongArray value="uabo"/>
         <GlossaryWeakArray value="hspt"/>
+        <LifeArmor value="10"/>
     </CUnit>
     <!--Halahk the Lifebringer-->
     <CUnit id="Hhkl" parent="AW2_Army" defType="LARGE">
@@ -2471,11 +2865,11 @@
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/UndeadUnits"/>
         <AbilArray Link="Aiun"/>
-        <AbilArray Link="AUcb"/>
+        <AbilArray Link="Aweb"/>
         <BehaviorArray Link="undead"/>
         <WeaponArray index="1" removed="1"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="AUcb" Type="AbilCmd" AbilCmd="AUcb,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Aweb" Type="AbilCmd" AbilCmd="Aweb,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="AUim" Type="Passive" Row="2" Column="1"/>
         </CardLayouts>
     </CUnit>
@@ -3126,11 +3520,13 @@
         <AbilArray Link="Adev"/>
         <BehaviorArray Link="DevourTactTemp"/>
         <BehaviorArray Link="DraeneiSalamanderRun"/>
+        <BehaviorArray Link="ACsk"/>
         <FlagArray index="HiddenCargoUI" value="1"/>
         <CardLayouts index="0">
             <LayoutButtons Face="nsll" Type="AbilCmd" AbilCmd="UpgradeTonsll,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="nthl" Type="AbilCmd" AbilCmd="UpgradeTonthl,Execute" Row="0" Column="1"/>
-            <LayoutButtons Face="Adev" Type="AbilCmd" AbilCmd="Adev,Load" Row="2" Column="0"/>
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="Adev" Type="AbilCmd" AbilCmd="Adev,Load" Row="2" Column="1"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/DraeneiUnits"/>
@@ -3291,14 +3687,24 @@
         </CardLayouts>
     </CUnit>
     <!--granite golem-->
-    <CUnit id="nggr">
-        <Food value="4"/>
-        <Race value="Draenei"/>
-    </CUnit>
-    <!--mud golem-->
-    <CUnit id="ngrk">
-        <Food value="3"/>
-        <Race value="Draenei"/>
+    <CUnit id="nggr" parent="AW2_Army" defType="FORT">
+        <Attributes index="fort" value="1"/>
+        <CostResource index="gold" value="225"/>
+        <KillResource index="Custom" value="75"/>
+        <LifeStart value="1200"/>
+        <LifeMax value="1200"/>
+        <Speed value="2"/>
+        <Race value="Centaur"/>
+        <Mover value="foot"/>
+        <AbilArray Link="CentaurInventory"/>
+        <AbilArray Link="ACtb"/>
+        <AbilArray Link="AHad"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ACtb" Type="AbilCmd" AbilCmd="ACtb,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="AHad1" Type="Passive" Behavior="AHad" Row="2" Column="1"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/CentaurUnits"/>
     </CUnit>
     <!--hydra-->
     <CUnit id="nhyd" parent="AW2_Army" defType="LARGE">
@@ -3486,10 +3892,12 @@
         <AbilArray Link="ACbc"/>
         <BehaviorArray Link="DevourTactTemp"/>
         <BehaviorArray Link="SalamanderLordRun"/>
+        <BehaviorArray Link="ACsk"/>
         <FlagArray index="HiddenCargoUI" value="1"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="Adev" Type="AbilCmd" AbilCmd="Adev,Load" Row="2" Column="0"/>
-            <LayoutButtons Face="ACbc" Type="AbilCmd" AbilCmd="ACbc,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="Adev" Type="AbilCmd" AbilCmd="Adev,Load" Row="2" Column="1"/>
+            <LayoutButtons Face="ACbc" Type="AbilCmd" AbilCmd="ACbc,Execute" Row="2" Column="2"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/DraeneiUnits"/>
@@ -3532,10 +3940,12 @@
         <AbilArray Link="ACt2"/>
         <BehaviorArray Link="DevourTactTemp"/>
         <BehaviorArray Link="ThunderlizardRun"/>
+        <BehaviorArray Link="ACsk"/>
         <FlagArray index="HiddenCargoUI" value="1"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="Adev" Type="AbilCmd" AbilCmd="Adev,Load" Row="2" Column="0"/>
-            <LayoutButtons Face="ACt2" Type="AbilCmd" AbilCmd="ACt2,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="Adev" Type="AbilCmd" AbilCmd="Adev,Load" Row="2" Column="1"/>
+            <LayoutButtons Face="ACt2" Type="AbilCmd" AbilCmd="ACt2,Execute" Row="2" Column="2"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/DraeneiUnits"/>
@@ -3616,11 +4026,14 @@
         <Mover value="horse"/>
         <AbilArray Link="BloodElfInventory"/>
         <AbilArray Link="UpgradeToHant"/>
+        <AbilArray Link="FleeCentaurArcher"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Hant" Type="AbilCmd" AbilCmd="UpgradeToHant,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="FleeCentaurArcher" Type="AbilCmd" AbilCmd="FleeCentaurArcher,0" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
+        <LifeArmor value="10"/>
     </CUnit>
     <CUnit id="nzep2LM" parent="War3_Missile"/>
     <CUnit id="ChaosOrcShaman1LM" parent="War3_Missile"/>
@@ -6877,9 +7290,11 @@
         <AbilArray Link="Aihn"/>
         <AbilArray Link="UpgradeToHamg"/>
         <AbilArray Link="UpgradeToHgam"/>
+        <AbilArray Link="FleeCentaurArcher"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Hamg" Type="AbilCmd" AbilCmd="UpgradeToHamg,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="Hgam" Type="AbilCmd" AbilCmd="UpgradeToHgam,Execute" Row="0" Column="1"/>
+            <LayoutButtons Face="FleeCentaurArcher" Type="AbilCmd" AbilCmd="FleeCentaurArcher,0" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/HumanUnits"/>
@@ -6888,6 +7303,7 @@
         <GlossaryStrongArray value="edoc"/>
         <GlossaryStrongArray value="otau"/>
         <GlossaryStrongArray value="uabo"/>
+        <LifeArmor value="10"/>
     </CUnit>
     <CUnit id="nhy2" parent="AW2_Army" defType="NONE">
         <Race value="Human"/>
@@ -7126,38 +7542,56 @@
         <DeathTime value="10"/>
     </CUnit>
     <!--magnataur destroyer-->
-    <CUnit id="nmgd" parent="AW2_Creep" defType="LARGE">
+    <CUnit id="nmgd" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
-        <KillResource index="Custom" value="600"/>
-        <LifeStart value="14000"/>
-        <LifeMax value="14000"/>
+        <CostResource index="gold" value="270"/>
+        <KillResource index="Custom" value="90"/>
+        <LifeStart value="2100"/>
+        <LifeMax value="2100"/>
         <Speed value="2"/>
-        <Race value="Creeps"/>
+        <Race value="Centaur"/>
         <Mover value="foot"/>
-        <AbilArray Link="ANca"/>
-        <CardLayouts index="0">
-            <LayoutButtons Face="ANca" Type="Passive" Behavior="ANca" Row="2" Column="0"/>
-        </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
-        <Radius value="0.875"/>
-        <MinimapRadius value="0.875"/>
-        <SeparationRadius value="0.875"/>
-        <InnerRadius value="0.875"/>
+        <GlossaryCategory value="Unit/Category/CentaurUnits"/>
+        <AbilArray Link="CentaurInventory"/>
+        <AbilArray Link="ChargeMagnataur"/>
+        <AbilArray Link="AHtc"/>
+        <BehaviorArray Link="ACsk"/>
+        <BehaviorArray Link="ANca"/>
+        <BehaviorArray Link="MagnataurDestroyerRun"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="ANca" Type="Passive" Behavior="ANca" Row="2" Column="1"/>
+            <LayoutButtons Face="ChargeMagnataur" Type="AbilCmd" AbilCmd="ChargeMagnataur,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="AHtc" Type="AbilCmd" AbilCmd="AHtc,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+        <WeaponArray index="1" removed="1"/>
     </CUnit>
     <!--magnataur reaver-->
-    <CUnit id="nmgr" parent="AW2_Creep" defType="LARGE">
+    <CUnit id="nmgr" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
-        <KillResource index="Custom" value="600"/>
-        <LifeStart value="14000"/>
-        <LifeMax value="14000"/>
+        <CostResource index="gold" value="270"/>
+        <KillResource index="Custom" value="90"/>
+        <LifeStart value="2100"/>
+        <LifeMax value="2100"/>
         <Speed value="2"/>
-        <Race value="Creeps"/>
+        <Race value="Centaur"/>
         <Mover value="foot"/>
         <PlaneArray index="Ground" value="1"/>
-        <Radius value="0.75"/>
-        <MinimapRadius value="0.75"/>
-        <SeparationRadius value="0.75"/>
-        <InnerRadius value="0.75"/>
+        <GlossaryCategory value="Unit/Category/CentaurUnits"/>
+        <AbilArray Link="CentaurInventory"/>
+        <AbilArray Link="ChargeMagnataur"/>
+        <AbilArray Link="AOae"/>
+        <BehaviorArray Link="ACsk"/>
+        <BehaviorArray Link="ANca"/>
+        <BehaviorArray Link="MagnataurReaverRun"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="ANca" Type="Passive" Behavior="ANca" Row="2" Column="1"/>
+            <LayoutButtons Face="ChargeMagnataur" Type="AbilCmd" AbilCmd="ChargeMagnataur,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="AOae1" Type="Passive" Behavior="AOae1" Row="2" Column="3"/>
+        </CardLayouts>
+        <WeaponArray index="1" removed="1"/>
     </CUnit>
     <!--magic vault-->
     <CUnit id="nmgv" parent="AW2_Sationary" defType="FORT">
@@ -7180,19 +7614,31 @@
         <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
     </CUnit>
     <!--magnataur warrior-->
-    <CUnit id="nmgw" parent="AW2_Creep" defType="LARGE">
+    <CUnit id="nmgw" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
-        <KillResource index="Custom" value="270"/>
-        <LifeStart value="6300"/>
-        <LifeMax value="6300"/>
+        <CostResource index="gold" value="90"/>
+        <KillResource index="Custom" value="90"/>
+        <LifeStart value="2100"/>
+        <LifeMax value="2100"/>
         <Speed value="2"/>
-        <Race value="Creeps"/>
+        <Race value="Centaur"/>
         <Mover value="foot"/>
-        <AbilArray Link="ANca"/>
-        <CardLayouts index="0">
-            <LayoutButtons Face="ANca" Type="Passive" Behavior="ANca" Row="2" Column="0"/>
-        </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/CentaurUnits"/>
+        <AbilArray Link="CentaurInventory"/>
+        <AbilArray Link="UpgradeTonmgr"/>
+        <AbilArray Link="UpgradeTonmgd"/>
+        <AbilArray Link="ChargeMagnataur"/>
+        <BehaviorArray Link="ACsk"/>
+        <BehaviorArray Link="ANca"/>
+        <BehaviorArray Link="MagnataurWarriorRun"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="nmgr" Type="AbilCmd" AbilCmd="UpgradeTonmgr,0" Row="0" Column="0"/>
+            <LayoutButtons Face="nmgd" Type="AbilCmd" AbilCmd="UpgradeTonmgd,0" Row="0" Column="1"/>
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="ANca" Type="Passive" Behavior="ANca" Row="2" Column="1"/>
+            <LayoutButtons Face="ChargeMagnataur" Type="AbilCmd" AbilCmd="ChargeMagnataur,Execute" Row="2" Column="2"/>
+        </CardLayouts>
     </CUnit>
     <!--naga peon-->
     <CUnit id="nmpe" parent="AW2_Peon">
@@ -7590,6 +8036,7 @@
         <AbilArray Link="UpgradeTonomg"/>
         <AbilArray Link="ACbb"/>
         <AbilArray Link="Alsh"/>
+        <BehaviorArray Link="nondamager"/>
         <CardLayouts index="0">
             <LayoutButtons Face="nomg" Type="AbilCmd" AbilCmd="UpgradeTonomg,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="Alsh" Type="AbilCmd" AbilCmd="Alsh,Execute" Row="2" Column="0"/>
@@ -7651,6 +8098,7 @@
         <AbilArray Link="GoblinInventory"/>
         <AbilArray Link="Alsh"/>
         <AbilArray Link="ANab"/>
+        <BehaviorArray Link="nondamager"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Alsh" Type="AbilCmd" AbilCmd="Alsh,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="ANab" Type="AbilCmd" AbilCmd="ANab,0" Row="2" Column="1"/>
@@ -9738,6 +10186,24 @@
         <AbilArray Link="Aihn"/>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/HumanUnits"/>
+    </CUnit>
+    <!--shoveler-->
+    <CUnit id="zshv" parent="AW2_Army" defType="SMALL">
+        <Attributes index="small" value="1"/>
+        <CostResource index="gold" value="45"/>
+        <KillResource index="Custom" value="15"/>
+        <LifeStart value="750"/>
+        <LifeMax value="750"/>
+        <Speed value="2"/>
+        <Race value="Centaur"/>
+        <Mover value="foot"/>
+        <AbilArray Link="CentaurInventory"/>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/CentaurUnits"/>
     </CUnit>
     <!--zergling-->
     <CUnit id="zzrg" parent="AW2_Peon">

@@ -11,12 +11,10 @@
         <OperandArray value="CountUpgradeBuildArmyCompleteOnly"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndCountUpgradeBuildArmyCompleteOnlyCountUpgradeNonCoreModeCompleteOnly">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUpgradeBuildArmyCompleteOnly"/>
         <OperandArray value="CountUpgradeNonCoreModeCompleteOnly"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndCountUpgradeBuildArmyFinalCompleteOnlyCountUpgradeNonCoreModeCompleteOnly">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUpgradeBuildArmyFinalCompleteOnly"/>
         <OperandArray value="CountUpgradeNonCoreModeCompleteOnly"/>
     </CRequirementAnd>
@@ -72,6 +70,16 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="nska" State="CompleteOnly"/>
     </CRequirementCountUnit>
+    <CRequirementCountUpgrade id="CountUpgradeBonusUnitType1CompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="BonusUnitType1" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeBonusUnitType2CompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="BonusUnitType2" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeBuildArmyCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="BuildArmy" State="CompleteOnly"/>
@@ -106,7 +114,6 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeNonCoreModeCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="NonCoreMode" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeTideCompleteOnly">
@@ -115,6 +122,16 @@
     </CRequirementCountUpgrade>
     <CRequirementEq id="EqCountBehaviorAW2_BuildingCompleteOnlyAtUnit0">
         <OperandArray index="0" value="CountBehaviorAW2_BuildingCompleteOnlyAtUnit"/>
+        <OperandArray index="1" value="0"/>
+    </CRequirementEq>
+    <CRequirementEq id="EqCountUpgradeBonusUnitType1CompleteOnly0">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountUpgradeBonusUnitType1CompleteOnly"/>
+        <OperandArray index="1" value="0"/>
+    </CRequirementEq>
+    <CRequirementEq id="EqCountUpgradeBonusUnitType2CompleteOnly0">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountUpgradeBonusUnitType2CompleteOnly"/>
         <OperandArray index="1" value="0"/>
     </CRequirementEq>
     <CRequirementEq id="EqCountUpgradeItemLevelCompleteOnly0">
