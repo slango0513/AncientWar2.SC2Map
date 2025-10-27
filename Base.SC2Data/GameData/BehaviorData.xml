@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
-    <const id="summoned" path="SDamageResponse.TargetFilters" value="Summoned"/>
-    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
     <const id="hero" path="SDamageResponse.TargetFilters" value="Resistant"/>
-    <const id="allies" path="SDamageResponse.TargetFilters" value="Ally"/>
+    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
+    <const id="summoned" path="SDamageResponse.TargetFilters" value="Summoned"/>
     <const id="air" path="SDamageResponse.TargetFilters" value="Air"/>
-    <const id="tree" path="SDamageResponse.TargetFilters" value="HarvestableResource"/>
+    <const id="allies" path="SDamageResponse.TargetFilters" value="Ally"/>
     <const id="item" path="SDamageResponse.TargetFilters" value="Item"/>
-    <const id="player" path="SDamageResponse.TargetFilters" value="Player"/>
+    <const id="tree" path="SDamageResponse.TargetFilters" value="HarvestableResource"/>
     <const id="ancient" path="SDamageResponse.TargetFilters" value="Psionic"/>
-    <const id="enemies" path="SDamageResponse.TargetFilters" value="Enemy"/>
+    <const id="player" path="SDamageResponse.TargetFilters" value="Player"/>
     <const id="structure" path="SDamageResponse.TargetFilters" value="PreventDefeat"/>
-    <const id="self" path="SDamageResponse.TargetFilters" value="Self"/>
-    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="enemies" path="SDamageResponse.TargetFilters" value="Enemy"/>
     <const id="mechanical" path="SDamageResponse.TargetFilters" value="Mechanical"/>
-    <const id="neutral" path="SDamageResponse.TargetFilters" value="Neutral"/>
+    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="self" path="SDamageResponse.TargetFilters" value="Self"/>
     <const id="ground" path="SDamageResponse.TargetFilters" value="Ground"/>
+    <const id="neutral" path="SDamageResponse.TargetFilters" value="Neutral"/>
     <const id="wall" path="SDamageResponse.TargetFilters" value="Hover"/>
     <const id="dead" path="SDamageResponse.TargetFilters" value="Dead"/>
     <const id="ethereal" path="SDamageResponse.TargetFilters" value="Stasis"/>
-    <const id="invulnerable" path="SDamageResponse.TargetFilters" value="Invulnerable"/>
     <const id="debris" path="SDamageResponse.TargetFilters" value="Destructible"/>
+    <const id="invulnerable" path="SDamageResponse.TargetFilters" value="Invulnerable"/>
     <CBehaviorBuff default="1" id="AW2_AuraCaster" parent="War3_AuraCaster">
         <Alignment value="Neutral"/>
     </CBehaviorBuff>
@@ -60,6 +60,12 @@
     <CBehaviorBuff id="ACac" parent="AW2_AuraCaster">
         <Requirements value="ACac"/>
         <EditorCategories value="Race:Creeps,AbilityorEffectType:Unit"/>
+    </CBehaviorBuff>
+    <!--Black Arrow (melee, creep) Dur=2 HeroDur=2 Buff=BNba,BNdm-->
+    <CBehaviorBuff id="ACbk">
+        <Modification>
+            <DamageDealtUnscaled index="Melee" value="100"/>
+        </Modification>
     </CBehaviorBuff>
     <!--Magic Immunity (Creep)-->
     <CBehaviorBuff id="ACmi">
@@ -671,6 +677,18 @@
             <StateFlags index="Resistant" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="DemonianSkin" parent="War3_Passive">
+        <EditorCategories value="Race:Demon,AbilityorEffectType:Unit"/>
+        <Requirements value="DemonianSkin"/>
+        <Modification>
+            <StateFlags index="Resistant" value="1"/>
+        </Modification>
+        <DamageResponse Chance="1" ModifyFraction="0.75">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Melee" value="0"/>
+            <Kind index="Splash" value="0"/>
+        </DamageResponse>
+    </CBehaviorBuff>
     <CBehaviorBuff id="ACsp">
         <RemoveValidatorArray value="CasterIsNotCreep"/>
     </CBehaviorBuff>
@@ -988,7 +1006,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="BHadI">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnarmorgolem.dds"/>
-        <Modification LifeArmorBonus="5"/>
+        <Modification LifeArmorBonus="6"/>
     </CBehaviorBuff>
     <!--Banish-->
     <CBehaviorBuff id="BHbn">
@@ -1217,6 +1235,22 @@
         </Modification>
         <Duration value="0.0625"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="ShadowAuraLeech" parent="War3_Passive">
+        <Modification>
+            <VitalDamageLeechArray index="Energy">
+                <KindArray index="Melee" value="0.0075"/>
+            </VitalDamageLeechArray>
+        </Modification>
+        <Duration value="0.0625"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShadowAuraLeechNonHero" parent="War3_Passive">
+        <Modification>
+            <VitalDamageLeechArray index="Energy">
+                <KindArray index="Melee" value="0.015"/>
+            </VitalDamageLeechArray>
+        </Modification>
+        <Duration value="0.0625"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="BUavILeech" parent="War3_Passive">
         <Modification>
             <VitalDamageLeechArray index="Life">
@@ -1317,8 +1351,9 @@
     <CBehaviorBuff id="EfficiencyAuraCaster" parent="AW2_AuraCaster">
         <Requirements value="EfficiencyAuraCaster"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="DominationAuraCaster" parent="AW2_AuraCaster">
-        <Requirements value="DominationAuraCaster"/>
+    <CBehaviorBuff id="ShadowAuraCaster" parent="AW2_AuraCaster">
+        <Name value="DominationAuraCaster/Name"/>
+        <Requirements value="ShadowAuraCaster"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="InhibitionAuraCaster" parent="AW2_AuraCaster">
         <Requirements value="InhibitionAuraCaster"/>
@@ -1504,7 +1539,7 @@
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <MaxStackCount value="2"/>
         <MaxStackCountPerCaster value="1"/>
-        <Modification LifeArmorBonus="5"/>
+        <Modification LifeArmorBonus="6"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="BHbh">
         <Duration value="6"/>
@@ -1869,9 +1904,13 @@
         <EditorCategories value="Race:Demon,AbilityorEffectType:Units"/>
         <MaxStackCount value="2"/>
         <MaxStackCountPerCaster value="1"/>
-        <DamageResponse Chance="1" ModifyFraction="0.75">
+        <DamageResponse>
+            <Chance value="1"/>
+            <Handled value="ShadowAuraLeechSet"/>
+            <Location value="Attacker"/>
+            <TargetFilters value="-;player,allies,neutral,mechanical,PreventReveal"/>
             <Kind index="Spell" value="0"/>
-            <Kind index="Melee" value="0"/>
+            <Kind index="Ranged" value="0"/>
             <Kind index="Splash" value="0"/>
         </DamageResponse>
     </CBehaviorBuff>
@@ -1969,6 +2008,14 @@
         <MaxStackCount value="2"/>
         <MaxStackCountPerCaster value="1"/>
         <Modification TimeScale="0.75"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EternityAuraHero" parent="War3_AuraBuff">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnwispsplode.dds"/>
+        <BehaviorCategories index="User1" value="1"/>
+        <TechAliasArray value="_Debuff"/>
+        <MaxStackCount value="2"/>
+        <MaxStackCountPerCaster value="1"/>
+        <Modification TimeScale="0.875"/>
     </CBehaviorBuff>
     <!--AuraSlow-->
     <CBehaviorBuff id="Basl">

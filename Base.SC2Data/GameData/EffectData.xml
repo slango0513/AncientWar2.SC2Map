@@ -96,6 +96,15 @@
         <EffectArray value="AIvaLeech"/>
         <EffectArray value="AIvaLeechNonHero"/>
     </CEffectSet>
+    <CEffectSet id="ANdp">
+        <EditorCategories value=""/>
+        <EffectArray value="ndkw"/>
+        <EffectArray value="ndke"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="AdvmHeal">
+        <VitalArray index="Life" Change="360"/>
+        <VitalArray index="Energy" Change="20"/>
+    </CEffectModifyUnit>
     <CEffectApplyBehavior id="BUav1Leech" parent="War3_ApplyBuff">
         <EditorCategories value="Race:Undead"/>
         <WhichUnit Value="Source"/>
@@ -120,6 +129,15 @@
     <CEffectEnumArea id="Aast">
         <AreaArray index="0" Radius="7.0312" Effect="AastRevive"/>
     </CEffectEnumArea>
+    <CEffectSet id="EternityAuraSet">
+        <EditorCategories value=""/>
+        <EffectArray value="EternityAura"/>
+        <EffectArray value="EternityAuraHero"/>
+    </CEffectSet>
+    <CEffectSet id="ShadowAuraLeechSet">
+        <EffectArray value="ShadowAuraLeech"/>
+        <EffectArray value="ShadowAuraLeechNonHero"/>
+    </CEffectSet>
     <CEffectSet id="BUavILeechSet">
         <EffectArray value="BUavILeech"/>
         <EffectArray value="BUavILeechNonHero"/>
@@ -230,6 +248,14 @@
     <CEffectDamage id="nerd1" parent="AW2_MagicDamage">
         <Amount value="288"/>
     </CEffectDamage>
+    <CEffectDamage id="nfel1" parent="AW2_ChaosDamage">
+        <Kind value="Melee"/>
+        <Amount value="24"/>
+    </CEffectDamage>
+    <CEffectDamage id="npfl1" parent="AW2_PierceDamage">
+        <Kind value="Melee"/>
+        <Amount value="72"/>
+    </CEffectDamage>
     <CEffectCreateUnit id="nsko" parent="War3_SummonUnit">
         <EditorCategories value="Race:ChaosOrc"/>
         <SpawnEffect value="Brai"/>
@@ -241,6 +267,14 @@
     <CEffectApplyBehavior id="AW2_Fury">
         <Flags index="UseDuration" value="1"/>
         <Duration value="180"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ShadowAuraLeech" parent="War3_ApplyBuff">
+        <WhichUnit Value="Source"/>
+        <ValidatorArray value="Hero"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ShadowAuraLeechNonHero" parent="War3_ApplyBuff">
+        <WhichUnit Value="Source"/>
+        <ValidatorArray value="NonHero"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="BUavILeech" parent="War3_ApplyBuff">
         <WhichUnit Value="Source"/>
@@ -924,6 +958,10 @@
         <EditorCategories value="Race:Demon"/>
         <SpawnEffect value="PhalanxMarkerCopy"/>
     </CEffectCreateUnit>
+    <CEffectCreateUnit id="ndke" parent="War3_SummonUnit">
+        <EditorCategories value="Race:Demon"/>
+        <SpawnEffect value="PhalanxMarkerCopy"/>
+    </CEffectCreateUnit>
     <CEffectApplyBehavior id="BNdp">
         <EditorCategories value="Race:Demon"/>
     </CEffectApplyBehavior>
@@ -1548,12 +1586,15 @@
     <CEffectEnumArea id="PressureAuraCasterSearch" parent="War3_AuraSearch" aura="PressureAura"/>
     <CEffectEnumArea id="ObsidianAuraCasterSearch" parent="War3_AuraSearch" aura="ObsidianAura"/>
     <CEffectEnumArea id="ObsidianAuraItemCasterSearch" parent="War3_AuraSearch" aura="ObsidianAuraItem"/>
-    <CEffectEnumArea id="DominationAuraCasterSearch" parent="War3_AuraSearch" aura="DominationAura"/>
+    <CEffectEnumArea id="ShadowAuraCasterSearch" parent="War3_AuraSearch" aura="DominationAura">
+        <AreaArray index="0" Radius="7.0312" Effect="ShadowAura"/>
+    </CEffectEnumArea>
     <CEffectEnumArea id="FrostAuraCasterSearch" parent="War3_AuraSearch" aura="FrostAura">
         <SearchFilters value="-;air,wall,tree,Missile,debris,item,ward,dead,Hidden"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="EternityAuraCasterSearch" parent="War3_AuraSearch" aura="EternityAura">
         <SearchFilters value="-;wall,tree,Missile,debris,item,structure,ward,dead,Hidden"/>
+        <AreaArray index="0" Radius="7.0312" Effect="EternityAuraSet"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="FelDriveAuraCasterSearch" parent="War3_AuraSearch" aura="FelDriveAura">
         <SearchFilters value="mechanical;neutral,enemies,wall,tree,Missile,debris,item,structure,ward,dead,Hidden"/>
@@ -1617,13 +1658,20 @@
     <CEffectApplyBehavior id="PressureAura" parent="War3_AuraBuff"/>
     <CEffectApplyBehavior id="ObsidianAura" parent="War3_AuraBuff"/>
     <CEffectApplyBehavior id="ObsidianAuraItem" parent="War3_AuraBuff"/>
-    <CEffectApplyBehavior id="DominationAura" parent="War3_AuraBuff"/>
+    <CEffectApplyBehavior id="ShadowAura" parent="War3_AuraBuff">
+        <Behavior value="DominationAura"/>
+    </CEffectApplyBehavior>
     <CEffectApplyBehavior id="FrostAura" parent="War3_AuraBuff">
         <Chance value="0.33"/>
         <ValidatorArray value="IsNotDragon"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="EternityAura" parent="War3_AuraBuff">
         <ValidatorArray value="IsNotDragon"/>
+        <ValidatorArray value="NonHero"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="EternityAuraHero" parent="War3_AuraBuff">
+        <ValidatorArray value="IsNotDragon"/>
+        <ValidatorArray value="Hero"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="FelDriveAura" parent="War3_AuraBuff"/>
     <CEffectDamage id="BaplDPS">
@@ -2971,27 +3019,27 @@
     </CEffectModifyUnit>
     <CEffectDamage id="nmgd1" parent="AW2_ChaosDamage">
         <Kind value="Melee"/>
-        <Amount value="288"/>
+        <Amount value="192"/>
     </CEffectDamage>
     <CEffectDamage id="nmgd2" parent="AW2_ChaosDamage">
         <Kind value="Melee"/>
-        <Amount value="576"/>
+        <Amount value="384"/>
     </CEffectDamage>
     <CEffectDamage id="nmgr1" parent="AW2_ChaosDamage">
         <Kind value="Melee"/>
-        <Amount value="576"/>
+        <Amount value="384"/>
     </CEffectDamage>
     <CEffectDamage id="nmgr2" parent="AW2_ChaosDamage">
         <Kind value="Melee"/>
-        <Amount value="576"/>
+        <Amount value="384"/>
     </CEffectDamage>
     <CEffectDamage id="nmgw1" parent="AW2_ChaosDamage">
         <Kind value="Melee"/>
-        <Amount value="144"/>
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="nmgw2" parent="AW2_ChaosDamage">
         <Kind value="Melee"/>
-        <Amount value="288"/>
+        <Amount value="192"/>
     </CEffectDamage>
     <CEffectDamage id="nmrv1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
@@ -3155,6 +3203,7 @@
     <CEffectSet id="ugrm1"/>
     <CEffectSet id="ugrm2"/>
     <CEffectSet id="ndkw1"/>
+    <CEffectSet id="ndke1"/>
     <CEffectSet id="nfac1"/>
     <CEffectSet id="dilidili1">
         <Chance value="0"/>

@@ -51,6 +51,25 @@
         <BarOffset value="50"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
+    <!--darkportalse-->
+    <CActorUnit id="ndke" parent="War3_Building" unitName="ndke" defType="FORT">
+        <MinimapUseSelfColor value="0"/>
+        <MinimapIcon value="Assets\Textures\UI\MiniMap\minimap-neutralbuilding.tga"/>
+        <MinimapRenderPriority value="Merc"/>
+        <On Terms="ActorCreation" Send="Create UBR_DPSW"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.250000 0.000000 birth"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.250000 Birth"/>
+        <On Terms="TimerExpired; TimerName Birth" Send="SetOpacity 1.000000 0.750000 birth"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply Work"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnDarkPortal.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnDarkPortal.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnDarkPortal.dds"/>
+        <BarWidth value="425"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <BarOffset value="120"/>
+    </CActorUnit>
     <!--eredardiabolist-->
     <CActorUnit id="nerd" parent="War3_Army" unitSound="PitLord" unitName="nerd" defType="NONE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnEredarWarlockPurple.dds"/>
@@ -62,6 +81,32 @@
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar200"/>
         <BarOffset value="130"/>
         <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--felstalker-->
+    <CActorUnit id="nfel" parent="War3_Army" unitSound="Felhound" unitName="nfel" defType="MEDIUM">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnFelHound.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnFelHound.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnFelHound.dds"/>
+        <BarWidth value="75"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
+        <BarOffset value="100"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.7343"/>
+    </CActorUnit>
+    <!--purplefelstalker-->
+    <CActorUnit id="npfl" parent="War3_Army" unitSound="Felhound" unitName="npfl" defType="MEDIUM">
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar110"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnPurpleFelhound.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnPurpleFelhound.dds"/>
+        </GroupIcon>
+        <BarWidth value="75"/>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnPurpleFelhound.dds"/>
+        <BarOffset value="100"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.7343"/>
     </CActorUnit>
     <!--skeletalorc-->
     <CActorUnit id="nsko" parent="War3_Army" unitSound="Skeleton" unitName="nsko" defType="LARGE">
@@ -1032,7 +1077,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnFelGuardBlue.dds"/>
         <BarWidth value="75"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.5"/>
@@ -5061,14 +5106,15 @@
         <On Terms="Behavior.ObsidianAuraItemCaster.On" Send="Create"/>
         <On Terms="Behavior.ObsidianAuraItemCaster.Off" Send="AnimBracketStop BSD"/>
     </CActorModel>
-    <CActorModel id="DominationAura" parent="War3_Buff">
+    <CActorModel id="ShadownAura" parent="War3_Buff">
         <HostSiteOps Ops="$origin"/>
+        <Model value="ShadowAura"/>
     </CActorModel>
-    <CActorModel id="DominationAuraTarget" parent="TargetArtX">
-        <HostSiteOps Ops="SOpAttachHarnessSoft SOpShadow" HoldRotation="1"/>
+    <CActorModel id="ShadowAuraTarget" parent="TargetArtX">
         <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
-        <On Terms="Behavior.DominationAuraCaster.On" Send="Create"/>
-        <On Terms="Behavior.DominationAuraCaster.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.ShadowAuraCaster.On" Send="Create"/>
+        <On Terms="Behavior.ShadowAuraCaster.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachHarnessSoft SOpShadow" HoldRotation="1"/>
     </CActorModel>
     <CActorModel id="FrostAura" parent="War3_Buff">
         <HostSiteOps Ops="$origin"/>
@@ -5082,6 +5128,8 @@
     <CActorModel id="EternityAura" parent="War3_Buff">
         <HostSiteOps Ops="$origin"/>
         <AutoScaleFromSelectionFactor value="0.500000"/>
+        <On Terms="Behavior.EternityAuraHero" Send="Create"/>
+        <On Terms="Behavior.EternityAuraHero" Send="AnimBracketStop BSD"/>
     </CActorModel>
     <CActorModel id="EternityAuraTarget" parent="TargetArtX">
         <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
@@ -5142,6 +5190,18 @@
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_HumanLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--zergling-->
+    <CActorUnit id="zzrg" parent="War3_Army" unitSound="Zergling" unitName="zzrg" defType="MEDIUM">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnZergling.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnZergling.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnZergling.dds"/>
+        <BarWidth value="50"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
 </Catalog>

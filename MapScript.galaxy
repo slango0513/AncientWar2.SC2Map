@@ -218,6 +218,7 @@ void InitGlobals () {
 void gf_ModInizialization (bool lp_debug);
 void gf_RoundStartLoop (bool lp_debug);
 bool gf_IsMultipleRanceMode ();
+bool gf_IsCoreMode ();
 bool gf_IsMeleeMode ();
 bool gf_IsDoubleBattle ();
 bool gf_IsNoneBonusMode ();
@@ -524,7 +525,18 @@ void gf_RoundStartLoop (bool lp_debug) {
 bool gf_IsMultipleRanceMode () {
     // Automatic Variable Declarations
     // Implementation
-    if (((gv_gameModeAttValue == "0003") || (gv_gameModeAttValue == "0002") || (gv_gameModeAttValue == "0004") || (gv_gameModeAttValue == "0005"))) {
+    if (((gv_gameModeAttValue == "0003") || (gv_gameModeAttValue == "0002") || (gv_gameModeAttValue == "0004") || (gv_gameModeAttValue == "0005") || (gv_gameModeAttValue == "0006"))) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool gf_IsCoreMode () {
+    // Automatic Variable Declarations
+    // Implementation
+    if (((gv_gameModeAttValue == "0006"))) {
         return true;
     }
     else {
@@ -535,7 +547,7 @@ bool gf_IsMultipleRanceMode () {
 bool gf_IsMeleeMode () {
     // Automatic Variable Declarations
     // Implementation
-    if (((gv_gameModeAttValue == "0001") || (gv_gameModeAttValue == "0003") || (gv_gameModeAttValue == "0002"))) {
+    if (((gv_gameModeAttValue == "0001") || (gv_gameModeAttValue == "0003") || (gv_gameModeAttValue == "0002") || (gv_gameModeAttValue == "0006"))) {
         return true;
     }
     else {
@@ -4165,10 +4177,10 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     libGAwX_gf_SetWar3TimeOfDay("13:00:00");
     libGAwX_gf_PauseUnpauseTimeOfDayWar3(true);
     WaterSetState("AW2_Default|Alternate Setting", 0.0, c_wtcLinear);
-    MeleeInitUnits();
     lv_player = 1;
     for ( ; ( (auto1222D8BF_ai >= 0 && lv_player <= auto1222D8BF_ae) || (auto1222D8BF_ai < 0 && lv_player >= auto1222D8BF_ae) ) ; lv_player += auto1222D8BF_ai ) {
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "hrdh", 0, lv_player, PlayerStartLocation(lv_player));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, gf_RaceGetWorkerType(PlayerRace(lv_player)), 0, lv_player, PlayerStartLocation(lv_player));
         if ((gf_IsMultipleRanceMode() == true)) {
             libNtve_gf_CreateUnitsWithDefaultFacing(1, gf_RaceGetWorkerType(gv_secondRace[lv_player]), 0, lv_player, PlayerStartLocation(lv_player));
         }
@@ -4800,6 +4812,12 @@ bool gt_PlayerInizialization_Func (bool testConds, bool runActions) {
             gv_secondRace[lv_player] = gf_GenerateSecondRace(lv_player, lv_secondRaceFromRaceAttribute);
         }
 
+        if ((gf_IsCoreMode() == true)) {
+            libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "NonCoreMode", 0);
+        }
+        else {
+            libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "NonCoreMode", 1);
+        }
         PlayerSetState(lv_player, c_playerStateFoodIgnored, true);
         PlayerSetState(lv_player, c_playerStateShowWorldTip, true);
         PlayerOptionOverride(lv_player, "simplecommandcard", "0");
@@ -6492,9 +6510,10 @@ bool gt_DebugKeyPressed_Func (bool testConds, bool runActions) {
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "nhew", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "ncpn", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "Dragonspawn", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "npfl", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "zzrg", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "ndrl", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
         libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "BuildArmyFinal", 1);
+        libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "NonCoreMode", 1);
         PlayerModifyPropertyInt(lv_player, c_playerPropTerrazine, c_playerPropOperSetTo, 100000);
         PlayerModifyPropertyInt(lv_player, c_playerPropCustom, c_playerPropOperSetTo, 100000);
         PlayerGroupClear(gv_aIGroup);

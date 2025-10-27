@@ -39,6 +39,10 @@
         <ScaleMax value="1.125000,1.125000,1.125000"/>
         <ScaleMin value="1.125000,1.125000,1.125000"/>
     </CModel>
+    <CModel id="nfel">
+        <ScaleMax value="0.625000,0.625000,0.625000"/>
+        <ScaleMin value="0.625000,0.625000,0.625000"/>
+    </CModel>
     <CModel id="nvdl">
         <ScaleMax value="0.625000,0.625000,0.625000"/>
         <ScaleMin value="0.625000,0.625000,0.625000"/>
@@ -210,8 +214,10 @@
     <CModel id="BlackrockClan_Portrait" parent="War3_ChaosWolfrider_Portrait">
         <Model value="Assets\Units\Demon\War3_ChaosWolfRider_Portrait\War3_ChaosWolfRider_Portrait.m3"/>
     </CModel>
-    <CModel id="ndke">
-        <Events Anim="Stand,Work" Type="Sound" Payload="SND_AORE"/>
+    <CModel id="ndke" parent="War3_DarkPortal">
+        <SelectionRadius value="2.833333"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
     </CModel>
     <CModel id="ndkw" parent="War3_DarkPortal">
         <SelectionRadius value="2.833333"/>
@@ -336,8 +342,8 @@
     <CModel id="PressureAura" parent="War3_GeneralAuraTarget"/>
     <CModel id="ObsidianAuraTarget" parent="War3_ObsidianRegenAura"/>
     <CModel id="ObsidianAura" parent="War3_GeneralAuraTarget"/>
-    <CModel id="DominationAuraTarget" parent="War3_ObsidianRegenAura"/>
-    <CModel id="DominationAura" parent="War3_GeneralAuraTarget"/>
+    <CModel id="ShadowAuraTarget" parent="War3_ObsidianRegenAura"/>
+    <CModel id="ShadowAura" parent="War3_GeneralAuraTarget"/>
     <CModel id="War3_FrostAura" parent="War3_Spell" race="Dragon">
         <Model value="Assets\Doodads\SnowBase_Fog_Mountain_Lower\SnowBase_Fog_Mountain_Lower.m3"/>
     </CModel>

@@ -6,8 +6,14 @@
     <CRequirement id="BuildArmy">
         <NodeArray index="Use" Link="CountUpgradeBuildArmyCompleteOnly"/>
     </CRequirement>
+    <CRequirement id="BuildArmyNonCore">
+        <NodeArray index="Use" Link="AndCountUpgradeBuildArmyCompleteOnlyCountUpgradeNonCoreModeCompleteOnly"/>
+    </CRequirement>
     <CRequirement id="BuildArmyFinal">
         <NodeArray index="Use" Link="CountUpgradeBuildArmyFinalCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BuildArmyFinalNonCore">
+        <NodeArray index="Use" Link="AndCountUpgradeBuildArmyFinalCompleteOnlyCountUpgradeNonCoreModeCompleteOnly"/>
     </CRequirement>
     <CRequirement id="BuildPhalanxFinal">
         <NodeArray index="Show" Link="AndLTCountUnitAlias_PhalanxQueuedOrBetter3CountUpgradeBuildPhalanxFinalCompleteOnly"/>

@@ -10,6 +10,16 @@
         <OperandArray value="CountBehaviorAW2_BuildingCompleteOnlyAtUnit"/>
         <OperandArray value="CountUpgradeBuildArmyCompleteOnly"/>
     </CRequirementAnd>
+    <CRequirementAnd id="AndCountUpgradeBuildArmyCompleteOnlyCountUpgradeNonCoreModeCompleteOnly">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUpgradeBuildArmyCompleteOnly"/>
+        <OperandArray value="CountUpgradeNonCoreModeCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndCountUpgradeBuildArmyFinalCompleteOnlyCountUpgradeNonCoreModeCompleteOnly">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUpgradeBuildArmyFinalCompleteOnly"/>
+        <OperandArray value="CountUpgradeNonCoreModeCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementAnd id="AndLTCountUnitAlias_PhalanxQueuedOrBetter3CountUpgradeBuildPhalanxCompleteOnly">
         <OperandArray value="LTCountUnitAlias_PhalanxQueuedOrBetter3"/>
         <OperandArray value="CountUpgradeBuildPhalanxCompleteOnly"/>
@@ -88,12 +98,16 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeCreateReserveUnitCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="CreateReserveUnit" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeItemLevelCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="ItemLevel" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeNonCoreModeCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="NonCoreMode" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeTideCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
