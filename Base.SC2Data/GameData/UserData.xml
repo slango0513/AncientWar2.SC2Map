@@ -6,17 +6,6 @@
             <Fixed index="0" removed="1"/>
             <Fixed index="1" removed="1"/>
         </Instances>
-        <Instances Id="Defend">
-            <Fixed Fixed="0.0998">
-                <Field Id="Damage Taken (Piercing)"/>
-            </Fixed>
-            <GameLink GameLink="DefendVisualDummy">
-                <Field Id="Deflect Effect"/>
-            </GameLink>
-            <GameLink GameLink="Defend">
-                <Field Id="Behavior"/>
-            </GameLink>
-        </Instances>
         <Instances Id="Amdf">
             <Fixed Fixed="0.75">
                 <Field Id="Chance To Deflect (Magic)"/>
@@ -27,8 +16,14 @@
             <GameLink GameLink="AmdfVisualDummy">
                 <Field Id="Deflect Effect"/>
             </GameLink>
+            <String String="-;PreventDefeat">
+                <Field Id="Deflect Filter"/>
+            </String>
         </Instances>
         <Instances Id="[Override]Adef">
+            <Fixed Fixed="1">
+                <Field Id="Damage Taken (Piercing)"/>
+            </Fixed>
             <Fixed Fixed="0.75">
                 <Field Id="Chance To Deflect (Piercing)"/>
             </Fixed>

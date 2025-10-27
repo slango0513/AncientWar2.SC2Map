@@ -163,6 +163,7 @@ int[gv_playerCount + 1][gv_phalanxMaximumCount + 1] gv_unitIndexCount;
 bool gv_gameIsOver;
 int gv_venueFinal;
 int gv_finalRound;
+bool[gv_playerCount + 1] gv_cheated;
 
 void InitGlobals () {
     int init_i;
@@ -421,6 +422,7 @@ trigger gt_DebugUnitRemoveAll;
 trigger gt_DebugRoundPressed;
 trigger gt_DebugEnableCopy;
 trigger gt_DebugCopyPressed;
+trigger gt_OnCheated;
 
 //--------------------------------------------------------------------------------------------------
 // Global Functions
@@ -5498,9 +5500,8 @@ void gt_AdefDefendInitRegister_Init () {
 //--------------------------------------------------------------------------------------------------
 bool gt_AdefDefendDamaged_Func (bool testConds, bool runActions) {
     // Variable Declarations
-    string lv_weapon;
+    string lv_effect;
     string lv_lM;
-    string lv_atkType;
     fixed lv_triggerDamge;
     fixed lv_actualDamge;
     fixed lv_attemptedDamage;
@@ -5520,9 +5521,8 @@ bool gt_AdefDefendDamaged_Func (bool testConds, bool runActions) {
     int autoD63BAD8F_u;
 
     // Variable Initialization
-    lv_weapon = ((EventUnitDamageEffect()));
-    lv_lM = (((lv_weapon) + "LM"));
-    lv_atkType = GAw3_WeaponAtkType(lv_weapon);
+    lv_effect = EventUnitDamageEffect();
+    lv_lM = (((lv_effect) + "LM"));
     lv_actualDamge = EventUnitDamageAmount();
     lv_attemptedDamage = EventUnitDamageAbsorbed();
     lv_unit = EventUnit();
@@ -5555,13 +5555,9 @@ bool gt_AdefDefendDamaged_Func (bool testConds, bool runActions) {
     }
 
     if ((gf_EffectAttackType(EventUnitDamageEffect()) == "DAMAGE_PIERCE")) {
-        if ((RandomFixed(0.0, 1.0) <= lv_deflectChance)) {
+        if ((CatalogEntryIsValid(c_gameCatalogEffect, lv_lM) == true) && (RandomFixed(0.0, 1.0) <= lv_deflectChance)) {
             UnitCreateEffectUnit(lv_unit, lv_deflectedEffect, lv_unit);
             if ((lv_source != lv_unit)) {
-                if ((CatalogEntryIsValid(c_gameCatalogEffect, lv_lM) == false)) {
-                    lv_lM = ((lv_weapon));
-                }
-
                 autoD63BAD8F_g = UnitGroup(null, UnitGetOwner(lv_source), RegionCircle(UnitGetPosition(lv_unit), 9.0), gv_unitAndCreepFilter, 0);
                 autoD63BAD8F_u = UnitGroupCount(autoD63BAD8F_g, c_unitCountAll);
                 for (;; autoD63BAD8F_u -= 1) {
@@ -5632,9 +5628,8 @@ void gt_AmdfInitRegister_Init () {
 //--------------------------------------------------------------------------------------------------
 bool gt_AmdfDamaged_Func (bool testConds, bool runActions) {
     // Variable Declarations
-    string lv_weapon;
+    string lv_effect;
     string lv_lM;
-    string lv_atkType;
     fixed lv_triggerDamge;
     fixed lv_actualDamge;
     fixed lv_attemptedDamage;
@@ -5654,9 +5649,8 @@ bool gt_AmdfDamaged_Func (bool testConds, bool runActions) {
     int autoED0135C4_u;
 
     // Variable Initialization
-    lv_weapon = ((EventUnitDamageEffect()));
-    lv_lM = (((lv_weapon) + "LM"));
-    lv_atkType = GAw3_WeaponAtkType(lv_weapon);
+    lv_effect = EventUnitDamageEffect();
+    lv_lM = (((lv_effect) + "LM"));
     lv_actualDamge = EventUnitDamageAmount();
     lv_attemptedDamage = EventUnitDamageAbsorbed();
     lv_unit = EventUnit();
@@ -5689,13 +5683,9 @@ bool gt_AmdfDamaged_Func (bool testConds, bool runActions) {
     }
 
     if ((gf_EffectAttackType(EventUnitDamageEffect()) == "DAMAGE_MAGIC")) {
-        if ((RandomFixed(0.0, 1.0) <= lv_deflectChance)) {
+        if ((CatalogEntryIsValid(c_gameCatalogEffect, lv_lM) == true) && (RandomFixed(0.0, 1.0) <= lv_deflectChance)) {
             UnitCreateEffectUnit(lv_unit, lv_deflectedEffect, lv_unit);
             if ((lv_source != lv_unit)) {
-                if ((CatalogEntryIsValid(c_gameCatalogEffect, lv_lM) == false)) {
-                    lv_lM = ((lv_weapon));
-                }
-
                 autoED0135C4_g = UnitGroup(null, UnitGetOwner(lv_source), RegionCircle(UnitGetPosition(lv_unit), 9.0), gv_unitAndCreepFilter, 0);
                 autoED0135C4_u = UnitGroupCount(autoED0135C4_g, c_unitCountAll);
                 for (;; autoED0135C4_u -= 1) {
@@ -6803,6 +6793,54 @@ void gt_DebugCopyPressed_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: OnCheated
+//--------------------------------------------------------------------------------------------------
+bool gt_OnCheated_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_eventPlayer;
+    string lv_eventPlayerHandle;
+
+    // Automatic Variable Declarations
+    playergroup auto2D5C5917_g;
+    int auto2D5C5917_var;
+
+    // Variable Initialization
+    lv_eventPlayer = EventPlayer();
+    lv_eventPlayerHandle = PlayerHandle(lv_eventPlayer);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TextExpressionSetToken("Param/Expression/D29EE385", "A", StringToText(lv_eventPlayerHandle));
+    UIDisplayMessage(PlayerGroupSingle(lv_eventPlayer), c_messageAreaSubtitle, TextExpressionAssemble("Param/Expression/D29EE385"));
+    auto2D5C5917_g = PlayerGroupAll();
+    auto2D5C5917_var = -1;
+    while (true) {
+        auto2D5C5917_var = PlayerGroupNextPlayer(auto2D5C5917_g, auto2D5C5917_var);
+        if (auto2D5C5917_var < 0) { break; }
+        if ((auto2D5C5917_var != lv_eventPlayer) && (PlayerType(auto2D5C5917_var) == c_playerTypeUser)) {
+            return false;
+        }
+
+    }
+    if (((lv_eventPlayerHandle == "5-S2-1-804748") || (lv_eventPlayerHandle == "5-S2-1-8272882")) && (gv_cheated[lv_eventPlayer] == false)) {
+        UIDisplayMessage(PlayerGroupSingle(lv_eventPlayer), c_messageAreaSubtitle, StringExternal("Param/Value/1E752FF1"));
+        PlayerModifyPropertyInt(lv_eventPlayer, c_playerPropTerrazine, c_playerPropOperAdd, 90);
+        gv_cheated[lv_eventPlayer] = true;
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_OnCheated_Init () {
+    gt_OnCheated = TriggerCreate("gt_OnCheated_Func");
+    TriggerAddEventKeyPressed(gt_OnCheated, c_playerAny, c_keyH, true, c_keyModifierStateRequire, c_keyModifierStateRequire, c_keyModifierStateIgnore);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger Initialization
 //--------------------------------------------------------------------------------------------------
 void InitTriggers () {
@@ -6867,6 +6905,7 @@ void InitTriggers () {
     gt_DebugRoundPressed_Init();
     gt_DebugEnableCopy_Init();
     gt_DebugCopyPressed_Init();
+    gt_OnCheated_Init();
 }
 
 //--------------------------------------------------------------------------------------------------
