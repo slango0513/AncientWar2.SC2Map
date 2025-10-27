@@ -1,26 +1,26 @@
-<?xml version="1.0" encoding="us-ascii"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Catalog>
-    <const id="hero" path="SDamageResponse.TargetFilters" value="Resistant"/>
-    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
     <const id="summoned" path="SDamageResponse.TargetFilters" value="Summoned"/>
-    <const id="air" path="SDamageResponse.TargetFilters" value="Air"/>
+    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
+    <const id="hero" path="SDamageResponse.TargetFilters" value="Resistant"/>
     <const id="allies" path="SDamageResponse.TargetFilters" value="Ally"/>
-    <const id="item" path="SDamageResponse.TargetFilters" value="Item"/>
+    <const id="air" path="SDamageResponse.TargetFilters" value="Air"/>
     <const id="tree" path="SDamageResponse.TargetFilters" value="HarvestableResource"/>
-    <const id="ancient" path="SDamageResponse.TargetFilters" value="Psionic"/>
+    <const id="item" path="SDamageResponse.TargetFilters" value="Item"/>
     <const id="player" path="SDamageResponse.TargetFilters" value="Player"/>
-    <const id="structure" path="SDamageResponse.TargetFilters" value="PreventDefeat"/>
+    <const id="ancient" path="SDamageResponse.TargetFilters" value="Psionic"/>
     <const id="enemies" path="SDamageResponse.TargetFilters" value="Enemy"/>
-    <const id="mechanical" path="SDamageResponse.TargetFilters" value="Mechanical"/>
-    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="structure" path="SDamageResponse.TargetFilters" value="PreventDefeat"/>
     <const id="self" path="SDamageResponse.TargetFilters" value="Self"/>
-    <const id="ground" path="SDamageResponse.TargetFilters" value="Ground"/>
+    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="mechanical" path="SDamageResponse.TargetFilters" value="Mechanical"/>
     <const id="neutral" path="SDamageResponse.TargetFilters" value="Neutral"/>
+    <const id="ground" path="SDamageResponse.TargetFilters" value="Ground"/>
     <const id="wall" path="SDamageResponse.TargetFilters" value="Hover"/>
     <const id="dead" path="SDamageResponse.TargetFilters" value="Dead"/>
     <const id="ethereal" path="SDamageResponse.TargetFilters" value="Stasis"/>
-    <const id="debris" path="SDamageResponse.TargetFilters" value="Destructible"/>
     <const id="invulnerable" path="SDamageResponse.TargetFilters" value="Invulnerable"/>
+    <const id="debris" path="SDamageResponse.TargetFilters" value="Destructible"/>
     <!--Hidden Abilities-->
     <!--Command Aura-->
     <!--Buttonpos=0,2-->
@@ -64,6 +64,20 @@
             <StateFlags index="SuppressLifeRegen" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="ANstStun" parent="War3_Buff">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnstampede.dds"/>
+        <Duration value="2"/>
+        <DurationOverride index="0" Duration="1">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Modification>
+            <ModifyFlags index="DisableAbils" value="1"/>
+            <StateFlags index="Stun" value="1"/>
+            <AbilClassEnableArray index="CAbilBehavior" value="1"/>
+            <BehaviorLinkDisableArray value="HostileSleeperAlert"/>
+        </Modification>
+    </CBehaviorBuff>
     <!--Aura - Trueshot (Creep) Buff=BEar-->
     <CBehaviorBuff id="ACat">
         <Alignment value="Neutral"/>
@@ -99,6 +113,19 @@
     <!--TornadoDamage Buff=Btdg-->
     <CBehaviorBuff id="Atdg">
         <Alignment value="Neutral"/>
+    </CBehaviorBuff>
+    <!--ShadowStrike-->
+    <CBehaviorBuff id="BEsh">
+        <Duration value="18"/>
+        <DurationOverride index="0" Duration="9">
+            <ValidatorArray index="0" value="Hero"/>
+        </DurationOverride>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BEshSpeedDecay">
+        <Duration value="18"/>
+        <DurationOverride index="0" Duration="9">
+            <ValidatorArray index="0" value="Hero"/>
+        </DurationOverride>
     </CBehaviorBuff>
     <CBehaviorBuff id="BHtb">
         <Duration value="10"/>
@@ -3399,6 +3426,7 @@
             <DamageDealtFraction index="Ranged" value="1"/>
             <DamageDealtFraction index="Splash" value="1"/>
         </Modification>
+        <RemoveValidatorArray value="KillResourceCustomLE405"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="VoidRecall" parent="War3_Passive">
         <DisableValidatorArray value="IsNotRecentlyRecalled"/>

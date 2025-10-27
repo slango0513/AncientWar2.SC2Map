@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="us-ascii"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Catalog>
     <CEffectModifyUnit default="1" id="AW2_Pawn"/>
     <CEffectCreatePersistent default="1" id="AW2_Multiattack">
@@ -82,15 +82,23 @@
     <CEffectDamage id="AEsfDamage">
         <Amount value="150"/>
     </CEffectDamage>
+    <CEffectSet id="ANstExplodeSet">
+        <EffectArray value="ANstSearch"/>
+    </CEffectSet>
+    <CEffectEnumArea id="ANstSearch" parent="War3_AbilSearch">
+        <AreaArray Radius="2.1484" Effect="ANstStun"/>
+        <SearchFilters value="-;player,allies,air,wall,tree,Missile,item,ward,dead,Hidden,invulnerable"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
     <CEffectDamage id="ANvcDamage">
         <ValidatorArray value="IsNotElemental"/>
         <Amount value="75"/>
     </CEffectDamage>
     <CEffectDamage id="BEshDecayDamage1">
-        <Amount value="15"/>
+        <Amount value="30"/>
     </CEffectDamage>
     <CEffectDamage id="BEshInitDamage1">
-        <Amount value="100"/>
+        <Amount value="60"/>
     </CEffectDamage>
     <CEffectApplyBehavior id="BNvc">
         <ValidatorArray value="IsNotElemental"/>
@@ -225,8 +233,9 @@
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="BNmr" parent="War3_ApplyBuff"/>
     <CEffectDamage id="ANstDamage">
-        <Amount value="75"/>
+        <Amount value="50"/>
     </CEffectDamage>
+    <CEffectApplyBehavior id="ANstStun" parent="War3_ApplyBuff"/>
     <CEffectCreatePersistent id="AUlsCUCP">
         <PeriodCount value="3"/>
     </CEffectCreatePersistent>
@@ -1184,7 +1193,7 @@
     </CEffectDamage>
     <CEffectDamage id="ndrp1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
-        <Amount value="36"/>
+        <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="ndrs1" parent="AW2_MagicDamage">
         <Amount value="24"/>
@@ -4143,10 +4152,6 @@
         <AreaArray Radius="2.7343" Effect="TrueFulfillmentApply"/>
     </CEffectEnumArea>
     <CEffectApplyBehavior id="TrueFulfillmentApply" parent="War3_ApplyBuff">
-        <ValidatorArray index="0" value="NotFrenzied"/>
-        <ValidatorArray index="1" value="NotWarpPrism"/>
-        <ValidatorArray value="NotOverlord"/>
-        <ValidatorArray value="NotMedivac"/>
         <Behavior value="TrueFulfillment"/>
     </CEffectApplyBehavior>
     <CEffectSet id="TrueFulfillmentStopInitialSet">

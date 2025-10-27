@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="us-ascii"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Catalog>
     <CAbilTrain default="1" id="AW2_MakeItem">
         <Flags index="WaitForFood" value="0"/>
@@ -241,8 +241,24 @@
         <Flags index="AutoCastOn" value="1"/>
     </CAbilBehavior>
     <!--Warden - Shadow Strike Buff=BEsh cast=3-->
-    <CAbilEffectTarget id="AEsh">
-        <AcquirePriority value="4"/>
+    <CAbilEffectTarget id="AEsh" parent="AW2_EffectTarget">
+        <Alignment value="Negative"/>
+        <TargetFilters index="0" value="-;player,allies,air,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="30"/>
+        </Cost>
+        <Effect index="0" value="AEshMissile"/>
+        <Range value="11"/>
+        <PrepTime value="0.5"/>
+        <CastOutroTime value="0.83"/>
+        <AutoCastRange value="11"/>
+        <AutoCastValidatorArray value="NoAEsh"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
+        </TargetSorts>
     </CAbilEffectTarget>
     <!--Keeper - Tranquility Buff=AEtr effect=XEtq-->
     <CAbilEffectInstant id="AEtq" parent="AW2_EffectInstant">
@@ -823,7 +839,7 @@
         <PrepTime value="0.3"/>
         <CastOutroTime value="0.47"/>
         <AutoCastRange value="12"/>
-        <AutoCastValidatorArray value="EnemiesNearby12"/>
+        <AutoCastValidatorArray value="EnemiesNearby7"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="TargetEnergyGE10"/>
         <AutoCastValidatorArray value="HasNoBNmr"/>
@@ -1216,10 +1232,11 @@
             <SortArray value="TSLifeLargestFirst"/>
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
-        <Range value="15"/>
-        <AutoCastRange value="15"/>
-        <AutoCastValidatorArray value="EnemiesNearby10"/>
+        <Range value="12"/>
+        <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="EnemiesNearby7"/>
         <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastValidatorArray value="KillResourceCustomLE405"/>
         <PrepTime value="0.5"/>
         <CastOutroTime value="1"/>
         <CursorEffect value="TrueFulfillmentSearch"/>
@@ -4752,16 +4769,16 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToubdr" parent="AW2_Upgrade" toUnit="ubdr">
-        <CmdButtonArray index="Execute" Requirements="BuildArmyFinalNonCore"/>
+        <CmdButtonArray index="Execute" Requirements="BuildArmyFinal"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeTonser" parent="AW2_Upgrade" toUnit="nser">
-        <CmdButtonArray index="Execute" Requirements="BuildArmyFinalNonCore"/>
+        <CmdButtonArray index="Execute" Requirements="BuildArmyFinal"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToChronormu" parent="AW2_Upgrade" toUnit="Chronormu">
-        <CmdButtonArray index="Execute" Requirements="BuildArmyFinalNonCore"/>
+        <CmdButtonArray index="Execute" Requirements="BuildArmyFinal"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeTonthr" parent="AW2_Upgrade" toUnit="nthr">
-        <CmdButtonArray index="Execute" Requirements="BuildArmyFinalNonCore"/>
+        <CmdButtonArray index="Execute" Requirements="BuildArmyFinal"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeTonbds" parent="AW2_Upgrade" toUnit="nbds">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
@@ -4794,10 +4811,10 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToUwar" parent="AW2_Upgrade" toUnit="Uwar">
-        <CmdButtonArray index="Execute" Requirements="BuildArmyFinalNonCore"/>
+        <CmdButtonArray index="Execute" Requirements="BuildArmyFinal"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToNklj" parent="AW2_Upgrade" toUnit="Nklj">
-        <CmdButtonArray index="Execute" Requirements="BuildArmyFinalNonCore"/>
+        <CmdButtonArray index="Execute" Requirements="BuildArmyFinal"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToUvar" parent="AW2_Upgrade" toUnit="Uvar">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
