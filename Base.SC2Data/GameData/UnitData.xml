@@ -322,6 +322,10 @@
         <EnergyMax value="60"/>
         <BehaviorArray Link="Moonlight"/>
     </CUnit>
+    <!--Druid Pouch-->
+    <CUnit id="drph" parent="AW2_Item">
+        <CostResource index="gold" value="60"/>
+    </CUnit>
     <CUnit id="dtt21LM" parent="War3_Missile"/>
     <!--HeroDemonHunter-->
     <CUnit id="Edem" parent="AW2_Army" defType="NONE">
@@ -374,8 +378,8 @@
         <CardLayouts index="0">
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
             <LayoutButtons Face="AEmb" Type="AbilCmd" AbilCmd="AEmb,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="AEvi" Type="AbilCmd" AbilCmd="AEvi,Execute" Row="2" Column="2"/>
-            <LayoutButtons Face="AEev1" Type="Passive" Row="2" Column="3"/>
+            <LayoutButtons Face="AEev" Type="Passive" Behavior="AEev1" Row="2" Column="2"/>
+            <LayoutButtons Face="AEvi" Type="AbilCmd" AbilCmd="AEvi,Execute" Row="2" Column="3"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/DemonUnits"/>
@@ -396,13 +400,15 @@
         <AbilArray Link="DemonInventory"/>
         <AbilArray Link="AEmb"/>
         <AbilArray Link="AEviUn"/>
+        <AbilArray Link="AEev"/>
         <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="OrderEvilIllidanUn"/>
         <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
             <LayoutButtons Face="AEmb" Type="AbilCmd" AbilCmd="AEmb,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="AEvi" Type="AbilCmd" AbilCmd="AEviUn,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="AEev" Type="Passive" Behavior="AEev1" Row="2" Column="2"/>
+            <LayoutButtons Face="AEvi" Type="AbilCmd" AbilCmd="AEviUn,Execute" Row="2" Column="3"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/DemonUnits"/>
@@ -2535,12 +2541,14 @@
         <Mover value="amph"/>
         <AbilArray Link="NagaInventory"/>
         <AbilArray Link="SongOfAncientHunting"/>
+        <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="naga"/>
         <BehaviorArray Link="SeaGiantHunterSwim"/>
         <BehaviorArray Link="ACpv"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ACpv" Type="Passive" Behavior="ACpv" Row="2" Column="0"/>
-            <LayoutButtons Face="SongOfAncientHuntingCaster" Type="Passive" Behavior="SongOfAncientHuntingCaster" Row="2" Column="1"/>
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="ACpv" Type="Passive" Behavior="ACpv" Row="2" Column="1"/>
+            <LayoutButtons Face="SongOfAncientHuntingCaster" Type="Passive" Behavior="SongOfAncientHuntingCaster" Row="2" Column="2"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
@@ -2557,12 +2565,14 @@
         <Mover value="amph"/>
         <AbilArray Link="UpgradeTonsgh"/>
         <AbilArray Link="NagaInventory"/>
+        <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="naga"/>
         <BehaviorArray Link="SeaGiantSwim"/>
         <BehaviorArray Link="ACpv"/>
         <CardLayouts index="0">
             <LayoutButtons Face="nsgh" Type="AbilCmd" AbilCmd="UpgradeTonsgh,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="ACpv" Type="Passive" Behavior="ACpv" Row="2" Column="0"/>
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="ACpv" Type="Passive" Behavior="ACpv" Row="2" Column="1"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
@@ -4126,10 +4136,12 @@
         </CardLayouts>
         <CardLayouts index="3" CardId="Pur2">
             <LayoutButtons Face="Purchasefwss" Type="AbilCmd" AbilCmd="Purchasefwss,Train1" Row="2" Column="0"/>
+            <LayoutButtons Face="Purchasedrph" Type="AbilCmd" AbilCmd="Purchasedrph,Train1" Row="2" Column="1"/>
         </CardLayouts>
         <AbilArray Link="DragonBuild"/>
         <AbilArray Link="Purchaseoven"/>
         <AbilArray Link="Purchasefwss"/>
+        <AbilArray Link="Purchasedrph"/>
         <Speed value="3"/>
         <Radius value="0.3125"/>
         <Race value="Dragon"/>

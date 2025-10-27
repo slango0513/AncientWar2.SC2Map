@@ -572,6 +572,11 @@
             <DamageDealtFraction index="Spell" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="HealBonus" parent="AW2_Item">
+        <Modification HealTakenMultiplier="2">
+            <VitalRegenMultiplier index="Life" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
     <!--Orb of Corruption Dur=5 HeroDur=5 Buff=BIcb-->
     <CBehaviorBuff id="AIcb" parent="AW2_SphereItem">
         <DamageResponse Handled="BIcb" TargetFilters="-;wall,tree,debris,item,structure,dead,invulnerable"/>
@@ -627,7 +632,7 @@
         <Duration value="0.0625"/>
         <Modification>
             <VitalDamageLeechArray index="Life">
-                <KindArray index="Melee" value="0.25"/>
+                <KindArray index="Melee" value="0.5"/>
             </VitalDamageLeechArray>
         </Modification>
     </CBehaviorBuff>

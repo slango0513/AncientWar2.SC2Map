@@ -61,6 +61,7 @@ const int gv_venueGroupMaximumCount = (gv_teamMaximumCount/2);
 // Global Variables
 //--------------------------------------------------------------------------------------------------
 int gv_debugRound;
+bool gv_debugBonusRound;
 bool gv_isBonusRound;
 text gv_infoAtBuildRegion;
 text gv_infoAtBattleField;
@@ -479,11 +480,7 @@ void gf_RoundStartLoop (bool lp_debug) {
         lv_round = 1;
         for ( ; ( (autoE4112BFC_ai >= 0 && lv_round <= autoE4112BFC_ae) || (autoE4112BFC_ai < 0 && lv_round >= autoE4112BFC_ae) ) ; lv_round += autoE4112BFC_ai ) {
             if ((lp_debug == true)) {
-                if ((gf_IsFinalRound(lv_round) == true)) {
-                }
-                else {
-                    lv_round = gv_debugRound;
-                }
+                lv_round = gv_debugRound;
             }
 
             if (((lv_gameValue == "0005") || (lv_gameValue == "0004"))) {
@@ -5279,7 +5276,7 @@ bool gt_Harvest_Func (bool testConds, bool runActions) {
     lv_player = EventPlayer();
     lv_targetUnit = EventPlayerEffectUsedUnit(c_effectUnitTarget);
     lv_targetUnitType = UnitGetType(lv_targetUnit);
-    lv_value = FixedToInt((IntToFixed(CatalogFieldValueGetAsInt(c_gameCatalogUnit, lv_targetUnitType, "KillResource[" + IntToString(3) + "]", lv_player)) * 2.0));
+    lv_value = FixedToInt((IntToFixed(CatalogFieldValueGetAsInt(c_gameCatalogUnit, lv_targetUnitType, "KillResource[" + IntToString(3) + "]", lv_player)) * 1.4));
 
     // Actions
     if (!runActions) {
@@ -6576,6 +6573,12 @@ bool gt_DebugRoundPressed_Func (bool testConds, bool runActions) {
         gv_debugRound = 10;
     }
     else {
+    }
+    if ((EventKeyControl() == true)) {
+        gv_isBonusRound = true;
+    }
+    else {
+        gv_isBonusRound = false;
     }
     return true;
 }

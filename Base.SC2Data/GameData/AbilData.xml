@@ -130,6 +130,13 @@
         <CastOutroTime value="0.5"/>
         <TargetFilters index="0" value="-;wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
     </CAbilEffectTarget>
+    <!--Demon Hunter - Evasion-->
+    <CAbilBehavior id="AEev" parent="AW2_Passive">
+        <EditorCategories value="Race:Nightelf,AbilityorEffectType:Unit"/>
+        <BehaviorArray value="AEev1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+    </CAbilBehavior>
     <!--Keeper - Tranquility Buff=AEtr effect=XEtq-->
     <CAbilEffectInstant id="AEtq" parent="AW2_EffectInstant">
         <EditorCategories value="Race:NightElf,AbilityorEffectType:Unit"/>
@@ -3288,6 +3295,7 @@
     <CAbilBehavior id="Multishot" parent="War3_Passive">
         <CmdButtonArray index="On" Requirements="Multishot"/>
     </CAbilBehavior>
+    <CAbilTrain id="Purchasedrph" parent="AW2_MakeItem" unit="drph"/>
     <CAbilTrain id="Purchasearsh" parent="AW2_MakeItem" unit="arsh"/>
     <CAbilTrain id="Purchasesrtl" parent="AW2_MakeItem" unit="srtl"/>
     <CAbilTrain id="Purchasespsh" parent="AW2_MakeItem" unit="spsh"/>
