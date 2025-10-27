@@ -354,7 +354,7 @@
     <CWeaponLegacy id="Etyr1" parent="missile" atkType="NORMAL">
         <Effect value="Etyr1LM"/>
         <MinScanRange value="5.0781"/>
-        <TargetFilters value="Visible;wall,tree,Missile,ethereal,dead,invulnerable"/>
+        <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
         <Range value="3"/>
         <RangeSlop value="1.9531"/>
         <Period value="1.5"/>
@@ -896,6 +896,15 @@
         <DamagePoint value="0.33"/>
         <Backswing value="0.53"/>
     </CWeaponLegacy>
+    <CWeaponLegacy id="dilidili1" parent="normal" atkType="NORMAL">
+        <MinScanRange value="3.9062"/>
+        <TargetFilters value="Visible;wall,tree,Missile,ethereal,dead,invulnerable"/>
+        <Range value="0.7812"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="3"/>
+        <DamagePoint value="0.33"/>
+        <Backswing value="0.53"/>
+    </CWeaponLegacy>
     <!--DruidoftheTalon-->
     <CWeaponLegacy id="edot1" parent="missile" atkType="MAGIC">
         <Effect value="edot1LM"/>
@@ -1016,13 +1025,13 @@
     <CWeaponLegacy id="hdhw1" parent="missile" atkType="MAGIC">
         <Effect value="hdhw1LM"/>
         <EditorCategories value="Race:BloodElf"/>
-        <TargetFilters value="Visible;air,wall,tree,Missile,dead,invulnerable,immunity"/>
+        <TargetFilters value="Visible;wall,tree,Missile,dead,invulnerable,immunity"/>
         <RangeSlop value="1.9531"/>
         <Period value="3"/>
         <DamagePoint value="0.43"/>
         <Backswing value="0.633"/>
-        <MinScanRange value="6"/>
-        <Range value="6"/>
+        <MinScanRange value="4"/>
+        <Range value="4"/>
     </CWeaponLegacy>
     <!--Footman-->
     <CWeaponLegacy id="hfoo1" parent="normal" atkType="NORMAL">
@@ -1864,12 +1873,23 @@
     <!--Troll Batrider-->
     <CWeaponLegacy id="otbr1" parent="missile" atkType="SIEGE">
         <Effect value="otbr1LM"/>
-        <EditorCategories value="Race:Orc"/>
-        <MinScanRange value="4"/>
+        <EditorCategories value="Race:ChaosOrc"/>
+        <MinScanRange value="7.8125"/>
         <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
-        <Range value="4"/>
+        <Range value="2"/>
         <RangeSlop value="1.9531"/>
-        <Period value="3"/>
+        <Period value="6"/>
+        <DamagePoint value="0.6"/>
+        <Backswing value="0.54"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Pelekeiki1" parent="missile" atkType="SIEGE">
+        <Effect value="otbr1LM"/>
+        <EditorCategories value="Race:ChaosOrc"/>
+        <MinScanRange value="7.8125"/>
+        <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
+        <Range value="2"/>
+        <RangeSlop value="1.9531"/>
+        <Period value="6"/>
         <DamagePoint value="0.6"/>
         <Backswing value="0.54"/>
     </CWeaponLegacy>
@@ -1942,6 +1962,46 @@
         <EditorCategories value="Race:Human"/>
         <MinScanRange value="3.9062"/>
         <TargetFilters value="Visible;air,wall,tree,Missile,ethereal,dead,invulnerable"/>
+        <Range value="0.7812"/>
+        <RangeSlop value="2.3437"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.66"/>
+        <Backswing value="0.44"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BloodKnight1" parent="normal" atkType="MAGIC">
+        <EditorCategories value="Race:BloodElf"/>
+        <MinScanRange value="3.9062"/>
+        <TargetFilters value="Visible;air,wall,tree,Missile,dead,invulnerable,immunity"/>
+        <Range value="0.7812"/>
+        <RangeSlop value="2.3437"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.66"/>
+        <Backswing value="0.44"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BloodKnight21" parent="normal" atkType="MAGIC">
+        <EditorCategories value="Race:BloodElf"/>
+        <MinScanRange value="3.9062"/>
+        <TargetFilters value="Visible;air,wall,tree,Missile,dead,invulnerable,immunity"/>
+        <Range value="0.7812"/>
+        <RangeSlop value="2.3437"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.66"/>
+        <Backswing value="0.44"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SolanarBloodwrath1" parent="normal" atkType="MAGIC">
+        <EditorCategories value="Race:BloodElf"/>
+        <MinScanRange value="3.9062"/>
+        <TargetFilters value="Visible;air,wall,tree,Missile,dead,invulnerable,immunity"/>
+        <Range value="0.7812"/>
+        <RangeSlop value="2.3437"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.66"/>
+        <Backswing value="0.44"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="KnightLordBloodvalor1" parent="normal" atkType="MAGIC">
+        <EditorCategories value="Race:BloodElf"/>
+        <MinScanRange value="3.9062"/>
+        <TargetFilters value="Visible;air,wall,tree,Missile,dead,invulnerable,immunity"/>
         <Range value="0.7812"/>
         <RangeSlop value="2.3437"/>
         <Period value="1.5"/>
@@ -2972,13 +3032,13 @@
     <!--dragon hawk-->
     <CWeaponLegacy id="nws11" parent="missile" atkType="MAGIC">
         <Effect value="nws11LM"/>
-        <TargetFilters value="Visible;air,wall,tree,Missile,dead,invulnerable,immunity"/>
+        <TargetFilters value="Visible;wall,tree,Missile,dead,invulnerable,immunity"/>
         <RangeSlop value="1.9531"/>
         <Period value="3"/>
         <DamagePoint value="0.43"/>
         <Backswing value="0.633"/>
-        <MinScanRange value="6"/>
-        <Range value="6"/>
+        <MinScanRange value="4"/>
+        <Range value="4"/>
     </CWeaponLegacy>
     <!--Demolisher-->
     <CWeaponLegacy id="ocat1" parent="artillery" atkType="SIEGE">

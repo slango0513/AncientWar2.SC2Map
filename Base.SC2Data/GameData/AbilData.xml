@@ -156,6 +156,21 @@
         </TargetSorts>
         <AutoCastFilters value="Visible;-"/>
     </CAbilEffectInstant>
+    <!--Silence(Creep) Dur=40 HeroDur=8.5 Buff=BNsi-->
+    <CAbilEffectInstant id="ACsi" parent="AW2_EffectInstant">
+        <EditorCategories value="Race:BloodElf,AbilityorEffectType:Unit"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="60"/>
+        </Cost>
+        <PrepTime value="0.6"/>
+        <CastOutroTime value="0.2"/>
+        <CursorEffect value="ACsiSearch"/>
+        <Effect index="0" value="ACsiSearch"/>
+        <Alignment value="Negative"/>
+        <Flags index="BestUnit" value="1"/>
+        <AutoCastValidatorArray value="EnemiesNearby1"/>
+        <AutoCastFilters value="Self,Visible;-"/>
+    </CAbilEffectInstant>
     <!--Demon Hunter - Evasion-->
     <CAbilBehavior id="AEev" parent="AW2_Passive">
         <EditorCategories value="Race:Nightelf,AbilityorEffectType:Unit"/>
@@ -253,7 +268,7 @@
         <Cost>
             <Cooldown TimeUse="60"/>
         </Cost>
-        <AutoCastFilters value="Visible;Air,Hover,HarvestableResource,Missile,Item,PreventDefeat,Stasis,Dead,Invulnerable"/>
+        <AutoCastFilters value="Visible;Air,Hover,HarvestableResource,Missile,Destructible,Item,PreventDefeat,Stasis,Dead,Invulnerable"/>
     </CAbilAugment>
     <!--Cripple (creep) Dur=60 HeroDur=10 Buff=Bcri-->
     <CAbilEffectTarget id="ACcr" parent="AW2_EffectTarget">
@@ -442,6 +457,9 @@
     </CAbilEffectInstant>
     <CAbilBehavior id="DestinyBond" parent="AW2_Passive">
         <BehaviorArray value="DestinyBond"/>
+    </CAbilBehavior>
+    <CAbilBehavior id="BurningSmokeBatrider" parent="AW2_Passive">
+        <BehaviorArray value="BurningSmokeBatrider"/>
     </CAbilBehavior>
     <CAbilResearch id="UpgradeItemLevel" parent="War3_Research">
         <InfoArray index="Research1" Time="0" Upgrade="ItemLevel">
@@ -1145,7 +1163,7 @@
         </Cost>
         <Range value="10"/>
         <PrepTime value="0.3"/>
-        <CastOutroTime value="15"/>
+        <CastOutroTime value="30"/>
         <CursorEffect value="AclfSearch"/>
         <FinishTime value="1.03"/>
         <TargetSorts RequestCount="1">
@@ -1156,7 +1174,7 @@
         <AutoCastValidatorArray value="EnemiesNearby7"/>
         <AutoCastValidatorArray value="NoCloudOfFog"/>
         <AutoCastValidatorArray value="noMarkers"/>
-        <TargetFilters index="0" value="structure;wall,tree,Missile,debris,item,ward,dead,invulnerable,immunity"/>
+        <TargetFilters index="0" value="-;wall,tree,Missile,debris,item,ward,dead,invulnerable,immunity"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="Advc" parent="AW2_EffectTarget">
         <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
@@ -1326,6 +1344,9 @@
         </InfoArray>
         <InfoArray index="Build12" Unit="nvdw">
             <Button DefaultButtonFace="nvdw" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build13" Unit="BloodKnight">
+            <Button DefaultButtonFace="BloodKnight" Requirements="BuildArmy"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
@@ -2221,7 +2242,7 @@
     </CAbilEffectInstant>
     <!--Sea Witch - Mana Shield Buff=BNms-->
     <CAbilBehavior id="ANms" parent="AW2_Toggle">
-        <EditorCategories value="Race:Naga,AbilityorEffectType:Units"/>
+        <EditorCategories value="Race:BloodElf,AbilityorEffectType:Units"/>
         <BehaviorArray value="BNms1"/>
         <AutoCastValidatorArray value="CasterHasEnergy"/>
         <CmdButtonArray index="On">
@@ -4106,6 +4127,15 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToodkt" parent="AW2_Upgrade" toUnit="odkt">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToPelekeiki" parent="AW2_Upgrade" toUnit="Pelekeiki">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToSolanarBloodwrath" parent="AW2_Upgrade" toUnit="SolanarBloodwrath">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToKnightLordBloodvalor" parent="AW2_Upgrade" toUnit="KnightLordBloodvalor">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
 </Catalog>

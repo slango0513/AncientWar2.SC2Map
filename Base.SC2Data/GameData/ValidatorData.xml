@@ -50,6 +50,12 @@
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
         <Compare value="Eq"/>
     </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea default="1" id="AW2_NoFriendiesNearby">
+        <SearchFilters value="Visible;Self,Neutral,Enemy,Hover,Missile,Destructible,Dead,Hidden"/>
+        <WhichLocation Value="CasterUnit"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <Compare value="Eq"/>
+    </CValidatorLocationEnumArea>
     <CValidatorUnitCompareVital default="1" id="TargetLifeGE250">
         <Compare value="GE"/>
         <Value value="250"/>
@@ -65,6 +71,12 @@
     <CValidatorCombine id="BOaeRemove">
         <CombineArray value="NotHaveBOae1"/>
     </CValidatorCombine>
+    <CValidatorLocationEnumArea id="NoBurningSmokeNearby2" parent="AW2_NoFriendiesNearby">
+        <AreaArray Radius="2" Validator="IsBurningSmoke"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="NoBurningSmokeNearby1" parent="AW2_NoFriendiesNearby">
+        <AreaArray Radius="1" Validator="IsBurningSmoke"/>
+    </CValidatorLocationEnumArea>
     <CValidatorUnitCompareBehaviorCount id="NotHaveBOae1">
         <Behavior value="BOae1"/>
     </CValidatorUnitCompareBehaviorCount>
@@ -169,6 +181,9 @@
     </CValidatorCombine>
     <CValidatorUnitType id="IsGhoul">
         <Value value="ugho"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="IsBurningSmoke">
+        <Value value="BurningSmoke"/>
     </CValidatorUnitType>
     <CValidatorUnitCompareVital id="MPGE30">
         <Compare value="GE"/>

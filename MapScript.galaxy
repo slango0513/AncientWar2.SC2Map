@@ -158,6 +158,7 @@ unitfilter gv_villagerFilter;
 region gv_battlefieldHighland;
 int gv_venueFinalEnd;
 int[gv_playerCount + 1][gv_phalanxMaximumCount + 1] gv_unitIndexCount;
+bool gv_gameIsOver;
 int gv_venueFinal;
 int gv_finalRound;
 
@@ -320,6 +321,7 @@ void gf_UnitPositionAll ();
 void gf_UnitOrPreviewModelPosition (unit lp_unit, bool lp_preview);
 void gf_CreepPosition (int lp_round);
 void gf_UnitCreate (int lp_player, point lp_point, string lp_unitType, unit lp_unit);
+void gf_CreateStatue ();
 void gf_AIPhalanxAndPortalPositionAll (int lp_round);
 void gf_AIPhalanxBuffSetAll (int lp_round);
 void gf_AIPhalanxAndPortalPosition (int lp_player, region lp_region, string lp_unitType, string lp_userType, unitfilter lp_unitFilter, int lp_count);
@@ -638,6 +640,10 @@ void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug, bool lp_aut
     }
 
     gf_UnitPositionAll();
+    if (((gf_IsFinalRound(lp_round) == false) && (lp_bonusRound == false))) {
+        gf_CreateStatue();
+    }
+
     if ((lp_bonusRound == true)) {
         gf_CreepPosition(lp_round);
     }
@@ -3219,6 +3225,12 @@ void gf_UnitCreate (int lp_player, point lp_point, string lp_unitType, unit lp_u
     }
 }
 
+void gf_CreateStatue () {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "dilidili", 0, 15, RegionGetCenter(gv_battlefield));
+}
+
 void gf_AIPhalanxAndPortalPositionAll (int lp_round) {
     // Variable Declarations
     int lv_venue;
@@ -3404,19 +3416,26 @@ void gf_ReserveUnitCreationEnable (bool lp_option) {
     fixed lv_time;
 
     // Automatic Variable Declarations
+    const int autoC18DD816_ae = gv_playerCount;
+    const int autoC18DD816_ai = 1;
     const int auto49511634_ae = gv_playerCount;
     const int auto49511634_ai = 1;
     const int auto3D093143_ae = gv_playerCount;
     const int auto3D093143_ai = 1;
+    const int autoA6F4864C_ae = gv_playerCount;
+    const int autoA6F4864C_ai = 1;
 
     // Variable Initialization
     lv_time = 5.0;
 
     // Implementation
     lv_player = 1;
+    for ( ; ( (autoC18DD816_ai >= 0 && lv_player <= autoC18DD816_ae) || (autoC18DD816_ai < 0 && lv_player >= autoC18DD816_ae) ) ; lv_player += autoC18DD816_ai ) {
+        libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "CountUnit", 0);
+    }
+    lv_player = 1;
     for ( ; ( (auto49511634_ai >= 0 && lv_player <= auto49511634_ae) || (auto49511634_ai < 0 && lv_player >= auto49511634_ae) ) ; lv_player += auto49511634_ai ) {
         if ((lp_option == true)) {
-            libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "CountUnit", 1);
         }
         else {
             libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "BuildArmy", 0);
@@ -3424,7 +3443,6 @@ void gf_ReserveUnitCreationEnable (bool lp_option) {
             libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "BuildPhalanx", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "BuildPhalanxFinal", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "BuildPortal", 0);
-            libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "CountUnit", 0);
         }
     }
     TriggerEnable(gt_CreateReserveUnit, lp_option);
@@ -3453,6 +3471,10 @@ void gf_ReserveUnitCreationEnable (bool lp_option) {
             lv_time = 4.5;
         }
         Wait(lv_time, c_timeGame);
+        lv_player = 1;
+        for ( ; ( (autoA6F4864C_ai >= 0 && lv_player <= autoA6F4864C_ae) || (autoA6F4864C_ai < 0 && lv_player >= autoA6F4864C_ae) ) ; lv_player += autoA6F4864C_ai ) {
+            libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "CountUnit", 1);
+        }
     }
 
     TriggerEnable(gt_IssueOrderPeriodic, lp_option);
@@ -3555,7 +3577,7 @@ void gf_IssueOrder (bool lp_periodic, int lp_player) {
                 lv_targetUnitgroup = UnitGroupAlliance(UnitGetOwner(lv_unit), c_unitAllianceEnemy, lv_region, gv_unitAndCreepFilter, 0);
                 while ((UnitGroupCount(lv_targetUnitgroup, c_unitCountAlive) > 0)) {
                     lv_targetUnit = UnitGroupClosestToPoint(lv_targetUnitgroup, UnitGetPosition(lv_unit));
-                    if ((UnitCanAttackTarget(lv_unit, lv_targetUnit) == true) && (UnitFilterMatch(lv_targetUnit, UnitGetOwner(lv_targetUnit), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterBenign - 32)) | (1 << (c_targetFilterPassive - 32)))) == true)) {
+                    if ((UnitCanAttackTarget(lv_unit, lv_targetUnit) == true) && ((UnitFilterMatch(lv_targetUnit, UnitGetOwner(lv_targetUnit), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterBenign - 32)) | (1 << (c_targetFilterPassive - 32)))) == true) || (UnitFilterMatch(lv_targetUnit, UnitGetOwner(lv_targetUnit), gv_villagerFilter) == true))) {
                         lv_targetPoint = UnitGetPosition(lv_targetUnit);
                         break;
                     }
@@ -3709,7 +3731,7 @@ void gf_GameOver (int lp_team) {
     // Variable Declarations
     int lv_teamMember;
     int lv_team;
-    int lv_time;
+    int lv_secondesToWait;
 
     // Automatic Variable Declarations
     int auto644888EE_ae;
@@ -3720,13 +3742,13 @@ void gf_GameOver (int lp_team) {
     const int auto2E75D8FD_ai = 1;
 
     // Variable Initialization
-    lv_time = 10;
+    lv_secondesToWait = 5;
 
     // Implementation
     TriggerEnable(gt_PlayerLeft, false);
-    TextExpressionSetToken("Param/Expression/A093297C", "A", IntToText(lv_time));
+    TextExpressionSetToken("Param/Expression/A093297C", "A", IntToText(lv_secondesToWait));
     UIDisplayMessage(gv_uIPlayergroup, c_messageAreaSubtitle, TextExpressionAssemble("Param/Expression/A093297C"));
-    Wait(lv_time, c_timeGame);
+    Wait(lv_secondesToWait, c_timeGame);
     auto644888EE_ae = gv_teamMemberCount;
     lv_teamMember = 1;
     for ( ; ( (auto644888EE_ai >= 0 && lv_teamMember <= auto644888EE_ae) || (auto644888EE_ai < 0 && lv_teamMember >= auto644888EE_ae) ) ; lv_teamMember += auto644888EE_ai ) {
@@ -6232,11 +6254,15 @@ bool gt_CountUnit_Func (bool testConds, bool runActions) {
                 lv_wait = true;
             }
             if ((gv_round == gv_roundCount)) {
-                auto206E7D71_ae = lv_teamCountAlive;
-                lv_team = 1;
-                for ( ; ( (auto206E7D71_ai >= 0 && lv_team <= auto206E7D71_ae) || (auto206E7D71_ai < 0 && lv_team >= auto206E7D71_ae) ) ; lv_team += auto206E7D71_ai ) {
-                    gf_GameOver(lv_teamAlive[lv_team]);
+                if ((gv_gameIsOver == false)) {
+                    auto206E7D71_ae = lv_teamCountAlive;
+                    lv_team = 1;
+                    for ( ; ( (auto206E7D71_ai >= 0 && lv_team <= auto206E7D71_ae) || (auto206E7D71_ai < 0 && lv_team >= auto206E7D71_ae) ) ; lv_team += auto206E7D71_ai ) {
+                        gf_GameOver(lv_teamAlive[lv_team]);
+                    }
+                    gv_gameIsOver = true;
                 }
+
             }
             else {
                 autoC3985A16_ae = lv_teamCountAlive;

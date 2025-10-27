@@ -121,6 +121,22 @@
             <LayoutButtons Face="Asud" Type="AbilCmd" AbilCmd="Asud,Execute" Row="2" Column="4"/>
         </CardLayouts>
     </CUnit>
+    <CUnit default="1" id="AW2_Statue" parent="War3_Army">
+        <DeathRevealRadius value="0"/>
+        <FogVisibility value="Snapshot"/>
+        <PlacementFootprint value="1x1Army"/>
+        <LifeArmorFormula>
+            <NegativeArmorMultiplier value="-1"/>
+            <NegativeDamageBase value="1"/>
+            <PositiveArmorMultiplier value="1"/>
+            <PositiveDamageRatio value="0"/>
+        </LifeArmorFormula>
+        <LifeRegenRate value="0.0625"/>
+        <FlagArray index="Untooltipable" value="0"/>
+        <FlagArray index="debris" value="1"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="ForceField" value="0"/>
+    </CUnit>
     <CUnit default="1" id="AW2_Army" parent="War3_Army">
         <DeathTime value="15"/>
         <DeathRevealRadius value="0"/>
@@ -300,6 +316,7 @@
             <LayoutButtons index="3" removed="1"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="Pelekeiki1LM" parent="War3_Missile"/>
     <!--skeletal orc-->
     <CUnit id="nsko" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
@@ -2836,19 +2853,53 @@
         <KillResource index="Custom" value="30"/>
         <LifeStart value="250"/>
         <LifeMax value="250"/>
-        <Speed value="3"/>
         <Race value="ChaosOrc"/>
         <AbilArray Link="ChaosOrcInventory"/>
+        <AbilArray Link="UpgradeToPelekeiki"/>
         <AbilArray Link="Auco"/>
+        <AbilArray Link="BurningSmokeBatrider"/>
         <BehaviorArray Link="Aliq"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="Aliq" Type="Passive" Behavior="Aliq" Row="2" Column="0"/>
-            <LayoutButtons Face="Auco" Type="AbilCmd" AbilCmd="Auco,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="Pelekeiki" Type="AbilCmd" AbilCmd="UpgradeToPelekeiki,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="BurningSmokeBatrider" Type="Passive" Behavior="BurningSmokeBatrider" Row="2" Column="0"/>
+            <LayoutButtons Face="Aliq" Type="Passive" Behavior="Aliq" Row="2" Column="1"/>
+            <LayoutButtons Face="Auco" Type="AbilCmd" AbilCmd="Auco,Execute" Row="2" Column="2"/>
         </CardLayouts>
         <GlossaryCategory value="Unit/Category/ChaosOrcUnits"/>
-        <Height value="0.75"/>
-        <Mover value="foot"/>
-        <PlaneArray index="Ground" value="1"/>
+        <Height value="1.875"/>
+        <Speed value="3"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="ForceField" value="0"/>
+        <Collide index="Flying" value="1"/>
+        <Mover value="fly"/>
+        <PlaneArray index="Air" value="1"/>
+    </CUnit>
+    <CUnit id="Pelekeiki" parent="AW2_Army" defType="SMALL">
+        <Race value="ChaosOrc"/>
+        <PlaneArray index="Air" value="1"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="ForceField" value="0"/>
+        <Collide index="Flying" value="1"/>
+        <Attributes index="small" value="1"/>
+        <LifeStart value="450"/>
+        <LifeMax value="450"/>
+        <Mover value="fly"/>
+        <Speed value="3"/>
+        <Height value="1.875"/>
+        <CostResource index="gold" value="180"/>
+        <KillResource index="Custom" value="30"/>
+        <AbilArray Link="ChaosOrcInventory"/>
+        <AbilArray Link="Auco"/>
+        <AbilArray Link="BurningSmokeBatrider"/>
+        <BehaviorArray Link="Aliq"/>
+        <BehaviorArray Link="Atru"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurningSmokeBatrider" Type="Passive" Behavior="BurningSmokeBatrider" Row="2" Column="0"/>
+            <LayoutButtons Face="Aliq" Type="Passive" Behavior="Aliq" Row="2" Column="1"/>
+            <LayoutButtons Face="Auco" Type="AbilCmd" AbilCmd="Auco,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="Atru" Type="Passive" Behavior="Atru" Row="2" Column="3"/>
+        </CardLayouts>
+        <GlossaryCategory value="Unit/Category/ChaosOrcUnits"/>
     </CUnit>
     <!--wyvern-->
     <CUnit id="ownr" parent="AW2_Army" defType="SMALL">
@@ -3155,6 +3206,12 @@
         <EnergyMax value="60"/>
         <BehaviorArray Link="Moonlight"/>
     </CUnit>
+    <CUnit id="dilidili" parent="AW2_Statue" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <KillResource index="Custom" value="400"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+    </CUnit>
     <!--DruidoftheTalon-->
     <CUnit id="edot" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
@@ -3454,19 +3511,22 @@
         <KillResource index="Custom" value="30"/>
         <LifeStart value="250"/>
         <LifeMax value="250"/>
-        <Speed value="3"/>
         <Race value="BloodElf"/>
-        <Height value="0.75"/>
+        <Height value="1.875"/>
         <AbilArray Link="BloodElfInventory"/>
-        <AbilArray Link="Amls"/>
+        <AbilArray Link="Aclf"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="Amls" Type="AbilCmd" AbilCmd="Amls,0" Row="2" Column="0"/>
+            <LayoutButtons Face="Aclf" Type="AbilCmd" AbilCmd="Aclf,0" Row="2" Column="0"/>
         </CardLayouts>
-        <PlaneArray index="Ground" value="1"/>
-        <Mover value="foot"/>
         <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
         <EnergyStart value="60"/>
         <EnergyMax value="60"/>
+        <Speed value="3"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="ForceField" value="0"/>
+        <Collide index="Flying" value="1"/>
+        <Mover value="fly"/>
+        <PlaneArray index="Air" value="1"/>
     </CUnit>
     <!--Footman-->
     <CUnit id="hfoo" parent="AW2_Army" defType="LARGE">
@@ -3668,6 +3728,101 @@
         <CardLayouts index="0">
             <LayoutButtons Face="ChargeKnight" Type="AbilCmd" AbilCmd="ChargeKnight,Execute" Row="2" Column="0"/>
         </CardLayouts>
+    </CUnit>
+    <CUnit id="BloodKnight" parent="AW2_Army" defType="SMALL">
+        <Race value="BloodElf"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Attributes index="small" value="1"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
+        <LifeArmor value="10"/>
+        <Mover value="horse"/>
+        <Speed value="3"/>
+        <CostResource index="gold" value="75"/>
+        <KillResource index="Custom" value="75"/>
+        <AbilArray Link="BloodElfInventory"/>
+        <AbilArray Link="UpgradeToSolanarBloodwrath"/>
+        <AbilArray Link="UpgradeToKnightLordBloodvalor"/>
+        <AbilArray Link="ANms"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="KnightLordBloodvalor" Type="AbilCmd" AbilCmd="UpgradeToKnightLordBloodvalor,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="SolanarBloodwrath" Type="AbilCmd" AbilCmd="UpgradeToSolanarBloodwrath,Execute" Row="0" Column="1"/>
+            <LayoutButtons Face="ANms" Type="AbilCmd" AbilCmd="ANms,On" Row="2" Column="0"/>
+            <LayoutButtons Face="ANmsUn" Type="AbilCmd" AbilCmd="ANms,Off" Row="2" Column="0"/>
+        </CardLayouts>
+        <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
+    </CUnit>
+    <CUnit id="BloodKnight2" parent="AW2_Army" defType="LARGE">
+        <Race value="BloodElf"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Attributes index="large" value="1"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
+        <LifeArmor value="10"/>
+        <Mover value="horse"/>
+        <Speed value="2"/>
+        <KillResource index="Custom" value="75"/>
+        <AbilArray Link="BloodElfInventory"/>
+        <AbilArray Link="ANms"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ANms" Type="AbilCmd" AbilCmd="ANms,On" Row="2" Column="0"/>
+            <LayoutButtons Face="ANmsUn" Type="AbilCmd" AbilCmd="ANms,Off" Row="2" Column="0"/>
+            <LayoutButtons Face="ArcaneIntellect" Type="Passive" Row="2" Column="1"/>
+        </CardLayouts>
+        <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
+        <EnergyRegenDelay value="10"/>
+        <EnergyRegenRate value="5"/>
+    </CUnit>
+    <CUnit id="SolanarBloodwrath" parent="AW2_Army" defType="SMALL">
+        <Race value="BloodElf"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Attributes index="small" value="1"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
+        <LifeArmor value="10"/>
+        <Mover value="horse"/>
+        <Speed value="3"/>
+        <CostResource index="gold" value="225"/>
+        <KillResource index="Custom" value="75"/>
+        <AbilArray Link="BloodElfInventory"/>
+        <AbilArray Link="ANms"/>
+        <AbilArray Link="ACsi"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ANms" Type="AbilCmd" AbilCmd="ANms,On" Row="2" Column="0"/>
+            <LayoutButtons Face="ANmsUn" Type="AbilCmd" AbilCmd="ANms,Off" Row="2" Column="0"/>
+            <LayoutButtons Face="ACsi" Type="AbilCmd" AbilCmd="ACsi,Execute" Row="2" Column="1"/>
+        </CardLayouts>
+        <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
+    </CUnit>
+    <CUnit id="KnightLordBloodvalor" parent="AW2_Army" defType="SMALL">
+        <Race value="BloodElf"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Attributes index="small" value="1"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
+        <LifeArmor value="10"/>
+        <Mover value="horse"/>
+        <Speed value="2"/>
+        <CostResource index="gold" value="225"/>
+        <KillResource index="Custom" value="75"/>
+        <AbilArray Link="BloodElfInventory"/>
+        <AbilArray Link="ANms"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ANms" Type="AbilCmd" AbilCmd="ANms,On" Row="2" Column="0"/>
+            <LayoutButtons Face="ANmsUn" Type="AbilCmd" AbilCmd="ANms,Off" Row="2" Column="0"/>
+            <LayoutButtons Face="ArcaneIntellect" Type="Passive" Row="2" Column="1"/>
+        </CardLayouts>
+        <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
+        <EnergyRegenDelay value="10"/>
+        <EnergyRegenRate value="5"/>
     </CUnit>
     <!--Militia-->
     <CUnit id="hmil" parent="AW2_Army" defType="LARGE">
@@ -5731,6 +5886,7 @@
             <LayoutButtons Face="nws1" Type="AbilCmd" AbilCmd="BloodElfBuild,Build7" Row="1" Column="1"/>
             <LayoutButtons Face="nhea" Type="AbilCmd" AbilCmd="BloodElfBuild,Build6" Row="1" Column="3"/>
             <LayoutButtons Face="hpxe" Type="AbilCmd" AbilCmd="BloodElfBuild,Build9" Row="1" Column="4"/>
+            <LayoutButtons Face="BloodKnight" Type="AbilCmd" AbilCmd="BloodElfBuild,Build13" Row="0" Column="2"/>
         </CardLayouts>
         <CardLayouts index="2" CardId="Purc">
             <LayoutButtons Face="Purchaseofir" Type="AbilCmd" AbilCmd="Purchaseofir,Train1" Row="2" Column="0"/>
@@ -7506,21 +7662,24 @@
         <KillResource index="Custom" value="30"/>
         <LifeStart value="250"/>
         <LifeMax value="250"/>
-        <Speed value="3"/>
         <Race value="BloodElf"/>
-        <Height value="0.75"/>
+        <Height value="1.875"/>
         <AbilArray Link="BloodElfInventory"/>
         <AbilArray Link="UpgradeTohdhw"/>
-        <AbilArray Link="Aclf"/>
+        <AbilArray Link="Amls"/>
         <CardLayouts index="0">
             <LayoutButtons Face="hdhw" Type="AbilCmd" AbilCmd="UpgradeTohdhw,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="Aclf" Type="AbilCmd" AbilCmd="Aclf,0" Row="2" Column="0"/>
+            <LayoutButtons Face="Amls" Type="AbilCmd" AbilCmd="Amls,0" Row="2" Column="0"/>
         </CardLayouts>
         <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
         <EnergyStart value="60"/>
         <EnergyMax value="60"/>
-        <Mover value="foot"/>
-        <PlaneArray index="Ground" value="1"/>
+        <Speed value="3"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="ForceField" value="0"/>
+        <Collide index="Flying" value="1"/>
+        <Mover value="fly"/>
+        <PlaneArray index="Air" value="1"/>
     </CUnit>
     <!--Orb of Corruption-->
     <CUnit id="ocor" parent="AW2_Item">
@@ -8543,6 +8702,22 @@
         <CardLayouts>
             <LayoutButtons Face="Aap2" Type="Passive" Behavior="Aap2" Row="2" Column="0"/>
         </CardLayouts>
+        <MinimapRadius value="0"/>
+    </CUnit>
+    <CUnit id="BurningSmoke" parent="AW2_Sationary" defType="MEDIUM">
+        <Race value="ChaosOrc"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="$ward" value="1"/>
+        <FlagArray index="ArmySelect" value="0"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="ForceField" value="0"/>
+        <Attributes index="medium" value="1"/>
+        <Mover value="foot"/>
+        <BehaviorArray Link="BurningAura"/>
+        <CardLayouts>
+            <LayoutButtons Face="BurningSmokePassive" Type="Passive" Behavior="BurningAura" Row="2" Column="0"/>
+        </CardLayouts>
+        <MinimapRadius value="0"/>
     </CUnit>
     <!--SkeletonWarrior-->
     <CUnit id="uske" parent="AW2_Army" defType="LARGE">

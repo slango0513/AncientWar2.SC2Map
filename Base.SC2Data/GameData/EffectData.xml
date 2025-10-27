@@ -69,6 +69,23 @@
         <Name value="Effect/Name/AW2_SelfDestroyDPS"/>
         <Marker Link="Effect/SelfDestroyDPS"/>
     </CEffectDamage>
+    <CEffectApplyBehavior id="ACsiDur">
+        <Duration value="30"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ACsiHeroDur">
+        <Duration value="15"/>
+    </CEffectApplyBehavior>
+    <!--Silence(Creep) Dur=40 HeroDur=8.5 Buff=BNsi-->
+    <CEffectEnumArea id="ACsiSearch">
+        <AreaArray index="0" Radius="7.0312" Effect="ACsi"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BurningAuraSearch" parent="War3_AbilSearchRadiusExt">
+        <EditorCategories value="Race:ChaosOrc"/>
+        <SearchFilters value="-;player,allies,air,mechanical,wall,tree,debris,item,structure,ward,dead,Hidden,invulnerable,Passive"/>
+        <AreaArray Radius="0.9765" Effect="Burning"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="BurningSmokeTimeLife" parent="War3_ApplyBuff"/>
+    <CEffectLaunchMissile id="Pelekeiki1LM" parent="War3_Missile" weaponid="Pelekeiki1"/>
     <!--Keeper - Tranquility Buff=AEtr effect=XEtq-->
     <CEffectCreatePersistent id="AEtq">
         <PeriodCount value="10"/>
@@ -83,6 +100,9 @@
     <CEffectEnumArea id="AOshSearch">
         <MaxCount value="4294967295"/>
     </CEffectEnumArea>
+    <CEffectApplyBehavior id="Burning" parent="War3_ApplyBuff">
+        <EditorCategories value="Race:ChaosOrc"/>
+    </CEffectApplyBehavior>
     <!--Chieftain - Shock Wave Buff=BOsh-->
     <CEffectCreatePersistent id="AOshTarget">
         <PeriodicOffsetArray index="0" value="0,-9,0"/>
@@ -117,10 +137,18 @@
         <EffectArray value="nsko"/>
         <EffectArray value="nsko"/>
     </CEffectSet>
+    <CEffectEnumArea id="AclfSearch">
+        <SearchFilters value="-;player,allies,wall,tree,Missile,debris,item,ward,dead,Hidden,immunity"/>
+    </CEffectEnumArea>
     <CEffectDamage id="BuhfDPS">
         <Amount value="0"/>
         <VitalFractionMax index="Life" value="0.02"/>
     </CEffectDamage>
+    <CEffectCreateUnit id="CreateBurningSmoke" parent="AW2_SummonUnit">
+        <SpawnEffect value="BurningSmokeTimeLife"/>
+        <SpawnUnit value="BurningSmoke"/>
+        <ValidatorArray value="NoBurningSmokeNearby1"/>
+    </CEffectCreateUnit>
     <CEffectCreateUnit id="nsko" parent="War3_SummonUnit">
         <EditorCategories value="Race:ChaosOrc"/>
         <SpawnEffect value="Brai"/>
@@ -266,9 +294,6 @@
         <Amount value="150"/>
         <AreaArray index="0" Radius="1.9531" Bonus="-50" Fraction="1"/>
     </CEffectDamage>
-    <CEffectEnumArea id="AclfSearch">
-        <AreaArray index="0" Radius="0.5" Effect="Bclf"/>
-    </CEffectEnumArea>
     <CEffectSet id="Afak">
         <EffectArray index="1" removed="1"/>
     </CEffectSet>
@@ -386,6 +411,7 @@
     <CEffectSet id="ChargeKnightSet">
         <EffectArray value="ChargeKnightApplyForce"/>
         <EffectArray value="ChargeKnightController"/>
+        <ValidatorArray value="NonHero"/>
     </CEffectSet>
     <CEffectApplyBehavior id="ChargeKnightStun"/>
     <CEffectDamage id="AUdcDamage1">
@@ -744,6 +770,10 @@
     </CEffectDamage>
     <CEffectDamage id="BliqDPS">
         <Amount value="15"/>
+    </CEffectDamage>
+    <CEffectDamage id="BurningDPS" parent="War3_MagicSpellDamage">
+        <EditorCategories value="Race:ChaosOrc"/>
+        <Amount value="10"/>
     </CEffectDamage>
     <CEffectDamage id="BpsdDPS">
         <Amount value="15"/>
@@ -1747,6 +1777,7 @@
         <EditorCategories value="Race:Orc"/>
         <Kind value="Melee"/>
         <VitalFractionMax index="Life" value="1"/>
+        <Amount value="262144"/>
     </CEffectDamage>
     <CEffectSet id="Obl21Crit">
         <EffectArray value="Obl21"/>
@@ -1756,6 +1787,7 @@
         <EditorCategories value="Race:Orc"/>
         <Kind value="Melee"/>
         <VitalFractionMax index="Life" value="1"/>
+        <Amount value="262144"/>
     </CEffectDamage>
     <CEffectDamage id="DestinyBondKill" parent="War3_MagicSpellDamage">
         <EditorCategories value="Race:Undead"/>
@@ -1769,6 +1801,7 @@
         <EditorCategories value="Race:Orc"/>
         <Kind value="Melee"/>
         <VitalFractionMax index="Life" value="1"/>
+        <Amount value="262144"/>
     </CEffectDamage>
     <CEffectSet id="Nbbc1Crit">
         <EffectArray index="0" value="Nbbc1"/>
@@ -1778,6 +1811,7 @@
         <EditorCategories value="Race:ChaosOrc"/>
         <Kind value="Melee"/>
         <VitalFractionMax index="Life" value="1"/>
+        <Amount value="262144"/>
     </CEffectDamage>
     <CEffectSet id="Opgh1Crit">
         <EffectArray index="0" value="Opgh1"/>
@@ -1787,6 +1821,7 @@
         <EditorCategories value="Race:ChaosOrc"/>
         <Kind value="Melee"/>
         <VitalFractionMax index="Life" value="1"/>
+        <Amount value="262144"/>
     </CEffectDamage>
     <CEffectDamage id="Ocbh1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
@@ -2051,6 +2086,12 @@
     </CEffectEnumArea>
     <CEffectDamage id="otbr1" parent="AW2_SiegeDamage">
         <Amount value="12"/>
+        <AreaArray Radius="1.1718" Fraction="1"/>
+        <SearchFilters value="-;player,allies,air,wall,Missile,item,ward,ethereal,dead,invulnerable"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
+    <CEffectDamage id="Pelekeiki1" parent="AW2_SiegeDamage">
+        <Amount value="12"/>
         <AreaArray Radius="1.9531" Fraction="1"/>
         <SearchFilters value="-;player,allies,air,wall,Missile,item,ward,ethereal,dead,invulnerable"/>
         <Death value="Blast"/>
@@ -2067,7 +2108,7 @@
         <AreaArray Radius="1" Effect="CycloneAuraApplyForceSearchImpactSet"/>
     </CEffectEnumArea>
     <CEffectCreatePersistent id="CycloneAuraApplyForceCreatePersistent">
-        <PeriodCount value="4"/>
+        <PeriodCount value="6"/>
         <PeriodicEffectArray value="CycloneAuraApplyForce"/>
         <PeriodicPeriodArray value="0.0625"/>
         <WhichLocation Value="TargetUnit"/>
@@ -2157,9 +2198,6 @@
         <Amount value="288"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="nbds1LM" parent="War3_Missile" weaponid="nbds1"/>
-    <CEffectCreatePersistent id="Xclf">
-        <PeriodCount value="15"/>
-    </CEffectCreatePersistent>
     <CEffectDamage id="earc1" parent="AW2_PierceDamage">
         <Amount value="96"/>
     </CEffectDamage>
@@ -2228,7 +2266,7 @@
         <Death value="Blast"/>
     </CEffectDamage>
     <CEffectDamage id="hdhw1" parent="AW2_MagicDamage">
-        <Amount value="72"/>
+        <Amount value="48"/>
     </CEffectDamage>
     <CEffectDamage id="hfoo1" parent="AW2_NormalDamage">
         <Amount value="24"/>
@@ -2469,6 +2507,22 @@
         <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="hkn21" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectDamage id="BloodKnight1" parent="AW2_MagicDamage">
+        <Kind value="Melee"/>
+        <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectDamage id="BloodKnight21" parent="AW2_MagicDamage">
+        <Kind value="Melee"/>
+        <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectDamage id="SolanarBloodwrath1" parent="AW2_MagicDamage">
+        <Kind value="Melee"/>
+        <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectDamage id="KnightLordBloodvalor1" parent="AW2_MagicDamage">
         <Kind value="Melee"/>
         <Amount value="96"/>
     </CEffectDamage>
@@ -2938,7 +2992,7 @@
         <Amount value="432"/>
     </CEffectDamage>
     <CEffectDamage id="nws11" parent="AW2_MagicDamage">
-        <Amount value="72"/>
+        <Amount value="48"/>
     </CEffectDamage>
     <CEffectDamage id="ocat1" parent="AW2_SiegeDamage">
         <Amount value="144"/>
@@ -2996,6 +3050,9 @@
     <CEffectSet id="ugrm2"/>
     <CEffectSet id="ndkw1"/>
     <CEffectSet id="nfac1"/>
+    <CEffectSet id="dilidili1">
+        <Chance value="0"/>
+    </CEffectSet>
     <CEffectCreateUnit id="uskm" parent="War3_SummonUnit">
         <EditorCategories value="Race:Undead"/>
         <SpawnEffect value="Brai"/>
