@@ -21,6 +21,9 @@
     <const id="ethereal" path="SDamageResponse.TargetFilters" value="Stasis"/>
     <const id="debris" path="SDamageResponse.TargetFilters" value="Destructible"/>
     <const id="invulnerable" path="SDamageResponse.TargetFilters" value="Invulnerable"/>
+    <CBehaviorBuff default="1" id="AW2_AuraCaster" parent="War3_AuraCaster">
+        <Alignment value="Neutral"/>
+    </CBehaviorBuff>
     <CBehaviorBuff default="1" id="AW2_TimeLife" parent="War3_Passive">
         <DisplayDuration index="Self" value="1"/>
         <DisplayDuration index="Ally" value="1"/>
@@ -53,14 +56,41 @@
             <StateFlags index="SuppressLifeRegen" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <!--Aura - Command (Creep) Buff=BOac-->
+    <CBehaviorBuff id="ACac" parent="AW2_AuraCaster">
+        <Requirements value="ACac"/>
+        <EditorCategories value="Race:Creeps,AbilityorEffectType:Unit"/>
+    </CBehaviorBuff>
     <!--Magic Immunity (Creep)-->
     <CBehaviorBuff id="ACmi">
         <InfoFlags index="Hidden" value="0"/>
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btngenericspellimmunity.dds"/>
     </CBehaviorBuff>
+    <!--Creep Abil Start-->
+    <!--Neutral Regen (health only)-->
+    <CBehaviorBuff id="ACnr" parent="AW2_AuraCaster">
+        <EditorCategories value="Race:Creeps,AbilityorEffectType:Unit"/>
+        <Requirements value="ACnr"/>
+    </CBehaviorBuff>
+    <!--Keeper - Thorns Aura Buff=BEah-->
+    <CBehaviorBuff id="AEah" parent="AW2_AuraCaster">
+        <EditorCategories value="Race:Nightelf,AbilityorEffectType:Hero"/>
+    </CBehaviorBuff>
+    <!--Priestess - Trueshot Aura Buff=BEar-->
+    <CBehaviorBuff id="AEar" parent="AW2_AuraCaster">
+        <EditorCategories value="Race:Nightelf,AbilityorEffectType:Hero"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="AEtr">
         <MaxStackCount value="0"/>
         <MaxStackCountPerCaster value="1"/>
+    </CBehaviorBuff>
+    <!--Arch Mage - Brilliance Aura Buff=BHab-->
+    <CBehaviorBuff id="AHab" parent="AW2_AuraCaster">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Heroes"/>
+    </CBehaviorBuff>
+    <!--Paladin - Devotion Aura Buff=BHad-->
+    <CBehaviorBuff id="AHad" parent="AW2_AuraCaster">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Heroes"/>
     </CBehaviorBuff>
     <!--ItemAuraTrueshot Buff=BEar-->
     <CBehaviorBuff id="AIar">
@@ -81,6 +111,18 @@
     <!--DefenseBonus (+10)-->
     <CBehaviorBuff id="AId0">
         <Modification LifeArmorBonus="30"/>
+    </CBehaviorBuff>
+    <!--Chieftain - Endurance Aura Buff=BOae-->
+    <CBehaviorBuff id="AOae" parent="AW2_AuraCaster">
+        <EditorCategories value="Race:Orc,AbilityorEffectType:Heroes"/>
+    </CBehaviorBuff>
+    <!--Death Knight - Unholy Aura Buff=BUau-->
+    <CBehaviorBuff id="AUau" parent="AW2_AuraCaster">
+        <EditorCategories value="Race:Undead,AbilityorEffectType:Hero"/>
+    </CBehaviorBuff>
+    <!--Dreadlord - Vampiric Aura Buff=BUav-->
+    <CBehaviorBuff id="AUav" parent="AW2_AuraCaster">
+        <EditorCategories value="Race:Undead,AbilityorEffectType:Hero"/>
     </CBehaviorBuff>
     <!--RainOfFire-->
     <CBehaviorBuff id="BNrd">
@@ -601,7 +643,7 @@
         </Modification>
     </CBehaviorBuff>
     <!--mana regeneration aura-->
-    <CBehaviorBuff id="Aarm" parent="War3_AuraCaster"/>
+    <CBehaviorBuff id="Aarm" parent="AW2_AuraCaster"/>
     <!--Resistant Skin (creep)-->
     <CBehaviorBuff id="ACrk" parent="War3_Passive">
         <EditorCategories value="Race:Orc,AbilityorEffectType:Unit"/>
@@ -859,10 +901,10 @@
             <StateFlags index="Untargetable" value="1"/>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="Aabr" parent="War3_AuraCaster">
+    <CBehaviorBuff id="Aabr" parent="AW2_AuraCaster">
         <Requirements value="Aabr"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="AabrItem" parent="War3_AuraCaster">
+    <CBehaviorBuff id="AabrItem" parent="AW2_AuraCaster">
         <Requirements value="AabrItem"/>
     </CBehaviorBuff>
     <!--Balls of Fire Dur=2.51 HeroDur=1.01 Buff=Bbof effect=Xbof-->
@@ -1193,6 +1235,7 @@
     <!--Phoenix-->
     <CBehaviorBuff id="Bphx">
         <Duration value="45"/>
+        <InfoFlags index="Hidden" value="0"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Bstn" parent="War3_Buff">
         <EditorCategories value="Race:Undead,AbilityorEffectType:Units"/>
@@ -1242,63 +1285,64 @@
             <BehaviorLinkDisableArray value="HostileSleeperAlert"/>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="FlameTowerAuraCaster" parent="War3_AuraCaster">
+    <CBehaviorBuff id="FlameTowerAuraCaster" parent="AW2_AuraCaster">
         <Requirements value="FlameTowerAuraCaster"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="ColdTowerAuraCaster" parent="War3_AuraCaster">
+    <CBehaviorBuff id="ColdTowerAuraCaster" parent="AW2_AuraCaster">
         <Requirements value="ColdTowerAuraCaster"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="BoulderTowerAuraCaster" parent="War3_AuraCaster">
+    <CBehaviorBuff id="BoulderTowerAuraCaster" parent="AW2_AuraCaster">
         <Requirements value="BoulderTowerAuraCaster"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="EnergyTowerAuraCaster" parent="War3_AuraCaster">
+    <CBehaviorBuff id="EnergyTowerAuraCaster" parent="AW2_AuraCaster">
         <Requirements value="EnergyTowerAuraCaster"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="DeathTowerAuraCaster" parent="War3_AuraCaster">
+    <CBehaviorBuff id="DeathTowerAuraCaster" parent="AW2_AuraCaster">
         <Requirements value="DeathTowerAuraCaster"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="EfficiencyAuraCaster" parent="War3_AuraCaster">
+    <CBehaviorBuff id="EfficiencyAuraCaster" parent="AW2_AuraCaster">
         <Requirements value="EfficiencyAuraCaster"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="DominationAuraCaster" parent="War3_AuraCaster">
+    <CBehaviorBuff id="DominationAuraCaster" parent="AW2_AuraCaster">
         <Requirements value="DominationAuraCaster"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="InhibitionAuraCaster" parent="War3_AuraCaster">
+    <CBehaviorBuff id="InhibitionAuraCaster" parent="AW2_AuraCaster">
         <Requirements value="InhibitionAuraCaster"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="CycloneAuraCaster" parent="War3_AuraCaster">
+    <CBehaviorBuff id="CycloneAuraCaster" parent="AW2_AuraCaster">
         <Requirements value="CycloneAuraCaster"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="SongOfAncientHuntingCaster" parent="War3_AuraCaster">
+    <CBehaviorBuff id="SongOfAncientHuntingCaster" parent="AW2_AuraCaster">
         <Requirements value="SongOfAncientHuntingCaster"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="HumidityAuraCaster" parent="War3_AuraCaster">
+    <CBehaviorBuff id="HumidityAuraCaster" parent="AW2_AuraCaster">
         <Requirements value="HumidityAuraCaster"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="PressureAuraCaster" parent="War3_AuraCaster">
+    <CBehaviorBuff id="PressureAuraCaster" parent="AW2_AuraCaster">
         <Requirements value="PressureAuraCaster"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="ObsidianAuraCaster" parent="War3_AuraCaster">
+    <CBehaviorBuff id="ObsidianAuraCaster" parent="AW2_AuraCaster">
         <Requirements value="ObsidianAuraCaster"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="ObsidianAuraItemCaster" parent="War3_AuraCaster">
+    <CBehaviorBuff id="ObsidianAuraItemCaster" parent="AW2_AuraCaster">
         <Requirements value="ObsidianAuraItemCaster"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="FelDriveAuraCaster" parent="War3_AuraCaster">
+    <CBehaviorBuff id="FelDriveAuraCaster" parent="AW2_AuraCaster">
         <Requirements value="FelDriveAuraCaster"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="FrostAuraCaster" parent="War3_AuraCaster">
+    <CBehaviorBuff id="FrostAuraCaster" parent="AW2_AuraCaster">
         <Requirements value="FrostAuraCaster"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="EternityAuraCaster" parent="War3_AuraCaster">
+    <CBehaviorBuff id="EternityAuraCaster" parent="AW2_AuraCaster">
         <Requirements value="EternityAuraCaster"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="SleepAuraCaster" parent="War3_AuraCaster">
+    <CBehaviorBuff id="SleepAuraCaster" parent="AW2_AuraCaster">
         <Requirements value="SleepAuraCaster"/>
     </CBehaviorBuff>
     <!--Aura - War Drums Buff=Bakb-->
-    <CBehaviorBuff id="Aakb">
-        <Requirements value=""/>
+    <CBehaviorBuff id="Aakb" parent="AW2_AuraCaster">
+        <Requirements value="Aakb"/>
+        <EditorCategories value="Race:Orc,AbilityorEffectType:Hero"/>
     </CBehaviorBuff>
     <!--Aura - Plague (Abomination) Buff=Bapl-->
     <CBehaviorBuff id="Aap1">
@@ -1308,7 +1352,7 @@
     <CBehaviorBuff id="Aap2">
         <Requirements value=""/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="BurningAura" parent="War3_AuraCaster">
+    <CBehaviorBuff id="BurningAura" parent="AW2_AuraCaster">
         <EditorCategories value="Race:ChaosOrc,AbilityorEffectType:Unit"/>
         <Modification Height="0.0625">
             <StateFlags index="Invulnerable" value="1"/>
@@ -1811,11 +1855,11 @@
         <EditorCategories value="Race:Demon,AbilityorEffectType:Units"/>
         <MaxStackCount value="2"/>
         <MaxStackCountPerCaster value="1"/>
-        <Modification>
-            <DamageDealtFraction index="Spell" value="0.5"/>
-            <DamageDealtFraction index="Melee" value="0.25"/>
-            <DamageDealtFraction index="Ranged" value="0.25"/>
-        </Modification>
+        <DamageResponse Chance="1" ModifyFraction="0.75">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Melee" value="0"/>
+            <Kind index="Splash" value="0"/>
+        </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="InhibitionAura" parent="War3_AuraBuff">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnresistantskin.dds"/>

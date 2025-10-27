@@ -318,6 +318,14 @@
     </CUnit>
     <CUnit id="RitssynFlamescowl1LM" parent="War3_Missile"/>
     <CUnit id="Pelekeiki1LM" parent="War3_Missile"/>
+    <!--spirit of vengeance-->
+    <CUnit id="espv">
+        <ScoreKill value="1"/>
+    </CUnit>
+    <!--vengeance-->
+    <CUnit id="even">
+        <ScoreKill value="1"/>
+    </CUnit>
     <!--watery minion cliffrunner-->
     <CUnit id="ncfs">
         <Race value="Naga"/>
@@ -1182,11 +1190,13 @@
         <GlossaryCategory value="Unit/Category/DemonUnits"/>
         <AbilArray index="4" Link="DemonInventory"/>
         <AbilArray Link="SoulBurn"/>
+        <AbilArray Link="Aarm"/>
         <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
             <LayoutButtons Face="SoulBurn" Type="AbilCmd" AbilCmd="SoulBurn,0" Row="2" Column="1"/>
+            <LayoutButtons Face="Aarm" Type="Passive" Behavior="Aarm" Row="2" Column="2"/>
         </CardLayouts>
         <EnergyStart value="540"/>
         <EnergyMax value="540"/>
@@ -3107,11 +3117,13 @@
         <GlossaryCategory value="Unit/Category/DemonUnits"/>
         <AbilArray index="4" Link="DemonInventory"/>
         <AbilArray Link="ANdp"/>
+        <AbilArray Link="Aarm"/>
         <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
             <LayoutButtons Face="ANdp" Type="AbilCmd" AbilCmd="ANdp,0" Row="2" Column="1"/>
+            <LayoutButtons Face="Aarm" Type="Passive" Behavior="Aarm" Row="2" Column="2"/>
         </CardLayouts>
         <EnergyStart value="540"/>
         <EnergyMax value="540"/>
@@ -4455,10 +4467,10 @@
     <!--black dragon whelp-->
     <CUnit id="nbdr" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
-        <CostResource index="gold" value="135"/>
-        <KillResource index="Custom" value="135"/>
-        <LifeStart value="2100"/>
-        <LifeMax value="2100"/>
+        <CostResource index="gold" value="90"/>
+        <KillResource index="Custom" value="90"/>
+        <LifeStart value="1500"/>
+        <LifeMax value="1500"/>
         <Speed value="3"/>
         <Race value="Dragon"/>
         <Mover value="fly"/>
@@ -4603,21 +4615,21 @@
     <!--black dragon-->
     <CUnit id="nbwm" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
-        <CostResource index="gold" value="405"/>
-        <KillResource index="Custom" value="405"/>
-        <LifeStart value="6300"/>
-        <LifeMax value="6300"/>
+        <CostResource index="gold" value="270"/>
+        <KillResource index="Custom" value="270"/>
+        <LifeStart value="4500"/>
+        <LifeMax value="4500"/>
         <Speed value="3"/>
         <Race value="Dragon"/>
         <Mover value="fly"/>
         <Height value="2.539"/>
         <AbilArray Link="DragonInventory"/>
         <AbilArray Link="UpgradeTonser"/>
-        <BehaviorArray Link="ACsk"/>
+        <BehaviorArray Link="DragonScale"/>
         <BehaviorArray Link="dragon"/>
         <CardLayouts index="0">
             <LayoutButtons Face="nser" Type="AbilCmd" AbilCmd="UpgradeTonser,Execute" Row="0" Column="0"/>
-            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="DragonScale" Type="Passive" Behavior="DragonScale" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Air" value="1"/>
         <Collide index="Ground" value="0"/>
@@ -4637,10 +4649,12 @@
         <Mover value="fly"/>
         <Height value="2.539"/>
         <AbilArray Link="DragonInventory"/>
+        <AbilArray Link="UpgradeToChronormu"/>
         <AbilArray Link="EternityAura"/>
         <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="dragon"/>
         <CardLayouts index="0">
+            <LayoutButtons Face="Chronormu" Type="AbilCmd" AbilCmd="UpgradeToChronormu,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
             <LayoutButtons Face="EternityAuraCaster" Type="Passive" Behavior="EternityAuraCaster" Row="2" Column="1"/>
         </CardLayouts>
@@ -4650,6 +4664,35 @@
         <Collide index="Flying" value="1"/>
         <GlossaryCategory value="Unit/Category/DragonUnits"/>
     </CUnit>
+    <CUnit id="Chronormu" parent="AW2_Army" defType="SMALL">
+        <Race value="Dragon"/>
+        <PlaneArray index="Air" value="1"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="ForceField" value="0"/>
+        <Collide index="Flying" value="1"/>
+        <Attributes index="small" value="1"/>
+        <LifeStart value="13500"/>
+        <LifeMax value="13500"/>
+        <Mover value="fly"/>
+        <Speed value="3"/>
+        <Height value="2.539"/>
+        <CostResource index="gold" value="270"/>
+        <CostResource index="lumber" value="10800"/>
+        <KillResource index="Custom" value="810"/>
+        <AbilArray index="4" Link="DragonInventory"/>
+        <AbilArray Link="EternityAura"/>
+        <AbilArray Link="AHmt"/>
+        <BehaviorArray Link="ACsk"/>
+        <BehaviorArray Link="dragon"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="EternityAuraCaster" Type="Passive" Behavior="EternityAuraCaster" Row="2" Column="1"/>
+            <LayoutButtons Face="AHmt" Type="AbilCmd" AbilCmd="AHmt,Execute" Row="2" Column="2"/>
+        </CardLayouts>
+        <GlossaryCategory value="Unit/Category/DragonUnits"/>
+    </CUnit>
+    <CUnit id="Chronormu1LM" parent="War3_Missile"/>
+    <CUnit id="Chronormu2LM" parent="War3_Missile"/>
     <!--bronze drake-->
     <CUnit id="nbzk">
         <Race value="Dragon"/>
@@ -5303,8 +5346,34 @@
         <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
     </CUnit>
     <!--eredar diabolist-->
-    <CUnit id="nerd">
+    <CUnit id="nerd" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="270"/>
+        <KillResource index="Custom" value="270"/>
+        <LifeStart value="3600"/>
+        <LifeMax value="3600"/>
+        <Speed value="2"/>
         <Race value="Demon"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/DemonUnits"/>
+        <AbilArray Link="DemonInventory"/>
+        <AbilArray Link="UpgradeTonerw"/>
+        <AbilArray Link="UpgradeToUwar"/>
+        <AbilArray Link="ANms"/>
+        <AbilArray Link="Aarm"/>
+        <BehaviorArray Link="ACsk"/>
+        <BehaviorArray Link="undead"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="MorphTonerw" Type="AbilCmd" AbilCmd="UpgradeTonerw,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Uwar" Type="AbilCmd" AbilCmd="UpgradeToUwar,Execute" Row="0" Column="1"/>
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="ANms" Type="AbilCmd" AbilCmd="ANms,On" Row="2" Column="1"/>
+            <LayoutButtons Face="ANmsUn" Type="AbilCmd" AbilCmd="ANms,Off" Row="2" Column="1"/>
+            <LayoutButtons Face="Aarm" Type="Passive" Behavior="Aarm" Row="2" Column="2"/>
+        </CardLayouts>
+        <EnergyStart value="180"/>
+        <EnergyMax value="180"/>
     </CUnit>
     <!--eredar warlock-->
     <CUnit id="nerw" parent="AW2_Army" defType="NONE">
@@ -5319,16 +5388,18 @@
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/DemonUnits"/>
         <AbilArray Link="DemonInventory"/>
-        <AbilArray Link="UpgradeToUwar"/>
+        <AbilArray Link="UpgradeTonerd"/>
         <AbilArray Link="UpgradeToNklj"/>
         <AbilArray Link="ACfd"/>
+        <AbilArray Link="Aarm"/>
         <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="Uwar" Type="AbilCmd" AbilCmd="UpgradeToUwar,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="MorphTonerd" Type="AbilCmd" AbilCmd="UpgradeTonerd,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="Nklj" Type="AbilCmd" AbilCmd="UpgradeToNklj,Execute" Row="0" Column="1"/>
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
             <LayoutButtons Face="ACfd" Type="AbilCmd" AbilCmd="ACfd,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="Aarm" Type="Passive" Behavior="Aarm" Row="2" Column="2"/>
         </CardLayouts>
         <EnergyStart value="180"/>
         <EnergyMax value="180"/>
@@ -6038,8 +6109,8 @@
         <Attributes index="fort" value="1"/>
         <CostResource index="gold" value="225"/>
         <KillResource index="Custom" value="225"/>
-        <LifeStart value="450"/>
-        <LifeMax value="450"/>
+        <LifeStart value="750"/>
+        <LifeMax value="750"/>
         <Speed value="2"/>
         <Race value="Demon"/>
         <Mover value="foot"/>
@@ -6092,8 +6163,8 @@
         <Attributes index="fort" value="1"/>
         <CostResource index="gold" value="75"/>
         <KillResource index="Custom" value="75"/>
-        <LifeStart value="150"/>
-        <LifeMax value="150"/>
+        <LifeStart value="250"/>
+        <LifeMax value="250"/>
         <Speed value="2"/>
         <Race value="Demon"/>
         <Mover value="foot"/>
@@ -6875,7 +6946,7 @@
             <LayoutButtons Face="Nplh" Type="AbilCmd" AbilCmd="DemonBuild,Build5" Row="0" Column="3"/>
             <LayoutButtons Face="nndk" Type="AbilCmd" AbilCmd="DemonBuild,Build9" Row="1" Column="1"/>
             <LayoutButtons Face="ninm" Type="AbilCmd" AbilCmd="DemonBuild,Build7" Row="1" Column="0"/>
-            <LayoutButtons Face="nerw" Type="AbilCmd" AbilCmd="DemonBuild,Build8" Row="2" Column="0"/>
+            <LayoutButtons Face="nerd" Type="AbilCmd" AbilCmd="DemonBuild,Build8" Row="2" Column="0"/>
             <LayoutButtons Face="Edem" Type="AbilCmd" AbilCmd="DemonBuild,Build10" Row="0" Column="4"/>
         </CardLayouts>
         <CardLayouts index="2" CardId="Purc">
@@ -7046,20 +7117,20 @@
     <!--searinox-->
     <CUnit id="nser" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
-        <CostResource index="gold" value="405"/>
-        <CostResource index="lumber" value="16200"/>
-        <KillResource index="Custom" value="1215"/>
-        <LifeStart value="18900"/>
-        <LifeMax value="18900"/>
+        <CostResource index="gold" value="270"/>
+        <CostResource index="lumber" value="10800"/>
+        <KillResource index="Custom" value="810"/>
+        <LifeStart value="13500"/>
+        <LifeMax value="13500"/>
         <Speed value="3"/>
         <Race value="Dragon"/>
         <Mover value="fly"/>
         <Height value="2.539"/>
         <AbilArray index="4" Link="DragonInventory"/>
-        <BehaviorArray Link="ACsk"/>
+        <BehaviorArray Link="DragonScale"/>
         <BehaviorArray Link="dragon"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="DragonScale" Type="Passive" Behavior="DragonScale" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Air" value="1"/>
         <Collide index="Ground" value="0"/>

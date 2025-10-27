@@ -27,6 +27,18 @@
         <On index="3" Terms="Behavior.FuryBuff.On" Send="Create"/>
         <On index="4" Terms="Behavior.FuryBuff.Off" Send="AnimBracketStop BSD"/>
     </CActorModel>
+    <!--eredardiabolist-->
+    <CActorUnit id="nerd" parent="War3_Army" unitSound="PitLord" unitName="nerd" defType="NONE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnEredarWarlockPurple.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnEredarWarlockPurple.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnEredarWarlockPurple.dds"/>
+        <BarWidth value="100"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar200"/>
+        <BarOffset value="130"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
     <!--skeletalorc-->
     <CActorUnit id="nsko" parent="War3_Army" unitSound="Skeleton" unitName="nsko" defType="LARGE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnSkeletalOrc.dds"/>
@@ -933,11 +945,11 @@
     </CActorUnit>
     <!--eredarwarlock-->
     <CActorUnit id="nerw" parent="War3_Army" unitSound="PitLord" unitName="nerw" defType="NONE">
-        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnEredarWarlockPurple.dds"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btneredarred.dds"/>
         <GroupIcon>
-            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnEredarWarlockPurple.dds"/>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btneredarred.dds"/>
         </GroupIcon>
-        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnEredarWarlockPurple.dds"/>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btneredarred.dds"/>
         <BarWidth value="100"/>
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar200"/>
         <BarOffset value="90"/>
@@ -1839,7 +1851,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnBlackDragon.dds"/>
         <BarWidth value="87"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar110"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
         <BarOffset value="0"/>
         <WalkAnimMoveSpeed value="2.7343"/>
     </CActorUnit>
@@ -1916,6 +1928,22 @@
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.3437"/>
     </CActorUnit>
+    <CActorUnit id="Chronormu" parent="War3_Army" unitSound="AzureDragon" unitName="Chronormu" defType="SMALL">
+        <On Terms="ActorCreation" Send="SetOpacity 0.500000 1.000000"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnBronzeDragon.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnBronzeDragon.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnBronzeDragon.dds"/>
+        <BarWidth value="112"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar200"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.3437"/>
+    </CActorUnit>
+    <CActorAction id="Chronormu1" parent="War3_LightningAttack"/>
+    <CActorMissile id="Chronormu1LM" parent="War3_MissileSwapable" unitName="Chronormu1LM"/>
+    <CActorAction id="Chronormu2" parent="War3_LightningAttack"/>
+    <CActorMissile id="Chronormu2LM" parent="War3_MissileSwapable" unitName="Chronormu2LM"/>
     <!--bronzedragonwhelp-->
     <CActorUnit id="nbzw" parent="War3_Army" unitSound="AzureDragon" unitName="nbzw" defType="SMALL">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnBronzeDragon.dds"/>

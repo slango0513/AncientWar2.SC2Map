@@ -50,11 +50,12 @@ AHbuUnit/Tip=建造建筑物
 AHbuUnit/Ubertip=能显示出当前你所能建造的建筑物。
 AHd2/Name=圣盾术
 AHd2/Tip=激活圣盾术
-AHd2/Ubertip=在<d ref="Effect,BHd2,Duration"/>秒内使得该单位对所有的攻击免疫。
-AHds/Ubertip=在<d ref="Effect,BHds1,Duration"/>秒内使得圣骑士对所有的攻击免疫。
+AHd2/Ubertip=在<d ref="Effect,BHds1,Duration"/>秒内使得该单位对所有的攻击免疫。
+AHds/Ubertip=在<d ref="Effect,BHd2,Duration"/>秒内使得圣骑士对所有的攻击免疫。
 AHfa/Ubertip=增加<d ref="Behavior,AHfa1,Modification.DamageDealtUnscaled[Melee]"/>点的火焰伤害。
 AHfs/Ubertip=召唤出一道巨大的火柱，持续时间为3秒，每秒对敌方的地面单位造成<d ref="Effect,AHfsFullDamage1,Amount * 3"/>点的伤害。在火焰慢慢熄灭的过程中，敌方单位将持续受到极度轻微的伤害。
 AHhb/Ubertip=圣光术能治疗友方单位<d ref="Effect,AHhbHeal1,RechargeVitalRate"/>点的生命值或者对敌方的亡灵单位造成一半的伤害。
+AHmt/Ubertip=将<d ref="Effect,AHmtSearch,MaxCount"/>个不具有抗性的单位传送到一个敌方地面单位或者建筑物旁边。
 AHre/Ubertip=复活周围<d ref="Effect,AHre,MaxCount"/>个友方非精英单位。
 AHwe/Ubertip=召唤出一个具有<d ref="Unit,hwat,LifeStart"/>生命值的水元素来帮大魔法师进行战斗。攻击力为<d ref="Effect,hwat1,Amount"/>点。<n/>持续</c><d ref="Behavior,BHwe,Duration"/>秒。<n/><n/><c val="ffcc00">能攻击地面和空中单位。
 AIct/Tip=变更昼夜
@@ -377,6 +378,9 @@ ChargeKnight/Ubertip=向敌人发起冲锋！成功冲散敌军先锋能鼓舞�
 ChargeKnightStun/Buffubertip=该单位被击晕了，所以不能移动，攻击和施放魔法。
 ChargeKnightStun/Name=冲锋昏迷
 ChargingKnight/Name=冲锋
+Chronormu/Name=克罗诺姆
+Chronormu/Tip=升级到克罗诺姆
+Chronormu/Ubertip=<c val="ffcc00">世界精英</c><n/>诺兹多姆的守护者，具有抗性皮肤、永恒光环和群体传送技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 CmdBuildBloodElf/Tip=建造建筑物
 CmdBuildBloodElf/Ubertip=能显示出当前你所能建造的建筑物。
 CmdBuildChaosOrc/Tip=建造建筑物
@@ -776,10 +780,21 @@ DocInfo/PatchNote298=所有吸血效果增加到50%，并且受目标抗性影�
 DocInfo/PatchNote299=死亡面罩和血杀斧的价格降低。
 DocInfo/PatchNote300=混乱兽人：
 DocInfo/PatchNote301=混乱兽人术士类单位的伤害减少到48点。
-DominationAura/Buffubertip=该单位处在支配光环的作用之下，因此其攻击力得到了加强，其法术攻击力得到了增强。
+DocInfo/PatchNote302=修复黑暗箭和冰霜箭能手动控制的漏洞。
+DocInfo/PatchNote303=修复凤凰无法重生的漏洞。
+DocInfo/PatchNote304=修复驱除魔法会驱除光环的漏洞。
+DocInfo/PatchNote305=龙：
+DocInfo/PatchNote306=加入新单位克罗诺姆。
+DocInfo/PatchNote307=黑色雏龙类单位经过重新设计。
+DocInfo/PatchNote308=恶魔：
+DocInfo/PatchNote309=加入新单位埃瑞达授魔者。
+DocInfo/PatchNote310=埃瑞达术士类单位获得技能法力恢复光环。
+DocInfo/PatchNote311=支配光环经过重新设计。
+DocInfo/PatchNote312=地狱机器类单位的生命值增加66.7%。
+DominationAura/Buffubertip=该单位处在支配光环的作用之下，因此其受到的远程伤害降低。
 DominationAura/Name=支配光环
 DominationAuraCaster/Tip=支配光环
-DominationAuraCaster/Ubertip=能增加周围友方召唤单位<d ref="Behavior,DominationAura,Modification.DamageDealtFraction[Melee] * 100" precision="1"/>%的攻击力和<d ref="Behavior,DominationAura,Modification.DamageDealtFraction[Spell] * 100"/>%法术攻击力。
+DominationAuraCaster/Ubertip=能使周围友方单位受到的远程伤害降低<d ref="1 - Behavior,DominationAura,DamageResponse.ModifyFraction * 100"/>%。
 DoomGuard/Buffubertip=末日守卫强大无比。
 DoomGuard/Name=末日守卫
 DraeneiFlag/Name=德莱尼旗帜
@@ -1026,6 +1041,8 @@ MapInfo/Team07/Name=H
 Moonlight/Name=月光
 MoraleBoosting/Buffubertip=该单位受到鼓舞。
 MoraleBoosting/Name=鼓舞士气
+MorphTonerd/Tip=变形为埃瑞达授魔者
+MorphTonerw/Tip=变形为埃瑞达术士
 MorphToospm/Tip=变形为灵魂行者
 MorphToospw/Tip=变形为灵魂行者
 MorphTouob2/Tip=变形为黑曜石雕像
@@ -1055,7 +1072,7 @@ Nbst/Tip=训练兽王
 Nbst/Ubertip=战斗系单位，精于集合他的盟友。具有后发制人技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 NightElfPhalanxPlaceholder/Name=NightElfPreviewer
 Nklj/Tip=升级到基尔加丹
-Nklj/Ubertip=<c val="ffcc00">世界精英</c><n/>萨格拉斯的部下，指挥着燃烧军团与泰坦世界为敌。具有抗性皮肤技能，还能施放灵魂燃烧。<n/><n/><c val="ffcc00">攻击地面和空中单位。</c>
+Nklj/Ubertip=<c val="ffcc00">世界精英</c><n/>萨格拉斯的部下，指挥着燃烧军团与泰坦世界为敌。具有抗性皮肤和法力恢复光环技能，还能施放灵魂燃烧。<n/><n/><c val="ffcc00">攻击地面和空中单位。</c>
 Nmag/Tip=升级到玛瑟里顿
 Nmag/Ubertip=重型的近战单位，具有荒芜光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Nman/Propernames=玛诺洛斯
@@ -1143,16 +1160,19 @@ Param/Value/58BD0FA7=计分板
 Param/Value/5F942B70=剩余时间
 Param/Value/64EFDAFF=<c val="FFFF00">方阵：</c>你有3个方阵，每个方阵的位置由玩家决定，并且最多容纳共6x6=36个单位(在决赛共6x15=90个单位)。超出的单位将成为后备军支援前线。<n/><c val="FFFF00">物品：</c>你可以在工人处购买物品。通过鼠标右键拖拽的方式将物品放到部队身上，部队将会享受物品带来的各种加成。每个种族都有几种特有物品。将物品拖拽到货运马能卖掉这个物品。<n/><c val="FFFF00">物品等级(暂未加入)：</c>每个物品都有自己的等级。等级越高，售价越贵，一般而言对部队的加成也越强。工人可以提升每个回合获得物品的等级，由于获得物品的数量有限，越早升级物品等级收益越大。<n/><c val="FFFF00">物品与游戏模式：</c>在2V2V2V2模式中你既可以将部队建在自己的区域，就像在混战模式中一样，也可以将他们建在队友的区域，赠送给队友。赠送给队友的部队能享受种族特有物品带来的加成，例如，暗夜精灵玩家将树妖赠送给兽人队友后，树妖能装备闪电之球。<n/><c val="FFFF00">回合战略：</c>1到7回合你将随机遇上某个玩家，不会重复。观察还未与之战斗过的玩家，提前做好相应对策，对获胜有很大帮助。<n/><c val="FFFF00">奖励回合战略：</c>奖励回合是决赛前非常重要的一个环节，获得木材量将直接影响比赛结果。观察他人阵型，通过保存录像实践，有助于设计有效而稳定的布阵。<n/><c val="FFFF00">决赛战略：</c>决赛有很大随机性与变数，但也有规律可循。例如，有经验的玩家会针对在奖励回合获得最多木材的玩家出兵，经济最好的玩家将面临被剩下7人针对的危险。<n/><c val="FFFF00">奇袭：</c>如果你经济非常落后，可以考虑在决赛前夕采用非常规战术，例如，将所有部队卖掉后只出空军。这类战术带有“要是运气好说不定能赢”的赌博特性和“反正赢不了我也不让你赢”的恶作剧特性，作者是非常推荐的。
 Param/Value/7EA0BD11= vs 
+Param/Value/8088B50E=测试提示
 Param/Value/84A7D743=让<c val="FFFF00">工人</c>在战场内<c val="FFFF00">依次</c>放置阵型旗帜。<n/>战斗开始时3个方阵的部队将按照<c val="FFFF00">你放置的顺序</c>出现在战场中。
 Param/Value/87E4737D=击杀奖励
 Param/Value/91BA9176= - 
 Param/Value/93A8605D=进阶提示
+Param/Value/94BAC5D0=测试提示
 Param/Value/A4868C6E=建造奖励
 Param/Value/B3EEA70D= - 
 Param/Value/B744BA58= vs 
 Param/Value/BB55835D=与其他人讨论兵法、分享自己的战术和约战！<n/><c val="FFFF00">玩家交流QQ群：</c>417769011<n/><c val="FFFF00">Facebook：</c>Ancient War Official Group
 Param/Value/BF89C086=玩家交流
 Param/Value/C201E5C3=玩家
+Param/Value/C7990FFD=F5 - 开始/停止回合<n/>F7 - 获得测试资源、工人，并禁用AI<n/><n/>Shift + R - 移除选中单位<n/>Shift + 数字键 - 设置为n回合<n/>Shift + Ctrl + 数字键 - 设置为n回合奖励回合<n/>Alt + 数字键 - 复制建造区域n<n/>F6 - 开启/禁用复制所有玩家
 Param/Value/C7A905FA=夜晚
 Param/Value/CB456843=新手提示
 Param/Value/CC4C1E4D=潮汐
@@ -1325,7 +1345,7 @@ Utic/Ubertip=<c val="ffcc00">精英</c><n/>近战型的魔法施放单位，善�
 Uvar/Tip=升级到瓦里玛萨斯
 Uvar/Ubertip=<c val="ffcc00">精英</c><n/>近战型的魔法施放单位，善于控制战场。具有抗性皮肤和吸血光环技能，还能施放魔法防护和末日降临。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Uwar/Tip=升级到阿克蒙德
-Uwar/Ubertip=<c val="ffcc00">世界精英</c><n/>萨格拉斯的部下，指挥着燃烧军团与泰坦世界为敌。具有抗性皮肤技能，还能开启黑暗之门。<n/><n/><c val="ffcc00">攻击地面和空中单位。</c>
+Uwar/Ubertip=<c val="ffcc00">世界精英</c><n/>萨格拉斯的部下，指挥着燃烧军团与泰坦世界为敌。具有抗性皮肤和法力恢复光环技能，还能开启黑暗之门。<n/><n/><c val="ffcc00">攻击地面和空中单位。</c>
 Variant001/ModeDesc=所有玩家混战，直至一名玩家胜出。
 Variant001/ModeName=混战
 Variant002/ModeDesc=所有玩家混战，直至一名玩家胜出。双种族模式适合对各个种族有所了解到进阶玩家。
@@ -1471,7 +1491,7 @@ nbld/Ubertip=高速骑兵，具有冲锋和震荡波技能。<n/><n/><c val="ffc
 nbt1/Ubertip=防守型建筑物，投掷出能造成溅射伤害的巨石，擅长于对付地面单位，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nbt2/Ubertip=防守型建筑物，擅长于对付地面单位，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nbwm/Tip=升级到黑龙
-nbwm/Ubertip=<c val="ffcc00">精英</c><n/>重型的远程攻击飞行单位，能有效地抵抗敌人的空中单位。具有抗性皮肤技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+nbwm/Ubertip=<c val="ffcc00">精英</c><n/>重型的远程攻击飞行单位，能有效地抵抗敌人的空中单位。具有龙鳞技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nbzd/Tip=升级到青铜龙
 nbzd/Ubertip=<c val="ffcc00">精英</c><n/>远程攻击飞行单位，具有抗性皮肤和永恒光环技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nbzw/Tip=训练青铜雏龙
@@ -1518,8 +1538,10 @@ negz/Tip=升级到工程师加兹鲁维
 negz/Ubertip=地精工兵自爆小组，对城墙特别有效。具有效率光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nemi/Tip=训练使者
 nemi/Ubertip=魔法单位，能施放治疗术。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+nerd/Tip=训练埃瑞达授魔者
+nerd/Ubertip=<c val="ffcc00">精英</c><n/>远程攻击型魔法施放单位，具有抗性皮肤、法力护盾和法力恢复光环技能。<n/><n/><c val="ffcc00">攻击地面和空中单位。</c>
 nerw/Tip=训练埃瑞达术士
-nerw/Ubertip=<c val="ffcc00">精英</c><n/>远程攻击型魔法施放单位，具有抗性皮肤技能，还可以施放痛苦之指。<n/><n/><c val="ffcc00">攻击地面和空中单位。</c>
+nerw/Ubertip=<c val="ffcc00">精英</c><n/>远程攻击型魔法施放单位，具有抗性皮肤和法力恢复光环技能，还可以施放痛苦之指。<n/><n/><c val="ffcc00">攻击地面和空中单位。</c>
 net1/Ubertip=防守型建筑物，射出能量之箭，擅长于对付敌人的空中单位，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 net2/Ubertip=防守型建筑物，擅长于对付敌人的空中单位，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nfac/Tip=建造口袋工厂
@@ -1645,7 +1667,7 @@ nrvd/Ubertip=防御型单位，能施放霜甲术。<n/><n/><c val="ffcc00">能�
 nrwm/Tip=升级到红龙
 nrwm/Ubertip=<c val="ffcc00">精英</c><n/>远程攻击飞行单位，具有抗性皮肤、火焰吐息和生命恢复光环技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nser/Tip=升级到塞瑞诺克斯
-nser/Ubertip=<c val="ffcc00">世界精英</c><n/>耐萨里奥的守护者，具有抗性皮肤技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+nser/Ubertip=<c val="ffcc00">世界精英</c><n/>耐萨里奥的守护者，具有龙鳞技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nsgh/Tip=训练打猎海巨人
 nsgh/Ubertip=近战两栖单位，具有抗性皮肤、粉碎和远古猎歌技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nsgn/Tip=训练海巨人

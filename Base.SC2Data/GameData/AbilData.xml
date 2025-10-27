@@ -67,6 +67,9 @@
     </CAbilEffectTarget>
     <CAbilAugment default="1" id="AW2_AttackAugment" parent="War3_AttackAugment">
         <Flags index="AutoCastOn" value="1"/>
+        <CmdButtonArray index="Execute" Requirements="">
+            <Flags index="IgnoreUser" value="1"/>
+        </CmdButtonArray>
     </CAbilAugment>
     <CAbilMorph default="1" id="AW2_Morph" parent="War3_Morph">
         <CmdButtonArray index="Execute" Requirements="UseMorph">
@@ -214,6 +217,28 @@
         <AutoCastValidatorArray value="EnemiesNearby6"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSKillResourceCustomLargestFirst"/>
+        </TargetSorts>
+    </CAbilEffectTarget>
+    <!--Arch Mage - Mass Teleport-->
+    <CAbilEffectTarget id="AHmt" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Dragon,AbilityorEffectType:Hero"/>
+        <TargetFilters index="0" value="-;player,allies,air,wall,tree,Missile,debris,item,ward,dead,Hidden,invulnerable,summoned"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="30"/>
+        </Cost>
+        <Range value="500"/>
+        <PrepTime value="0.3"/>
+        <CastOutroTime value="5"/>
+        <Effect index="0" value="AHmtTarget"/>
+        <ShowProgressArray index="Channel" value="1"/>
+        <ProgressButtonArray index="Channel" value="AHmt"/>
+        <CancelableArray index="Channel" value="1"/>
+        <AutoCastRange value="500"/>
+        <AutoCastValidatorArray value="EnemiesNearby4"/>
+        <AutoCastValidatorArray value="MassTeleportValidator"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSFarthestDistance"/>
+            <SortArray value="TSLife"/>
         </TargetSorts>
     </CAbilEffectTarget>
     <CAbilInventory id="AInv" parent="AW2_UnitInventory">
@@ -572,7 +597,7 @@
             <Vital index="Energy" value="270"/>
             <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
-        <PrepTime value="4"/>
+        <PrepTime value="3"/>
         <CastOutroTime value="1.08"/>
         <AutoCastFilters value="Self,Visible;-"/>
         <AutoCastValidatorArray value="EnemiesNearby6"/>
@@ -1473,8 +1498,8 @@
         <InfoArray index="Build7" Unit="ninm">
             <Button DefaultButtonFace="ninm" Requirements="BuildArmy"/>
         </InfoArray>
-        <InfoArray index="Build8" Unit="nerw">
-            <Button DefaultButtonFace="nerw" Requirements="BuildArmy"/>
+        <InfoArray index="Build8" Unit="nerd">
+            <Button DefaultButtonFace="nerd" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build9" Unit="nndk">
             <Button DefaultButtonFace="nndk" Requirements="BuildArmy"/>
@@ -2134,6 +2159,9 @@
         </Cost>
         <AutoCastFilters value="Visible;Player,Ally,Hover,HarvestableResource,Destructible,Item,PreventDefeat,Buried,Dead,Invulnerable,Unstoppable"/>
         <Effect value="SlamValidTarget"/>
+        <CmdButtonArray index="Execute" Requirements="##id##">
+            <Flags index="IgnoreUser" value="0"/>
+        </CmdButtonArray>
     </CAbilAugment>
     <CAbilEffectInstant id="Awrh" parent="AW2_EffectInstant">
         <Alignment value="Negative"/>
@@ -3495,8 +3523,10 @@
     <CAbilBehavior id="ndgtTimeLife" parent="War3_Passive">
         <BehaviorArray value="ndgtTimeLife"/>
     </CAbilBehavior>
-    <CAbilBehavior id="Bphx" parent="War3_Passive">
+    <CAbilBehavior id="Bphx" parent="AW2_Passive">
         <BehaviorArray value="Bphx"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
     </CAbilBehavior>
     <CAbilBehavior id="Bstn" parent="War3_Passive">
         <BehaviorArray value="Bstn"/>
@@ -4049,6 +4079,9 @@
     <CAbilMorph id="UpgradeTonser" parent="AW2_Upgrade" toUnit="nser">
         <CmdButtonArray index="Execute" Requirements="BuildArmyFinal"/>
     </CAbilMorph>
+    <CAbilMorph id="UpgradeToChronormu" parent="AW2_Upgrade" toUnit="Chronormu">
+        <CmdButtonArray index="Execute" Requirements="BuildArmyFinal"/>
+    </CAbilMorph>
     <CAbilMorph id="UpgradeTonthr" parent="AW2_Upgrade" toUnit="nthr">
         <CmdButtonArray index="Execute" Requirements="BuildArmyFinal"/>
     </CAbilMorph>
@@ -4143,6 +4176,12 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToRitssynFlamescowl" parent="AW2_Upgrade" toUnit="RitssynFlamescowl">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonerd" parent="AW2_Upgrade" toUnit="nerd">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonerw" parent="AW2_Upgrade" toUnit="nerw">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
 </Catalog>

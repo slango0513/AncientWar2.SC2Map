@@ -6,6 +6,12 @@
         <WhichLocation Value="CasterUnit"/>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea default="1" id="AW2_AlliesNearby">
+        <AreaArray Compare="GT" Count="0"/>
+        <SearchFilters value="-;Self,Neutral,Enemy,Hover,HarvestableResource,Missile,Destructible,PreventDefeat,Dead,Hidden,Resistant"/>
+        <WhichLocation Value="CasterUnit"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea default="1" id="AW2_EnemiesNearbyInvisibleIncluded" parent="AW2_EnemiesNearby">
         <SearchFilters value="-;Player,Ally,Neutral,Hover,Missile,Destructible,Dead,Hidden"/>
     </CValidatorLocationEnumArea>
@@ -71,6 +77,12 @@
     <CValidatorCombine id="BOaeRemove">
         <CombineArray value="NotHaveBOae1"/>
     </CValidatorCombine>
+    <CValidatorLocationEnumArea id="MassTeleportValidator">
+        <WhichLocation Value="CasterUnit"/>
+        <AreaArray Radius="7.0312"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFilters value="-;Neutral,Enemy,Hover,HarvestableResource,Missile,Destructible,Item,PreventDefeat,Buried,Dead,Hidden,Resistant"/>
+    </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="NoBurningSmokeNearby2" parent="AW2_NoFriendiesNearby">
         <AreaArray Radius="2" Validator="IsBurningSmoke"/>
     </CValidatorLocationEnumArea>

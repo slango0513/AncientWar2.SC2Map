@@ -69,6 +69,26 @@
         <Name value="Effect/Name/AW2_SelfDestroyDPS"/>
         <Marker Link="Effect/SelfDestroyDPS"/>
     </CEffectDamage>
+    <CEffectCreatePersistent id="AHmt">
+        <ExpireDelay value="5"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="AHmtSearch">
+        <SearchFilters value="-;neutral,enemies,wall,tree,Missile,debris,item,structure,ward,dead,Hidden,hero"/>
+        <TargetSorts>
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
+        </TargetSorts>
+        <AreaArray index="0" Radius="7.0312" Effect="AHmtTeleport"/>
+        <MaxCount value="12"/>
+    </CEffectEnumArea>
+    <!--Arch Mage - Mass Teleport-->
+    <CEffectEnumArea id="AHmtTarget">
+        <SearchFilters value="-;player,allies,air,wall,tree,Missile,debris,item,ward,dead,Hidden,invulnerable"/>
+    </CEffectEnumArea>
+    <CEffectTeleport id="AHmtTeleport">
+        <TeleportFlags index="TestCliff" value="1"/>
+        <TeleportEffect value="Btrv"/>
+    </CEffectTeleport>
     <CEffectSet id="AIvaLeechSet">
         <EditorCategories value=""/>
         <EffectArray value="AIvaLeech"/>
@@ -199,7 +219,9 @@
         <ValidatorArray value="NoBurningSmokeNearby1"/>
         <SpawnOwner Value="Caster"/>
     </CEffectCreateUnit>
-    <CEffectRemoveBehavior id="RemoveAllPurgableBuffTrigger"/>
+    <CEffectDamage id="nerd1" parent="AW2_MagicDamage">
+        <Amount value="288"/>
+    </CEffectDamage>
     <CEffectCreateUnit id="nsko" parent="War3_SummonUnit">
         <EditorCategories value="Race:ChaosOrc"/>
         <SpawnEffect value="Brai"/>
@@ -1584,9 +1606,7 @@
     <CEffectApplyBehavior id="PressureAura" parent="War3_AuraBuff"/>
     <CEffectApplyBehavior id="ObsidianAura" parent="War3_AuraBuff"/>
     <CEffectApplyBehavior id="ObsidianAuraItem" parent="War3_AuraBuff"/>
-    <CEffectApplyBehavior id="DominationAura" parent="War3_AuraBuff">
-        <ValidatorArray value="IsSummonedUnit"/>
-    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="DominationAura" parent="War3_AuraBuff"/>
     <CEffectApplyBehavior id="FrostAura" parent="War3_AuraBuff">
         <Chance value="0.33"/>
         <ValidatorArray value="IsNotDragon"/>
@@ -2383,6 +2403,14 @@
     <CEffectDamage id="nbzd2" parent="AW2_MagicDamage">
         <Amount value="72"/>
     </CEffectDamage>
+    <CEffectDamage id="Chronormu1" parent="AW2_MagicDamage">
+        <Amount value="864"/>
+    </CEffectDamage>
+    <CEffectDamage id="Chronormu2" parent="AW2_MagicDamage">
+        <Amount value="216"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="Chronormu1LM" parent="War3_Missile" weaponid="Chronormu1"/>
+    <CEffectLaunchMissile id="Chronormu2LM" parent="War3_Missile" weaponid="Chronormu2"/>
     <CEffectDamage id="nbzw1" parent="AW2_MagicDamage">
         <Amount value="96"/>
     </CEffectDamage>
