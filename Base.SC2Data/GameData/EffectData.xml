@@ -73,13 +73,13 @@
         <ExpireDelay value="5"/>
     </CEffectCreatePersistent>
     <CEffectEnumArea id="AHmtSearch">
-        <SearchFilters value="-;neutral,enemies,wall,tree,Missile,debris,item,structure,ward,dead,Hidden,hero"/>
-        <TargetSorts>
-            <SortArray value="TSLifeLargestFirst"/>
-            <SortArray value="TSKillResourceCustomLargestFirst"/>
-        </TargetSorts>
+        <SearchFilters value="-;neutral,enemies,wall,tree,Missile,debris,item,structure,ward,dead,Hidden"/>
         <AreaArray index="0" Radius="7.0312" Effect="AHmtTeleport"/>
-        <MaxCount value="12"/>
+        <TargetSorts>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
+        <MaxCount value="18"/>
     </CEffectEnumArea>
     <!--Arch Mage - Mass Teleport-->
     <CEffectEnumArea id="AHmtTarget">
@@ -2405,6 +2405,8 @@
     </CEffectDamage>
     <CEffectDamage id="Chronormu1" parent="AW2_MagicDamage">
         <Amount value="864"/>
+        <AreaArray Radius="1.1718" Fraction="1"/>
+        <SearchFilters value="-;player,allies,air,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
     </CEffectDamage>
     <CEffectDamage id="Chronormu2" parent="AW2_MagicDamage">
         <Amount value="216"/>
