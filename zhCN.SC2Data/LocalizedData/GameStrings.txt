@@ -12,11 +12,12 @@ ACcv/Ubertip=发射出一道巨大的能量波，对一线上的敌人造成<d r
 ACen/Ubertip=将敌方的某个空中单位捕获到地面能动弹。被诱捕的空中单位能像地面单位一样遭到攻击。<n/>持续<d ref="Behavior,Bena,Duration"/>秒。
 ACev/Ubertip=给予<d ref="Behavior,AEev1,DamageResponse.Chance * 100"/>%的几率躲避敌人的攻击。
 ACfn/Ubertip=冲击目标单位群，造成<d ref="Effect,AUfnDamage1,Amount"/>点常规伤害和<d ref="Effect,AUfnDamage1,Amount + Effect,AUfnDamage1,AreaArray[0].Bonus"/>点新星伤害。并在<d ref="Effect,AUfn1Dur,Duration"/>秒内减慢他们的攻击和移动速度。
-ACmi/Ubertip=在<d ref="Effect,ACmi1,Duration"/>秒内让该单位对所有魔法免疫。
+ACmi/Ubertip=让该单位对所有魔法免疫。
 ACnr/Tip=生命恢复光环
 ACnr/Ubertip=能加快周围友方单位每秒<d ref="Effect,ACnrHealTick,VitalArray[Life].Change"/>点的生命值恢复速度。
 ACpa/Ubertip=用一个致命的寄生虫折磨目标单位。如果命中单位死亡，一个风蛇将会从尸体上诞生。
 ACpv/Ubertip=给予<d ref="Behavior,ACpv,Modification.CriticalAttackChanceScaledBonus * 100"/>%的几率能对周围的单位造成<d ref="Effect,ACpvAoEDamage,AreaArray[0].Bonus"/>点的伤害，同时恢复<d ref="Effect,ACpvModifyUnit,VitalArray[Life].ChangeFraction * 100"/>%的生命值。
+ACrd/Ubertip=从一具尸体中召唤出2个骷髅兽人。
 ACrf/Ubertip=召唤出数波火焰之雨，每波能造成<d ref="Effect,ANrfDamage1,Amount"/>点伤害。<n/>持续<d ref="Effect,ANrf1,PeriodCount + 1"/>波。
 ACrj/Ubertip=在<d ref="Behavior,Brej,Duration"/>秒内恢复目标友方单位<d ref="Effect,BrejHealTick,RechargeVitalRate * Behavior,Brej,Duration"/>点的生命值。
 ACt2/Ubertip=震击地面，对周围的敌方地面单位造成<d ref="Effect,ACtcDamage,Amount"/>点的伤害。并减慢其移动和攻击速度。
@@ -260,12 +261,13 @@ Attribute004/Value010/Name=龙(精英)
 Attribute004/Value011/Name=恶魔(精英)
 Attribute004/Value012/Name=德莱尼
 Auco/Ubertip=制造出一次强力爆炸，对目标敌方空中单位造成<d ref="Effect,AucoDamage,Amount"/>点伤害，对周围敌空中单位造成<d ref="Effect,AucoDamage,Amount * Effect,AucoDamage,AreaArray[0].Fraction + Effect,AucoDamage,AreaArray[0].Bonus"/>点伤害。
-Auhf/Ubertip=增加目标单位<d ref="Behavior,Buhf,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度，但是每秒也会消耗目标<d ref="Effect,BuhfDPS,Amount"/>点的生命值。<n/>持续<d ref="Behavior,Buhf,Duration"/>秒。
+Auhf/Ubertip=增加目标单位<d ref="Behavior,Buhf,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度，但是也会受到<d ref="Behavior,Buhf,DamageResponse.ModifyFraction - 1 * 100"/>%的额外伤害。<n/>持续<d ref="Behavior,Buhf,Duration"/>秒。
 Aven/Ubertip=能造成每秒<d ref="Effect,BpsdDPS,Amount"/>点的毒性伤害。<n/>持续<d ref="Behavior,Bpoi,Duration"/>秒。
 Avul/Tip=无敌
 Avul/Ubertip=该单位是无敌的，所以任何的攻击和魔法都对其无效。
 Awar/Ubertip=使得攻击能对周围的单位造成<d ref="Effect,AwarAoEDamage,AreaArray[0].Bonus"/>点的伤害。
 Aweb/Ubertip=将目标单位用一张网来捕获到地面，从而地面上的单位可以对其进行攻击。<n/>持续<d ref="Behavior,Bwea,Duration"/>秒。
+Awfb/Ubertip=造成<d ref="Effect,AwfbDamage,Amount"/>点伤害，并能将敌人击至昏迷，持续<d ref="Behavior,Bwfb,Duration"/>秒。
 Awrh/Ubertip=重击地面，对周围的地面单位造成<d ref="Effect,AOwsDamage1,Amount"/>点的伤害并使其昏迷<d ref="Effect,AOws1Dur,Duration"/>秒。
 Awrs/Ubertip=重击地面，对周围的地面单位造成<d ref="Effect,AOwsDamage1,Amount"/>点的伤害并使其昏迷<d ref="Effect,AOws1Dur,Duration"/>秒。
 BCcb/Buffubertip=该单位被击晕了，所以不能移动，攻击和施放魔法。
@@ -321,6 +323,7 @@ BreathOfFireCaster/Ubertip=每次攻击带有火焰效果，在<d ref="Behavior,
 Brpl/Name=荒芜精华
 Bsds/Buffubertip=该单位被击晕了，所以不能移动，攻击和施放魔法。
 Bsds/Name=咔嘣！
+Buhf/Buffubertip=该单位受到了邪恶狂暴的作用，因此攻击速度加快了，但是也会受到更多伤害。
 Bushido/Buffubertip=该单位遵循武士道，因此攻击力得到了加强。
 Bushido/Name=武士道
 Bushido/Tip=激活武士道
@@ -611,7 +614,7 @@ DocInfo/PatchNote158=所有龙人获得新技能龙鳞，取代原来的技能�
 DocInfo/PatchNote159=恶魔：
 DocInfo/PatchNote160=混乱之雨召唤的地狱火数量提高到5个。
 DocInfo/PatchNote161=灵魂燃烧的施法时间增加到4秒。
-DocInfo/PatchNote162=恶魔：
+DocInfo/PatchNote162=加入新单位暴掠氏族通灵师。
 DocInfo/PatchNote163=重新设计地形。
 DocInfo/PatchNote164=提高奖励回合怪物的生命值与伤害。
 DocInfo/PatchNote165=调整献祭的伤害。
@@ -619,15 +622,15 @@ DocInfo/PatchNote166=人类：
 DocInfo/PatchNote167=步兵类单位的生命值提高到600点，剑士获得新技能盾墙。
 DocInfo/PatchNote168=兽人：
 DocInfo/PatchNote169=灵魂行者类单位的价格下降到60金币。
-DocInfo/PatchNote170=纳迦：
-DocInfo/PatchNote171=重新设计技能潜水。
-DocInfo/PatchNote172=海龙的多重攻击次数减少到3次。
-DocInfo/PatchNote173=血精灵：
-DocInfo/PatchNote174=血精灵中尉类单位的生命值提高到600点。
-DocInfo/PatchNote175=地精：
-DocInfo/PatchNote176=加入新单位兽王。
-DocInfo/PatchNote177=伊利丹的对空攻击伤害增加到288点。
-DocInfo/PatchNote178=石槌食人魔类单位、石槌酋长类单位与石槌法师类单位经过重新设计。
+DocInfo/PatchNote170=血精灵：
+DocInfo/PatchNote171=血精灵中尉类单位的生命值提高到600点。
+DocInfo/PatchNote172=地精：
+DocInfo/PatchNote173=加入新单位兽王。
+DocInfo/PatchNote174=石槌食人魔类单位、石槌酋长类单位与石槌法师类单位经过重新设计。
+DocInfo/PatchNote175=恶魔：
+DocInfo/PatchNote176=伊利丹的对空攻击伤害增加到288点。
+DocInfo/PatchNote177=混乱兽人术士现在是远程攻击单位。
+DocInfo/PatchNote178=恶魔：
 DocInfo/PatchNote179=无奖励回合模式获得的木材增加到32400点。
 DocInfo/PatchNote180=所有工人单位获得新技能升级物品等级。
 DocInfo/PatchNote181=黑暗之门现在会在战斗开始时立即施放，并且所召唤的空间之门计入单位结算。
@@ -671,8 +674,8 @@ DocInfo/PatchNote218=修复技能闪避(伊利丹)无效的漏洞，并且伊利
 DocInfo/PatchNote219=混乱之雨所召唤的地狱火获得新技能魔法防护，数量减少到3个。
 DocInfo/PatchNote220=德莱尼：
 DocInfo/PatchNote221=德莱尼追踪者类单位的生命值减少到100点。
-DocInfo/PatchNote222=恶魔：
-DocInfo/PatchNote223=瓦里玛萨斯获得新技能魔法防护。
+DocInfo/PatchNote222=睡眠的施法时间增加到5秒，持续时间缩短到15秒。
+DocInfo/PatchNote223=地精：
 DocInfo/PatchNote224=混乱兽人：
 DocInfo/PatchNote225=修复部分具有吸血效果的技能对机械单位有效的漏洞。
 DocInfo/PatchNote226=人类：
@@ -689,21 +692,24 @@ DocInfo/PatchNote236=末日降临的法力值消耗增加到90点，并且不再
 DocInfo/PatchNote237=德莱尼：
 DocInfo/PatchNote238=火焰吐息不再对建筑有效。
 DocInfo/PatchNote239=黑暗攻击现在产生一个次级虚空行者。
-DocInfo/PatchNote240=提克迪奥斯获得新技能支配光环与魔法防护。
-DocInfo/PatchNote241=空间之门的训练时间增加到20秒。
+DocInfo/PatchNote240=降低后发制人的效果，并且现在能叠加2层。
+DocInfo/PatchNote241=混乱兽人：
+DocInfo/PatchNote242=瓦里玛萨斯获得新技能魔法防护。
+DocInfo/PatchNote243=提克迪奥斯获得新技能支配光环与魔法防护。
+DocInfo/PatchNote244=空间之门的训练时间增加到20秒。
 DocInfo/PatchNote249=尝试修复特定情况下游戏无法继续的漏洞，所有单位将在未受到伤害180秒后狂怒，伤害与攻击速度提高。
 DocInfo/PatchNote250=所有物品的护甲加成效果提高50%。
 DocInfo/PatchNote251=法力宝石、索比面具与麦酒桶的法力恢复加成效果降低到原来的50%。
 DocInfo/PatchNote252=调整急速手套的价格。
 DocInfo/PatchNote253=调整火拳手套、狂暴者头盔与塞拉希尔的攻击速度加成效果。
-DocInfo/PatchNote254=人类：
-DocInfo/PatchNote255=震荡波经过重新设计。
-DocInfo/PatchNote256=暗夜精灵：
-DocInfo/PatchNote257=月之女祭司与泰兰德的攻击间歇缩短到1.5秒。
-DocInfo/PatchNote258=龙：
-DocInfo/PatchNote259=睡眠的施法时间增加到5秒，持续时间缩短到15秒。
-DocInfo/PatchNote260=地精：
-DocInfo/PatchNote261=降低后发制人的效果，并且现在能叠加2层。
+DocInfo/PatchNote254=邪恶狂暴现在不再使目标损失生命值，而让目标受到更多伤害。
+DocInfo/PatchNote255=人类：
+DocInfo/PatchNote256=震荡波经过重新设计。
+DocInfo/PatchNote257=暗夜精灵：
+DocInfo/PatchNote258=月之女祭司与泰兰德的攻击间歇缩短到1.5秒。
+DocInfo/PatchNote259=纳迦：
+DocInfo/PatchNote260=海龙不在具有技能潜水。
+DocInfo/PatchNote261=龙：
 DominationAura/Buffubertip=该单位处在支配光环的作用之下，因此其攻击力得到了加强，其法术攻击力得到了增强。
 DominationAura/Name=支配光环
 DominationAuraCaster/Tip=支配光环
@@ -1004,7 +1010,7 @@ Ocbh/Ubertip=重型的近战单位，具有战争践踏技能。<n/><n/><c val="
 Ofar/Tip=训练先知
 Ofar/Ubertip=高速远程攻击骑兵。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 Ogld/Tip=升级到古尔丹
-Ogld/Ubertip=魔法单位，能召唤末日守卫。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+Ogld/Ubertip=魔法单位，能施放邪恶狂暴。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 Ogrh/Tip=升级到格罗姆·地狱咆哮
 Ogrh/Ubertip=敏捷系单位，精于在敌人中制造混乱。具有掠夺、疾风步和闪避技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Opgh/Tip=升级到格罗姆·地狱咆哮
@@ -1385,7 +1391,7 @@ ncg3/Name=发条地精
 nchg/Tip=训练混乱兽人步兵
 nchg/Ubertip=基本的兽人地面单位，具有掠夺技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nchr/Ubertip=高速骑兵，具有掠夺和诱捕技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
-nchw/Ubertip=魔法单位，能施放火球术，伤害并使敌人昏迷。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+nchw/Ubertip=远程攻击单位。能施放火球术，伤害并使敌人昏迷。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nckb/Ubertip=一种笨重的战争野兽，由一个兽人鼓手驾驭。拥有吸血光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ndgt/Tip=升级到达拉然防御塔
 ndgt/Ubertip=防守型建筑物。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
@@ -1559,7 +1565,9 @@ nskk/Ubertip=呼唤小蜥蜴的灵魂来拯救你。<n/><n/><c val="ffcc00">能�
 nsll/Tip=升级到火蜥蜴之王
 nsll/Ubertip=<c val="ffcc00">精英</c><n/>能投掷出闪电箭的远程攻击单位。能吞噬对手，还具有火焰吐息。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nsnp/Tip=训练海龙
-nsnp/Ubertip=远程攻击单位，有着毒性攻击，可以缓慢和伤害敌单位。拥有潜水技能，可以隐藏在水中。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+nsnp/Ubertip=远程攻击单位，有着毒性攻击，可以缓慢和伤害敌单位。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+nsrn/Tip=训练暴掠氏族通灵师
+nsrn/Ubertip=魔法单位，能施放尸控术。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nss2/Name=暗夜精灵刺客
 nssn/Name=暗夜精灵刺客
 nssn/Tip=训练刺客
@@ -1580,6 +1588,7 @@ ntx2/Ubertip=防守型建筑物，射出致命的能量箭，擅长于实施大�
 nvdw/Tip=训练虚空行者
 nvdw/Ubertip=防御型单位。当该单位被杀死的时候，许多小点的虚空行者会从其尸体中冒出来。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nw2w/Tip=训练兽人术士
+nw2w/Ubertip=远程攻击单位。能施放火球术，伤害并使敌人昏迷。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nwat/Tip=训练哨兵
 nwat/Ubertip=基本的地面单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nwgs/Ubertip=轻型飞行单位。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
@@ -1594,6 +1603,8 @@ nzepTimeLife/Buffubertip=该单位在一定时间后坠毁。
 nzepTimeLife/Name=地精飞艇
 ocat/Ubertip=远程攻城武器，具有燃烧之油技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ocor/Ubertip=增加<d ref="Behavior,AIcb,Modification.DamageDealtScaled[Melee]"/>点攻击力。能在<d ref="Behavior,BIcb,Duration"/>秒内削弱敌人的护甲。
+odkt/Tip=升级到德拉克苏尔
+odkt/Ubertip=魔法单位，能召唤末日守卫。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 odoc/Ubertip=魔法单位，能施放妖术。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ofir/Ubertip=增加<d ref="Behavior,AIfb,Modification.DamageDealtScaled[Melee]"/>点攻击力。能让攻击带有<d ref="Effect,AIfbSphereEffect,AreaArray[0].Bonus"/>点火焰伤害，还有一定的溅射效果。
 ofl2/Name=兽人旗帜

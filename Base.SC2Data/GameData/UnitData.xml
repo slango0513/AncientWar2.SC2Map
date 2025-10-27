@@ -300,6 +300,21 @@
             <LayoutButtons index="3" removed="1"/>
         </CardLayouts>
     </CUnit>
+    <!--skeletal orc-->
+    <CUnit id="nsko" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <LifeStart value="250"/>
+        <LifeMax value="250"/>
+        <Speed value="2"/>
+        <Race value="ChaosOrc"/>
+        <Mover value="foot"/>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <PlaneArray index="Ground" value="1"/>
+        <DeathTime value="0"/>
+    </CUnit>
     <!--lesser voidwalker-->
     <CUnit id="nvdl" parent="AW2_Army" defType="MEDIUM">
         <Attributes index="medium" value="1"/>
@@ -1466,9 +1481,9 @@
         <Mover value="foot"/>
         <GlossaryCategory value="Unit/Category/ChaosOrcUnits"/>
         <AbilArray Link="ChaosOrcInventory"/>
-        <AbilArray Link="SummonDoomGuard"/>
+        <AbilArray Link="Auhf"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="SummonDoomGuard" Type="AbilCmd" AbilCmd="SummonDoomGuard,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Auhf" Type="AbilCmd" AbilCmd="Auhf,0" Row="2" Column="0"/>
         </CardLayouts>
         <Radius value="0.375"/>
         <MinimapRadius value="0.375"/>
@@ -2669,7 +2684,6 @@
         <KillResource index="Custom" value="30"/>
         <AbilArray Link="NagaInventory"/>
         <AbilArray Link="UpgradeTozhyd"/>
-        <AbilArray Link="Asb3"/>
         <BehaviorArray Link="naga"/>
         <BehaviorArray Link="NagaSnapDragonSwim"/>
         <BehaviorArray Link="Aspo"/>
@@ -2677,7 +2691,6 @@
             <LayoutButtons Face="zhyd" Type="AbilCmd" AbilCmd="UpgradeTozhyd,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="Multishot" Type="Passive" Row="2" Column="0"/>
             <LayoutButtons Face="Aspo" Type="Passive" Behavior="Aspo" Row="2" Column="1"/>
-            <LayoutButtons Face="Asb3" Type="AbilCmd" AbilCmd="Asb3,Execute" Row="2" Column="2"/>
         </CardLayouts>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
         <Race value="Naga"/>
@@ -4657,10 +4670,8 @@
         <Mover value="foot"/>
         <GlossaryCategory value="Unit/Category/ChaosOrcUnits"/>
         <AbilArray Link="ChaosOrcInventory"/>
-        <AbilArray Link="UpgradeToOgld"/>
         <AbilArray Link="Awfb"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="Ogld" Type="AbilCmd" AbilCmd="UpgradeToOgld,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="Awfb" Type="AbilCmd" AbilCmd="Awfb,0" Row="2" Column="0"/>
         </CardLayouts>
         <Radius value="0.375"/>
@@ -4670,7 +4681,6 @@
         <EnergyMax value="60"/>
         <EnergyStart value="60"/>
         <PlaneArray index="Ground" value="1"/>
-        <BehaviorArray Link="nondamager"/>
     </CUnit>
     <!--Chaos Kodo Beast-->
     <CUnit id="nckb" parent="AW2_Army" defType="NONE">
@@ -4733,6 +4743,7 @@
             <LayoutButtons Face="ocat" Type="AbilCmd" AbilCmd="ChaosOrcBuild,Build11" Row="1" Column="3"/>
             <LayoutButtons Face="ndtp" Type="AbilCmd" AbilCmd="ChaosOrcBuild,Build10" Row="2" Column="0"/>
             <LayoutButtons Face="ChaosOrcShaman" Type="AbilCmd" AbilCmd="ChaosOrcBuild,Build13" Row="2" Column="1"/>
+            <LayoutButtons Face="nsrn" Type="AbilCmd" AbilCmd="ChaosOrcBuild,Build14" Row="2" Column="2"/>
             <LayoutButtons Face="otbr" Type="AbilCmd" AbilCmd="ChaosOrcBuild,Build12" Row="0" Column="4"/>
         </CardLayouts>
         <CardLayouts index="2" CardId="Purc">
@@ -5142,8 +5153,8 @@
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="225"/>
         <KillResource index="Custom" value="75"/>
-        <LifeStart value="1500"/>
-        <LifeMax value="1500"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
         <Speed value="2"/>
         <Race value="Undead"/>
         <Mover value="foot"/>
@@ -6857,8 +6868,33 @@
         <Race value="Demon"/>
     </CUnit>
     <!--stormreaver necrolyte-->
-    <CUnit id="nsrn">
-        <Race value="Demon"/>
+    <CUnit id="nsrn" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="60"/>
+        <KillResource index="Custom" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="ChaosOrc"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/ChaosOrcUnits"/>
+        <AbilArray Link="ChaosOrcInventory"/>
+        <AbilArray Link="UpgradeToOgld"/>
+        <AbilArray Link="UpgradeToodkt"/>
+        <AbilArray Link="ACrd"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Ogld" Type="AbilCmd" AbilCmd="UpgradeToOgld,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="odkt" Type="AbilCmd" AbilCmd="UpgradeToodkt,Execute" Row="0" Column="1"/>
+            <LayoutButtons Face="ACrd" Type="AbilCmd" AbilCmd="ACrd,0" Row="2" Column="0"/>
+        </CardLayouts>
+        <Radius value="0.3125"/>
+        <MinimapRadius value="0.3125"/>
+        <SeparationRadius value="0.3125"/>
+        <InnerRadius value="0.3125"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
+        <BehaviorArray Link="nondamager"/>
     </CUnit>
     <!--stormreaver warlock-->
     <CUnit id="nsrw">
@@ -6910,8 +6946,28 @@
     </CUnit>
     <CUnit id="nthr2LM" parent="War3_Missile"/>
     <!--War2Warlock-->
-    <CUnit id="nw2w">
-        <Food value="1"/>
+    <CUnit id="nw2w" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="60"/>
+        <KillResource index="Custom" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="Orc"/>
+        <Mover value="foot"/>
+        <GlossaryCategory value="Unit/Category/OrcUnits"/>
+        <AbilArray Link="Aion"/>
+        <AbilArray Link="Awfb"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Awfb" Type="AbilCmd" AbilCmd="Awfb,0" Row="2" Column="0"/>
+        </CardLayouts>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <EnergyMax value="60"/>
+        <EnergyStart value="60"/>
+        <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <!--GoblinZeppelin-->
     <CUnit id="nzep" parent="AW2_Army" defType="SMALL">
@@ -6961,8 +7017,29 @@
         <WeaponArray index="1" removed="1"/>
     </CUnit>
     <!--Drak'Thul-->
-    <CUnit id="odkt">
-        <Race value="Demon"/>
+    <CUnit id="odkt" parent="AW2_Army" defType="NONE">
+        <Attributes index="none" value="1"/>
+        <CostResource index="gold" value="180"/>
+        <KillResource index="Custom" value="30"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="2"/>
+        <Race value="ChaosOrc"/>
+        <Mover value="foot"/>
+        <GlossaryCategory value="Unit/Category/ChaosOrcUnits"/>
+        <AbilArray Link="ChaosOrcInventory"/>
+        <AbilArray Link="SummonDoomGuard"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SummonDoomGuard" Type="AbilCmd" AbilCmd="SummonDoomGuard,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <EnergyMax value="60"/>
+        <EnergyStart value="60"/>
+        <PlaneArray index="Ground" value="1"/>
+        <BehaviorArray Link="nondamager"/>
     </CUnit>
     <!--Gar'thok-->
     <CUnit id="ogrk" parent="AW2_Army" defType="LARGE">
@@ -8007,8 +8084,8 @@
         <Attributes index="large" value="1"/>
         <CostResource index="gold" value="75"/>
         <KillResource index="Custom" value="75"/>
-        <LifeStart value="1500"/>
-        <LifeMax value="1500"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
         <Speed value="2"/>
         <Race value="Undead"/>
         <Mover value="foot"/>

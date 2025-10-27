@@ -130,6 +130,32 @@
         <CastOutroTime value="0.5"/>
         <TargetFilters index="0" value="-;wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
     </CAbilEffectTarget>
+    <!--Raise Dead (Creep) Dur=40 HeroDur=40 Buff=Brai-->
+    <CAbilEffectInstant id="ACrd" parent="AW2_EffectInstant">
+        <CmdButtonArray index="Execute">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <EditorCategories value="Race:ChaosOrc,AbilityorEffectType:Unit"/>
+        <Cost index="0">
+            <Vital index="Energy" value="20"/>
+            <Cooldown Location="Unit" TimeUse="15"/>
+        </Cost>
+        <Range value="8"/>
+        <PrepTime value="0.5"/>
+        <FinishTime value="0.5"/>
+        <Alignment value="Positive"/>
+        <AutoCastRange value="8"/>
+        <Flags index="WaitToSpend" value="1"/>
+        <DefaultError value="MustTargetUnit,Errors/Cantfindcorpse"/>
+        <AutoCastValidatorArray value="SkeletonsLE96"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastValidatorArray value="EnemiesNearby7"/>
+        <Effect index="0" value="ACrdEx"/>
+        <TargetSorts>
+            <SortArray value="TSLife"/>
+        </TargetSorts>
+        <AutoCastFilters value="Visible;-"/>
+    </CAbilEffectInstant>
     <!--Demon Hunter - Evasion-->
     <CAbilBehavior id="AEev" parent="AW2_Passive">
         <EditorCategories value="Race:Nightelf,AbilityorEffectType:Unit"/>
@@ -984,7 +1010,7 @@
     <CAbilEffectTarget id="AEbl" parent="AW2_EffectTarget">
         <EditorCategories value="Race:NightElf,AbilityorEffectType:Units"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeStart="15" TimeUse="2"/>
+            <Cooldown Location="Unit" TimeUse="2"/>
         </Cost>
         <Range value="8"/>
         <CastOutroTime value="0.83"/>
@@ -1246,18 +1272,18 @@
     <CAbilEffectTarget id="Awfb" parent="AW2_EffectTarget">
         <EditorCategories value="Race:ChaosOrc,AbilityorEffectType:Units"/>
         <Cost index="0">
-            <Vital index="Energy" value="20"/>
-            <Cooldown Location="Unit" TimeUse="10"/>
+            <Vital index="Energy" value="30"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <TargetSorts RequestCount="1">
             <SortArray value="TSMarker"/>
             <SortArray value="TSLifeLargestFirst"/>
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
-        <Range value="13"/>
-        <AutoCastRange value="13"/>
+        <Range value="15"/>
+        <AutoCastRange value="15"/>
         <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
-        <AutoCastValidatorArray value="EnemiesNearby7"/>
+        <AutoCastValidatorArray value="EnemiesNearby12"/>
         <AutoCastValidatorArray value="NoFireBolt"/>
         <PrepTime value="1"/>
         <CastOutroTime value="1"/>
@@ -1343,6 +1369,9 @@
         </InfoArray>
         <InfoArray index="Build13" Unit="ChaosOrcShaman">
             <Button DefaultButtonFace="ChaosOrcShaman" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build14" Unit="nsrn">
+            <Button DefaultButtonFace="nsrn" Requirements="BuildArmy"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
@@ -3285,7 +3314,7 @@
         <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
         <TargetFilters index="0" value="-;mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <Cost index="0">
-            <Vital index="Energy" value="15"/>
+            <Vital index="Energy" value="20"/>
             <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <Range value="13"/>
@@ -3294,7 +3323,6 @@
         <Effect index="0" value="Buhf"/>
         <AutoCastRange value="13"/>
         <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
-        <AutoCastValidatorArray value="TargetLifeGE200"/>
         <AutoCastValidatorArray value="NoUnholyFrenzy"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby7"/>
@@ -4075,6 +4103,9 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeTonthl" parent="AW2_Upgrade" toUnit="nthl">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToodkt" parent="AW2_Upgrade" toUnit="odkt">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
 </Catalog>

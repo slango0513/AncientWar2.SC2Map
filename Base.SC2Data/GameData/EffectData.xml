@@ -97,6 +97,34 @@
         <EffectArray value="AUcsDamage1"/>
         <EffectArray value="AUcsHeal1"/>
     </CEffectSet>
+    <CEffectSet id="ACrdEx">
+        <EffectArray value="ACrd"/>
+        <EffectArray value="ACrdCargo"/>
+        <ValidatorArray value="RaiseDeadValidator"/>
+    </CEffectSet>
+    <CEffectSet id="ACrd">
+        <EffectArray value="ACrdSummonLv1"/>
+        <EffectArray value="TargetRemoveTriggerRequest"/>
+        <ValidatorArray value="RaiseDeadValidatorDeadCombie"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="ACrdCargo">
+        <EditorCategories value="Race:ChaosOrc"/>
+        <Flags index="Channeled" value="1"/>
+        <ValidatorArray value="TargetNotDead"/>
+        <ExpireDelay value="1.5"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="ACrdSummonLv1">
+        <EffectArray value="nsko"/>
+        <EffectArray value="nsko"/>
+    </CEffectSet>
+    <CEffectDamage id="BuhfDPS">
+        <Amount value="0"/>
+        <VitalFractionMax index="Life" value="0.02"/>
+    </CEffectDamage>
+    <CEffectCreateUnit id="nsko" parent="War3_SummonUnit">
+        <EditorCategories value="Race:ChaosOrc"/>
+        <SpawnEffect value="Brai"/>
+    </CEffectCreateUnit>
     <!--Dreadlord - Carrion Swarm Buff=BUcs-->
     <CEffectCreatePersistent id="AUcsTarget">
         <PeriodicOffsetArray index="0" value="0,-9,0"/>
@@ -170,8 +198,18 @@
         <Kind value="Melee"/>
         <Amount value="96"/>
     </CEffectDamage>
+    <CEffectDamage id="nsko1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="24"/>
+    </CEffectDamage>
+    <CEffectDamage id="nsrn1" parent="AW2_ChaosDamage">
+        <Amount value="24"/>
+    </CEffectDamage>
     <CEffectDamage id="nvdl1" parent="AW2_MagicDamage">
         <Amount value="12"/>
+    </CEffectDamage>
+    <CEffectDamage id="odkt1" parent="AW2_ChaosDamage">
+        <Amount value="24"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="ushd1LM" parent="War3_Missile" weaponid="ushd1"/>
     <CEffectApplyBehavior id="Posterior" parent="War3_ApplyBuff"/>
@@ -1346,7 +1384,7 @@
     </CEffectDamage>
     <CEffectDamage id="AwfbDamage" parent="War3_MagicSpellDamage">
         <EditorCategories value="Race:ChaosOrc"/>
-        <Amount value="50"/>
+        <Amount value="100"/>
     </CEffectDamage>
     <!--Death Knight - Animate Dead Buff=BUan-->
     <CEffectEnumArea id="AUanSearch">
@@ -2530,7 +2568,7 @@
         <Amount value="120"/>
     </CEffectDamage>
     <CEffectDamage id="nchw1" parent="AW2_ChaosDamage">
-        <Amount value="24"/>
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="nckb1" parent="AW2_ChaosDamage">
         <Amount value="24"/>
@@ -2975,7 +3013,7 @@
         <EffectArray value="nsnp1Multishot"/>
     </CEffectSet>
     <CEffectCreatePersistent id="nsnp1Multishot" parent="AW2_Multishot">
-        <PeriodCount value="2"/>
+        <PeriodCount value="3"/>
         <PeriodicPeriodArray value="0.125"/>
         <Marker Link="Effect/nsnp1LM"/>
     </CEffectCreatePersistent>
@@ -3029,7 +3067,7 @@
         <SpawnEffect value="BNpm"/>
     </CEffectCreateUnit>
     <CEffectDamage id="nw2w1" parent="AW2_MagicDamage">
-        <Amount value="24"/>
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="nitr1CreatePersistent">
         <PeriodCount value="2"/>
