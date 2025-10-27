@@ -1,26 +1,34 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
-    <const id="summoned" path="SDamageResponse.TargetFilters" value="Summoned"/>
-    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
     <const id="hero" path="SDamageResponse.TargetFilters" value="Resistant"/>
-    <const id="allies" path="SDamageResponse.TargetFilters" value="Ally"/>
+    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
+    <const id="summoned" path="SDamageResponse.TargetFilters" value="Summoned"/>
     <const id="air" path="SDamageResponse.TargetFilters" value="Air"/>
-    <const id="tree" path="SDamageResponse.TargetFilters" value="HarvestableResource"/>
+    <const id="allies" path="SDamageResponse.TargetFilters" value="Ally"/>
     <const id="item" path="SDamageResponse.TargetFilters" value="Item"/>
-    <const id="player" path="SDamageResponse.TargetFilters" value="Player"/>
+    <const id="tree" path="SDamageResponse.TargetFilters" value="HarvestableResource"/>
     <const id="ancient" path="SDamageResponse.TargetFilters" value="Psionic"/>
-    <const id="enemies" path="SDamageResponse.TargetFilters" value="Enemy"/>
+    <const id="player" path="SDamageResponse.TargetFilters" value="Player"/>
     <const id="structure" path="SDamageResponse.TargetFilters" value="PreventDefeat"/>
-    <const id="self" path="SDamageResponse.TargetFilters" value="Self"/>
-    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="enemies" path="SDamageResponse.TargetFilters" value="Enemy"/>
     <const id="mechanical" path="SDamageResponse.TargetFilters" value="Mechanical"/>
-    <const id="neutral" path="SDamageResponse.TargetFilters" value="Neutral"/>
+    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="self" path="SDamageResponse.TargetFilters" value="Self"/>
     <const id="ground" path="SDamageResponse.TargetFilters" value="Ground"/>
+    <const id="neutral" path="SDamageResponse.TargetFilters" value="Neutral"/>
     <const id="wall" path="SDamageResponse.TargetFilters" value="Hover"/>
     <const id="dead" path="SDamageResponse.TargetFilters" value="Dead"/>
     <const id="ethereal" path="SDamageResponse.TargetFilters" value="Stasis"/>
-    <const id="invulnerable" path="SDamageResponse.TargetFilters" value="Invulnerable"/>
     <const id="debris" path="SDamageResponse.TargetFilters" value="Destructible"/>
+    <const id="invulnerable" path="SDamageResponse.TargetFilters" value="Invulnerable"/>
+    <!--Hidden Abilities-->
+    <!--Command Aura-->
+    <!--Buttonpos=0,2-->
+    <!--Targetart=Assets\Abilities\Spells\Orc\War3_DrumsCasterHeal\War3_DrumsCasterHeal.m3-->
+    <!--Targetattach=origin-->
+    <CBehaviorBuff default="1" id="AOac">
+        <Alignment value="Neutral"/>
+    </CBehaviorBuff>
     <CBehaviorBuff default="1" id="AW2_AuraCaster" parent="War3_AuraCaster">
         <Alignment value="Neutral"/>
     </CBehaviorBuff>
@@ -56,6 +64,42 @@
             <StateFlags index="SuppressLifeRegen" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <!--Aura - Trueshot (Creep) Buff=BEar-->
+    <CBehaviorBuff id="ACat">
+        <Alignment value="Neutral"/>
+    </CBehaviorBuff>
+    <!--Aura - Devotion (Creep) Buff=BHad-->
+    <CBehaviorBuff id="ACav">
+        <Alignment value="Neutral"/>
+    </CBehaviorBuff>
+    <!--Unholy Aura (creep) Buff=BUau-->
+    <CBehaviorBuff id="ACua">
+        <Alignment value="Neutral"/>
+    </CBehaviorBuff>
+    <!--Vampiric Aura (creep) Buff=BUav-->
+    <CBehaviorBuff id="ACvp">
+        <Alignment value="Neutral"/>
+    </CBehaviorBuff>
+    <!--ItemAuraDevotion Buff=BHad-->
+    <CBehaviorBuff id="AIad">
+        <Alignment value="Neutral"/>
+    </CBehaviorBuff>
+    <!--ItemAuraEndurance Buff=BOae-->
+    <CBehaviorBuff id="AIae">
+        <Alignment value="Neutral"/>
+    </CBehaviorBuff>
+    <!--Aura - Slow Buff=Basl-->
+    <CBehaviorBuff id="Aasl">
+        <Alignment value="Neutral"/>
+    </CBehaviorBuff>
+    <!--Aura - Regeneration (Ward) Buff=Boar-->
+    <CBehaviorBuff id="Aoar">
+        <Alignment value="Neutral"/>
+    </CBehaviorBuff>
+    <!--TornadoDamage Buff=Btdg-->
+    <CBehaviorBuff id="Atdg">
+        <Alignment value="Neutral"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="BHtb">
         <Duration value="10"/>
         <DurationOverride index="0" Duration="5">
@@ -79,13 +123,14 @@
     <!--HowlOfTerror-->
     <CBehaviorBuff id="BNht">
         <Modification>
-            <DamageDealtFraction index="Melee" value="-0.5"/>
-            <DamageDealtFraction index="Ranged" value="-0.5"/>
+            <RateMultiplierArray index="Cooldown" value="0.1"/>
         </Modification>
         <Duration value="30"/>
         <DurationOverride index="0" Duration="30">
             <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
         </DurationOverride>
+        <Tooltip value="BCht/Buffubertip"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnberserk.dds"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="BNmo">
         <Alignment value="Negative"/>
@@ -104,6 +149,18 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="BNsaRegenDelay">
         <Duration value="1"/>
+    </CBehaviorBuff>
+    <!--ManaFlareAoe-->
+    <CBehaviorBuff id="Bmfa">
+        <InfoFlags index="Hidden" value="0"/>
+    </CBehaviorBuff>
+    <!--ManaFlare-->
+    <CBehaviorBuff id="Bmfl">
+        <Duration value="15"/>
+        <DurationOverride index="0" Duration="15">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Modification LifeArmorBonus="30"/>
     </CBehaviorBuff>
     <!--PoisonAttackStackInfo-->
     <CBehaviorBuff id="Bpsi">
@@ -172,6 +229,15 @@
             <BehaviorLinkDisableArray value="HostileSleeperAlert"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="ManaFlareSuppress">
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SCae">
+        <Alignment value="Neutral"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SuppressInvisibility">
+        <Duration value="1.9375"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="TrueFulfillmentInitial" parent="War3_Buff">
         <Alignment value="Negative"/>
         <Duration value="0.0625"/>
@@ -229,18 +295,22 @@
     <!--ItemAuraTrueshot Buff=BEar-->
     <CBehaviorBuff id="AIar">
         <PeriodicEffect value="AIarSearch"/>
+        <Alignment value="Neutral"/>
     </CBehaviorBuff>
     <!--ItemAuraUnholy Buff=BUau-->
     <CBehaviorBuff id="AIau">
         <PeriodicEffect value="AIauSearch"/>
+        <Alignment value="Neutral"/>
     </CBehaviorBuff>
     <!--ItemAuraVampiric Buff=BUav-->
     <CBehaviorBuff id="AIav">
         <PeriodicEffect value="AIavSearch"/>
+        <Alignment value="Neutral"/>
     </CBehaviorBuff>
     <!--ItemAuraBrilliance Buff=BHab-->
     <CBehaviorBuff id="AIba">
         <PeriodicEffect value="AIabSearch"/>
+        <Alignment value="Neutral"/>
     </CBehaviorBuff>
     <!--DefenseBonus (+10)-->
     <CBehaviorBuff id="AId0">
@@ -309,11 +379,7 @@
         </DurationOverride>
     </CBehaviorBuff>
     <!--Hex-->
-    <CBehaviorBuff id="BOhx">
-        <Modification>
-            <ModifyFlags index="SuppressMoving" value="1"/>
-        </Modification>
-    </CBehaviorBuff>
+    <CBehaviorBuff id="BOhx"/>
     <!--Buff-->
     <!--CloudOfFog-->
     <CBehaviorBuff id="Bclf" parent="War3_Buff">
@@ -373,6 +439,7 @@
     <!--ItemAuraCommand Buff=BOac-->
     <CBehaviorBuff id="AIcd">
         <PeriodicEffect value="AIacSearch"/>
+        <Alignment value="Neutral"/>
     </CBehaviorBuff>
     <!--DefenseBonus (+8)-->
     <CBehaviorBuff id="AId8" parent="AW2_Item">
@@ -1344,11 +1411,7 @@
         <Modification LifeArmorBonus="6"/>
     </CBehaviorBuff>
     <!--Banish-->
-    <CBehaviorBuff id="BHbn">
-        <Modification>
-            <ModifyFlags index="SuppressMoving" value="1"/>
-        </Modification>
-    </CBehaviorBuff>
+    <CBehaviorBuff id="BHbn"/>
     <CBehaviorBuff id="BNdp" parent="War3_Buff">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnDizzy.dds"/>
         <EditorCategories value="Race:Demon,AbilityorEffectType:Units"/>
@@ -1377,6 +1440,7 @@
         </DurationOverride>
         <Modification MoveSpeedMultiplier="2" WeaponRange="-500" WeaponScanBonus="500">
             <StateFlags index="Passive" value="0"/>
+            <StateFlags index="Uncommandable" value="1"/>
         </Modification>
         <PeriodCount value="1"/>
         <PeriodicEffect value="BOwkOrderAttackSearch"/>
@@ -1461,7 +1525,7 @@
         <Alignment value="Positive"/>
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnmoonstone.dds"/>
         <Modification RangedWeaponRange="3" WeaponScanBonus="3">
-            <VitalRegenArray index="Life" value="20"/>
+            <VitalRegenArray index="Life" value="22.5"/>
             <VitalRegenArray index="Energy" value="2"/>
         </Modification>
         <DisableValidatorArray value="Night"/>
@@ -1788,6 +1852,9 @@
     <CBehaviorBuff id="CrusaderAuraCaster" parent="AW2_AuraCaster">
         <Requirements value="CrusaderAuraCaster"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="SandHidingAuraCaster" parent="AW2_AuraCaster">
+        <Requirements value="SandHidingAuraCaster"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="AvengingWrathAuraCaster" parent="AW2_AuraCaster">
         <Requirements value="AvengingWrathAuraCaster"/>
     </CBehaviorBuff>
@@ -1837,6 +1904,23 @@
         <MaxStackCount value="2"/>
         <MaxStackCountPerCaster value="1"/>
         <Modification MoveSpeedMultiplier="1.25" LifeArmorBonus="3"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SandHidingAura" parent="War3_AuraBuff">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btncreatureattack.dds"/>
+        <EditorCategories value="Race:Goblin,AbilityorEffectType:Units"/>
+        <Modification>
+            <VitalRegenArray index="Life" value="7.5"/>
+        </Modification>
+        <MaxStackCount value="2"/>
+        <MaxStackCountPerCaster value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SandHidingAuraNonCaster" parent="War3_AuraBuff">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btncreatureattack.dds"/>
+        <EditorCategories value="Race:Goblin,AbilityorEffectType:Units"/>
+        <Modification>
+            <StateFlags index="Cloak" value="1"/>
+        </Modification>
+        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AvengingWrathAura" parent="War3_AuraBuff">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btndivineshieldoff.dds"/>
@@ -2581,7 +2665,8 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="Aeib" parent="War3_Passive">
         <Requirements value="Aeib"/>
-        <Modification RangedWeaponRange="3" WeaponScanBonus="3"/>
+        <Modification RangedWeaponRange="50" WeaponScanBonus="50"/>
+        <DisableValidatorArray value="NoBossEnemiesNearby500"/>
     </CBehaviorBuff>
     <!--FaerieFire-->
     <CBehaviorBuff id="Bfae">
@@ -3178,6 +3263,8 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="naga" parent="War3_UnitClass"/>
     <CBehaviorBuff id="dragon" parent="War3_UnitClass"/>
+    <CBehaviorBuff id="insectoid" parent="War3_UnitClass"/>
+    <CBehaviorBuff id="arthropod" parent="War3_UnitClass"/>
     <CBehaviorBuff id="elemental" parent="War3_UnitClass"/>
     <CBehaviorBuff id="Asds" parent="War3_Passive">
         <EditorCategories value="Race:Goblin,AbilityorEffectType:Unit"/>

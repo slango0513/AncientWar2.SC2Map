@@ -56,6 +56,12 @@
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
         <Compare value="Eq"/>
     </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea default="1" id="AW2_NoBossEnemiesNearby">
+        <SearchFilters value="Visible,MapBoss;Player,Ally,Neutral,Hover,Missile,Destructible,Dead,Hidden"/>
+        <WhichLocation Value="CasterUnit"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <Compare value="Eq"/>
+    </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea default="1" id="AW2_NoFriendiesNearby">
         <SearchFilters value="Visible;Self,Neutral,Enemy,Hover,Missile,Destructible,Dead,Hidden"/>
         <WhichLocation Value="CasterUnit"/>
@@ -191,6 +197,9 @@
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="HasNoBNmr">
         <Behavior value="BNmr"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="HasNoSandHidingAuraCaster">
+        <Behavior value="SandHidingAuraCaster"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorCombine id="HasNoHardenedSkin">
         <Type value="And"/>
@@ -401,6 +410,22 @@
         <Compare value="GT"/>
         <Behavior value="dragon"/>
         <ResultFailed value="Error,Errors/Targetdragon"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="IsElemental">
+        <Compare value="GT"/>
+        <Behavior value="elemental"/>
+        <ResultFailed value="Error,Errors/Targetelemental"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="IsNotElemental">
+        <Behavior value="elemental"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="IsArthropod">
+        <Compare value="GT"/>
+        <Behavior value="arthropod"/>
+        <ResultFailed value="Error,Errors/Targetarthropod"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="IsNotArthropod">
+        <Behavior value="arthropod"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareSpeed id="KodoRun">
         <Value value="2.25"/>
@@ -866,6 +891,9 @@
     </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="NoEnemiesNearby9" parent="AW2_NoEnemiesNearby">
         <AreaArray Radius="9"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="NoBossEnemiesNearby500" parent="AW2_NoBossEnemiesNearby">
+        <AreaArray Radius="500"/>
     </CValidatorLocationEnumArea>
     <CValidatorUnitBehaviorState id="IsCloaked">
         <Enabled value="1"/>

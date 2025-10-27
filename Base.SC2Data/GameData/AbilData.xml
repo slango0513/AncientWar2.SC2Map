@@ -240,6 +240,10 @@
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
     </CAbilBehavior>
+    <!--Warden - Shadow Strike Buff=BEsh cast=3-->
+    <CAbilEffectTarget id="AEsh">
+        <AcquirePriority value="4"/>
+    </CAbilEffectTarget>
     <!--Keeper - Tranquility Buff=AEtr effect=XEtq-->
     <CAbilEffectInstant id="AEtq" parent="AW2_EffectInstant">
         <EditorCategories value="Race:NightElf,AbilityorEffectType:Unit"/>
@@ -303,6 +307,33 @@
         <PrepTime value="0.05"/>
         <CastOutroTime value="1.67"/>
     </CAbilEffectTarget>
+    <!--NE Abil-->
+    <!--Abolish Magic-->
+    <CAbilEffectTarget id="Aadm" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:NightElf,AbilityorEffectType:Unit"/>
+        <TargetFilters index="0" value="-;wall,Missile,debris,item,structure,dead"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="10"/>
+        </Cost>
+        <Range value="11"/>
+        <PrepTime value="0.3"/>
+        <CastOutroTime value="0.51"/>
+        <Effect index="0" value="DispelAllEnemyBuffsAndFriendDebuffAndHurtEnemySummoned300AndDispelOwl"/>
+        <AutoCastFilters value="Visible;Neutral"/>
+        <AutoCastRange value="11"/>
+        <AutoCastValidatorArray value="SummonedEnemyOrEnemyHasPurgableBuffOrFriendHasPurgableDebuff"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+    </CAbilEffectTarget>
+    <!--Mana Flare Dur=30 HeroDur=30 Buff=Bmfl,Bmfa-->
+    <CAbilBehavior id="Amfl" parent="AW2_Toggle">
+        <EditorCategories value="Race:Nightelf,AbilityorEffectType:Units"/>
+        <Cost>
+            <Vital index="Energy" value="30"/>
+            <Cooldown TimeUse="20"/>
+        </Cost>
+        <BehaviorArray value="Bmfl"/>
+        <ValidatorArray value="EnemiesNearby7"/>
+    </CAbilBehavior>
     <CAbilEffectInstant id="HolyRadiance" parent="AW2_EffectInstant">
         <EditorCategories value="Race:Human,AbilityorEffectType:Unit"/>
         <Cost index="0">
@@ -1567,6 +1598,12 @@
         <InfoArray index="Build13" Unit="espv">
             <Button DefaultButtonFace="espv" Requirements="BuildArmyFinal"/>
         </InfoArray>
+        <InfoArray index="Build14" Unit="efon">
+            <Button DefaultButtonFace="efon" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build15" Unit="efdr">
+            <Button DefaultButtonFace="efdr" Requirements="BuildArmy"/>
+        </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
     <!--Keeper - Entangling Roots Buff=BEer-->
@@ -2036,6 +2073,9 @@
         </InfoArray>
         <InfoArray index="Build5" Unit="nnwr">
             <Button DefaultButtonFace="nnwr" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build6" Unit="Nfir">
+            <Button DefaultButtonFace="Nfir" Requirements="BuildArmyFinal"/>
         </InfoArray>
         <InfoArray index="Build7" Unit="nanw">
             <Button DefaultButtonFace="nanw" Requirements="BuildArmy"/>
@@ -3224,6 +3264,9 @@
     </CAbilBehavior>
     <CAbilBehavior id="EternityAura" parent="War3_HeroAura">
         <BehaviorArray value="EternityAuraCaster"/>
+    </CAbilBehavior>
+    <CAbilBehavior id="SandHidingAura" parent="War3_HeroAura">
+        <BehaviorArray value="SandHidingAuraCaster"/>
     </CAbilBehavior>
     <CAbilBehavior id="InsightAura" parent="War3_HeroAura">
         <BehaviorArray value="InsightAuraCaster"/>
@@ -4936,6 +4979,9 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeTonass" parent="AW2_Upgrade" toUnit="nass">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToefo2" parent="AW2_Upgrade" toUnit="efo2">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
 </Catalog>

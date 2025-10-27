@@ -3598,7 +3598,7 @@ void gf_IssueOrder (bool lp_periodic, int lp_player) {
     for (;; auto3B0E0404_u -= 1) {
         lv_unit = UnitGroupUnitFromEnd(auto3B0E0404_g, auto3B0E0404_u);
         if (lv_unit == null) { break; }
-        if ((UnitFilterMatch(lv_unit, UnitGetOwner(lv_unit), UnitFilter(0, 0, (1 << c_targetFilterCloaked), 0)) == true)) {
+        if ((UnitFilterMatch(lv_unit, UnitGetOwner(lv_unit), UnitFilter(0, 0, (1 << c_targetFilterUncommandable), 0)) == true)) {
             lv_targetUnit = null;
             lv_targetPoint = null;
             UnitGroupClear(lv_targetUnitgroup);

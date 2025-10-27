@@ -1,5 +1,40 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <!--faeriedragon-->
+    <CActorUnit id="efdr" parent="War3_Army" unitSound="FaerieDragon" unitName="efdr" defType="SMALL">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnFaerieDragon.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnFaerieDragon.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnFaerieDragon.dds"/>
+        <BarWidth value="75"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
+        <WalkAnimMoveSpeed value="2.7343"/>
+    </CActorUnit>
+    <!--forceofnature-->
+    <CActorUnit id="efon" parent="War3_Army" unitSound="Ent" unitName="efon" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnEnt.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnEnt.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnEnt.dds"/>
+        <BarWidth value="75"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="1.7187"/>
+    </CActorUnit>
+    <CActorUnit id="efo2" parent="War3_Army" unitSound="Ent" unitName="efo2" defType="LARGE">
+        <On Terms="ActorCreation" Send="SetTintColor 255,255,150"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnEnt.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnEnt.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnEnt.dds"/>
+        <BarWidth value="75"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="1.7187"/>
+    </CActorUnit>
     <CActorModel id="HandOfFreedomCaster" parent="CasterArt"/>
     <CActorModel id="HandOfFreedomTarget" parent="War3_Buff">
         <HostSiteOps Ops="$overhead"/>
@@ -70,6 +105,10 @@
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
+    <CActorAction id="efon1" parent="War3_AttackMissileSwapable"/>
+    <CActorMissile id="efon1LM" parent="War3_MissileSwapable" unitName="efon1LM"/>
+    <CActorAction id="efo21" parent="War3_AttackMissileSwapable"/>
+    <CActorMissile id="efo21LM" parent="War3_MissileSwapable" unitName="efo21LM"/>
     <!--paladinboss1-->
     <CActorUnit id="Hpb1" parent="War3_Army" unitSound="HeroPaladin" unitName="Hpb1" defType="LARGE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHeroPaladin.dds"/>
@@ -699,7 +738,7 @@
     </CActorUnit>
     <!--purplefelstalker-->
     <CActorUnit id="npfl" parent="War3_Army" unitSound="Felhound" unitName="npfl" defType="MEDIUM">
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar110"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnPurpleFelhound.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnPurpleFelhound.dds"/>
@@ -955,6 +994,9 @@
         <On Terms="Behavior.BUavI.Off" Send="AnimBracketStop BSD"/>
     </CActorModel>
     <CActorModel id="ShadowAura" parent="War3_Buff">
+        <HostSiteOps Ops="$origin"/>
+    </CActorModel>
+    <CActorModel id="SandHidingAura" parent="War3_Buff">
         <HostSiteOps Ops="$origin"/>
     </CActorModel>
     <CActorModel id="BUavSpecial">
@@ -3560,7 +3602,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnChaosBlademaster.dds"/>
         <BarWidth value="57"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
@@ -3654,7 +3696,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroBlademaster.dds"/>
         <BarWidth value="62"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
@@ -3673,7 +3715,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroBlademaster.dds"/>
         <BarWidth value="62"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
@@ -3697,7 +3739,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHellScream.dds"/>
         <BarWidth value="57"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="100"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
@@ -3709,7 +3751,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnChaosGrom.dds"/>
         <BarWidth value="57"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar90"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="100"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
@@ -6062,6 +6104,12 @@
         <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
         <On Terms="Behavior.ShadowAuraCaster.On" Send="Create"/>
         <On Terms="Behavior.ShadowAuraCaster.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachHarnessSoft SOpShadow" HoldRotation="1"/>
+    </CActorModel>
+    <CActorModel id="SandHidingAuraTarget" parent="TargetArtX">
+        <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="Behavior.SandHidingAuraCaster.On" Send="Create"/>
+        <On Terms="Behavior.SandHidingAuraCaster.Off" Send="AnimBracketStop BSD"/>
         <HostSiteOps Ops="SOpAttachHarnessSoft SOpShadow" HoldRotation="1"/>
     </CActorModel>
     <CActorModel id="FrostAura" parent="War3_Buff">

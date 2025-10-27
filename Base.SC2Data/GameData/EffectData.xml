@@ -82,6 +82,44 @@
     <CEffectDamage id="AEsfDamage">
         <Amount value="150"/>
     </CEffectDamage>
+    <CEffectDamage id="ANvcDamage">
+        <ValidatorArray value="IsNotElemental"/>
+        <Amount value="75"/>
+    </CEffectDamage>
+    <CEffectDamage id="BEshDecayDamage1">
+        <Amount value="15"/>
+    </CEffectDamage>
+    <CEffectDamage id="BEshInitDamage1">
+        <Amount value="100"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="BNvc">
+        <ValidatorArray value="IsNotElemental"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="BmflDispelSearch">
+        <SearchFilters value="-;player,allies,neutral,wall,RawResource,debris,item,structure,ward,Hidden,invulnerable,immunity"/>
+        <AreaArray Radius="3" Effect="DispelAnyBuffs"/>
+    </CEffectEnumArea>
+    <CEffectSet id="BmflImpactSet">
+        <EffectArray value="Bmfa"/>
+        <EffectArray value="BmflDispelSearch"/>
+    </CEffectSet>
+    <CEffectDamage id="BmflLightning">
+        <AreaArray index="0" removed="1"/>
+        <SearchFilters value="-;-"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="BmflSearch">
+        <AreaArray index="0" Radius="12" Effect="Bmfa"/>
+    </CEffectEnumArea>
+    <CEffectSet id="SandHidingAuraSet">
+        <ValidatorArray value="IsArthropod"/>
+        <EffectArray value="SandHidingAura"/>
+        <EffectArray value="SandHidingAuraNonCaster"/>
+    </CEffectSet>
+    <CEffectDamage id="efdr1" parent="AW2_MagicDamage">
+        <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="efon1LM" parent="War3_Missile" weaponid="efon1"/>
+    <CEffectLaunchMissile id="efo21LM" parent="War3_Missile" weaponid="efo21"/>
     <CEffectCreatePersistent id="AHmt">
         <ExpireDelay value="5"/>
     </CEffectCreatePersistent>
@@ -187,7 +225,7 @@
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="BNmr" parent="War3_ApplyBuff"/>
     <CEffectDamage id="ANstDamage">
-        <Amount value="50"/>
+        <Amount value="75"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="AUlsCUCP">
         <PeriodCount value="3"/>
@@ -263,7 +301,7 @@
         <Amount value="96"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="HolyRadiance">
-        <PeriodCount value="6"/>
+        <PeriodCount value="9"/>
         <PeriodicEffectArray value="HolyRadianceSearch"/>
         <PeriodicPeriodArray value="0.125"/>
     </CEffectCreatePersistent>
@@ -392,6 +430,22 @@
         <ValidatorArray value="NoBurningSmokeNearby1"/>
         <SpawnOwner Value="Caster"/>
     </CEffectCreateUnit>
+    <CEffectDamage id="efon1" parent="AW2_SiegeDamage">
+        <Amount value="36"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="efon1Multiattack" parent="AW2_Multiattack">
+        <PeriodCount value="2"/>
+        <PeriodicPeriodArray value="0.3"/>
+        <PeriodicEffectArray value="efon1LM"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="efo21" parent="AW2_SiegeDamage">
+        <Amount value="36"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="efo21Multiattack" parent="AW2_Multiattack">
+        <PeriodCount value="2"/>
+        <PeriodicPeriodArray value="0.3"/>
+        <PeriodicEffectArray value="efo21LM"/>
+    </CEffectCreatePersistent>
     <CEffectDamage id="espv1" parent="AW2_PierceDamage">
         <Amount value="96"/>
     </CEffectDamage>
@@ -462,7 +516,7 @@
         <Kind value="Melee"/>
         <Amount value="192"/>
     </CEffectDamage>
-    <CEffectDamage id="nfot2" parent="AW2_ChaosDamage">
+    <CEffectDamage id="nfot2" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
         <Amount value="192"/>
     </CEffectDamage>
@@ -653,11 +707,11 @@
     <CEffectDamage id="nspr1">
         <ArmorReduction value="2"/>
     </CEffectDamage>
-    <CEffectDamage id="nsqt1" parent="AW2_NormalDamage">
+    <CEffectDamage id="nsqt1" parent="AW2_ChaosDamage">
         <Kind value="Melee"/>
         <Amount value="144"/>
     </CEffectDamage>
-    <CEffectDamage id="nsqt2" parent="AW2_NormalDamage">
+    <CEffectDamage id="nsqt2" parent="AW2_ChaosDamage">
         <Kind value="Melee"/>
         <Amount value="288"/>
     </CEffectDamage>
@@ -704,11 +758,11 @@
     <CEffectDamage id="nwen1">
         <ArmorReduction value="2"/>
     </CEffectDamage>
-    <CEffectDamage id="nwns1" parent="AW2_NormalDamage">
+    <CEffectDamage id="nwns1" parent="AW2_ChaosDamage">
         <Kind value="Melee"/>
         <Amount value="288"/>
     </CEffectDamage>
-    <CEffectDamage id="nwns2" parent="AW2_NormalDamage">
+    <CEffectDamage id="nwns2" parent="AW2_ChaosDamage">
         <Kind value="Melee"/>
         <Amount value="288"/>
     </CEffectDamage>
@@ -1553,7 +1607,7 @@
     </CEffectCreatePersistent>
     <CEffectCreatePersistent id="ANrcCreatePersistent">
         <OffsetFacingFallback Value="CasterUnit"/>
-        <PeriodCount value="3"/>
+        <PeriodCount value="4"/>
         <PeriodicEffectArray value="ANrc"/>
         <PeriodicPeriodArray value="0.5"/>
     </CEffectCreatePersistent>
@@ -1756,9 +1810,6 @@
     <CEffectDamage id="AOwsDamage1">
         <Amount value="100"/>
     </CEffectDamage>
-    <CEffectApplyBehavior id="AUim1HeroDur">
-        <Duration value="2"/>
-    </CEffectApplyBehavior>
     <CEffectDamage id="AflkSphereEffect" parent="AW2_PierceDamage">
         <EditorCategories value="Race:Human"/>
         <AreaArray Radius="1.1718" Bonus="48" Fraction="1"/>
@@ -2150,6 +2201,9 @@
         <SearchFilters value="-;wall,tree,Missile,debris,item,structure,ward,dead,Hidden"/>
         <AreaArray index="0" Radius="7.0312" Effect="EternityAuraSet"/>
     </CEffectEnumArea>
+    <CEffectEnumArea id="SandHidingAuraCasterSearch" parent="War3_AuraSearch" aura="SandHidingAura">
+        <AreaArray index="0" Radius="7.0312" Effect="SandHidingAuraSet"/>
+    </CEffectEnumArea>
     <CEffectEnumArea id="FelDriveAuraCasterSearch" parent="War3_AuraSearch" aura="FelDriveAura">
         <SearchFilters value="mechanical;neutral,enemies,wall,tree,Missile,debris,item,structure,ward,dead,Hidden"/>
     </CEffectEnumArea>
@@ -2220,6 +2274,10 @@
     <CEffectApplyBehavior id="EternityAura" parent="War3_AuraBuff">
         <ValidatorArray value="IsNotDragon"/>
         <ValidatorArray value="NonHero"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="SandHidingAura" parent="War3_AuraBuff"/>
+    <CEffectApplyBehavior id="SandHidingAuraNonCaster" parent="War3_AuraBuff">
+        <ValidatorArray value="HasNoSandHidingAuraCaster"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="EternityAuraHero" parent="War3_AuraBuff">
         <ValidatorArray value="IsNotDragon"/>
