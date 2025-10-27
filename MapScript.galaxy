@@ -396,6 +396,7 @@ trigger gt_AutoCastAlwaysOnEnable;
 trigger gt_CountUnit;
 trigger gt_CountUnitControl;
 trigger gt_UnitDied;
+trigger gt_RF;
 trigger gt_UpdateFuryDuration;
 trigger gt_DebugControlPressed;
 trigger gt_DebugKeyPressed;
@@ -3158,7 +3159,10 @@ void gf_UnitCreate (int lp_player, point lp_point, string lp_unitType, unit lp_u
     UnitSetFacing(UnitLastCreated(), UnitGetFacing(lp_unit), 0.0);
     UnitSetCustomValue(UnitLastCreated(), gv_customValuePhalanx, UnitGetCustomValue(lp_unit, gv_customValuePhalanx));
     UnitBehaviorAdd(UnitLastCreated(), "PhalanxMarker", lp_unit, 1);
-    UnitCreateEffectUnit(UnitLastCreated(), "AW2_Fury", UnitLastCreated());
+    if ((gv_isBonusRound == false)) {
+        UnitCreateEffectUnit(UnitLastCreated(), "AW2_Fury", UnitLastCreated());
+    }
+
     auto80647215_ae = UnitBehaviorCountAll(lp_unit);
     lv_index = 1;
     for ( ; ( (auto80647215_ai >= 0 && lv_index <= auto80647215_ae) || (auto80647215_ai < 0 && lv_index >= auto80647215_ae) ) ; lv_index += auto80647215_ai ) {
@@ -3382,6 +3386,11 @@ void gf_ReserveUnitCreationEnable (bool lp_option) {
     TriggerEnable(gt_UnitDied, lp_option);
     TriggerEnable(gt_TideAddRemoveSwimmingPeriodic, lp_option);
     TriggerEnable(gt_AutoCastAlwaysOnEnable, lp_option);
+    if ((gv_isBonusRound == false)) {
+        TriggerEnable(gt_RF, lp_option);
+        TriggerEnable(gt_UpdateFuryDuration, lp_option);
+    }
+
     if ((lp_option == true)) {
         lv_player = 1;
         for ( ; ( (auto3D093143_ai >= 0 && lv_player <= auto3D093143_ae) || (auto3D093143_ai < 0 && lv_player >= auto3D093143_ae) ) ; lv_player += auto3D093143_ai ) {
@@ -3389,7 +3398,7 @@ void gf_ReserveUnitCreationEnable (bool lp_option) {
             SoundPlayForPlayer(SoundLink(gf_RaceGetHorn(PlayerRace(lv_player)), c_soundIndexAny), c_maxPlayers, PlayerGroupSingle(lv_player), 100.0, 0.0);
             SoundPlayForPlayer(SoundLink("HornOfCenariusSound", c_soundIndexAny), c_maxPlayers, PlayerGroupSingle(lv_player), 100.0, 0.0);
         }
-        Wait(8.0, c_timeGame);
+        Wait(CatalogFieldValueGetAsInt(c_gameCatalogBehavior, "Preparing", "Duration", c_playerAny), c_timeGame);
         Wait(gv_minimumPeriod, c_timeGame);
         gf_IssueOrderAll(false);
         if ((gf_IsFinalRound(gv_round) == true)) {
@@ -6340,6 +6349,33 @@ void gt_UnitDied_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: RF
+//--------------------------------------------------------------------------------------------------
+bool gt_RF_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_unit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_unit = EventUnit();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitCreateEffectUnit(lv_unit, "AW2_Fury", lv_unit);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_RF_Init () {
+    gt_RF = TriggerCreate("gt_RF_Func");
+    TriggerEnable(gt_RF, false);
+    TriggerAddEventUnitRevive(gt_RF, null);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: UpdateFuryDuration
 //--------------------------------------------------------------------------------------------------
 bool gt_UpdateFuryDuration_Func (bool testConds, bool runActions) {
@@ -6377,6 +6413,7 @@ bool gt_UpdateFuryDuration_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void gt_UpdateFuryDuration_Init () {
     gt_UpdateFuryDuration = TriggerCreate("gt_UpdateFuryDuration_Func");
+    TriggerEnable(gt_UpdateFuryDuration, false);
     TriggerAddEventUnitProperty(gt_UpdateFuryDuration, null, c_unitPropLife);
 }
 
@@ -6694,6 +6731,7 @@ void InitTriggers () {
     gt_CountUnit_Init();
     gt_CountUnitControl_Init();
     gt_UnitDied_Init();
+    gt_RF_Init();
     gt_UpdateFuryDuration_Init();
     gt_DebugControlPressed_Init();
     gt_DebugKeyPressed_Init();
