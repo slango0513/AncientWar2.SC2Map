@@ -81,7 +81,7 @@ ANcr/Ubertip=炼金师让其食人魔进入了一种狂暴的状态，从而提�
 ANcs/Ubertip=工匠每次攻击时对目标区域用火箭进行攻击，对周围的地面单位造成伤害，并在<d ref="Behavior,BNcs,Duration"/>秒内让其处于昏晕状态。
 ANdo/Ubertip=使一个目标遭到恶魔附身。被折磨的单位无法施放任何魔法直至死亡。在它死亡后，一个巨大的恶魔将从他的尸体上诞生。末日降临无法被驱散或取消。
 ANfa/Ubertip=每次攻击带有冷冻效果，攻击值为<d ref="Behavior,ANfa1,Modification.DamageDealtUnscaled[Melee]"/>。在<d ref="Behavior,Bcsd1,Duration"/>秒内使敌人减慢<d ref="1 - Behavior,Bcsd1,Modification.AttackSpeedMultiplier * 100"/>%的攻击速度和<d ref="1 - Behavior,Bcsd1,Modification.MoveSpeedMultiplier * 100"/>%的移动速度。
-ANfl/Ubertip=召唤一道锥形闪电伤害面前至多<d ref="Effect,ANflSearch,MaxCount"/>个敌人，<d ref="Effect,ANfl1,Amount"/>点伤害。
+ANfl/Ubertip=召唤一道锥形闪电伤害面前至多<d ref="Effect,ANflSearch,MaxCount"/>个敌人，<d ref="Effect,ANfl1,Amount"/>点伤害，并驱除敌人身上的魔法效果。
 ANgl/Tip=用黄金交换木材
 ANgl/Ubertip=用<d ref="Abil,ANgl,Cost[0].Resource[Terrazine]"/>黄金交换<d ref="-Abil,ANgl,Cost[0].Resource[Custom]"/>木材。
 ANht/Ubertip=发出恐怖的嚎叫，使周围敌人在恐惧中战栗，减少他们的伤害<d ref="-Behavior,BNht1,Modification.DamageDealtFraction[Melee] * 100"/>%，持续<d ref="Behavior,BNht1,Duration"/>秒。
@@ -996,12 +996,14 @@ DocInfo/PatchNote402=地精：
 DocInfo/PatchNote403=群兽奔腾的伤害减少到50点，并且会使敌人昏迷2秒。
 DocInfo/PatchNote404=德莱尼：
 DocInfo/PatchNote405=加入新单位德莱尼辩护者。
-DocInfo/PatchNote406=上古之神：
-DocInfo/PatchNote407=充实不再对世界精英有效。
-DocInfo/PatchNote408=被遗忘者产生的触手生命值减少到300点。
+DocInfo/PatchNote406=半人马：
+DocInfo/PatchNote407=加入新单位鹰身人斥候。
+DocInfo/PatchNote408=上古之神：
 DocInfo/PatchNote409=亡灵：
 DocInfo/PatchNote410=深渊亡魂类单位现在属于元素生物。
+DocInfo/PatchNote411=充实的施法距离缩短，并且不再对世界精英有效。
 DocInfo/PatchNote412=虚空行者类单位现在属于血精灵。
+DocInfo/PatchNote413=产生触角不再消耗法力值，而是共9次。召唤的触手生命值减少到250点。
 DominationAura/Buffubertip=该单位处在暗影光环的作用之下，因此它对敌人的攻击会恢复自己的法力值。
 DominationAura/Name=暗影光环
 DominationAuraCaster/Tip=暗影光环
@@ -1152,10 +1154,10 @@ EnergyTowerAura/Buffubertip=该建筑处于能量光环的作用之下，因此�
 EnergyTowerAura/Name=能量之塔光环
 EnergyTowerAuraCaster/Tip=能量之塔光环
 EnergyTowerAuraCaster/Ubertip=增加附近友方建筑<d ref="Behavior,EnergyTowerAura,Modification.DamageDealtFraction[Melee] * 100"/>%的攻击力、<d ref="Behavior,EnergyTowerAura,Modification.DamageDealtFraction[Spell] * 100"/>%的法术攻击力和<d ref="Behavior,EnergyTowerAura,Modification.RangedWeaponRange"/>的远程攻击范围。
-EssenceOfTheRed/Buffubertip=该单位受到红龙精华的影响。
+EssenceOfTheRed/Buffubertip=你的死亡让我的失败更加沉重。
 EssenceOfTheRed/Name=红龙精华
 EssenceOfTheRed/Tip=红龙精华
-EssenceOfTheRed/Ubertip=所有非龙族盟友获得了阿莱克丝塔萨的祝福，每秒恢复<d ref="Behavior,EssenceOfTheRed,Modification.VitalRegenArray[Energy]"/>点法力值，并加快其<d ref="Behavior,EssenceOfTheRed,Modification.RateMultiplierArray[Cooldown] - 1 * 100"/>%的冷却速度。持续<d ref="Behavior,EssenceOfTheRed,Duration"/>秒。
+EssenceOfTheRed/Ubertip=所有盟友获得了阿莱克丝塔萨的祝福，每秒恢复<d ref="Behavior,EssenceOfTheRed,Modification.VitalRegenArray[Energy]"/>点法力值，并加快其<d ref="Behavior,EssenceOfTheRed,Modification.RateMultiplierArray[Cooldown] - 1 * 100"/>%的冷却速度。持续<d ref="Behavior,EssenceOfTheRed,Duration"/>秒。
 EternityAura/Buffubertip=该单位的时间流逝速度减缓了。
 EternityAura/Name=永恒光环
 EternityAuraCaster/Tip=永恒光环
@@ -1968,9 +1970,15 @@ ngsp/Tip=训练地精工兵
 ngsp/Ubertip=地精工兵自爆小组，对城墙特别有效。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ngst/Tip=训练岩石傀儡
 ngst/Ubertip=重型的近战单位，能投掷巨石。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+nhar/Tip=训练鹰身人斥候
+nhar/Ubertip=远程攻击飞行单位，能投掷羽毛刺。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nhea/Name=高等精灵弓箭手
 nhea/Tip=训练高等精灵弓箭手
 nhea/Ubertip=远程攻击单位。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+nhrq/Tip=升级到鹰身人女王
+nhrq/Ubertip=远程攻击飞行单位，能投掷羽毛刺。具有灵魂连接技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+nhrw/Tip=升级到鹰身人风巫
+nhrw/Ubertip=远程攻击飞行单位，能投掷羽毛刺。具有叉状闪电技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nhy2/Name=水占师
 nhyc/Tip=升级到龙龟
 nhyc/Ubertip=一只可以吞噬敌方单位的强大海龟。<n/><n/><c val="ffcc00">能攻击地面单位。

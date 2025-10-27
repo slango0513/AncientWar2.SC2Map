@@ -82,12 +82,15 @@
     <CEffectDamage id="AEsfDamage">
         <Amount value="150"/>
     </CEffectDamage>
+    <CEffectSet id="ANflDamageSet">
+        <EffectArray value="DispelAnyBuffs"/>
+    </CEffectSet>
     <CEffectSet id="ANstExplodeSet">
         <EffectArray value="ANstSearch"/>
     </CEffectSet>
     <CEffectEnumArea id="ANstSearch" parent="War3_AbilSearch">
         <AreaArray Radius="2.1484" Effect="ANstStun"/>
-        <SearchFilters value="-;player,allies,air,wall,tree,Missile,item,ward,dead,Hidden,invulnerable"/>
+        <SearchFilters value="-;player,allies,air,mechanical,wall,tree,Missile,item,ward,dead,Hidden,invulnerable"/>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CEffectEnumArea>
     <CEffectDamage id="ANvcDamage">
@@ -203,7 +206,7 @@
         <AreaArray index="0" Radius="7.0312" Effect="BNht"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="ACtnSearch" parent="War3_AbilSearchRadiusExt">
-        <SearchFilters value="-;player,allies,air,wall,tree,Missile,debris,item,structure,ward,dead,Hidden,invulnerable,immunity"/>
+        <SearchFilters value="-;player,allies,air,mechanical,wall,tree,Missile,debris,item,structure,ward,dead,Hidden,invulnerable,immunity"/>
         <AreaArray Radius="0.5" Effect="ACtnStun"/>
     </CEffectEnumArea>
     <CEffectApplyBehavior id="ACtnStun" parent="War3_ApplyBuff"/>
@@ -546,6 +549,15 @@
     </CEffectDamage>
     <CEffectDamage id="ngst2" parent="AW2_SiegeDamage">
         <Amount value="192"/>
+    </CEffectDamage>
+    <CEffectDamage id="nhar1" parent="AW2_PierceDamage">
+        <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectDamage id="nhrq1" parent="AW2_PierceDamage">
+        <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectDamage id="nhrw1" parent="AW2_PierceDamage">
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="njg11">
         <ArmorReduction value="5"/>
@@ -1663,7 +1675,7 @@
         <MaxCount value="36"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="EssenceOfTheRedSearch" parent="War3_AbilSearch">
-        <SearchFilters value="-;neutral,enemies,wall,tree,Missile,debris,item,dead"/>
+        <SearchFilters value="-;self,neutral,enemies,wall,tree,Missile,debris,item,dead"/>
         <AreaArray Radius="500" Effect="EssenceOfTheRedSet"/>
         <TargetSorts>
             <SortArray value="TSKillResourceCustomLargestFirst"/>
@@ -1691,7 +1703,6 @@
         <EffectArray value="AUsl"/>
     </CEffectSet>
     <CEffectSet id="EssenceOfTheRedSet">
-        <ValidatorArray value="IsNotDragon"/>
         <EffectArray value="EssenceOfTheRed"/>
     </CEffectSet>
     <CEffectApplyBehavior id="EssenceOfTheRed" parent="War3_ApplyBuff"/>
@@ -1746,7 +1757,7 @@
         <SearchFilters value="-;player,allies,air,wall,Missile,item,ward,dead,Hidden,invulnerable,immunity"/>
     </CEffectEnumArea>
     <CEffectDamage id="ANfl1">
-        <Amount value="50"/>
+        <Amount value="100"/>
     </CEffectDamage>
     <CEffectEnumArea id="ANflSearch">
         <TargetSorts>

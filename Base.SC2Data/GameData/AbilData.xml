@@ -820,7 +820,7 @@
         <CastOutroTime value="0.47"/>
         <Effect index="0" value="AEmb1"/>
         <AutoCastRange value="12"/>
-        <AutoCastValidatorArray value="EnemiesNearby12"/>
+        <AutoCastValidatorArray value="EnemiesNearby10"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="TargetEnergyGE30"/>
         <TargetSorts RequestCount="1">
@@ -1234,7 +1234,7 @@
         </TargetSorts>
         <Range value="12"/>
         <AutoCastRange value="12"/>
-        <AutoCastValidatorArray value="EnemiesNearby7"/>
+        <AutoCastValidatorArray value="EnemiesNearby9"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="KillResourceCustomLE405"/>
         <PrepTime value="0.5"/>
@@ -1394,7 +1394,6 @@
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <AutoCastRange value="9"/>
-        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby6"/>
         <AutoCastValidatorArray value="noMarkers"/>
     </CAbilEffectTarget>
@@ -1942,6 +1941,9 @@
         </InfoArray>
         <InfoArray index="Build2" Unit="CentaurFlag2">
             <Button DefaultButtonFace="CentaurFlag2" Requirements="BuildPhalanxFinal"/>
+        </InfoArray>
+        <InfoArray index="Build3" Unit="nhar">
+            <Button DefaultButtonFace="nhar" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build4" Unit="nmam">
             <Button DefaultButtonFace="nmam" Requirements="BuildArmy"/>
@@ -4929,7 +4931,7 @@
     <CAbilEffectTarget id="ACtn" parent="AW2_EffectTarget">
         <TargetFilters index="0" value="-;wall,tree,Missile,debris,item,ward,dead,Hidden"/>
         <Cost index="0">
-            <Vital index="Energy" value="6"/>
+            <Charge CountMax="9" CountStart="9" CountUse="1"/>
             <Cooldown Location="Unit" TimeUse="12"/>
         </Cost>
         <Range value="36"/>
@@ -5016,6 +5018,12 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToefo2" parent="AW2_Upgrade" toUnit="efo2">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonhrw" parent="AW2_Upgrade" toUnit="nhrw">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonhrq" parent="AW2_Upgrade" toUnit="nhrq">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
 </Catalog>
