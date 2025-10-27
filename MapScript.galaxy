@@ -163,7 +163,6 @@ int[gv_playerCount + 1][gv_phalanxMaximumCount + 1] gv_unitIndexCount;
 bool gv_gameIsOver;
 int gv_venueFinal;
 int gv_finalRound;
-bool[gv_playerCount + 1] gv_cheated;
 
 void InitGlobals () {
     int init_i;
@@ -422,6 +421,7 @@ trigger gt_DebugUnitRemoveAll;
 trigger gt_DebugRoundPressed;
 trigger gt_DebugEnableCopy;
 trigger gt_DebugCopyPressed;
+trigger gt_ShowHandle;
 trigger gt_OnCheated;
 
 //--------------------------------------------------------------------------------------------------
@@ -6793,17 +6793,14 @@ void gt_DebugCopyPressed_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: OnCheated
+// Trigger: ShowHandle
 //--------------------------------------------------------------------------------------------------
-bool gt_OnCheated_Func (bool testConds, bool runActions) {
+bool gt_ShowHandle_Func (bool testConds, bool runActions) {
     // Variable Declarations
     int lv_eventPlayer;
     string lv_eventPlayerHandle;
 
     // Automatic Variable Declarations
-    playergroup auto2D5C5917_g;
-    int auto2D5C5917_var;
-
     // Variable Initialization
     lv_eventPlayer = EventPlayer();
     lv_eventPlayerHandle = PlayerHandle(lv_eventPlayer);
@@ -6815,20 +6812,48 @@ bool gt_OnCheated_Func (bool testConds, bool runActions) {
 
     TextExpressionSetToken("Param/Expression/D29EE385", "A", StringToText(lv_eventPlayerHandle));
     UIDisplayMessage(PlayerGroupSingle(lv_eventPlayer), c_messageAreaSubtitle, TextExpressionAssemble("Param/Expression/D29EE385"));
-    auto2D5C5917_g = PlayerGroupAll();
-    auto2D5C5917_var = -1;
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_ShowHandle_Init () {
+    gt_ShowHandle = TriggerCreate("gt_ShowHandle_Func");
+    TriggerAddEventKeyPressed(gt_ShowHandle, c_playerAny, c_keyH, true, c_keyModifierStateRequire, c_keyModifierStateRequire, c_keyModifierStateIgnore);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: OnCheated
+//--------------------------------------------------------------------------------------------------
+bool gt_OnCheated_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_eventPlayer;
+    string lv_eventPlayerHandle;
+
+    // Automatic Variable Declarations
+    playergroup auto02D33F82_g;
+    int auto02D33F82_var;
+
+    // Variable Initialization
+    lv_eventPlayer = EventPlayer();
+    lv_eventPlayerHandle = PlayerHandle(lv_eventPlayer);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto02D33F82_g = PlayerGroupAll();
+    auto02D33F82_var = -1;
     while (true) {
-        auto2D5C5917_var = PlayerGroupNextPlayer(auto2D5C5917_g, auto2D5C5917_var);
-        if (auto2D5C5917_var < 0) { break; }
-        if ((auto2D5C5917_var != lv_eventPlayer) && (PlayerType(auto2D5C5917_var) == c_playerTypeUser)) {
+        auto02D33F82_var = PlayerGroupNextPlayer(auto02D33F82_g, auto02D33F82_var);
+        if (auto02D33F82_var < 0) { break; }
+        if ((auto02D33F82_var != lv_eventPlayer) && (PlayerType(auto02D33F82_var) == c_playerTypeUser)) {
             return false;
         }
 
     }
-    if (((lv_eventPlayerHandle == "5-S2-1-804748") || (lv_eventPlayerHandle == "5-S2-1-8272882")) && (gv_cheated[lv_eventPlayer] == false)) {
-        UIDisplayMessage(PlayerGroupSingle(lv_eventPlayer), c_messageAreaSubtitle, StringExternal("Param/Value/1E752FF1"));
+    if (((lv_eventPlayerHandle == "5-S2-1-804748") || (lv_eventPlayerHandle == "5-S2-1-8272882"))) {
         PlayerModifyPropertyInt(lv_eventPlayer, c_playerPropTerrazine, c_playerPropOperAdd, 90);
-        gv_cheated[lv_eventPlayer] = true;
     }
 
     return true;
@@ -6837,7 +6862,7 @@ bool gt_OnCheated_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void gt_OnCheated_Init () {
     gt_OnCheated = TriggerCreate("gt_OnCheated_Func");
-    TriggerAddEventKeyPressed(gt_OnCheated, c_playerAny, c_keyH, true, c_keyModifierStateRequire, c_keyModifierStateRequire, c_keyModifierStateIgnore);
+    TriggerAddEventKeyPressed(gt_OnCheated, c_playerAny, c_keyC, true, c_keyModifierStateRequire, c_keyModifierStateRequire, c_keyModifierStateIgnore);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6905,6 +6930,7 @@ void InitTriggers () {
     gt_DebugRoundPressed_Init();
     gt_DebugEnableCopy_Init();
     gt_DebugCopyPressed_Init();
+    gt_ShowHandle_Init();
     gt_OnCheated_Init();
 }
 
