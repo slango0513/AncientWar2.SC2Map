@@ -137,7 +137,7 @@
         <FlagArray index="debris" value="1"/>
         <Collide index="Ground" value="0"/>
         <Collide index="ForceField" value="0"/>
-        <Collide index="Burrow6" value="1"/>
+        <Collide index="Small" value="1"/>
     </CUnit>
     <CUnit default="1" id="AW2_Army" parent="War3_Army">
         <DeathTime value="15"/>
@@ -4861,7 +4861,7 @@
         <KillResource index="Custom" value="200"/>
         <Collide index="Ground" value="1"/>
         <Collide index="Larva" value="1"/>
-        <Collide index="Burrow6" value="0"/>
+        <Collide index="Small" value="0"/>
     </CUnit>
     <CUnit id="yeshouxianbei" parent="AW2_Statue" defType="LARGE">
         <Attributes index="large" value="1"/>
@@ -4872,7 +4872,18 @@
         <KillResource index="Custom" value="200"/>
         <Collide index="Ground" value="1"/>
         <Collide index="Larva" value="1"/>
-        <Collide index="Burrow6" value="0"/>
+        <Collide index="Small" value="0"/>
+    </CUnit>
+    <CUnit id="renweili" parent="AW2_Statue" defType="SMALL">
+        <Attributes index="small" value="1"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <Speed value="3"/>
+        <Mover value="fly"/>
+        <KillResource index="Custom" value="200"/>
+        <Collide index="Small" value="0"/>
+        <Collide index="Flying" value="1"/>
+        <Height value="0.75"/>
     </CUnit>
     <!--DruidoftheTalon-->
     <CUnit id="edot" parent="AW2_Army" defType="NONE">
@@ -10821,4 +10832,5 @@
     <CUnit id="HolyWrathMissile" parent="War3_Missile"/>
     <CUnit id="efon1LM" parent="War3_Missile"/>
     <CUnit id="efo21LM" parent="War3_Missile"/>
+    <CUnit id="renweili1LM" parent="War3_Missile"/>
 </Catalog>
