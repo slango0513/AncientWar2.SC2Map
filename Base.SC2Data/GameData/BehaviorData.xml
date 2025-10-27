@@ -157,8 +157,8 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="HolyWrath" parent="War3_Buff">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btninnerfire.dds"/>
-        <Duration value="2"/>
-        <DurationOverride index="0" Duration="1">
+        <Duration value="6"/>
+        <DurationOverride index="0" Duration="3">
             <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
         </DurationOverride>
         <Alignment value="Negative"/>
@@ -1849,10 +1849,18 @@
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="GuardianAura" parent="War3_AuraBuff">
-        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btntransmute.dds"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnupgraderegenerationaura.dds"/>
         <EditorCategories value="Race:Goblin,AbilityorEffectType:Units"/>
         <MaxStackCount value="2"/>
         <MaxStackCountPerCaster value="1"/>
+        <Modification>
+            <RateMultiplierArray index="Cooldown" value="1.5"/>
+        </Modification>
+        <DamageResponse Chance="1" ModifyFraction="0.75">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Melee" value="0"/>
+            <Kind index="Splash" value="0"/>
+        </DamageResponse>
     </CBehaviorBuff>
     <!--Aura - War Drums Buff=Bakb-->
     <CBehaviorBuff id="Aakb" parent="AW2_AuraCaster">
@@ -2296,6 +2304,10 @@
         <DamageResponse>
             <Kind index="Ranged" value="0"/>
         </DamageResponse>
+        <Duration value="30"/>
+        <DurationOverride index="0" Duration="30">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
     </CBehaviorBuff>
     <!--Impale-->
     <CBehaviorBuff id="BUim">
@@ -2581,7 +2593,10 @@
     </CBehaviorBuff>
     <!--Frost-->
     <CBehaviorBuff id="Bfro">
-        <Modification MoveSpeedMultiplier="0.75"/>
+        <Duration value="6"/>
+        <DurationOverride index="0" Duration="3">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
     </CBehaviorBuff>
     <CBehaviorBuff id="BreathOfFire" parent="War3_Buff">
         <Alignment value="Negative"/>
@@ -2633,7 +2648,7 @@
     <CBehaviorBuff id="Bply">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <Duration value="10"/>
-        <DurationOverride index="0" Duration="10">
+        <DurationOverride index="0" Duration="5">
             <ValidatorArray index="0" value="Hero"/>
         </DurationOverride>
     </CBehaviorBuff>
@@ -3391,4 +3406,8 @@
             <StateFlags index="SuppressThreat" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorWander id="StatueWander">
+        <Range value="0.5"/>
+        <Delay value="2"/>
+    </CBehaviorWander>
 </Catalog>

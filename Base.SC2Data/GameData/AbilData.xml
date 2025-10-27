@@ -306,7 +306,7 @@
     <CAbilEffectInstant id="HolyRadiance" parent="AW2_EffectInstant">
         <EditorCategories value="Race:Human,AbilityorEffectType:Unit"/>
         <Cost index="0">
-            <Vital index="Energy" value="20"/>
+            <Vital index="Energy" value="15"/>
             <Cooldown Location="Unit" TimeUse="5"/>
         </Cost>
         <AutoCastFilters value="Self,Visible;Neutral,Enemy"/>
@@ -463,7 +463,7 @@
         <EditorCategories value="Race:Goblin,AbilityorEffectType:Hero"/>
         <TargetFilters index="0" value="-;air,wall,tree,debris,item,invulnerable,immunity"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="120"/>
+            <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
         <Range value="5"/>
         <PrepTime value="0.5"/>
@@ -3158,22 +3158,21 @@
     <!--Lich - Frost Armor Buff=BUfa-->
     <CAbilEffectTarget id="AUfa" parent="AW2_EffectTarget">
         <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
-        <TargetFilters index="0" value="-;enemies,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
+        <TargetFilters index="0" value="-;neutral,enemies,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="45"/>
+            <Cooldown Location="Unit" TimeUse="15"/>
         </Cost>
-        <Range value="6"/>
+        <Range value="9"/>
         <Effect index="0" value="BUfa1"/>
-        <AutoCastRange value="6"/>
-        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+        <AutoCastRange value="9"/>
         <AutoCastValidatorArray value="NoFrostArmor"/>
         <AutoCastValidatorArray value="noMarkers"/>
-        <AutoCastValidatorArray value="EnemiesNearby2"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
-        <AutoCastFilters value="Visible;Neutral,Enemy"/>
+        <AutoCastFilters value="Visible;-"/>
     </CAbilEffectTarget>
     <CAbilBehavior id="Aabr" parent="War3_HeroAura">
         <BehaviorArray value="Aabr"/>
@@ -4298,9 +4297,9 @@
     <!--Polymorph Dur=60 HeroDur=60 Buff=Bply-->
     <CAbilEffectTarget id="Aply" parent="AW2_EffectTarget">
         <EditorCategories value="Race:Human,AbilityorEffectType:Unit"/>
-        <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,hero"/>
+        <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <Cost index="0">
-            <Vital index="Energy" value="60"/>
+            <Vital index="Energy" value="30"/>
             <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <Range value="12"/>
@@ -4309,13 +4308,12 @@
         <Alignment value="Negative"/>
         <Effect index="0" value="Bply"/>
         <AutoCastRange value="12"/>
-        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+        <AutoCastValidatorArray value="EnemiesNearby7"/>
         <AutoCastValidatorArray value="NoPolymorph"/>
         <AutoCastValidatorArray value="noMarkers"/>
-        <AutoCastValidatorArray value="EnemiesNearby6"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSKillResourceCustomLargestFirst"/>
-            <SortArray value="TSLife"/>
+            <SortArray value="TSLifeLargestFirst"/>
         </TargetSorts>
     </CAbilEffectTarget>
     <!--Possession (Channeling) Dur=4.5 HeroDur=4.5 Buff=Bpos,Bpoc-->
@@ -4915,7 +4913,7 @@
         <Flags index="Transient" value="1"/>
         <Cost index="0">
             <Charge CountMax="75" CountStart="75" CountUse="1"/>
-            <Cooldown Location="Abil" TimeUse="2"/>
+            <Cooldown Location="Abil" TimeUse="1.8"/>
         </Cost>
         <TargetFilters index="0" value="-;player,allies,wall,tree,Missile,debris,item,structure,ward,dead,MapBoss"/>
         <Range value="2"/>

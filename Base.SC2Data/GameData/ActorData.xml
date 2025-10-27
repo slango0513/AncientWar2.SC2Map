@@ -3456,7 +3456,7 @@
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <!--lordgarithos-->
-    <CActorUnit id="Hlgr" parent="War3_Army" unitSound="Garithos" unitName="Hlgr" defType="LARGE">
+    <CActorUnit id="Hlgr" parent="War3_Army" unitSound="Garithos" unitName="Hlgr" defType="SMALL">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnGarithos.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnGarithos.dds"/>
@@ -3947,6 +3947,20 @@
         <WalkAnimMoveSpeed value="2.1093"/>
         <HighlightSubTooltip value="dilidili/Ubertip"/>
     </CActorUnit>
+    <CActorUnit id="yeshouxianbei" parent="War3_Army" unitSound="Beastmaster" unitName="yeshouxianbei" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnBeastMaster.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnBeastMaster.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnBeastMaster.dds"/>
+        <BarWidth value="100"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.5"/>
+        <On Terms="StatusOn.*.ForceChannel" Send="AnimPlay channel Spell AssetDrivenLooping"/>
+        <On Terms="AnimDone.*.Complete; AnimName channel; IsStatus ForceChannel 1" Send="AnimPlay channel Spell AssetDrivenLooping"/>
+        <HighlightSubTooltip value="yeshouxianbei/Ubertip"/>
+    </CActorUnit>
     <!--druidofthetalon-->
     <CActorUnit id="edot" parent="War3_Army" unitSound="DruidOfTheTalon" unitName="edot" defType="NONE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnDruidOfTheTalon.dds"/>
@@ -4106,7 +4120,7 @@
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_HumanLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.7343"/>
     </CActorUnit>
-    <CActorUnit id="hkn2" parent="War3_Army" unitSound="Knight" unitName="hkn2" defType="LARGE">
+    <CActorUnit id="hkn2" parent="War3_Army" unitSound="Knight" unitName="hkn2" defType="SMALL">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnKnight.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnKnight.dds"/>
