@@ -4161,7 +4161,8 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    TextTagCreate(StringExternal("Param/Value/81F6C93F"), 24, RegionGetCenter(RegionEntireMap()), 2.0, true, false, PlayerGroupAll());
+    SoundtrackDefault(PlayerGroupAll(), c_soundtrackCategoryMusic, "Human_Music_V1", c_soundtrackCueAny, c_soundtrackIndexAny);
+    SoundChannelSetVolume(PlayerGroupAll(), c_soundCategoryCombat, 50.0, 0.0);
     TriggerEnable(libGAwX_gt_AOmiMarker, false);
     TriggerExecute(gt_VenueInizialization, true, false);
     TriggerExecute(gt_BuidingRegionInizialization, true, false);
