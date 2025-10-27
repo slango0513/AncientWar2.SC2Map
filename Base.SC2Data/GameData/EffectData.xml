@@ -69,6 +69,9 @@
         <Name value="Effect/Name/AW2_SelfDestroyDPS"/>
         <Marker Link="Effect/SelfDestroyDPS"/>
     </CEffectDamage>
+    <CEffectApplyBehavior id="AUsl1Dur">
+        <Duration value="30"/>
+    </CEffectApplyBehavior>
     <!--Ancestral Spirit-->
     <CEffectEnumArea id="Aast">
         <AreaArray index="0" Radius="7.0312" Effect="AastRevive"/>
@@ -83,6 +86,17 @@
     <!--Silence(Creep) Dur=40 HeroDur=8.5 Buff=BNsi-->
     <CEffectEnumArea id="ACsiSearch">
         <AreaArray index="0" Radius="7.0312" Effect="ACsi"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="ANchSearch" parent="War3_AbilSearch">
+        <SearchFilters value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity,hero"/>
+        <AreaArray Radius="7.0312" Effect="BNchSet"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <TargetSorts>
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
+        </TargetSorts>
+        <MinCount value="1"/>
+        <MaxCount value="1"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="BurningAuraSearch" parent="War3_AbilSearchRadiusExt">
         <EditorCategories value="Race:ChaosOrc"/>
@@ -164,9 +178,6 @@
     <CEffectCreatePersistent id="AUcsTarget">
         <PeriodicOffsetArray index="0" value="0,-9,0"/>
     </CEffectCreatePersistent>
-    <CEffectApplyBehavior id="AUsl1Dur">
-        <Duration value="15"/>
-    </CEffectApplyBehavior>
     <CEffectApplyBehavior id="AW2_Fury">
         <Flags index="UseDuration" value="1"/>
         <Duration value="180"/>
@@ -804,7 +815,7 @@
     </CEffectDamage>
     <CEffectModifyUnit id="SufferingModifyUnit">
         <ImpactUnit Value="Caster"/>
-        <VitalArray index="Energy" Change="3"/>
+        <VitalArray index="Energy" Change="2"/>
     </CEffectModifyUnit>
     <CEffectDamage id="Ulic1" parent="AW2_MagicDamage">
         <Amount value="96"/>
@@ -920,7 +931,7 @@
         <EffectArray value="ANrcStun"/>
     </CEffectSet>
     <CEffectApplyBehavior id="AUsl1HeroDur">
-        <Duration value="10"/>
+        <Duration value="15"/>
     </CEffectApplyBehavior>
     <CEffectDamage id="Nklj1" parent="AW2_ChaosDamage">
         <Amount value="864"/>
@@ -1943,7 +1954,7 @@
         <Kind value="Melee"/>
         <Amount value="96"/>
     </CEffectDamage>
-    <CEffectDamage id="ndqs1" parent="AW2_NormalDamage">
+    <CEffectDamage id="ndqs1" parent="AW2_PierceDamage">
         <Kind value="Melee"/>
         <Amount value="288"/>
     </CEffectDamage>

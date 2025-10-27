@@ -474,6 +474,9 @@
     <CAbilBehavior id="DestinyBond" parent="AW2_Passive">
         <BehaviorArray value="DestinyBond"/>
     </CAbilBehavior>
+    <CAbilBehavior id="Suffering" parent="AW2_Passive">
+        <BehaviorArray value="Suffering"/>
+    </CAbilBehavior>
     <CAbilBehavior id="BurningSmokeBatrider" parent="AW2_Passive">
         <BehaviorArray value="BurningSmokeBatrider"/>
     </CAbilBehavior>
@@ -579,7 +582,7 @@
         <EditorCategories value="Race:Demon,AbilityorEffectType:Units"/>
         <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity,MapBoss"/>
         <Cost index="0">
-            <Vital index="Energy" value="20"/>
+            <Vital index="Energy" value="30"/>
             <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <Range value="6"/>
@@ -590,7 +593,6 @@
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <AutoCastRange value="6"/>
-        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby2"/>
         <AutoCastValidatorArray value="NoSleep"/>
         <AutoCastValidatorArray value="noMarkers"/>
@@ -1860,10 +1862,10 @@
         <EditorCategories value="Race:ChaosOrc,AbilityorEffectType:Units"/>
         <Effect index="0" value="nbal"/>
         <Cost index="0">
-            <Vital index="Energy" value="60"/>
+            <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
         <AutoCastFilters value="Self,Visible;-"/>
-        <AutoCastValidatorArray value="EnemiesNearby10"/>
+        <AutoCastValidatorArray value="EnemiesNearby7"/>
         <PrepTime value="0.45"/>
         <CastOutroTime value="2.4"/>
     </CAbilEffectInstant>
@@ -2175,26 +2177,19 @@
         <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
     </CAbilEffectInstant>
     <!--Dark Ranger - Charm-->
-    <CAbilEffectTarget id="ANch" parent="AW2_EffectTarget">
-        <EditorCategories value="Race:Creeps,AbilityorEffectType:Units"/>
-        <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,hero"/>
+    <CAbilEffectInstant id="ANch" parent="AW2_EffectInstant">
+        <EditorCategories value="Race:Demon,AbilityorEffectType:Units"/>
         <Cost index="0">
             <Vital index="Energy" value="90"/>
             <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
-        <Range value="9"/>
         <PrepTime value="0.4"/>
         <CastOutroTime value="0.5"/>
-        <Effect index="0" value="BNchSet"/>
-        <AutoCastRange value="9"/>
-        <AutoCastValidatorArray value="EnemiesNearby5"/>
-        <AutoCastValidatorArray value="noMarkers"/>
-        <AutoCastValidatorArray value="KillResourceCustomGT0OrTargetLifeGT100"/>
-        <TargetSorts RequestCount="1">
-            <SortArray value="TSLifeLargestFirst"/>
-            <SortArray value="TSKillResourceCustomLargestFirst"/>
-        </TargetSorts>
-    </CAbilEffectTarget>
+        <CursorEffect value="ANchSearch"/>
+        <Effect index="0" value="ANchSearch"/>
+        <Flags index="BestUnit" value="1"/>
+        <AutoCastFilters value="Self,Visible;-"/>
+    </CAbilEffectInstant>
     <CAbilEffectTarget id="ACch" parent="AW2_EffectTarget">
         <EditorCategories value="Race:Demon,AbilityorEffectType:Units"/>
         <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,hero"/>
@@ -2277,7 +2272,7 @@
         <ShowProgressArray index="Channel" value="1"/>
         <ProgressButtonArray index="Channel" value="ANrf"/>
         <CastOutroTime value="6"/>
-        <TargetFilters index="0" value="-;player,allies,air,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
+        <TargetFilters index="0" value="-;player,allies,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
             <SortArray value="TSKillResourceCustomLargestFirst"/>
@@ -3670,7 +3665,6 @@
         <CancelableArray index="Channel" value="1"/>
         <FinishTime value="0.83"/>
         <AutoCastRange value="14"/>
-        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="NoPossession"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby8"/>

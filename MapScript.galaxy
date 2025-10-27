@@ -1955,6 +1955,7 @@ void gf_BattlefieldRevealerEnable (bool lp_option) {
             libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "BuildPhalanxFinal", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "BuildPortal", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "CountUnit", 0);
+            libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "CreateReserveUnit", 0);
         }
 
         VisRevealerEnable(gv_battlefieldRevealer[lv_player], lp_option);
@@ -2185,6 +2186,7 @@ void gf_VenueRevealerEnable (int lp_round, bool lp_option) {
                 libNtve_gf_SetUpgradeLevelForPlayer(gv_playerAtVenue[lv_venue][lp_round], "BuildPhalanxFinal", 0);
                 libNtve_gf_SetUpgradeLevelForPlayer(gv_playerAtVenue[lv_venue][lp_round], "BuildPortal", 0);
                 libNtve_gf_SetUpgradeLevelForPlayer(gv_playerAtVenue[lv_venue][lp_round], "CountUnit", 0);
+                libNtve_gf_SetUpgradeLevelForPlayer(gv_playerAtVenue[lv_venue][lp_round], "CreateReserveUnit", 0);
             }
             VisRevealerEnable(gv_venueRevealer[lv_venue][gv_playerAtVenue[lv_venue][lp_round]], lp_option);
         }
@@ -2540,6 +2542,7 @@ void gf_BuildingRegionRevealerEnable (bool lp_option, bool lp_debug) {
             libNtve_gf_SetUpgradeLevelForPlayer(gv_playerAtBuildingRegion[lv_buildingRegion], "BuildPhalanxFinal", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(gv_playerAtBuildingRegion[lv_buildingRegion], "BuildPortal", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(gv_playerAtBuildingRegion[lv_buildingRegion], "CountUnit", 0);
+            libNtve_gf_SetUpgradeLevelForPlayer(gv_playerAtBuildingRegion[lv_buildingRegion], "CreateReserveUnit", 0);
         }
         lv_phalanx = 1;
         for ( ; ( (auto50FBBD95_ai >= 0 && lv_phalanx <= auto50FBBD95_ae) || (auto50FBBD95_ai < 0 && lv_phalanx >= auto50FBBD95_ae) ) ; lv_phalanx += auto50FBBD95_ai ) {
@@ -3437,6 +3440,7 @@ void gf_ReserveUnitCreationEnable (bool lp_option) {
     lv_player = 1;
     for ( ; ( (auto49511634_ai >= 0 && lv_player <= auto49511634_ae) || (auto49511634_ai < 0 && lv_player >= auto49511634_ae) ) ; lv_player += auto49511634_ai ) {
         if ((lp_option == true)) {
+            libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "CreateReserveUnit", 1);
         }
         else {
             libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "BuildArmy", 0);
@@ -3444,6 +3448,7 @@ void gf_ReserveUnitCreationEnable (bool lp_option) {
             libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "BuildPhalanx", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "BuildPhalanxFinal", 0);
             libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "BuildPortal", 0);
+            libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "CreateReserveUnit", 0);
         }
     }
     TriggerEnable(gt_CreateReserveUnit, lp_option);

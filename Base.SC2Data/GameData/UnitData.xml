@@ -2182,8 +2182,8 @@
         <Attributes index="none" value="1"/>
         <CostResource index="gold" value="225"/>
         <KillResource index="Custom" value="225"/>
-        <LifeStart value="5400"/>
-        <LifeMax value="5400"/>
+        <LifeStart value="4500"/>
+        <LifeMax value="4500"/>
         <Speed value="2"/>
         <Race value="Demon"/>
         <Mover value="foot"/>
@@ -2191,17 +2191,15 @@
         <GlossaryCategory value="Unit/Category/DemonUnits"/>
         <AbilArray Link="DemonInventory"/>
         <AbilArray Link="ANch"/>
+        <AbilArray Link="Suffering"/>
         <BehaviorArray Link="ACsk"/>
-        <BehaviorArray Link="Suffering"/>
         <BehaviorArray Link="undead"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
-            <LayoutButtons Face="PretAPorter" Type="Passive" Row="2" Column="1"/>
+            <LayoutButtons Face="ANch" Type="AbilCmd" AbilCmd="ANch,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="Suffering" Type="Passive" Behavior="Suffering" Row="2" Column="2"/>
-            <LayoutButtons Face="ANch" Type="AbilCmd" AbilCmd="ANch,Execute" Row="2" Column="3"/>
         </CardLayouts>
         <EnergyMax value="180"/>
-        <LifeArmorFormula NegativeArmorMultiplier="-1.5" PositiveArmorMultiplier="1.5"/>
     </CUnit>
     <!--draenei harbinger-->
     <CUnit id="ndrh">
@@ -2602,7 +2600,7 @@
         <Height value="2.539"/>
         <AbilArray Link="DemonInventory"/>
         <AbilArray Link="UpgradeTonndr"/>
-        <AbilArray Link="Apsh"/>
+        <AbilArray Link="AEev"/>
         <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="undead"/>
         <BehaviorArray Link="dragon"/>
@@ -2610,7 +2608,7 @@
             <LayoutButtons Face="nndr" Type="AbilCmd" AbilCmd="UpgradeTonndr,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
             <LayoutButtons Face="Multishot" Type="Passive" Row="2" Column="1"/>
-            <LayoutButtons Face="Apsh" Type="AbilCmd" AbilCmd="Apsh,0" Row="2" Column="2"/>
+            <LayoutButtons Face="AEev" Type="Passive" Behavior="AEev1" Row="2" Column="2"/>
         </CardLayouts>
         <PlaneArray index="Air" value="1"/>
         <GlossaryCategory value="Unit/Category/DemonUnits"/>
@@ -5022,8 +5020,8 @@
         <Attributes index="none" value="1"/>
         <CostResource index="gold" value="75"/>
         <KillResource index="Custom" value="75"/>
-        <LifeStart value="1800"/>
-        <LifeMax value="1800"/>
+        <LifeStart value="1500"/>
+        <LifeMax value="1500"/>
         <Speed value="2"/>
         <Race value="Demon"/>
         <Mover value="foot"/>
@@ -5037,12 +5035,10 @@
         <CardLayouts index="0">
             <LayoutButtons Face="ndqs" Type="AbilCmd" AbilCmd="UpgradeTondqs,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
-            <LayoutButtons Face="PretAPorter" Type="Passive" Row="2" Column="1"/>
-            <LayoutButtons Face="AUsl" Type="AbilCmd" AbilCmd="AUsl,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="AUsl" Type="AbilCmd" AbilCmd="AUsl,Execute" Row="2" Column="1"/>
         </CardLayouts>
         <EnergyMax value="60"/>
         <EnergyStart value="60"/>
-        <LifeArmorFormula NegativeArmorMultiplier="-1.5" PositiveArmorMultiplier="1.5"/>
     </CUnit>
     <!--vile temptress-->
     <CUnit id="ndqt" parent="AW2_Army" defType="NONE">
@@ -7243,9 +7239,11 @@
         <Mover value="foot"/>
         <GlossaryCategory value="Unit/Category/ChaosOrcUnits"/>
         <AbilArray Link="ChaosOrcInventory"/>
+        <AbilArray Link="ACrd"/>
         <AbilArray Link="SummonDoomGuard"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="SummonDoomGuard" Type="AbilCmd" AbilCmd="SummonDoomGuard,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="ACrd" Type="AbilCmd" AbilCmd="ACrd,0" Row="2" Column="0"/>
+            <LayoutButtons Face="SummonDoomGuard" Type="AbilCmd" AbilCmd="SummonDoomGuard,Execute" Row="2" Column="1"/>
         </CardLayouts>
         <Radius value="0.375"/>
         <MinimapRadius value="0.375"/>
