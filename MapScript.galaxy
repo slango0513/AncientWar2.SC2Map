@@ -22,7 +22,7 @@ void InitLibs () {
 // Constants
 //--------------------------------------------------------------------------------------------------
 const fixed gv_asplRadius = 7.0312;
-const int gv_asplMaxTargets = 8;
+const int gv_asplMaxTargets = 6;
 const fixed gv_asplSplitFactor = 0.1;
 const string gv_dreamUnitType = "ngrd";
 const string gv_aOmiAbilEntry = "AOmi";
@@ -157,6 +157,8 @@ unitfilter gv_unitAndCreepFilter;
 unitfilter gv_villagerFilter;
 region gv_battlefieldHighland;
 int gv_venueFinalEnd;
+bool gv_debugCopy;
+int gv_debugCopyPlayer;
 int[gv_playerCount + 1][gv_phalanxMaximumCount + 1] gv_unitIndexCount;
 bool gv_gameIsOver;
 int gv_venueFinal;
@@ -415,6 +417,8 @@ trigger gt_DebugKeyPressed;
 trigger gt_DebugUnitRemove;
 trigger gt_DebugUnitRemoveAll;
 trigger gt_DebugRoundPressed;
+trigger gt_DebugEnableCopy;
+trigger gt_DebugCopyPressed;
 
 //--------------------------------------------------------------------------------------------------
 // Global Functions
@@ -1479,6 +1483,7 @@ void gf_RestoreWaterState (bool lp_wait) {
 
     // Implementation
     libNtve_gf_SetUpgradeLevelForPlayer(lv_controller, "Tide", 0);
+    libNtve_gf_StopTimer(gv_callTideTimer);
     lv_player = 1;
     for ( ; ( (autoDFEE984D_ai >= 0 && lv_player <= autoDFEE984D_ae) || (autoDFEE984D_ai < 0 && lv_player >= autoDFEE984D_ae) ) ; lv_player += autoDFEE984D_ai ) {
         libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "Tide", 0);
@@ -2615,7 +2620,12 @@ void gf_UnitTypeSetAll () {
         }
         lv_phalanx = 1;
         for ( ; ( (autoF4645F72_ai >= 0 && lv_phalanx <= autoF4645F72_ae) || (autoF4645F72_ai < 0 && lv_phalanx >= autoF4645F72_ae) ) ; lv_phalanx += autoF4645F72_ai ) {
-            gf_UnitTypeSet(lv_buildingRegionReal, lv_phalanx, gv_playerAtBuildingRegion[lv_buildingRegion]);
+            if ((gv_debugCopy == false)) {
+                gf_UnitTypeSet(lv_buildingRegionReal, lv_phalanx, gv_playerAtBuildingRegion[lv_buildingRegion]);
+            }
+            else {
+                gf_UnitTypeSet(gv_debugCopyPlayer, lv_phalanx, gv_playerAtBuildingRegion[lv_buildingRegion]);
+            }
         }
     }
     gf_BuildingScoreUpdateAll();
@@ -4110,6 +4120,8 @@ void gf_DebugEnable (bool lp_option) {
     TriggerEnable(gt_DebugUnitRemove, lp_option);
     TriggerEnable(gt_DebugUnitRemoveAll, lp_option);
     TriggerEnable(gt_DebugRoundPressed, lp_option);
+    TriggerEnable(gt_DebugEnableCopy, lp_option);
+    TriggerEnable(gt_DebugCopyPressed, lp_option);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6641,6 +6653,82 @@ void gt_DebugRoundPressed_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: DebugEnableCopy
+//--------------------------------------------------------------------------------------------------
+bool gt_DebugEnableCopy_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_p;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    gv_debugCopy = !(gv_debugCopy);
+    gv_debugCopyPlayer = gv_playerAtBuildingRegion[EventPlayer()];
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_DebugEnableCopy_Init () {
+    gt_DebugEnableCopy = TriggerCreate("gt_DebugEnableCopy_Func");
+    TriggerEnable(gt_DebugEnableCopy, false);
+    TriggerAddEventKeyPressed(gt_DebugEnableCopy, c_playerAny, c_keyF6, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: DebugCopyPressed
+//--------------------------------------------------------------------------------------------------
+bool gt_DebugCopyPressed_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    int autoCCD5393E_val;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoCCD5393E_val = EventKeyPressed();
+    if (autoCCD5393E_val == c_key1) {
+        gv_debugCopyPlayer = 1;
+    }
+    else if (autoCCD5393E_val == c_key2) {
+        gv_debugCopyPlayer = 2;
+    }
+    else if (autoCCD5393E_val == c_key3) {
+        gv_debugCopyPlayer = 3;
+    }
+    else if (autoCCD5393E_val == c_key4) {
+        gv_debugCopyPlayer = 4;
+    }
+    else if (autoCCD5393E_val == c_key5) {
+        gv_debugCopyPlayer = 5;
+    }
+    else if (autoCCD5393E_val == c_key6) {
+        gv_debugCopyPlayer = 6;
+    }
+    else if (autoCCD5393E_val == c_key7) {
+        gv_debugCopyPlayer = 7;
+    }
+    else if (autoCCD5393E_val == c_key8) {
+        gv_debugCopyPlayer = 8;
+    }
+    else {
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_DebugCopyPressed_Init () {
+    gt_DebugCopyPressed = TriggerCreate("gt_DebugCopyPressed_Func");
+    TriggerEnable(gt_DebugCopyPressed, false);
+    TriggerAddEventKeyPressed(gt_DebugCopyPressed, c_playerAny, c_keyNone, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateRequire);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger Initialization
 //--------------------------------------------------------------------------------------------------
 void InitTriggers () {
@@ -6702,6 +6790,8 @@ void InitTriggers () {
     gt_DebugUnitRemove_Init();
     gt_DebugUnitRemoveAll_Init();
     gt_DebugRoundPressed_Init();
+    gt_DebugEnableCopy_Init();
+    gt_DebugCopyPressed_Init();
 }
 
 //--------------------------------------------------------------------------------------------------
