@@ -283,7 +283,7 @@
     <CAbilEffectTarget id="ANsa" parent="AW2_EffectTarget">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <Cost index="0">
-            <Vital index="Energy" value="10"/>
+            <Vital index="Energy" value="20"/>
             <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <TargetFilters index="0" value="-;self,neutral,enemies,mechanical,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable"/>
@@ -295,17 +295,18 @@
         <AutoCastRange value="6"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastValidatorArray value="noMarkers"/>
-        <AutoCastValidatorArray value="SanctuaryAutoCastValidator"/>
+        <AutoCastValidatorArray value="LifeLTOneQuarter"/>
         <AutoCastValidatorArray value="HasNoBNsa"/>
         <AutoCastValidatorArray value="HasHjai"/>
         <AutoCastValidatorArray value="IsNotHjai"/>
+        <AutoCastValidatorArray value="TargetInCombat"/>
         <PrepTime value="0.05"/>
         <CastOutroTime value="1.67"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="HolyRadiance" parent="AW2_EffectInstant">
         <EditorCategories value="Race:Human,AbilityorEffectType:Unit"/>
         <Cost index="0">
-            <Vital index="Energy" value="10"/>
+            <Vital index="Energy" value="20"/>
             <Cooldown Location="Unit" TimeUse="5"/>
         </Cost>
         <AutoCastFilters value="Self,Visible;Neutral,Enemy"/>
@@ -317,7 +318,7 @@
     <CAbilEffectInstant id="HolyWrath" parent="AW2_EffectInstant">
         <EditorCategories value="Race:Human,AbilityorEffectType:Unit"/>
         <Cost index="0">
-            <Vital index="Energy" value="10"/>
+            <Vital index="Energy" value="20"/>
             <Cooldown Location="Unit" TimeUse="5"/>
         </Cost>
         <AutoCastFilters value="Self,Visible;Neutral,Enemy"/>
@@ -342,7 +343,7 @@
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <Cost index="0">
             <Vital index="Energy" value="10"/>
-            <Cooldown Location="Unit" TimeUse="5"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <TargetFilters index="0" value="-;self,neutral,enemies,mechanical,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable"/>
         <TargetSorts RequestCount="1">
@@ -354,7 +355,9 @@
         <AutoCastRange value="6"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastValidatorArray value="noMarkers"/>
-        <AutoCastValidatorArray value="HasNoBlessingOfMight"/>
+        <AutoCastValidatorArray value="HasNoDivineProtection"/>
+        <AutoCastValidatorArray value="NotFullLife"/>
+        <AutoCastValidatorArray value="TargetInCombat"/>
         <PrepTime value="0.5"/>
         <CastOutroTime value="1.67"/>
     </CAbilEffectTarget>
@@ -648,6 +651,7 @@
             <Cooldown TimeUse="60"/>
         </Cost>
         <AutoCastFilters value="Visible;Air,Hover,HarvestableResource,Missile,Destructible,Item,PreventDefeat,Stasis,Dead,Invulnerable"/>
+        <AutoCastValidatorArray value="DistanceGE2"/>
     </CAbilAugment>
     <CAbilAugment id="ChargeMammoth" parent="AW2_Augment">
         <AbilCmd value="Aatk,Execute"/>
@@ -655,6 +659,7 @@
             <Cooldown TimeUse="60"/>
         </Cost>
         <AutoCastFilters value="Visible;Air,Hover,HarvestableResource,Missile,Destructible,Item,PreventDefeat,Stasis,Dead,Invulnerable"/>
+        <AutoCastValidatorArray value="DistanceGE2"/>
     </CAbilAugment>
     <CAbilAugment id="ChargeMagnataur" parent="AW2_Augment">
         <AbilCmd value="Aatk,Execute"/>
@@ -662,6 +667,7 @@
             <Cooldown TimeUse="60"/>
         </Cost>
         <AutoCastFilters value="Visible;Air,Hover,HarvestableResource,Missile,Destructible,Item,PreventDefeat,Stasis,Dead,Invulnerable"/>
+        <AutoCastValidatorArray value="DistanceGE2"/>
     </CAbilAugment>
     <CAbilAugment id="ChargeCentaur" parent="AW2_Augment">
         <AbilCmd value="Aatk,Execute"/>
@@ -669,6 +675,7 @@
             <Cooldown TimeUse="60"/>
         </Cost>
         <AutoCastFilters value="Visible;Air,Hover,HarvestableResource,Missile,Destructible,Item,PreventDefeat,Stasis,Dead,Invulnerable"/>
+        <AutoCastValidatorArray value="DistanceGE2"/>
     </CAbilAugment>
     <!--Cripple (creep) Dur=60 HeroDur=10 Buff=Bcri-->
     <CAbilEffectTarget id="ACcr" parent="AW2_EffectTarget">
@@ -2321,6 +2328,9 @@
         <InfoArray index="Build14" Unit="Hjai">
             <Button DefaultButtonFace="Hjai" Requirements="BuildArmy"/>
         </InfoArray>
+        <InfoArray index="Build15" Unit="nbrg">
+            <Button DefaultButtonFace="nbrg" Requirements="BuildArmy"/>
+        </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
     <!--Paladin - Divine Shield Buff=BHds-->
@@ -2775,8 +2785,8 @@
     <CAbilEffectInstant id="ANch" parent="AW2_EffectInstant">
         <EditorCategories value="Race:Demon,AbilityorEffectType:Units"/>
         <Cost index="0">
-            <Vital index="Energy" value="90"/>
-            <Cooldown Location="Unit" TimeUse="1"/>
+            <Vital index="Energy" value="60"/>
+            <Cooldown Location="Unit" TimeUse="15"/>
         </Cost>
         <PrepTime value="0.4"/>
         <CastOutroTime value="0.5"/>
@@ -4326,6 +4336,9 @@
             <SortArray value="TSLifeLargestFirst"/>
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="60"/>
+        </Cost>
     </CAbilEffectTarget>
     <!--Raise Dead Dur=40 HeroDur=40 Buff=Brai-->
     <CAbilEffectInstant id="Arai" parent="AW2_EffectInstant">
@@ -4893,10 +4906,21 @@
         <AutoCastRange value="2"/>
         <Cost index="0">
             <Charge CountMax="75" CountStart="75" CountUse="1"/>
-            <Cooldown Location="Abil" TimeUse="1"/>
+            <Cooldown Location="Abil" TimeUse="1.5"/>
         </Cost>
         <Arc value="360"/>
-        <TargetFilters index="0" value="-;player,allies,wall,tree,Missile,debris,item,structure,ward,dead"/>
+        <TargetFilters index="0" value="-;player,allies,wall,tree,Missile,debris,item,structure,ward,dead,MapBoss"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="FleeHydromancer" parent="AW2_EffectTarget">
+        <Flags index="Transient" value="1"/>
+        <Cost index="0">
+            <Charge CountMax="75" CountStart="75" CountUse="1"/>
+            <Cooldown Location="Abil" TimeUse="2"/>
+        </Cost>
+        <TargetFilters index="0" value="-;player,allies,wall,tree,Missile,debris,item,structure,ward,dead,MapBoss"/>
+        <Range value="2"/>
+        <Arc value="360"/>
+        <AutoCastRange value="2"/>
     </CAbilEffectTarget>
     <CAbilMorph id="UpgradeToHapm" parent="AW2_Upgrade" toUnit="Hapm">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
@@ -4911,6 +4935,9 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToHart" parent="AW2_Upgrade" toUnit="Hart">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonass" parent="AW2_Upgrade" toUnit="nass">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
 </Catalog>

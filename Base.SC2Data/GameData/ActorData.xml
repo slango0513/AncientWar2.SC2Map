@@ -84,6 +84,7 @@
     </CActorUnit>
     <!--arthaswithfrostmourne-->
     <CActorUnit id="Harf" parent="War3_Army" unitSound="Arthas" unitName="Harf" defType="LARGE">
+        <On Terms="ActorCreation" Send="SetTintColor 150,150,150"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnArthas.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnArthas.dds"/>
@@ -107,6 +108,32 @@
         <BarWidth value="55"/>
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--assassin-->
+    <CActorUnit id="nass" parent="War3_Army" unitSound="Bandit" unitName="nass" defType="MEDIUM">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnBanditSpearThrower.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnBanditSpearThrower.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnBanditSpearThrower.dds"/>
+        <BarWidth value="50"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.3437"/>
+    </CActorUnit>
+    <!--brigand-->
+    <CActorUnit id="nbrg" parent="War3_Army" unitSound="Bandit" unitName="nbrg" defType="MEDIUM">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnBanditSpearThrower.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnBanditSpearThrower.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnBanditSpearThrower.dds"/>
+        <BarWidth value="50"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <!--sasquatch-->
@@ -3802,7 +3829,7 @@
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <!--deathknight-->
-    <CActorUnit id="Udea" parent="War3_Army" unitSound="HeroDeathKnight" unitName="Udea" defType="LARGE">
+    <CActorUnit id="Udea" parent="War3_Army" unitSound="HeroDeathKnight" unitName="Udea" defType="SMALL">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHeroDeathKnight.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnHeroDeathKnight.dds"/>
@@ -3814,7 +3841,7 @@
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
     <!--evilarthas-->
-    <CActorUnit id="Uear" parent="War3_Army" unitSound="EvilArthas" unitName="Uear" defType="LARGE">
+    <CActorUnit id="Uear" parent="War3_Army" unitSound="EvilArthas" unitName="Uear" defType="SMALL">
         <On Terms="ActorCreation" Send="SetTintColor 150,150,150"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHeroDeathKnight.dds"/>
         <GroupIcon>
@@ -5189,7 +5216,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnAssassin.dds"/>
         <BarWidth value="57"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar80"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_NightElfLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.3437"/>

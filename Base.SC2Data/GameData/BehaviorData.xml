@@ -99,7 +99,7 @@
     <CBehaviorBuff id="BNsaRegen">
         <RemoveValidatorArray value="HasHjai5"/>
         <Modification>
-            <VitalRegenArray index="Life" value="50"/>
+            <VitalRegenArray index="Life" value="30"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="BNsaRegenDelay">
@@ -134,7 +134,10 @@
         <Alignment value="Positive"/>
         <TechAliasArray value="_PurgableBuff"/>
         <BehaviorCategories index="Dispelable" value="1"/>
-        <DamageResponse Chance="1" ModifyFraction="0.5"/>
+        <DamageResponse Chance="1" ModifyFraction="0.75"/>
+        <Modification>
+            <VitalMaxArray index="Life" value="150"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="BlessingOfMight" parent="War3_Buff">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btngauntletsofogrepower.dds"/>
@@ -149,7 +152,7 @@
         <Modification>
             <DamageDealtFraction index="Melee" value="0.25"/>
             <DamageDealtFraction index="Ranged" value="0.25"/>
-            <VitalRegenArray index="Energy" value="1"/>
+            <VitalRegenArray index="Energy" value="0.5"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="HolyWrath" parent="War3_Buff">
@@ -1741,6 +1744,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="InhibitionAuraCaster" parent="AW2_AuraCaster">
         <Requirements value="InhibitionAuraCaster"/>
+        <InitialEffect value="InhibitionAuraCasterSearch"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="CycloneAuraCaster" parent="AW2_AuraCaster">
         <Requirements value="CycloneAuraCaster"/>
@@ -3208,7 +3212,7 @@
             <BehaviorLinkDisableArray value="HostileSleeperAlert"/>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="Fury" parent="War3_Buff">
+    <CBehaviorBuff id="Fury" parent="War3_Passive">
         <Alignment value="Positive"/>
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnunholyfrenzy.dds"/>
         <DisplayDuration index="Self" value="1"/>
@@ -3216,15 +3220,15 @@
         <DisplayDuration index="Neutral" value="1"/>
         <DisplayDuration index="Enemy" value="1"/>
         <Duration value="180"/>
-        <DurationOverride index="0" Duration="180">
-            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        <DurationOverride Duration="180">
+            <ValidatorArray value="HeroOrPowerfulMob"/>
         </DurationOverride>
         <ExpireEffect value="FuryBuff"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="AW2_Fury">
+    <CBehaviorBuff id="AW2_Fury" parent="War3_Passive">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnunholyfrenzy.dds"/>
-        <ExpireEffect value="FuryBuff"/>
         <Duration value="180"/>
+        <ExpireEffect value="FuryBuff"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="FuryBuff" parent="War3_Passive">
         <Requirements value="FuryBuff"/>
@@ -3377,5 +3381,14 @@
             <StateFlags index="SuppressThreat" value="1"/>
         </Modification>
         <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FleeingHydromancer">
+        <InfoFlags index="Hidden" value="1"/>
+        <Duration value="1"/>
+        <FinalEffect value="FleeHydromancerIssueStopOrder"/>
+        <Modification>
+            <ModifyFlags index="DisableWeapons" value="1"/>
+            <StateFlags index="SuppressThreat" value="1"/>
+        </Modification>
     </CBehaviorBuff>
 </Catalog>

@@ -1026,4 +1026,18 @@
         <CombineArray value="IsNotUndead"/>
         <Type value="And"/>
     </CValidatorCombine>
+    <CValidatorUnitWeaponFiring id="CasterIsNotFiringWeapon_War3">
+        <WhichUnit Value="Caster"/>
+        <Find value="0"/>
+    </CValidatorUnitWeaponFiring>
+    <CValidatorLocationCompareRange id="DistanceGE1">
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="GE"/>
+        <Range value="1"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="DistanceGE2">
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="GE"/>
+        <Range value="2"/>
+    </CValidatorLocationCompareRange>
 </Catalog>

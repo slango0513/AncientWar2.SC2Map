@@ -133,7 +133,7 @@
         </TargetSorts>
     </CEffectEnumArea>
     <CEffectDamage id="ANmoDamage" parent="War3_SpellDamage">
-        <Amount value="10"/>
+        <Amount value="25"/>
     </CEffectDamage>
     <CEffectSet id="ANmr">
         <EffectArray value="BNmr"/>
@@ -176,7 +176,7 @@
     <CEffectSet id="AnmoImpact">
         <EffectArray value="ANmoDamage"/>
         <EffectArray value="BNmo"/>
-        <EffectArray value="DispelEnemyBuffs"/>
+        <EffectArray value="DispelAnyBuffs"/>
     </CEffectSet>
     <CEffectApplyBehavior id="BNmo" parent="War3_ApplyBuff">
         <ValidatorArray value="NotBuilding_War3"/>
@@ -415,6 +415,12 @@
         <Kind value="Melee"/>
         <Amount value="96"/>
     </CEffectDamage>
+    <CEffectDamage id="nass1" parent="AW2_PierceDamage">
+        <Amount value="48"/>
+    </CEffectDamage>
+    <CEffectDamage id="nbrg1" parent="AW2_PierceDamage">
+        <Amount value="48"/>
+    </CEffectDamage>
     <CEffectDamage id="ncea1" parent="AW2_PierceDamage">
         <Amount value="96"/>
     </CEffectDamage>
@@ -649,11 +655,11 @@
     </CEffectDamage>
     <CEffectDamage id="nsqt1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
-        <Amount value="96"/>
+        <Amount value="144"/>
     </CEffectDamage>
     <CEffectDamage id="nsqt2" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
-        <Amount value="192"/>
+        <Amount value="288"/>
     </CEffectDamage>
     <CEffectDamage id="nsrn1" parent="AW2_ChaosDamage">
         <Amount value="24"/>
@@ -700,11 +706,11 @@
     </CEffectDamage>
     <CEffectDamage id="nwns1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
-        <Amount value="192"/>
+        <Amount value="288"/>
     </CEffectDamage>
     <CEffectDamage id="nwns2" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
-        <Amount value="192"/>
+        <Amount value="288"/>
     </CEffectDamage>
     <CEffectDamage id="odkt1" parent="AW2_ChaosDamage">
         <Amount value="24"/>
@@ -926,7 +932,7 @@
     <CEffectApplyBehavior id="MoraleBoosting" parent="War3_ApplyBuff"/>
     <CEffectEnumArea id="MoraleBoostingSearch" parent="War3_AbilSearch">
         <AreaArray Radius="500" Effect="MoraleBoosting"/>
-        <SearchFilters value="-;neutral,enemies,wall,tree,Missile,debris,item,structure,ward,dead"/>
+        <SearchFilters value="-;self,neutral,enemies,wall,tree,Missile,debris,item,structure,ward,dead"/>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CEffectEnumArea>
     <CEffectApplyForce id="ChargeKnightApplyForce">
@@ -1449,7 +1455,7 @@
     </CEffectDamage>
     <CEffectModifyUnit id="SufferingModifyUnit">
         <ImpactUnit Value="Caster"/>
-        <VitalArray index="Energy" Change="2"/>
+        <VitalArray index="Energy" Change="1"/>
     </CEffectModifyUnit>
     <CEffectDamage id="Ulic1" parent="AW2_MagicDamage">
         <Amount value="96"/>
@@ -2236,7 +2242,7 @@
         <Amount value="10"/>
     </CEffectDamage>
     <CEffectDamage id="BpsiDPS">
-        <Amount value="15"/>
+        <Amount value="10"/>
     </CEffectDamage>
     <CEffectCreateHealer id="BrplHeal">
         <RechargeVitalRate value="25"/>
@@ -2272,7 +2278,6 @@
     <CEffectSet id="Aps2MissileImpactSet">
         <ValidatorArray value="CasterAndTargetNotDead"/>
         <EffectArray value="PhalanxMarker"/>
-        <EffectArray value="Aps2Remove"/>
     </CEffectSet>
     <CEffectDamage id="Aps2Remove">
         <ImpactLocation Effect="Aps2" Value="SourceUnit"/>
@@ -2383,7 +2388,7 @@
         <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="Hjai1" parent="AW2_MagicDamage">
-        <Amount value="24"/>
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="Hkal1" parent="AW2_MagicDamage">
         <Amount value="96"/>
@@ -3817,7 +3822,8 @@
     <CEffectDamage id="nsnp1" parent="AW2_PierceDamage">
         <Amount value="12"/>
     </CEffectDamage>
-    <CEffectDamage id="nssn1" parent="AW2_PierceDamage">
+    <CEffectDamage id="nssn1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
         <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="nss21" parent="AW2_NormalDamage">
@@ -4201,6 +4207,29 @@
     <CEffectIssueOrder id="FleeCentaurArcherIssueOrder">
         <Abil value="Amov"/>
         <WhichUnit Effect="FleeCentaurArcher" Value="Caster"/>
+        <Target Value="TargetPoint"/>
+        <Player Value="Caster"/>
+    </CEffectIssueOrder>
+    <CEffectCreatePersistent id="FleeHydromancer">
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="FleeHydromancerSet"/>
+        <PeriodicOffsetArray value="0,6,0"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="FleeHydromancerSet">
+        <EffectArray value="FleeHydromancerIssueOrder"/>
+        <EffectArray value="FleeingHydromancer"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectIssueOrder id="FleeHydromancerIssueStopOrder">
+        <Abil value="stop"/>
+    </CEffectIssueOrder>
+    <CEffectApplyBehavior id="FleeingHydromancer">
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectIssueOrder id="FleeHydromancerIssueOrder">
+        <Abil value="Amov"/>
+        <WhichUnit Effect="FleeHydromancer" Value="Caster"/>
         <Target Value="TargetPoint"/>
         <Player Value="Caster"/>
     </CEffectIssueOrder>
