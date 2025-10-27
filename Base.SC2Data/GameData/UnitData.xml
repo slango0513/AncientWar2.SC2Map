@@ -982,6 +982,24 @@
     <CUnit id="ndog">
         <Race value="Centaur"/>
     </CUnit>
+    <!--Draeni Vindicator-->
+    <CUnit id="ndrn" parent="AW2_Army" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <CostResource index="gold" value="45"/>
+        <KillResource index="Custom" value="15"/>
+        <LifeStart value="750"/>
+        <LifeMax value="750"/>
+        <Speed value="2"/>
+        <Race value="Draenei"/>
+        <Mover value="foot"/>
+        <GlossaryCategory value="Unit/Category/DraeneiUnits"/>
+        <AbilArray Link="DraeneiInventory"/>
+        <AbilArray Link="AEsh"/>
+        <PlaneArray index="Ground" value="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AEsh" Type="AbilCmd" AbilCmd="AEsh,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
     <!--Dune Worm-->
     <CUnit id="ndwm" parent="AW2_Peon">
         <CardLayouts index="0">
@@ -1068,8 +1086,8 @@
     <!--forgotten one tentacle-->
     <CUnit id="nfgt" parent="AW2_Army" defType="LARGE">
         <Attributes index="large" value="1"/>
-        <LifeStart value="600"/>
-        <LifeMax value="600"/>
+        <LifeStart value="300"/>
+        <LifeMax value="300"/>
         <Race value="OldGod"/>
         <PlaneArray index="Ground" value="1"/>
         <BehaviorArray Link="ACsk"/>
@@ -1168,6 +1186,26 @@
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/CentaurUnits"/>
+    </CUnit>
+    <!--Harpy Scout-->
+    <CUnit id="nhar">
+        <LifeMax value="1"/>
+    </CUnit>
+    <!--harpy hag-->
+    <CUnit id="nhrh">
+        <LifeRegenRate value="1"/>
+    </CUnit>
+    <!--harpy queen-->
+    <CUnit id="nhrq">
+        <LifeRegenRate value="1"/>
+    </CUnit>
+    <!--harpy rogue-->
+    <CUnit id="nhrr">
+        <LifeRegenRate value="1"/>
+    </CUnit>
+    <!--harpy witch-->
+    <CUnit id="nhrw">
+        <LifeRegenRate value="1"/>
     </CUnit>
     <!--Jungle Stalker-->
     <CUnit id="njg1">
@@ -3742,10 +3780,10 @@
         <Mover value="foot"/>
         <GlossaryCategory value="Unit/Category/DraeneiUnits"/>
         <AbilArray Link="DraeneiInventory"/>
-        <AbilArray Link="AEsh"/>
+        <AbilArray Link="UpgradeTondrn"/>
         <PlaneArray index="Ground" value="1"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="AEsh" Type="AbilCmd" AbilCmd="AEsh,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="ndrn" Type="AbilCmd" AbilCmd="UpgradeTondrn,Execute" Row="0" Column="0"/>
         </CardLayouts>
     </CUnit>
     <!--draenei seer-->
@@ -6256,6 +6294,38 @@
     </CUnit>
     <CUnit id="Chronormu1LM" parent="War3_Missile"/>
     <CUnit id="Chronormu2LM" parent="War3_Missile"/>
+    <CUnit id="Vaelastrasz" parent="AW2_Army" defType="SMALL">
+        <Race value="Dragon"/>
+        <PlaneArray index="Air" value="1"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="ForceField" value="0"/>
+        <Collide index="Flying" value="1"/>
+        <Attributes index="small" value="1"/>
+        <LifeStart value="13500"/>
+        <LifeMax value="13500"/>
+        <Mover value="fly"/>
+        <Speed value="3"/>
+        <Height value="2.539"/>
+        <CostResource index="gold" value="270"/>
+        <CostResource index="lumber" value="10800"/>
+        <KillResource index="Custom" value="810"/>
+        <AbilArray index="4" Link="DragonInventory"/>
+        <AbilArray Link="ACnr"/>
+        <AbilArray Link="EssenceOfTheRed"/>
+        <BehaviorArray Link="BreathOfFireCaster"/>
+        <BehaviorArray Link="ACsk"/>
+        <BehaviorArray Link="dragon"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
+            <LayoutButtons Face="BreathOfFireCaster" Type="Passive" Behavior="BreathOfFireCaster" Row="2" Column="1"/>
+            <LayoutButtons Face="ACnr" Type="Passive" Behavior="ACnr" Row="2" Column="2"/>
+            <LayoutButtons Face="EssenceOfTheRed" Type="AbilCmd" AbilCmd="EssenceOfTheRed,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+        <GlossaryCategory value="Unit/Category/DragonUnits"/>
+    </CUnit>
+    <CUnit id="Vaelastrasz1LM" parent="War3_Missile"/>
+    <CUnit id="Vaelastrasz2LM" parent="War3_Missile"/>
     <!--bronze drake-->
     <CUnit id="nbzk">
         <Race value="Dragon"/>
@@ -6739,6 +6809,7 @@
         <AbilArray Link="Aiun"/>
         <AbilArray Link="UpgradeTonrvd"/>
         <BehaviorArray Link="undead"/>
+        <BehaviorArray Link="elemental"/>
         <CardLayouts index="0">
             <LayoutButtons Face="nrvd" Type="AbilCmd" AbilCmd="UpgradeTonrvd,Execute" Row="0" Column="0"/>
         </CardLayouts>
@@ -8633,6 +8704,7 @@
         <Race value="Undead"/>
         <Mover value="foot"/>
         <BehaviorArray Link="undead"/>
+        <BehaviorArray Link="elemental"/>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/UndeadUnits"/>
         <AbilArray Link="Aiun"/>
@@ -8652,12 +8724,14 @@
         <Race value="Dragon"/>
         <Mover value="fly"/>
         <Height value="2.539"/>
+        <AbilArray Link="UpgradeToVaelastrasz"/>
         <AbilArray Link="DragonInventory"/>
         <AbilArray Link="ACnr"/>
         <BehaviorArray Link="ACsk"/>
         <BehaviorArray Link="BreathOfFireCaster"/>
         <BehaviorArray Link="dragon"/>
         <CardLayouts index="0">
+            <LayoutButtons Face="Vaelastrasz" Type="AbilCmd" AbilCmd="UpgradeToVaelastrasz,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="0"/>
             <LayoutButtons Face="BreathOfFireCaster" Type="Passive" Behavior="BreathOfFireCaster" Row="2" Column="1"/>
             <LayoutButtons Face="ACnr" Type="Passive" Behavior="ACnr" Row="2" Column="2"/>

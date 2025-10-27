@@ -252,7 +252,7 @@
         <PrepTime value="0.5"/>
         <CastOutroTime value="0.83"/>
         <AutoCastRange value="11"/>
-        <AutoCastValidatorArray value="NoAEsh"/>
+        <AutoCastValidatorArray value="NoBEsh"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
         <TargetSorts RequestCount="1">
@@ -2538,6 +2538,17 @@
         <CastOutroTime value="1.08"/>
         <Effect index="0" value="SleepSearch"/>
     </CAbilEffectInstant>
+    <CAbilEffectInstant id="EssenceOfTheRed" parent="AW2_EffectInstant">
+        <EditorCategories value="Race:Dragon,AbilityorEffectType:Units"/>
+        <Effect index="0" value="EssenceOfTheRedSearch"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="120"/>
+        </Cost>
+        <AutoCastFilters value="Self,Visible;-"/>
+        <AutoCastValidatorArray value="EnemiesNearby6"/>
+        <PrepTime value="5"/>
+        <CastOutroTime value="1.08"/>
+    </CAbilEffectInstant>
     <CAbilEffectInstant id="ANbr" parent="AW2_EffectInstant">
         <EditorCategories value="Race:Goblin,AbilityorEffectType:Units"/>
         <Cost index="0">
@@ -4777,6 +4788,9 @@
     <CAbilMorph id="UpgradeToChronormu" parent="AW2_Upgrade" toUnit="Chronormu">
         <CmdButtonArray index="Execute" Requirements="BuildArmyFinal"/>
     </CAbilMorph>
+    <CAbilMorph id="UpgradeToVaelastrasz" parent="AW2_Upgrade" toUnit="Vaelastrasz">
+        <CmdButtonArray index="Execute" Requirements="BuildArmyFinal"/>
+    </CAbilMorph>
     <CAbilMorph id="UpgradeTonthr" parent="AW2_Upgrade" toUnit="nthr">
         <CmdButtonArray index="Execute" Requirements="BuildArmyFinal"/>
     </CAbilMorph>
@@ -4847,6 +4861,9 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeTondrs" parent="AW2_Upgrade" toUnit="ndrs">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTondrn" parent="AW2_Upgrade" toUnit="ndrn">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToNaka" parent="AW2_Upgrade" toUnit="Naka">

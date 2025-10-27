@@ -98,7 +98,7 @@
         <Amount value="30"/>
     </CEffectDamage>
     <CEffectDamage id="BEshInitDamage1">
-        <Amount value="60"/>
+        <Amount value="90"/>
     </CEffectDamage>
     <CEffectApplyBehavior id="BNvc">
         <ValidatorArray value="IsNotElemental"/>
@@ -501,6 +501,10 @@
     <CEffectDamage id="ndrj1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
         <Amount value="24"/>
+    </CEffectDamage>
+    <CEffectDamage id="ndrn1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="36"/>
     </CEffectDamage>
     <CEffectDamage id="nerd1" parent="AW2_MagicDamage">
         <Amount value="288"/>
@@ -1193,7 +1197,7 @@
     </CEffectDamage>
     <CEffectDamage id="ndrp1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
-        <Amount value="24"/>
+        <Amount value="36"/>
     </CEffectDamage>
     <CEffectDamage id="ndrs1" parent="AW2_MagicDamage">
         <Amount value="24"/>
@@ -1658,6 +1662,15 @@
         <MinCount value="1"/>
         <MaxCount value="36"/>
     </CEffectEnumArea>
+    <CEffectEnumArea id="EssenceOfTheRedSearch" parent="War3_AbilSearch">
+        <SearchFilters value="-;neutral,enemies,wall,tree,Missile,debris,item,dead"/>
+        <AreaArray Radius="500" Effect="EssenceOfTheRedSet"/>
+        <TargetSorts>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSDistance"/>
+        </TargetSorts>
+    </CEffectEnumArea>
     <CEffectEnumArea id="PosteriorStrategySearch" parent="War3_AbilSearch">
         <SearchFilters value="-;neutral,enemies,wall,tree,Missile,debris,item,dead"/>
         <AreaArray Radius="500" Effect="PosteriorStrategySet"/>
@@ -1677,6 +1690,11 @@
         <ValidatorArray value="IsNotDragon"/>
         <EffectArray value="AUsl"/>
     </CEffectSet>
+    <CEffectSet id="EssenceOfTheRedSet">
+        <ValidatorArray value="IsNotDragon"/>
+        <EffectArray value="EssenceOfTheRed"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="EssenceOfTheRed" parent="War3_ApplyBuff"/>
     <CEffectSet id="SoulBurnSet">
         <EffectArray value="ANso"/>
         <ValidatorArray value="NoSoulBurn"/>
@@ -3118,6 +3136,16 @@
     </CEffectDamage>
     <CEffectLaunchMissile id="Chronormu1LM" parent="War3_Missile" weaponid="Chronormu1"/>
     <CEffectLaunchMissile id="Chronormu2LM" parent="War3_Missile" weaponid="Chronormu2"/>
+    <CEffectDamage id="Vaelastrasz1" parent="AW2_ChaosDamage">
+        <AreaArray Radius="1.1718" Fraction="1"/>
+        <SearchFilters value="-;player,allies,air,wall,tree,Missile,item,ward,ethereal,dead,invulnerable"/>
+        <Amount value="1728"/>
+    </CEffectDamage>
+    <CEffectDamage id="Vaelastrasz2" parent="AW2_ChaosDamage">
+        <Amount value="432"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="Vaelastrasz1LM" parent="War3_Missile" weaponid="Vaelastrasz1"/>
+    <CEffectLaunchMissile id="Vaelastrasz2LM" parent="War3_Missile" weaponid="Vaelastrasz2"/>
     <CEffectDamage id="nbzw1" parent="AW2_MagicDamage">
         <Amount value="96"/>
     </CEffectDamage>

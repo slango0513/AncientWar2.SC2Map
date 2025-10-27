@@ -126,6 +126,7 @@
         <DurationOverride index="0" Duration="9">
             <ValidatorArray index="0" value="Hero"/>
         </DurationOverride>
+        <Modification AttackSpeedMultiplier="0.9375"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="BHtb">
         <Duration value="10"/>
@@ -631,6 +632,17 @@
         <Modification MoveSpeedMultiplier="1.25" AttackSpeedMultiplier="1.25"/>
         <MaxStackCount value="2"/>
         <MaxStackCountPerCaster value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EssenceOfTheRed" parent="War3_Buff">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btndragonroost.dds"/>
+        <Duration value="15"/>
+        <DurationOverride index="0" Duration="15">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Modification>
+            <VitalRegenArray index="Energy" value="16"/>
+            <RateMultiplierArray index="Cooldown" value="9"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="ShieldWallPassive" parent="War3_Passive">
         <Requirements value="ShieldWallPassive"/>

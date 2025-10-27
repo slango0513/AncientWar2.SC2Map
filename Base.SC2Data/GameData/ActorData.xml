@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="us-ascii"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Catalog>
     <!--faeriedragon-->
     <CActorUnit id="efdr" parent="War3_Army" unitSound="FaerieDragon" unitName="efdr" defType="SMALL">
@@ -173,6 +173,20 @@
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--draeneivindicator-->
+    <CActorUnit id="ndrn" parent="War3_Army" unitSound="Draenei" unitName="ndrn" defType="LARGE">
+        <On Terms="ActorCreation" Send="SetTintColor 150,150,150"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnDranai.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnDranai.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnDranai.dds"/>
+        <BarWidth value="62"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_HumanLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <!--sasquatch-->
@@ -551,7 +565,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnTentacle.dds"/>
         <BarWidth value="37"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
     </CActorUnit>
@@ -1051,6 +1065,10 @@
         <Model value="Bdef"/>
     </CActorModel>
     <CActorModel id="PosteriorStrategyCaster" parent="CasterArt">
+        <Model value="AIdaCaster"/>
+    </CActorModel>
+    <CActorModel id="EssenceOfTheRed" parent="War3_Buff"/>
+    <CActorModel id="EssenceOfTheRedCaster" parent="CasterArt">
         <Model value="AIdaCaster"/>
     </CActorModel>
     <CActorModel id="ANpi" parent="War3_Buff"/>
@@ -2373,6 +2391,11 @@
         <On Terms="Abil.Sleep.SourcePrepStart" Send="Create"/>
         <On Terms="Abil.Sleep.SourcePrepStop" Send="AnimBracketStop BSD"/>
     </CActorModel>
+    <CActorModel id="EssenceOfTheRedEffect" parent="EffectArt">
+        <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="Abil.EssenceOfTheRed.SourcePrepStart" Send="Create"/>
+        <On Terms="Abil.EssenceOfTheRed.SourcePrepStop" Send="AnimBracketStop BSD"/>
+    </CActorModel>
     <CActorSimple id="AIob" parent="War3_AttackMissileSwap"/>
     <CActorModel id="AIobTarget" parent="TargetArtX">
         <HostSiteOps Ops="$weapon"/>
@@ -2845,6 +2868,22 @@
     <CActorMissile id="Chronormu1LM" parent="War3_MissileSwapable" unitName="Chronormu1LM"/>
     <CActorAction id="Chronormu2" parent="War3_LightningAttack"/>
     <CActorMissile id="Chronormu2LM" parent="War3_MissileSwapable" unitName="Chronormu2LM"/>
+    <CActorUnit id="Vaelastrasz" parent="War3_Army" unitSound="AzureDragon" unitName="Vaelastrasz" defType="SMALL">
+        <On Terms="ActorCreation" Send="SetOpacity 0.500000 1.000000"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnRedDragon.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnRedDragon.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnRedDragon.dds"/>
+        <BarWidth value="112"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar200"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.3437"/>
+    </CActorUnit>
+    <CActorAction id="Vaelastrasz1" parent="War3_AttackMissileSwapable"/>
+    <CActorMissile id="Vaelastrasz1LM" parent="War3_MissileSwapable" unitName="Vaelastrasz1LM"/>
+    <CActorAction id="Vaelastrasz2" parent="War3_AttackMissileSwapable"/>
+    <CActorMissile id="Vaelastrasz2LM" parent="War3_MissileSwapable" unitName="Vaelastrasz2LM"/>
     <!--bronzedragonwhelp-->
     <CActorUnit id="nbzw" parent="War3_Army" unitSound="AzureDragon" unitName="nbzw" defType="SMALL">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnBronzeDragon.dds"/>
