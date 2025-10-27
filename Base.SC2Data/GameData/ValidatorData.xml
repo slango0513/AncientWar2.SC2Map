@@ -6,6 +6,9 @@
         <WhichLocation Value="CasterUnit"/>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea default="1" id="AW2_EnemiesNearbyInvisibleIncluded" parent="AW2_EnemiesNearby">
+        <SearchFilters value="-;Player,Ally,Neutral,Hover,Missile,Destructible,Dead,Hidden"/>
+    </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea default="1" id="AW2_GroundEnemiesNearby">
         <AreaArray Compare="GT" Count="0"/>
         <SearchFilters value="Visible;Player,Ally,Neutral,Air,Hover,Missile,Destructible,Dead,Hidden"/>
@@ -319,6 +322,9 @@
         <AreaArray index="0" Compare="GT" Count="0" Radius="4"/>
     </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="EnemiesNearby5" parent="AW2_EnemiesNearby">
+        <AreaArray index="0" Compare="GT" Count="0" Radius="5"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="EnemiesNearbyInvisibleIncluded5" parent="AW2_EnemiesNearbyInvisibleIncluded">
         <AreaArray index="0" Compare="GT" Count="0" Radius="5"/>
     </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="EnemiesNearby6" parent="AW2_EnemiesNearby">

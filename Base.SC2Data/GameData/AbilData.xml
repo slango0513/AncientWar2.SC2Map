@@ -17,7 +17,6 @@
     </CAbilTransport>
     <CAbilInventory default="1" id="AW2_UnitInventory" parent="War3_Inventory">
         <CmdButtonArray index="Drop" Requirements="BuildArmy"/>
-        <CmdButtonArray index="Take" Requirements="BuildArmy"/>
         <TargetFilters value="Item;Neutral,Enemy"/>
         <Range value="500"/>
         <MaxDropRange value="500"/>
@@ -1383,7 +1382,7 @@
         <CastOutroTime value="10"/>
         <Effect index="0" value="BOvc"/>
         <FinishTime value="1.07"/>
-        <AutoCastValidatorArray value="EnemiesNearby5"/>
+        <AutoCastValidatorArray index="0" value="EnemiesNearbyInvisibleIncluded5"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
     <!--Self Destruct (Clockwerk Goblins) Dur=.1 HeroDur=.1-->
@@ -1514,8 +1513,8 @@
         <InfoArray index="Build12" Unit="nzep">
             <Button DefaultButtonFace="nzep" Requirements="BuildArmy"/>
         </InfoArray>
-        <InfoArray index="Build13" Unit="Orex">
-            <Button DefaultButtonFace="Orex" Requirements="BuildArmyFinal"/>
+        <InfoArray index="Build13" Unit="Nbst">
+            <Button DefaultButtonFace="Nbst" Requirements="BuildArmyFinal"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
@@ -1698,10 +1697,10 @@
     <CAbilEffectInstant id="ANbr" parent="AW2_EffectInstant">
         <EditorCategories value="Race:Goblin,AbilityorEffectType:Units"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeStart="15" TimeUse="120"/>
+            <Cooldown Location="Unit" TimeUse="120"/>
         </Cost>
         <AutoCastFilters value="Self,Visible;-"/>
-        <AutoCastValidatorArray index="0" removed="1"/>
+        <AutoCastValidatorArray index="0" value="EnemiesNearby5"/>
         <PrepTime value="0.5"/>
         <CastOutroTime value="1.17"/>
         <Alignment value="Positive"/>
@@ -3122,16 +3121,18 @@
         <Cost index="0">
             <Cooldown Location="Unit" TimeUse="5"/>
         </Cost>
-        <Range value="6"/>
+        <Range value="8"/>
         <PrepTime value="0.68"/>
         <CastOutroTime value="0.59"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeFraction"/>
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <AutoCastFilters value="Visible;Neutral,Enemy"/>
-        <AutoCastRange value="6"/>
-        <AutoCastValidatorArray value="noMarkers"/>
-        <AutoCastValidatorArray value="EnemiesNearby4"/>
+        <AutoCastRange value="8"/>
+        <AutoCastValidatorArray index="1" value="noMarkers"/>
+        <AutoCastValidatorArray value="EnemiesNearby6"/>
         <AutoCastValidatorArray value="TargetLifeGT25"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="Auhf" parent="AW2_EffectTarget">

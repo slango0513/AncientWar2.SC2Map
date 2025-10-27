@@ -21,8 +21,8 @@ void InitLibs () {
 //--------------------------------------------------------------------------------------------------
 // Constants
 //--------------------------------------------------------------------------------------------------
-const fixed gv_asplRadius = 5.8593;
-const int gv_asplMaxTargets = 4;
+const fixed gv_asplRadius = 7.0312;
+const int gv_asplMaxTargets = 8;
 const fixed gv_asplSplitFactor = 0.1;
 const string gv_dreamUnitType = "ngrd";
 const string gv_aOmiAbilEntry = "AOmi";
@@ -60,6 +60,7 @@ const int gv_venueGroupMaximumCount = (gv_teamMaximumCount/2);
 //--------------------------------------------------------------------------------------------------
 // Global Variables
 //--------------------------------------------------------------------------------------------------
+int gv_debugRound;
 bool gv_isBonusRound;
 text gv_infoAtBuildRegion;
 text gv_infoAtBattleField;
@@ -160,6 +161,7 @@ int gv_finalRound;
 void InitGlobals () {
     int init_i;
 
+    gv_debugRound = 1;
     gv_infoAtBuildRegion = StringExternal("Param/Value/BB55835D");
     gv_infoAtBattleField = StringExternal("Param/Value/D03089AF");
     gv_infoVenue = StringExternal("Param/Value/84A7D743");
@@ -400,8 +402,7 @@ trigger gt_DebugControlPressed;
 trigger gt_DebugKeyPressed;
 trigger gt_DebugUnitRemove;
 trigger gt_DebugUnitRemoveAll;
-trigger gt_DebugSwimRemove;
-trigger gt_DebugSwimAdd;
+trigger gt_DebugRoundPressed;
 
 //--------------------------------------------------------------------------------------------------
 // Global Functions
@@ -461,8 +462,6 @@ void gf_ModInizialization (bool lp_debug) {
 void gf_RoundStartLoop (bool lp_debug) {
     // Variable Declarations
     int lv_round;
-    bool lv_finalRound;
-    bool lv_bonusRound;
     string lv_gameValue;
 
     // Automatic Variable Declarations
@@ -477,81 +476,37 @@ void gf_RoundStartLoop (bool lp_debug) {
         gf_UserSkinSet();
         gf_AddTip();
         gf_AddInfoAtBuildRegion(false);
-        if ((lp_debug == true)) {
-            while (true) {
-                if ((lv_finalRound == true)) {
-                    if (((lv_gameValue == "0002") || (lv_gameValue == "0004"))) {
-                        lv_round = 7;
-                    }
-                    else {
-                        lv_round = 8;
-                    }
-                    gv_dreamDisabled = false;
-                    if ((gf_IsFinalRound(lv_round) == true)) {
-                        gv_dreamDisabled = true;
-                        gf_FinalVenueAndPhalanxPointInitialReplace();
-                    }
-                    else {
-                        gf_VenueAndPhalanxPointInitialReplace();
-                    }
-                    gf_RoundStart(lv_round, false, lp_debug, true);
-                }
-                else {
-                    if ((lv_bonusRound == true)) {
-                        if (((lv_gameValue == "0002") || (lv_gameValue == "0004"))) {
-                            lv_round = 6;
-                        }
-                        else {
-                            lv_round = 7;
-                        }
-                        gv_dreamDisabled = false;
-                        if ((gv_bonusRoundIsOn[lv_round] == true)) {
-                            gv_dreamDisabled = true;
-                            gf_BonusVenueAndPhalanxPointInitialReplace();
-                            gf_RoundStart(lv_round, true, lp_debug, true);
-                        }
-
-                    }
-                    else {
-                        lv_round = 1;
-                        gv_dreamDisabled = false;
-                        if ((gf_IsFinalRound(lv_round) == true)) {
-                            gv_dreamDisabled = true;
-                            gf_FinalVenueAndPhalanxPointInitialReplace();
-                        }
-                        else {
-                            gf_VenueAndPhalanxPointInitialReplace();
-                        }
-                        gf_RoundStart(lv_round, false, lp_debug, true);
-                    }
-                }
-            }
-        }
-        else {
-            autoE4112BFC_ae = gv_roundCount;
-            lv_round = 1;
-            for ( ; ( (autoE4112BFC_ai >= 0 && lv_round <= autoE4112BFC_ae) || (autoE4112BFC_ai < 0 && lv_round >= autoE4112BFC_ae) ) ; lv_round += autoE4112BFC_ai ) {
-                if (((lv_gameValue == "0002") || (lv_gameValue == "0004"))) {
-                    gv_dreamDisabled = true;
-                }
-                else {
-                    gv_dreamDisabled = false;
-                }
+        autoE4112BFC_ae = gv_roundCount;
+        lv_round = 1;
+        for ( ; ( (autoE4112BFC_ai >= 0 && lv_round <= autoE4112BFC_ae) || (autoE4112BFC_ai < 0 && lv_round >= autoE4112BFC_ae) ) ; lv_round += autoE4112BFC_ai ) {
+            if ((lp_debug == true)) {
                 if ((gf_IsFinalRound(lv_round) == true)) {
-                    gv_dreamDisabled = true;
-                    gf_FinalVenueAndPhalanxPointInitialReplace();
                 }
                 else {
-                    gf_VenueAndPhalanxPointInitialReplace();
+                    lv_round = gv_debugRound;
                 }
-                gf_RoundStart(lv_round, false, lp_debug, true);
-                if ((gv_bonusRoundIsOn[lv_round] == true)) {
-                    gv_dreamDisabled = true;
-                    gf_BonusVenueAndPhalanxPointInitialReplace();
-                    gf_RoundStart(lv_round, true, lp_debug, true);
-                }
-
             }
+
+            if (((lv_gameValue == "0002") || (lv_gameValue == "0004"))) {
+                gv_dreamDisabled = true;
+            }
+            else {
+                gv_dreamDisabled = false;
+            }
+            if ((gf_IsFinalRound(lv_round) == true)) {
+                gv_dreamDisabled = true;
+                gf_FinalVenueAndPhalanxPointInitialReplace();
+            }
+            else {
+                gf_VenueAndPhalanxPointInitialReplace();
+            }
+            gf_RoundStart(lv_round, false, lp_debug, true);
+            if ((gv_bonusRoundIsOn[lv_round] == true)) {
+                gv_dreamDisabled = true;
+                gf_BonusVenueAndPhalanxPointInitialReplace();
+                gf_RoundStart(lv_round, true, lp_debug, true);
+            }
+
         }
     }
 
@@ -575,14 +530,13 @@ void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug, bool lp_aut
             gf_StartLocationCameraPan();
             gf_TimerSet(150.0, lp_debug);
             gf_AIBuildingPosition();
+            gf_BuildingRegionRevealerEnable(false, lp_debug);
             gf_PreviewEnable(false);
             gf_UnitTypeSetAll();
             gf_PlayerAtFinalVenueSet();
             gf_ObjectiveHideAll();
         }
-        else {
-            gf_BuildingRegionRevealerEnable(true, lp_debug);
-        }
+
         gf_PlayerAtFinalVenueReplace(lp_round);
     }
     else {
@@ -605,6 +559,7 @@ void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug, bool lp_aut
         }
 
         gf_AIBuildingPosition();
+        gf_BuildingRegionRevealerEnable(false, lp_debug);
         gf_PreviewEnable(false);
         gf_UnitTypeSetAll();
     }
@@ -636,7 +591,6 @@ void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug, bool lp_aut
     }
 
     gf_UnitPositionAll();
-    gf_BuildingRegionRevealerEnable(false, lp_debug);
     if ((lp_bonusRound == true)) {
         gf_CreepPosition(lp_round);
     }
@@ -4047,6 +4001,7 @@ void gf_DebugEnable (bool lp_option) {
     TriggerEnable(gt_DebugKeyPressed, lp_option);
     TriggerEnable(gt_DebugUnitRemove, lp_option);
     TriggerEnable(gt_DebugUnitRemoveAll, lp_option);
+    TriggerEnable(gt_DebugRoundPressed, lp_option);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6544,23 +6499,40 @@ void gt_DebugUnitRemove_Init () {
 // Trigger: DebugUnitRemoveAll
 //--------------------------------------------------------------------------------------------------
 bool gt_DebugUnitRemoveAll_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_p;
+
     // Automatic Variable Declarations
+    const int auto632EB304_ae = gv_playerCount;
+    const int auto632EB304_ai = 1;
     unitgroup autoC9DFDBBC_g;
     int autoC9DFDBBC_u;
     unit autoC9DFDBBC_var;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((TriggerIsEnabled(gt_IssueOrderPeriodic) == true))) {
+            return false;
+        }
+    }
 
     // Actions
     if (!runActions) {
         return true;
     }
 
-    autoC9DFDBBC_g = UnitGroup(null, c_playerAny, RegionEntireMap(), gv_unitFilter, 0);
-    autoC9DFDBBC_u = UnitGroupCount(autoC9DFDBBC_g, c_unitCountAll);
-    for (;; autoC9DFDBBC_u -= 1) {
-        autoC9DFDBBC_var = UnitGroupUnitFromEnd(autoC9DFDBBC_g, autoC9DFDBBC_u);
-        if (autoC9DFDBBC_var == null) { break; }
-        UnitRemove(autoC9DFDBBC_var);
-        Wait(0.0625, c_timeGame);
+    lv_p = 1;
+    for ( ; ( (auto632EB304_ai >= 0 && lv_p <= auto632EB304_ae) || (auto632EB304_ai < 0 && lv_p >= auto632EB304_ae) ) ; lv_p += auto632EB304_ai ) {
+        autoC9DFDBBC_g = UnitGroup(null, lv_p, gv_battlefield, gv_unitFilter, 0);
+        autoC9DFDBBC_u = UnitGroupCount(autoC9DFDBBC_g, c_unitCountAll);
+        for (;; autoC9DFDBBC_u -= 1) {
+            autoC9DFDBBC_var = UnitGroupUnitFromEnd(autoC9DFDBBC_g, autoC9DFDBBC_u);
+            if (autoC9DFDBBC_var == null) { break; }
+            UnitRemove(autoC9DFDBBC_var);
+        }
+        Wait(0.125, c_timeGame);
     }
     return true;
 }
@@ -6569,69 +6541,62 @@ bool gt_DebugUnitRemoveAll_Func (bool testConds, bool runActions) {
 void gt_DebugUnitRemoveAll_Init () {
     gt_DebugUnitRemoveAll = TriggerCreate("gt_DebugUnitRemoveAll_Func");
     TriggerEnable(gt_DebugUnitRemoveAll, false);
-    TriggerAddEventKeyPressed(gt_DebugUnitRemoveAll, c_playerAny, c_keyR, true, c_keyModifierStateIgnore, c_keyModifierStateRequire, c_keyModifierStateIgnore);
+    TriggerAddEventKeyPressed(gt_DebugUnitRemoveAll, c_playerAny, c_keyF5, true, c_keyModifierStateIgnore, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: DebugSwimRemove
+// Trigger: DebugRoundPressed
 //--------------------------------------------------------------------------------------------------
-bool gt_DebugSwimRemove_Func (bool testConds, bool runActions) {
+bool gt_DebugRoundPressed_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
-    unitgroup auto09E518A6_g;
-    int auto09E518A6_u;
-    unit auto09E518A6_var;
+    int autoF6D1D5EC_val;
 
     // Actions
     if (!runActions) {
         return true;
     }
 
-    auto09E518A6_g = UnitGroupSelected(EventPlayer());
-    auto09E518A6_u = UnitGroupCount(auto09E518A6_g, c_unitCountAll);
-    for (;; auto09E518A6_u -= 1) {
-        auto09E518A6_var = UnitGroupUnitFromEnd(auto09E518A6_g, auto09E518A6_u);
-        if (auto09E518A6_var == null) { break; }
-        UnitBehaviorRemove(auto09E518A6_var, "NagaMyrmidoSwim", 1);
-        UnitBehaviorRemove(auto09E518A6_var, "NagaRoyalGuardSwim", 1);
+    autoF6D1D5EC_val = EventKeyPressed();
+    if (autoF6D1D5EC_val == c_key1) {
+        gv_debugRound = 1;
+    }
+    else if (autoF6D1D5EC_val == c_key2) {
+        gv_debugRound = 2;
+    }
+    else if (autoF6D1D5EC_val == c_key3) {
+        gv_debugRound = 3;
+    }
+    else if (autoF6D1D5EC_val == c_key4) {
+        gv_debugRound = 4;
+    }
+    else if (autoF6D1D5EC_val == c_key5) {
+        gv_debugRound = 5;
+    }
+    else if (autoF6D1D5EC_val == c_key6) {
+        gv_debugRound = 6;
+    }
+    else if (autoF6D1D5EC_val == c_key7) {
+        gv_debugRound = 7;
+    }
+    else if (autoF6D1D5EC_val == c_key8) {
+        gv_debugRound = 8;
+    }
+    else if (autoF6D1D5EC_val == c_key9) {
+        gv_debugRound = 9;
+    }
+    else if (autoF6D1D5EC_val == c_key0) {
+        gv_debugRound = 10;
+    }
+    else {
     }
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void gt_DebugSwimRemove_Init () {
-    gt_DebugSwimRemove = TriggerCreate("gt_DebugSwimRemove_Func");
-    TriggerAddEventKeyPressed(gt_DebugSwimRemove, c_playerAny, c_keyW, true, c_keyModifierStateRequire, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: DebugSwimAdd
-//--------------------------------------------------------------------------------------------------
-bool gt_DebugSwimAdd_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    unitgroup autoB1E5948D_g;
-    int autoB1E5948D_u;
-    unit autoB1E5948D_var;
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    autoB1E5948D_g = UnitGroupSelected(EventPlayer());
-    autoB1E5948D_u = UnitGroupCount(autoB1E5948D_g, c_unitCountAll);
-    for (;; autoB1E5948D_u -= 1) {
-        autoB1E5948D_var = UnitGroupUnitFromEnd(autoB1E5948D_g, autoB1E5948D_u);
-        if (autoB1E5948D_var == null) { break; }
-        UnitBehaviorAddPlayer(autoB1E5948D_var, "NagaMyrmidoSwim", EventPlayer(), 1);
-        UnitBehaviorAddPlayer(autoB1E5948D_var, "NagaRoyalGuardSwim", EventPlayer(), 1);
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_DebugSwimAdd_Init () {
-    gt_DebugSwimAdd = TriggerCreate("gt_DebugSwimAdd_Func");
-    TriggerAddEventKeyPressed(gt_DebugSwimAdd, c_playerAny, c_keyW, true, c_keyModifierStateIgnore, c_keyModifierStateRequire, c_keyModifierStateIgnore);
+void gt_DebugRoundPressed_Init () {
+    gt_DebugRoundPressed = TriggerCreate("gt_DebugRoundPressed_Func");
+    TriggerEnable(gt_DebugRoundPressed, false);
+    TriggerAddEventKeyPressed(gt_DebugRoundPressed, c_playerAny, c_keyNone, true, c_keyModifierStateRequire, c_keyModifierStateIgnore, c_keyModifierStateIgnore);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6694,8 +6659,7 @@ void InitTriggers () {
     gt_DebugKeyPressed_Init();
     gt_DebugUnitRemove_Init();
     gt_DebugUnitRemoveAll_Init();
-    gt_DebugSwimRemove_Init();
-    gt_DebugSwimAdd_Init();
+    gt_DebugRoundPressed_Init();
 }
 
 //--------------------------------------------------------------------------------------------------

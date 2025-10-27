@@ -56,7 +56,7 @@ AIct/Tip=变更昼夜
 AIct/Ubertip=制造日蚀，阻挡阳光，以创造人造夜晚。<n/>在夜晚，增加受月神庇护的单位每秒<d ref="Behavior,Moonlight,Modification.VitalRegenArray[Life]"/>点的生命恢复速度和每秒<d ref="Behavior,Moonlight,Modification.VitalRegenArray[Energy]" precision="1"/>点的法力值恢复速度，并且远程攻击范围增加<d ref="Behavior,Moonlight,Modification.RangedWeaponRange"/>。<n/>持续30秒。
 AIpv/Tip=吸血药水
 AIpv/Ubertip=在攻击的同时生命吸取。<n/>持续<d ref="Behavior,BIpv,Duration"/>秒。
-ANab/Ubertip=投掷出一瓶酸性液体，然后对其周围的单位同时也造成伤害。<n/><n/>减少<d ref="-Behavior,BNab1,Modification.LifeArmorBonus"/>点护甲值；对主目标造成每秒<d ref="-Effect,BNab1DPSTick,VitalArray[Life].ChangeFraction * 100" precision="2"/>%伤害并对周围的单位造成较每秒<d ref="-Effect,BNabS1DPSTick,VitalArray[Life].ChangeFraction * 100" precision="2"/>%伤害。<n/>持续<d ref="Behavior,BNab1,Duration"/>秒。
+ANab/Ubertip=投掷出一瓶酸性液体，然后对其周围的单位同时也造成伤害。<n/><n/>减少<d ref="-Behavior,BNab1,Modification.LifeArmorBonus"/>点护甲值；对主目标造成每秒<d ref="Effect,BNab1DPS,VitalFractionMax[Life] * 100" precision="2"/>%伤害并对周围的单位造成较每秒<d ref="Effect,BNabS1DPS,VitalFractionMax[Life] * 100" precision="2"/>%伤害。<n/>持续<d ref="Behavior,BNab1,Duration"/>秒。
 ANba/Ubertip=被黑暗箭射死的单位会变成具有<d ref="Unit,ndr1,LifeStart"/>点生命值的骷髅兵。
 ANbh/Ubertip=使敌人昏迷<d ref="Behavior,BHbh,Duration"/>秒。
 ANbr/Ubertip=增加周围单位<d ref="Behavior,BNbr,Modification.DamageDealtScaled[Melee]"/>点的攻击力。<n/>持续<d ref="Behavior,BNbr,Duration"/>秒。
@@ -157,6 +157,7 @@ Adef/Ubertip=激活以拥有75%的概率反弹穿刺攻击。如果防御状态�
 Adev/Ubertip=吞噬敌方目标单位，将其慢慢咀嚼，每秒对其造成<d ref="Effect,BdigDPS,Amount"/>点的伤害。在咀嚼目标的过程中，如果遭到杀害，那么它肚中的被吞噬单位就会从中跳出来。
 Advc/Tip=Advc
 Aegr/Ubertip=减少来自穿刺攻击的伤害到原来的50%，并减少来自魔法攻击的伤害到原来的50%。
+Aeib/Name=强化弓
 Aeib/Tip=强化弓
 Aeib/Ubertip=增加弓箭手<d ref="Behavior,Aeib,Modification.RangedWeaponRange"/>的攻击范围。
 Aens/Ubertip=能将一个目标空中单位固定在地面上，使其在<d ref="Behavior,Bena,Duration"/>秒内不能移动。
@@ -209,7 +210,7 @@ AsdsGoblinLandMine/Ubertip=对一定区域造成伤害。对付城墙特别地�
 AsdsPassive/Tip=咔嘣！
 AsdsPassive/Ubertip=死亡时对一定区域造成伤害，爆炸产生的冲击波还能将周围的地面单位炸飞，落地后在<d ref="Behavior,Bsds,Duration"/>秒内使其成为昏晕状态。对付城墙特别地有效。
 Aslo/Ubertip=减慢目标单位<d ref="1 - Behavior,Bslo,Modification.AttackSpeedMultiplier * 100"/>%的攻击速度和<d ref="1 - Behavior,Bslo,Modification.MoveSpeedMultiplier * 100"/>%的移动速度。<n/>持续<d ref="Behavior,Bslo,Duration"/>秒。
-Aspl/Ubertip=链接4个单位在一起。所有被灵魂连接作用的单位都可以将其90%受到的伤害转移到其他单位身上。<n/>持续<d ref="Behavior,Bspl,Duration"/>秒。
+Aspl/Ubertip=链接8个单位在一起。所有被灵魂连接作用的单位都可以将其90%受到的伤害转移到其他单位身上。<n/>持续<d ref="Behavior,Bspl,Duration"/>秒。
 Aspo/Ubertip=迟缓毒药攻击能造成每秒<d ref="Effect,BssdDPS,Amount"/>点的伤害，并在<d ref="Behavior,Bspo,Duration"/>秒内减慢敌人<d ref="1 - Behavior,Bspo,Modification.MoveSpeedMultiplier * 100"/>%的移动速度和<d ref="1 - Behavior,Bspo,Modification.AttackSpeedMultiplier * 100"/>%的攻击速度。
 Aspt/Tip=产生小多头蛇
 Aspt/Ubertip=当该单位被杀死的时候，许多小点的多头蛇会从其尸体中冒出来。
@@ -415,6 +416,7 @@ DeathTowerAura/Buffubertip=该单位处于死亡之塔光环的作用之下，�
 DeathTowerAura/Name=死亡之塔光环
 DeathTowerAuraCaster/Tip=死亡之塔光环
 DeathTowerAuraCaster/Ubertip=增加所有友方召唤单位<d ref="Behavior,DeathTowerAura,Modification.VitalMaxFractionArray[Life] * 100"/>%的最大生命值。
+Defend/Name=防御
 Defend/Tip=防御
 Defend/Ubertip=激活后只会受到10%的穿刺攻击伤害。如果防御状态被激活，移动速度会变成<d ref="Behavior,Defend,Modification.MoveSpeedMultiplier * 100"/>%的常规速度。
 DefendUn/Tip=停止防御
@@ -564,7 +566,7 @@ DocInfo/PatchNote134=德莱尼：
 DocInfo/PatchNote135=大幅度削弱火蜥蜴类单位的攻击。
 DocInfo/PatchNote136=雷霆蜥蜴获得新技能震击，取代原来的技能闪电链。
 DocInfo/PatchNote137=德莱尼追踪者类单位的生命值增加到150点。
-DocInfo/PatchNote138=地精：
+DocInfo/PatchNote138=亡灵：
 DocInfo/PatchNote139=简化有关物品的操作。
 DocInfo/PatchNote140=调整奖励回合怪物的位置。
 DocInfo/PatchNote141=人类：
@@ -589,19 +591,21 @@ DocInfo/PatchNote159=龙：
 DocInfo/PatchNote160=所有龙人获得新技能龙鳞，取代原来的技能抗性皮肤。
 DocInfo/PatchNote161=恶魔：
 DocInfo/PatchNote162=混乱之雨召唤的地狱火数量提高到5个。
-DocInfo/PatchNote163=调整献祭的伤害。
-DocInfo/PatchNote164=人类：
-DocInfo/PatchNote165=步兵类单位的生命值提高到600点，剑士获得新技能盾墙。
-DocInfo/PatchNote166=亡灵：
-DocInfo/PatchNote167=诅咒的冷却时间缩短到15秒。
-DocInfo/PatchNote168=血精灵：
-DocInfo/PatchNote169=血精灵中尉类单位的生命值提高到600点。
-DocInfo/PatchNote170=加入新单位雷克萨。
-DocInfo/PatchNote171=石槌法师获得新技能闪电之盾。
-DocInfo/PatchNote172=酸性炸弹的法力值消耗增加到30点，冷却时间增加到30秒，并且现在按比例伤害。
-DocInfo/PatchNote173=石槌食人魔类单位与石槌类单位的护甲类型现在是无甲。
-DocInfo/PatchNote174=恶魔：
-DocInfo/PatchNote175=黑暗之门所召唤的空间之门训练时间缩短到10秒。
+DocInfo/PatchNote163=提高奖励回合怪物的生命值。
+DocInfo/PatchNote164=调整献祭的伤害。
+DocInfo/PatchNote165=人类：
+DocInfo/PatchNote166=步兵类单位的生命值提高到600点，剑士获得新技能盾墙。
+DocInfo/PatchNote167=兽人：
+DocInfo/PatchNote168=灵魂行者类单位的价格下降到60金币。
+DocInfo/PatchNote169=灵魂连接的作用单位数量增加到8个。
+DocInfo/PatchNote170=诅咒的冷却时间缩短到15秒。
+DocInfo/PatchNote171=血精灵：
+DocInfo/PatchNote172=血精灵中尉类单位的生命值提高到600点。
+DocInfo/PatchNote173=地精：
+DocInfo/PatchNote174=加入新单位兽王。
+DocInfo/PatchNote175=石槌食人魔类单位与石槌法师类单位经过重新设计。
+DocInfo/PatchNote176=恶魔：
+DocInfo/PatchNote177=黑暗之门所召唤的空间之门训练时间缩短到10秒。
 DoomGuard/Name=末日守卫
 DraeneiFlag/Name=德莱尼旗帜
 DraeneiFlag/Tip=放置德莱尼旗帜
@@ -609,6 +613,7 @@ DraeneiFlag/Ubertip=放置德莱尼旗帜。
 DraeneiFlag2/Name=德莱尼旗帜
 DraeneiFlag2/Tip=放置德莱尼旗帜(决赛)
 DraeneiFlag2/Ubertip=放置德莱尼旗帜(决赛)。
+DraeniStalkerInvisibility/Name=隐形
 DraeniStalkerInvisibility/Tip=隐形
 DraeniStalkerInvisibility/Ubertip=使德莱尼追踪者隐形。<n/>持续<d ref="Behavior,DraeniStalkerInvisibility,Duration"/>秒。
 DragonFlag/Name=龙旗帜
@@ -744,6 +749,7 @@ GoblinFlag/Ubertip=放置地精旗帜。
 GoblinFlag2/Name=地精旗帜
 GoblinFlag2/Tip=放置地精旗帜(决赛)
 GoblinFlag2/Ubertip=放置地精旗帜(决赛)。
+GoblinLandMineInvisibility/Name=隐形
 GoblinLandMineInvisibility/Tip=隐形
 GoblinLandMineInvisibility/Ubertip=使地精地雷隐形。<n/>持续<d ref="Behavior,GoblinLandMineInvisibility,Duration"/>秒。
 Gyrocopter/Name=矮人直升机
@@ -769,6 +775,7 @@ Hlgr/Tip=升级到黑暗骑士
 Hlgr/Ubertip=骑兵，具有冲锋和虔诚光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 HonorShield/Tip=荣誉之盾
 HonorShield/Ubertip=每次攻击地面单位或受到攻击将会提升<d ref="Behavior,HonorShield,Modification.DamageDealtUnscaled[Ranged]"/>点攻击及<d ref="Behavior,HonorShield,Modification.LifeArmorBonus"/>点护甲。
+HonorShieldCaster/Name=荣誉之盾
 Hpal/Tip=训练圣骑士
 Hpal/Ubertip=重型的近战单位，能施放圣光术。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 HumanPhalanxPlaceholder/Name=HumanPreviewer
@@ -844,6 +851,8 @@ Nbbc/Tip=训练黑石氏族的剑圣
 Nbbc/Ubertip=敏捷系单位，精于速杀落单的单位。具有致命一击技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 Nbrn/Tip=升级到黑暗游侠
 Nbrn/Ubertip=远程攻击单位。拥有艾露恩的赐福技能。还能施放黑暗箭。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c> 
+Nbst/Tip=训练兽王
+Nbst/Ubertip=战斗系单位，精于集合他的盟友。具有后发制人技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 NightElfPhalanxPlaceholder/Name=NightElfPreviewer
 Nklj/Tip=升级到基尔加丹
 Nklj/Ubertip=<c val="ffcc00">世界精英</c><n/>萨格拉斯的部下，指挥着燃烧军团与泰坦世界为敌。具有抗性皮肤技能，还能施放灵魂燃烧。<n/><n/><c val="ffcc00">攻击地面和空中单位。</c>
@@ -953,7 +962,7 @@ Posterior/Tip=后发
 Posterior/Ubertip=命令全军在战斗开始时停留<d ref="Behavior,Posterior,Duration"/>秒。
 PosteriorStrategy/Name=后发制人
 PosteriorStrategy/Tip=后发制人
-PosteriorStrategy/Ubertip=命令全军在战斗开始时停留<d ref="Behavior,Posterior,Duration"/>秒。
+PosteriorStrategy/Ubertip=命令所有单位停留<d ref="Behavior,Posterior,Duration"/>秒。
 PressureAura/Buffubertip=该单位处于压力光环的作用之下，因此其溅射攻击力得到了增强，并且受到的溅射伤害降低。
 PressureAura/Name=压力光环
 PressureAuraCaster/Tip=压力光环
@@ -1260,6 +1269,7 @@ nerw/Ubertip=<c val="ffcc00">精英</c><n/>远程攻击型魔法施放单位，�
 net1/Ubertip=防守型建筑物，射出能量之箭，擅长于对付敌人的空中单位，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 net2/Ubertip=防守型建筑物，擅长于对付敌人的空中单位，对魔法免疫。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nfac/Tip=建造口袋工厂
+nfacTimeLife/Name=nfacTimeLife
 nfgl/Tip=升级到血肉傀儡
 nfgl/Ubertip=重型的近战单位，具有分裂攻击和疾病之云技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nfgu/Tip=训练恶魔守卫
@@ -1357,9 +1367,9 @@ nogl/Ubertip=重型的近战单位，具有硬化皮肤和嘲讽技能。<n/><n/
 nogn/Tip=训练石槌法师
 nogn/Ubertip=魔法单位。能施放闪电之盾和嗜血。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nogo/Tip=训练石槌食人魔
-nogo/Ubertip=防御型单位。虽然比两个头的稍微苯点，却是一部优秀的战争机器。具有硬化皮肤技能。能施放诱捕技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+nogo/Ubertip=防御型单位。虽然比两个头的稍微苯点，却是一部优秀的战争机器。能施放诱捕技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nogr/Tip=升级到食人魔战士
-nogr/Ubertip=防御型单位，具有硬化皮肤技能。能施放诱捕技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+nogr/Ubertip=防御型单位。能施放战斗怒吼技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nomg/Tip=升级到食人魔法师
 nomg/Ubertip=魔法单位。能施放闪电之盾和酸性炸弹。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 nowb/Tip=训练枭兽
@@ -1439,7 +1449,7 @@ oshmEtherealForm/Name=萨满
 oshmEtherealForm/Tip=升级到萨满
 oslo/Ubertip=能增加<d ref="Behavior,AIsb,Modification.DamageDealtScaled[Melee]"/>点攻击力，还能在<d ref="Behavior,Bspo,Duration"/>秒内减慢敌方单位<d ref="1 - Behavior,Bspo,Modification.AttackSpeedMultiplier * 100"/>%的攻击速度和<d ref="1 - Behavior,Bspo,Modification.MoveSpeedMultiplier * 100"/>%的移动速度。
 ospm/Tip=升级到灵魂行者
-ospm/Ubertip=牛头人法师。具有先祖之魂技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+ospm/Ubertip=牛头人法师。具有灵魂连接和先祖之魂技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ospw/Ubertip=牛头人法师。具有灵魂连接技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 ota2/Name=牛头人
 ota3/Name=牛头人

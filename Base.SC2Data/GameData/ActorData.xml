@@ -8,6 +8,20 @@
     <CActorModel id="ANbrCaster" parent="CasterArt">
         <Model value="AroaCaster"/>
     </CActorModel>
+    <!--beastmaster-->
+    <CActorUnit id="Nbst" parent="War3_Army" unitSound="Beastmaster" unitName="Nbst" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnBeastMaster.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnBeastMaster.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnBeastMaster.dds"/>
+        <BarWidth value="100"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar120"/>
+        <BarOffset value="90"/>
+        <WalkAnimMoveSpeed value="2.5"/>
+        <On Terms="StatusOn.*.ForceChannel" Send="AnimPlay channel Spell AssetDrivenLooping"/>
+        <On Terms="AnimDone.*.Complete; AnimName channel; IsStatus ForceChannel 1" Send="AnimPlay channel Spell AssetDrivenLooping"/>
+    </CActorUnit>
     <CActorSimple id="PosteriorStrategy" parent="War3_SimpleCastAnimWcArt"/>
     <CActorModel id="Posterior" parent="War3_Buff">
         <HostSiteOps Ops="$overhead"/>
@@ -2082,14 +2096,14 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnOneHeadedOgre.dds"/>
         <BarWidth value="87"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar80"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="100"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <!--ogre1-->
     <CActorUnit id="nogr" parent="War3_Army" unitSound="Ogre" unitName="nogr" defType="NONE">
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar80"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnOgre.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnOgre.dds"/>

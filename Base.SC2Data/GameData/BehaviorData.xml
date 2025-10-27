@@ -96,8 +96,6 @@
         </DurationOverride>
         <Modification>
             <ModifyFlags index="SuppressMoving" value="1"/>
-            <AbilClassDisableArray index="CAbilEffectInstant" value="1"/>
-            <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
             <AbilClassDisableArray index="CAbilMove" value="1"/>
         </Modification>
     </CBehaviorBuff>
@@ -901,12 +899,10 @@
     <CBehaviorBuff id="BNab1">
         <Duration value="30"/>
         <Modification LifeArmorBonus="-10"/>
-        <PeriodicEffect value="BNab1DPSTick"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="BNabS1">
         <Duration value="30"/>
         <Modification LifeArmorBonus="-5"/>
-        <PeriodicEffect value="BNabS1DPSTick"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="BNcr1">
         <Duration value="0"/>
@@ -1776,10 +1772,11 @@
     <!--SpiritLink-->
     <CBehaviorBuff id="Bspl">
         <EditorCategories value="Race:Orc,AbilityorEffectType:Units"/>
-        <Duration value="5"/>
-        <DurationOverride index="0" Duration="5">
+        <Duration value="5.555"/>
+        <DurationOverride index="0" Duration="5.555">
             <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
         </DurationOverride>
+        <MaxStackCount value="8"/>
     </CBehaviorBuff>
     <!--SlowPoison-->
     <CBehaviorBuff id="Bspo">

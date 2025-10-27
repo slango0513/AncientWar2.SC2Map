@@ -78,10 +78,18 @@
         <AreaArray Radius="1.25" Effect="AIcfDPS"/>
         <SearchFilters value="-;player,allies,air,mechanical,wall,tree,debris,item,structure,ward,dead,Hidden,invulnerable,Passive,immunity"/>
     </CEffectEnumArea>
+    <CEffectDamage id="BNabS1DPS">
+        <Amount value="0"/>
+        <VitalFractionMax index="Life" value="0.0075"/>
+    </CEffectDamage>
     <CEffectApplyBehavior id="BNbr" parent="War3_ApplyBuff"/>
     <CEffectEnumArea id="BlshSearch">
         <SearchFilters value="-;player,allies,air,wall,tree,Missile,debris,item,structure,ward,dead,Hidden,invulnerable,Passive"/>
     </CEffectEnumArea>
+    <CEffectDamage id="Nbst1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="96"/>
+    </CEffectDamage>
     <CEffectDamage id="Orex1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
         <Amount value="96"/>
@@ -1036,15 +1044,13 @@
         <MaxCount value="12"/>
     </CEffectEnumArea>
     <CEffectDamage id="BNab1DPS">
-        <Amount value="10"/>
+        <Amount value="0"/>
+        <VitalFractionMax index="Life" value="0.015"/>
     </CEffectDamage>
     <CEffectModifyUnit id="BNab1DPSTick">
         <EditorCategories value="Race:Goblin"/>
         <VitalArray index="Life" ChangeFraction="-0.01"/>
     </CEffectModifyUnit>
-    <CEffectDamage id="BNabS1DPS">
-        <Amount value="5"/>
-    </CEffectDamage>
     <CEffectModifyUnit id="BNabS1DPSTick">
         <EditorCategories value="Race:Goblin"/>
         <VitalArray index="Life" ChangeFraction="-0.005"/>
