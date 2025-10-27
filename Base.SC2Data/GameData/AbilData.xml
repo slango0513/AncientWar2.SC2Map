@@ -365,6 +365,23 @@
     <CAbilBehavior id="DestinyBond" parent="AW2_Passive">
         <BehaviorArray value="DestinyBond"/>
     </CAbilBehavior>
+    <CAbilResearch id="UpgradeItemLevel" parent="War3_Research">
+        <InfoArray index="Research1" Time="0" Upgrade="ItemLevel">
+            <Resource index="Terrazine" value="30"/>
+            <Resource index="Custom" value="0"/>
+            <Button Requirements="UpgradeItemLevel"/>
+        </InfoArray>
+        <InfoArray index="Research2" Time="0" Upgrade="ItemLevel">
+            <Resource index="Terrazine" value="30"/>
+            <Resource index="Custom" value="0"/>
+            <Button Requirements="UpgradeItemLevel2"/>
+        </InfoArray>
+        <InfoArray index="Research3" Time="0" Upgrade="ItemLevel">
+            <Resource index="Terrazine" value="30"/>
+            <Resource index="Custom" value="0"/>
+            <Button Requirements="UpgradeItemLevel3"/>
+        </InfoArray>
+    </CAbilResearch>
     <!--Workaround!-->
     <CAbilPawn id="War3_Pawn">
         <Range value="500"/>
@@ -1704,8 +1721,8 @@
             <Cooldown Location="Unit" TimeUse="120"/>
         </Cost>
         <AutoCastFilters value="Self,Visible;-"/>
-        <AutoCastValidatorArray index="0" value="EnemiesNearby9"/>
-        <PrepTime value="3"/>
+        <AutoCastValidatorArray index="0" value="EnemiesNearby6"/>
+        <PrepTime value="4"/>
         <CastOutroTime value="1.08"/>
         <Effect index="0" value="SleepSearch"/>
     </CAbilEffectInstant>
@@ -3230,6 +3247,7 @@
     <CAbilTrain id="Purchasegldo" parent="AW2_MakeItem" unit="gldo"/>
     <CAbilTrain id="Purchasefwss" parent="AW2_MakeItem" unit="fwss"/>
     <CAbilTrain id="Purchasedtsb" parent="AW2_MakeItem" unit="dtsb"/>
+    <CAbilTrain id="Purchaseshhn" parent="AW2_MakeItem" unit="shhn"/>
     <CAbilMorph id="UpgradeTohatw" parent="AW2_Upgrade" toUnit="hatw">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
@@ -3258,7 +3276,7 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilTrain id="ndkwTrain" parent="War3_Train">
-        <InfoArray index="Train1" Time="15">
+        <InfoArray index="Train1" Time="15" Effect="BNin360s">
             <Button DefaultButtonFace="ninf">
                 <Flags index="IgnoreUser" value="1"/>
             </Button>
@@ -3266,7 +3284,7 @@
             <Flags index="AutoCast" value="1"/>
             <Flags index="AutoCastOn" value="1"/>
         </InfoArray>
-        <InfoArray index="Train2" Time="15">
+        <InfoArray index="Train2" Time="15" Effect="DoomGuard360s">
             <Button DefaultButtonFace="nbal">
                 <Flags index="IgnoreUser" value="1"/>
             </Button>

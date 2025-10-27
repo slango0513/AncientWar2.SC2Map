@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CActorModel id="BEar">
+        <On Terms="Behavior.BEarI.On" Send="Create"/>
+        <On Terms="Behavior.BEarI.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorModel id="BHab">
+        <On Terms="Behavior.BHabI.On" Send="Create"/>
+        <On Terms="Behavior.BHabI.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorModel id="BOac">
+        <On Terms="Behavior.BOacI.On" Send="Create"/>
+        <On Terms="Behavior.BOacI.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorModel id="BUau">
+        <On Terms="Behavior.BUauI.On" Send="Create"/>
+        <On Terms="Behavior.BUauI.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorModel id="BUav">
+        <On Terms="Behavior.BUavI.On" Send="Create"/>
+        <On Terms="Behavior.BUavI.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorModel id="BUavSpecial">
+        <On Terms="Effect.BUavILeech.Start; At Source" Send="Create"/>
+    </CActorModel>
     <CActorModel id="DestinyBondBuff" parent="War3_Buff">
         <HostSiteOps Ops="$overhead"/>
     </CActorModel>
@@ -203,7 +226,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnDranaiAkama.dds"/>
         <BarWidth value="87"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
@@ -709,7 +732,7 @@
     </CActorUnit>
     <!--draeneistalker-->
     <CActorUnit id="ndrt" parent="War3_Army" unitSound="Draenei" unitName="ndrt" defType="SMALL">
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnDranai.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnDranai.dds"/>

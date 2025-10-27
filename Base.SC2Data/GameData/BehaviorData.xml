@@ -46,6 +46,34 @@
         </DamageResponse>
         <MaxStackCount value="0"/>
     </CBehaviorBuff>
+    <!--ItemAuraTrueshot Buff=BEar-->
+    <CBehaviorBuff id="AIar">
+        <PeriodicEffect value="AIarSearch"/>
+    </CBehaviorBuff>
+    <!--ItemAuraUnholy Buff=BUau-->
+    <CBehaviorBuff id="AIau">
+        <PeriodicEffect value="AIauSearch"/>
+    </CBehaviorBuff>
+    <!--ItemAuraVampiric Buff=BUav-->
+    <CBehaviorBuff id="AIav">
+        <PeriodicEffect value="AIavSearch"/>
+    </CBehaviorBuff>
+    <!--ItemAuraBrilliance Buff=BHab-->
+    <CBehaviorBuff id="AIba">
+        <PeriodicEffect value="AIabSearch"/>
+    </CBehaviorBuff>
+    <!--ItemAuraCommand Buff=BOac-->
+    <CBehaviorBuff id="AIcd">
+        <PeriodicEffect value="AIacSearch"/>
+    </CBehaviorBuff>
+    <!--DefenseBonus (+8)-->
+    <CBehaviorBuff id="AId8" parent="AW2_Item">
+        <Modification LifeArmorBonus="16"/>
+    </CBehaviorBuff>
+    <!--Defend (Item)-->
+    <CBehaviorBuff id="AIdd">
+        <DamageResponse ModifyFraction="0.75"/>
+    </CBehaviorBuff>
     <!--Permanent Immolation Dur=1 HeroDur=1 Buff=BNpi-->
     <CBehaviorBuff id="ANpi">
         <PeriodicEffect value="ANpiSearch"/>
@@ -69,6 +97,16 @@
         </Modification>
         <InfoFlags index="Hidden" value="0"/>
         <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <!--Infernal-->
+    <CBehaviorBuff id="BNin">
+        <Modification>
+            <StateFlags index="Summoned" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <!--AuraEndurance-->
+    <CBehaviorBuff id="BOae">
+        <Modification MoveSpeedMultiplier="1.25" AttackSpeedMultiplier="1.25"/>
     </CBehaviorBuff>
     <!--LightningShield-->
     <CBehaviorBuff id="Blsh">
@@ -426,7 +464,7 @@
     </CBehaviorBuff>
     <!--Runed Bracers-->
     <CBehaviorBuff id="AIsr" parent="AW2_Item">
-        <DamageResponse Chance="1" ModifyFraction="0.5">
+        <DamageResponse Chance="1" ModifyFraction="0.25">
             <Kind index="Melee" value="0"/>
             <Kind index="Ranged" value="0"/>
             <Kind index="Splash" value="0"/>
@@ -889,8 +927,8 @@
         <EditorCategories value="Race:Demon,AbilityorEffectType:Units"/>
         <DisplayDuration index="Self" value="1"/>
         <DisplayDuration index="Ally" value="1"/>
-        <Duration value="60"/>
-        <DurationOverride index="0" Duration="60">
+        <Duration value="180"/>
+        <DurationOverride index="0" Duration="180">
             <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
         </DurationOverride>
         <FinalEffect value="TimedLifeFate"/>
@@ -956,6 +994,10 @@
         <MaxStackCount value="2"/>
         <MaxStackCountPerCaster value="1"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="BUavI" parent="BUav">
+        <RemoveValidatorArray index="0" value="BUavIRemove"/>
+        <DamageResponse Handled="BUavILeech"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="BUav1Leech">
         <MaxStackCount value="2"/>
         <MaxStackCountPerCaster value="1"/>
@@ -964,6 +1006,14 @@
                 <KindArray index="Melee" value="0.25"/>
             </VitalDamageLeechArray>
         </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BUavILeech" parent="War3_Passive">
+        <Modification>
+            <VitalDamageLeechArray index="Life">
+                <KindArray index="Melee" value="0.25"/>
+            </VitalDamageLeechArray>
+        </Modification>
+        <Duration value="0.0625"/>
     </CBehaviorBuff>
     <!--EnsnareAir-->
     <CBehaviorBuff id="Bena">
@@ -1175,10 +1225,20 @@
         <MaxStackCount value="2"/>
         <MaxStackCountPerCaster value="1"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="BEarI" parent="BEarBase">
+        <Modification>
+            <DamageDealtFraction index="Ranged" value="0.25"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="BHab1">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
         <MaxStackCount value="2"/>
         <MaxStackCountPerCaster value="1"/>
+        <Modification>
+            <VitalRegenArray index="Energy" value="0.5"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BHabI" parent="BHab">
         <Modification>
             <VitalRegenArray index="Energy" value="0.5"/>
         </Modification>
@@ -1199,8 +1259,8 @@
         <Modification LifeArmorBonus="5"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="BHbh">
-        <Duration value="3"/>
-        <DurationOverride index="0" Duration="1.5">
+        <Duration value="6"/>
+        <DurationOverride index="0" Duration="3">
             <ValidatorArray index="0" value="Hero"/>
         </DurationOverride>
     </CBehaviorBuff>
@@ -1446,6 +1506,16 @@
             <DamageDealtFraction index="Ranged" value="0.25"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="BOacI" parent="War3_AuraBuff">
+        <EditorCategories value="Race:orc,AbilityorEffectType:Units"/>
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnGnollCommandAura.dds"/>
+        <Name value="Boac/Name"/>
+        <Tooltip value="Boac/Buffubertip"/>
+        <Modification>
+            <DamageDealtFraction index="Melee" value="0.25"/>
+            <DamageDealtFraction index="Ranged" value="0.25"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="BOae1">
         <EditorCategories value="Race:Orc,AbilityorEffectType:Units"/>
         <MaxStackCount value="2"/>
@@ -1466,6 +1536,11 @@
             <VitalRegenArray index="Life" value="5"/>
         </Modification>
         <EditorCategories value="Race:Undead,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BUauI" parent="BUau">
+        <Modification MoveSpeedMultiplier="1.25">
+            <VitalRegenArray index="Life" value="5"/>
+        </Modification>
     </CBehaviorBuff>
     <!--Lich - Frost Armor Buff=BUfa-->
     <CBehaviorBuff id="BUfa1">

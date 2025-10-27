@@ -618,8 +618,10 @@ void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug, bool lp_aut
 void gf_CreateRandomItem (int lp_round, bool lp_finalRound) {
     // Variable Declarations
     int lv_player;
-    int lv_itemIndex;
+    const string lv_data = "ItemData";
+    int lv_itemMaxCount;
     string lv_item;
+    int lv_itemUpgradeLevel;
     int lv_level;
     int lv_min;
     int lv_max;
@@ -630,22 +632,23 @@ void gf_CreateRandomItem (int lp_round, bool lp_finalRound) {
     const int autoB6C46589_ai = 1;
 
     // Variable Initialization
+    lv_itemMaxCount = UserDataFieldValueCount(lv_data, "Item");
 
     // Implementation
     lv_player = 1;
     for ( ; ( (autoB6C46589_ai >= 0 && lv_player <= autoB6C46589_ae) || (autoB6C46589_ai < 0 && lv_player >= autoB6C46589_ae) ) ; lv_player += autoB6C46589_ai ) {
         while (true) {
-            lv_itemIndex = RandomInt(1, UserDataFieldValueCount("ItemData", "Item"));
-            lv_item = UserDataGetUnit("ItemData", "1", "Item", lv_itemIndex);
+            lv_item = UserDataGetUnit("ItemData", "1", "Item", RandomInt(1, lv_itemMaxCount));
+            lv_itemUpgradeLevel = TechTreeUpgradeCount(lv_player, "ItemLevel", c_techCountCompleteOnly);
             if ((lv_item != null)) {
                 lv_level = (CatalogFieldValueGetAsInt(c_gameCatalogUnit, lv_item, "CostResource[" + IntToString(2) + "]", lv_player) / 15);
                 if ((lp_finalRound == true)) {
-                    lv_min = 8;
+                    lv_min = (6+lv_itemUpgradeLevel);
                     lv_max = 20;
                 }
                 else {
-                    lv_min = (lp_round - 2);
-                    lv_max = lp_round;
+                    lv_min = (lp_round+lv_itemUpgradeLevel-2);
+                    lv_max = (lp_round+lv_itemUpgradeLevel);
                 }
                 if (((lv_level >= lv_min) && (lv_level <= lv_max))) {
                     if ((PlayerGroupHasPlayer(gv_aIGroup, lv_player) == false)) {

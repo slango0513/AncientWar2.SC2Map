@@ -65,6 +65,16 @@
         </TargetSorts>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CEffectEnumArea>
+    <CEffectApplyBehavior id="BUavILeech" parent="War3_ApplyBuff">
+        <WhichUnit Value="Source"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="BOacI" parent="War3_AuraBuff"/>
+    <CEffectApplyBehavior id="BUavI" parent="War3_AuraBuff"/>
+    <CEffectEnumArea id="AIavSearch" parent="War3_AuraSearch" aura="BUavI"/>
+    <CEffectEnumArea id="AIacSearch" parent="War3_AuraSearch" aura="BOacI"/>
+    <CEffectEnumArea id="AIabSearch" parent="War3_AuraSearch" aura="BHabI"/>
+    <CEffectEnumArea id="AIarSearch" parent="War3_AuraSearch" aura="BEarI"/>
+    <CEffectEnumArea id="AIauSearch" parent="War3_AuraSearch" aura="BUauI"/>
     <CEffectEnumArea id="ANbrSearch" parent="War3_AbilSearch">
         <AreaArray Radius="7.0312" Effect="BNbr"/>
         <SearchFilters value="-;neutral,enemies,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
@@ -78,6 +88,9 @@
         <AreaArray Radius="1.25" Effect="AIcfDPS"/>
         <SearchFilters value="-;player,allies,air,mechanical,wall,tree,debris,item,structure,ward,dead,Hidden,invulnerable,Passive,immunity"/>
     </CEffectEnumArea>
+    <CEffectApplyBehavior id="BEarI" parent="War3_AuraBuff"/>
+    <CEffectApplyBehavior id="BHabI" parent="War3_AuraBuff"/>
+    <CEffectApplyBehavior id="BUauI" parent="War3_AuraBuff"/>
     <CEffectDamage id="BNabS1DPS">
         <Amount value="0"/>
         <VitalFractionMax index="Life" value="0.0075"/>
@@ -865,6 +878,12 @@
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="DoomGuard">
         <EditorCategories value="Race:Demon"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="DoomGuard360s">
+        <EditorCategories value="Race:Demon"/>
+        <Behavior value="DoomGuard"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="360"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="Barm" parent="War3_AuraBuff">
         <EditorCategories value="Race:BloodElf"/>
