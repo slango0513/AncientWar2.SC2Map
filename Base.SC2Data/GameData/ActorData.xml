@@ -1,9 +1,59 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CActorSimple id="CurseOfFlesh" parent="War3_SimpleCastAnim"/>
+    <CActorModel id="CurseOfFleshTarget" parent="War3_Buff">
+        <HostSiteOps Ops="$overhead"/>
+        <On index="3" Terms="Behavior.CurseOfFlesh.On" Send="Create"/>
+        <On index="4" Terms="Behavior.CurseOfFlesh.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorSimple id="Afbk" parent="War3_AttackMissileSwap"/>
+    <CActorAction id="AfbkMissileAttack" parent="War3_GenericMissileAttack" effectImpact="AfbkMissileImpactSet" effectLaunch="AfbkMissile" missile="AfbkMissile"/>
+    <CActorMissile id="AfbkMissile" parent="War3_Missile" unitName="AfbkMissile"/>
+    <CActorModel id="ApoiTarget" parent="TargetArtX">
+        <HostSiteOps Ops="$weapon"/>
+        <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="Behavior.Apoi.On" Send="Create"/>
+        <On Terms="Behavior.Apoi.Off" Send="Destroy"/>
+    </CActorModel>
+    <CActorModel id="AfbkTarget" parent="TargetArtX">
+        <HostSiteOps Ops="$weapon"/>
+        <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="Behavior.Afbk.On" Send="Create"/>
+        <On Terms="Behavior.Afbk.Off" Send="Destroy"/>
+    </CActorModel>
+    <CActorUnit id="OrbOfArcane" parent="War3_Item" unitName="OrbOfArcane" art="Assets\Textures\BTN\Renee_war3_btnfeedback.dds"/>
+    <CActorModel id="BNmr" parent="War3_Buff"/>
+    <CActorSimple id="ANmr" parent="War3_SimpleCastAnim"/>
+    <!--Crypt Lord - Locust Swarm-->
+    <CActorSimple id="AUls">
+        <On index="3" Terms="ActorCreation" Target="_Unit" Send="AnimGroupApply Spell"/>
+        <On index="4" Terms="ActorDestruction" Target="_Unit" Send="AnimGroupRemove Spell"/>
+    </CActorSimple>
+    <CActorSplat id="ArachanthidEarthBorerBurrowedBurrowedSplat" parent="War3_BurrowedSplat" unitName="ArachanthidEarthBorerBurrowed">
+        <Model value="BurrowedSplat"/>
+    </CActorSplat>
     <CActorModel id="BNch" parent="War3_Buff">
         <HostSiteOps Ops="$overhead"/>
         <AutoScaleFromSelectionFactor value="0.500000"/>
     </CActorModel>
+    <CActorModel id="Bwea">
+        <On Terms="Behavior.Bwea.On" Target="_Selectable" Send="HostSiteOpsSet ::Host BenaZOp"/>
+        <On Terms="Behavior.Bwea.Off" Target="_Selectable" Send="HostSiteOpsSet ::Host"/>
+        <On Terms="Behavior.Bwea.Off" Target="BenaZHost" Send="Destroy"/>
+    </CActorModel>
+    <!--firelord-->
+    <CActorUnit id="Nfir" parent="War3_Army" unitSound="HeroFireLord" unitName="Nfir" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnHeroAvatarOfFlame.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnHeroAvatarOfFlame.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnHeroAvatarOfFlame.dds"/>
+        <BarWidth value="100"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar120"/>
+        <BarOffset value="120"/>
+        <WalkAnimMoveSpeed value="2.5"/>
+        <ModelFlags index="AutomateGlobalLoops" value="0"/>
+    </CActorUnit>
     <CActorMissile id="RitssynFlamescowl1LM" parent="War3_MissileSwapable" unitName="RitssynFlamescowl1LM"/>
     <CActorAction id="RitssynFlamescowl1" parent="War3_AttackMissileSwapable"/>
     <CActorUnit id="BurningSmoke" parent="War3_Army" unitSound="PlagueCloud" unitName="BurningSmoke" defType="MEDIUM">
@@ -51,6 +101,99 @@
         <BarOffset value="50"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
+    <!--barbedarachnathid-->
+    <CActorUnit id="nanb" parent="War3_Army" unitSound="Arachnathid" unitName="nanb" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnArachnathid.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnArachnathid.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnArachnathid.dds"/>
+        <BarWidth value="70"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.3437"/>
+    </CActorUnit>
+    <!--earthborerarachnathid-->
+    <CActorUnit id="nane" parent="War3_Army" unitSound="Arachnathid" unitName="nane" defType="LARGE">
+        <On Terms="ActorCreation" Send="SetTintColor 150,150,150"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnArachnathid.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnArachnathid.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnArachnathid.dds"/>
+        <BarWidth value="85"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--barbedarachnathidmerc-->
+    <CActorUnit id="nanm" parent="War3_Army" unitSound="Arachnathid" unitName="nanm" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnArachnathid.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnArachnathid.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnArachnathid.dds"/>
+        <BarWidth value="70"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.3437"/>
+    </CActorUnit>
+    <!--overlordarachnathid-->
+    <CActorUnit id="nano" parent="War3_Army" unitSound="Arachnathid" unitName="nano" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnArachnathidpurple.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnArachnathidpurple.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnArachnathidpurple.dds"/>
+        <BarWidth value="90"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.3437"/>
+    </CActorUnit>
+    <!--warriorarachnathid-->
+    <CActorUnit id="nanw" parent="War3_Army" unitSound="Arachnathid" unitName="nanw" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnArachnathidGreen.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnArachnathidGreen.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnArachnathidGreen.dds"/>
+        <BarWidth value="80"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.3437"/>
+    </CActorUnit>
+    <!--barbedarachnathidburrowed-->
+    <CActorUnit id="nbnb" parent="War3_Army" unitSound="Arachnathid" unitName="nbnb" defType="LARGE">
+        <On Terms="ActorCreation" Send="AnimGroupApply Alternate {} {} Instant"/>
+        <On Terms="UnitPortrait.*.Configure" Target="::PortraitGameSelf" Send="AnimGroupApply Alternate {} {} Instant"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnArachnathid.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnArachnathid.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnArachnathid.dds"/>
+        <BarWidth value="70"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
+    </CActorUnit>
+    <CActorUnit id="ArachanthidEarthBorerBurrowed" parent="War3_Army" unitSound="Arachnathid" unitName="ArachanthidEarthBorerBurrowed" defType="LARGE">
+        <On Terms="ActorCreation" Send="AnimGroupApply Alternate {} {} Instant"/>
+        <On Terms="UnitPortrait.*.Configure" Target="::PortraitGameSelf" Send="AnimGroupApply Alternate {} {} Instant"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnArachnathid.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnArachnathid.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnArachnathid.dds"/>
+        <BarWidth value="70"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
+    </CActorUnit>
     <!--darkportalse-->
     <CActorUnit id="ndke" parent="War3_Building" unitName="ndke" defType="FORT">
         <MinimapUseSelfColor value="0"/>
@@ -69,6 +212,19 @@
         <BarWidth value="425"/>
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
         <BarOffset value="120"/>
+    </CActorUnit>
+    <!--dalaranreject-->
+    <CActorUnit id="ndrj" parent="War3_Army" unitSound="Zombie" unitName="ndrj" defType="MEDIUM">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnDalaranReject.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnDalaranReject.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnDalaranReject.dds"/>
+        <BarWidth value="72"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_UndeadLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <!--eredardiabolist-->
     <CActorUnit id="nerd" parent="War3_Army" unitSound="PitLord" unitName="nerd" defType="NONE">
@@ -95,6 +251,83 @@
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.7343"/>
     </CActorUnit>
+    <!--forgottenone-->
+    <CActorUnit id="nfgo" parent="War3_Building" unitName="nfgo" defType="LARGE">
+        <On Terms="ActorCreation" Send="Create UBR_NGOL"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnForgottenOne.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnForgottenOne.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnForgottenOne.dds"/>
+        <BarWidth value="215"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar120"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
+    </CActorUnit>
+    <!--tentacle-->
+    <CActorUnit id="nfgt" parent="War3_Army" unitName="nfgt" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnTentacle.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnTentacle.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnTentacle.dds"/>
+        <BarWidth value="37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
+    </CActorUnit>
+    <!--facelessonedeathbringer-->
+    <CActorUnit id="nfod" parent="War3_Army" unitSound="FacelessOne" unitName="nfod" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnFacelessOne.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnFacelessOne.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnFacelessOne.dds"/>
+        <BarWidth value="120"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar120"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.3437"/>
+    </CActorUnit>
+    <!--lavaspawn2-->
+    <CActorUnit id="nlv2" parent="War3_Army" unitSound="LavaSpawn" unitName="nlv2" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnLavaSpawn.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnLavaSpawn.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnLavaSpawn.dds"/>
+        <BarWidth value="80"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="70"/>
+        <WalkAnimMoveSpeed value="2.3437"/>
+        <ModelFlags index="AutomateGlobalLoops" value="0"/>
+    </CActorUnit>
+    <!--lavaspawn3-->
+    <CActorUnit id="nlv3" parent="War3_Army" unitSound="LavaSpawn" unitName="nlv3" defType="LARGE">
+        <On Terms="ActorCreation" Send="SetTintColor 255,255,150"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnLavaSpawn.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnLavaSpawn.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnLavaSpawn.dds"/>
+        <BarWidth value="80"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="80"/>
+        <WalkAnimMoveSpeed value="2.3437"/>
+        <ModelFlags index="AutomateGlobalLoops" value="0"/>
+    </CActorUnit>
+    <!--nerubianqueen-->
+    <CActorUnit id="nnwq" parent="War3_Army" unitSound="Nerubian" unitName="nnwq" defType="MEDIUM">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnNerubianQueen.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnNerubianQueen.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnNerubianQueen.dds"/>
+        <BarWidth value="100"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.5"/>
+    </CActorUnit>
     <!--purplefelstalker-->
     <CActorUnit id="npfl" parent="War3_Army" unitSound="Felhound" unitName="npfl" defType="MEDIUM">
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar110"/>
@@ -120,6 +353,49 @@
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
+    <!--sludgeminion-->
+    <CActorUnit id="nslm" parent="War3_Army" unitSound="SludgeMonster" unitName="nslm" defType="MEDIUM">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnSludgeCreature.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnSludgeCreature.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnSludgeCreature.dds"/>
+        <BarWidth value="50"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--spiderblack-->
+    <CActorUnit id="nspb" parent="War3_SpiderUnit" unitSound="Spider" unitName="nspb" defType="MEDIUM">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnSpiderBlack.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnSpiderBlack.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnSpiderBlack.dds"/>
+        <BarWidth value="55"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--spiderling-->
+    <CActorUnit id="nspd" parent="War3_Army" unitSound="Nerubian" unitName="nspd" defType="MEDIUM">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnNerubian.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnNerubian.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnNerubian.dds"/>
+        <BarWidth value="75"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--spider-->
+    <CActorUnit id="nspr">
+        <WalkAnimMoveSpeed value="2"/>
+    </CActorUnit>
     <!--stormreavernecrolyte-->
     <CActorUnit id="nsrn" parent="War3_Army" unitSound="ShamanX" unitName="nsrn" defType="NONE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnOrcWarlock.dds"/>
@@ -132,6 +408,72 @@
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--spittingspider-->
+    <CActorUnit id="nssp" parent="War3_SpiderUnit" unitSound="Spider" unitName="nssp" defType="MEDIUM">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnSpiderBlue.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnSpiderBlue.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnSpiderBlue.dds"/>
+        <BarWidth value="75"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--satyrhellcaller-->
+    <CActorUnit id="nsth" parent="War3_Army" unitSound="Satyr" unitName="nsth" defType="SMALL">
+        <On Terms="ActorCreation" Send="SetTintColor 255,255,150"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnSatyr.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnSatyr.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnSatyr.dds"/>
+        <BarWidth value="62"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.5"/>
+    </CActorUnit>
+    <!--satyrshadowdancer-->
+    <CActorUnit id="nsts" parent="War3_Army" unitSound="Satyr" unitName="nsts" defType="SMALL">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnSatyrTrickster.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnSatyrTrickster.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnSatyrTrickster.dds"/>
+        <BarWidth value="50"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--satyr-->
+    <CActorUnit id="nsty" parent="War3_Army" unitSound="Satyr" unitName="nsty" defType="SMALL">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnSatyr.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnSatyr.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnSatyr.dds"/>
+        <BarWidth value="50"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar100"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--unbrokendarkweaver-->
+    <CActorUnit id="nubw" parent="War3_Army" unitSound="Unbroken" unitName="nubw" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnUnbroken.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnUnbroken.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnUnbroken.dds"/>
+        <BarWidth value="87"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar120"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.3437"/>
     </CActorUnit>
     <!--lesservoidwalker-->
     <CActorUnit id="nvdl" parent="War3_Army" unitSound="ObsidianDestroyer" unitName="nvdl" defType="MEDIUM">
@@ -171,6 +513,18 @@
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <!--locust-->
+    <CActorUnit id="uloc" parent="War3_Army" unitName="uloc" defType="SMALL">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnLocustSwarm.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnLocustSwarm.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnLocustSwarm.dds"/>
+        <BarWidth value="50"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="0"/>
+        <WalkAnimMoveSpeed value="3.125"/>
     </CActorUnit>
     <CActorAction id="ushd1" parent="War3_AttackMissileSwapable"/>
     <CActorMissile id="ushd1LM" parent="War3_MissileSwapable" unitName="ushd1LM"/>
@@ -333,6 +687,9 @@
     <CActorModel id="ShieldWall" parent="War3_Buff">
         <HostSiteOps Ops="$overhead"/>
         <Model value="Bdef"/>
+    </CActorModel>
+    <CActorModel id="StickySkin" parent="CasterArt">
+        <On Terms="Behavior.StickySkin.DamageHandled" Send="Create"/>
     </CActorModel>
     <CActorSound id="ShieldWallSound" parent="SoundOneShot">
         <On Terms="Effect.ShieldWall.Start" Send="Create"/>
@@ -1219,7 +1576,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnLavaSpawn.dds"/>
         <BarWidth value="80"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.3437"/>
     </CActorUnit>
@@ -2484,7 +2841,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnSeaElemental.dds"/>
         <BarWidth value="80"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
         <BarOffset value="120"/>
         <WalkAnimMoveSpeed value="1.7187"/>
     </CActorUnit>
@@ -2956,6 +3313,10 @@
         <Model value="ChaosOrcPreviewer"/>
         <Scale value="4.000000"/>
     </CActorUnit>
+    <CActorUnit id="CentaurPreviewer" parent="War3_Item" unitName="CentaurPreviewer">
+        <Model value="CentaurPreviewer"/>
+        <Scale value="4.000000"/>
+    </CActorUnit>
     <CActorUnit id="DragonPreviewer" parent="War3_Item" unitName="DragonPreviewer">
         <Model value="DragonPreviewer"/>
         <Scale value="4.000000"/>
@@ -2982,6 +3343,14 @@
     </CActorUnit>
     <CActorUnit id="DemonPreviewer" parent="War3_Item" unitName="DemonPreviewer">
         <Model value="DemonPreviewer"/>
+        <Scale value="4.000000"/>
+    </CActorUnit>
+    <CActorUnit id="OldGodPreviewer" parent="War3_Item" unitName="OldGodPreviewer">
+        <Model value="OldGodPreviewer"/>
+        <Scale value="4.000000"/>
+    </CActorUnit>
+    <CActorUnit id="TreantPreviewer" parent="War3_Item" unitName="TreantPreviewer">
+        <Model value="TreantPreviewer"/>
         <Scale value="4.000000"/>
     </CActorUnit>
     <!--cryptlord-->
@@ -3476,7 +3845,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnSummonWaterElemental.dds"/>
         <BarWidth value="80"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
         <BarOffset value="120"/>
         <WalkAnimMoveSpeed value="1.7187"/>
     </CActorUnit>
@@ -3698,6 +4067,18 @@
         <BuildModel value="War3_DragonCaptureFlag"/>
         <PlacementModel value="War3_DragonCaptureFlag"/>
     </CActorUnit>
+    <CActorUnit id="TreantFlag" parent="War3_Item" unitName="TreantFlag" art="Assets\Textures\BTN\Renee_war3_btnNightElfCaptureFlag.dds">
+        <Model value="War3_TreantCaptureFlag"/>
+        <PortraitModel value="War3_TreantCaptureFlag"/>
+        <BuildModel value="War3_TreantCaptureFlag"/>
+        <PlacementModel value="War3_TreantCaptureFlag"/>
+    </CActorUnit>
+    <CActorUnit id="TreantFlag2" parent="War3_Item" unitName="TreantFlag2" art="Assets\Textures\BTN\Renee_war3_btnNightElfCaptureFlag.dds">
+        <Model value="War3_TreantCaptureFlag"/>
+        <PortraitModel value="War3_TreantCaptureFlag"/>
+        <BuildModel value="War3_TreantCaptureFlag"/>
+        <PlacementModel value="War3_TreantCaptureFlag"/>
+    </CActorUnit>
     <CActorUnit id="DemonFlag" parent="War3_Item" unitName="DemonFlag" art="Assets\Textures\BTN\Renee_war3_btnUndeadCaptureFlag.dds">
         <Model value="War3_DemonCaptureFlag"/>
         <PortraitModel value="War3_DemonCaptureFlag"/>
@@ -3709,6 +4090,18 @@
         <PortraitModel value="War3_DemonCaptureFlag"/>
         <BuildModel value="War3_DemonCaptureFlag"/>
         <PlacementModel value="War3_DemonCaptureFlag"/>
+    </CActorUnit>
+    <CActorUnit id="OldGodFlag" parent="War3_Item" unitName="OldGodFlag" art="Assets\Textures\BTN\Renee_war3_btnUndeadCaptureFlag.dds">
+        <Model value="War3_OldGodCaptureFlag"/>
+        <PortraitModel value="War3_OldGodCaptureFlag"/>
+        <BuildModel value="War3_OldGodCaptureFlag"/>
+        <PlacementModel value="War3_OldGodCaptureFlag"/>
+    </CActorUnit>
+    <CActorUnit id="OldGodFlag2" parent="War3_Item" unitName="OldGodFlag2" art="Assets\Textures\BTN\Renee_war3_btnUndeadCaptureFlag.dds">
+        <Model value="War3_OldGodCaptureFlag"/>
+        <PortraitModel value="War3_OldGodCaptureFlag"/>
+        <BuildModel value="War3_OldGodCaptureFlag"/>
+        <PlacementModel value="War3_OldGodCaptureFlag"/>
     </CActorUnit>
     <CActorUnit id="DraeneiFlag" parent="War3_Item" unitName="DraeneiFlag" art="Assets\Textures\BTN\Renee_war3_btnHumanCaptureFlag.dds">
         <Model value="War3_DraeneiCaptureFlag"/>
@@ -3757,6 +4150,18 @@
         <PortraitModel value="War3_ChaosOrcCaptureFlag"/>
         <BuildModel value="War3_ChaosOrcCaptureFlag"/>
         <PlacementModel value="War3_ChaosOrcCaptureFlag"/>
+    </CActorUnit>
+    <CActorUnit id="CentaurFlag" parent="War3_Item" unitName="CentaurFlag" art="Assets\Textures\BTN\Renee_war3_btnOrcCaptureFlag.dds">
+        <Model value="War3_CentaurCaptureFlag"/>
+        <PortraitModel value="War3_CentaurCaptureFlag"/>
+        <BuildModel value="War3_CentaurCaptureFlag"/>
+        <PlacementModel value="War3_CentaurCaptureFlag"/>
+    </CActorUnit>
+    <CActorUnit id="CentaurFlag2" parent="War3_Item" unitName="CentaurFlag2" art="Assets\Textures\BTN\Renee_war3_btnOrcCaptureFlag.dds">
+        <Model value="War3_CentaurCaptureFlag"/>
+        <PortraitModel value="War3_CentaurCaptureFlag"/>
+        <BuildModel value="War3_CentaurCaptureFlag"/>
+        <PlacementModel value="War3_CentaurCaptureFlag"/>
     </CActorUnit>
     <!--foresttrollhighpriest-->
     <CActorUnit id="nfsh" parent="War3_Army" unitSound="ForestTrollShadowPriest" unitName="nfsh" defType="NONE">
@@ -4240,11 +4645,11 @@
     </CActorUnit>
     <!--nerubianwebspinner-->
     <CActorUnit id="nnwl" parent="War3_Army" unitSound="Nerubian" unitName="nnwl" defType="MEDIUM">
-        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnNerubianQueen.dds"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnnerubian.dds"/>
         <GroupIcon>
-            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnNerubianQueen.dds"/>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnnerubian.dds"/>
         </GroupIcon>
-        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnNerubianQueen.dds"/>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnnerubian.dds"/>
         <BarWidth value="100"/>
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
         <BarOffset value="60"/>
@@ -5203,4 +5608,33 @@
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
+    <CActorSimple id="Apoi" parent="War3_AttackMissileSwap"/>
+    <CActorModel id="PoisonStingNonStacking" parent="War3_Buff"/>
+    <CActorModel id="PoisonStingStacking" parent="War3_Buff"/>
+    <CActorUnit id="PoisonSting" parent="War3_Item" unitName="PoisonSting" art="Assets\Textures\BTN\Renee_war3_btnPoisonSting.dds"/>
+    <CActorModel id="TrueFulfillment" parent="War3_Buff">
+        <HostSiteOps Ops="$chest"/>
+    </CActorModel>
+    <CActorModel id="TrueFulfillmentCaster" parent="TargetArtX">
+        <On Terms="Effect.TrueFulfillmentSearch" Send="Create"/>
+    </CActorModel>
+    <CActorModel id="TrueFulfillmentSpecial" parent="ModelAnimationStyleOneShot">
+        <HostSiteOps Ops="$weapon"/>
+        <On Terms="Effect.TrueFulfillmentSearch" Send="Create"/>
+    </CActorModel>
+    <CActorSimple id="Aspd" parent="War3_SimpleCastAnim"/>
+    <CActorAction id="nspb1" parent="War3_AttackMissileSwapable"/>
+    <CActorMissile id="nspb1LM" parent="War3_MissileSwapable" unitName="nspb1LM"/>
+    <CActorModel id="VoidRecallRecallStart" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.VoidRecallSet.Start" Send="Create"/>
+        <On Terms="Effect.VoidRecallSet.Start" Send="Create WarpTrainStart"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter" HoldPosition="1" HoldRotation="1"/>
+    </CActorModel>
+    <CActorModel id="VoidRecallRecallStop" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.VoidRecallTeleport.Stop" Send="Create"/>
+        <On Terms="Effect.VoidRecallTeleport.Stop" Send="Create WarpTrainStop"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter" HoldPosition="1" HoldRotation="1"/>
+    </CActorModel>
 </Catalog>

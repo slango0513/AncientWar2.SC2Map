@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CModel id="CurseOfFleshTarget" parent="War3_CurseTarget"/>
+    <CModel id="ApoiTarget" parent="War3_OrbSlow"/>
+    <CModel id="AfbkMissile" parent="War3_OrbOfDeathMissile">
+        <ScaleMax value="0.625000,0.625000,0.625000"/>
+        <ScaleMin value="0.625000,0.625000,0.625000"/>
+    </CModel>
+    <CModel id="OrbArcane" parent="War3_Spell" race="Items">
+        <Model value="Assets\Abilities\Spells\Human\War3_SpellStealMissile\War3_SpellStealMissile.m3"/>
+    </CModel>
+    <CModel id="AfbkTarget" parent="OrbArcane">
+        <ScaleMax value="1.125000,1.125000,1.125000"/>
+        <ScaleMin value="1.125000,1.125000,1.125000"/>
+    </CModel>
+    <CModel id="War3_MindRotTarget" parent="War3_Spell" race="OldGod">
+        <Events Anim="Birth" Type="Sound" Payload="SND_AREJ"/>
+        <Model value="Assets\Abilities\Spells\NightElf\War3_TargetArtLumber\War3_TargetArtLumber.m3"/>
+    </CModel>
+    <CModel id="BNmr" parent="War3_MindRotTarget"/>
+    <CModel id="ApoiMissile" parent="War3_PoisonArrowMissile"/>
     <CModel id="ShadowAura" parent="War3_GeneralAuraTarget"/>
     <CModel id="BNch" parent="War3_CharmTarget"/>
     <CModel id="RitssynFlamescowl" parent="War3_ChaosWarlock">
@@ -35,6 +54,11 @@
     <CModel id="ACrdEffect" parent="War3_RaiseSkeleton"/>
     <CModel id="FuryBuff" parent="War3_BloodLustTarget"/>
     <CModel id="FuryBuffSpecial" parent="War3_BloodLustSpecial"/>
+    <CModel id="ArachanthidEarthBorerBurrowed" parent="War3_Archnathid">
+        <SelectionRadius value="0.717949"/>
+        <SquibTypeDefault value="Flesh"/>
+    </CModel>
+    <CModel id="ArachanthidEarthBorerBurrowed_Portrait" parent="War3_Archnathid_Portrait"/>
     <CModel id="ndth1LM" parent="War3_AvengerMissile"/>
     <CModel id="nerd">
         <ScaleMax value="1.125000,1.125000,1.125000"/>
@@ -43,6 +67,49 @@
     <CModel id="nfel">
         <ScaleMax value="0.625000,0.625000,0.625000"/>
         <ScaleMin value="0.625000,0.625000,0.625000"/>
+    </CModel>
+    <CModel id="nfgo">
+        <ScaleMax value="0.625000,0.625000,0.625000"/>
+        <ScaleMin value="0.625000,0.625000,0.625000"/>
+    </CModel>
+    <CModel id="nfgo1LM" parent="War3_DeathCoilMissile"/>
+    <CModel id="nfgt">
+        <ScaleMax value="0.937500,0.937500,0.937500"/>
+        <ScaleMin value="0.937500,0.937500,0.937500"/>
+    </CModel>
+    <CModel id="nfod">
+        <ScaleMax value="1.620000,1.620000,1.620000"/>
+        <ScaleMin value="1.620000,1.620000,1.620000"/>
+    </CModel>
+    <CModel id="nnwq">
+        <ScaleMax value="0.625000,0.625000,0.625000"/>
+        <ScaleMin value="0.625000,0.625000,0.625000"/>
+    </CModel>
+    <CModel id="nspb">
+        <ScaleMax value="0.625000,0.625000,0.625000"/>
+        <ScaleMin value="0.625000,0.625000,0.625000"/>
+    </CModel>
+    <CModel id="nspd">
+        <ScaleMax value="0.320000,0.320000,0.320000"/>
+        <ScaleMin value="0.320000,0.320000,0.320000"/>
+    </CModel>
+    <CModel id="nssp">
+        <ScaleMax value="0.625000,0.625000,0.625000"/>
+        <ScaleMin value="0.625000,0.625000,0.625000"/>
+    </CModel>
+    <CModel id="nsth">
+        <Model value="Assets\Units\Creeps\War3_satyrhellcaller\War3_satyrhellcaller.m3"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
+    </CModel>
+    <CModel id="nsts">
+        <ScaleMax value="0.937500,0.937500,0.937500"/>
+        <ScaleMin value="0.937500,0.937500,0.937500"/>
+    </CModel>
+    <CModel id="nsty">
+        <Model value="Assets\Units\Creeps\War3_Satyr\War3_Satyr.m3"/>
+        <ScaleMax value="1.000000,1.000000,1.000000"/>
+        <ScaleMin value="1.000000,1.000000,1.000000"/>
     </CModel>
     <CModel id="nvdl">
         <ScaleMax value="0.625000,0.625000,0.625000"/>
@@ -363,6 +430,7 @@
         </Events>
     </CModel>
     <CModel id="DefendCaster" parent="War3_DefendCaster"/>
+    <CModel id="StickySkin" parent="War3_DefendCaster"/>
     <CModel id="AmdfCaster" parent="War3_DefendCaster"/>
     <CModel id="Nmag">
         <ScaleMax value="0.625000,0.625000,0.625000"/>
@@ -406,6 +474,9 @@
     <CModel id="DragonPreviewer" parent="War3_Item">
         <Model value="Assets\Objects\Splats\War3_NightElf_Uber_Splat\War3_NightElf_Uber_Splat.m3"/>
     </CModel>
+    <CModel id="TreantPreviewer" parent="War3_Item">
+        <Model value="Assets\Objects\Splats\War3_NightElf_Uber_Splat\War3_NightElf_Uber_Splat.m3"/>
+    </CModel>
     <CModel id="OrcPreviewer" parent="War3_Item">
         <Model value="Assets\Objects\Splats\War3_Orc_Uber_Splat\War3_Orc_Uber_Splat.m3"/>
     </CModel>
@@ -415,10 +486,16 @@
     <CModel id="ChaosOrcPreviewer" parent="War3_Item">
         <Model value="Assets\Objects\Splats\War3_Orc_Uber_Splat\War3_Orc_Uber_Splat.m3"/>
     </CModel>
+    <CModel id="CentaurPreviewer" parent="War3_Item">
+        <Model value="Assets\Objects\Splats\War3_Orc_Uber_Splat\War3_Orc_Uber_Splat.m3"/>
+    </CModel>
     <CModel id="UndeadPreviewer" parent="War3_Item">
         <Model value="Assets\Objects\Splats\War3_Undead_Uber_Splat\War3_Undead_Uber_Splat.m3"/>
     </CModel>
     <CModel id="DemonPreviewer" parent="War3_Item">
+        <Model value="Assets\Objects\Splats\War3_Undead_Uber_Splat\War3_Undead_Uber_Splat.m3"/>
+    </CModel>
+    <CModel id="OldGodPreviewer" parent="War3_Item">
         <Model value="Assets\Objects\Splats\War3_Undead_Uber_Splat\War3_Undead_Uber_Splat.m3"/>
     </CModel>
     <CModel id="Ucrl">
@@ -431,7 +508,13 @@
     <CModel id="War3_DragonCaptureFlag" parent="War3_Item">
         <Model value="Assets\Objects\InventoryItems\War3_NightElfCaptureFlag\War3_NightElfCaptureFlag.m3"/>
     </CModel>
+    <CModel id="War3_TreantCaptureFlag" parent="War3_Item">
+        <Model value="Assets\Objects\InventoryItems\War3_NightElfCaptureFlag\War3_NightElfCaptureFlag.m3"/>
+    </CModel>
     <CModel id="War3_DemonCaptureFlag" parent="War3_Item">
+        <Model value="Assets\Objects\InventoryItems\War3_UndeadCaptureFlag\War3_UndeadCaptureFlag.m3"/>
+    </CModel>
+    <CModel id="War3_OldGodCaptureFlag" parent="War3_Item">
         <Model value="Assets\Objects\InventoryItems\War3_UndeadCaptureFlag\War3_UndeadCaptureFlag.m3"/>
     </CModel>
     <CModel id="War3_DraeneiCaptureFlag" parent="War3_Item">
@@ -446,6 +529,11 @@
         <ScaleMin value="1.200000,1.200000,1.200000"/>
     </CModel>
     <CModel id="War3_ChaosOrcCaptureFlag" parent="War3_Item">
+        <Model value="Assets\Objects\InventoryItems\War3_OrcCaptureFlag\War3_OrcCaptureFlag.m3"/>
+        <ScaleMax value="1.200000,1.200000,1.200000"/>
+        <ScaleMin value="1.200000,1.200000,1.200000"/>
+    </CModel>
+    <CModel id="War3_CentaurCaptureFlag" parent="War3_Item">
         <Model value="Assets\Objects\InventoryItems\War3_OrcCaptureFlag\War3_OrcCaptureFlag.m3"/>
         <ScaleMax value="1.200000,1.200000,1.200000"/>
         <ScaleMin value="1.200000,1.200000,1.200000"/>
@@ -785,4 +873,29 @@
     </CModel>
     <CModel id="uob21LM" parent="War3_FarseerMissile"/>
     <CModel id="uob2_Portrait" parent="War3_ObsidianStatue_Portrait"/>
+    <CModel id="PoisonStingNonStacking" parent="War3_PoisonStingTarget"/>
+    <CModel id="PoisonStingStacking" parent="War3_PoisonStingTarget"/>
+    <CModel id="TrueFulfillmentSpecial" parent="War3_Spell" race="Other">
+        <Events Anim="Birth" Type="Sound" Payload="SND_AUFN"/>
+        <Model value="Assets\Abilities\Spells\Items\War3_PurificationCaster\War3_PurificationCaster.m3"/>
+    </CModel>
+    <CModel id="TrueFulfillmentCaster" parent="War3_Spell" race="Other">
+        <Model value="Assets\Abilities\Spells\Items\War3_PurificationTarget\War3_PurificationTarget.m3"/>
+    </CModel>
+    <CModel id="TrueFulfillment" parent="War3_Spell" race="Other">
+        <Model value="Assets\Abilities\Spells\Items\War3_PurificationTarget\War3_PurificationTarget.m3"/>
+    </CModel>
+    <CModel id="nspb1LM" parent="War3_ChimaeraAcidMissile"/>
+    <CModel id="VoidRecallRecallStart" parent="OneShotSpellFX">
+        <Model value="Assets\Abilities\Spells\Human\War3_MassTeleportTarget\War3_MassTeleportTarget.m3"/>
+        <Occlusion value="Show"/>
+        <SelectionRadius value="0.555400"/>
+        <ShadowRadius value="0.555400"/>
+    </CModel>
+    <CModel id="VoidRecallRecallStop" parent="OneShotSpellFX">
+        <Model value="Assets\Abilities\Spells\Human\War3_MassTeleportTarget\War3_MassTeleportTarget.m3"/>
+        <Occlusion value="Show"/>
+        <SelectionRadius value="0.555400"/>
+        <ShadowRadius value="0.555400"/>
+    </CModel>
 </Catalog>

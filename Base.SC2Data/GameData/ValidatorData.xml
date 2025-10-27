@@ -179,6 +179,9 @@
     <CValidatorUnitCompareBehaviorCount id="HasNoAssk">
         <Behavior value="Assk"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="HasNoBNmr">
+        <Behavior value="BNmr"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorCombine id="HasNoHardenedSkin">
         <Type value="And"/>
         <CombineArray value="HasNoAssk"/>
@@ -479,6 +482,18 @@
     <CValidatorLocationEnumArea id="EnemiesNearby15" parent="AW2_EnemiesNearby">
         <AreaArray index="0" Compare="GT" Count="0" Radius="15"/>
     </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="EnemiesNearby20" parent="AW2_EnemiesNearby">
+        <AreaArray index="0" Compare="GT" Count="0" Radius="20"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="EnemiesNearby30" parent="AW2_EnemiesNearby">
+        <AreaArray index="0" Compare="GT" Count="0" Radius="30"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="EnemiesNearby50" parent="AW2_EnemiesNearby">
+        <AreaArray index="0" Compare="GT" Count="0" Radius="50"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="EnemiesNearby500" parent="AW2_EnemiesNearby">
+        <AreaArray index="0" Compare="GT" Count="0" Radius="500"/>
+    </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="CliffLevelEqualOrLesserEnemiesNearby5" parent="AW2_EnemiesNearby">
         <AreaArray index="0">
             <Compare value="GT"/>
@@ -667,6 +682,16 @@
     <CValidatorLocationEnumArea id="TacticalAdefThreatSearchEmpty" parent="TacticalCloakThreatSearchEmpty" unitLink="hhes">
         <AreaArray index="0" Radius="7" Validator="UnitThreatenshhes"/>
     </CValidatorLocationEnumArea>
+    <CValidatorUnitCompareVital id="TargetEnergyGE10">
+        <Compare value="GE"/>
+        <Value value="10"/>
+        <Vital value="Energy"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="TargetEnergyGE20">
+        <Compare value="GE"/>
+        <Value value="20"/>
+        <Vital value="Energy"/>
+    </CValidatorUnitCompareVital>
     <CValidatorUnitCompareVital id="TargetEnergyGE30">
         <Compare value="GE"/>
         <Value value="30"/>
@@ -896,5 +921,37 @@
         <Compare value="LE"/>
         <Value value="12"/>
         <Behavior value="AvngSummonMarker"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="GenerationCountLE2">
+        <WhichUnit Value="Source"/>
+        <Compare value="LE"/>
+        <Value value="2"/>
+        <Behavior value="BNlmGeneration"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="GenerationCountLE3">
+        <WhichUnit Value="Source"/>
+        <Compare value="LE"/>
+        <Value value="3"/>
+        <Behavior value="BNlmGeneration"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="GenerationCountLE4">
+        <WhichUnit Value="Source"/>
+        <Compare value="LE"/>
+        <Value value="4"/>
+        <Behavior value="BNlmGeneration"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitType id="IsForgottenOne">
+        <Value value="nfgo"/>
+    </CValidatorUnitType>
+    <CValidatorLocationEnumArea id="HasForgottenOne" parent="AW2_FriendiesNearby">
+        <AreaArray index="0">
+            <Compare value="GT"/>
+            <Count value="0"/>
+            <Radius value="500"/>
+            <Validator value="IsForgottenOne"/>
+        </AreaArray>
+    </CValidatorLocationEnumArea>
+    <CValidatorUnitCompareBehaviorCount id="IsNotRecentlyRecalled">
+        <Behavior value="RecentlyRecalled"/>
     </CValidatorUnitCompareBehaviorCount>
 </Catalog>

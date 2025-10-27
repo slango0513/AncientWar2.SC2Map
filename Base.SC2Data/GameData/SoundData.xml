@@ -110,11 +110,20 @@
     <CSound id="WarcryChaosOrc">
         <AssetArray File="Assets\Sounds\Units\Demon\ChaosWarlord\WarlordWarcry1.ogg" FacialGroup=""/>
     </CSound>
+    <CSound id="WarcryCentaur">
+        <AssetArray File="Assets\Sounds\Units\Demon\ChaosWarlord\WarlordWarcry1.ogg" FacialGroup=""/>
+    </CSound>
     <CSound id="WarcryDragon">
+        <AssetArray File="Assets\Sounds\Units\NightElf\DruidOfTheClaw\DruidOfTheClawWarcry1.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="WarcryTreant">
         <AssetArray File="Assets\Sounds\Units\NightElf\DruidOfTheClaw\DruidOfTheClawWarcry1.ogg" FacialGroup=""/>
     </CSound>
     <CSound id="WarcryDemon">
         <AssetArray File="Assets\Sounds\Units\Demon\HeroPitLord\HPitLordWarcry1.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="WarcryOldGod">
+        <AssetArray File="Assets\Sounds\Ambient\DoodadEffects\FrostmourneChant1.ogg" FacialGroup=""/>
     </CSound>
     <CSound id="WarcryDraenei">
         <AssetArray File="Assets\Sounds\Units\Other\DranaiAkama\AkamaWarcry1.ogg" FacialGroup=""/>
@@ -143,11 +152,20 @@
     <CSound id="HornChaosOrc">
         <AssetArray File="Assets\Sounds\Ambient\DoodadEffects\GateOpen.ogg" FacialGroup=""/>
     </CSound>
+    <CSound id="HornCentaur">
+        <AssetArray File="Assets\Sounds\Ambient\DoodadEffects\GateOpen.ogg" FacialGroup=""/>
+    </CSound>
     <CSound id="HornDragon">
+        <AssetArray File="Assets\Sounds\Buildings\Other\DragonRoost\DragonRoostWhat1.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="HornTreant">
         <AssetArray File="Assets\Sounds\Buildings\Other\DragonRoost\DragonRoostWhat1.ogg" FacialGroup=""/>
     </CSound>
     <CSound id="HornDemon">
         <AssetArray File="Assets\Sounds\Ambient\DoodadEffects\ShimmeringPortalBirth.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="HornOldGod">
+        <AssetArray File="Assets\Sounds\Ambient\DoodadEffects\LichKingDream.ogg" FacialGroup=""/>
     </CSound>
     <CSound id="HornDraenei">
         <AssetArray File="Assets\Sounds\Buildings\Other\ElvenGuardTower\ElvenGuardTowerWhat1.ogg" FacialGroup=""/>
@@ -441,4 +459,151 @@
     <CSound id="e_cmdNotEnoughTerrazine_Draenei" parent="NoGoldDraenei"/>
     <CSound id="e_cmdNotEnoughCustom_Draenei" parent="NoLumberDraenei"/>
     <CSound id="e_cmdNotEnoughEnergy_Draenei" parent="NoManaDraenei"/>
+    <CSound id="Centaur_Music_V1" parent="War3_MUSIC" race="Centaur">
+        <AssetArray index="0" File="Assets\Sounds\Music\ThunderBluff.ogg" FacialGroup=""/>
+        <AssetArray index="1" removed="1"/>
+        <AssetArray index="2" removed="1"/>
+        <AssetArray index="3" removed="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Centaur_VictoryMusic_V1" parent="War3_VictoryMusic" race="Centaur"/>
+    <CSound id="Centaur_DefeatMusic_V1" parent="War3_DefeatMusic" race="Centaur"/>
+    <CSound id="CantPlaceCentaur" parent="UIEAX">
+        <AssetArray File="Assets\Sounds\Interface\Warning\Orc\PeonCannotBuildThere1.ogg"/>
+        <ResourcePriority value="10"/>
+    </CSound>
+    <CSound id="InventoryFullCentaur" parent="UIEAX">
+        <AssetArray File="Assets\Sounds\Interface\Warning\Orc\GruntInventoryFull1.ogg"/>
+        <ResourcePriority value="10"/>
+    </CSound>
+    <CSound id="NoFoodCentaur" parent="UIEAX">
+        <AssetArray File="Assets\Sounds\Interface\Warning\Orc\GruntNoFood1.ogg"/>
+        <ResourcePriority value="10"/>
+    </CSound>
+    <CSound id="NoGoldCentaur" parent="UIEAX">
+        <AssetArray File="Assets\Sounds\Interface\Warning\Orc\GruntNoGold1.ogg"/>
+        <ResourcePriority value="10"/>
+    </CSound>
+    <CSound id="NoLumberCentaur" parent="UIEAX">
+        <AssetArray File="Assets\Sounds\Interface\Warning\Orc\GruntNoLumber1.ogg"/>
+        <ResourcePriority value="10"/>
+    </CSound>
+    <CSound id="NoManaCentaur" parent="UIEAX">
+        <AssetArray File="Assets\Sounds\Interface\Warning\Orc\GruntNoEnergy1.ogg"/>
+        <ResourcePriority value="10"/>
+    </CSound>
+    <CSound id="e_cmdCantBuildLocationInvalid_Centaur" parent="CantPlaceCentaur"/>
+    <CSound id="e_cmdCantFinishBuildingLocationBlocked_Centaur" parent="CantPlaceCentaur"/>
+    <CSound id="e_cmdCantBuildOnThat_Centaur" parent="CantPlaceCentaur"/>
+    <CSound id="e_cmdCantBuildTooCloseToResources_Centaur" parent="CantPlaceCentaur"/>
+    <CSound id="e_cmdCantSeeBuildLocation_Centaur" parent="CantPlaceCentaur"/>
+    <CSound id="e_cmdCantHoldAnyMoreItems_Centaur" parent="InventoryFullCentaur"/>
+    <CSound id="e_cmdNotEnoughFood_Centaur" parent="NoFoodCentaur"/>
+    <CSound id="e_cmdNotEnoughTerrazine_Centaur" parent="NoGoldCentaur"/>
+    <CSound id="e_cmdNotEnoughCustom_Centaur" parent="NoLumberCentaur"/>
+    <CSound id="e_cmdNotEnoughEnergy_Centaur" parent="NoManaCentaur"/>
+    <CSound id="Treant_Music_V1" parent="War3_MUSIC" race="Treant">
+        <AssetArray index="0" File="Assets\Sounds\Music\MountainsOfThunder1.ogg" FacialGroup=""/>
+        <AssetArray index="1" File="Assets\Sounds\Music\Ruins.ogg" FacialGroup=""/>
+        <AssetArray index="2" File="Assets\Sounds\Music\Teldrassil.ogg" FacialGroup=""/>
+        <AssetArray index="3" removed="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Treant_VictoryMusic_V1" parent="War3_VictoryMusic" race="Treant"/>
+    <CSound id="Treant_DefeatMusic_V1" parent="War3_DefeatMusic" race="Treant"/>
+    <CSound id="CantPlaceTreant" parent="UIEAX">
+        <AssetArray File="Assets\Sounds\Units\Creeps\DragonSpawnBlue\DragonSpawnYes1.ogg"/>
+        <AssetArray File="Assets\Sounds\Units\Creeps\DragonSpawnBlue\DragonSpawnYes2.ogg"/>
+        <ResourcePriority value="10"/>
+    </CSound>
+    <CSound id="InventoryFullTreant" parent="UIEAX">
+        <AssetArray File="Assets\Sounds\Units\Creeps\DragonSpawnBlue\DragonSpawnYes1.ogg"/>
+        <AssetArray File="Assets\Sounds\Units\Creeps\DragonSpawnBlue\DragonSpawnYes2.ogg"/>
+        <ResourcePriority value="10"/>
+    </CSound>
+    <CSound id="NoFoodTreant" parent="UIEAX">
+        <AssetArray File="Assets\Sounds\Units\Creeps\DragonSpawnBlue\DragonSpawnYes1.ogg"/>
+        <AssetArray File="Assets\Sounds\Units\Creeps\DragonSpawnBlue\DragonSpawnYes2.ogg"/>
+        <ResourcePriority value="10"/>
+    </CSound>
+    <CSound id="NoGoldTreant" parent="UIEAX">
+        <AssetArray File="Assets\Sounds\Units\Creeps\DragonSpawnBlue\DragonSpawnYes1.ogg"/>
+        <AssetArray File="Assets\Sounds\Units\Creeps\DragonSpawnBlue\DragonSpawnYes2.ogg"/>
+        <ResourcePriority value="10"/>
+    </CSound>
+    <CSound id="NoLumberTreant" parent="UIEAX">
+        <AssetArray File="Assets\Sounds\Units\Creeps\DragonSpawnBlue\DragonSpawnYes1.ogg"/>
+        <AssetArray File="Assets\Sounds\Units\Creeps\DragonSpawnBlue\DragonSpawnYes2.ogg"/>
+        <ResourcePriority value="10"/>
+    </CSound>
+    <CSound id="NoManaTreant" parent="UIEAX">
+        <AssetArray File="Assets\Sounds\Units\Creeps\DragonSpawnBlue\DragonSpawnYes1.ogg"/>
+        <AssetArray File="Assets\Sounds\Units\Creeps\DragonSpawnBlue\DragonSpawnYes2.ogg"/>
+        <ResourcePriority value="10"/>
+    </CSound>
+    <CSound id="e_cmdCantBuildLocationInvalid_Treant" parent="CantPlaceTreant"/>
+    <CSound id="e_cmdCantFinishBuildingLocationBlocked_Treant" parent="CantPlaceTreant"/>
+    <CSound id="e_cmdCantBuildOnThat_Treant" parent="CantPlaceTreant"/>
+    <CSound id="e_cmdCantBuildTooCloseToResources_Treant" parent="CantPlaceTreant"/>
+    <CSound id="e_cmdCantSeeBuildLocation_Treant" parent="CantPlaceTreant"/>
+    <CSound id="e_cmdCantHoldAnyMoreItems_Treant" parent="InventoryFullTreant"/>
+    <CSound id="e_cmdNotEnoughFood_Treant" parent="NoFoodTreant"/>
+    <CSound id="e_cmdNotEnoughTerrazine_Treant" parent="NoGoldTreant"/>
+    <CSound id="e_cmdNotEnoughCustom_Treant" parent="NoLumberTreant"/>
+    <CSound id="e_cmdNotEnoughEnergy_Treant" parent="NoManaTreant"/>
+    <CSound id="OldGod_Music_V1" parent="War3_MUSIC" race="OldGod">
+        <AssetArray index="0" File="Assets\Sounds\Music\FelwoodThema.ogg" FacialGroup=""/>
+        <AssetArray index="1" File="Assets\Sounds\Music\SecretsOfUlduar1.ogg" FacialGroup=""/>
+        <AssetArray index="2" File="Assets\Sounds\Music\SecretsOfUlduar2.ogg" FacialGroup=""/>
+        <AssetArray index="3" File="Assets\Sounds\Music\Sha.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Music\Tanaris.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Music\TheGatesOfAhnQiraj2.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Music\TownlongSteppes.ogg" FacialGroup=""/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="OldGod_VictoryMusic_V1" parent="War3_VictoryMusic" race="OldGod"/>
+    <CSound id="OldGod_DefeatMusic_V1" parent="War3_DefeatMusic" race="OldGod"/>
+    <CSound id="CantPlaceOldGod" parent="UIEAX">
+        <AssetArray File="Assets\Sounds\Units\Creeps\FacelessOne\FacelessOneYes1.ogg"/>
+        <AssetArray File="Assets\Sounds\Units\Creeps\FacelessOne\FacelessOneYes1.ogg"/>
+        <ResourcePriority value="10"/>
+    </CSound>
+    <CSound id="InventoryFullOldGod" parent="UIEAX">
+        <AssetArray File="Assets\Sounds\Units\Creeps\FacelessOne\FacelessOneYes1.ogg"/>
+        <AssetArray File="Assets\Sounds\Units\Creeps\FacelessOne\FacelessOneYes1.ogg"/>
+        <ResourcePriority value="10"/>
+    </CSound>
+    <CSound id="NoFoodOldGod" parent="UIEAX">
+        <AssetArray File="Assets\Sounds\Units\Creeps\FacelessOne\FacelessOneYes1.ogg"/>
+        <AssetArray File="Assets\Sounds\Units\Creeps\FacelessOne\FacelessOneYes1.ogg"/>
+        <ResourcePriority value="10"/>
+    </CSound>
+    <CSound id="NoGoldOldGod" parent="UIEAX">
+        <AssetArray File="Assets\Sounds\Units\Creeps\FacelessOne\FacelessOneYes1.ogg"/>
+        <AssetArray File="Assets\Sounds\Units\Creeps\FacelessOne\FacelessOneYes1.ogg"/>
+        <ResourcePriority value="10"/>
+    </CSound>
+    <CSound id="NoLumberOldGod" parent="UIEAX">
+        <AssetArray File="Assets\Sounds\Units\Creeps\FacelessOne\FacelessOneYes1.ogg"/>
+        <AssetArray File="Assets\Sounds\Units\Creeps\FacelessOne\FacelessOneYes1.ogg"/>
+        <ResourcePriority value="10"/>
+    </CSound>
+    <CSound id="NoManaOldGod" parent="UIEAX">
+        <AssetArray File="Assets\Sounds\Units\Creeps\FacelessOne\FacelessOneYes1.ogg"/>
+        <AssetArray File="Assets\Sounds\Units\Creeps\FacelessOne\FacelessOneYes1.ogg"/>
+        <ResourcePriority value="10"/>
+    </CSound>
+    <CSound id="e_cmdCantBuildLocationInvalid_OldGod" parent="CantPlaceOldGod">
+        <AssetArray File="Assets\Sounds\Units\Creeps\FacelessOne\FacelessOneYes1.ogg"/>
+        <AssetArray File="Assets\Sounds\Units\Creeps\FacelessOne\FacelessOneYes2.ogg"/>
+    </CSound>
+    <CSound id="e_cmdCantFinishBuildingLocationBlocked_OldGod" parent="CantPlaceOldGod"/>
+    <CSound id="e_cmdCantBuildOnThat_OldGod" parent="CantPlaceOldGod"/>
+    <CSound id="e_cmdCantBuildTooCloseToResources_OldGod" parent="CantPlaceOldGod"/>
+    <CSound id="e_cmdCantSeeBuildLocation_OldGod" parent="CantPlaceOldGod"/>
+    <CSound id="e_cmdCantHoldAnyMoreItems_OldGod" parent="InventoryFullOldGod"/>
+    <CSound id="e_cmdNotEnoughFood_OldGod" parent="NoFoodOldGod"/>
+    <CSound id="e_cmdNotEnoughTerrazine_OldGod" parent="NoGoldOldGod"/>
+    <CSound id="e_cmdNotEnoughCustom_OldGod" parent="NoLumberOldGod"/>
+    <CSound id="e_cmdNotEnoughEnergy_OldGod" parent="NoManaOldGod"/>
 </Catalog>

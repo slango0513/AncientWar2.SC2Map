@@ -373,6 +373,7 @@ trigger gt_GameAttributeInizialization;
 trigger gt_ScoreBoardInizialization;
 trigger gt_TimerInizialization;
 trigger gt_PlayerInizialization;
+trigger gt_ANlmCopy;
 trigger gt_AsplSearch;
 trigger gt_AsplSplit;
 trigger gt_AimpImpact;
@@ -4839,6 +4840,48 @@ void gt_PlayerInizialization_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: ANlmCopy
+//--------------------------------------------------------------------------------------------------
+bool gt_ANlmCopy_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_c;
+    unit lv_t;
+
+    // Automatic Variable Declarations
+    unitgroup auto02E01E37_g;
+    int auto02E01E37_u;
+    unit auto02E01E37_var;
+
+    // Variable Initialization
+    lv_c = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+    lv_t = EventPlayerEffectUsedUnit(c_effectUnitTarget);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((gv_isBonusRound == false)) {
+        UnitBehaviorAdd(lv_t, "AW2_Fury", lv_c, 1);
+    }
+
+    auto02E01E37_g = UnitInventoryGroup(lv_c);
+    auto02E01E37_u = UnitGroupCount(auto02E01E37_g, c_unitCountAll);
+    for (;; auto02E01E37_u -= 1) {
+        auto02E01E37_var = UnitGroupUnitFromEnd(auto02E01E37_g, auto02E01E37_u);
+        if (auto02E01E37_var == null) { break; }
+        UnitInventoryCreate(lv_t, UnitGetType(auto02E01E37_var));
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_ANlmCopy_Init () {
+    gt_ANlmCopy = TriggerCreate("gt_ANlmCopy_Func");
+    TriggerAddEventPlayerEffectUsed(gt_ANlmCopy, c_playerAny, "BNlmCopySet");
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: Aspl - Search
 //--------------------------------------------------------------------------------------------------
 bool gt_AsplSearch_Func (bool testConds, bool runActions) {
@@ -6513,6 +6556,9 @@ bool gt_DebugKeyPressed_Func (bool testConds, bool runActions) {
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "Dragonspawn", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "zzrg", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "ndrl", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "ncer", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "ndwm", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "nder", c_unitCreateIgnorePlacement, lv_player, PlayerStartLocation(lv_player));
         libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "BuildArmyFinal", 1);
         libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "NonCoreMode", 1);
         PlayerModifyPropertyInt(lv_player, c_playerPropTerrazine, c_playerPropOperSetTo, 100000);
@@ -6770,6 +6816,7 @@ void InitTriggers () {
     gt_ScoreBoardInizialization_Init();
     gt_TimerInizialization_Init();
     gt_PlayerInizialization_Init();
+    gt_ANlmCopy_Init();
     gt_AsplSearch_Init();
     gt_AsplSplit_Init();
     gt_AimpImpact_Init();

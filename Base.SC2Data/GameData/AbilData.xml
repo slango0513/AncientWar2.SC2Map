@@ -141,6 +141,14 @@
         <CastOutroTime value="0.5"/>
         <TargetFilters index="0" value="-;wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
     </CAbilEffectTarget>
+    <!--Cold Arrows (creep) Dur=3 HeroDur=.75 Buff=BHca,Bcsd,Bcsi-->
+    <CAbilAugment id="ACcw" parent="AW2_AttackAugment">
+        <EditorCategories value="Race:Creeps,AbilityorEffectType:Units"/>
+        <Cost>
+            <Vital index="Energy" value="6"/>
+        </Cost>
+        <AutoCastFilters value="Visible;Player,Ally,Hover,HarvestableResource,Destructible,Item,PreventDefeat,Buried,Invulnerable,Unstoppable"/>
+    </CAbilAugment>
     <!--Devour Magic(creep)-->
     <CAbilEffectTarget id="ACde" parent="AW2_EffectTarget">
         <EditorCategories value="Race:Demon,AbilityorEffectType:Unit"/>
@@ -273,6 +281,63 @@
         <InfoArray/>
         <InfoArray/>
     </CAbilInventory>
+    <!--Firelord - Incinerate Buff=BNic-->
+    <CAbilBehavior id="ANia" parent="War3_Passive">
+        <EditorCategories value="Race:OldGod,AbilityorEffectType:Hero"/>
+        <Alignment value="Negative"/>
+        <TechAliasArray value="_HeroAugment"/>
+        <BehaviorArray value="ANia1"/>
+        <BehaviorArray value="ANia2"/>
+        <BehaviorArray value="ANia3"/>
+    </CAbilBehavior>
+    <CAbilAugment id="ANiaAugment" parent="AW2_AttackAugment">
+        <Name value="ANia/Name"/>
+        <EditorCategories value="Race:OldGod,AbilityorEffectType:Hero"/>
+        <AutoCastFilters value="Visible;Player,Ally,Mechanical,Psionic,Hover,HarvestableResource,Destructible,Item,Buried,Invulnerable,Unstoppable"/>
+    </CAbilAugment>
+    <!--Beast Master - Stampede Buff=BNst-->
+    <CAbilEffectTarget id="ANst" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Goblin,AbilityorEffectType:Hero"/>
+        <TargetFilters index="0" value="-;air,wall,tree,debris,item,invulnerable,immunity"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="120"/>
+        </Cost>
+        <Range value="5"/>
+        <PrepTime value="0.5"/>
+        <CastOutroTime value="30"/>
+        <ShowProgressArray index="Channel" value="1"/>
+        <CancelableArray index="Channel" value="1"/>
+        <ProgressButtonArray index="Channel" value="ANst"/>
+        <FinishTime value="0.5"/>
+        <AutoCastValidatorArray value="GroundEnemiesNearby3"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastRange value="5"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSMarker"/>
+        </TargetSorts>
+    </CAbilEffectTarget>
+    <!--Firelord - Volcano Buff=BNvc,BNva effect=XNvc-->
+    <CAbilEffectTarget id="ANvc" parent="AW2_EffectTarget">
+        <TargetFilters index="0" value="-;wall,tree,debris,item,invulnerable,immunity"/>
+        <Cost index="0">
+            <Vital index="Energy" value="60"/>
+        </Cost>
+        <Range value="7"/>
+        <PrepTime value="0.67"/>
+        <CastOutroTime value="35"/>
+        <CursorEffect value="ANvcSearch"/>
+        <ShowProgressArray index="Channel" value="1"/>
+        <ProgressButtonArray index="Channel" value="ANvc"/>
+        <CancelableArray index="Channel" value="1"/>
+        <FinishTime value="0.4"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSMarker"/>
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
+        </TargetSorts>
+        <AutoCastRange value="7"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+    </CAbilEffectTarget>
     <!--Crypt Lord - Carrion Scarabs Buff=BUcb-->
     <CAbilEffectInstant id="AUcb" parent="AW2_EffectInstant">
         <EditorCategories value="Race:Undead,AbilityorEffectType:Hero"/>
@@ -290,6 +355,64 @@
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="AUcbMarkerLessThan5"/>
     </CAbilEffectInstant>
+    <!--Crypt Lord - Locust Swarm-->
+    <CAbilEffectInstant id="AUls" parent="AW2_EffectInstant">
+        <EditorCategories value="Race:OldGod,AbilityorEffectType:Hero"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="60"/>
+        </Cost>
+        <PrepTime value="0.4"/>
+        <CastOutroTime value="1.1"/>
+        <AutoCastValidatorArray value="GroundEnemiesNearby3"/>
+        <AutoCastFilters value="Self,Visible;-"/>
+    </CAbilEffectInstant>
+    <!--Burrow(Barbed Arachnathid) Dur=1.45-->
+    <CAbilMorph id="Abu5" parent="AW2_Morph" unitID="nbnb">
+        <InfoArray index="0" Unit="nbnb">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="1.45"/>
+                <EffectArray index="Start" value="BurrowingInvulnerable"/>
+                <EffectArray index="Finish" value="Abu5ModifyUnit"/>
+            </SectionArray>
+        </InfoArray>
+        <Cost>
+            <Cooldown TimeUse="30"/>
+        </Cost>
+        <AbilSetId value="burrow"/>
+        <ValidatorArray value="CasterLifeLT50Percent"/>
+    </CAbilMorph>
+    <CAbilMorph id="BurrowArachanthidEarthBorer" parent="AW2_Morph" unitID="ArachanthidEarthBorerBurrowed">
+        <AbilSetId value="burrow"/>
+        <Cost>
+            <Cooldown TimeUse="30"/>
+        </Cost>
+        <InfoArray index="0" Unit="ArachanthidEarthBorerBurrowed">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="1.45"/>
+                <EffectArray index="Start" value="BurrowingInvulnerable"/>
+                <EffectArray index="Finish" value="BurrowArachanthidEarthBorerModifyUnit"/>
+            </SectionArray>
+        </InfoArray>
+        <ValidatorArray value="CasterLifeLT50Percent"/>
+    </CAbilMorph>
+    <CAbilMorph id="Abu5Un" parent="AW2_Morph" unitID="nanm">
+        <Name value="Abu5Un/Tip"/>
+        <InfoArray index="0" Unit="nanm">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="1.45"/>
+            </SectionArray>
+        </InfoArray>
+        <AbilSetId value="unburrow"/>
+    </CAbilMorph>
+    <CAbilMorph id="BurrowArachanthidEarthBorerUn" parent="AW2_Morph" unitID="nane">
+        <Name value="BurrowArachanthidEarthBorerUn/Tip"/>
+        <AbilSetId value="unburrow"/>
+        <InfoArray index="0" Unit="nane">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="1.45"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
     <!--Vengeance Dur=50 HeroDur=50 Buff=Bvng-->
     <CAbilEffectInstant id="Avng" parent="AW2_EffectInstant">
         <EditorCategories value="Race:Nightelf,AbilityorEffectType:Unit"/>
@@ -452,6 +575,26 @@
         <AutoCastValidatorArray value="EnemiesNearby12"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="TargetEnergyGE30"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSEnergyLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
+        </TargetSorts>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="ANmr" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Demon,AbilityorEffectType:Hero"/>
+        <TargetFilters index="0" value="HasEnergy;player,allies,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
+        <Cost index="0">
+            <Vital index="Energy" value="20"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </Cost>
+        <Range value="12"/>
+        <PrepTime value="0.3"/>
+        <CastOutroTime value="0.47"/>
+        <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="EnemiesNearby12"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastValidatorArray value="TargetEnergyGE10"/>
+        <AutoCastValidatorArray value="HasNoBNmr"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSEnergyLargestFirst"/>
             <SortArray value="TSKillResourceCustomLargestFirst"/>
@@ -730,10 +873,9 @@
         <Effect index="0" value="ACbfSearch"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="ACcb" parent="AW2_EffectTarget">
-        <EditorCategories value="Race:Dragon,AbilityorEffectType:Units"/>
+        <EditorCategories value="Race:OldGod,AbilityorEffectType:Units"/>
         <Cost index="0">
-            <Vital index="Energy" value="60"/>
-            <Cooldown Location="Unit" TimeUse="1"/>
+            <Cooldown Location="Unit" TimeUse="30"/>
         </Cost>
         <Effect index="0" value="ACcbMissile"/>
         <TargetFilters index="0" value="-;wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
@@ -742,11 +884,11 @@
             <SortArray value="TSLifeLargestFirst"/>
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
-        <Range value="13"/>
-        <AutoCastRange value="13"/>
-        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
-        <AutoCastValidatorArray value="EnemiesNearby7"/>
+        <Range value="11"/>
+        <AutoCastRange value="11"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastValidatorArray value="NoFrostBolt"/>
+        <AutoCastValidatorArray value="noMarkers"/>
         <PrepTime value="1"/>
         <CastOutroTime value="1"/>
     </CAbilEffectTarget>
@@ -774,7 +916,7 @@
     </CAbilEffectTarget>
     <!--Blood Mage - Flame Strike Buff=BHfs effect=XHfs cast=1.33-->
     <CAbilEffectTarget id="AHfs" parent="AW2_EffectTarget">
-        <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
+        <EditorCategories value="Race:BloodElf,AbilityorEffectType:Units"/>
         <TargetFilters index="0" value="-;air,wall,item,ward,invulnerable,immunity"/>
         <Cost index="0">
             <Vital index="Energy" value="60"/>
@@ -793,6 +935,27 @@
         <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="EnemiesNearby7"/>
         <AutoCastValidatorArray value="noMarkers"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="TrueFulfillment" parent="AW2_EffectTarget">
+        <Alignment value="Negative"/>
+        <EditorCategories value="Race:OldGod,AbilityorEffectType:Units"/>
+        <Effect index="0" value="TrueFulfillmentSearch"/>
+        <Cost index="0">
+            <Vital index="Energy" value="60"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </Cost>
+        <TargetFilters index="0" value="-;mechanical,wall,item,structure,ward,invulnerable,immunity,hero"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
+        </TargetSorts>
+        <Range value="10"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="EnemiesNearby7"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <PrepTime value="0.5"/>
+        <CastOutroTime value="1"/>
+        <CursorEffect value="TrueFulfillmentSearch"/>
     </CAbilEffectTarget>
     <!--Creep Abil End-->
     <!--Creep Hero Abil-->
@@ -1388,6 +1551,7 @@
         <AutoCastRange value="11"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastValidatorArray value="NoFireBolt"/>
+        <AutoCastValidatorArray value="noMarkers"/>
         <PrepTime value="1"/>
         <CastOutroTime value="1"/>
         <TargetFilters index="0" value="-;wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
@@ -1427,9 +1591,6 @@
         <InfoArray index="Build11" Unit="nwzd">
             <Button DefaultButtonFace="nwzd" Requirements="BuildArmy"/>
         </InfoArray>
-        <InfoArray index="Build12" Unit="nvdw">
-            <Button DefaultButtonFace="nvdw" Requirements="BuildArmy"/>
-        </InfoArray>
         <InfoArray index="Build13" Unit="BloodKnight">
             <Button DefaultButtonFace="BloodKnight" Requirements="BuildArmy"/>
         </InfoArray>
@@ -1442,6 +1603,52 @@
         </InfoArray>
         <InfoArray index="Build2" Unit="ChaosOrcFlag2">
             <Button DefaultButtonFace="ChaosOrcFlag2" Requirements="BuildPhalanxFinal"/>
+        </InfoArray>
+        <InfoArray index="Build3" Unit="owar">
+            <Button DefaultButtonFace="owar" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build4" Unit="nchg">
+            <Button DefaultButtonFace="nchg" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build5" Unit="nchr">
+            <Button DefaultButtonFace="nchr" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build6" Unit="nchw">
+            <Button DefaultButtonFace="nchw" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build7" Unit="nckb">
+            <Button DefaultButtonFace="nckb" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build8" Unit="Nbbc">
+            <Button DefaultButtonFace="Nbbc" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build9" Unit="ndtt">
+            <Button DefaultButtonFace="ndtt" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build10" Unit="ndtp">
+            <Button DefaultButtonFace="ndtp" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build11" Unit="ocat">
+            <Button DefaultButtonFace="ocat" Requirements="BuildArmyFinal"/>
+        </InfoArray>
+        <InfoArray index="Build12" Unit="otbr">
+            <Button DefaultButtonFace="otbr" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build13" Unit="ChaosOrcShaman">
+            <Button DefaultButtonFace="ChaosOrcShaman" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build14" Unit="nsrn">
+            <Button DefaultButtonFace="nsrn" Requirements="BuildArmy"/>
+        </InfoArray>
+        <Range value="500"/>
+    </CAbilBuild>
+    <CAbilBuild id="CentaurBuild" parent="War3_PowerBuild">
+        <EditorCategories value="Race:Centaur,AbilityorEffectType:Units"/>
+        <InfoArray index="Build1" Unit="CentaurFlag">
+            <Button DefaultButtonFace="CentaurFlag" Requirements="BuildPhalanx"/>
+        </InfoArray>
+        <InfoArray index="Build2" Unit="CentaurFlag2">
+            <Button DefaultButtonFace="CentaurFlag2" Requirements="BuildPhalanxFinal"/>
         </InfoArray>
         <InfoArray index="Build3" Unit="owar">
             <Button DefaultButtonFace="owar" Requirements="BuildArmy"/>
@@ -1518,6 +1725,43 @@
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
+    <CAbilBuild id="TreantBuild" parent="War3_PowerBuild">
+        <EditorCategories value="Race:Dragon,AbilityorEffectType:Units"/>
+        <InfoArray index="Build1" Unit="TreantFlag">
+            <Button DefaultButtonFace="TreantFlag" Requirements="BuildPhalanx"/>
+        </InfoArray>
+        <InfoArray index="Build2" Unit="TreantFlag2">
+            <Button DefaultButtonFace="TreantFlag2" Requirements="BuildPhalanxFinal"/>
+        </InfoArray>
+        <InfoArray index="Build3" Unit="nadw">
+            <Button DefaultButtonFace="nadw" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build4" Unit="nrdk">
+            <Button DefaultButtonFace="nrdk" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build5" Unit="nbdr">
+            <Button DefaultButtonFace="nbdr" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build6" Unit="ngrw">
+            <Button DefaultButtonFace="ngrw" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build7" Unit="nbzw">
+            <Button DefaultButtonFace="nbzw" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build8" Unit="nbdw">
+            <Button DefaultButtonFace="nbdw" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build9" Unit="nbda">
+            <Button DefaultButtonFace="nbda" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build11" Unit="edot">
+            <Button DefaultButtonFace="edot" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build12" Unit="edoc">
+            <Button DefaultButtonFace="edoc" Requirements="BuildArmy"/>
+        </InfoArray>
+        <Range value="500"/>
+    </CAbilBuild>
     <CAbilBuild id="DemonBuild" parent="War3_PowerBuild">
         <EditorCategories value="Race:Demon,AbilityorEffectType:Units"/>
         <InfoArray index="Build1" Unit="DemonFlag">
@@ -1552,6 +1796,49 @@
         </InfoArray>
         <InfoArray index="Build11" Unit="nfel">
             <Button DefaultButtonFace="nfel" Requirements="BuildArmy"/>
+        </InfoArray>
+        <Range value="500"/>
+    </CAbilBuild>
+    <CAbilBuild id="OldGodBuild" parent="War3_PowerBuild">
+        <EditorCategories value="Race:OldGod,AbilityorEffectType:Units"/>
+        <InfoArray index="Build1" Unit="OldGodFlag">
+            <Button DefaultButtonFace="OldGodFlag" Requirements="BuildPhalanx"/>
+        </InfoArray>
+        <InfoArray index="Build2" Unit="OldGodFlag2">
+            <Button DefaultButtonFace="OldGodFlag2" Requirements="BuildPhalanxFinal"/>
+        </InfoArray>
+        <InfoArray index="Build3" Unit="nslm">
+            <Button DefaultButtonFace="nslm" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build4" Unit="nvdw">
+            <Button DefaultButtonFace="nvdw" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build5" Unit="nnwr">
+            <Button DefaultButtonFace="nnwr" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build7" Unit="nanw">
+            <Button DefaultButtonFace="nanw" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build8" Unit="Nfir">
+            <Button DefaultButtonFace="Nfir" Requirements="BuildArmyFinal"/>
+        </InfoArray>
+        <InfoArray index="Build9" Unit="nlv1">
+            <Button DefaultButtonFace="nlv1" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build10" Unit="nsty">
+            <Button DefaultButtonFace="nsty" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build11" Unit="nubw">
+            <Button DefaultButtonFace="nubw" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build12" Unit="nssp">
+            <Button DefaultButtonFace="nssp" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build13" Unit="nfgo">
+            <Button DefaultButtonFace="nspr" Requirements="BuildArmyFinal"/>
+        </InfoArray>
+        <InfoArray index="Build14" Unit="hwat">
+            <Button DefaultButtonFace="hwat" Requirements="BuildArmy"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
@@ -1928,6 +2215,17 @@
         <AutoCastValidatorArray value="EnemiesNearby8"/>
         <PrepTime value="0.3"/>
         <CastOutroTime value="2.4"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="Aspd" parent="AW2_EffectInstant">
+        <EditorCategories value="Race:OldGod,AbilityorEffectType:Units"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="60"/>
+        </Cost>
+        <AutoCastFilters value="Self,Visible;-"/>
+        <AutoCastValidatorArray value="EnemiesNearby8"/>
+        <PrepTime value="0.3"/>
+        <CastOutroTime value="2.4"/>
+        <Effect index="0" value="nspd"/>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="SummonDoomGuard" parent="AW2_EffectInstant">
         <EditorCategories value="Race:ChaosOrc,AbilityorEffectType:Units"/>
@@ -2905,6 +3203,27 @@
             <SortArray value="TSLifeLargestFirst"/>
         </TargetSorts>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="CurseOfFlesh" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:OldGod,AbilityorEffectType:Unit"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="15"/>
+        </Cost>
+        <TargetFilters index="0" value="mechanical;self,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSAllianceControlDescending"/>
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
+        </TargetSorts>
+        <Range value="13"/>
+        <AutoCastRange value="13"/>
+        <AutoCastValidatorArray value="NoCurseOfFlesh"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastValidatorArray value="EnemiesNearby8"/>
+        <PrepTime value="0.5"/>
+        <CastOutroTime value="0.83"/>
+        <AutoCastFilters value="Visible;-"/>
+    </CAbilEffectTarget>
     <!--Disenchant(new)-->
     <CAbilEffectTarget id="Adcn">
         <CmdButtonArray index="Execute" Requirements="">
@@ -2998,6 +3317,21 @@
         <InfoArray/>
     </CAbilInventory>
     <CAbilInventory id="DragonInventory" parent="AW2_UnitInventory">
+        <InfoArray/>
+        <InfoArray/>
+        <InfoArray/>
+    </CAbilInventory>
+    <CAbilInventory id="OldGodInventory" parent="AW2_UnitInventory">
+        <InfoArray/>
+        <InfoArray/>
+        <InfoArray/>
+    </CAbilInventory>
+    <CAbilInventory id="CentaurInventory" parent="AW2_UnitInventory">
+        <InfoArray/>
+        <InfoArray/>
+        <InfoArray/>
+    </CAbilInventory>
+    <CAbilInventory id="TreantInventory" parent="AW2_UnitInventory">
         <InfoArray/>
         <InfoArray/>
         <InfoArray/>
@@ -3235,7 +3569,7 @@
         <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
         <TargetFilters index="0" value="-;player,allies,ground,wall,tree,debris,item,structure,ward,dead,invulnerable"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="12"/>
+            <Cooldown Location="Unit" TimeUse="10"/>
         </Cost>
         <Range value="9"/>
         <CastOutroTime value="0.51"/>
@@ -3514,6 +3848,8 @@
     <CAbilTrain id="Purchasefwss" parent="AW2_MakeItem" unit="fwss"/>
     <CAbilTrain id="Purchasedtsb" parent="AW2_MakeItem" unit="dtsb"/>
     <CAbilTrain id="Purchaseshhn" parent="AW2_MakeItem" unit="shhn"/>
+    <CAbilTrain id="PurchasePoisonSting" parent="AW2_MakeItem" unit="PoisonSting"/>
+    <CAbilTrain id="PurchaseOrbOfArcane" parent="AW2_MakeItem" unit="OrbOfArcane"/>
     <CAbilMorph id="UpgradeTohatw" parent="AW2_Upgrade" toUnit="hatw">
         <CmdButtonArray index="Execute" Requirements="BuildArmyNonCore"/>
     </CAbilMorph>
@@ -3973,7 +4309,7 @@
     <CAbilMorph id="UpgradeTonnwl" parent="AW2_Upgrade" toUnit="nnwl">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
-    <CAbilMorph id="UpgradeTonnwr" parent="AW2_Upgrade" toUnit="nnwr">
+    <CAbilMorph id="UpgradeTonnwq" parent="AW2_Upgrade" toUnit="nnwq">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeTouktn" parent="AW2_Upgrade" toUnit="uktn">
@@ -4234,4 +4570,46 @@
     <CAbilMorph id="UpgradeTonpfl" parent="AW2_Upgrade" toUnit="npfl">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
+    <CAbilMorph id="UpgradeTondrj" parent="AW2_Upgrade" toUnit="ndrj">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonano" parent="AW2_Upgrade" toUnit="nano">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonane" parent="AW2_Upgrade" toUnit="nane">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonlv3" parent="AW2_Upgrade" toUnit="nlv3">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonsth" parent="AW2_Upgrade" toUnit="nsth">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonsts" parent="AW2_Upgrade" toUnit="nsts">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonfod" parent="AW2_Upgrade" toUnit="nfod">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonspb" parent="AW2_Upgrade" toUnit="nspb">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeTonsel" parent="AW2_Upgrade" toUnit="nsel">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilEffectTarget id="ACtn" parent="AW2_EffectTarget">
+        <TargetFilters index="0" value="-;wall,tree,Missile,debris,item,ward,dead,Hidden"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="6"/>
+        </Cost>
+        <Range value="36"/>
+        <PrepTime value="0.4"/>
+        <CastOutroTime value="0.5"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSFarthestDistance"/>
+        </TargetSorts>
+        <AutoCastRange value="36"/>
+        <AutoCastValidatorArray value="EnemiesNearby30"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+    </CAbilEffectTarget>
 </Catalog>
