@@ -130,6 +130,23 @@
         <CastOutroTime value="0.5"/>
         <TargetFilters index="0" value="-;wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
     </CAbilEffectTarget>
+    <!--Keeper - Tranquility Buff=AEtr effect=XEtq-->
+    <CAbilEffectInstant id="AEtq" parent="AW2_EffectInstant">
+        <EditorCategories value="Race:NightElf,AbilityorEffectType:Unit"/>
+        <Cost index="0">
+            <Vital index="Energy" value="60"/>
+            <Cooldown Location="Unit" TimeUse="10"/>
+        </Cost>
+        <PrepTime value="0.7"/>
+        <CastOutroTime value="10"/>
+        <ShowProgressArray index="Channel" value="1"/>
+        <ProgressButtonArray index="Channel" value="AEtq"/>
+        <CancelableArray index="Channel" value="1"/>
+        <FinishTime value="0.8"/>
+        <AutoCastValidatorArray value="DamagedFriendNearBy"/>
+        <AutoCastValidatorArray value="EnemiesNearby8"/>
+        <AutoCastFilters value="Self,Visible;Neutral,Enemy"/>
+    </CAbilEffectInstant>
     <!--Blood Mage - Siphon Mana Buff=Bdcb,Bdcl,Bdcm,Bdtb,Bdtl,Bdtm,Bdbb,Bdbl,Bdbm-->
     <CAbilEffectTarget id="AHdr" parent="AW2_EffectTarget">
         <TargetFilters index="0" value="HasEnergy;self,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable"/>
@@ -178,7 +195,7 @@
         <Cost>
             <Cooldown TimeUse="60"/>
         </Cost>
-        <AutoCastFilters value="Visible;Air,Hover,HarvestableResource,Missile,Stasis,Dead,Invulnerable"/>
+        <AutoCastFilters value="Visible;Air,Hover,HarvestableResource,Missile,Item,PreventDefeat,Stasis,Dead,Invulnerable"/>
     </CAbilAugment>
     <!--Cripple (creep) Dur=60 HeroDur=10 Buff=Bcri-->
     <CAbilEffectTarget id="ACcr" parent="AW2_EffectTarget">
@@ -681,7 +698,7 @@
         <Alignment value="Negative"/>
         <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastRange value="5"/>
-        <TargetFilters index="0" value="-;player,allies,air,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable"/>
+        <TargetFilters index="0" value="-;player,allies,air,wall,tree,Missile,debris,item,ward,dead,invulnerable"/>
         <Effect index="0" value="ANrcCreatePersistent"/>
     </CAbilEffectTarget>
     <CAbilQueue id="Aque">
@@ -966,6 +983,9 @@
         </InfoArray>
         <InfoArray index="Build5" Unit="nwat">
             <Button DefaultButtonFace="nwat" Requirements="BuildArmy"/>
+        </InfoArray>
+        <InfoArray index="Build6" Unit="Emfr">
+            <Button DefaultButtonFace="Emfr" Requirements="BuildArmy"/>
         </InfoArray>
         <InfoArray index="Build7" Unit="esen">
             <Button DefaultButtonFace="esen" Requirements="BuildArmy"/>
@@ -3456,25 +3476,25 @@
     <CAbilBehavior id="hgtwTimeLife" parent="War3_Passive">
         <BehaviorArray value="hgtwTimeLife"/>
     </CAbilBehavior>
-    <CAbilBehavior id="GyrocopterTimeLife" parent="War3_Passive">
-        <BehaviorArray value="GyrocopterTimeLife"/>
+    <CAbilBehavior id="GyrocopterSelfDestroy" parent="AW2_Passive">
+        <BehaviorArray value="GyrocopterSelfDestroy"/>
     </CAbilBehavior>
-    <CAbilBehavior id="nzepTimeLife" parent="War3_Passive">
-        <BehaviorArray value="nzepTimeLife"/>
+    <CAbilBehavior id="nzepSelfDestroy" parent="AW2_Passive">
+        <BehaviorArray value="nzepSelfDestroy"/>
     </CAbilBehavior>
-    <CAbilBehavior id="uarbTimeLife" parent="War3_Passive">
-        <BehaviorArray value="uarbTimeLife"/>
+    <CAbilBehavior id="uarbSelfDestroy" parent="AW2_Passive">
+        <BehaviorArray value="uarbSelfDestroy"/>
     </CAbilBehavior>
-    <CAbilBehavior id="hgyrTimeLife" parent="War3_Passive">
-        <BehaviorArray value="hgyrTimeLife"/>
+    <CAbilBehavior id="hgyrSelfDestroy" parent="AW2_Passive">
+        <BehaviorArray value="hgyrSelfDestroy"/>
     </CAbilBehavior>
-    <CAbilBehavior id="npgrTimeLife" parent="War3_Passive">
+    <CAbilBehavior id="npgrTimeLife" parent="AW2_Passive">
         <BehaviorArray value="npgrTimeLife"/>
     </CAbilBehavior>
-    <CAbilBehavior id="nws1TimeLife" parent="War3_Passive">
+    <CAbilBehavior id="nws1TimeLife" parent="AW2_Passive">
         <BehaviorArray value="nws1TimeLife"/>
     </CAbilBehavior>
-    <CAbilBehavior id="hdhwTimeLife" parent="War3_Passive">
+    <CAbilBehavior id="hdhwTimeLife" parent="AW2_Passive">
         <BehaviorArray value="hdhwTimeLife"/>
     </CAbilBehavior>
     <CAbilStop id="stop">

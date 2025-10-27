@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CActorModel id="ACmi">
+        <On Terms="Behavior.ACmi.On" Send="Create"/>
+        <On Terms="Behavior.ACmi.Off" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="Create EffectSoundOneShot ManaShieldCastSound"/>
+        <AutoScaleFromSelectionFactor value="1.500000"/>
+    </CActorModel>
     <CActorModel id="BEar">
         <On Terms="Behavior.BEarI.On" Send="Create"/>
         <On Terms="Behavior.BEarI.Off" Send="AnimBracketStop BSD"/>
@@ -38,6 +44,18 @@
     <CActorModel id="ANbrCaster" parent="CasterArt">
         <Model value="AroaCaster"/>
     </CActorModel>
+    <!--malfurion-->
+    <CActorUnit id="Emfr" parent="War3_Army" unitSound="MalFurion" unitName="Emfr" defType="NONE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnFurion.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnFurion.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnFurion.dds"/>
+        <BarWidth value="112"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar70"/>
+        <BarOffset value="60"/>
+        <WalkAnimMoveSpeed value="2.5"/>
+    </CActorUnit>
     <!--beastmaster-->
     <CActorUnit id="Nbst" parent="War3_Army" unitSound="Beastmaster" unitName="Nbst" defType="LARGE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnBeastMaster.dds"/>
@@ -60,9 +78,8 @@
     <CActorModel id="PosteriorStrategyCaster" parent="CasterArt">
         <Model value="AIdaCaster"/>
     </CActorModel>
-    <CActorModel id="ANpi" parent="War3_Buff">
-        <Model value="BEim"/>
-    </CActorModel>
+    <CActorModel id="ANpi" parent="War3_Buff"/>
+    <CActorModel id="ANp2" parent="War3_Buff"/>
     <CActorModel id="AIcf" parent="War3_Buff">
         <Model value="BEim"/>
     </CActorModel>
@@ -70,7 +87,11 @@
         <HostSiteOps Ops="$head"/>
         <On Terms="Effect.ANpiDPS.Start; At Target" Send="Create"/>
         <Host Subject="_Selectable"/>
-        <Model value="BEimSpecial"/>
+    </CActorModel>
+    <CActorModel id="ANp2Special" parent="SpecialArt">
+        <HostSiteOps Ops="$head"/>
+        <On Terms="Effect.ANp2DPS.Start; At Target" Send="Create"/>
+        <Host Subject="_Selectable"/>
     </CActorModel>
     <CActorModel id="AIcfSpecial" parent="SpecialArt">
         <HostSiteOps Ops="$head"/>
@@ -981,6 +1002,18 @@
         <BarOffset value="100"/>
         <WalkAnimMoveSpeed value="2.5"/>
     </CActorUnit>
+    <CActorUnit id="nin2" parent="War3_Army" unitSound="Infernal" unitName="nin2" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnInfernal.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnInfernal.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnInfernal.dds"/>
+        <BarWidth value="125"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar110"/>
+        <BarOffset value="100"/>
+        <WalkAnimMoveSpeed value="2.5"/>
+    </CActorUnit>
+    <CActorAction id="nin21" parent="War3_AttackSwapable" WeaponSound="RockHeavyBash"/>
     <!--infernalmachine-->
     <CActorUnit id="ninm" parent="War3_Army" unitSound="InfernalMachine" unitName="ninm" defType="FORT">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnInfernalCannon.dds"/>
@@ -1786,7 +1819,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnClockWerkGoblin.dds"/>
         <BarWidth value="57"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
@@ -1842,6 +1875,20 @@
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
         <WalkAnimMoveSpeed value="2.3437"/>
     </CActorUnit>
+    <CActorUnit id="dtt2" parent="War3_Army" unitSound="ForestTroll" unitName="dtt2" defType="MEDIUM">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnDarkTrollTrapper.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnDarkTrollTrapper.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnDarkTrollTrapper.dds"/>
+        <BarWidth value="50"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.3437"/>
+    </CActorUnit>
+    <CActorAction id="dtt21" parent="War3_AttackMissileSwapable"/>
+    <CActorMissile id="dtt21LM" parent="War3_MissileSwapable" unitName="dtt21LM"/>
     <!--elvenguardtower-->
     <CActorUnit id="negt" parent="War3_Building" unitSound="ElvenGuardTower" unitName="negt" defType="FORT">
         <On Terms="ActorCreation" Send="Create UBR_HSMA"/>

@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
-    <const id="summoned" path="SDamageResponse.TargetFilters" value="Summoned"/>
-    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
     <const id="hero" path="SDamageResponse.TargetFilters" value="Resistant"/>
-    <const id="allies" path="SDamageResponse.TargetFilters" value="Ally"/>
+    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
+    <const id="summoned" path="SDamageResponse.TargetFilters" value="Summoned"/>
     <const id="air" path="SDamageResponse.TargetFilters" value="Air"/>
-    <const id="tree" path="SDamageResponse.TargetFilters" value="HarvestableResource"/>
+    <const id="allies" path="SDamageResponse.TargetFilters" value="Ally"/>
     <const id="item" path="SDamageResponse.TargetFilters" value="Item"/>
-    <const id="player" path="SDamageResponse.TargetFilters" value="Player"/>
+    <const id="tree" path="SDamageResponse.TargetFilters" value="HarvestableResource"/>
     <const id="ancient" path="SDamageResponse.TargetFilters" value="Psionic"/>
-    <const id="enemies" path="SDamageResponse.TargetFilters" value="Enemy"/>
+    <const id="player" path="SDamageResponse.TargetFilters" value="Player"/>
     <const id="structure" path="SDamageResponse.TargetFilters" value="PreventDefeat"/>
-    <const id="self" path="SDamageResponse.TargetFilters" value="Self"/>
-    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="enemies" path="SDamageResponse.TargetFilters" value="Enemy"/>
     <const id="mechanical" path="SDamageResponse.TargetFilters" value="Mechanical"/>
-    <const id="neutral" path="SDamageResponse.TargetFilters" value="Neutral"/>
+    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="self" path="SDamageResponse.TargetFilters" value="Self"/>
     <const id="ground" path="SDamageResponse.TargetFilters" value="Ground"/>
+    <const id="neutral" path="SDamageResponse.TargetFilters" value="Neutral"/>
     <const id="wall" path="SDamageResponse.TargetFilters" value="Hover"/>
     <const id="dead" path="SDamageResponse.TargetFilters" value="Dead"/>
     <const id="ethereal" path="SDamageResponse.TargetFilters" value="Stasis"/>
-    <const id="invulnerable" path="SDamageResponse.TargetFilters" value="Invulnerable"/>
     <const id="debris" path="SDamageResponse.TargetFilters" value="Destructible"/>
+    <const id="invulnerable" path="SDamageResponse.TargetFilters" value="Invulnerable"/>
     <CBehaviorBuff default="1" id="AW2_TimeLife" parent="War3_Passive">
         <DisplayDuration index="Self" value="1"/>
         <DisplayDuration index="Ally" value="1"/>
@@ -45,6 +45,17 @@
             </Cost>
         </DamageResponse>
         <MaxStackCount value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff default="1" id="AW2_SelfDestroy" parent="War3_Buff">
+        <Period value="1"/>
+        <PeriodicEffect value="##id##DPS"/>
+        <Modification>
+            <StateFlags index="SuppressLifeRegen" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AEtr">
+        <MaxStackCount value="0"/>
+        <MaxStackCountPerCaster value="1"/>
     </CBehaviorBuff>
     <!--ItemAuraTrueshot Buff=BEar-->
     <CBehaviorBuff id="AIar">
@@ -119,6 +130,9 @@
     <!--Permanent Immolation Dur=1 HeroDur=1 Buff=BNpi-->
     <CBehaviorBuff id="ANpi">
         <PeriodicEffect value="ANpiSearch"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ANp2">
+        <PeriodicEffect value="ANp2Search"/>
     </CBehaviorBuff>
     <!--Spell Shield Buff=BNss-->
     <CBehaviorBuff id="ANss">
@@ -1479,33 +1493,21 @@
         </DurationOverride>
         <Duration value="60"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="GyrocopterTimeLife" parent="War3_Buff">
-        <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
+    <CBehaviorBuff id="GyrocopterSelfDestroy" parent="AW2_SelfDestroy">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnFlyingMachine.dds"/>
-        <Modification>
-            <VitalRegenArray index="Life" value="-5"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="nzepTimeLife" parent="War3_Buff">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="nzepSelfDestroy" parent="AW2_SelfDestroy">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btngoblinzeppelin.dds"/>
-        <Modification>
-            <VitalRegenArray index="Life" value="-5"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="uarbTimeLife" parent="War3_Buff">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="uarbSelfDestroy" parent="AW2_SelfDestroy">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnundeadairbarge.dds"/>
-        <Modification>
-            <VitalRegenArray index="Life" value="-5"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="hgyrTimeLife" parent="War3_Buff">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="hgyrSelfDestroy" parent="AW2_SelfDestroy">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnFlyingMachine.dds"/>
-        <Modification>
-            <VitalRegenArray index="Life" value="-5"/>
-        </Modification>
+        <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="npgrTimeLife" parent="AW2_TimeLife">
         <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
