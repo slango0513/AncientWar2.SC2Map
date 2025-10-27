@@ -897,6 +897,7 @@
         <AutoCastRange value="8"/>
         <AutoCastValidatorArray index="1" value="noMarkers"/>
         <AutoCastValidatorArray value="GroundEnemiesNearby3"/>
+        <AutoCastValidatorArray value="NotSummonedUnit"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLife"/>
             <SortArray value="TSKillResourceCustomLargestFirst"/>
@@ -2752,8 +2753,8 @@
     <CAbilEffectInstant id="Arpl" parent="AW2_EffectInstant">
         <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
         <Cost index="0">
-            <Vital index="Energy" value="-3"/>
-            <Cooldown Location="Unit" TimeUse="3"/>
+            <Vital index="Energy" value="-2"/>
+            <Cooldown Location="Unit" TimeUse="5"/>
         </Cost>
         <PrepTime value="0.5"/>
         <FinishTime value="0.51"/>
@@ -2768,8 +2769,8 @@
     <CAbilEffectInstant id="Arpm" parent="AW2_EffectInstant">
         <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
         <Cost index="0">
-            <Vital index="Energy" value="-3"/>
-            <Cooldown Location="Unit" TimeUse="3"/>
+            <Vital index="Energy" value="-2"/>
+            <Cooldown Location="Unit" TimeUse="5"/>
         </Cost>
         <Range value="1.9531"/>
         <PrepTime value="0.5"/>
@@ -2858,6 +2859,10 @@
     </CAbilMorph>
     <CAbilMorph id="Asb3" parent="AW2_Morph" unitID="nsbs">
         <EditorCategories value="Race:Naga,AbilityorEffectType:Units"/>
+        <Flags index="Automatic" value="1"/>
+        <Cost>
+            <Cooldown TimeStart="5"/>
+        </Cost>
         <InfoArray index="0" Unit="nsbs">
             <SectionArray index="Actor">
                 <DurationArray index="Duration" value="1.1"/>
@@ -2871,12 +2876,8 @@
                 <DurationArray index="Duration" value="1"/>
             </SectionArray>
         </InfoArray>
-        <Cost>
-            <Cooldown TimeStart="5"/>
-        </Cost>
-        <Flags index="Automatic" value="1"/>
         <ValidatorArray value="CasterHasSwimmingAmphibian"/>
-        <ValidatorArray value="EnemiesNearby8"/>
+        <ValidatorArray value="EnemiesNearby3"/>
     </CAbilMorph>
     <CAbilMorph id="Asb3Un" parent="AW2_Morph" unitID="nsnp">
         <EditorCategories value="Race:Naga,AbilityorEffectType:Units"/>
@@ -2893,7 +2894,7 @@
             </SectionArray>
         </InfoArray>
         <Flags index="Automatic" value="1"/>
-        <ValidatorArray value="CasterHasNoSwimmingAmphibianOrNoEnemiesNearby8"/>
+        <ValidatorArray value="CasterHasNoSwimmingAmphibianOrNoEnemiesNearby"/>
     </CAbilMorph>
     <!--Spell Steal-->
     <CAbilEffectTarget id="Asps" parent="AW2_EffectTarget">
@@ -3468,13 +3469,13 @@
         <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
         <Cost index="0">
             <Vital index="Energy" value="6"/>
-            <Cooldown Location="Unit" TimeUse="12"/>
+            <Cooldown Location="Unit" TimeUse="15"/>
         </Cost>
-        <Range value="10"/>
+        <Range value="8"/>
         <PrepTime value="0.5"/>
         <FinishTime value="0.5"/>
         <Alignment value="Positive"/>
-        <AutoCastRange value="10"/>
+        <AutoCastRange value="8"/>
         <Flags index="WaitToSpend" value="1"/>
         <DefaultError value="MustTargetUnit,Errors/Cantfindcorpse"/>
         <AutoCastValidatorArray index="0" value="SkeletonsLE96"/>

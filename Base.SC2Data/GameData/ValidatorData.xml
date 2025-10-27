@@ -62,9 +62,9 @@
         <Compare value="LE"/>
         <Value value="25"/>
     </CValidatorUnitCompareVital>
-    <CValidatorCombine id="CasterHasNoSwimmingAmphibianOrNoEnemiesNearby8">
+    <CValidatorCombine id="CasterHasNoSwimmingAmphibianOrNoEnemiesNearby">
         <CombineArray value="CasterHasNoSwimmingAmphibian"/>
-        <CombineArray value="NoEnemiesNearby8"/>
+        <CombineArray value="NoEnemiesNearby3"/>
     </CValidatorCombine>
     <CValidatorUnitCompareBehaviorCount id="HasNoAnsk">
         <Behavior value="Ansk"/>
@@ -165,6 +165,11 @@
     <CValidatorLocationCompareCliffLevel id="CasterCliffLevelEqual">
         <WhichLocation Value="TargetUnit"/>
         <OtherLocation Value="CasterUnit"/>
+    </CValidatorLocationCompareCliffLevel>
+    <CValidatorLocationCompareCliffLevel id="CasterCliffLevelEqualOrGreater">
+        <WhichLocation Value="TargetUnit"/>
+        <OtherLocation Value="CasterUnit"/>
+        <Compare value="GE"/>
     </CValidatorLocationCompareCliffLevel>
     <CValidatorUnitCompareBehaviorCount id="CasterHasCountUnitController">
         <WhichUnit Value="Caster"/>
@@ -675,6 +680,12 @@
     </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="NoEnemiesNearby2" parent="AW2_NoEnemiesNearby">
         <AreaArray Radius="2"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="NoEnemiesNearby3" parent="AW2_NoEnemiesNearby">
+        <AreaArray Radius="3"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="NoEnemiesNearby4" parent="AW2_NoEnemiesNearby">
+        <AreaArray Radius="4"/>
     </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="NoEnemiesNearby5" parent="AW2_NoEnemiesNearby">
         <AreaArray Radius="5"/>

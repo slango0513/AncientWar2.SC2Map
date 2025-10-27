@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
-    <const id="hero" path="SDamageResponse.TargetFilters" value="Resistant"/>
-    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
     <const id="summoned" path="SDamageResponse.TargetFilters" value="Summoned"/>
-    <const id="air" path="SDamageResponse.TargetFilters" value="Air"/>
+    <const id="immunity" path="SDamageResponse.TargetFilters" value="Unstoppable"/>
+    <const id="hero" path="SDamageResponse.TargetFilters" value="Resistant"/>
     <const id="allies" path="SDamageResponse.TargetFilters" value="Ally"/>
-    <const id="item" path="SDamageResponse.TargetFilters" value="Item"/>
+    <const id="air" path="SDamageResponse.TargetFilters" value="Air"/>
     <const id="tree" path="SDamageResponse.TargetFilters" value="HarvestableResource"/>
-    <const id="ancient" path="SDamageResponse.TargetFilters" value="Psionic"/>
+    <const id="item" path="SDamageResponse.TargetFilters" value="Item"/>
     <const id="player" path="SDamageResponse.TargetFilters" value="Player"/>
-    <const id="structure" path="SDamageResponse.TargetFilters" value="PreventDefeat"/>
+    <const id="ancient" path="SDamageResponse.TargetFilters" value="Psionic"/>
     <const id="enemies" path="SDamageResponse.TargetFilters" value="Enemy"/>
-    <const id="mechanical" path="SDamageResponse.TargetFilters" value="Mechanical"/>
-    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="structure" path="SDamageResponse.TargetFilters" value="PreventDefeat"/>
     <const id="self" path="SDamageResponse.TargetFilters" value="Self"/>
-    <const id="ground" path="SDamageResponse.TargetFilters" value="Ground"/>
+    <const id="sapper" path="SDamageResponse.TargetFilters" value="Uncloakable"/>
+    <const id="mechanical" path="SDamageResponse.TargetFilters" value="Mechanical"/>
     <const id="neutral" path="SDamageResponse.TargetFilters" value="Neutral"/>
+    <const id="ground" path="SDamageResponse.TargetFilters" value="Ground"/>
     <const id="wall" path="SDamageResponse.TargetFilters" value="Hover"/>
     <const id="dead" path="SDamageResponse.TargetFilters" value="Dead"/>
     <const id="ethereal" path="SDamageResponse.TargetFilters" value="Stasis"/>
-    <const id="debris" path="SDamageResponse.TargetFilters" value="Destructible"/>
     <const id="invulnerable" path="SDamageResponse.TargetFilters" value="Invulnerable"/>
+    <const id="debris" path="SDamageResponse.TargetFilters" value="Destructible"/>
     <CBehaviorBuff default="1" id="AW2_TimeLife" parent="War3_Passive">
         <DisplayDuration index="Self" value="1"/>
         <DisplayDuration index="Ally" value="1"/>
@@ -88,6 +88,15 @@
             <ExcludeEffectArray value="BNsoDPS1"/>
         </DamageResponse>
     </CBehaviorBuff>
+    <CBehaviorBuff id="Submerging" parent="War3_Buff">
+        <Name value="EnalbeSubmerge/Name"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Duration value="30"/>
+        <DurationOverride index="0" Duration="30">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Modification WeaponRange="3" WeaponScanBonus="3"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="Posterior" parent="War3_Buff">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btninvulnerable.dds"/>
         <Duration value="10"/>
@@ -97,7 +106,19 @@
         <Modification>
             <ModifyFlags index="SuppressMoving" value="1"/>
             <AbilClassDisableArray index="CAbilMove" value="1"/>
+            <AbilLinkDisableArray value="PosteriorStrategy"/>
         </Modification>
+        <ExpireEffect value="PosteriorMoveSpeed"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PosteriorMoveSpeed" parent="War3_Buff">
+        <InfoIcon value="Assets\Textures\BTN\Renee_war3_btninvulnerable.dds"/>
+        <Duration value="45"/>
+        <DurationOverride index="0" Duration="45">
+            <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
+        </DurationOverride>
+        <Modification MoveSpeedMultiplier="1.25" AttackSpeedMultiplier="1.25"/>
+        <MaxStackCount value="2"/>
+        <MaxStackCountPerCaster value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ShieldWallPassive" parent="War3_Passive">
         <Requirements value="ShieldWallPassive"/>
@@ -244,7 +265,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="SubmergingInvulnerable">
         <InfoFlags index="Hidden" value="1"/>
-        <Duration value="2"/>
+        <Duration value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="SwimmingBase" parent="War3_Buff">
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnsummonwaterelemental.dds"/>
