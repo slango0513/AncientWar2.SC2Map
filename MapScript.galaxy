@@ -74,8 +74,6 @@ text gv_tip3;
 bool gv_dreamDisabled;
 int gv_aOmiBaseImages;
 int gv_aOmiExtraImagePerLevel;
-fixed gv_aegrDamageTaken;
-fixed gv_aegrMagicDamageReduction;
 unitgroup gv_adefGroup;
 unitgroup gv_amdfGroup;
 timer gv_moonstoneTimer;
@@ -127,6 +125,7 @@ int[gv_playerMaximumIndex + 1] gv_killScore;
 int[gv_playerMaximumIndex + 1] gv_buildingScore;
 int gv_scoreBoard;
 int[gv_roundMaximumCount + 1] gv_roundGold;
+int[gv_roundMaximumCount + 1] gv_roundNumber;
 bool[gv_roundMaximumCount + 1] gv_bonusRoundIsOn;
 int[gv_teamRoundMaximumCount + 1] gv_teamRoundRandomized;
 int[gv_venueGroupMaximumCount + 1][gv_teamRoundMaximumCount + 1] gv_venueGroupRandomized;
@@ -173,8 +172,6 @@ void InitGlobals () {
     gv_tip3 = StringExternal("Param/Value/191E7488");
     gv_aOmiBaseImages = 1;
     gv_aOmiExtraImagePerLevel = 1;
-    gv_aegrDamageTaken = 0.5;
-    gv_aegrMagicDamageReduction = 0.5;
     gv_adefGroup = UnitGroupEmpty();
     gv_amdfGroup = UnitGroupEmpty();
     gv_moonstoneTimer = TimerCreate();
@@ -258,8 +255,9 @@ void gf_WorkersSave (int lp_player);
 void gf_WorkerExchangeSetAutoCast (int lp_player, bool lp_onOff);
 bool gf_IsFinalRound (int lp_round);
 void gf_RoundGoldSet (int lp_round, int lp_value);
+void gf_RoundNumberSet (int lp_round, int lp_value);
 void gf_BonusRoundSet (bool lp_on, int lp_round);
-void gf_GoldAdd (int lp_round);
+void gf_ResourceAdd (int lp_round);
 void gf_ValidRegionFillHidden ();
 void gf_BattlefieldSetAll (region lp_region);
 void gf_BattlefieldHighlandSet (region lp_region);
@@ -351,6 +349,7 @@ trigger gt_VenueInizialization;
 trigger gt_BuidingRegionInizialization;
 trigger gt_PreviewerPointInizialization;
 trigger gt_RoundInitialization;
+trigger gt_PlayerColorInitialization;
 trigger gt_ShowPlayerHandle;
 trigger gt_ShowPlayerDifficultyAll;
 trigger gt_GameAttributeInizialization;
@@ -371,8 +370,6 @@ trigger gt_AOmiMarker;
 trigger gt_Harvest;
 trigger gt_Pillage;
 trigger gt_Pillage2;
-trigger gt_AegrElunesGraceRegister;
-trigger gt_AegrElunesGraceDamaged;
 trigger gt_AdefDefendInitRegister;
 trigger gt_AdefDefendDamaged;
 trigger gt_AmdfInitRegister;
@@ -489,7 +486,7 @@ void gf_RoundStartLoop (bool lp_debug) {
                 }
             }
 
-            if (((lv_gameValue == "0002") || (lv_gameValue == "0004"))) {
+            if (((lv_gameValue == "0005") || (lv_gameValue == "0004"))) {
                 gv_dreamDisabled = true;
             }
             else {
@@ -525,7 +522,7 @@ void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug, bool lp_aut
     gf_ScoreBoardSetName(lp_round, lp_bonusRound);
     if ((gf_IsFinalRound(lp_round) == true)) {
         if ((lp_round == (gv_roundCount-gv_finalRoundCount+1))) {
-            gf_GoldAdd(lp_round);
+            gf_ResourceAdd(lp_round);
             gf_BuildingRegionRevealerEnable(true, lp_debug);
             gf_CreateRandomItem(lp_round, true);
             gf_PreviewEnable(true);
@@ -550,7 +547,7 @@ void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug, bool lp_aut
             gf_ObjectiveSetState(lp_round, c_objectiveStateActive);
         }
 
-        gf_GoldAdd(lp_round);
+        gf_ResourceAdd(lp_round);
         gf_BuildingRegionRevealerEnable(true, lp_debug);
         gf_CreateRandomItem(lp_round, false);
         gf_PreviewEnable(true);
@@ -1287,7 +1284,7 @@ int gf_PlayerGetCompetitor (int lp_player) {
     // Variable Initialization
 
     // Implementation
-    if (((GameAttributeGameValue("2") == "0001") || (GameAttributeGameValue("2") == "0003"))) {
+    if (((GameAttributeGameValue("2") == "0001") || (GameAttributeGameValue("2") == "0002") || (GameAttributeGameValue("2") == "0003"))) {
         if ((lp_player == gv_playerAtVenue[1][gv_round])) {
             lv_competitor = gv_playerAtVenue[2][gv_round];
         }
@@ -1314,7 +1311,7 @@ int gf_PlayerGetCompetitor (int lp_player) {
         }
     }
 
-    if (((GameAttributeGameValue("2") == "0002") || (GameAttributeGameValue("2") == "0004"))) {
+    if (((GameAttributeGameValue("2") == "0005") || (GameAttributeGameValue("2") == "0004"))) {
         if ((lp_player == gv_playerAtVenue[1][gv_round])) {
             lv_competitor = gv_playerAtVenue[3][gv_round];
         }
@@ -1751,13 +1748,19 @@ void gf_RoundGoldSet (int lp_round, int lp_value) {
     gv_roundGold[lp_round] = lp_value;
 }
 
+void gf_RoundNumberSet (int lp_round, int lp_value) {
+    // Automatic Variable Declarations
+    // Implementation
+    gv_roundNumber[lp_round] = lp_value;
+}
+
 void gf_BonusRoundSet (bool lp_on, int lp_round) {
     // Automatic Variable Declarations
     // Implementation
     gv_bonusRoundIsOn[lp_round] = lp_on;
 }
 
-void gf_GoldAdd (int lp_round) {
+void gf_ResourceAdd (int lp_round) {
     // Variable Declarations
     int lv_player;
     int lv_lumber;
@@ -1806,6 +1809,7 @@ void gf_GoldAdd (int lp_round) {
         }
         PlayerModifyPropertyInt(lv_player, c_playerPropTerrazine, c_playerPropOperAdd, lv_gold);
         PlayerModifyPropertyInt(lv_player, c_playerPropCustom, c_playerPropOperAdd, lv_lumber);
+        PlayerModifyPropertyInt(lv_player, c_playerPropCustom, c_playerPropOperAdd, gv_roundNumber[lp_round]);
         gv_buildingScore[lv_player] = 0;
         gv_killScore[lv_player] = 0;
     }
@@ -4040,7 +4044,6 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     const int auto1222D8BF_ai = 1;
 
     // Variable Initialization
-    lv_debug = true;
 
     // Actions
     if (!runActions) {
@@ -4052,6 +4055,7 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     TriggerExecute(gt_BuidingRegionInizialization, true, false);
     TriggerExecute(gt_PreviewerPointInizialization, true, false);
     TriggerExecute(gt_RoundInitialization, true, false);
+    TriggerExecute(gt_PlayerColorInitialization, true, false);
     gf_ModInizialization(lv_debug);
     lv_player = 1;
     for ( ; ( (autoCF83B040_ai >= 0 && lv_player <= autoCF83B040_ae) || (autoCF83B040_ai < 0 && lv_player >= autoCF83B040_ae) ) ; lv_player += autoCF83B040_ai ) {
@@ -4065,7 +4069,7 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     lv_player = 1;
     for ( ; ( (auto1222D8BF_ai >= 0 && lv_player <= auto1222D8BF_ae) || (auto1222D8BF_ai < 0 && lv_player >= auto1222D8BF_ae) ) ; lv_player += auto1222D8BF_ai ) {
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "hrdh", 0, lv_player, PlayerStartLocation(lv_player));
-        if (((GameAttributeGameValue("2") == "0003") || (GameAttributeGameValue("2") == "0004"))) {
+        if (((GameAttributeGameValue("2") == "0002") || (GameAttributeGameValue("2") == "0003") || (GameAttributeGameValue("2") == "0004") || (GameAttributeGameValue("2") == "0005"))) {
             libNtve_gf_CreateUnitsWithDefaultFacing(1, gf_RaceGetWorkerType(gv_secondRace[lv_player]), 0, lv_player, PlayerStartLocation(lv_player));
         }
 
@@ -4101,7 +4105,7 @@ bool gt_VenueInizialization_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    if (((lv_gameValue == "0001") || (lv_gameValue == "0003"))) {
+    if (((lv_gameValue == "0001") || (lv_gameValue == "0002") || (lv_gameValue == "0003"))) {
         gf_VenueInitialSet(RegionFromId(25), 1, 90.0);
         gf_VenueInitialSet(RegionFromId(27), 2, 270.0);
         gf_VenueInitialSet(RegionFromId(29), 3, 270.0);
@@ -4183,7 +4187,7 @@ bool gt_VenueInizialization_Func (bool testConds, bool runActions) {
         gf_CreepPointSet(PointFromId(1844541176), 7);
         gf_CreepPointSet(PointFromId(1335332667), 8);
     }
-    else if (((lv_gameValue == "0002") || (lv_gameValue == "0004"))) {
+    else if (((lv_gameValue == "0005") || (lv_gameValue == "0004"))) {
         gf_VenueInitialSet(RegionFromId(25), 1, 90.0);
         gf_VenueInitialSet(RegionFromId(26), 2, 90.0);
         gf_VenueInitialSet(RegionFromId(27), 3, 270.0);
@@ -4383,7 +4387,7 @@ bool gt_RoundInitialization_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    if (((lv_gameValue == "0001") || (lv_gameValue == "0003"))) {
+    if (((lv_gameValue == "0001") || (lv_gameValue == "0002") || (lv_gameValue == "0003"))) {
         gf_ObjectiveTextSeparatorSet(StringExternal("Param/Value/B744BA58"), StringExternal("Param/Value/91BA9176"), StringExternal("Param/Value/54C1A907"));
         gf_RoundGoldSet(1, 90);
         gf_RoundGoldSet(2, 135);
@@ -4392,10 +4396,15 @@ bool gt_RoundInitialization_Func (bool testConds, bool runActions) {
         gf_RoundGoldSet(5, 270);
         gf_RoundGoldSet(6, 315);
         gf_RoundGoldSet(7, 360);
-        gf_BonusRoundSet(true, 7);
+        if ((lv_gameValue == "0002")) {
+            gf_RoundNumberSet(8, 16200);
+        }
+        else {
+            gf_BonusRoundSet(true, 7);
+        }
         gf_RoundGoldSet(8, 405);
     }
-    else if (((lv_gameValue == "0002") || (lv_gameValue == "0004"))) {
+    else if (((lv_gameValue == "0005") || (lv_gameValue == "0004"))) {
         gf_ObjectiveTextSeparatorSet(StringExternal("Param/Value/15A47604"), StringExternal("Param/Value/7EA0BD11"), StringExternal("Param/Value/B3EEA70D"));
         gf_RoundGoldSet(1, 135);
         gf_RoundGoldSet(2, 180);
@@ -4403,7 +4412,12 @@ bool gt_RoundInitialization_Func (bool testConds, bool runActions) {
         gf_RoundGoldSet(4, 270);
         gf_RoundGoldSet(5, 315);
         gf_RoundGoldSet(6, 360);
-        gf_BonusRoundSet(true, 6);
+        if ((lv_gameValue == "0005")) {
+            gf_RoundNumberSet(7, 16200);
+        }
+        else {
+            gf_BonusRoundSet(true, 6);
+        }
         gf_RoundGoldSet(7, 405);
     }
     return true;
@@ -4412,6 +4426,32 @@ bool gt_RoundInitialization_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void gt_RoundInitialization_Init () {
     gt_RoundInitialization = TriggerCreate("gt_RoundInitialization_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: PlayerColorInitialization
+//--------------------------------------------------------------------------------------------------
+bool gt_PlayerColorInitialization_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    PlayerSetColorIndex(1, 1, true);
+    PlayerSetColorIndex(2, 2, true);
+    PlayerSetColorIndex(3, 3, true);
+    PlayerSetColorIndex(4, 4, true);
+    PlayerSetColorIndex(5, 5, true);
+    PlayerSetColorIndex(6, 6, true);
+    PlayerSetColorIndex(7, 7, true);
+    PlayerSetColorIndex(8, 8, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_PlayerColorInitialization_Init () {
+    gt_PlayerColorInitialization = TriggerCreate("gt_PlayerColorInitialization_Func");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4499,9 +4539,12 @@ bool gt_GameAttributeInizialization_Func (bool testConds, bool runActions) {
         gv_teamCount = 8;
     }
     else if (auto4F0CCA57_val == "0002") {
-        gv_teamCount = 4;
+        gv_teamCount = 8;
     }
     else if (auto4F0CCA57_val == "0004") {
+        gv_teamCount = 4;
+    }
+    else if (auto4F0CCA57_val == "0005") {
         gv_teamCount = 4;
     }
     else {
@@ -4520,10 +4563,14 @@ bool gt_GameAttributeInizialization_Func (bool testConds, bool runActions) {
         gv_venueFinalEnd = 2;
     }
     else if (auto6B7DF3F0_val == "0002") {
+        gv_finalRound = 8;
+        gv_venueFinalEnd = 2;
+    }
+    else if (auto6B7DF3F0_val == "0004") {
         gv_finalRound = 7;
         gv_venueFinalEnd = 4;
     }
-    else if (auto6B7DF3F0_val == "0004") {
+    else if (auto6B7DF3F0_val == "0005") {
         gv_finalRound = 7;
         gv_venueFinalEnd = 4;
     }
@@ -4694,15 +4741,22 @@ bool gt_PlayerInizialization_Func (bool testConds, bool runActions) {
         if (autoFDE01903_val == "0001") {
             libGAwX_gf_SetPlayerUIRace(lv_player, libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue("3", lv_player)));
         }
-        else if (autoFDE01903_val == "0002") {
-            libGAwX_gf_SetPlayerUIRace(lv_player, libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue("3", lv_player)));
-        }
         else if (autoFDE01903_val == "0003") {
             libGAwX_gf_SetPlayerUIRace(lv_player, libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue("3", lv_player)));
             lv_secondRaceFromRaceAttribute = libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue("4", lv_player));
             gv_secondRace[lv_player] = gf_GenerateSecondRace(lv_player, lv_secondRaceFromRaceAttribute);
         }
+        else if (autoFDE01903_val == "0002") {
+            libGAwX_gf_SetPlayerUIRace(lv_player, libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue("3", lv_player)));
+            lv_secondRaceFromRaceAttribute = libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue("4", lv_player));
+            gv_secondRace[lv_player] = gf_GenerateSecondRace(lv_player, lv_secondRaceFromRaceAttribute);
+        }
         else if (autoFDE01903_val == "0004") {
+            libGAwX_gf_SetPlayerUIRace(lv_player, libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue("3", lv_player)));
+            lv_secondRaceFromRaceAttribute = libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue("4", lv_player));
+            gv_secondRace[lv_player] = gf_GenerateSecondRace(lv_player, lv_secondRaceFromRaceAttribute);
+        }
+        else if (autoFDE01903_val == "0005") {
             libGAwX_gf_SetPlayerUIRace(lv_player, libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue("3", lv_player)));
             lv_secondRaceFromRaceAttribute = libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue("4", lv_player));
             gv_secondRace[lv_player] = gf_GenerateSecondRace(lv_player, lv_secondRaceFromRaceAttribute);
@@ -5297,95 +5351,6 @@ bool gt_Pillage2_Func (bool testConds, bool runActions) {
 void gt_Pillage2_Init () {
     gt_Pillage2 = TriggerCreate("gt_Pillage2_Func");
     TriggerAddEventPlayerEffectUsed(gt_Pillage2, c_playerAny, "Asa2TriggerNotice");
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Aegr - Elune's Grace - Register
-//--------------------------------------------------------------------------------------------------
-bool gt_AegrElunesGraceRegister_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    unit lv_unit;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_unit = EventUnit();
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    GAw3_AddEventUnitDamaged(gt_AegrElunesGraceDamaged, lv_unit, c_unitDamageTypeRanged, c_unitDamageNonFatal, null);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_AegrElunesGraceRegister_Init () {
-    gt_AegrElunesGraceRegister = TriggerCreate("gt_AegrElunesGraceRegister_Func");
-    libGAw3_gf_AnyUnitBehaviorActivateCountPreplaced(gt_AegrElunesGraceRegister, "Aegr");
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Aegr - Elune's Grace - Damaged
-//--------------------------------------------------------------------------------------------------
-bool gt_AegrElunesGraceDamaged_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    string lv_weapon;
-    fixed lv_triggerDamge;
-    fixed lv_actualDamge;
-    fixed lv_aborbed;
-    unit lv_archer;
-    unit lv_source;
-    unit lv_triggerAttaker;
-
-    // Automatic Variable Declarations
-    string auto741D238B_val;
-
-    // Variable Initialization
-    lv_weapon = ((EventUnitDamageEffect()));
-    lv_actualDamge = EventUnitDamageAmount();
-    lv_aborbed = EventUnitDamageAbsorbed();
-    lv_archer = EventUnit();
-    lv_source = EventUnitDamageSourceUnit();
-    lv_triggerAttaker = lv_source;
-
-    // Conditions
-    if (testConds) {
-        if (!((lv_actualDamge == 0.0))) {
-            return false;
-        }
-
-        if (!((UnitHasBehavior(lv_archer, "Aegr") == true))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    if ((UnitIsAlive(lv_source) == false)) {
-        lv_triggerAttaker = lv_archer;
-    }
-
-    auto741D238B_val = gf_EffectAttackType(EventUnitDamageEffect());
-    if (auto741D238B_val == "DAMAGE_PIERCE") {
-        lv_triggerDamge = (lv_aborbed * gv_aegrDamageTaken);
-    }
-    else if (auto741D238B_val == "DAMAGE_MAGIC") {
-        lv_triggerDamge = (lv_aborbed * gv_aegrMagicDamageReduction);
-    }
-    else {
-        lv_triggerDamge = lv_aborbed;
-    }
-    UnitDamage(lv_triggerAttaker, "TriggerRangedDamge", lv_archer, lv_triggerDamge);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_AegrElunesGraceDamaged_Init () {
-    gt_AegrElunesGraceDamaged = TriggerCreate("gt_AegrElunesGraceDamaged_Func");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6631,6 +6596,7 @@ void InitTriggers () {
     gt_BuidingRegionInizialization_Init();
     gt_PreviewerPointInizialization_Init();
     gt_RoundInitialization_Init();
+    gt_PlayerColorInitialization_Init();
     gt_ShowPlayerHandle_Init();
     gt_ShowPlayerDifficultyAll_Init();
     gt_GameAttributeInizialization_Init();
@@ -6651,8 +6617,6 @@ void InitTriggers () {
     gt_Harvest_Init();
     gt_Pillage_Init();
     gt_Pillage2_Init();
-    gt_AegrElunesGraceRegister_Init();
-    gt_AegrElunesGraceDamaged_Init();
     gt_AdefDefendInitRegister_Init();
     gt_AdefDefendDamaged_Init();
     gt_AmdfInitRegister_Init();

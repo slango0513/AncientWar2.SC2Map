@@ -80,7 +80,12 @@
     </CBehaviorBuff>
     <!--Defend (Item)-->
     <CBehaviorBuff id="AIdd">
-        <DamageResponse ModifyFraction="0.75"/>
+        <Requirements value=""/>
+        <DamageResponse ModifyFraction="0.75">
+            <Kind index="Melee" value="1"/>
+            <Kind index="Ranged" value="0"/>
+            <ExcludeEffectArray index="0" value="TriggerMeleeDamge"/>
+        </DamageResponse>
     </CBehaviorBuff>
     <!--MaxManaBonus (Least)-->
     <CBehaviorBuff id="AImb">
@@ -184,8 +189,8 @@
         <DisplayDuration index="Ally" value="1"/>
         <DisplayDuration index="Neutral" value="1"/>
         <DisplayDuration index="Enemy" value="1"/>
-        <Duration value="60"/>
-        <DurationOverride index="0" Duration="60">
+        <Duration value="45"/>
+        <DurationOverride index="0" Duration="45">
             <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
         </DurationOverride>
         <ExpireEffect value="DestinyBondKill"/>
@@ -1189,6 +1194,7 @@
     <!--Elune's Grace-->
     <CBehaviorBuff id="Aegr">
         <Requirements value=""/>
+        <DamageResponse ModifyFraction="0.75"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Afsh">
         <Requirements value=""/>

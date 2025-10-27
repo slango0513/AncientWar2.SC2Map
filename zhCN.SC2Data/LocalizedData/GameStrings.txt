@@ -1,4 +1,5 @@
-﻿ACac/Ubertip=增加附近友方单位<d ref="Behavior,BOac,Modification.DamageDealtFraction[Melee] * 100"/>%的攻击力。
+﻿4组2人小队的争斗。双种族模式适合对各个种族有所了解到进阶玩家。=
+ACac/Ubertip=增加附近友方单位<d ref="Behavior,BOac,Modification.DamageDealtFraction[Melee] * 100"/>%的攻击力。
 ACbb/Ubertip=在<d ref="Effect,Bblo40s,Duration"/>秒内增加目标单位<d ref="Behavior,Bblo,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度和<d ref="Behavior,Bblo,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度。
 ACbc/Ubertip=对敌人呼出带有攻击力的火焰。最初造成<d ref="Effect,ACbcDamage,Amount"/>点的伤害。并在<d ref="Behavior,BNbf,Duration"/>秒内持续受到每秒<d ref="Effect,BNbfDPS1,Amount"/>点的伤害。
 ACbf/Ubertip=吐出带有攻击力的冰霜，最初造成<d ref="Effect,ACbfDamage,Amount"/>点的伤害，随后在<d ref="Behavior,BCbf,Duration"/>秒内对目标单位造成每秒<d ref="Effect,BCbfDPS,Amount"/>点的伤害。
@@ -156,7 +157,7 @@ Acyc/Ubertip=将目标单位投掷到空中，使其不能移动、攻击和施�
 Adef/Ubertip=激活以拥有75%的概率反弹穿刺攻击。如果防御状态被激活，移动速度会变成<d ref="Behavior,Adef,Modification.MoveSpeedMultiplier * 100"/>%的常规速度。
 Adev/Ubertip=吞噬敌方目标单位，将其慢慢咀嚼，每秒对其造成<d ref="Effect,BdigDPS,Amount"/>点的伤害。在咀嚼目标的过程中，如果遭到杀害，那么它肚中的被吞噬单位就会从中跳出来。
 Advc/Tip=Advc
-Aegr/Ubertip=减少来自穿刺攻击的伤害到原来的50%，并减少来自魔法攻击的伤害到原来的50%。
+Aegr/Ubertip=减少所受的<d ref="1 - Behavior,Aegr,DamageResponse.ModifyFraction * 100"/>%远程伤害。
 Aeib/Name=强化弓
 Aeib/Tip=强化弓
 Aeib/Ubertip=增加弓箭手<d ref="Behavior,Aeib,Modification.RangedWeaponRange"/>的攻击范围。
@@ -222,10 +223,11 @@ Astn/Ubertip=将石像鬼变成一尊雕像。<n/>石像鬼在这种状态下不
 Asud/Ubertip=出卖单位，返还<d ref="-Effect,Asud,SalvageFactor.Resource[Terrazine]*100"/>%的资源。
 Atau/Ubertip=最近的<d ref="Effect,AtauSearch,MaxCount"/>个单位会强迫攻击这个单位。<n/>持续<d ref="Behavior,Btau,Duration"/>秒。
 Attribute002/Name=游戏属性 (AW2)
-Attribute002/Value001/Name=<新手>混战
-Attribute002/Value002/Name=<新手>2V2V2V2
-Attribute002/Value003/Name=<高手>混战(双种族)
-Attribute002/Value004/Name=<高手>2V2V2V2(双种族)
+Attribute002/Value001/Name=混战
+Attribute002/Value002/Name=混战(双种族|无奖励回合)
+Attribute002/Value003/Name=混战(双种族)
+Attribute002/Value004/Name=2V2V2V2(双种族)
+Attribute002/Value005/Name=2V2V2V2(双种族|无奖励回合)
 Attribute003/Name=种族 (AW2)
 Attribute003/Value001/Name=随机
 Attribute003/Value002/Name=人类
@@ -574,7 +576,7 @@ DocInfo/PatchNote133=末日降临的法力值消耗降低到60点。
 DocInfo/PatchNote134=德莱尼：
 DocInfo/PatchNote135=大幅度削弱火蜥蜴类单位的攻击。
 DocInfo/PatchNote136=雷霆蜥蜴获得新技能震击，取代原来的技能闪电链。
-DocInfo/PatchNote137=所有工人单位获得新技能升级物品等级。
+DocInfo/PatchNote137=加入新模式混战(双种族|无奖励回合)与2V2V2V2(双种族|无奖励回合)。
 DocInfo/PatchNote138=灵魂连接的作用单位数量增加到8个。
 DocInfo/PatchNote139=简化有关物品的操作。
 DocInfo/PatchNote140=调整奖励回合怪物的位置。
@@ -617,7 +619,7 @@ DocInfo/PatchNote176=加入新单位兽王。
 DocInfo/PatchNote177=恶魔：
 DocInfo/PatchNote178=石槌食人魔类单位、石槌酋长类单位与石槌法师类单位经过重新设计。
 DocInfo/PatchNote179=伊利丹的对空攻击伤害增加到288点。
-DocInfo/PatchNote180=加入大量新物品。
+DocInfo/PatchNote180=所有工人单位获得新技能升级物品等级。
 DocInfo/PatchNote181=黑暗之门现在会在战斗开始时立即施放，并且所召唤的空间之门计入单位结算。
 DocInfo/PatchNote182=加入货运马，允许出卖物品。
 DocInfo/PatchNote183=人类：
@@ -633,24 +635,24 @@ DocInfo/PatchNote192=血精灵：
 DocInfo/PatchNote193=高等精灵防御塔的回收时间缩短到30秒。
 DocInfo/PatchNote194=恶魔：
 DocInfo/PatchNote195=魅惑现在能对低血量单位施放。
-DocInfo/PatchNote196=调整恢复指环、能量坠饰、法力坠饰、德雷克塔尔的法术书与火拳手套的价格与效果。
-DocInfo/PatchNote197=提高奖励回合怪物的奖励。
-DocInfo/PatchNote198=暗夜精灵：
-DocInfo/PatchNote199=恢复指环现在是暗夜精灵的专属物品。
-DocInfo/PatchNote200=纳迦：
-DocInfo/PatchNote201=海巨人类单位不再拥有技能抗性皮肤。
-DocInfo/PatchNote202=血精灵：
-DocInfo/PatchNote203=加入新物品魔法阻挡护符与索比面具。
-DocInfo/PatchNote204=混乱兽人：
-DocInfo/PatchNote205=加入新物品塞拉希尔。
-DocInfo/PatchNote206=黑暗巨魔捕兽者类单位的攻击次数增加到2次，伤害降低到36点。
-DocInfo/PatchNote207=地精：
-DocInfo/PatchNote208=加入新物品麦酒桶与奥金盾。
-DocInfo/PatchNote209=龙：
-DocInfo/PatchNote210=蓝色龙人战士类单位现在可以攻击空中单位。
-DocInfo/PatchNote211=睡眠的施法时间增加到4秒。
-DocInfo/PatchNote212=恶魔：
-DocInfo/PatchNote213=地狱幼龙不再具有技能相位变换。
+DocInfo/PatchNote196=加入大量新物品。
+DocInfo/PatchNote197=调整恢复指环、能量坠饰、法力坠饰、德雷克塔尔的法术书与火拳手套的价格与效果。
+DocInfo/PatchNote198=降低奖励回合怪物的奖励。
+DocInfo/PatchNote199=暗夜精灵：
+DocInfo/PatchNote200=恢复指环现在是暗夜精灵的专属物品。
+DocInfo/PatchNote201=纳迦：
+DocInfo/PatchNote202=海巨人类单位不再拥有技能抗性皮肤。
+DocInfo/PatchNote203=血精灵：
+DocInfo/PatchNote204=加入新物品魔法阻挡护符与索比面具。
+DocInfo/PatchNote205=混乱兽人：
+DocInfo/PatchNote206=加入新物品塞拉希尔。
+DocInfo/PatchNote207=黑暗巨魔捕兽者类单位的攻击次数增加到2次，伤害降低到36点。
+DocInfo/PatchNote208=地精：
+DocInfo/PatchNote209=加入新物品麦酒桶与奥金盾。
+DocInfo/PatchNote210=龙：
+DocInfo/PatchNote211=蓝色龙人战士类单位现在可以攻击空中单位。
+DocInfo/PatchNote212=睡眠的施法时间增加到4秒。
+DocInfo/PatchNote213=恶魔：
 DocInfo/PatchNote214=修复地狱火与末日守卫不属于召唤单位的漏洞。
 DocInfo/PatchNote215=德莱尼：
 DocInfo/PatchNote216=德莱尼追踪者类单位的生命值减少到25点。
@@ -1160,13 +1162,15 @@ Uvar/Ubertip=<c val="ffcc00">精英</c><n/>近战型的魔法施放单位，善�
 Uwar/Tip=升级到阿克蒙德
 Uwar/Ubertip=<c val="ffcc00">世界精英</c><n/>萨格拉斯的部下，指挥着燃烧军团与泰坦世界为敌。具有抗性皮肤技能，还能开启黑暗之门。<n/><n/><c val="ffcc00">攻击地面和空中单位。</c>
 Variant001/ModeDesc=所有玩家混战，直至一名玩家胜出。
-Variant001/ModeName=<新手>混战
-Variant002/ModeDesc=4组2人小队的争斗。
-Variant002/ModeName=<新手>2V2V2V2
+Variant001/ModeName=混战
+Variant002/ModeDesc=所有玩家混战，直至一名玩家胜出。双种族模式适合对各个种族有所了解到进阶玩家。
+Variant002/ModeName=混战(双种族|无奖励回合)
 Variant003/ModeDesc=所有玩家混战，直至一名玩家胜出。双种族模式适合对各个种族有所了解到进阶玩家。
-Variant003/ModeName=<高手>混战(双种族)
+Variant003/ModeName=混战(双种族)
 Variant004/ModeDesc=4组2人小队的争斗。双种族模式适合对各个种族有所了解到进阶玩家。
-Variant004/ModeName=<高手>2V2V2V2(双种族)
+Variant004/ModeName=2V2V2V2(双种族)
+Variant005/ModeDesc=4组2人小队的争斗。双种族模式适合对各个种族有所了解到进阶玩家。
+Variant005/ModeName=2V2V2V2(双种族|无奖励回合)
 WESTRING_RACE_BLOODELF=血精灵
 WESTRING_RACE_CHAOSORC=混乱兽人
 WESTRING_RACE_DEMON=恶魔
@@ -1186,8 +1190,9 @@ WindWalk/Tip=疾风步
 WindWalk/Ubertip=使得德莱尼追踪者在<d ref="Behavior,BOwk1,Duration"/>秒内隐形并增加<d ref="Behavior,BOwk1,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度。如果此时德莱尼追踪者进行攻击的话，那么就不再隐形，但是攻击力会增加<d ref="Behavior,BOwk1ExtraDamage,Modification.DamageDealtUnscaled[Melee]"/>点。
 afac/Ubertip=增加附近远程攻击型单位<d ref="Behavior,BEarI,Modification.DamageDealtFraction[Ranged] * 100"/>%的攻击力。<n/>不能和强击光环同时使用。
 ajen/Ubertip=增加附近单位<d ref="Behavior,BOae,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度和<d ref="Behavior,BOae,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度。<n/>不能和耐久光环同时使用。
-arsh/Ubertip=减少所受的<d ref="1 - Behavior,AIdd,DamageResponse.ModifyFraction * 100"/>%远程伤害。并增加<d ref="Behavior,AId0,Modification.LifeArmorBonus"/>点护甲值。
+arsh/Ubertip=减少所受的<d ref="1 - Behavior,AIdd,DamageResponse.ModifyFraction * 100"/>%近战伤害。并增加<d ref="Behavior,AId0,Modification.LifeArmorBonus"/>点护甲值。
 axas/Ubertip=<c val="ff8c00">神器</c><n/>能增加每秒<d ref="Behavior,Arlg,Modification.VitalRegenArray[Life]"/>点的生命值恢复速度，并加快英雄和其周围的单位<d ref="Behavior,BOae,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击和<d ref="Behavior,BOae,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度。<n/>不能和耐久光环一起使用。<n/><n/><c val="ffcc00">历史</c><n/><c val="ffdead">巫医几代人的名字都被刻在了这个杖上。持有这个法杖的人能在危急的时刻求助于他们的知识和指导。</c>
+azhr/Ubertip=传说被囚禁的艾苏恩灵魂的一直在寻找着她的这颗心。<n/>减少所受的<d ref="1 - Behavior,Aegr,DamageResponse.ModifyFraction * 100"/>%远程伤害。
 blba/Ubertip=提高周围单位<d ref="Behavior,BHadI,Modification.LifeArmorBonus"/>点护甲值。增加<d ref="Behavior,AId7,Modification.LifeArmorBonus"/>点护甲值。
 bspd/Ubertip=能增加<d ref="Behavior,AIms,Modification.MoveSpeedBonus * 100"/>%的移动速度。
 clfm/Description=让单位处于烈焰之中。
@@ -1210,6 +1215,7 @@ ehpr/Ubertip=高速远程攻击骑兵。拥有艾露恩的赐福技能，还具�
 emtg/Ubertip=大型的近战单位，善于吸收敌人的进攻。具有嘲讽、硬化皮肤和抗性皮肤技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 enec/Tip=升级到暗夜精灵信使
 enec/Ubertip=基本的地面单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
+esaz/Ubertip=传说有一个睿智的兽人发现了神奇的艾苏恩之心。现在这个就是艾苏恩之心的精华。作为暗夜精灵的珍宝，它能减少所受的<d ref="1 - Behavior,Aegr,DamageResponse.ModifyFraction * 100"/>%远程伤害。还能增加每秒<d ref="Behavior,Arlg,Modification.VitalRegenArray[Life]"/>点的生命值恢复速度。<n/>
 esen/Ubertip=高速远程攻击骑兵，具有月刃技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 eshd/Tip=升级到珊蒂斯
 eshd/Ubertip=远程攻击单位。拥有艾露恩的赐福和强化弓技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c> 
@@ -1227,8 +1233,10 @@ fwss/Ubertip=这个冰霜巨龙的头骨已经被改装成了一块坚固的护�
 gcel/Description=增加攻击速度。
 gcel/Ubertip=增加<d ref="Behavior,AIsx,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度。
 gldo/Ubertip=能让攻击带有<d ref="Effect,AIgdSphereEffect,AreaArray[0].Bonus"/>点火焰伤害，还有一定的溅射效果。
+glsk/Ubertip=古尔丹曾是一个恶魔魔法的使用者，恶魔们现在找到了这个颅骨的更多用途。<n/>能增加<d ref="Behavior,SpellDamageBonus,Modification.DamageDealtFraction[Spell] * 100"/>%的法术攻击力。还能让周围友方单位加快其<d ref="Behavior,BabrItem,Modification.RateMultiplierArray[Cooldown] - 1 * 100"/>%的冷却速度。
 hatw/Ubertip=防守型建筑物。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 hbew/Ubertip=每个货车里都藏着一个秘密。
+hbth/Ubertip=<c val="8b00ff">精良</c><n/>让单位处于狂暴状态，增加其<d ref="Behavior,AIs2,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度，还能增加其<d ref="Behavior,AIlf,Modification.VitalMaxArray[Life]"/>点生命值。让附近的近战型单位能将他们自己<d ref="Behavior,BUav1Leech,Modification.VitalDamageLeechArray[Life].KindArray[Melee] * 100"/>%的攻击力转换成生命值。<n/>不能和吸血光环同时使用。
 hctw/Ubertip=防守型建筑物，对付成群结队的敌人尤为有效。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 hdhw/Tip=升级到龙鹰骑士
 hdhw/Ubertip=高速远程攻击骑兵。拥有空中锁镣技能，可以暂时禁锢和残废敌空中单位。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
@@ -1265,7 +1273,7 @@ klmm/Ubertip=<c val="ff8c00">神器</c><n/>增加<d ref="Behavior,AItx,Modificat
 kpin/Ubertip=使得周围单位的法力值恢复速度加快<d ref="Behavior,BHabI,Modification.VitalRegenArray[Energy]" precision="2"/> 。<n/>不能和辉煌光环同时使用。
 lgdh/Ubertip=增加附近单位<d ref="Behavior,BUauI,Modification.VitalRegenArray[Life]"/>的生命值恢复速度和<d ref="Behavior,BUauI,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度。<n/>不能和邪恶光环同时使用。
 lhst/Ubertip=令周围的单位增加<d ref="Behavior,BHadI,Modification.LifeArmorBonus"/>点护甲值。<n/>不能和虔诚光环同时使用。
-mnsf/Ubertip=增加<d ref="Behavior,AI2m,Modification.VitalMaxArray[Energy]"/>点法力值。并增加其周围的单位的法力恢复速度。
+mnsf/Ubertip=增加<d ref="Behavior,AImv,Modification.VitalMaxArray[Energy]"/>点法力值。并增加其周围的单位每秒<d ref="Behavior,BHabI,Modification.VitalRegenArray[Energy]" precision="2"/>点的法力恢复速度。
 mnst/Ubertip=提高每秒<d ref="Behavior,AIrn,Modification.VitalRegenArray[Energy]" precision="2"/>点法力值恢复速度。
 modt/Ubertip=能将<d ref="Behavior,AIvaLeech,Modification.VitalDamageLeechArray[Life].KindArray[Melee] * 100"/>%对敌人造成的伤害转换成自己的生命值。
 nadr/Tip=升级到蓝龙
@@ -1542,6 +1550,7 @@ owyv/Ubertip=高速远程攻击骑兵。拥有浸毒长矛和多重攻击技能�
 penr/Ubertip=增加<d ref="Behavior,AImb,Modification.VitalMaxArray[Energy]"/>点法力最大值。
 pmna/Ubertip=增加<d ref="Behavior,AIbm,Modification.VitalMaxArray[Energy]"/>点法力最大值。
 prvt/Ubertip=增加<d ref="Behavior,AIlf,Modification.VitalMaxArray[Life]"/>点生命值。
+ram4/Ubertip=一件强大的神器，上面还装饰有碎宝石。增加<d ref="Behavior,SpellDamageBonus,Modification.DamageDealtFraction[Spell] * 100"/>%的法术攻击力。还能加快周围单位每秒<d ref="Behavior,BHabI,Modification.VitalRegenArray[Energy]" precision="2"/>点的法力恢复速度。
 rat3/Tip=购买攻击之爪 +<d ref="Behavior,AIat,Modification.DamageDealtScaled[Melee]"/>
 rat3/Ubertip=增加<d ref="Behavior,AIat,Modification.DamageDealtScaled[Melee]"/>点攻击力。
 rat6/Tip=购买攻击之爪 +<d ref="Behavior,AIt6,Modification.DamageDealtScaled[Melee]"/>
@@ -1611,3 +1620,4 @@ zhyd/Tip=升级到刺蛇
 zhyd/Ubertip=远程攻击单位，长于用包裹着酸液的脊液弹摧毁敌人。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 zmar/Tip=升级到陆战队员
 zmar/Ubertip=远程攻击单位，装备有自动脉冲来复枪。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+所有玩家混战，直至一名玩家胜出。双种族模式适合对各个种族有所了解到进阶玩家。=
