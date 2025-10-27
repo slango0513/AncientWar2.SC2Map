@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CActorModel id="DestinyBondBuff" parent="War3_Buff">
+        <HostSiteOps Ops="$overhead"/>
+    </CActorModel>
     <CActorSimple id="ANbr" parent="War3_SimpleCastAnimWcArt"/>
     <CActorModel id="BNbr" parent="War3_Buff">
         <HostSiteOps Ops="$overhead"/>
@@ -526,6 +529,19 @@
         <On Terms="Effect.hgry1LM7.Start; At Caster" Send="Create"/>
         <On Terms="Effect.hgry1LM8.Start; At Caster" Send="Create"/>
     </CActorAction>
+    <!--packhorse-->
+    <CActorUnit id="hrdh" parent="War3_Army" unitSound="KnightNoRider" unitName="hrdh" defType="LARGE">
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnRiderlessHorse.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnRiderlessHorse.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnRiderlessHorse.dds"/>
+        <BarWidth value="70"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_HumanLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.5"/>
+    </CActorUnit>
     <!--ancienthydra-->
     <CActorUnit id="nahy" parent="War3_Army" unitSound="AzureDragon" unitName="nahy" defType="LARGE">
         <On Terms="ActorCreation" Send="SetTintColor 255,255,125"/>
@@ -2275,7 +2291,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnGargoyle.dds"/>
         <BarWidth value="62"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.7343"/>
     </CActorUnit>
@@ -4723,6 +4739,11 @@
         <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
         <On Terms="Abil.CallTide.SourcePrepStart" Send="Create"/>
         <On Terms="Abil.CallTide.SourcePrepStop" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorModel id="SoulBurnEffect" parent="EffectArt">
+        <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="Abil.SoulBurn.SourcePrepStart" Send="Create"/>
+        <On Terms="Abil.SoulBurn.SourcePrepStop" Send="AnimBracketStop BSD"/>
     </CActorModel>
     <!--chaosspaceorc-->
     <CActorUnit id="zcso" parent="War3_Army" unitSound="ChaosSpaceOrc" unitName="zcso" defType="MEDIUM">

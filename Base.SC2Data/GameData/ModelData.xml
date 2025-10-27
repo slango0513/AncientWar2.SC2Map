@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CModel id="DestinyBond" parent="War3_Spell" race="Undead">
+        <Events Anim="Birth" Type="Sound" Payload="SND_AESH"/>
+        <Events Anim="Death" Type="Sound" Payload="TempleOfTheDamnedWhat"/>
+        <Model value="Assets\Abilities\Spells\Undead\War3_PossessionMissile\War3_PossessionMissile.m3"/>
+    </CModel>
+    <CModel id="DestinyBondBuff" parent="DestinyBond">
+        <ScaleMax value="0.937500,0.937500,0.937500"/>
+        <ScaleMin value="0.937500,0.937500,0.937500"/>
+    </CModel>
     <CModel id="War3_SalamanderLightningMissile" parent="War3_Weapon">
         <Events Anim="Death" Type="Sound" Payload="SND_AOLB"/>
         <Events Anim="Birth" Type="Sound" Payload="SND_KFAR"/>
@@ -247,6 +256,7 @@
     <CModel id="XIctEffect" parent="War3_StarfallCaster"/>
     <CModel id="SleepEffect" parent="War3_StarfallCaster"/>
     <CModel id="CallTideEffect" parent="War3_StarfallCaster"/>
+    <CModel id="SoulBurnEffect" parent="War3_UnsummonTarget"/>
     <CModel id="AabrTarget" parent="War3_UnholyAura"/>
     <CModel id="FlameTowerAuraTarget" parent="War3_CommandAura"/>
     <CModel id="FlameTowerAura" parent="War3_GeneralAuraTarget"/>

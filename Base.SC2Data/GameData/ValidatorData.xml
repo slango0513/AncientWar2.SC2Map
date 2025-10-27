@@ -62,12 +62,23 @@
         <Compare value="LE"/>
         <Value value="25"/>
     </CValidatorUnitCompareVital>
+    <CValidatorCombine id="KillResourceCustomGT0OrTargetLifeGT100">
+        <CombineArray value="KillResourceCustomGT0"/>
+        <CombineArray value="TargetLifeGT100"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareVital id="TargetLifeLE100">
+        <Compare value="LE"/>
+        <Value value="100"/>
+    </CValidatorUnitCompareVital>
     <CValidatorCombine id="CasterHasNoSwimmingAmphibianOrNoEnemiesNearby">
         <CombineArray value="CasterHasNoSwimmingAmphibian"/>
         <CombineArray value="NoEnemiesNearby3"/>
     </CValidatorCombine>
     <CValidatorUnitCompareBehaviorCount id="HasNoAnsk">
         <Behavior value="Ansk"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="HasNoDestinyBondBuff">
+        <Behavior value="DestinyBondBuff"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="HasNoAssk">
         <Behavior value="Assk"/>
@@ -586,6 +597,9 @@
     </CValidatorUnitCompareVital>
     <CValidatorUnitCompareVital id="TargetLifeGT25" parent="TargetLifeGT175">
         <Value value="25"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="TargetLifeGT100" parent="TargetLifeGT175">
+        <Value value="100"/>
     </CValidatorUnitCompareVital>
     <CValidatorUnitCompareAttackPriority id="UnitThreatenshfoo" parent="ThreatensUnit" unitLink="hfoo"/>
     <CValidatorUnitCompareAttackPriority id="UnitThreatenshhes" parent="ThreatensUnit" unitLink="hhes"/>

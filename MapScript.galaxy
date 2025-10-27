@@ -4058,6 +4058,7 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     MeleeInitUnits();
     lv_player = 1;
     for ( ; ( (auto1222D8BF_ai >= 0 && lv_player <= auto1222D8BF_ae) || (auto1222D8BF_ai < 0 && lv_player >= auto1222D8BF_ae) ) ; lv_player += auto1222D8BF_ai ) {
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "hrdh", 0, lv_player, PlayerStartLocation(lv_player));
         if (((GameAttributeGameValue("2") == "0003") || (GameAttributeGameValue("2") == "0004"))) {
             libNtve_gf_CreateUnitsWithDefaultFacing(1, gf_RaceGetWorkerType(gv_secondRace[lv_player]), 0, lv_player, PlayerStartLocation(lv_player));
         }
@@ -5218,7 +5219,7 @@ bool gt_Harvest_Func (bool testConds, bool runActions) {
     lv_player = EventPlayer();
     lv_targetUnit = EventPlayerEffectUsedUnit(c_effectUnitTarget);
     lv_targetUnitType = UnitGetType(lv_targetUnit);
-    lv_value = FixedToInt((IntToFixed(CatalogFieldValueGetAsInt(c_gameCatalogUnit, lv_targetUnitType, "KillResource[" + IntToString(3) + "]", lv_player)) * 1.4));
+    lv_value = FixedToInt((IntToFixed(CatalogFieldValueGetAsInt(c_gameCatalogUnit, lv_targetUnitType, "KillResource[" + IntToString(3) + "]", lv_player)) * 2.0));
 
     // Actions
     if (!runActions) {
