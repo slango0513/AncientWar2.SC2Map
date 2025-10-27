@@ -692,7 +692,7 @@
     <CBehaviorBuff id="AIva" parent="AW2_Item">
         <DamageResponse>
             <Chance value="1"/>
-            <Handled value="AIvaLeech"/>
+            <Handled value="AIvaLeechSet"/>
             <Location value="Attacker"/>
             <TargetFilters value="-;player,allies,neutral,mechanical,PreventReveal"/>
             <Kind index="Spell" value="0"/>
@@ -706,6 +706,14 @@
         <Modification>
             <VitalDamageLeechArray index="Life">
                 <KindArray index="Melee" value="0.25"/>
+            </VitalDamageLeechArray>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AIvaLeechNonHero" parent="War3_Passive">
+        <Duration value="0.0625"/>
+        <Modification>
+            <VitalDamageLeechArray index="Life">
+                <KindArray index="Melee" value="0.5"/>
             </VitalDamageLeechArray>
         </Modification>
     </CBehaviorBuff>
@@ -1130,12 +1138,13 @@
     <CBehaviorBuff id="BUav1">
         <MaxStackCount value="2"/>
         <MaxStackCountPerCaster value="1"/>
+        <DamageResponse Handled="BUav1LeechSet"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="BUavI" parent="BUav">
         <RemoveValidatorArray index="0" value="BUavIRemove"/>
-        <DamageResponse Handled="BUavILeech"/>
+        <DamageResponse Handled="BUavILeechSet"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="BUav1Leech">
+    <CBehaviorBuff id="BUav1Leech" parent="War3_Passive">
         <MaxStackCount value="2"/>
         <MaxStackCountPerCaster value="1"/>
         <Modification>
@@ -1143,11 +1152,30 @@
                 <KindArray index="Melee" value="0.25"/>
             </VitalDamageLeechArray>
         </Modification>
+        <Duration value="0.0625"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BUav1LeechNonHero" parent="War3_Passive">
+        <MaxStackCount value="2"/>
+        <MaxStackCountPerCaster value="1"/>
+        <Modification>
+            <VitalDamageLeechArray index="Life">
+                <KindArray index="Melee" value="0.5"/>
+            </VitalDamageLeechArray>
+        </Modification>
+        <Duration value="0.0625"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="BUavILeech" parent="War3_Passive">
         <Modification>
             <VitalDamageLeechArray index="Life">
                 <KindArray index="Melee" value="0.25"/>
+            </VitalDamageLeechArray>
+        </Modification>
+        <Duration value="0.0625"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BUavILeechNonHero" parent="War3_Passive">
+        <Modification>
+            <VitalDamageLeechArray index="Life">
+                <KindArray index="Melee" value="0.5"/>
             </VitalDamageLeechArray>
         </Modification>
         <Duration value="0.0625"/>

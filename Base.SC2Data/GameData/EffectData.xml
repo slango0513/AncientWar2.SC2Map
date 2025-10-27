@@ -69,6 +69,21 @@
         <Name value="Effect/Name/AW2_SelfDestroyDPS"/>
         <Marker Link="Effect/SelfDestroyDPS"/>
     </CEffectDamage>
+    <CEffectSet id="AIvaLeechSet">
+        <EditorCategories value=""/>
+        <EffectArray value="AIvaLeech"/>
+        <EffectArray value="AIvaLeechNonHero"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="BUav1Leech" parent="War3_ApplyBuff">
+        <EditorCategories value="Race:Undead"/>
+        <WhichUnit Value="Source"/>
+        <ValidatorArray value="Hero"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="BUav1LeechNonHero" parent="War3_ApplyBuff">
+        <EditorCategories value="Race:Undead"/>
+        <WhichUnit Value="Source"/>
+        <ValidatorArray value="NonHero"/>
+    </CEffectApplyBehavior>
     <CEffectApplyBehavior id="ANhx1Dur">
         <Duration value="10"/>
     </CEffectApplyBehavior>
@@ -83,7 +98,15 @@
     <CEffectEnumArea id="Aast">
         <AreaArray index="0" Radius="7.0312" Effect="AastRevive"/>
     </CEffectEnumArea>
-    <CEffectLaunchMissile id="RitssynFlamescowl1LM" parent="War3_Missile" weaponid="nchw1"/>
+    <CEffectSet id="BUavILeechSet">
+        <EffectArray value="BUavILeech"/>
+        <EffectArray value="BUavILeechNonHero"/>
+    </CEffectSet>
+    <CEffectSet id="BUav1LeechSet">
+        <EffectArray value="BUav1Leech"/>
+        <EffectArray value="BUav1LeechNonHero"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="RitssynFlamescowl1LM" parent="War3_Missile" weaponid="RitssynFlamescowl1"/>
     <CEffectApplyBehavior id="ACsiDur">
         <Duration value="20"/>
     </CEffectApplyBehavior>
@@ -191,6 +214,11 @@
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="BUavILeech" parent="War3_ApplyBuff">
         <WhichUnit Value="Source"/>
+        <ValidatorArray value="Hero"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="BUavILeechNonHero" parent="War3_ApplyBuff">
+        <WhichUnit Value="Source"/>
+        <ValidatorArray value="NonHero"/>
     </CEffectApplyBehavior>
     <CEffectDamage id="Emfr1" parent="AW2_MagicDamage">
         <Amount value="96"/>
@@ -1400,7 +1428,9 @@
     <CEffectApplyBehavior id="BNta" parent="War3_ApplyBuff">
         <ValidatorArray value="NoTaunt"/>
     </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="Bwfb" parent="War3_ApplyBuff"/>
+    <CEffectApplyBehavior id="Bwfb" parent="War3_ApplyBuff">
+        <ValidatorArray value="NonMechanical"/>
+    </CEffectApplyBehavior>
     <CEffectSet id="CallTide">
         <EditorCategories value="Race:Naga"/>
     </CEffectSet>
@@ -1431,6 +1461,11 @@
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="AIvaLeech" parent="War3_ApplyBuff">
         <WhichUnit Value="Source"/>
+        <ValidatorArray value="Hero"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AIvaLeechNonHero" parent="War3_ApplyBuff">
+        <WhichUnit Value="Source"/>
+        <ValidatorArray value="NonHero"/>
     </CEffectApplyBehavior>
     <CEffectDamage id="AOshDamage1">
         <Amount value="20"/>
@@ -2649,10 +2684,10 @@
         <Amount value="120"/>
     </CEffectDamage>
     <CEffectDamage id="nchw1" parent="AW2_ChaosDamage">
-        <Amount value="96"/>
+        <Amount value="48"/>
     </CEffectDamage>
     <CEffectDamage id="RitssynFlamescowl1" parent="AW2_ChaosDamage">
-        <Amount value="96"/>
+        <Amount value="48"/>
     </CEffectDamage>
     <CEffectDamage id="nckb1" parent="AW2_ChaosDamage">
         <Amount value="24"/>
