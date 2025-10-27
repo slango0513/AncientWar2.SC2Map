@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <!--lesservoidwalker-->
+    <CActorUnit id="nvdl" parent="War3_Army" unitSound="ObsidianDestroyer" unitName="nvdl" defType="MEDIUM">
+        <AnimBlendTime value="0.300000"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnVoidWalker.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnVoidWalker.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnVoidWalker.dds"/>
+        <BarWidth value="50"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <BarOffset value="60"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
+    <CActorAction id="ushd1" parent="War3_AttackMissileSwapable"/>
+    <CActorMissile id="ushd1LM" parent="War3_MissileSwapable" unitName="ushd1LM"/>
     <CActorModel id="ACmi">
         <On Terms="Behavior.ACmi.On" Send="Create"/>
         <On Terms="Behavior.ACmi.Off" Send="Destroy"/>
@@ -1200,6 +1216,19 @@
         <BarOffset value="240"/>
         <DeathArray index="Cancel" AnimProps="Birth" ModelLink="War3_HCancelDeath"/>
     </CActorUnit>
+    <!--voidwalker-->
+    <CActorUnit id="nvdw" parent="War3_Army" unitSound="ObsidianDestroyer" unitName="nvdw" defType="MEDIUM">
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
+        <AnimBlendTime value="0.300000"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnVoidWalker.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnVoidWalker.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnVoidWalker.dds"/>
+        <BarOffset value="80"/>
+        <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_DemonLargeDeathExplode"/>
+        <WalkAnimMoveSpeed value="2.1093"/>
+    </CActorUnit>
     <!--darkwizard-->
     <CActorUnit id="nwzd" parent="War3_Army" unitSound="HeroArchMage" unitName="nwzd" defType="NONE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnBanditMage.dds"/>
@@ -2391,12 +2420,11 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnShade.dds"/>
         <BarWidth value="50"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar50"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar60"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.7343"/>
         <WalkAnimTimeScalingAsFlyer value="1"/>
     </CActorUnit>
-    <CActorAction id="ushd1" parent="War3_AttackSwapable" WeaponSound="MetalMediumSlice"/>
     <!--skeletalmage-->
     <CActorUnit id="uskm" parent="War3_Army" unitSound="Skeleton" unitName="uskm" defType="NONE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnSkeletonMage.dds"/>
@@ -3084,7 +3112,7 @@
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnSeigeEngine.dds"/>
         <SoundArray index="Movement" value="HumanSteamTankMovement"/>
         <BarWidth value="125"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar110"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar120"/>
         <BarOffset value="80"/>
         <WalkAnimMoveSpeed value="1.7187"/>
     </CActorUnit>
@@ -3132,7 +3160,7 @@
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnSeigeEngineWithMissles.dds"/>
         <SoundArray index="Movement" value="HumanSteamTankMovement"/>
         <BarWidth value="125"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar110"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar120"/>
         <Remove Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Attack"/>
         <BarOffset value="80"/>
         <WalkAnimMoveSpeed value="1.7187"/>

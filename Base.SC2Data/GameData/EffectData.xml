@@ -138,6 +138,10 @@
         <Kind value="Melee"/>
         <Amount value="96"/>
     </CEffectDamage>
+    <CEffectDamage id="nvdl1" parent="AW2_MagicDamage">
+        <Amount value="12"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="ushd1LM" parent="War3_Missile" weaponid="ushd1"/>
     <CEffectApplyBehavior id="Posterior" parent="War3_ApplyBuff"/>
     <CEffectApplyBehavior id="PosteriorMoveSpeed" parent="War3_ApplyBuff"/>
     <CEffectSet id="PosteriorStrategySet">
@@ -175,6 +179,7 @@
     </CEffectDamage>
     <CEffectEnumArea id="ACbcSearch">
         <AreaArray index="0" Arc="29.9707" Radius="11" Effect="ACbcSearchImpactSet"/>
+        <SearchFilters value="-;player,allies,wall,tree,Missile,debris,item,structure,ward,dead,Hidden,invulnerable,immunity"/>
     </CEffectEnumArea>
     <!--Thunder Clap (Creep) Dur=4 HeroDur=2 Buff=BCtc-->
     <CEffectEnumArea id="ACtcSearch">
@@ -427,6 +432,12 @@
     </CEffectDamage>
     <CEffectDamage id="nthl1" parent="AW2_MagicDamage">
         <Amount value="288"/>
+    </CEffectDamage>
+    <CEffectDamage id="nvdw1" parent="AW2_MagicDamage">
+        <Amount value="24"/>
+    </CEffectDamage>
+    <CEffectDamage id="ushd1" parent="AW2_MagicDamage">
+        <Amount value="24"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="ohwdOffset">
         <InitialEffect value="ohwd"/>
@@ -2200,7 +2211,7 @@
         <PeriodicEffectArray value="ndtb1LM"/>
     </CEffectCreatePersistent>
     <CEffectDamage id="ndtb1" parent="AW2_NormalDamage">
-        <Amount value="24"/>
+        <Amount value="12"/>
     </CEffectDamage>
     <CEffectDamage id="ndth1" parent="AW2_MagicDamage">
         <Amount value="24"/>
@@ -2216,10 +2227,10 @@
         <PeriodicEffectArray value="dtt21LM"/>
     </CEffectCreatePersistent>
     <CEffectDamage id="ndtt1" parent="AW2_NormalDamage">
-        <Amount value="24"/>
+        <Amount value="12"/>
     </CEffectDamage>
     <CEffectDamage id="dtt21" parent="AW2_NormalDamage">
-        <Amount value="24"/>
+        <Amount value="12"/>
     </CEffectDamage>
     <CEffectDamage id="negt1" parent="AW2_MagicDamage">
         <Amount value="24"/>
@@ -2396,7 +2407,7 @@
         <Amount value="96"/>
     </CEffectDamage>
     <CEffectDamage id="hrtt2" parent="AW2_PierceDamage">
-        <Amount value="48"/>
+        <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="nzep2" parent="AW2_PierceDamage">
         <Amount value="96"/>
@@ -2405,8 +2416,8 @@
         <Amount value="96"/>
     </CEffectDamage>
     <CEffectEnumArea id="hrttBarrageSearch">
-        <AreaArray index="0" Radius="5" Effect="hrtt2LM"/>
-        <MaxCount value="12"/>
+        <AreaArray index="0" Radius="6" Effect="hrtt2LM"/>
+        <MaxCount value="4294967295"/>
         <SearchFilters value="Visible;player,allies,neutral,air,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,Hidden,invulnerable"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="nzep2Search">
@@ -2958,7 +2969,9 @@
     <CEffectDamage id="ntrt1" parent="AW2_PierceDamage">
         <Amount value="48"/>
     </CEffectDamage>
-    <CEffectCreateUnit id="nvdl"/>
+    <CEffectCreateUnit id="nvdl" parent="AW2_SummonUnit">
+        <SpawnCount value="3"/>
+    </CEffectCreateUnit>
     <CEffectCreateUnit id="nwgs" parent="War3_SummonUnit">
         <SpawnEffect value="BNpm"/>
     </CEffectCreateUnit>
@@ -3095,10 +3108,6 @@
     </CEffectDamage>
     <CEffectLaunchMissile id="uob21LM" parent="War3_Missile" weaponid="uob21"/>
     <CEffectDamage id="uske1" parent="AW2_NormalDamage">
-        <Kind value="Melee"/>
-        <Amount value="12"/>
-    </CEffectDamage>
-    <CEffectDamage id="ushd1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
         <Amount value="12"/>
     </CEffectDamage>

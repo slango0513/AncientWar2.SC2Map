@@ -300,6 +300,23 @@
             <LayoutButtons index="3" removed="1"/>
         </CardLayouts>
     </CUnit>
+    <!--lesser voidwalker-->
+    <CUnit id="nvdl" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
+        <LifeStart value="200"/>
+        <LifeMax value="200"/>
+        <Speed value="2"/>
+        <Race value="BloodElf"/>
+        <Mover value="foot"/>
+        <Radius value="0.3125"/>
+        <MinimapRadius value="0.3125"/>
+        <SeparationRadius value="0.3125"/>
+        <InnerRadius value="0.3125"/>
+        <PlaneArray index="Ground" value="1"/>
+        <BehaviorArray Link="hover"/>
+        <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
+    </CUnit>
+    <CUnit id="ushd1LM" parent="War3_Missile"/>
     <!--Mal'furion-->
     <CUnit id="Emfr" parent="AW2_Army" defType="NONE">
         <Attributes index="none" value="1"/>
@@ -894,8 +911,8 @@
         <Attributes index="small" value="1"/>
         <CostResource index="gold" value="180"/>
         <KillResource index="Custom" value="30"/>
-        <LifeStart value="25"/>
-        <LifeMax value="25"/>
+        <LifeStart value="100"/>
+        <LifeMax value="100"/>
         <Speed value="2"/>
         <Race value="Draenei"/>
         <Mover value="foot"/>
@@ -1628,8 +1645,8 @@
         <Attributes index="medium" value="1"/>
         <CostResource index="gold" value="180"/>
         <KillResource index="Custom" value="30"/>
-        <LifeStart value="200"/>
-        <LifeMax value="200"/>
+        <LifeStart value="250"/>
+        <LifeMax value="250"/>
         <Speed value="2"/>
         <Race value="Undead"/>
         <Mover value="foot"/>
@@ -2251,8 +2268,8 @@
         <Attributes index="small" value="1"/>
         <CostResource index="gold" value="60"/>
         <KillResource index="Custom" value="30"/>
-        <LifeStart value="25"/>
-        <LifeMax value="25"/>
+        <LifeStart value="100"/>
+        <LifeMax value="100"/>
         <Speed value="2"/>
         <Race value="Draenei"/>
         <Mover value="foot"/>
@@ -2452,6 +2469,14 @@
             <LayoutButtons Face="FlameAttackCaster" Type="Passive" Behavior="FlameAttackCaster" Row="2" Column="1"/>
             <LayoutButtons Face="FlameTowerAuraCaster" Type="Passive" Behavior="FlameTowerAuraCaster" Row="2" Column="2"/>
         </CardLayouts>
+    </CUnit>
+    <!--granite golem-->
+    <CUnit id="nggr">
+        <Food value="4"/>
+    </CUnit>
+    <!--mud golem-->
+    <CUnit id="ngrk">
+        <Food value="3"/>
     </CUnit>
     <!--hydra-->
     <CUnit id="nhyd" parent="AW2_Army" defType="LARGE">
@@ -2717,6 +2742,31 @@
         <CardLayouts index="0">
             <LayoutButtons Face="DarkAttack" Type="Passive" Behavior="DarkAttack" Row="2" Column="0"/>
             <LayoutButtons Face="DeathTowerAuraCaster" Type="Passive" Behavior="DeathTowerAuraCaster" Row="2" Column="1"/>
+        </CardLayouts>
+    </CUnit>
+    <!--voidwalker-->
+    <CUnit id="nvdw" parent="AW2_Army" defType="MEDIUM">
+        <Attributes index="medium" value="1"/>
+        <CostResource index="gold" value="30"/>
+        <KillResource index="Custom" value="15"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
+        <Speed value="2"/>
+        <Race value="BloodElf"/>
+        <AbilArray Link="BloodElfInventory"/>
+        <AbilArray Link="UpgradeToushd"/>
+        <AbilArray Link="Spawnnvdl"/>
+        <Mover value="foot"/>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <PlaneArray index="Ground" value="1"/>
+        <BehaviorArray Link="hover"/>
+        <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ushd" Type="AbilCmd" AbilCmd="UpgradeToushd,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="Spawnnvdl" Type="Passive" Behavior="Spawnnvdl" Row="2" Column="0"/>
         </CardLayouts>
     </CUnit>
     <!--dark wizard-->
@@ -3612,10 +3662,10 @@
         <Speed value="2"/>
         <Race value="Human"/>
         <Mover value="foot"/>
-        <Radius value="0.3125"/>
-        <MinimapRadius value="0.3125"/>
-        <SeparationRadius value="0.3125"/>
-        <InnerRadius value="0.3125"/>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/HumanUnits"/>
         <GlossaryWeakArray value="hmtm"/>
@@ -3675,8 +3725,8 @@
         <Attributes index="fort" value="1"/>
         <CostResource index="lumber" value="3000"/>
         <KillResource index="Custom" value="150"/>
-        <LifeStart value="2100"/>
-        <LifeMax value="2100"/>
+        <LifeStart value="2700"/>
+        <LifeMax value="2700"/>
         <Speed value="2"/>
         <Race value="Human"/>
         <Mover value="foot"/>
@@ -3828,20 +3878,19 @@
         <Attributes index="fort" value="1"/>
         <CostResource index="lumber" value="3000"/>
         <KillResource index="Custom" value="150"/>
-        <LifeStart value="2100"/>
-        <LifeMax value="2100"/>
+        <LifeStart value="2700"/>
+        <LifeMax value="2700"/>
         <Speed value="2"/>
         <Race value="Human"/>
         <Mover value="foot"/>
         <AbilArray Link="Aihn"/>
         <BehaviorArray Link="War3_PowerfulMob"/>
-        <BehaviorArray Link="Aroc"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="Aroc" Type="Passive" Behavior="Aroc" Row="2" Column="0"/>
+            <LayoutButtons Face="Aroc" Type="Passive" Row="2" Column="0"/>
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/HumanUnits"/>
-        <WeaponArray index="1" removed="1"/>
+        <WeaponArray index="1" Link="hrttBarrage"/>
     </CUnit>
     <!--Sorceress-->
     <CUnit id="hsor" parent="AW2_Army" defType="NONE">
@@ -3860,10 +3909,10 @@
             <LayoutButtons Face="BloodElfSorceress" Type="AbilCmd" AbilCmd="UpgradeToBloodElfSorceress,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="Hjai" Type="AbilCmd" AbilCmd="UpgradeToHjai,Execute" Row="0" Column="1"/>
         </CardLayouts>
-        <Radius value="0.3125"/>
-        <MinimapRadius value="0.3125"/>
-        <SeparationRadius value="0.3125"/>
-        <InnerRadius value="0.3125"/>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
         <GlossaryStrongArray value="hmil"/>
@@ -3888,10 +3937,10 @@
         <CardLayouts index="0">
             <LayoutButtons Face="Aslo" Type="AbilCmd" AbilCmd="Aslo,Execute" Row="2" Column="0"/>
         </CardLayouts>
-        <Radius value="0.3125"/>
-        <SeparationRadius value="0.3125"/>
-        <InnerRadius value="0.3125"/>
-        <MinimapRadius value="0.3125"/>
+        <Radius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <MinimapRadius value="0.375"/>
         <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
         <GlossaryStrongArray value="hmil"/>
         <GlossaryStrongArray value="hfoo"/>
@@ -4843,8 +4892,8 @@
     <!--dark troll berserker-->
     <CUnit id="ndtb" parent="AW2_Army" defType="MEDIUM">
         <Attributes index="medium" value="1"/>
-        <CostResource index="gold" value="90"/>
-        <KillResource index="Custom" value="15"/>
+        <CostResource index="gold" value="45"/>
+        <KillResource index="Custom" value="5"/>
         <LifeStart value="25"/>
         <LifeMax value="25"/>
         <Speed value="2"/>
@@ -4915,8 +4964,8 @@
     <!--darkTrollTrapper-->
     <CUnit id="ndtt" parent="AW2_Army" defType="MEDIUM">
         <Attributes index="medium" value="1"/>
-        <CostResource index="gold" value="30"/>
-        <KillResource index="Custom" value="15"/>
+        <CostResource index="gold" value="15"/>
+        <KillResource index="Custom" value="5"/>
         <LifeStart value="25"/>
         <LifeMax value="25"/>
         <Speed value="2"/>
@@ -4942,8 +4991,8 @@
         <LifeMax value="25"/>
         <Mover value="foot"/>
         <Speed value="2"/>
-        <CostResource index="gold" value="30"/>
-        <KillResource index="Custom" value="15"/>
+        <CostResource index="gold" value="15"/>
+        <KillResource index="Custom" value="5"/>
         <AbilArray Link="ChaosOrcInventory"/>
         <AbilArray Link="Abs2"/>
         <CardLayouts index="0">
@@ -5656,6 +5705,7 @@
             <LayoutButtons Face="Hblm" Type="AbilCmd" AbilCmd="BloodElfBuild,Build10" Row="2" Column="2"/>
             <LayoutButtons Face="nwzd" Type="AbilCmd" AbilCmd="BloodElfBuild,Build11" Row="1" Column="2"/>
             <LayoutButtons Face="nbel" Type="AbilCmd" AbilCmd="BloodElfBuild,Build4" Row="0" Column="0"/>
+            <LayoutButtons Face="nvdw" Type="AbilCmd" AbilCmd="BloodElfBuild,Build12" Row="0" Column="1"/>
             <LayoutButtons Face="nws1" Type="AbilCmd" AbilCmd="BloodElfBuild,Build7" Row="1" Column="1"/>
             <LayoutButtons Face="nhea" Type="AbilCmd" AbilCmd="BloodElfBuild,Build6" Row="1" Column="3"/>
             <LayoutButtons Face="hpxe" Type="AbilCmd" AbilCmd="BloodElfBuild,Build9" Row="1" Column="4"/>
@@ -6115,6 +6165,10 @@
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
         <DeathTime value="10"/>
+        <Radius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <MinimapRadius value="0.375"/>
     </CUnit>
     <!--mur'gul shadowcaster-->
     <CUnit id="nmsc" parent="AW2_Army" defType="NONE">
@@ -6239,6 +6293,10 @@
         <PlaneArray index="Ground" value="1"/>
         <GlossaryCategory value="Unit/Category/NagaUnits"/>
         <DeathTime value="10"/>
+        <Radius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <MinimapRadius value="0.375"/>
     </CUnit>
     <!--naga royal guard-->
     <CUnit id="nnrg" parent="AW2_Army" defType="LARGE">
@@ -6343,8 +6401,8 @@
         <Attributes index="medium" value="1"/>
         <CostResource index="gold" value="180"/>
         <KillResource index="Custom" value="30"/>
-        <LifeStart value="200"/>
-        <LifeMax value="200"/>
+        <LifeStart value="250"/>
+        <LifeMax value="250"/>
         <Speed value="2"/>
         <Race value="Undead"/>
         <Mover value="foot"/>
@@ -6362,8 +6420,8 @@
         <Attributes index="medium" value="1"/>
         <CostResource index="gold" value="180"/>
         <KillResource index="Custom" value="30"/>
-        <LifeStart value="200"/>
-        <LifeMax value="200"/>
+        <LifeStart value="250"/>
+        <LifeMax value="250"/>
         <Speed value="2"/>
         <Race value="Undead"/>
         <Mover value="foot"/>
@@ -7055,21 +7113,26 @@
     <!--Shade-->
     <CUnit id="ushd" parent="AW2_Army" defType="MEDIUM">
         <Attributes index="medium" value="1"/>
-        <LifeStart value="250"/>
-        <LifeMax value="250"/>
+        <CostResource index="gold" value="90"/>
+        <KillResource index="Custom" value="15"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
         <Speed value="2"/>
-        <Race value="Draenei"/>
+        <Race value="BloodElf"/>
+        <AbilArray Link="BloodElfInventory"/>
+        <AbilArray Link="Spawnnvdl"/>
+        <BehaviorArray Link="Atru"/>
+        <BehaviorArray Link="hover"/>
         <Mover value="foot"/>
         <Radius value="0.375"/>
         <MinimapRadius value="0.375"/>
         <SeparationRadius value="0.375"/>
         <InnerRadius value="0.375"/>
         <PlaneArray index="Ground" value="1"/>
-        <DeathTime value="0"/>
-        <BehaviorArray Link="hover"/>
-        <BehaviorArray Link="Atru"/>
+        <GlossaryCategory value="Unit/Category/BloodElfUnits"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="Atru" Type="Passive" Behavior="Atru" Row="2" Column="0"/>
+            <LayoutButtons Face="Spawnnvdl" Type="Passive" Behavior="Spawnnvdl" Row="2" Column="0"/>
+            <LayoutButtons Face="Atru" Type="Passive" Behavior="Atru" Row="2" Column="1"/>
         </CardLayouts>
     </CUnit>
     <!--Skeletal Mage-->
@@ -7458,6 +7521,10 @@
         </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
         <DeathTime value="10"/>
+        <Radius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <MinimapRadius value="0.375"/>
     </CUnit>
     <CUnit id="ohu2" parent="AW2_Army" defType="MEDIUM">
         <Race value="Orc"/>
@@ -7475,6 +7542,10 @@
         </CardLayouts>
         <GlossaryCategory value="Unit/Category/OrcUnits"/>
         <DeathTime value="10"/>
+        <Radius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <MinimapRadius value="0.375"/>
     </CUnit>
     <CUnit id="ohu21LM" parent="War3_Missile"/>
     <!--Healing $ward-->
@@ -8061,8 +8132,8 @@
         <Attributes index="medium" value="1"/>
         <CostResource index="gold" value="60"/>
         <KillResource index="Custom" value="30"/>
-        <LifeStart value="200"/>
-        <LifeMax value="200"/>
+        <LifeStart value="250"/>
+        <LifeMax value="250"/>
         <Speed value="2"/>
         <Race value="Undead"/>
         <Mover value="foot"/>
@@ -8171,16 +8242,28 @@
         </CardLayouts>
         <WeaponArray index="1" removed="1"/>
         <DeathTime value="10"/>
+        <Radius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <MinimapRadius value="0.375"/>
     </CUnit>
     <!--PH Change End-->
     <CUnit id="ughoCorpseGravy" parent="ugho">
         <LifeStart value="300"/>
         <LifeMax value="300"/>
+        <Radius value="0.5"/>
+        <SeparationRadius value="0.5"/>
+        <InnerRadius value="0.5"/>
+        <MinimapRadius value="0.5"/>
     </CUnit>
     <!--PH Change-->
     <CUnit id="ughoHarvesting" parent="ugho">
         <LifeStart value="300"/>
         <LifeMax value="300"/>
+        <Radius value="0.5"/>
+        <SeparationRadius value="0.5"/>
+        <InnerRadius value="0.5"/>
+        <MinimapRadius value="0.5"/>
     </CUnit>
     <!--GargoyleMorphed-->
     <CUnit id="ugrm" parent="AW2_Sationary" defType="NONE">

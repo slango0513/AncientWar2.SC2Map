@@ -98,7 +98,7 @@
         <Cost index="0">
             <Cooldown Location="Unit" TimeUse="60"/>
         </Cost>
-        <TargetFilters index="0" value="-;player,allies,wall,tree,debris,item,ward,dead,invulnerable,immunity"/>
+        <TargetFilters index="0" value="-;player,allies,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLife"/>
             <SortArray value="TSKillResourceCustomLargestFirst"/>
@@ -1272,6 +1272,9 @@
         <InfoArray index="Build11" Unit="nwzd">
             <Button DefaultButtonFace="nwzd" Requirements="BuildArmy"/>
         </InfoArray>
+        <InfoArray index="Build12" Unit="nvdw">
+            <Button DefaultButtonFace="nvdw" Requirements="BuildArmy"/>
+        </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
     <CAbilBuild id="ChaosOrcBuild" parent="War3_PowerBuild">
@@ -2043,6 +2046,9 @@
     </CAbilBehavior>
     <CAbilBehavior id="Aspy" parent="AW2_Passive">
         <BehaviorArray value="Aspy"/>
+    </CAbilBehavior>
+    <CAbilBehavior id="Spawnnvdl" parent="AW2_Passive">
+        <BehaviorArray value="Spawnnvdl"/>
     </CAbilBehavior>
     <CAbilBehavior id="Aspt" parent="AW2_Passive">
         <BehaviorArray value="Aspt"/>
@@ -3643,6 +3649,9 @@
         <CmdButtonArray index="Execute" Requirements="Teleport"/>
     </CAbilEffectTarget>
     <CAbilMorph id="UpgradeTohhes" parent="AW2_Upgrade" toUnit="hhes">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToushd" parent="AW2_Upgrade" toUnit="ushd">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeTonbel" parent="AW2_Upgrade" toUnit="nbel">
