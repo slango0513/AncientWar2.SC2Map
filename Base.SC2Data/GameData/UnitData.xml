@@ -319,12 +319,41 @@
     <CUnit id="RitssynFlamescowl1LM" parent="War3_Missile"/>
     <CUnit id="Pelekeiki1LM" parent="War3_Missile"/>
     <!--spirit of vengeance-->
-    <CUnit id="espv">
-        <ScoreKill value="1"/>
+    <CUnit id="espv" parent="AW2_Army" defType="SMALL">
+        <Attributes index="small" value="1"/>
+        <CostResource index="lumber" value="3000"/>
+        <KillResource index="Custom" value="150"/>
+        <LifeStart value="2700"/>
+        <LifeMax value="2700"/>
+        <Speed value="2"/>
+        <Race value="NightElf"/>
+        <Mover value="foot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <AbilArray Link="Avng"/>
+        <BehaviorArray Link="ACsk"/>
+        <BehaviorArray Link="Moonlight"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ACsk" Type="Passive" Behavior="ACsk" Row="2" Column="1"/>
+            <LayoutButtons Face="Avng" Type="AbilCmd" AbilCmd="Avng,0" Row="2" Column="0"/>
+        </CardLayouts>
+        <GlossaryCategory value="Unit/Category/NightElfUnits"/>
     </CUnit>
     <!--vengeance-->
-    <CUnit id="even">
-        <ScoreKill value="1"/>
+    <CUnit id="even" parent="AW2_Army" defType="SMALL">
+        <Attributes index="small" value="1"/>
+        <LifeStart value="250"/>
+        <LifeMax value="250"/>
+        <Speed value="2"/>
+        <Race value="NightElf"/>
+        <Mover value="foot"/>
+        <Radius value="0.375"/>
+        <MinimapRadius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <PlaneArray index="Ground" value="1"/>
+        <GlossaryCategory value="Unit/Category/NightElfUnits"/>
+        <BehaviorArray Link="Moonlight"/>
+        <DeathTime value="0"/>
     </CUnit>
     <!--watery minion cliffrunner-->
     <CUnit id="ncfs">
@@ -3450,6 +3479,7 @@
             <LayoutButtons Face="ehip" Type="AbilCmd" AbilCmd="AEbu,Build3" Row="0" Column="3"/>
             <LayoutButtons Face="emtg" Type="AbilCmd" AbilCmd="AEbu,Build12" Row="0" Column="4"/>
             <LayoutButtons Face="Emfr" Type="AbilCmd" AbilCmd="AEbu,Build6" Row="2" Column="0"/>
+            <LayoutButtons Face="espv" Type="AbilCmd" AbilCmd="AEbu,Build13" Row="2" Column="1"/>
         </CardLayouts>
         <CardLayouts index="2" CardId="Purc">
             <LayoutButtons Face="Purchaseoven" Type="AbilCmd" AbilCmd="Purchaseoven,Train1" Row="2" Column="0"/>

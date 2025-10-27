@@ -271,6 +271,7 @@ Attribute004/Value012/Name=德莱尼
 Auco/Ubertip=制造出一次强力爆炸，对目标敌方空中单位造成<d ref="Effect,AucoDamage,Amount"/>点伤害，对周围敌空中单位造成<d ref="Effect,AucoDamage,Amount * Effect,AucoDamage,AreaArray[0].Fraction + Effect,AucoDamage,AreaArray[0].Bonus"/>点伤害。
 Auhf/Ubertip=增加目标单位<d ref="Behavior,Buhf,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度，但是也会受到<d ref="Behavior,Buhf,DamageResponse.ModifyFraction - 1 * 100"/>%的额外伤害。<n/>持续<d ref="Behavior,Buhf,Duration"/>秒。
 Aven/Ubertip=能造成每秒<d ref="Effect,BpsdDPS,Amount"/>点的毒性伤害。<n/>持续<d ref="Behavior,Bpoi,Duration"/>秒。
+Avng/Ubertip=从倒下的友方尸体身上召唤出无敌的野性幽魂。持续<d ref="Behavior,Bvng,Duration"/>秒或直到化身死亡。
 Avul/Tip=无敌
 Avul/Ubertip=该单位是无敌的，所以任何的攻击和魔法都对其无效。
 Awar/Ubertip=使得攻击能对周围的单位造成<d ref="Effect,AwarAoEDamage,AreaArray[0].Bonus"/>点的伤害。
@@ -791,6 +792,12 @@ DocInfo/PatchNote309=加入新单位埃瑞达授魔者。
 DocInfo/PatchNote310=埃瑞达术士类单位获得技能法力恢复光环。
 DocInfo/PatchNote311=支配光环经过重新设计。
 DocInfo/PatchNote312=地狱机器类单位的生命值增加66.7%。
+DocInfo/PatchNote313=闪避护符不再能够叠加。
+DocInfo/PatchNote314=修复腐尸甲虫能从同一具尸体召唤出多个甲虫的漏洞。
+DocInfo/PatchNote315=暗夜精灵：
+DocInfo/PatchNote316=加入新单位复仇化身。
+DocInfo/PatchNote317=地精：
+DocInfo/PatchNote318=咔嘣！的落地昏迷时间减少到1秒。
 DominationAura/Buffubertip=该单位处在支配光环的作用之下，因此其受到的远程伤害降低。
 DominationAura/Name=支配光环
 DominationAuraCaster/Tip=支配光环
@@ -1161,6 +1168,7 @@ Param/Value/5F942B70=剩余时间
 Param/Value/64EFDAFF=<c val="FFFF00">方阵：</c>你有3个方阵，每个方阵的位置由玩家决定，并且最多容纳共6x6=36个单位(在决赛共6x15=90个单位)。超出的单位将成为后备军支援前线。<n/><c val="FFFF00">物品：</c>你可以在工人处购买物品。通过鼠标右键拖拽的方式将物品放到部队身上，部队将会享受物品带来的各种加成。每个种族都有几种特有物品。将物品拖拽到货运马能卖掉这个物品。<n/><c val="FFFF00">物品等级(暂未加入)：</c>每个物品都有自己的等级。等级越高，售价越贵，一般而言对部队的加成也越强。工人可以提升每个回合获得物品的等级，由于获得物品的数量有限，越早升级物品等级收益越大。<n/><c val="FFFF00">物品与游戏模式：</c>在2V2V2V2模式中你既可以将部队建在自己的区域，就像在混战模式中一样，也可以将他们建在队友的区域，赠送给队友。赠送给队友的部队能享受种族特有物品带来的加成，例如，暗夜精灵玩家将树妖赠送给兽人队友后，树妖能装备闪电之球。<n/><c val="FFFF00">回合战略：</c>1到7回合你将随机遇上某个玩家，不会重复。观察还未与之战斗过的玩家，提前做好相应对策，对获胜有很大帮助。<n/><c val="FFFF00">奖励回合战略：</c>奖励回合是决赛前非常重要的一个环节，获得木材量将直接影响比赛结果。观察他人阵型，通过保存录像实践，有助于设计有效而稳定的布阵。<n/><c val="FFFF00">决赛战略：</c>决赛有很大随机性与变数，但也有规律可循。例如，有经验的玩家会针对在奖励回合获得最多木材的玩家出兵，经济最好的玩家将面临被剩下7人针对的危险。<n/><c val="FFFF00">奇袭：</c>如果你经济非常落后，可以考虑在决赛前夕采用非常规战术，例如，将所有部队卖掉后只出空军。这类战术带有“要是运气好说不定能赢”的赌博特性和“反正赢不了我也不让你赢”的恶作剧特性，作者是非常推荐的。
 Param/Value/7EA0BD11= vs 
 Param/Value/8088B50E=测试提示
+Param/Value/81F6C93F=KK联赛（第二届古代战争II冠军赛）开始报名，<n/>欢迎任何人参与，无论水平。奖金由举办者KK网游工作室提供。<n/>请加QQ群（417 769 011）报名、了解详情。
 Param/Value/84A7D743=让<c val="FFFF00">工人</c>在战场内<c val="FFFF00">依次</c>放置阵型旗帜。<n/>战斗开始时3个方阵的部队将按照<c val="FFFF00">你放置的顺序</c>出现在战场中。
 Param/Value/87E4737D=击杀奖励
 Param/Value/91BA9176= - 
@@ -1409,6 +1417,7 @@ esaz/Ubertip=传说有一个睿智的兽人发现了神奇的艾苏恩之心。�
 esen/Ubertip=高速远程攻击骑兵，具有月刃技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 eshd/Tip=升级到珊蒂斯
 eshd/Ubertip=远程攻击单位。拥有艾露恩的赐福和强化弓技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c> 
+espv/Ubertip=强大的复仇之神的化身，化身能从周围的尸体中复活许多无敌的幽魂为你战斗。
 evtl/Description=更加难以被攻击到。
 evtl/Ubertip=能有<d ref="Behavior,AIev,DamageResponse.Chance * 100"/>%的几率躲避掉敌人的攻击。<n/>不能和闪避以及醉拳技能一起生效。
 fla2/Name=人类旗帜

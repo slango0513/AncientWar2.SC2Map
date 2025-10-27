@@ -262,7 +262,25 @@
         <AutoCastRange value="7.0312"/>
         <Alignment value="Positive"/>
         <AutoCastFilters value="Visible;-"/>
+        <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="AUcbMarkerLessThan5"/>
+    </CAbilEffectInstant>
+    <!--Vengeance Dur=50 HeroDur=50 Buff=Bvng-->
+    <CAbilEffectInstant id="Avng" parent="AW2_EffectInstant">
+        <EditorCategories value="Race:Nightelf,AbilityorEffectType:Unit"/>
+        <Cost index="0">
+            <Cooldown Location="Unit" TimeUse="2"/>
+        </Cost>
+        <Range value="7.0312"/>
+        <PrepTime value="0.3"/>
+        <CastOutroTime value="0.51"/>
+        <AutoCastRange value="7.0312"/>
+        <Alignment value="Positive"/>
+        <AutoCastFilters value="Visible;-"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastValidatorArray value="AvngMarkerLessEqual12"/>
+        <Effect index="0" value="AvngSummonSet"/>
+        <TargetFilters value="Dead;Neutral,Enemy,Hover,HarvestableResource,Missile,Destructible,Item,PreventDefeat,Buried,Hidden,Invulnerable,Resistant"/>
     </CAbilEffectInstant>
     <CAbilBehavior id="ShockWavePassive" parent="AW2_Passive">
         <BehaviorArray value="ShockWavePassive"/>
@@ -1123,6 +1141,9 @@
         </InfoArray>
         <InfoArray index="Build12" Unit="emtg">
             <Button DefaultButtonFace="emtg" Requirements="BuildArmyFinal"/>
+        </InfoArray>
+        <InfoArray index="Build13" Unit="espv">
+            <Button DefaultButtonFace="espv" Requirements="BuildArmyFinal"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>

@@ -159,6 +159,13 @@
         <Period value="0.0625"/>
         <PeriodicEffect value="CreateBurningSmoke"/>
     </CBehaviorBuff>
+    <!--Vengeance-->
+    <CBehaviorBuff id="Bvng">
+        <Modification>
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="Summoned" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="ShockWavePassive" parent="War3_Passive">
         <DamageResponse Chance="0.25" Handled="AOshTarget" Location="Attacker">
             <Kind index="Spell" value="0"/>
@@ -610,6 +617,7 @@
             <Kind index="Spell" value="0"/>
             <Kind index="Splash" value="0"/>
         </DamageResponse>
+        <MaxStackCount value="1"/>
     </CBehaviorBuff>
     <!--MaxLifeBonus (Greater)-->
     <CBehaviorBuff id="AIl2" parent="AW2_Item">
@@ -2655,8 +2663,8 @@
     <CBehaviorBuff id="Bsds" parent="War3_Buff">
         <EditorCategories value="Race:Goblin,AbilityorEffectType:Units"/>
         <InfoIcon value="Assets\Textures\BTN\Renee_war3_btnselfdestruct.dds"/>
-        <Duration value="3"/>
-        <DurationOverride index="0" Duration="1.5">
+        <Duration value="1"/>
+        <DurationOverride index="0" Duration="0.5">
             <ValidatorArray index="0" value="HeroOrPowerfulMob"/>
         </DurationOverride>
         <Alignment value="Negative"/>
