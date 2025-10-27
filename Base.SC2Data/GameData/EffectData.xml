@@ -76,6 +76,13 @@
     <CEffectCreateHealer id="AEtqHealTick">
         <RechargeVitalRate value="45"/>
     </CEffectCreateHealer>
+    <CEffectEnumArea id="ANrfSearch">
+        <SearchFilters value="-;player,allies,wall,tree,Missile,debris,item,ward,dead,Hidden,invulnerable,immunity"/>
+        <MaxCount value="4294967295"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="AUsl1Dur">
+        <Duration value="15"/>
+    </CEffectApplyBehavior>
     <CEffectApplyBehavior id="BUavILeech" parent="War3_ApplyBuff">
         <WhichUnit Value="Source"/>
     </CEffectApplyBehavior>
@@ -446,6 +453,11 @@
     <CEffectCreateUnit id="ushd" parent="War3_SummonUnit">
         <EditorCategories value="Race:Draenei,AbilityorEffectType:Hero"/>
         <SpawnEffect value="Brai"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="Spawnnvdl" parent="War3_SummonUnit">
+        <EditorCategories value="Race:Draenei,AbilityorEffectType:Hero"/>
+        <SpawnEffect value="Brai"/>
+        <SpawnUnit value="nvdl"/>
     </CEffectCreateUnit>
     <CEffectSet id="ndt11MultishotSet">
         <EffectArray value="ndt11LM"/>
@@ -1358,7 +1370,7 @@
         <RechargeVitalMax value="1500"/>
     </CEffectCreateHealer>
     <CEffectDamage id="AfshSphereEffect">
-        <AreaArray index="0" Radius="1.9531" Bonus="12" Fraction="1"/>
+        <AreaArray index="0" Radius="1.9531" Bonus="24" Fraction="1"/>
         <AreaArray index="1" removed="1"/>
         <AreaArray index="2" removed="1"/>
     </CEffectDamage>
