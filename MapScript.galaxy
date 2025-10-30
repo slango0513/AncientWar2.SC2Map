@@ -222,7 +222,11 @@ bool gf_IsCoreMode ();
 bool gf_IsMeleeMode ();
 bool gf_IsDoubleBattle ();
 bool gf_IsNoneBonusMode ();
+bool gf_IsRandomWorkerMode ();
 void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug, bool lp_automatically);
+void gf_CreateWorkers ();
+void gf_CreateWorkersRandom ();
+string gf_GenerateWorker ();
 void gf_CreateRandomItem (int lp_round, bool lp_finalRound);
 void gf_UserSkinSet ();
 void gf_AddInfoAtBuildRegion (bool lp_clear);
@@ -241,7 +245,8 @@ void gf_PlayerAtFinalVenueReplace (int lp_round);
 void gf_PlayerAtFinalVenueSet ();
 void gf_PlayerCountTest ();
 void gf_GameOverTestNotPassed ();
-string gf_GenerateSecondRace (int lp_player, string lp_secondRaceFromRaceAttribute);
+string gf_GenerateRace ();
+string gf_GenerateSecondRace (string lp_currentRace, string lp_secondRaceFromRaceAttribute);
 void gf_AddTip ();
 int gf_PlayerGetCompetitor (int lp_player);
 void gf_ChangeTOD ();
@@ -528,7 +533,7 @@ void gf_RoundStartLoop (bool lp_debug) {
 bool gf_IsMultipleRanceMode () {
     // Automatic Variable Declarations
     // Implementation
-    if (((gv_gameModeAttValue == "0003") || (gv_gameModeAttValue == "0002") || (gv_gameModeAttValue == "0004") || (gv_gameModeAttValue == "0005") || (gv_gameModeAttValue == "0006"))) {
+    if (((gv_gameModeAttValue == "0001") || (gv_gameModeAttValue == "0003") || (gv_gameModeAttValue == "0002") || (gv_gameModeAttValue == "0004") || (gv_gameModeAttValue == "0005") || (gv_gameModeAttValue == "0006"))) {
         return true;
     }
     else {
@@ -580,6 +585,17 @@ bool gf_IsNoneBonusMode () {
     }
 }
 
+bool gf_IsRandomWorkerMode () {
+    // Automatic Variable Declarations
+    // Implementation
+    if (((gv_gameModeAttValue == "0001"))) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug, bool lp_automatically) {
     // Automatic Variable Declarations
     // Implementation
@@ -591,6 +607,10 @@ void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug, bool lp_aut
     gf_ScoreBoardSetName(lp_round, lp_bonusRound);
     if ((gf_IsFinalRound(lp_round) == true)) {
         if ((lp_round == (gv_roundCount-gv_finalRoundCount+1))) {
+            if ((gf_IsRandomWorkerMode() == true)) {
+                gf_CreateWorkersRandom();
+            }
+
             gf_ResourceAdd(lp_round);
             gf_BuildingRegionRevealerEnable(true, lp_debug);
             gf_CreateRandomItem(lp_round, true);
@@ -616,6 +636,15 @@ void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug, bool lp_aut
             gf_ObjectiveSetState(lp_round, c_objectiveStateActive);
         }
 
+        if ((gf_IsRandomWorkerMode() == true)) {
+            gf_CreateWorkersRandom();
+        }
+        else {
+            if ((gv_round == 1)) {
+                gf_CreateWorkers();
+            }
+
+        }
         gf_ResourceAdd(lp_round);
         gf_BuildingRegionRevealerEnable(true, lp_debug);
         gf_CreateRandomItem(lp_round, false);
@@ -685,6 +714,89 @@ void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug, bool lp_aut
     gf_RestoreWaterState(false);
     gf_RestoreTOD();
     Wait(1.0, c_timeGame);
+}
+
+void gf_CreateWorkers () {
+    // Variable Declarations
+    int lv_player;
+
+    // Automatic Variable Declarations
+    const int autoF2EF759F_ae = gv_playerCount;
+    const int autoF2EF759F_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_player = 1;
+    for ( ; ( (autoF2EF759F_ai >= 0 && lv_player <= autoF2EF759F_ae) || (autoF2EF759F_ai < 0 && lv_player >= autoF2EF759F_ae) ) ; lv_player += autoF2EF759F_ai ) {
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, gf_RaceGetWorkerType(PlayerRace(lv_player)), 0, lv_player, PlayerStartLocation(lv_player));
+        if ((gf_IsMultipleRanceMode() == true)) {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, gf_RaceGetWorkerType(gv_secondRace[lv_player]), 0, lv_player, PlayerStartLocation(lv_player));
+        }
+
+        gf_WorkersSave(lv_player);
+        if ((PlayerGroupHasPlayer(gv_aIGroup, lv_player) == true)) {
+            gf_WorkerExchangeSetAutoCast(lv_player, true);
+        }
+
+    }
+}
+
+void gf_CreateWorkersRandom () {
+    // Variable Declarations
+    unit lv_u;
+    int lv_player;
+    string lv_race1;
+    string lv_race2;
+
+    // Automatic Variable Declarations
+    const int auto3AD4CF94_ae = gv_playerCount;
+    const int auto3AD4CF94_ai = 1;
+    unitgroup auto9A435F87_g;
+    int auto9A435F87_u;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_player = 1;
+    for ( ; ( (auto3AD4CF94_ai >= 0 && lv_player <= auto3AD4CF94_ae) || (auto3AD4CF94_ai < 0 && lv_player >= auto3AD4CF94_ae) ) ; lv_player += auto3AD4CF94_ai ) {
+        auto9A435F87_g = gv_workers[lv_player];
+        auto9A435F87_u = 1;
+        for ( ; auto9A435F87_u <= UnitGroupCount(auto9A435F87_g, c_unitCountAll) ; auto9A435F87_u += BoolToInt(lv_u == UnitGroupUnit(auto9A435F87_g, auto9A435F87_u)) ) {
+            lv_u = UnitGroupUnit(auto9A435F87_g, auto9A435F87_u);
+            UnitRemove(lv_u);
+        }
+        lv_race1 = gf_GenerateRace();
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, gf_RaceGetWorkerType(lv_race1), 0, lv_player, PlayerStartLocation(lv_player));
+        if ((gf_IsMultipleRanceMode() == true)) {
+            while (true) {
+                lv_race2 = gf_GenerateRace();
+                if ((lv_race2 != lv_race1)) {
+                    libNtve_gf_CreateUnitsWithDefaultFacing(1, gf_RaceGetWorkerType(lv_race2), 0, lv_player, PlayerStartLocation(lv_player));
+                    break;
+                }
+
+            }
+        }
+
+        gf_WorkersSave(lv_player);
+        if ((PlayerGroupHasPlayer(gv_aIGroup, lv_player) == true)) {
+            gf_WorkerExchangeSetAutoCast(lv_player, true);
+        }
+
+    }
+}
+
+string gf_GenerateWorker () {
+    // Variable Declarations
+    string lv_ut;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_ut = "RaceAttributeMapping";
+
+    // Implementation
+    return UserDataGetUnit(lv_ut, "1", "Worker", RandomInt(1, UserDataInstanceCount(lv_ut)));
 }
 
 void gf_CreateRandomItem (int lp_round, bool lp_finalRound) {
@@ -1312,7 +1424,21 @@ void gf_GameOverTestNotPassed () {
     }
 }
 
-string gf_GenerateSecondRace (int lp_player, string lp_secondRaceFromRaceAttribute) {
+string gf_GenerateRace () {
+    // Variable Declarations
+    string lv_ut;
+    int lv_c;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_ut = "RaceAttributeMapping";
+    lv_c = UserDataInstanceCount(lv_ut);
+
+    // Implementation
+    return UserDataGetGameLink(lv_ut, UserDataInstance(lv_ut, RandomInt(1, lv_c)), "Race", 1);
+}
+
+string gf_GenerateSecondRace (string lp_currentRace, string lp_secondRaceFromRaceAttribute) {
     // Variable Declarations
     string lv_ut;
     int lv_c;
@@ -1325,13 +1451,13 @@ string gf_GenerateSecondRace (int lp_player, string lp_secondRaceFromRaceAttribu
     lv_c = UserDataInstanceCount(lv_ut);
 
     // Implementation
-    if ((lp_secondRaceFromRaceAttribute != PlayerRace(lp_player))) {
+    if ((lp_secondRaceFromRaceAttribute != lp_currentRace)) {
         lv_secondRace = lp_secondRaceFromRaceAttribute;
     }
     else {
         while (true) {
             lv_race = UserDataGetGameLink(lv_ut, UserDataInstance(lv_ut, RandomInt(1, lv_c)), "Race", 1);
-            if ((lv_race != PlayerRace(lp_player))) {
+            if ((lv_race != lp_currentRace)) {
                 lv_secondRace = lv_race;
                 break;
             }
@@ -4156,10 +4282,11 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     const int autoCF83B040_ae = gv_playerCount;
     const int autoCF83B040_ai = 1;
-    const int auto1222D8BF_ae = gv_playerCount;
-    const int auto1222D8BF_ai = 1;
+    const int auto83D084B7_ae = gv_playerCount;
+    const int auto83D084B7_ai = 1;
 
     // Variable Initialization
+    lv_debug = !(GameIsOnline());
 
     // Actions
     if (!runActions) {
@@ -4184,18 +4311,8 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     libGAwX_gf_PauseUnpauseTimeOfDayWar3(true);
     WaterSetState("AW2_Default|Alternate Setting", 0.0, c_wtcLinear);
     lv_player = 1;
-    for ( ; ( (auto1222D8BF_ai >= 0 && lv_player <= auto1222D8BF_ae) || (auto1222D8BF_ai < 0 && lv_player >= auto1222D8BF_ae) ) ; lv_player += auto1222D8BF_ai ) {
+    for ( ; ( (auto83D084B7_ai >= 0 && lv_player <= auto83D084B7_ae) || (auto83D084B7_ai < 0 && lv_player >= auto83D084B7_ae) ) ; lv_player += auto83D084B7_ai ) {
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "hrdh", 0, lv_player, PlayerStartLocation(lv_player));
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, gf_RaceGetWorkerType(PlayerRace(lv_player)), 0, lv_player, PlayerStartLocation(lv_player));
-        if ((gf_IsMultipleRanceMode() == true)) {
-            libNtve_gf_CreateUnitsWithDefaultFacing(1, gf_RaceGetWorkerType(gv_secondRace[lv_player]), 0, lv_player, PlayerStartLocation(lv_player));
-        }
-
-        gf_WorkersSave(lv_player);
-        if ((PlayerGroupHasPlayer(gv_aIGroup, lv_player) == true)) {
-            gf_WorkerExchangeSetAutoCast(lv_player, true);
-        }
-
     }
     gf_RoundStartLoop(lv_debug);
     return true;
@@ -4815,7 +4932,7 @@ bool gt_PlayerInizialization_Func (bool testConds, bool runActions) {
         libGAwX_gf_SetPlayerUIRace(lv_player, libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue(gv_playerRaceAtt, lv_player)));
         if ((gf_IsMultipleRanceMode() == true)) {
             lv_secondRaceFromRaceAttribute = libGAwX_gf_GenerateRaceFromRaceAttribute(GameAttributePlayerValue(gv_playerSecondRaceAtt, lv_player));
-            gv_secondRace[lv_player] = gf_GenerateSecondRace(lv_player, lv_secondRaceFromRaceAttribute);
+            gv_secondRace[lv_player] = gf_GenerateSecondRace(PlayerRace(lv_player), lv_secondRaceFromRaceAttribute);
         }
 
         if ((gf_IsCoreMode() == true)) {
