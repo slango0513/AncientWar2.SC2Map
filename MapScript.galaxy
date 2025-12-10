@@ -2,7 +2,7 @@
 // 
 // Generated Map Script
 // 
-// Name:   ????????????II - ????????????III Mod (GA)
+// Name:   ????????????II - ????????????III Mod
 // 
 //==================================================================================================
 include "TriggerLibs/NativeLib"
@@ -84,7 +84,11 @@ timer gv_moonstoneTimer;
 int gv_moonstoneTimmerWindow;
 timer gv_callTideTimer;
 int gv_callTideTimmerWindow;
+bool gv_debugDisableAIBuild;
+int gv_screenButton1ID;
+bool[gv_playerMaximumIndex + 1] gv_prepStats;
 unitgroup[gv_playerMaximumIndex + 1] gv_workers;
+string[gv_playerMaximumIndex + 1] gv_creeps;
 int gv_teamCount;
 int gv_teamMemberCount;
 int gv_teamRoundCount;
@@ -188,6 +192,7 @@ void InitGlobals () {
     gv_moonstoneTimmerWindow = c_timerWindowNone;
     gv_callTideTimer = TimerCreate();
     gv_callTideTimmerWindow = c_timerWindowNone;
+    gv_screenButton1ID = 1;
     for (init_i = 0; init_i <= gv_playerMaximumIndex; init_i += 1) {
         gv_workers[init_i] = UnitGroupEmpty();
     }
@@ -335,6 +340,10 @@ void gf_AIPhalanxBuffSetAll (int lp_round);
 void gf_AIPhalanxAndPortalPosition (int lp_player, region lp_region, string lp_unitType, string lp_userType, unitfilter lp_unitFilter, int lp_count);
 void gf_AIBuildingPosition ();
 void gf_TimerSet (fixed lp_duration, bool lp_debug);
+void gf_UpdatePrepView ();
+void gf_UpdatePrepViewNone ();
+void gf_ResetPrep ();
+bool gf_AllPrep ();
 void gf_ReserveUnitIndexResetAll ();
 void gf_ReserveUnitCreationEnable (bool lp_option);
 void gf_ReserveUnitCreation (unit lp_unit, int lp_player, int lp_phalanx);
@@ -411,6 +420,7 @@ trigger gt_UnitAbilityMorph;
 trigger gt_PhalanxCreated;
 trigger gt_PortalCreated;
 trigger gt_PhalanxBuffChange;
+trigger gt_ScreenButton1Pressed;
 trigger gt_CreateReserveUnit;
 trigger gt_IssueOrderPeriodic;
 trigger gt_AutoCastAlwaysOnEnable;
@@ -616,8 +626,11 @@ void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug, bool lp_aut
             gf_CreateRandomItem(lp_round, true);
             gf_PreviewEnable(true);
             gf_StartLocationCameraPan();
-            gf_TimerSet(150.0, lp_debug);
-            gf_AIBuildingPosition();
+            gf_TimerSet(180.0, lp_debug);
+            if ((gv_debugDisableAIBuild == false)) {
+                gf_AIBuildingPosition();
+            }
+
             gf_BuildingRegionRevealerEnable(false, lp_debug);
             gf_PreviewEnable(false);
             gf_UnitTypeSetAll();
@@ -650,12 +663,15 @@ void gf_RoundStart (int lp_round, bool lp_bonusRound, bool lp_debug, bool lp_aut
         gf_CreateRandomItem(lp_round, false);
         gf_PreviewEnable(true);
         gf_StartLocationCameraPan();
-        gf_TimerSet((45.0+lp_round*5), lp_debug);
+        gf_TimerSet((45.0+IntToFixed(gv_round)*8), lp_debug);
         if ((lp_round == 1)) {
             gf_AddInfoAtBuildRegion(true);
         }
 
-        gf_AIBuildingPosition();
+        if ((gv_debugDisableAIBuild == false)) {
+            gf_AIBuildingPosition();
+        }
+
         gf_BuildingRegionRevealerEnable(false, lp_debug);
         gf_PreviewEnable(false);
         gf_UnitTypeSetAll();
@@ -2956,7 +2972,22 @@ void gf_CreepUnitTypeSetAll () {
         if ((gv_bonusRoundIsOn[lv_round] == true)) {
             lv_venue = 1;
             for ( ; ( (auto57A507C1_ai >= 0 && lv_venue <= auto57A507C1_ae) || (auto57A507C1_ai < 0 && lv_venue >= auto57A507C1_ae) ) ; lv_venue += auto57A507C1_ai ) {
-                gv_creepUnitType[lv_venue][lv_round] = "nsqt";
+                while ((gv_creepUnitType[lv_venue][lv_round] == null)) {
+                    lv_index = RandomInt(1, lv_count);
+                    lv_unitType = UserDataGetUnit(gv_creepUnitTypeUserType, ("1"), "UnitType", lv_index);
+                    if ((lv_unitType != null)) {
+                        gv_creepUnitType[lv_venue][lv_round] = lv_unitType;
+                        lv_description = StringExternal(CatalogFieldValueGet(c_gameCatalogUnit, gv_creepUnitType[lv_venue][lv_round], "Description", gv_playerAtVenue[lv_venue][lv_round]));
+                        lv_path = CatalogFieldValueGet(c_gameCatalogActor, (lv_unitType), "UnitIcon", gv_playerAtVenue[lv_venue][lv_round]);
+                        TextExpressionSetToken("Param/Expression/0E472FCC", "A", IntToText(lv_round));
+                        TextExpressionSetToken("Param/Expression/0E472FCC", "B", UnitTypeGetName(lv_unitType));
+                        TextExpressionSetToken("Param/Expression/4CA5E705", "A", lv_description);
+                        TextExpressionSetToken("Param/Expression/CEBDBACC", "A", IntToText(lv_round));
+                        TextExpressionSetToken("Param/Expression/CEBDBACC", "B", UnitTypeGetName(lv_unitType));
+                        HelpPanelAddTip(PlayerGroupSingle(gv_playerAtVenue[lv_venue][lv_round]), TextExpressionAssemble("Param/Expression/0E472FCC"), TextExpressionAssemble("Param/Expression/4CA5E705"), TextExpressionAssemble("Param/Expression/CEBDBACC"), (lv_path));
+                    }
+
+                }
             }
         }
 
@@ -3532,16 +3563,105 @@ void gf_AIBuildingPosition () {
 void gf_TimerSet (fixed lp_duration, bool lp_debug) {
     // Automatic Variable Declarations
     // Implementation
-    if ((lp_debug == true)) {
-        TriggerWaitForTrigger(gt_DebugControlPressed, false);
+    TimerStart(gv_timer, lp_duration, false, c_timeGame);
+    TimerWindowShow(gv_timerWindow, gv_uIPlayergroup, true);
+    libNtve_gf_HideScreenButton(true, gv_screenButton1ID);
+    gf_UpdatePrepView();
+    while (!(((gf_AllPrep() == true) || (TimerGetRemaining(gv_timer) <= 0.0)))) {
+        Wait(0.0625, c_timeGame);
     }
-    else {
-        TimerStart(gv_timer, lp_duration, false, c_timeGame);
-        TimerWindowShow(gv_timerWindow, gv_uIPlayergroup, true);
-        libNtve_gf_WaitForTimer(gv_timer, 0.0, false);
-        TimerWindowShow(gv_timerWindow, gv_uIPlayergroup, false);
-    }
+    TimerWindowShow(gv_timerWindow, gv_uIPlayergroup, false);
+    libNtve_gf_HideScreenButton(false, gv_screenButton1ID);
+    gf_ResetPrep();
+    gf_UpdatePrepViewNone();
     Wait(gv_minimumPeriod, c_timeGame);
+}
+
+void gf_UpdatePrepView () {
+    // Variable Declarations
+    text lv_text;
+    int lv_player;
+    int lv_row;
+
+    // Automatic Variable Declarations
+    const int autoAEDD0353_ae = gv_playerCount;
+    const int autoAEDD0353_ai = 1;
+
+    // Variable Initialization
+    lv_player = EventPlayer();
+
+    // Implementation
+    lv_player = 1;
+    for ( ; ( (autoAEDD0353_ai >= 0 && lv_player <= autoAEDD0353_ae) || (autoAEDD0353_ai < 0 && lv_player >= autoAEDD0353_ae) ) ; lv_player += autoAEDD0353_ai ) {
+        lv_row = (lv_player+1);
+        if (((PlayerGroupHasPlayer(gv_aIGroup, lv_player) == true) || (gv_prepStats[lv_player] == true))) {
+            lv_text = StringExternal("Param/Value/0C2B5C1F");
+        }
+        else {
+            lv_text = StringExternal("Param/Value/96FD2F35");
+        }
+        BoardItemSetText(gv_scoreBoard, 4, lv_row, lv_text);
+    }
+}
+
+void gf_UpdatePrepViewNone () {
+    // Variable Declarations
+    int lv_player;
+    int lv_row;
+
+    // Automatic Variable Declarations
+    const int autoD74F238A_ae = gv_playerCount;
+    const int autoD74F238A_ai = 1;
+
+    // Variable Initialization
+    lv_player = EventPlayer();
+
+    // Implementation
+    lv_player = 1;
+    for ( ; ( (autoD74F238A_ai >= 0 && lv_player <= autoD74F238A_ae) || (autoD74F238A_ai < 0 && lv_player >= autoD74F238A_ae) ) ; lv_player += autoD74F238A_ai ) {
+        lv_row = (lv_player+1);
+        BoardItemSetText(gv_scoreBoard, 4, lv_row, StringToText(""));
+    }
+}
+
+void gf_ResetPrep () {
+    // Variable Declarations
+    int lv_player;
+
+    // Automatic Variable Declarations
+    const int autoAA81CB2C_ae = gv_playerCount;
+    const int autoAA81CB2C_ai = 1;
+
+    // Variable Initialization
+    lv_player = EventPlayer();
+
+    // Implementation
+    lv_player = 1;
+    for ( ; ( (autoAA81CB2C_ai >= 0 && lv_player <= autoAA81CB2C_ae) || (autoAA81CB2C_ai < 0 && lv_player >= autoAA81CB2C_ae) ) ; lv_player += autoAA81CB2C_ai ) {
+        gv_prepStats[lv_player] = false;
+    }
+}
+
+bool gf_AllPrep () {
+    // Variable Declarations
+    int lv_player;
+
+    // Automatic Variable Declarations
+    const int auto7A64B4CA_ae = gv_playerCount;
+    const int auto7A64B4CA_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_player = 1;
+    for ( ; ( (auto7A64B4CA_ai >= 0 && lv_player <= auto7A64B4CA_ae) || (auto7A64B4CA_ai < 0 && lv_player >= auto7A64B4CA_ae) ) ; lv_player += auto7A64B4CA_ai ) {
+        if (((PlayerGroupHasPlayer(gv_aIGroup, lv_player) == true) || (gv_prepStats[lv_player] == true))) {
+        }
+        else {
+            return false;
+        }
+    }
+    return true;
 }
 
 void gf_ReserveUnitIndexResetAll () {
@@ -4310,6 +4430,8 @@ bool gt_MapInizialization_Func (bool testConds, bool runActions) {
     libGAwX_gf_SetWar3TimeOfDay("13:00:00");
     libGAwX_gf_PauseUnpauseTimeOfDayWar3(true);
     WaterSetState("AW2_Default|Alternate Setting", 0.0, c_wtcLinear);
+    libNtve_gf_DisplayScreenButton(gv_screenButton1ID, StringExternal("Param/Value/E0D56FA3"), 200, 60, c_anchorBottomRight, 20, 350, gt_ScreenButton1Pressed);
+    libNtve_gf_HideScreenButton(false, gv_screenButton1ID);
     lv_player = 1;
     for ( ; ( (auto83D084B7_ai >= 0 && lv_player <= auto83D084B7_ae) || (auto83D084B7_ai < 0 && lv_player >= auto83D084B7_ae) ) ; lv_player += auto83D084B7_ai ) {
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "hrdh", 0, lv_player, PlayerStartLocation(lv_player));
@@ -4819,7 +4941,7 @@ bool gt_ScoreBoardInizialization_Func (bool testConds, bool runActions) {
     const int auto6B7CF141_ai = 1;
     const int autoFD0B85D6_ae = gv_playerCount;
     const int autoFD0B85D6_ai = 1;
-    const int auto8F5FEE41_ae = 3;
+    const int auto8F5FEE41_ae = 4;
     const int auto8F5FEE41_ai = 1;
     int auto26D786A1_val;
 
@@ -4830,12 +4952,13 @@ bool gt_ScoreBoardInizialization_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    BoardCreate(3, gv_playerCount, StringExternal("Param/Value/58BD0FA7"), Color(100.00, 100.00, 100.00));
+    BoardCreate(4, gv_playerCount, StringExternal("Param/Value/58BD0FA7"), Color(100.00, 100.00, 100.00));
     gv_scoreBoard = BoardLastCreated();
     BoardSetGroupCount(gv_scoreBoard, gv_teamCount);
     BoardItemSetText(gv_scoreBoard, 1, c_boardRowHeader, StringExternal("Param/Value/C201E5C3"));
     BoardItemSetText(gv_scoreBoard, 2, c_boardRowHeader, StringExternal("Param/Value/A4868C6E"));
     BoardItemSetText(gv_scoreBoard, 3, c_boardRowHeader, StringExternal("Param/Value/87E4737D"));
+    BoardItemSetText(gv_scoreBoard, 4, c_boardRowHeader, StringExternal("Param/Value/E6CA5ECD"));
     lv_column = 1;
     for ( ; ( (auto6B7CF141_ai >= 0 && lv_column <= auto6B7CF141_ae) || (auto6B7CF141_ai < 0 && lv_column >= auto6B7CF141_ae) ) ; lv_column += auto6B7CF141_ai ) {
         BoardItemSetFontSize(gv_scoreBoard, lv_column, c_boardRowHeader, 20);
@@ -4848,7 +4971,7 @@ bool gt_ScoreBoardInizialization_Func (bool testConds, bool runActions) {
         BoardRowSetGroup(gv_scoreBoard, lv_row, gf_PlayerGetTeam(lv_player));
         lv_column = 1;
         for ( ; ( (auto8F5FEE41_ai >= 0 && lv_column <= auto8F5FEE41_ae) || (auto8F5FEE41_ai < 0 && lv_column >= auto8F5FEE41_ae) ) ; lv_column += auto8F5FEE41_ai ) {
-            if ((lv_column == 1)) {
+            if (((lv_column == 1) || (lv_column == 4))) {
                 BoardItemSetFontSize(gv_scoreBoard, lv_column, lv_row, 20);
                 auto26D786A1_val = PlayerDifficulty(lv_player);
                 if (auto26D786A1_val == 1) {
@@ -6084,6 +6207,7 @@ bool gt_PlayerLeft_Func (bool testConds, bool runActions) {
     TextExpressionSetToken("Param/Expression/831164FF", "A", TextWithColor(PlayerName(EventPlayer()), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(EventPlayer(), false))));
     UIDisplayMessage(gv_uIPlayergroup, c_messageAreaSubtitle, TextExpressionAssemble("Param/Expression/831164FF"));
     PlayerSetDifficulty(EventPlayer(), 3);
+    gf_UpdatePrepView();
     return true;
 }
 
@@ -6285,6 +6409,34 @@ void gt_PhalanxBuffChange_Init () {
     gt_PhalanxBuffChange = TriggerCreate("gt_PhalanxBuffChange_Func");
     TriggerAddEventUnitBehaviorChange(gt_PhalanxBuffChange, null, null, c_unitBehaviorChangeActivate);
     TriggerAddEventUnitBehaviorChange(gt_PhalanxBuffChange, null, null, c_unitBehaviorChangeDeactivate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ScreenButton1Pressed
+//--------------------------------------------------------------------------------------------------
+bool gt_ScreenButton1Pressed_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    text lv_text;
+    int lv_player;
+    int lv_row;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_player = EventPlayer();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    gv_prepStats[lv_player] = !(gv_prepStats[lv_player]);
+    gf_UpdatePrepView();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_ScreenButton1Pressed_Init () {
+    gt_ScreenButton1Pressed = TriggerCreate("gt_ScreenButton1Pressed_Func");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6674,7 +6826,7 @@ bool gt_DebugKeyPressed_Func (bool testConds, bool runActions) {
         libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "NonCoreMode", 1);
         PlayerModifyPropertyInt(lv_player, c_playerPropTerrazine, c_playerPropOperSetTo, 100000);
         PlayerModifyPropertyInt(lv_player, c_playerPropCustom, c_playerPropOperSetTo, 100000);
-        PlayerGroupClear(gv_aIGroup);
+        gv_debugDisableAIBuild = true;
     }
     else if (autoE60B8AEC_val == c_keyF8) {
         SoundPlayForPlayer(SoundLink(gf_RaceGetWarcry("Draenei"), c_soundIndexAny), c_maxPlayers, PlayerGroupSingle(lv_player), 100.0, 0.0);
@@ -7033,6 +7185,7 @@ void InitTriggers () {
     gt_PhalanxCreated_Init();
     gt_PortalCreated_Init();
     gt_PhalanxBuffChange_Init();
+    gt_ScreenButton1Pressed_Init();
     gt_CreateReserveUnit_Init();
     gt_IssueOrderPeriodic_Init();
     gt_AutoCastAlwaysOnEnable_Init();
