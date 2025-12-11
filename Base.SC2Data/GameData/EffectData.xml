@@ -119,7 +119,7 @@
         <SearchFilters value="-;-"/>
     </CEffectDamage>
     <CEffectEnumArea id="BmflSearch">
-        <AreaArray index="0" Radius="12" Effect="Bmfa"/>
+        <AreaArray index="0" Radius="12"/>
     </CEffectEnumArea>
     <CEffectSet id="SandHidingAuraSet">
         <ValidatorArray value="IsArthropod"/>
@@ -136,7 +136,7 @@
     </CEffectCreatePersistent>
     <CEffectEnumArea id="AHmtSearch">
         <SearchFilters value="-;neutral,enemies,wall,tree,Missile,debris,item,structure,ward,dead,Hidden"/>
-        <AreaArray index="0" Radius="7.0312" Effect="AHmtTeleport"/>
+        <AreaArray index="0" Radius="7.0312"/>
         <TargetSorts>
             <SortArray value="TSKillResourceCustomLargestFirst"/>
             <SortArray value="TSLifeLargestFirst"/>
@@ -151,7 +151,7 @@
         <TeleportFlags index="TestCliff" value="1"/>
     </CEffectTeleport>
     <CEffectEnumArea id="AHtc1Search">
-        <AreaArray index="0" Radius="7.0312" Effect="BHtc"/>
+        <AreaArray index="0" Radius="7.0312"/>
     </CEffectEnumArea>
     <CEffectDamage id="AHtcDamage1">
         <Amount value="100"/>
@@ -203,7 +203,7 @@
     </CEffectTeleport>
     <!--Howl of Terror Dur=10 HeroDur=10 Buff=BNht-->
     <CEffectEnumArea id="AchtSearch">
-        <AreaArray index="0" Radius="7.0312" Effect="BNht"/>
+        <AreaArray index="0" Radius="7.0312"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="ACtnSearch" parent="War3_AbilSearchRadiusExt">
         <SearchFilters value="-;player,allies,air,mechanical,wall,tree,Missile,debris,item,structure,ward,dead,Hidden,invulnerable,immunity"/>
@@ -217,10 +217,14 @@
         <VitalBonus index="Energy" value="6"/>
     </CEffectDamage>
     <CEffectModifyUnit id="AfbkManaLoseHero">
-        <VitalArray index="Energy" Change="-3"/>
+        <VitalArray index="Energy">
+            <Change value="-3"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectModifyUnit id="AfbkManaLoseUnit">
-        <VitalArray index="Energy" Change="-6"/>
+        <VitalArray index="Energy">
+            <Change value="-6"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectSet id="AnmoImpact">
         <EffectArray value="ANmoDamage"/>
@@ -243,12 +247,16 @@
         <PeriodCount value="3"/>
     </CEffectCreatePersistent>
     <CEffectModifyUnit id="AdvmHeal">
-        <VitalArray index="Life" Change="360"/>
-        <VitalArray index="Energy" Change="20"/>
+        <VitalArray index="Life">
+            <Change value="360"/>
+        </VitalArray>
+        <VitalArray index="Energy">
+            <Change value="20"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectDamage id="BNicDeathAoEDamage1">
         <Amount value="50"/>
-        <AreaArray index="0" Radius="1.9531" Fraction="1"/>
+        <AreaArray index="0" Radius="1.9531"/>
         <AreaArray index="1" removed="1"/>
     </CEffectDamage>
     <CEffectApplyBehavior id="BNlmAttackCount">
@@ -279,7 +287,7 @@
     </CEffectApplyBehavior>
     <!--Ancestral Spirit-->
     <CEffectEnumArea id="Aast">
-        <AreaArray index="0" Radius="7.0312" Effect="AastRevive"/>
+        <AreaArray index="0" Radius="7.0312"/>
     </CEffectEnumArea>
     <CEffectSet id="ChargeMammothFinalSet">
         <EffectArray value="ChargeMammothDamage"/>
@@ -358,7 +366,7 @@
     </CEffectApplyBehavior>
     <!--Silence(Creep) Dur=40 HeroDur=8.5 Buff=BNsi-->
     <CEffectEnumArea id="ACsiSearch">
-        <AreaArray index="0" Radius="7.0312" Effect="ACsi"/>
+        <AreaArray index="0" Radius="7.0312"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="ANchSearch" parent="War3_AbilSearch">
         <SearchFilters value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity,hero"/>
@@ -835,13 +843,15 @@
     </CEffectApplyBehavior>
     <CEffectModifyUnit id="SwimmingHealTick">
         <EditorCategories value="Race:Dragon"/>
-        <VitalArray index="Life" ChangeFraction="0.015"/>
+        <VitalArray index="Life">
+            <ChangeFraction value="0.015"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectDamage id="ACbcDamage">
         <Amount value="50"/>
     </CEffectDamage>
     <CEffectEnumArea id="ACbcSearch">
-        <AreaArray index="0" Arc="29.9707" Radius="11" Effect="ACbcSearchImpactSet"/>
+        <AreaArray index="0" Arc="29.9707" Radius="11"/>
         <SearchFilters value="-;player,allies,wall,tree,Missile,debris,item,structure,ward,dead,Hidden,invulnerable,immunity"/>
     </CEffectEnumArea>
     <!--Thunder Clap (Creep) Dur=4 HeroDur=2 Buff=BCtc-->
@@ -857,13 +867,15 @@
     </CEffectDamage>
     <CEffectDamage id="AUfnDamage1">
         <Amount value="150"/>
-        <AreaArray index="0" Radius="1.9531" Bonus="-50" Fraction="1"/>
+        <AreaArray index="0" Radius="1.9531"/>
     </CEffectDamage>
     <CEffectSet id="Afak">
         <EffectArray index="1" removed="1"/>
     </CEffectSet>
     <CEffectModifyUnit id="AfakCost">
-        <VitalArray index="Energy" Change="-6"/>
+        <VitalArray index="Energy">
+            <Change value="-6"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectDamage id="AfakWeaponDamage" parent="ubsp1">
         <EditorCategories value="Race:Undead"/>
@@ -886,7 +898,7 @@
         <EffectArray index="1" removed="1"/>
     </CEffectSet>
     <CEffectEnumArea id="ArplSearch">
-        <AreaArray index="0" MaxCount="4294967295" Radius="7.0312" Effect="Brpl"/>
+        <AreaArray index="0" MaxCount="4294967295" Radius="7.0312"/>
     </CEffectEnumArea>
     <!--Replenish (Mana) Dur=1 HeroDur=1 Buff=Brpm cast=6-->
     <CEffectSet id="Arpm">
@@ -894,10 +906,10 @@
         <EffectArray index="1" removed="1"/>
     </CEffectSet>
     <CEffectEnumArea id="ArpmSearch">
-        <AreaArray index="0" MaxCount="4294967295" Radius="7.0312" Effect="Brpm"/>
+        <AreaArray index="0" MaxCount="4294967295" Radius="7.0312"/>
     </CEffectEnumArea>
     <CEffectDamage id="AwarAoEDamage">
-        <AreaArray index="0" Radius="1.5625" Bonus="100" Fraction="1"/>
+        <AreaArray index="0" Radius="1.5625" Bonus="100"/>
         <AreaArray index="1" removed="1"/>
     </CEffectDamage>
     <CEffectDamage id="BEimDPS1">
@@ -1164,7 +1176,7 @@
         <AreaArray Radius="1.1718" Effect="Bfro10s"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="ApxfSearch">
-        <AreaArray index="0" Radius="500" Effect="ApxfMissile"/>
+        <AreaArray index="0" Radius="500"/>
         <MaxCount value="6"/>
     </CEffectEnumArea>
     <CEffectDamage id="Naka1" parent="AW2_PierceDamage">
@@ -1172,7 +1184,9 @@
         <Amount value="120"/>
     </CEffectDamage>
     <CEffectModifyUnit id="ReplenishRefund">
-        <VitalArray index="Energy" Change="3"/>
+        <VitalArray index="Energy">
+            <Change value="3"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectDamage id="TimedLifeFateTower" parent="TimedLifeFate">
         <Name value="Effect/Name/TimedLifeFateTower"/>
@@ -1390,20 +1404,26 @@
     </CEffectSet>
     <!--Pulverize (Sea Giant)-->
     <CEffectDamage id="ACpvAoEDamage">
-        <AreaArray index="0" Radius="1.1718" Bonus="500" Fraction="1"/>
+        <AreaArray index="0" Bonus="500"/>
         <AreaArray index="1" removed="1"/>
     </CEffectDamage>
     <CEffectModifyUnit id="ACpvModifyUnit">
         <ImpactUnit Value="Caster"/>
-        <VitalArray index="Life" ChangeFraction="1"/>
+        <VitalArray index="Life">
+            <ChangeFraction value="1"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectModifyUnit id="Abu5ModifyUnit">
         <ImpactUnit Value="Caster"/>
-        <VitalArray index="Life" ChangeFraction="0.5"/>
+        <VitalArray index="Life">
+            <ChangeFraction value="0.5"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectModifyUnit id="BurrowArachanthidEarthBorerModifyUnit">
         <ImpactUnit Value="Caster"/>
-        <VitalArray index="Life" ChangeFraction="0.5"/>
+        <VitalArray index="Life">
+            <ChangeFraction value="0.5"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectSet id="ACpvSet">
         <EffectArray value="ACpvAoEDamage"/>
@@ -1416,17 +1436,21 @@
         <VitalBonus index="Energy" value="60"/>
     </CEffectDamage>
     <CEffectModifyUnit id="AEmb1ManaLoss">
-        <VitalArray index="Energy" Change="-60"/>
+        <VitalArray index="Energy">
+            <Change value="-60"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectModifyUnit id="BNmrManaLoss">
-        <VitalArray index="Energy" Change="-3"/>
+        <VitalArray index="Energy">
+            <Change value="-3"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectSet id="AHreReviveSet">
         <ValidatorArray value="KillResourceCustomLE135"/>
     </CEffectSet>
     <!--Orb of Fire-->
     <CEffectDamage id="AIfbSphereEffect">
-        <AreaArray index="0" Radius="1.0937" Bonus="10" Fraction="1"/>
+        <AreaArray index="0" Bonus="10"/>
     </CEffectDamage>
     <CEffectDamage id="ANcaSplash1" parent="AW2_ChaosDamage">
         <ImpactLocation Value="TargetPoint"/>
@@ -1463,7 +1487,9 @@
         <RechargeVitalMax value="300"/>
     </CEffectCreateHealer>
     <CEffectModifyUnit id="AoarHealTick">
-        <VitalArray index="Life" ChangeFraction="0.015"/>
+        <VitalArray index="Life">
+            <ChangeFraction value="0.015"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectSet id="BNchSet">
         <EffectArray value="PhalanxMarkerCopy"/>
@@ -1471,7 +1497,9 @@
     </CEffectSet>
     <CEffectModifyUnit id="HumidityAuraHealTick">
         <EditorCategories value="Race:Dragon"/>
-        <VitalArray index="Life" ChangeFraction="0.0075"/>
+        <VitalArray index="Life">
+            <ChangeFraction value="0.0075"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectDamage id="AucoDamage">
         <Amount value="300"/>
@@ -1502,7 +1530,7 @@
     <CEffectApplyBehavior id="BOwkOrderAttackTargetMarker"/>
     <CEffectDamage id="BOwwDPS">
         <Amount value="100"/>
-        <AreaArray index="0" Radius="1.9531" Fraction="1"/>
+        <AreaArray index="0" Radius="1.9531"/>
     </CEffectDamage>
     <CEffectDamage id="BUddDamage">
         <VitalFractionMax index="Life" value="0.03"/>
@@ -1534,7 +1562,9 @@
     </CEffectDamage>
     <CEffectModifyUnit id="SufferingModifyUnit">
         <ImpactUnit Value="Caster"/>
-        <VitalArray index="Energy" Change="1"/>
+        <VitalArray index="Energy">
+            <Change value="1"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectDamage id="Ulic1" parent="AW2_MagicDamage">
         <Amount value="96"/>
@@ -1725,7 +1755,7 @@
     <!--Freezing Breath Dur=5 HeroDur=5 Buff=Bfrz-->
     <CEffectEnumArea id="AfrzSphereEffect">
         <SearchFilters value="-;player,allies,neutral,wall,tree,debris,item,ward,dead,Hidden,invulnerable"/>
-        <AreaArray index="0" Radius="1.1718" Effect="Bfrz"/>
+        <AreaArray index="0" Radius="1.1718"/>
     </CEffectEnumArea>
     <CEffectSet id="Alit"/>
     <CEffectApplyBehavior id="BCbf" parent="War3_ApplyBuff"/>
@@ -1733,7 +1763,10 @@
         <Amount value="75"/>
     </CEffectDamage>
     <CEffectModifyUnit id="ACnrHealTick">
-        <VitalArray index="Life" Change="15" ChangeFraction="0"/>
+        <VitalArray index="Life">
+            <Change value="15"/>
+            <ChangeFraction value="0"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <!--Neutral Regen (health only)-->
     <CEffectEnumArea id="ACnrSearch" parent="War3_AuraSearch" aura="BCnr"/>
@@ -1765,7 +1798,7 @@
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
         <MaxCount value="9"/>
-        <AreaArray index="0" Arc="119.9816" Radius="10" Effect="ANflDamageDelay"/>
+        <AreaArray index="0" Arc="119.9816" Radius="10"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="AarmSearch" parent="War3_AuraSearch" aura="Barm"/>
     <CEffectDamage id="AbofFullDamage">
@@ -1773,14 +1806,14 @@
     </CEffectDamage>
     <CEffectEnumArea id="AbofFullDamageSearch">
         <SearchFilters value="-;player,allies,air,wall,tree,Missile,debris,item,ward,dead,invulnerable"/>
-        <AreaArray index="0" Radius="1.5625" Effect="AbofFullDamageSet"/>
+        <AreaArray index="0" Radius="1.5625"/>
     </CEffectEnumArea>
     <CEffectDamage id="AbofHalfDamage">
         <Amount value="25"/>
     </CEffectDamage>
     <CEffectEnumArea id="AbofHalfDamageSearch">
         <SearchFilters value="-;player,allies,air,wall,tree,Missile,debris,item,ward,dead,invulnerable"/>
-        <AreaArray index="0" Radius="1.5625" Effect="AbofHalfDamageSet"/>
+        <AreaArray index="0" Radius="1.5625"/>
     </CEffectEnumArea>
     <CEffectSet id="Awfb">
         <EffectArray value="AwfbMissile"/>
@@ -1844,7 +1877,7 @@
     </CEffectApplyBehavior>
     <!--Chieftain - War Stomp Buff=BPSE-->
     <CEffectEnumArea id="AOws1Search">
-        <AreaArray index="0" Radius="5.8593" Effect="AOws1SearchImpact"/>
+        <AreaArray index="0" Radius="5.8593"/>
     </CEffectEnumArea>
     <CEffectDamage id="AOwsDamage1">
         <Amount value="100"/>
@@ -1856,7 +1889,7 @@
     </CEffectDamage>
     <!--Aura - Regeneration (Ward) Buff=Boar-->
     <CEffectEnumArea id="AoarSearch">
-        <AreaArray index="0" Radius="7.0312" Effect="Boar"/>
+        <AreaArray index="0" Radius="7.0312"/>
     </CEffectEnumArea>
     <CEffectDamage id="ApxfDamageDPS">
         <Amount value="30"/>
@@ -1872,7 +1905,7 @@
     </CEffectDamage>
     <!--Roar Dur=45 HeroDur=45 Buff=Broa-->
     <CEffectEnumArea id="AroaSearch">
-        <AreaArray index="0" Radius="7.0312" Effect="Broa"/>
+        <AreaArray index="0" Radius="7.0312"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="HandOfFreedomSearch" parent="War3_AbilSearch">
         <EditorCategories value="Race:Human"/>
@@ -2000,11 +2033,15 @@
     </CEffectDamage>
     <CEffectModifyUnit id="BNab1DPSTick">
         <EditorCategories value="Race:Goblin"/>
-        <VitalArray index="Life" ChangeFraction="-0.01"/>
+        <VitalArray index="Life">
+            <ChangeFraction value="-0.01"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectModifyUnit id="BNabS1DPSTick">
         <EditorCategories value="Race:Goblin"/>
-        <VitalArray index="Life" ChangeFraction="-0.005"/>
+        <VitalArray index="Life">
+            <ChangeFraction value="-0.005"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectApplyBehavior id="BreathOfFire" parent="War3_ApplyBuff">
         <EditorCategories value="Race:Dragon"/>
@@ -2029,7 +2066,9 @@
     <CEffectModifyUnit id="BEahManaLoss">
         <LaunchUnit Value="Target"/>
         <ImpactUnit Value="Caster"/>
-        <VitalArray index="Energy" Change="-3"/>
+        <VitalArray index="Energy">
+            <Change value="-3"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectApplyBehavior id="AEer1Dur">
         <Duration value="15"/>
@@ -2100,7 +2139,7 @@
     </CEffectSet>
     <!--Aura - Slow Buff=Basl-->
     <CEffectEnumArea id="AaslSearch">
-        <AreaArray index="0" Radius="1" Effect="Basl"/>
+        <AreaArray index="0" Radius="1"/>
     </CEffectEnumArea>
     <CEffectSet id="AtdgMediumDPSSet">
         <EffectArray index="0" value="Nngs1"/>
@@ -2108,7 +2147,7 @@
     <!--TornadoDamage Buff=Btdg-->
     <CEffectEnumArea id="AtdgSearch">
         <SearchFilters value="-;player,allies,neutral,air,wall,tree,Missile,debris,item,structure,ward,dead,Hidden,invulnerable"/>
-        <AreaArray index="0" Radius="1" Effect="AtdgMediumDPSSet"/>
+        <AreaArray index="0" Radius="1"/>
         <AreaArray index="1" removed="1"/>
     </CEffectEnumArea>
     <!--TornadoSpin Dur=12 HeroDur=6 Buff=Btsp,Btsa-->
@@ -2163,7 +2202,7 @@
     </CEffectSet>
     <!--Pit Lord - Howl of Terror Buff=BNht-->
     <CEffectEnumArea id="ANhtSearch">
-        <AreaArray index="0" Radius="7.0312" Effect="ANhtBuffSet"/>
+        <AreaArray index="0" Radius="7.0312"/>
     </CEffectEnumArea>
     <CEffectDamage id="AOeqDamage">
         <ValidatorArray index="0" removed="1"/>
@@ -2202,7 +2241,7 @@
     </CEffectEnumArea>
     <CEffectEnumArea id="AUimSearch">
         <SearchFilters value="-;player,allies,air,mechanical,wall,tree,debris,item,structure,ward,ethereal,dead,invulnerable"/>
-        <AreaArray index="0" Radius="0.5" Effect="AUimSearchImpactSet"/>
+        <AreaArray index="0" Radius="0.5"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="AabrSearch" parent="War3_AuraSearch" aura="Babr"/>
     <CEffectEnumArea id="AabrItemSearch" parent="War3_AuraSearch" aura="BabrItem"/>
@@ -2251,7 +2290,7 @@
         <RechargeVitalMax value="1500"/>
     </CEffectCreateHealer>
     <CEffectDamage id="AfshSphereEffect">
-        <AreaArray index="0" Radius="1.9531" Bonus="24" Fraction="1"/>
+        <AreaArray index="0" Radius="1.9531" Bonus="24"/>
         <AreaArray index="1" removed="1"/>
         <AreaArray index="2" removed="1"/>
     </CEffectDamage>
@@ -3398,7 +3437,7 @@
         <Amount value="96"/>
     </CEffectDamage>
     <CEffectEnumArea id="hrttBarrageSearch">
-        <AreaArray index="0" Radius="6" Effect="hrtt2LM"/>
+        <AreaArray index="0" Radius="6"/>
         <MaxCount value="4294967295"/>
         <SearchFilters value="Visible;player,allies,neutral,air,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,Hidden,invulnerable"/>
     </CEffectEnumArea>
@@ -3533,6 +3572,11 @@
         <Kind value="Melee"/>
         <Amount value="96"/>
     </CEffectDamage>
+    <CEffectLaunchMissile id="ngno2LM" parent="War3_Missile" weaponid="ngno2"/>
+    <CEffectDamage id="ngno2" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="192"/>
+    </CEffectDamage>
     <CEffectSet id="ngns1MultishotSet">
         <EffectArray value="ngns1LM"/>
         <EffectArray value="ngns1Multishot"/>
@@ -3543,18 +3587,18 @@
         <Marker Link="Effect/ngns1LM"/>
     </CEffectCreatePersistent>
     <CEffectEnumArea id="ngns1MultishotSearch" parent="AW2_MultishotSearch">
-        <AreaArray index="0" MaxCount="1" Radius="9" Effect="ngns1LM"/>
+        <AreaArray index="0" MaxCount="1" Radius="8" Effect="ngns1LM"/>
         <SearchFilters value="Visible;player,allies,neutral,wall,tree,Missile,item,ethereal,dead,Hidden,invulnerable"/>
         <TargetSorts>
             <SortArray value="TSLifeLargestFirst"/>
         </TargetSorts>
     </CEffectEnumArea>
     <CEffectDamage id="ngns1" parent="AW2_PierceDamage">
-        <Amount value="24"/>
-    </CEffectDamage>
-    <CEffectDamage id="ngnv1" parent="AW2_NormalDamage">
-        <Kind value="Melee"/>
         <Amount value="96"/>
+    </CEffectDamage>
+    <CEffectDamage id="ngnv2" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="288"/>
     </CEffectDamage>
     <CEffectSet id="ngnw1MultishotSet">
         <EffectArray value="ngnw1LM"/>
@@ -3566,14 +3610,14 @@
         <Marker Link="Effect/ngnw1LM"/>
     </CEffectCreatePersistent>
     <CEffectEnumArea id="ngnw1MultishotSearch" parent="AW2_MultishotSearch">
-        <AreaArray index="0" MaxCount="1" Radius="9" Effect="ngnw1LM"/>
+        <AreaArray index="0" MaxCount="1" Radius="6" Effect="ngnw1LM"/>
         <SearchFilters value="Visible;player,allies,neutral,wall,tree,Missile,item,dead,Hidden,invulnerable,immunity"/>
         <TargetSorts>
             <SortArray value="TSLifeLargestFirst"/>
         </TargetSorts>
     </CEffectEnumArea>
     <CEffectDamage id="ngnw1" parent="AW2_MagicDamage">
-        <Amount value="48"/>
+        <Amount value="144"/>
     </CEffectDamage>
     <CEffectSet id="ngsp2"/>
     <CEffectSet id="ngs22"/>
@@ -3946,7 +3990,11 @@
     </CEffectDamage>
     <CEffectDamage id="ntrg1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
-        <Amount value="384"/>
+        <Amount value="288"/>
+    </CEffectDamage>
+    <CEffectDamage id="ntrg2" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="576"/>
     </CEffectDamage>
     <CEffectDamage id="ntrh1" parent="AW2_PierceDamage">
         <Amount value="192"/>
@@ -4122,16 +4170,24 @@
         <SpawnCount value="3"/>
     </CEffectCreateUnit>
     <CEffectCreateUnit id="ntrd" parent="AW2_SummonUnit"/>
-    <CEffectCreateUnit id="ntrg" parent="AW2_SummonUnit"/>
+    <CEffectCreateUnit id="ntrg" parent="AW2_SummonUnit">
+        <SpawnCount value="2"/>
+    </CEffectCreateUnit>
     <CEffectCreateUnit id="ntrh" parent="AW2_SummonUnit">
         <SpawnCount value="2"/>
     </CEffectCreateUnit>
     <CEffectCreateUnit id="ngno" parent="AW2_CreateCreepUnit">
         <SpawnCount value="2"/>
     </CEffectCreateUnit>
-    <CEffectCreateUnit id="ngnv" parent="AW2_CreateCreepUnit"/>
+    <CEffectCreateUnit id="ngnv" parent="AW2_CreateCreepUnit">
+        <SpawnCount value="2"/>
+    </CEffectCreateUnit>
     <CEffectCreateUnit id="ngns" parent="AW2_CreateCreepUnit"/>
     <CEffectCreateUnit id="ngnw" parent="AW2_CreateCreepUnit"/>
+    <CEffectDamage id="ngnv1" parent="AW2_NormalDamage">
+        <Kind value="Melee"/>
+        <Amount value="144"/>
+    </CEffectDamage>
     <CEffectDamage id="zcso1" parent="AW2_PierceDamage">
         <Amount value="48"/>
     </CEffectDamage>
@@ -4278,8 +4334,12 @@
     <CEffectModifyUnit id="VoidRecallHeal">
         <EditorCategories value=""/>
         <ImpactUnit Value="Caster"/>
-        <VitalArray index="Life" ChangeFraction="1"/>
-        <VitalArray index="Energy" ChangeFraction="1"/>
+        <VitalArray index="Life">
+            <ChangeFraction value="1"/>
+        </VitalArray>
+        <VitalArray index="Energy">
+            <ChangeFraction value="1"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectCreateUnit id="nfgt" parent="War3_SummonUnit">
         <SpawnEffect value="BCtn"/>

@@ -365,8 +365,8 @@
     <CActorSimple id="ANmr" parent="War3_SimpleCastAnim"/>
     <!--Crypt Lord - Locust Swarm-->
     <CActorSimple id="AUls">
-        <On index="3" Terms="ActorCreation" Target="_Unit" Send="AnimGroupApply Spell"/>
-        <On index="4" Terms="ActorDestruction" Target="_Unit" Send="AnimGroupRemove Spell"/>
+        <On index="3" Send="AnimGroupApply Spell"/>
+        <On index="4" Send="AnimGroupRemove Spell"/>
     </CActorSimple>
     <CActorSplat id="ArachanthidEarthBorerBurrowedBurrowedSplat" parent="War3_BurrowedSplat" unitName="ArachanthidEarthBorerBurrowed">
         <Model value="BurrowedSplat"/>
@@ -2424,7 +2424,7 @@
     <CActorAction id="nbds1" parent="War3_AttackMissileSwapable"/>
     <CActorMissile id="nbds1LM" parent="War3_MissileSwapable" unitName="nbds1LM"/>
     <CActorEventMacro id="War3_DeadAnimationMacroUnit">
-        <On index="4" Terms="AnimDone; AnimName Flesh; IsStatus Dead 1" Send="AnimPlay Bone Decay,Bone NonLooping -1.000000 -1.000000 8.000000 AsDuration"/>
+        <On index="4" Send="AnimPlay Bone Decay,Bone NonLooping -1.000000 -1.000000 8.000000 AsDuration"/>
     </CActorEventMacro>
     <CActorModel id="XIctEffect" parent="EffectArt">
         <On index="0" Send="AnimBracketStart BSD Birth Stand Death"/>
@@ -4896,8 +4896,10 @@
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcSmallDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
+    <CActorAction id="ngno2" parent="War3_AttackMissileSwapable"/>
+    <CActorMissile id="ngno2LM" parent="War3_MissileSwapable" unitName="ngno2LM"/>
     <!--gnollassassin-->
-    <CActorUnit id="ngns" parent="War3_Army" unitSound="GnollArcher" unitName="ngns" defType="MEDIUM">
+    <CActorUnit id="ngns" parent="War3_Army" unitSound="GnollArcher" unitName="ngns" defType="SMALL">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnGnollArcher.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnGnollArcher.dds"/>
@@ -4910,7 +4912,7 @@
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <!--gnollking-->
-    <CActorUnit id="ngnv" parent="War3_Army" unitSound="GnollKing" unitName="ngnv" defType="LARGE">
+    <CActorUnit id="ngnv" parent="War3_Army" unitSound="GnollKing" unitName="ngnv" defType="SMALL">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnGnollKing.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnGnollKing.dds"/>
@@ -4923,7 +4925,7 @@
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
     <!--gnoll3-->
-    <CActorUnit id="ngnw" parent="War3_Army" unitSound="Gnoll" unitName="ngnw" defType="NONE">
+    <CActorUnit id="ngnw" parent="War3_Army" unitSound="Gnoll" unitName="ngnw" defType="SMALL">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnGnollWarden.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnGnollWarden.dds"/>
@@ -5406,12 +5408,13 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnSeaTurtleGreen.dds"/>
         <BarWidth value="150"/>
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar120"/>
         <BarOffset value="100"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_OrcLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
         <Scale value="0.800000"/>
     </CActorUnit>
+    <CActorAction id="ntrg2" parent="War3_AttackSwapable" WeaponSound="WoodHeavyBash"/>
     <!--seaturtlehatchling-->
     <CActorUnit id="ntrh" parent="War3_Army" unitSound="GiantSeaTurtle" unitName="ntrh" defType="LARGE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnSeaTurtleGreen.dds"/>
