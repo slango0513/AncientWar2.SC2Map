@@ -3570,31 +3570,31 @@
     </CEffectDamage>
     <CEffectDamage id="ngno1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
-        <Amount value="96"/>
+        <Amount value="144"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="ngno2LM" parent="War3_Missile" weaponid="ngno2"/>
     <CEffectDamage id="ngno2" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
-        <Amount value="192"/>
+        <Amount value="288"/>
     </CEffectDamage>
     <CEffectSet id="ngns1MultishotSet">
         <EffectArray value="ngns1LM"/>
         <EffectArray value="ngns1Multishot"/>
     </CEffectSet>
     <CEffectCreatePersistent id="ngns1Multishot" parent="AW2_Multishot">
-        <PeriodCount value="3"/>
+        <PeriodCount value="6"/>
         <PeriodicPeriodArray value="0"/>
         <Marker Link="Effect/ngns1LM"/>
     </CEffectCreatePersistent>
     <CEffectEnumArea id="ngns1MultishotSearch" parent="AW2_MultishotSearch">
-        <AreaArray index="0" MaxCount="1" Radius="8" Effect="ngns1LM"/>
+        <AreaArray index="0" MaxCount="1" Radius="4" Effect="ngns1LM"/>
         <SearchFilters value="Visible;player,allies,neutral,wall,tree,Missile,item,ethereal,dead,Hidden,invulnerable"/>
         <TargetSorts>
             <SortArray value="TSLifeLargestFirst"/>
         </TargetSorts>
     </CEffectEnumArea>
     <CEffectDamage id="ngns1" parent="AW2_PierceDamage">
-        <Amount value="96"/>
+        <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="ngnv2" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
@@ -3610,14 +3610,14 @@
         <Marker Link="Effect/ngnw1LM"/>
     </CEffectCreatePersistent>
     <CEffectEnumArea id="ngnw1MultishotSearch" parent="AW2_MultishotSearch">
-        <AreaArray index="0" MaxCount="1" Radius="6" Effect="ngnw1LM"/>
+        <AreaArray index="0" MaxCount="1" Radius="4" Effect="ngnw1LM"/>
         <SearchFilters value="Visible;player,allies,neutral,wall,tree,Missile,item,dead,Hidden,invulnerable,immunity"/>
         <TargetSorts>
             <SortArray value="TSLifeLargestFirst"/>
         </TargetSorts>
     </CEffectEnumArea>
     <CEffectDamage id="ngnw1" parent="AW2_MagicDamage">
-        <Amount value="144"/>
+        <Amount value="64"/>
     </CEffectDamage>
     <CEffectSet id="ngsp2"/>
     <CEffectSet id="ngs22"/>
@@ -3988,13 +3988,13 @@
         <Kind value="Melee"/>
         <Amount value="768"/>
     </CEffectDamage>
-    <CEffectDamage id="ntrg1" parent="AW2_NormalDamage">
-        <Kind value="Melee"/>
-        <Amount value="288"/>
+    <CEffectLaunchMissile id="ntrg1LM" parent="War3_Missile" weaponid="ntrg1"/>
+    <CEffectDamage id="ntrg1" parent="AW2_PierceDamage">
+        <Amount value="144"/>
     </CEffectDamage>
-    <CEffectDamage id="ntrg2" parent="AW2_NormalDamage">
-        <Kind value="Melee"/>
-        <Amount value="576"/>
+    <CEffectLaunchMissile id="ntrg2LM" parent="War3_Missile" weaponid="ntrg2"/>
+    <CEffectDamage id="ntrg2" parent="AW2_PierceDamage">
+        <Amount value="288"/>
     </CEffectDamage>
     <CEffectDamage id="ntrh1" parent="AW2_PierceDamage">
         <Amount value="192"/>

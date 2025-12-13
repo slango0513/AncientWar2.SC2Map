@@ -64,7 +64,6 @@ string gv_gameModeAttValue;
 string gv_playerRaceAtt;
 string gv_playerSecondRaceAtt;
 int gv_debugRound;
-bool gv_debugBonusRound;
 bool gv_isBonusRound;
 text gv_infoAtBuildRegion;
 text gv_infoAtBattleField;
@@ -138,7 +137,7 @@ bool[gv_roundMaximumCount + 1] gv_bonusRoundIsOn;
 int[gv_teamRoundMaximumCount + 1] gv_teamRoundRandomized;
 int[gv_venueGroupMaximumCount + 1][gv_teamRoundMaximumCount + 1] gv_venueGroupRandomized;
 point[gv_venueMaximumCount + 1] gv_creepPoint;
-string[gv_venueMaximumCount + 1][gv_roundMaximumCount + 1] gv_creepUnitType;
+string[gv_roundMaximumCount + 1] gv_creepUnitType;
 playergroup gv_aIGroup;
 int[gv_teamMaximumCount + 1] gv_teamAlive;
 int gv_round;
@@ -2948,7 +2947,6 @@ void gf_UnitTypeSet (int lp_buildingRegion, int lp_phalanx, int lp_player) {
 void gf_CreepUnitTypeSetAll () {
     // Variable Declarations
     int lv_round;
-    int lv_venue;
     int lv_count;
     int lv_index;
     string lv_unitType;
@@ -2958,8 +2956,6 @@ void gf_CreepUnitTypeSetAll () {
     // Automatic Variable Declarations
     int auto699ABE35_ae;
     const int auto699ABE35_ai = 1;
-    const int auto57A507C1_ae = gv_venueMaximumCount;
-    const int auto57A507C1_ai = 1;
 
     // Variable Initialization
     lv_path = "";
@@ -2970,24 +2966,21 @@ void gf_CreepUnitTypeSetAll () {
     lv_round = 1;
     for ( ; ( (auto699ABE35_ai >= 0 && lv_round <= auto699ABE35_ae) || (auto699ABE35_ai < 0 && lv_round >= auto699ABE35_ae) ) ; lv_round += auto699ABE35_ai ) {
         if ((gv_bonusRoundIsOn[lv_round] == true)) {
-            lv_venue = 1;
-            for ( ; ( (auto57A507C1_ai >= 0 && lv_venue <= auto57A507C1_ae) || (auto57A507C1_ai < 0 && lv_venue >= auto57A507C1_ae) ) ; lv_venue += auto57A507C1_ai ) {
-                while ((gv_creepUnitType[lv_venue][lv_round] == null)) {
-                    lv_index = RandomInt(1, lv_count);
-                    lv_unitType = UserDataGetUnit(gv_creepUnitTypeUserType, ("1"), "UnitType", lv_index);
-                    if ((lv_unitType != null)) {
-                        gv_creepUnitType[lv_venue][lv_round] = lv_unitType;
-                        lv_description = StringExternal(CatalogFieldValueGet(c_gameCatalogUnit, gv_creepUnitType[lv_venue][lv_round], "Description", gv_playerAtVenue[lv_venue][lv_round]));
-                        lv_path = CatalogFieldValueGet(c_gameCatalogActor, (lv_unitType), "UnitIcon", gv_playerAtVenue[lv_venue][lv_round]);
-                        TextExpressionSetToken("Param/Expression/0E472FCC", "A", IntToText(lv_round));
-                        TextExpressionSetToken("Param/Expression/0E472FCC", "B", UnitTypeGetName(lv_unitType));
-                        TextExpressionSetToken("Param/Expression/4CA5E705", "A", lv_description);
-                        TextExpressionSetToken("Param/Expression/CEBDBACC", "A", IntToText(lv_round));
-                        TextExpressionSetToken("Param/Expression/CEBDBACC", "B", UnitTypeGetName(lv_unitType));
-                        HelpPanelAddTip(PlayerGroupSingle(gv_playerAtVenue[lv_venue][lv_round]), TextExpressionAssemble("Param/Expression/0E472FCC"), TextExpressionAssemble("Param/Expression/4CA5E705"), TextExpressionAssemble("Param/Expression/CEBDBACC"), (lv_path));
-                    }
-
+            while ((gv_creepUnitType[lv_round] == null)) {
+                lv_index = RandomInt(1, lv_count);
+                lv_unitType = UserDataGetUnit(gv_creepUnitTypeUserType, ("1"), "UnitType", lv_index);
+                if ((lv_unitType != null)) {
+                    gv_creepUnitType[lv_round] = lv_unitType;
+                    lv_description = StringExternal(CatalogFieldValueGet(c_gameCatalogUnit, gv_creepUnitType[lv_round], "Description", c_playerAny));
+                    lv_path = CatalogFieldValueGet(c_gameCatalogActor, (lv_unitType), "UnitIcon", c_playerAny);
+                    TextExpressionSetToken("Param/Expression/0E472FCC", "A", IntToText(lv_round));
+                    TextExpressionSetToken("Param/Expression/0E472FCC", "B", UnitTypeGetName(lv_unitType));
+                    TextExpressionSetToken("Param/Expression/4CA5E705", "A", lv_description);
+                    TextExpressionSetToken("Param/Expression/CEBDBACC", "A", IntToText(lv_round));
+                    TextExpressionSetToken("Param/Expression/CEBDBACC", "B", UnitTypeGetName(lv_unitType));
+                    HelpPanelAddTip(PlayerGroupAll(), TextExpressionAssemble("Param/Expression/0E472FCC"), TextExpressionAssemble("Param/Expression/4CA5E705"), TextExpressionAssemble("Param/Expression/CEBDBACC"), (lv_path));
                 }
+
             }
         }
 
@@ -3375,8 +3368,8 @@ void gf_CreepPosition (int lp_round) {
     // Implementation
     lv_venue = 1;
     for ( ; ( (auto8BD43A04_ai >= 0 && lv_venue <= auto8BD43A04_ae) || (auto8BD43A04_ai < 0 && lv_venue >= auto8BD43A04_ae) ) ; lv_venue += auto8BD43A04_ai ) {
-        libNtve_gf_CreateUnitsAtPoint2(1, gv_creepUnitType[lv_venue][lp_round], 0, 15, gv_creepPoint[lv_venue]);
-        UnitSetFacing(UnitLastCreated(), PointGetFacing(gv_creepPoint[lv_venue]), 0.0);
+        libNtve_gf_CreateUnitsAtPoint2(1, gv_creepUnitType[lp_round], 0, 15, gv_creepPoint[lv_venue]);
+        UnitSetFacing(UnitLastCreated(), PointGetFacing(gv_creepPoint[lp_round]), 0.0);
     }
 }
 

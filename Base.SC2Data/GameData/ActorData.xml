@@ -236,7 +236,7 @@
     </CActorUnit>
     <!--sasquatch-->
     <CActorUnit id="nsqt" parent="War3_Army" unitSound="Wendigo" unitName="nsqt" defType="LARGE">
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar200"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar120"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnSasquatch.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnSasquatch.dds"/>
@@ -983,7 +983,7 @@
     </CActorUnit>
     <!--wendigoshaman-->
     <CActorUnit id="nwns" parent="War3_Army" unitSound="Wendigo" unitName="nwns" defType="LARGE">
-        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar200"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar120"/>
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnWendigo.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnWendigo.dds"/>
@@ -5414,7 +5414,10 @@
         <WalkAnimMoveSpeed value="2.1093"/>
         <Scale value="0.800000"/>
     </CActorUnit>
-    <CActorAction id="ntrg2" parent="War3_AttackSwapable" WeaponSound="WoodHeavyBash"/>
+    <CActorAction id="ntrg1" parent="War3_AttackMissileSwapable"/>
+    <CActorMissile id="ntrg1LM" parent="War3_MissileSwapable" unitName="ntrg1LM"/>
+    <CActorAction id="ntrg2" parent="War3_AttackMissileSwapable"/>
+    <CActorMissile id="ntrg2LM" parent="War3_MissileSwapable" unitName="ntrg2LM"/>
     <!--seaturtlehatchling-->
     <CActorUnit id="ntrh" parent="War3_Army" unitSound="GiantSeaTurtle" unitName="ntrh" defType="LARGE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnSeaTurtleGreen.dds"/>
