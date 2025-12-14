@@ -740,11 +740,11 @@
     <CEffectDamage id="nspr1">
         <ArmorReduction value="2"/>
     </CEffectDamage>
-    <CEffectDamage id="nsqt1" parent="AW2_ChaosDamage">
+    <CEffectDamage id="nsqt1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
         <Amount value="144"/>
     </CEffectDamage>
-    <CEffectDamage id="nsqt2" parent="AW2_ChaosDamage">
+    <CEffectDamage id="nsqt2" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
         <Amount value="288"/>
     </CEffectDamage>
@@ -791,11 +791,11 @@
     <CEffectDamage id="nwen1">
         <ArmorReduction value="2"/>
     </CEffectDamage>
-    <CEffectDamage id="nwns1" parent="AW2_ChaosDamage">
+    <CEffectDamage id="nwns1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
         <Amount value="288"/>
     </CEffectDamage>
-    <CEffectDamage id="nwns2" parent="AW2_ChaosDamage">
+    <CEffectDamage id="nwns2" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
         <Amount value="288"/>
     </CEffectDamage>
@@ -3568,12 +3568,12 @@
     <CEffectDamage id="ngh11" parent="AW2_MagicDamage">
         <Amount value="24"/>
     </CEffectDamage>
-    <CEffectDamage id="ngno1" parent="AW2_NormalDamage">
+    <CEffectDamage id="ngno1" parent="AW2_SiegeDamage">
         <Kind value="Melee"/>
         <Amount value="144"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="ngno2LM" parent="War3_Missile" weaponid="ngno2"/>
-    <CEffectDamage id="ngno2" parent="AW2_NormalDamage">
+    <CEffectDamage id="ngno2" parent="AW2_SiegeDamage">
         <Kind value="Melee"/>
         <Amount value="288"/>
     </CEffectDamage>
@@ -3582,7 +3582,7 @@
         <EffectArray value="ngns1Multishot"/>
     </CEffectSet>
     <CEffectCreatePersistent id="ngns1Multishot" parent="AW2_Multishot">
-        <PeriodCount value="6"/>
+        <PeriodCount value="12"/>
         <PeriodicPeriodArray value="0"/>
         <Marker Link="Effect/ngns1LM"/>
     </CEffectCreatePersistent>
@@ -3596,7 +3596,7 @@
     <CEffectDamage id="ngns1" parent="AW2_PierceDamage">
         <Amount value="24"/>
     </CEffectDamage>
-    <CEffectDamage id="ngnv2" parent="AW2_NormalDamage">
+    <CEffectDamage id="ngnv2" parent="AW2_SiegeDamage">
         <Kind value="Melee"/>
         <Amount value="288"/>
     </CEffectDamage>
@@ -3617,7 +3617,7 @@
         </TargetSorts>
     </CEffectEnumArea>
     <CEffectDamage id="ngnw1" parent="AW2_MagicDamage">
-        <Amount value="64"/>
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectSet id="ngsp2"/>
     <CEffectSet id="ngs22"/>
@@ -3984,9 +3984,9 @@
         <Kind value="Melee"/>
         <Amount value="24"/>
     </CEffectDamage>
-    <CEffectDamage id="ntrd1" parent="AW2_ChaosDamage">
+    <CEffectDamage id="ntrd1" parent="AW2_NormalDamage">
         <Kind value="Melee"/>
-        <Amount value="768"/>
+        <Amount value="192"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="ntrg1LM" parent="War3_Missile" weaponid="ntrg1"/>
     <CEffectDamage id="ntrg1" parent="AW2_PierceDamage">
@@ -4169,11 +4169,13 @@
     <CEffectCreateUnit id="nhyh" parent="AW2_SummonUnit">
         <SpawnCount value="3"/>
     </CEffectCreateUnit>
-    <CEffectCreateUnit id="ntrd" parent="AW2_SummonUnit"/>
-    <CEffectCreateUnit id="ntrg" parent="AW2_SummonUnit">
+    <CEffectCreateUnit id="ntrd" parent="AW2_CreateCreepUnit">
         <SpawnCount value="2"/>
     </CEffectCreateUnit>
-    <CEffectCreateUnit id="ntrh" parent="AW2_SummonUnit">
+    <CEffectCreateUnit id="ntrg" parent="AW2_CreateCreepUnit">
+        <SpawnCount value="2"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="ntrh" parent="AW2_CreateCreepUnit">
         <SpawnCount value="2"/>
     </CEffectCreateUnit>
     <CEffectCreateUnit id="ngno" parent="AW2_CreateCreepUnit">
@@ -4184,7 +4186,7 @@
     </CEffectCreateUnit>
     <CEffectCreateUnit id="ngns" parent="AW2_CreateCreepUnit"/>
     <CEffectCreateUnit id="ngnw" parent="AW2_CreateCreepUnit"/>
-    <CEffectDamage id="ngnv1" parent="AW2_NormalDamage">
+    <CEffectDamage id="ngnv1" parent="AW2_SiegeDamage">
         <Kind value="Melee"/>
         <Amount value="144"/>
     </CEffectDamage>

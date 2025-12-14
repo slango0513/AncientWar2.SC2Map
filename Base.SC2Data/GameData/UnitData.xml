@@ -1678,6 +1678,28 @@
         <EnergyStart value="60"/>
         <EnergyMax value="60"/>
     </CUnit>
+    <!--dragon turtle-->
+    <CUnit id="ntrd" parent="AW2_Creep" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <KillResource index="Custom" value="600"/>
+        <LifeStart value="14400"/>
+        <LifeMax value="14400"/>
+        <Speed value="2"/>
+        <Race value="Creeps"/>
+        <Mover value="amph"/>
+        <AbilArray Link="Adev"/>
+        <BehaviorArray Link="DevourTactTemp"/>
+        <BehaviorArray Link="DragonTurtleSwim"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Adev" Type="AbilCmd" AbilCmd="Adev,Load" Row="2" Column="0"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+        <Radius value="0.75"/>
+        <MinimapRadius value="0.75"/>
+        <SeparationRadius value="0.75"/>
+        <InnerRadius value="0.75"/>
+        <FlagArray index="HiddenCargoUI" value="1"/>
+    </CUnit>
     <!--watery minion tidewarrior-->
     <CUnit id="ntws">
         <Race value="Naga"/>
@@ -7544,6 +7566,10 @@
         <Speed value="2"/>
         <Race value="Creeps"/>
         <Mover value="foot"/>
+        <AbilArray Link="ANca"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ANca" Type="Passive" Behavior="ANca" Row="2" Column="0"/>
+        </CardLayouts>
         <PlaneArray index="Ground" value="1"/>
     </CUnit>
     <CUnit id="ngno2LM" parent="War3_Missile"/>
@@ -9330,28 +9356,6 @@
         <GlossaryCategory value="Unit/Category/NightElfUnits"/>
         <BehaviorArray Link="Moonlight"/>
     </CUnit>
-    <!--dragon turtle-->
-    <CUnit id="ntrd" parent="AW2_Creep" defType="LARGE">
-        <Attributes index="large" value="1"/>
-        <KillResource index="Custom" value="675"/>
-        <LifeStart value="8100"/>
-        <LifeMax value="8100"/>
-        <Speed value="2"/>
-        <Race value="Creeps"/>
-        <Mover value="foot"/>
-        <AbilArray Link="ANca"/>
-        <BehaviorArray Link="ANth"/>
-        <CardLayouts index="0">
-            <LayoutButtons Face="ANth" Type="Passive" Behavior="ANth" Row="2" Column="0"/>
-            <LayoutButtons Face="ANca" Type="Passive" Behavior="ANca" Row="2" Column="1"/>
-        </CardLayouts>
-        <PlaneArray index="Ground" value="1"/>
-        <LifeArmor value="20"/>
-        <Radius value="0.875"/>
-        <MinimapRadius value="0.875"/>
-        <SeparationRadius value="0.875"/>
-        <InnerRadius value="0.875"/>
-    </CUnit>
     <!--gargantuan sea turtle-->
     <CUnit id="ntrg" parent="AW2_Creep" defType="LARGE">
         <Attributes index="large" value="1"/>
@@ -9361,8 +9365,32 @@
         <Speed value="2"/>
         <Race value="Creeps"/>
         <Mover value="amph"/>
-        <BehaviorArray Link="ANth"/>
+        <AbilArray Link="Adev"/>
+        <BehaviorArray Link="DevourTactTemp"/>
         <BehaviorArray Link="GargantuanSeaTurtleSwim"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Adev" Type="AbilCmd" AbilCmd="Adev,Load" Row="2" Column="0"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+        <Radius value="0.75"/>
+        <MinimapRadius value="0.75"/>
+        <SeparationRadius value="0.75"/>
+        <InnerRadius value="0.75"/>
+        <FlagArray index="HiddenCargoUI" value="1"/>
+    </CUnit>
+    <CUnit id="ntrg1LM" parent="War3_Missile"/>
+    <CUnit id="ntrg2LM" parent="War3_Missile"/>
+    <!--sea turtle hatchling-->
+    <CUnit id="ntrh" parent="AW2_Creep" defType="LARGE">
+        <Attributes index="large" value="1"/>
+        <KillResource index="Custom" value="600"/>
+        <LifeStart value="14400"/>
+        <LifeMax value="14400"/>
+        <Speed value="2"/>
+        <Race value="Creeps"/>
+        <Mover value="amph"/>
+        <BehaviorArray Link="ANth"/>
+        <BehaviorArray Link="SeaTurtleHatchlingSwim"/>
         <CardLayouts index="0">
             <LayoutButtons Face="ANth" Type="Passive" Behavior="ANth" Row="2" Column="0"/>
         </CardLayouts>
@@ -9371,24 +9399,6 @@
         <MinimapRadius value="0.75"/>
         <SeparationRadius value="0.75"/>
         <InnerRadius value="0.75"/>
-    </CUnit>
-    <CUnit id="ntrg1LM" parent="War3_Missile"/>
-    <CUnit id="ntrg2LM" parent="War3_Missile"/>
-    <!--sea turtle hatchling-->
-    <CUnit id="ntrh" parent="AW2_Creep" defType="LARGE">
-        <Attributes index="large" value="1"/>
-        <KillResource index="Custom" value="75"/>
-        <LifeStart value="900"/>
-        <LifeMax value="900"/>
-        <Speed value="2"/>
-        <Race value="Creeps"/>
-        <Mover value="foot"/>
-        <BehaviorArray Link="ANth"/>
-        <CardLayouts index="0">
-            <LayoutButtons Face="ANth" Type="Passive" Behavior="ANth" Row="2" Column="0"/>
-        </CardLayouts>
-        <PlaneArray index="Ground" value="1"/>
-        <LifeArmor value="20"/>
     </CUnit>
     <!--sea turtle-->
     <CUnit id="ntrs" parent="AW2_Army" defType="LARGE">
