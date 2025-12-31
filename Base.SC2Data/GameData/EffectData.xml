@@ -69,6 +69,13 @@
         <Name value="Effect/Name/AW2_SelfDestroyDPS"/>
         <Marker Link="Effect/SelfDestroyDPS"/>
     </CEffectDamage>
+    <CEffectEnumArea default="1" id="AW2_ItemAuraSearch">
+        <SearchFilters value="wall;neutral,enemies,tree,Missile,debris,item,structure,ward,dead,Hidden"/>
+        <AreaArray Radius="0.75" Effect="##aura##"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior default="1" id="AW2_ItemAuraBuff" parent="War3_ApplyBuff">
+        <ValidatorArray value="CasterNotCloakedOrTargetIsSelf"/>
+    </CEffectApplyBehavior>
     <!--Alchemist - Healing Spray Buff=BNhs effect=XNhs-->
     <CEffectSet id="ACtbMissileImpactSet">
         <EffectArray index="0" value="ACtbDamage1"/>
@@ -97,6 +104,9 @@
         <ValidatorArray value="IsNotElemental"/>
         <Amount value="75"/>
     </CEffectDamage>
+    <CEffectApplyBehavior id="AUsl1Dur">
+        <Duration value="30"/>
+    </CEffectApplyBehavior>
     <CEffectDamage id="BEshDecayDamage1">
         <Amount value="30"/>
     </CEffectDamage>
@@ -281,9 +291,6 @@
     <!--Rokhan - Hex Buff=BOhx-->
     <CEffectApplyBehavior id="ANhx1HeroDur">
         <Duration value="5"/>
-    </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="AUsl1Dur">
-        <Duration value="30"/>
     </CEffectApplyBehavior>
     <!--Ancestral Spirit-->
     <CEffectEnumArea id="Aast">
@@ -2285,6 +2292,7 @@
     <CEffectEnumArea id="FelDriveAuraCasterSearch" parent="War3_AuraSearch" aura="FelDriveAura">
         <SearchFilters value="mechanical;neutral,enemies,wall,tree,Missile,debris,item,structure,ward,dead,Hidden"/>
     </CEffectEnumArea>
+    <CEffectEnumArea id="mlstItemAuraCasterSearch" parent="AW2_ItemAuraSearch" aura="mlstAura"/>
     <CEffectCreateHealer id="Acn2">
         <RechargeVitalRate value="100"/>
         <RechargeVitalMax value="1500"/>
@@ -2374,6 +2382,7 @@
     <CEffectEnumArea id="AvengingWrathAuraCasterSearch" parent="War3_AuraSearch" aura="AvengingWrathAura"/>
     <CEffectApplyBehavior id="GuardianAura" parent="War3_AuraBuff"/>
     <CEffectEnumArea id="GuardianAuraCasterSearch" parent="War3_AuraSearch" aura="GuardianAura"/>
+    <CEffectApplyBehavior id="mlstAura" parent="AW2_ItemAuraBuff"/>
     <CEffectDamage id="BaplDPS">
         <Amount value="10"/>
     </CEffectDamage>

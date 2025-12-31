@@ -24,7 +24,7 @@ void InitLibs () {
 const fixed gv_asplRadius = 7.0312;
 const int gv_asplMaxTargets = 6;
 const fixed gv_asplSplitFactor = 0.1;
-const string gv_dreamUnitType = "ngrd";
+const string gv_dreamUnitType = "TestZerg";
 const string gv_aOmiAbilEntry = "AOmi";
 const string gv_aOmiPrecursorBuffEntry = "AOmiPrecursor";
 const string gv_aOmiBuffEntry = "BOmi";
@@ -45,6 +45,7 @@ const string gv_portalUserType = "PortalData";
 const string gv_phalanxBuffUserType = "PhalanxBuffData";
 const string gv_creepUnitTypeUserType = "CreepUnitTypeData";
 const int gv_itemMaximumCountPerUnit = 6;
+const int gv_buffMaximumCountPerUnit = 32;
 const int gv_unitMaximumCountPerPhalanx = 1296;
 const int gv_portalMaximumCount = 2;
 const int gv_phalanxMaximumCount = 3;
@@ -119,6 +120,7 @@ int[gv_venueMaximumCount + 1][gv_roundMaximumCount + 1] gv_creepPlayerAtVenue;
 int[gv_playerCount + 1] gv_playerAtBuildingRegion;
 string[gv_playerMaximumIndex + 1][gv_phalanxMaximumCount + 1][gv_unitMaximumCountPerPhalanx + 1] gv_unitType;
 string[gv_playerMaximumIndex + 1][gv_phalanxMaximumCount + 1][gv_unitMaximumCountPerPhalanx + 1][gv_itemMaximumCountPerUnit + 1] gv_itemType;
+string[gv_playerMaximumIndex + 1][gv_phalanxMaximumCount + 1][gv_unitMaximumCountPerPhalanx + 1][gv_buffMaximumCountPerUnit + 1] gv_buffType;
 int[gv_playerMaximumIndex + 1] gv_phalanxIndex;
 actor[gv_playerMaximumIndex + 1][gv_phalanxMaximumCount + 1][gv_unitMaximumCountPerPhalanx + 1] gv_previewModel;
 unit[gv_playerMaximumIndex + 1][gv_phalanxMaximumCount + 1] gv_previewer;
@@ -2728,12 +2730,15 @@ void gf_UnitTypeReset (int lp_player, int lp_phalanx) {
     // Variable Declarations
     int lv_unitIndex;
     int lv_itemIndex;
+    int lv_buffIndex;
 
     // Automatic Variable Declarations
     const int auto4DFE2879_ae = gv_unitMaximumCountPerPhalanx;
     const int auto4DFE2879_ai = 1;
     const int auto2E764D3C_ae = gv_itemMaximumCountPerUnit;
     const int auto2E764D3C_ai = 1;
+    const int auto35DCB0B9_ae = gv_buffMaximumCountPerUnit;
+    const int auto35DCB0B9_ai = 1;
 
     // Variable Initialization
 
@@ -2745,6 +2750,10 @@ void gf_UnitTypeReset (int lp_player, int lp_phalanx) {
         lv_itemIndex = 1;
         for ( ; ( (auto2E764D3C_ai >= 0 && lv_itemIndex <= auto2E764D3C_ae) || (auto2E764D3C_ai < 0 && lv_itemIndex >= auto2E764D3C_ae) ) ; lv_itemIndex += auto2E764D3C_ai ) {
             gv_itemType[lp_player][lp_phalanx][lv_unitIndex][lv_itemIndex] = null;
+        }
+        lv_buffIndex = 1;
+        for ( ; ( (auto35DCB0B9_ai >= 0 && lv_buffIndex <= auto35DCB0B9_ae) || (auto35DCB0B9_ai < 0 && lv_buffIndex >= auto35DCB0B9_ae) ) ; lv_buffIndex += auto35DCB0B9_ai ) {
+            gv_buffType[lp_player][lp_phalanx][lv_unitIndex][lv_buffIndex] = null;
         }
     }
 }
@@ -2865,6 +2874,8 @@ void gf_UnitTypeSet (int lp_buildingRegion, int lp_phalanx, int lp_player) {
     int lv_i;
     string lv_itemType;
     int lv_itemIndex;
+    int lv_buffIndex;
+    string lv_buffType;
 
     // Automatic Variable Declarations
     int autoFDA36F34_ae;
@@ -2880,6 +2891,8 @@ void gf_UnitTypeSet (int lp_buildingRegion, int lp_phalanx, int lp_player) {
     const int auto7CE0FDBF_ai = 1;
     const int auto66B74A20_ae = gv_itemMaximumCountPerUnit;
     const int auto66B74A20_ai = 1;
+    const int autoA66EE6DE_ae = gv_buffMaximumCountPerUnit;
+    const int autoA66EE6DE_ai = 1;
     const int auto97451579_ae = gv_itemMaximumCountPerUnit;
     const int auto97451579_ai = 1;
 
@@ -2921,6 +2934,18 @@ void gf_UnitTypeSet (int lp_buildingRegion, int lp_phalanx, int lp_player) {
                                     lv_itemType = UnitGetType(UnitInventoryItem(autoEE26B69B_var, lv_itemIndex));
                                     if ((lv_itemType != null)) {
                                         gv_itemType[lp_player][lp_phalanx][lv_unitIndex][lv_itemIndex] = lv_itemType;
+                                    }
+
+                                }
+                                lv_buffIndex = 1;
+                                for ( ; ( (autoA66EE6DE_ai >= 0 && lv_buffIndex <= autoA66EE6DE_ae) || (autoA66EE6DE_ai < 0 && lv_buffIndex >= autoA66EE6DE_ae) ) ; lv_buffIndex += autoA66EE6DE_ai ) {
+                                    lv_buffType = UnitBehaviorGet(autoEE26B69B_var, lv_buffIndex);
+                                    if ((lv_buffType != null) && (UnitBehaviorHasFlag(lv_buffType, c_unitBehaviorFlagUser10) == true)) {
+                                        gv_buffType[lp_player][lp_phalanx][lv_unitIndex][lv_buffIndex] = lv_buffType;
+                                        TextExpressionSetToken("Param/Expression/B71C9262", "C", IntToText(lp_player));
+                                        TextExpressionSetToken("Param/Expression/B71C9262", "B", UnitTypeGetName(UnitGetType(autoEE26B69B_var)));
+                                        TextExpressionSetToken("Param/Expression/B71C9262", "A", StringToText((lv_buffType)));
+                                        TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/B71C9262"), true);
                                     }
 
                                 }
@@ -3276,6 +3301,8 @@ void gf_UnitOrPreviewModelPosition (unit lp_unit, bool lp_preview) {
     int lv_lastColumn;
     int lv_lastRow;
     fixed lv_lastRowOffset;
+    int lv_buffIndex;
+    string lv_buffType;
 
     // Automatic Variable Declarations
     int auto74174689_ae;
@@ -3284,6 +3311,8 @@ void gf_UnitOrPreviewModelPosition (unit lp_unit, bool lp_preview) {
     const int auto92AF0421_ai = 1;
     const int autoD8519147_ae = gv_itemMaximumCountPerUnit;
     const int autoD8519147_ai = 1;
+    const int auto06608C83_ae = gv_buffMaximumCountPerUnit;
+    const int auto06608C83_ai = 1;
 
     // Variable Initialization
     lv_player = UnitGetOwner(lp_unit);
@@ -3345,6 +3374,14 @@ void gf_UnitOrPreviewModelPosition (unit lp_unit, bool lp_preview) {
                         lv_itemType = gv_itemType[lv_player][lv_phalanx][lv_unitIndex][lv_itemIndex];
                         if ((lv_itemType != null)) {
                             UnitInventoryCreate(UnitLastCreated(), lv_itemType);
+                        }
+
+                    }
+                    lv_buffIndex = 1;
+                    for ( ; ( (auto06608C83_ai >= 0 && lv_buffIndex <= auto06608C83_ae) || (auto06608C83_ai < 0 && lv_buffIndex >= auto06608C83_ae) ) ; lv_buffIndex += auto06608C83_ai ) {
+                        lv_buffType = gv_buffType[lv_player][lv_phalanx][lv_unitIndex][lv_buffIndex];
+                        if ((lv_buffType != null)) {
+                            UnitBehaviorAddPlayer(UnitLastCreated(), lv_buffType, lv_player, 1);
                         }
 
                     }
@@ -3556,6 +3593,10 @@ void gf_AIBuildingPosition () {
 void gf_TimerSet (fixed lp_duration, bool lp_debug) {
     // Automatic Variable Declarations
     // Implementation
+    if ((lp_debug == true)) {
+        TriggerWaitForTrigger(gt_DebugControlPressed, false);
+    }
+
     TimerStart(gv_timer, lp_duration, false, c_timeGame);
     TimerWindowShow(gv_timerWindow, gv_uIPlayergroup, true);
     libNtve_gf_HideScreenButton(true, gv_screenButton1ID);
@@ -3758,10 +3799,14 @@ void gf_ReserveUnitCreation (unit lp_unit, int lp_player, int lp_phalanx) {
     int lv_unitIndex;
     string lv_itemType;
     int lv_itemIndex;
+    string lv_buffType;
+    int lv_buffIndex;
 
     // Automatic Variable Declarations
     const int autoF86C1014_ae = gv_itemMaximumCountPerUnit;
     const int autoF86C1014_ai = 1;
+    const int auto8F377A20_ae = gv_buffMaximumCountPerUnit;
+    const int auto8F377A20_ai = 1;
 
     // Variable Initialization
 
@@ -3777,6 +3822,14 @@ void gf_ReserveUnitCreation (unit lp_unit, int lp_player, int lp_phalanx) {
                 lv_itemType = gv_itemType[lp_player][lp_phalanx][lv_unitIndex][lv_itemIndex];
                 if ((lv_itemType != null)) {
                     UnitInventoryCreate(UnitLastCreated(), lv_itemType);
+                }
+
+            }
+            lv_buffIndex = 1;
+            for ( ; ( (auto8F377A20_ai >= 0 && lv_buffIndex <= auto8F377A20_ae) || (auto8F377A20_ai < 0 && lv_buffIndex >= auto8F377A20_ae) ) ; lv_buffIndex += auto8F377A20_ai ) {
+                lv_buffType = gv_buffType[lp_player][lp_phalanx][lv_unitIndex][lv_buffIndex];
+                if ((lv_buffType != null)) {
+                    UnitBehaviorAddPlayer(UnitLastCreated(), lv_buffType, lp_player, 1);
                 }
 
             }
@@ -6825,6 +6878,14 @@ bool gt_DebugKeyPressed_Func (bool testConds, bool runActions) {
         SoundPlayForPlayer(SoundLink(gf_RaceGetWarcry("Draenei"), c_soundIndexAny), c_maxPlayers, PlayerGroupSingle(lv_player), 100.0, 0.0);
         SoundPlayForPlayer(SoundLink(gf_RaceGetHorn("Draenei"), c_soundIndexAny), c_maxPlayers, PlayerGroupSingle(lv_player), 100.0, 0.0);
         SoundPlayForPlayer(SoundLink("HornOfCenariusSound", c_soundIndexAny), c_maxPlayers, PlayerGroupSingle(lv_player), 100.0, 0.0);
+    }
+    else if (autoE60B8AEC_val == c_keyF9) {
+        if ((TimerIsPaused(gv_timer) == false)) {
+            TimerPause(gv_timer, true);
+        }
+        else {
+            TimerPause(gv_timer, false);
+        }
     }
     else {
     }

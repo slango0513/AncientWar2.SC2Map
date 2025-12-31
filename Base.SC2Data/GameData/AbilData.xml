@@ -532,20 +532,20 @@
         <Cost index="0">
             <Vital index="Energy" value="60"/>
         </Cost>
-        <Range value="7"/>
+        <Range value="9"/>
         <PrepTime value="0.67"/>
         <CastOutroTime value="35"/>
         <CursorEffect value="ANvcSearch"/>
         <ShowProgressArray index="Channel" value="1"/>
         <ProgressButtonArray index="Channel" value="ANvc"/>
-        <CancelableArray index="Channel" value="1"/>
         <FinishTime value="0.4"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSMarker"/>
             <SortArray value="TSLifeLargestFirst"/>
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
-        <AutoCastRange value="7"/>
+        <AutoCastRange value="9"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
         <AutoCastValidatorArray value="noMarkers"/>
     </CAbilEffectTarget>
     <!--Crypt Lord - Carrion Scarabs Buff=BUcb-->
@@ -941,24 +941,21 @@
         <InfoArray index="Research1" Time="0" Upgrade="ItemLevel">
             <Resource index="Terrazine" value="30"/>
             <Resource index="Custom" value="0"/>
-            <Button Requirements="UpgradeItemLevel"/>
         </InfoArray>
         <InfoArray index="Research2" Time="0" Upgrade="ItemLevel">
             <Resource index="Terrazine" value="30"/>
             <Resource index="Custom" value="0"/>
-            <Button Requirements="UpgradeItemLevel2"/>
         </InfoArray>
         <InfoArray index="Research3" Time="0" Upgrade="ItemLevel">
             <Resource index="Terrazine" value="30"/>
             <Resource index="Custom" value="0"/>
-            <Button Requirements="UpgradeItemLevel3"/>
         </InfoArray>
     </CAbilResearch>
     <CAbilResearch id="VoteBonusUnitType1" parent="War3_Research">
         <InfoArray index="Research1" Time="0" Upgrade="BonusUnitType1">
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
-            <Button DefaultButtonFace="nsqt" Requirements="VoteBonusUnitType1"/>
+            <Button DefaultButtonFace="nsqt"/>
         </InfoArray>
         <InfoArray index="Research2" Time="0" Upgrade="BonusUnitType12">
             <Resource index="Terrazine" value="0"/>
@@ -975,7 +972,7 @@
         <InfoArray index="Research1" Time="0" Upgrade="BonusUnitType2">
             <Resource index="Terrazine" value="0"/>
             <Resource index="Custom" value="0"/>
-            <Button DefaultButtonFace="nsqe" Requirements="VoteBonusUnitType2"/>
+            <Button DefaultButtonFace="nsqe"/>
         </InfoArray>
         <InfoArray index="Research2" Time="0" Upgrade="BonusUnitType22">
             <Resource index="Terrazine" value="0"/>
@@ -1074,21 +1071,22 @@
         <EditorCategories value="Race:Demon,AbilityorEffectType:Units"/>
         <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity,MapBoss"/>
         <Cost index="0">
-            <Vital index="Energy" value="30"/>
-            <Cooldown Location="Unit" TimeUse="1"/>
+            <Cooldown Location="Unit" TimeUse="15"/>
         </Cost>
-        <Range value="6"/>
+        <Range value="12"/>
         <PrepTime value="0.3"/>
         <CastOutroTime value="1.53"/>
         <TargetSorts RequestCount="1">
-            <SortArray value="TSLifeLargestFirst"/>
             <SortArray value="TSKillResourceCustomLargestFirst"/>
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSDistance"/>
         </TargetSorts>
-        <AutoCastRange value="6"/>
-        <AutoCastValidatorArray value="EnemiesNearby2"/>
+        <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+        <AutoCastValidatorArray value="EnemiesNearby9"/>
         <AutoCastValidatorArray value="NoSleep"/>
         <AutoCastValidatorArray value="noMarkers"/>
-        <AutoCastValidatorArray value="2NonSleepingEnemiesNearby6"/>
+        <AutoCastValidatorArray value="2NonSleepingEnemiesNearby9"/>
     </CAbilEffectTarget>
     <CAbilQueue id="Aqu2">
         <CmdButtonArray index="CancelLast" DefaultButtonFace="CmdCancelTrain">
@@ -1475,7 +1473,6 @@
         </TargetSorts>
     </CAbilEffectTarget>
     <CAbilBehavior id="ACnr" parent="War3_HeroAura">
-        <CmdButtonArray index="On" Requirements="ACnr"/>
         <BehaviorArray value="ACnr"/>
     </CAbilBehavior>
     <!--Lich - Frost Nova Buff=Bfro-->
@@ -1526,7 +1523,6 @@
         <BehaviorArray value="Aakb"/>
     </CAbilBehavior>
     <CAbilBehavior id="Aarm" parent="War3_HeroAura">
-        <CmdButtonArray index="On" Requirements="Aarm"/>
         <BehaviorArray value="Aarm"/>
     </CAbilBehavior>
     <!--Parasite(eredar) Dur=30 HeroDur= Buff=BNpa,BNpm cast=90-->
@@ -2663,7 +2659,6 @@
         <LoadValidatorArray value="HasnoCargoAbility"/>
     </CAbilTransport>
     <CAbilBehavior id="Aeib" parent="War3_Passive">
-        <CmdButtonArray index="On" Requirements="Aeib"/>
         <BehaviorArray value="Aeib"/>
     </CAbilBehavior>
     <!--Faerie Fire Dur=90 HeroDur=60 Buff=Bfae-->
@@ -2805,7 +2800,7 @@
         </Cost>
         <AutoCastFilters value="Visible;Player,Ally,Hover,HarvestableResource,Destructible,Item,PreventDefeat,Buried,Dead,Invulnerable,Unstoppable"/>
         <Effect value="SlamValidTarget"/>
-        <CmdButtonArray index="Execute" Requirements="##id##">
+        <CmdButtonArray index="Execute" Requirements="BladeMasterSlamControl">
             <Flags index="IgnoreUser" value="0"/>
         </CmdButtonArray>
     </CAbilAugment>
@@ -3028,7 +3023,7 @@
     <CAbilEffectTarget id="AOeq">
         <Cost index="0">
             <Vital index="Energy" value="50"/>
-            <Cooldown Location="Unit" TimeUse="15"/>
+            <Cooldown TimeUse="15"/>
         </Cost>
         <CmdButtonArray index="Execute" Requirements="">
             <Flags index="IgnoreUser" value="1"/>
@@ -4127,9 +4122,7 @@
         <AutoCastValidatorArray value="GroundEnemiesNearby2"/>
         <AutoCastFilters value="Self,Visible;-"/>
     </CAbilEffectInstant>
-    <CAbilBehavior id="Multishot" parent="War3_Passive">
-        <CmdButtonArray index="On" Requirements="Multishot"/>
-    </CAbilBehavior>
+    <CAbilBehavior id="Multishot" parent="War3_Passive"/>
     <CAbilTrain id="Purchasedrph" parent="AW2_MakeItem" unit="drph"/>
     <CAbilTrain id="Purchasearsh" parent="AW2_MakeItem" unit="arsh"/>
     <CAbilTrain id="Purchasesrtl" parent="AW2_MakeItem" unit="srtl"/>
@@ -4459,7 +4452,7 @@
         </TargetSorts>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="Asud" parent="War3_EffectInstant">
-        <CmdButtonArray index="Execute" Requirements="Asud">
+        <CmdButtonArray index="Execute">
             <Flags index="ShowInGlossary" value="0"/>
         </CmdButtonArray>
     </CAbilEffectInstant>
@@ -4481,7 +4474,6 @@
         <Arc value="360"/>
         <AutoCastFilters value="-;-"/>
         <AutoCastRange value="1.5"/>
-        <CmdButtonArray index="Execute" Requirements="Teleport"/>
     </CAbilEffectTarget>
     <CAbilMorph id="UpgradeTohhes" parent="AW2_Upgrade" toUnit="hhes">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>

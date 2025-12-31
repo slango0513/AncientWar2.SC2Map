@@ -353,6 +353,7 @@ Behavior/Name/SwimmingBase=游泳基础
 Behavior/Name/TrueFulfillment=充实
 Behavior/Name/UnknownBehavior2=未知行为
 Behavior/Tooltip/AW2_Fury=该单位在未受到伤害一段时间后会狂怒，伤害与攻击速度提高。
+Behavior/Tooltip/AttAgi= - 每点提高1点护甲值<n/> - 附带提高攻击速度
 BlackrockClan/Name=雷德·黑手
 BlackrockClan/Tip=雷德·黑手
 BlackrockClan/Ubertip=高速骑兵，具有掠夺、诱捕和飓风光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
@@ -1007,10 +1008,14 @@ DocInfo/PatchNote416=修复防御和魔法防御与新版Mod兼容性问题。
 DocInfo/PatchNote417=修复部分单位伤害不正确的漏洞。
 DocInfo/PatchNote418=添加游戏速度选项，默认为“更快”。
 DocInfo/PatchNote419=修复风蛇模型引用。
-DocInfo/PatchNote420=添加随机奖励回合单位功能。
-DocInfo/PatchNote421=添加准备功能。
-DocInfo/PatchNote422=准备时间延长。
-DocInfo/PatchNote423=红龙精华现在恢复生命值。
+DocInfo/PatchNote420=添加准备功能。
+DocInfo/PatchNote421=准备时间延长。
+DocInfo/PatchNote422=添加力量、敏捷、智力属性系统和相应物品。
+DocInfo/PatchNote423=龙：
+DocInfo/PatchNote424=红龙精华现在恢复生命值。
+DocInfo/PatchNote425=睡眠取代了绿龙的翡翠梦境技能。
+DocInfo/PatchNote426=上古之神：
+DocInfo/PatchNote427=火山的施法距离增加到9。
 DominationAura/Buffubertip=该单位处在暗影光环的作用之下，因此它对敌人的攻击会恢复自己的法力值。
 DominationAura/Name=暗影光环
 DominationAuraCaster/Tip=暗影光环
@@ -1429,6 +1434,7 @@ Param/Expression/87F08C04=Reserve 1 ~A~ 2 ~B~ 3 ~C~ 4 ~D~ 5 ~E~ 6 ~F~ 7 ~G~ 8 ~H
 Param/Expression/8BDDF43A=UT ~A~ Fc ~B~
 Param/Expression/96727924=~A~
 Param/Expression/A093297C=游戏将在~A~秒后结束。
+Param/Expression/B71C9262=Player ~C~ Unit ~B~ Buff ~A~
 Param/Expression/C24F66A3=PlxB=~A~ P=~B~ Plx=~C~
 Param/Expression/CEBDBACC=奖励回合<c val="FFFF00">~A~</c>：<c val="FFFF00">~B~</c>
 Param/Expression/D29EE385=战网标识：~A~。
@@ -1969,7 +1975,7 @@ ngns/Ubertip=轻型远程攻击单位，具有多重射击技能，能射出毒�
 ngnv/Ubertip=轻型近战单位，具有分裂攻击技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ngnw/Ubertip=轻型远程攻击单位，具有多重射击技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ngrd/Tip=升级到绿龙
-ngrd/Ubertip=<c val="ffcc00">精英</c><n/>远程攻击飞行单位，具有抗性皮肤、腐蚀吐息和梦境技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+ngrd/Ubertip=<c val="ffcc00">精英</c><n/>远程攻击飞行单位，具有抗性皮肤、腐蚀吐息和睡眠技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ngrw/Tip=训练绿色雏龙
 ngrw/Ubertip=远程攻击飞行单位，具有抗性皮肤和腐蚀吐息技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ngs2/Name=地精工兵
@@ -2111,7 +2117,7 @@ nsty/Ubertip=近战型的魔法施放单位，具有心智腐烂技能。<n/><n/
 nthl/Tip=升级到雷霆蜥蜴
 nthl/Ubertip=<c val="ffcc00">精英</c><n/>能投掷出闪电箭的远程攻击单位。能吞噬对手，具有抗性皮肤技能，还具有震击。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 nthr/Tip=升级到萨里法斯
-nthr/Ubertip=<c val="ffcc00">世界精英</c><n/>伊瑟拉的守护者，具有抗性皮肤和腐蚀吐息技能，还拥有睡眠技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+nthr/Ubertip=<c val="ffcc00">世界精英</c><n/>伊瑟拉的守护者，具有抗性皮肤和腐蚀吐息技能，还拥有群体睡眠技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 ntr2/Name=海龟
 ntr3/Name=海龟
 ntrd/Ubertip=重型近战两栖单位，具有吞噬技能。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
@@ -2195,14 +2201,24 @@ penr/Ubertip=增加<d ref="Behavior,AImb,Modification.VitalMaxArray[Energy]"/>�
 pmna/Ubertip=增加<d ref="Behavior,AIbm,Modification.VitalMaxArray[Energy]"/>点法力最大值。
 prvt/Ubertip=增加<d ref="Behavior,AIlf,Modification.VitalMaxArray[Life]"/>点生命值。
 ram4/Ubertip=一件强大的神器，上面还装饰有碎宝石。增加<d ref="Behavior,SpellDamageBonus,Modification.DamageDealtFraction[Spell] * 100"/>%的法术攻击力。还能加快周围单位每秒<d ref="Behavior,BHabI,Modification.VitalRegenArray[Energy]" precision="2"/>点的法力恢复速度。
+rat3/Description=增加<d ref="Behavior,AIat,Modification.DamageDealtScaled[Melee]"/>点攻击力。
+rat3/Name=攻击之爪 +<d ref="Behavior,AIat,Modification.DamageDealtScaled[Melee]"/>
 rat3/Tip=购买攻击之爪 +<d ref="Behavior,AIat,Modification.DamageDealtScaled[Melee]"/>
 rat3/Ubertip=增加<d ref="Behavior,AIat,Modification.DamageDealtScaled[Melee]"/>点攻击力。
+rat6/Description=增加英雄<d ref="Behavior,AIt6,Modification.DamageDealtScaled[Melee]"/>点攻击力。
+rat6/Name=攻击之爪 +<d ref="Behavior,AIt6,Modification.DamageDealtScaled[Melee]"/>
 rat6/Tip=购买攻击之爪 +<d ref="Behavior,AIt6,Modification.DamageDealtScaled[Melee]"/>
 rat6/Ubertip=增加<d ref="Behavior,AIt6,Modification.DamageDealtScaled[Melee]"/>点攻击力。
+rat9/Description=增加英雄<d ref="Behavior,AIt9,Modification.DamageDealtScaled[Melee]"/>点攻击力。
+rat9/Name=攻击之爪 +<d ref="Behavior,AIt9,Modification.DamageDealtScaled[Melee]"/>
 rat9/Tip=购买攻击之爪 +<d ref="Behavior,AIt9,Modification.DamageDealtScaled[Melee]"/>
 rat9/Ubertip=增加<d ref="Behavior,AIt9,Modification.DamageDealtScaled[Melee]"/>点攻击力。
+ratc/Description=增加英雄<d ref="Behavior,AItc,Modification.DamageDealtScaled[Melee]"/>点攻击力。
+ratc/Name=攻击之爪 +<d ref="Behavior,AItc,Modification.DamageDealtScaled[Melee]"/>
 ratc/Tip=购买攻击之爪 +<d ref="Behavior,AItc,Modification.DamageDealtScaled[Melee]"/>
 ratc/Ubertip=增加<d ref="Behavior,AItc,Modification.DamageDealtScaled[Melee]"/>点攻击力。
+ratf/Description=增加英雄<d ref="Behavior,AItf,Modification.DamageDealtScaled[Melee]"/>点攻击力。
+ratf/Name=攻击之爪 +<d ref="Behavior,AItf,Modification.DamageDealtScaled[Melee]"/>
 ratf/Tip=购买攻击之爪 +<d ref="Behavior,AItf,Modification.DamageDealtScaled[Melee]"/>
 ratf/Ubertip=增加<d ref="Behavior,AItf,Modification.DamageDealtScaled[Melee]"/>点攻击力。
 rde0/Description=增加<d ref="Behavior,AId1,Modification.LifeArmorBonus"/>点护甲值。
