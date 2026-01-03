@@ -4060,7 +4060,7 @@
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_NightElfLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
     </CActorUnit>
-    <CActorUnit id="dilidili" parent="War3_Army" unitSound="DruidOfTheClaw" unitName="dilidili" defType="LARGE">
+    <CActorUnit id="Statue1" parent="War3_Army" unitSound="DruidOfTheClaw" unitName="Statue1" defType="LARGE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnDruidOfTheClaw.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnDruidOfTheClaw.dds"/>
@@ -4071,9 +4071,9 @@
         <BarOffset value="60"/>
         <DeathArray index="Blast" AnimProps="Birth" ModelLink="War3_NightElfLargeDeathExplode"/>
         <WalkAnimMoveSpeed value="2.1093"/>
-        <HighlightSubTooltip value="dilidili/Ubertip"/>
+        <HighlightSubTooltip value="Statue1/Ubertip"/>
     </CActorUnit>
-    <CActorUnit id="yeshouxianbei" parent="War3_Army" unitSound="Beastmaster" unitName="yeshouxianbei" defType="LARGE">
+    <CActorUnit id="Statue2" parent="War3_Army" unitSound="Beastmaster" unitName="Statue2" defType="LARGE">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnBeastMaster.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnBeastMaster.dds"/>
@@ -4085,9 +4085,9 @@
         <WalkAnimMoveSpeed value="2.5"/>
         <On Terms="StatusOn.*.ForceChannel" Send="AnimPlay channel Spell AssetDrivenLooping"/>
         <On Terms="AnimDone.*.Complete; AnimName channel; IsStatus ForceChannel 1" Send="AnimPlay channel Spell AssetDrivenLooping"/>
-        <HighlightSubTooltip value="yeshouxianbei/Ubertip"/>
+        <HighlightSubTooltip value="Statue2/Ubertip"/>
     </CActorUnit>
-    <CActorUnit id="renweili" parent="War3_Army" unitSound="AzureDragon" unitName="renweili" defType="SMALL">
+    <CActorUnit id="Statue3" parent="War3_Army" unitSound="AzureDragon" unitName="Statue3" defType="SMALL">
         <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnGreenDragon.dds"/>
         <GroupIcon>
             <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnGreenDragon.dds"/>
@@ -4097,7 +4097,23 @@
         <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
         <BarOffset value="60"/>
         <WalkAnimMoveSpeed value="2.3437"/>
-        <HighlightSubTooltip value="renweili/Ubertip"/>
+        <HighlightSubTooltip value="Statue3/Ubertip"/>
+    </CActorUnit>
+    <CActorUnit id="Statue4" parent="War3_Building" unitSound="ElvenGuardTower" unitName="Statue4" defType="FORT">
+        <!--MinimapIcon value="Assets\Textures\UI\MiniMap\minimap-neutralbuilding.tga"/-->
+        <On Terms="ActorCreation" Send="Create UBR_HSMA"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply Upgrade,StageFirst,Ready {} {} Instant"/>
+        <On Terms="UnitPortrait.*.Configure" Target="::PortraitGameSelf" Send="AnimGroupApply Upgrade,StageFirst {} {} Instant"/>
+        <UnitIcon value="Assets\Textures\BTN\Renee_war3_btnAdvancedEnergyTower.dds"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\BTN\Renee_war3_btnAdvancedEnergyTower.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN\Renee_war3_btnAdvancedEnergyTower.dds"/>
+        <BarWidth value="125"/>
+        <CustomUnitStatusFrame value="War3_UnitStatus/UnitBar37"/>
+        <BarOffset value="240"/>
+        <DeathArray index="Cancel" AnimProps="Birth" ModelLink="War3_HCancelDeath"/>
+        <HighlightSubTooltip value="Statue4/Ubertip"/>
     </CActorUnit>
     <!--druidofthetalon-->
     <CActorUnit id="edot" parent="War3_Army" unitSound="DruidOfTheTalon" unitName="edot" defType="NONE">
@@ -6348,6 +6364,8 @@
     </CActorModel>
     <CActorAction id="nsqt2" parent="War3_AttackSwapable" WeaponSound="WoodHeavyBash"/>
     <CActorAction id="nwns2" parent="War3_AttackSwapable" WeaponSound="WoodHeavyBash"/>
-    <CActorAction id="renweili1" parent="War3_AttackMissileSwapable"/>
-    <CActorMissile id="renweili1LM" parent="War3_MissileSwapable" unitName="renweili1LM"/>
+    <CActorAction id="Statue31" parent="War3_AttackMissileSwapable"/>
+    <CActorMissile id="Statue31LM" parent="War3_MissileSwapable" unitName="Statue31LM"/>
+    <CActorAction id="Statue41" parent="War3_AttackMissileSwapable"/>
+    <CActorMissile id="Statue41LM" parent="War3_MissileSwapable" unitName="Statue41LM"/>
 </Catalog>
