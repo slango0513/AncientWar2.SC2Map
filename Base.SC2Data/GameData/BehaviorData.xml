@@ -107,6 +107,11 @@
             <AttributeChangeArray Attribute="AttAgi" Points="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="AIa2" parent="AW2_Item">
+        <Modification>
+            <AttributeChangeArray Attribute="AttAgi" Points="2"/>
+        </Modification>
+    </CBehaviorBuff>
     <!--AgilityBonus (+3)-->
     <CBehaviorBuff id="AIa3" parent="AW2_Item">
         <Modification>
@@ -117,6 +122,11 @@
     <CBehaviorBuff id="AIa4" parent="AW2_Item">
         <Modification>
             <AttributeChangeArray Attribute="AttAgi" Points="4"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AIa5" parent="AW2_Item">
+        <Modification>
+            <AttributeChangeArray Attribute="AttAgi" Points="5"/>
         </Modification>
     </CBehaviorBuff>
     <!--AgilityBonus (+6)-->
@@ -131,6 +141,11 @@
             <AttributeChangeArray Attribute="AttInt" Points="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="AIi2" parent="AW2_Item">
+        <Modification>
+            <AttributeChangeArray Attribute="AttInt" Points="2"/>
+        </Modification>
+    </CBehaviorBuff>
     <!--IntelligenceBonus (+3)-->
     <CBehaviorBuff id="AIi3" parent="AW2_Item">
         <Modification>
@@ -141,6 +156,11 @@
     <CBehaviorBuff id="AIi4" parent="AW2_Item">
         <Modification>
             <AttributeChangeArray Attribute="AttInt" Points="4"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AIi5" parent="AW2_Item">
+        <Modification>
+            <AttributeChangeArray Attribute="AttInt" Points="5"/>
         </Modification>
     </CBehaviorBuff>
     <!--IntelligenceBonus (+6)-->
@@ -155,6 +175,11 @@
             <AttributeChangeArray Attribute="AttStr" Points="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="AIs2_" parent="AW2_Item">
+        <Modification>
+            <AttributeChangeArray Attribute="AttStr" Points="2"/>
+        </Modification>
+    </CBehaviorBuff>
     <!--StrengthBonus (+3)-->
     <CBehaviorBuff id="AIs3" parent="AW2_Item">
         <Modification>
@@ -165,6 +190,11 @@
     <CBehaviorBuff id="AIs4" parent="AW2_Item">
         <Modification>
             <AttributeChangeArray Attribute="AttStr" Points="4"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AIs5" parent="AW2_Item">
+        <Modification>
+            <AttributeChangeArray Attribute="AttStr" Points="5"/>
         </Modification>
     </CBehaviorBuff>
     <!--StrengthBonus (+6)-->
@@ -187,6 +217,20 @@
             <AttributeChangeArray Attribute="AttStr" Points="2"/>
             <AttributeChangeArray Attribute="AttAgi" Points="2"/>
             <AttributeChangeArray Attribute="AttInt" Points="2"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AIx3" parent="AW2_Item">
+        <Modification>
+            <AttributeChangeArray Attribute="AttStr" Points="3"/>
+            <AttributeChangeArray Attribute="AttAgi" Points="3"/>
+            <AttributeChangeArray Attribute="AttInt" Points="3"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AIx4" parent="AW2_Item">
+        <Modification>
+            <AttributeChangeArray Attribute="AttStr" Points="4"/>
+            <AttributeChangeArray Attribute="AttAgi" Points="4"/>
+            <AttributeChangeArray Attribute="AttInt" Points="4"/>
         </Modification>
     </CBehaviorBuff>
     <!--Crown of Kings (All + 5)-->
@@ -250,17 +294,19 @@
     </CBehaviorBuff>
     <CBehaviorAttribute id="AttAgi">
         <Modification UnifiedAttackSpeedFactor="0.0625">
-            <LifeArmorBonus value="1"/>
+            <LifeArmorBonus value="3"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="AttInt">
         <Modification>
-            <VitalRegenArray index="Energy" value="0.0507"/>
+            <VitalMaxArray index="Energy" value="10"/>
+            <VitalRegenArray index="Energy" value="0.125"/>
         </Modification>
     </CBehaviorAttribute>
     <CBehaviorAttribute id="AttStr">
         <Modification>
-            <VitalRegenArray index="Life" value="1.5"/>
+            <VitalMaxArray index="Life" value="50"/>
+            <VitalRegenArray index="Life" value="4"/>
         </Modification>
     </CBehaviorAttribute>
     <!--ShadowStrike-->

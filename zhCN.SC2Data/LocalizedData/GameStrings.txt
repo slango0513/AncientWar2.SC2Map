@@ -353,7 +353,9 @@ Behavior/Name/SwimmingBase=游泳基础
 Behavior/Name/TrueFulfillment=充实
 Behavior/Name/UnknownBehavior2=未知行为
 Behavior/Tooltip/AW2_Fury=该单位在未受到伤害一段时间后会狂怒，伤害与攻击速度提高。
-Behavior/Tooltip/AttAgi= - 每点提高1点护甲值<n/> - 附带提高攻击速度
+Behavior/Tooltip/AttAgi= - 每点提高<d ref="Behavior,AttAgi,Modification.LifeArmorBonus"/>点护甲值<n/> - 附带提高<d ref="Behavior,AttAgi,Modification.UnifiedAttackSpeedFactor*100" precision="2"/>%攻击速度
+Behavior/Tooltip/AttInt= - 每点提高<d ref="Behavior,AttInt,Modification.VitalMaxArray[Energy]"/>点法力值<n/> - 附带提高每秒<d ref="Behavior,AttInt,Modification.VitalRegenArray[Energy]" precision="4"/>点法力恢复速度
+Behavior/Tooltip/AttStr= - 每点提高<d ref="Behavior,AttStr,Modification.VitalMaxArray[Life]"/>点生命值<n/> - 附带提高每秒<d ref="Behavior,AttStr,Modification.VitalRegenArray[Life]" precision="2"/>点生命恢复速度
 BlackrockClan/Name=雷德·黑手
 BlackrockClan/Tip=雷德·黑手
 BlackrockClan/Ubertip=高速骑兵，具有掠夺、诱捕和飓风光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
@@ -1724,14 +1726,18 @@ WindWalk/Tip=疾风步
 WindWalk/Ubertip=使得德莱尼追踪者在<d ref="Behavior,BOwk1,Duration"/>秒内隐形并增加<d ref="Behavior,BOwk1,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度。如果此时德莱尼追踪者进行攻击的话，那么就不再隐形，但是攻击力会增加<d ref="Behavior,BOwk1ExtraDamage,Modification.DamageDealtUnscaled[Melee]"/>点。
 afac/Ubertip=增加附近远程攻击型单位<d ref="Behavior,BEarI,Modification.DamageDealtFraction[Ranged] * 100"/>%的攻击力。<n/>不能和强击光环同时使用。
 ajen/Ubertip=增加附近单位<d ref="Behavior,BOae,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度和<d ref="Behavior,BOae,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度。<n/>不能和耐久光环同时使用。
+anfg/Description=增加英雄的智力。
 arsh/Ubertip=减少所受的<d ref="1 - Behavior,AIdd,DamageResponse.ModifyFraction * 100"/>%近战伤害。并增加<d ref="Behavior,AId5,Modification.LifeArmorBonus"/>点护甲值。
 axas/Ubertip=<c val="ff8c00">神器</c><n/>能增加每秒<d ref="Behavior,Arlg,Modification.VitalRegenArray[Life]"/>点的生命值恢复速度，并加快英雄和其周围的单位<d ref="Behavior,BOae,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击和<d ref="Behavior,BOae,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度。<n/>不能和耐久光环一起使用。<n/><n/><c val="ffcc00">历史</c><n/><c val="ffdead">巫医几代人的名字都被刻在了这个杖上。持有这个法杖的人能在危急的时刻求助于他们的知识和指导。</c>
 azhr/Ubertip=传说被囚禁的艾苏恩灵魂的一直在寻找着她的这颗心。<n/>减少所受的<d ref="1 - Behavior,Aegr,DamageResponse.ModifyFraction * 100"/>%远程伤害。
 blba/Ubertip=提高周围单位<d ref="Behavior,BHadI,Modification.LifeArmorBonus"/>点护甲值。增加<d ref="Behavior,AId7,Modification.LifeArmorBonus"/>点护甲值。
+brag/Description=增加英雄的敏捷。
 bspd/Ubertip=能增加<d ref="Behavior,AIms,Modification.MoveSpeedBonus * 100"/>%的移动速度。
+ckng/Description=提高敏捷，力量和智力。
 clfm/Description=让单位处于烈焰之中。
 clfm/Tip=购买烈焰披风
 clfm/Ubertip=使得单位处于烈焰的包围中，每秒对周围的地面单位造成<d ref="Effect,AIcfDPS,Amount"/>点伤害。<n/>不能和献祭同时生效。
+cnob/Description=增加英雄的智力，敏捷和力量。
 dilidili/Name=dilidili
 dilidili/Ubertip=第一届古代战争II比赛冠军<n/>暗夜精灵 | 龙
 drph/Description=增加单位的生命恢复与受到的治疗效果。
@@ -1779,6 +1785,7 @@ gcel/Description=增加攻击速度。
 gcel/Ubertip=增加<d ref="Behavior,AIsx,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度。
 gldo/Ubertip=能让攻击带有<d ref="Effect,AIgdSphereEffect,AreaArray[0].Bonus"/>点火焰伤害，还有一定的溅射效果。
 glsk/Ubertip=古尔丹曾是一个恶魔魔法的使用者，恶魔们现在找到了这个颅骨的更多用途。<n/>能增加<d ref="Behavior,SpellDamageBonus,Modification.DamageDealtFraction[Spell] * 100"/>%的法术攻击力。还能让周围友方单位加快其<d ref="Behavior,BabrItem,Modification.RateMultiplierArray[Cooldown] - 1 * 100"/>%的冷却速度。
+gvsm/Ubertip=<c val="8b00ff">精良</c><n/>能每隔40秒就阻止敌人向自己施放魔法。同时能增加英雄6点智力。
 hatw/Ubertip=防守型建筑物。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 hbew/Ubertip=每个货车里都藏着一个秘密。
 hbth/Ubertip=<c val="8b00ff">精良</c><n/>让单位处于狂暴状态，增加其<d ref="Behavior,AIsx,Modification.AttackSpeedMultiplier - 1 * 100"/>%的攻击速度，还能增加其<d ref="Behavior,AIlf,Modification.VitalMaxArray[Life]"/>点生命值。让附近的近战型单位能将他们自己<d ref="Behavior,BUav1LeechNonHero,Modification.VitalDamageLeechArray[Life].KindArray[Melee] * 100"/>%的攻击力转换成生命值。<n/>不能和吸血光环同时使用。
@@ -1819,11 +1826,18 @@ hwat/Tip=训练水元素
 hwat/Ubertip=防御型单位。能施放寒冰箭，伤害并使敌人昏迷。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
 hwtw/Tip=建造哨塔
 hwtw/Ubertip=基本的建筑物。
+iwbr/Description=增加英雄的力量和敏捷。
+iwbr/Ubertip=增加英雄1点力量和敏捷。
+jdrn/Description=增加英雄的敏捷和力量。
+jdrn/Ubertip=增加英雄2点敏捷和力量。
 kgal/Ubertip=提高每秒<d ref="Behavior,Arel,Modification.VitalRegenArray[Life]"/>点生命恢复速度和每秒<d ref="Behavior,AIrm,Modification.VitalRegenArray[Energy]" precision="2"/>法力恢复速度。
 klmm/Ubertip=<c val="ff8c00">神器</c><n/>增加<d ref="Behavior,AItx,Modification.DamageDealtFraction[Melee] * 100"/>%的攻击力。并能吸取生命值。<n/><c val="ffcc00">历史</c><n/><c val="ffdead">当德塞瑞尼发现他的爱人奥鲁娜投进了别人的怀抱，他去贫瘠之地好好地痛苦了一把。一把斧子就像响应他的召唤一样突然从沙子里飞出。德塞瑞尼拿着它杀死了奥鲁娜和她的情人。随后他用最大的力气把这把斧子投向了大海的深处。</c>
 kpin/Ubertip=使得周围单位的法力值恢复速度加快<d ref="Behavior,BHabI,Modification.VitalRegenArray[Energy]" precision="2"/>。<n/>不能和辉煌光环同时使用。
 lgdh/Ubertip=增加附近单位<d ref="Behavior,BUauI,Modification.VitalRegenArray[Life]"/>的生命值恢复速度和<d ref="Behavior,BUauI,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度。<n/>不能和邪恶光环同时使用。
 lhst/Ubertip=令周围的单位增加<d ref="Behavior,BHadI,Modification.LifeArmorBonus"/>点护甲值。<n/>不能和虔诚光环同时使用。
+lnrn/Description=增加英雄的敏捷和智力。
+lnrn/Ubertip=增加英雄1点敏捷和智力。
+mlst/Description=增加英雄的力量。
 mnsf/Ubertip=增加<d ref="Behavior,AImv,Modification.VitalMaxArray[Energy]"/>点法力值。并增加其周围的单位每秒<d ref="Behavior,BHabI,Modification.VitalRegenArray[Energy]" precision="2"/>点的法力恢复速度。
 mnst/Ubertip=提高每秒<d ref="Behavior,AIrn,Modification.VitalRegenArray[Energy]" precision="2"/>点法力值恢复速度。
 modt/Ubertip=能将<d ref="Behavior,AIvaLeechNonHero,Modification.VitalDamageLeechArray[Life].KindArray[Melee] * 100"/>%对敌人造成的伤害转换成自己的生命值。
@@ -2200,7 +2214,8 @@ owyv/Ubertip=高速远程攻击骑兵。拥有浸毒长矛和多重攻击技能�
 penr/Ubertip=增加<d ref="Behavior,AImb,Modification.VitalMaxArray[Energy]"/>点法力最大值。
 pmna/Ubertip=增加<d ref="Behavior,AIbm,Modification.VitalMaxArray[Energy]"/>点法力最大值。
 prvt/Ubertip=增加<d ref="Behavior,AIlf,Modification.VitalMaxArray[Life]"/>点生命值。
-ram4/Ubertip=一件强大的神器，上面还装饰有碎宝石。增加<d ref="Behavior,SpellDamageBonus,Modification.DamageDealtFraction[Spell] * 100"/>%的法术攻击力。还能加快周围单位每秒<d ref="Behavior,BHabI,Modification.VitalRegenArray[Energy]" precision="2"/>点的法力恢复速度。
+rag1/Description=增加英雄的敏捷。
+ram4/Ubertip=一件强大的神器，上面还装饰有碎宝石。增加英雄3点智力，敏捷和力量。还能加快英雄周围单位每秒<d ref="Behavior,BHabI,Modification.VitalRegenArray[Energy]" precision="2"/>点的法力恢复速度。
 rat3/Description=增加<d ref="Behavior,AIat,Modification.DamageDealtScaled[Melee]"/>点攻击力。
 rat3/Name=攻击之爪 +<d ref="Behavior,AIat,Modification.DamageDealtScaled[Melee]"/>
 rat3/Tip=购买攻击之爪 +<d ref="Behavior,AIat,Modification.DamageDealtScaled[Melee]"/>
@@ -2239,13 +2254,24 @@ rde4/Ubertip=增加<d ref="Behavior,AId5,Modification.LifeArmorBonus"/>点护甲
 renweili/Name=人未离
 renweili/Ubertip=第三届古代战争II比赛冠军<n/>人类 | 龙
 rhth/Ubertip=增加<d ref="Behavior,AIl2,Modification.VitalMaxArray[Life]"/>点生命值。
+rin1/Description=增加英雄的智力。
 rlif/Ubertip=提高每秒<d ref="Behavior,Arel,Modification.VitalRegenArray[Life]"/>点生命值恢复速度。
+rnsp/Description=增加智力，敏捷和力量。
+rots/Description=<c val="87ceeb">精良</c><n/>增加英雄的智力，敏捷和力量。能提高法力恢复速度。
+rots/Ubertip=<c val="87ceeb">精良</c><n/>能提高每秒<d ref="Behavior,AIrm,Modification.VitalRegenArray[Energy]" precision="2"/>法力恢复速度。同时能增加英雄2点智力，敏捷和力量。
+rst1/Description=增加英雄的力量。
 rwiz/Ubertip=提高每秒<d ref="Behavior,AIrm,Modification.VitalRegenArray[Energy]" precision="2"/>点的法力值恢复速度。
 sbch/Ubertip=使得附近的近战型单位能将他们自己<d ref="Behavior,BUav1LeechNonHero,Modification.VitalDamageLeechArray[Life].KindArray[Melee] * 100"/>%的攻击力转换成生命值。<n/>不能和吸血光环同时使用。
 shhn/Ubertip=<c val="8b00ff">精良</c><n/>增加周围单位<d ref="Behavior,BOacI,Modification.DamageDealtFraction[Melee] * 100"/>%的攻击力。同时增加<d ref="Behavior,AId7,Modification.LifeArmorBonus"/>点护甲值。
+sksh/Description=增加英雄的力量。
+sksh/Ubertip=增加英雄2点力量。
 skul/Ubertip=让周围友方单位加快其<d ref="Behavior,BabrItem,Modification.RateMultiplierArray[Cooldown] - 1 * 100"/>%的冷却速度。不能和荒芜光环一起发挥作用。
+sprn/Description=增加英雄的敏捷。
+sprn/Ubertip=增加英雄2点敏捷。
 spsh/Ubertip=每隔40秒就阻止敌人向自己施放魔法。
 srtl/Ubertip=<c val="ff8c00">神器</c><n/>增加<d ref="Behavior,AIsx,Modification.AttackSpeedMultiplier - 1 * 100"/>%攻击速度和<d ref="Behavior,AItf,Modification.DamageDealtScaled[Melee]"/>点攻击力。<n/><c val="ffcc00">历史</c><n/><c val="ffdead">这柄巨大的战斧是为德拉诺的卡斯德拉克所造的。并在血河战争中被使用。随着暗疮氏族的灭亡，这把战斧也最终不知去向。纳兹格雷尔是卡斯德拉克唯一还健在的亲戚。</c>
+tmmt/Description=增加英雄的力量和智力。
+tmmt/Ubertip=增加英雄1点力量和智力。
 tmsc/Ubertip=<c val="8b00ff">精良</c><n/>让周围友方单位加快其<d ref="Behavior,BabrItem,Modification.RateMultiplierArray[Cooldown] - 1 * 100"/>%的冷却速度。不能和荒芜光环一起发挥作用。在装备之后也能增加<d ref="Behavior,AImv,Modification.VitalMaxArray[Energy]"/>点法力值。
 uabo/Ubertip=重型的近战单位，具有食尸和疾病之云技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 uarb/Tip=升级到飞艇
@@ -2281,6 +2307,8 @@ ushd/Tip=升级到阴影
 ushd/Ubertip=防御型单位，能看见其他的隐形单位。当该单位被杀死的时候，许多小点的虚空行者会从其尸体中冒出来。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
 uswb/Tip=升级到希尔瓦娜斯·风行者
 uswb/Ubertip=魔法单位，能施放占据。<n/><n/><c val="ffcc00">能攻击地面和空中单位。</c>
+vddl/Description=增加英雄的智力。
+vddl/Ubertip=增加英雄2点智力。
 ward/Ubertip=能增加周围单位<d ref="Behavior,BOacI,Modification.DamageDealtFraction[Melee] * 100"/>%的攻击力。<n/>不能和命令光环同时使用。
 yeshouxianbei/Name=野兽仙贝
 yeshouxianbei/Ubertip=KK联赛(第二届古代战争II比赛)冠军<n/>暗夜精灵 | 地精
