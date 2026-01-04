@@ -76,6 +76,9 @@
     <CEffectApplyBehavior default="1" id="AW2_ItemAuraBuff" parent="War3_ApplyBuff">
         <ValidatorArray value="CasterNotCloakedOrTargetIsSelf"/>
     </CEffectApplyBehavior>
+    <CEffectSet id="ACbhSphereEffect">
+        <DamageModifierSource Value="Caster"/>
+    </CEffectSet>
     <!--Alchemist - Healing Spray Buff=BNhs effect=XNhs-->
     <CEffectSet id="ACtbMissileImpactSet">
         <EffectArray index="0" value="ACtbDamage1"/>
@@ -86,9 +89,24 @@
         <EffectArray value="ACtnSearch"/>
         <ValidatorArray value="Notnfgt"/>
     </CEffectSet>
+    <!--Venom Spears (Creep) Dur=20 HeroDur=10 Buff=Bpoi,Bpsd-->
+    <CEffectSet id="ACvsSphereEffect">
+        <DamageModifierSource Value="Caster"/>
+    </CEffectSet>
     <CEffectDamage id="AEsfDamage">
         <Amount value="150"/>
     </CEffectDamage>
+    <!--Orb of Lightning-->
+    <CEffectSwitch id="AIllSphereEffect">
+        <DamageModifierSource Value="Caster"/>
+    </CEffectSwitch>
+    <CEffectSet id="ANcaSphereEffect">
+        <DamageModifierSource Value="Caster"/>
+    </CEffectSet>
+    <!--Tinkerer - Demolish (Level 0)-->
+    <CEffectSet id="ANdeSphereEffect">
+        <DamageModifierSource Value="Caster"/>
+    </CEffectSet>
     <CEffectSet id="ANflDamageSet">
         <EffectArray value="DispelAnyBuffs"/>
     </CEffectSet>
@@ -107,6 +125,32 @@
     <CEffectApplyBehavior id="AUsl1Dur">
         <Duration value="30"/>
     </CEffectApplyBehavior>
+    <!--Balls of Fire Dur=2.51 HeroDur=1.01 Buff=Bbof effect=Xbof-->
+    <CEffectCreatePersistent id="AbofSphereEffect">
+        <DamageModifierSource Value="Caster"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="AfbkSphereEffect">
+        <DamageModifierSource Value="Caster"/>
+    </CEffectSet>
+    <CEffectSet id="AfbtSphereEffect">
+        <DamageModifierSource Value="Caster"/>
+    </CEffectSet>
+    <!--Liquid Fire Dur=3 HeroDur=3 Buff=Bliq-->
+    <CEffectSet id="AliqSphereEffect">
+        <DamageModifierSource Value="Caster"/>
+    </CEffectSet>
+    <!--Orb of Venom (Poison Attack) Dur=6 HeroDur=6 Buff=BIpb,BIpd-->
+    <CEffectSet id="Apo2SphereEffect">
+        <DamageModifierSource Value="Caster"/>
+    </CEffectSet>
+    <!--Slow Poison Dur=5 HeroDur=1 Buff=Bspo,Bssd-->
+    <CEffectSet id="AspoSphereEffect">
+        <DamageModifierSource Value="Caster"/>
+    </CEffectSet>
+    <!--Venom Spears Dur=25 HeroDur=1 Buff=Bpoi,Bpsd-->
+    <CEffectSet id="AvenSphereEffect">
+        <DamageModifierSource Value="Caster"/>
+    </CEffectSet>
     <CEffectDamage id="BEshDecayDamage1">
         <Amount value="30"/>
     </CEffectDamage>
@@ -1458,6 +1502,7 @@
     <!--Orb of Fire-->
     <CEffectDamage id="AIfbSphereEffect">
         <AreaArray index="0" Bonus="10"/>
+        <DamageModifierSource Value="Caster"/>
     </CEffectDamage>
     <CEffectDamage id="ANcaSplash1" parent="AW2_ChaosDamage">
         <ImpactLocation Value="TargetPoint"/>
@@ -1763,6 +1808,7 @@
     <CEffectEnumArea id="AfrzSphereEffect">
         <SearchFilters value="-;player,allies,neutral,wall,tree,debris,item,ward,dead,Hidden,invulnerable"/>
         <AreaArray index="0" Radius="1.1718"/>
+        <DamageModifierSource Value="Caster"/>
     </CEffectEnumArea>
     <CEffectSet id="Alit"/>
     <CEffectApplyBehavior id="BCbf" parent="War3_ApplyBuff"/>
@@ -1858,6 +1904,7 @@
     <CEffectSet id="AHbhSphereEffect">
         <EffectArray index="0" value="BHbh"/>
         <EffectArray index="1" removed="1"/>
+        <DamageModifierSource Value="Caster"/>
     </CEffectSet>
     <CEffectCreatePersistent id="ANcsCP">
         <PeriodCount value="6"/>
@@ -1893,6 +1940,7 @@
         <EditorCategories value="Race:Human"/>
         <AreaArray Radius="1.1718" Bonus="48" Fraction="1"/>
         <SearchFilters value="-;player,allies,ground,wall,tree,Missile,debris,item,structure,ward,ethereal,dead,Hidden,invulnerable"/>
+        <DamageModifierSource Value="Caster"/>
     </CEffectDamage>
     <!--Aura - Regeneration (Ward) Buff=Boar-->
     <CEffectEnumArea id="AoarSearch">
@@ -2197,15 +2245,18 @@
     </CEffectSet>
     <CEffectSet id="AIobSphereEffect">
         <EffectArray value="Bfro"/>
+        <DamageModifierSource Value="Caster"/>
     </CEffectSet>
     <CEffectDamage id="AIgdSphereEffect" parent="War3_UltraSpellDamage">
         <EditorCategories value="Race:Other"/>
         <ImpactLocation Value="TargetUnit"/>
         <AreaArray Radius="1.0937" Bonus="35" Fraction="1"/>
         <SearchFilters value="-;player,allies,neutral,wall,tree,Missile,debris,item,structure,dead,Hidden,invulnerable"/>
+        <DamageModifierSource Value="Caster"/>
     </CEffectDamage>
     <CEffectSet id="AIsbSphereEffect">
         <EffectArray value="Bspo"/>
+        <DamageModifierSource Value="Caster"/>
     </CEffectSet>
     <!--Pit Lord - Howl of Terror Buff=BNht-->
     <CEffectEnumArea id="ANhtSearch">
@@ -2301,12 +2352,14 @@
         <AreaArray index="0" Radius="1.9531" Bonus="24"/>
         <AreaArray index="1" removed="1"/>
         <AreaArray index="2" removed="1"/>
+        <DamageModifierSource Value="Caster"/>
     </CEffectDamage>
     <CEffectDamage id="AimpSphereEffect" parent="AW2_SiegeDamage">
         <Amount value="48"/>
         <AreaArray Radius="1.1718" Fraction="1"/>
         <SearchFilters value="-;player,allies,air,wall,Missile,item,ward,ethereal,dead,invulnerable"/>
         <Death value="Blast"/>
+        <DamageModifierSource Value="Caster"/>
     </CEffectDamage>
     <CEffectCreateHealer id="AheaHeal">
         <RechargeVitalRate value="75"/>
@@ -4240,6 +4293,7 @@
         <EditorCategories value="Race:OldGod"/>
         <EffectArray value="PoisonStingNonStacking"/>
         <EffectArray value="PoisonStingStacking"/>
+        <DamageModifierSource Value="Caster"/>
     </CEffectSet>
     <CEffectApplyBehavior id="PoisonStingNonStacking" parent="War3_ApplyBuff">
         <EditorCategories value="Race:OldGod"/>
