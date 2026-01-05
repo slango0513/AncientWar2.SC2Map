@@ -353,9 +353,12 @@ Behavior/Name/SwimmingBase=游泳基础
 Behavior/Name/TrueFulfillment=充实
 Behavior/Name/UnknownBehavior2=未知行为
 Behavior/Tooltip/AW2_Fury=该单位在未受到伤害一段时间后会狂怒，伤害与攻击速度提高。
-Behavior/Tooltip/AttAgi= - 每点提高<d ref="Behavior,AttAgi,Modification.LifeArmorBonus"/>点护甲值<n/> - 附带提高<d ref="Behavior,AttAgi,Modification.UnifiedAttackSpeedFactor*100" precision="2"/>%攻击速度
-Behavior/Tooltip/AttInt= - 每点提高<d ref="Behavior,AttInt,Modification.VitalMaxArray[Energy]"/>点法力值<n/> - 附带提高每秒<d ref="Behavior,AttInt,Modification.VitalRegenArray[Energy]" precision="4"/>点法力恢复速度<n/> - 附带提高<d ref="Behavior,AttInt,Modification.DamageDealtFraction[Spell]*100" precision="2"/>%的法术伤害和<d ref="Behavior,AttInt,Modification.HealDealtMultiplier-1*100" precision="2"/>%的治疗效果
-Behavior/Tooltip/AttStr= - 每点提高<d ref="Behavior,AttStr,Modification.VitalMaxArray[Life]"/>点生命值<n/> - 附带提高每秒<d ref="Behavior,AttStr,Modification.VitalRegenArray[Life]" precision="2"/>点生命恢复速度
+Behavior/Tooltip/AttAgi= - 每点增加<d ref="Behavior,AttAgi,Modification.LifeArmorBonus" precision="1"/>点护甲值<n/> - 增加<d ref="Behavior,AttAgi,Modification.AttackSpeedMultiplier-1*100" precision="2"/>%的攻击速度<n/> - 增加<d ref="Behavior,AttAgi,Modification.RateMultiplierArray[Cooldown]-1*100" precision="2"/>%的冷却速度
+Behavior/Tooltip/AttAgi_= - 增加<d ref="Behavior,AttAgi_,Modification.DamageDealtFraction[Ranged]*100" precision="2"/>%造成的远程伤害，降低<d ref="-Behavior,AttAgi_,Modification.DamageTakenFraction[Ranged]*100" precision="2"/>%受到的远程伤害
+Behavior/Tooltip/AttInt= - 每点增加<d ref="Behavior,AttInt,Modification.VitalMaxArray[Energy]"/>点法力值<n/> - 增加每秒<d ref="Behavior,AttInt,Modification.VitalRegenArray[Energy]" precision="4"/>点法力恢复速度<n/> - 增加<d ref="Behavior,AttInt,Modification.DamageDealtFraction[Spell]*100" precision="2"/>%造成的法术伤害<n/> - 增加<d ref="Behavior,AttInt,Modification.HealDealtMultiplier-1*100" precision="2"/>%造成的治疗
+Behavior/Tooltip/AttInt_= - 增加<d ref="Behavior,AttInt_,Modification.DamageDealtFraction[Spell]*100" precision="2"/>%造成的法术伤害，降低<d ref="-Behavior,AttInt_,Modification.DamageTakenFraction[Spell]*100" precision="2"/>%受到的法术伤害
+Behavior/Tooltip/AttStr= - 每点增加<d ref="Behavior,AttStr,Modification.VitalMaxArray[Life]"/>点生命值<n/> - 增加每秒<d ref="Behavior,AttStr,Modification.VitalRegenArray[Life]" precision="3"/>点生命恢复速度<n/> - 增加<d ref="Behavior,AttStr,Modification.HealTakenMultiplier-1*100" precision="2"/>%受到的治疗
+Behavior/Tooltip/AttStr_= - 增加<d ref="Behavior,AttStr_,Modification.DamageDealtFraction[Melee]*100" precision="2"/>%造成的近战和溅射伤害，降低<d ref="-Behavior,AttStr_,Modification.DamageTakenFraction[Melee]*100" precision="2"/>%受到的近战和溅射伤害
 BlackrockClan/Name=雷德·黑手
 BlackrockClan/Tip=雷德·黑手
 BlackrockClan/Ubertip=高速骑兵，具有掠夺、诱捕和飓风光环技能。<n/><n/><c val="ffcc00">能攻击地面单位。</c>
@@ -1568,7 +1571,7 @@ Statue2/Ubertip=KK联赛(第二届古代战争II比赛)冠军<n/>暗夜精灵 | 
 Statue3/Name=人未离
 Statue3/Ubertip=第三届古代战争II比赛冠军<n/>人类 | 龙
 Statue4/Name=超级简单电脑
-Statue4/Ubertip=第四届古代战争II比赛冠军<n/>随机(双族)
+Statue4/Ubertip=第四届古代战争II比赛冠军(双族随机模式)
 StellarFlare/Name=恒星耀斑
 StellarFlare/Tip=恒星耀斑
 StellarFlare/Ubertip=对敌人造成<d ref="Effect,AEsfDamage,Amount"/>点的伤害。
@@ -1840,7 +1843,7 @@ jdrn/Ubertip=增加英雄2点敏捷和力量。
 kgal/Ubertip=提高每秒<d ref="Behavior,Arel,Modification.VitalRegenArray[Life]"/>点生命恢复速度和每秒<d ref="Behavior,AIrm,Modification.VitalRegenArray[Energy]" precision="2"/>法力恢复速度。
 klmm/Ubertip=<c val="ff8c00">神器</c><n/>增加<d ref="Behavior,AItx,Modification.DamageDealtFraction[Melee] * 100"/>%的攻击力。并能吸取生命值。<n/><c val="ffcc00">历史</c><n/><c val="ffdead">当德塞瑞尼发现他的爱人奥鲁娜投进了别人的怀抱，他去贫瘠之地好好地痛苦了一把。一把斧子就像响应他的召唤一样突然从沙子里飞出。德塞瑞尼拿着它杀死了奥鲁娜和她的情人。随后他用最大的力气把这把斧子投向了大海的深处。</c>
 kpin/Ubertip=使得周围单位的法力值恢复速度加快<d ref="Behavior,BHabI,Modification.VitalRegenArray[Energy]" precision="2"/>。<n/>不能和辉煌光环同时使用。
-lgdh/Ubertip=增加附近单位<d ref="Behavior,BUauI,Modification.VitalRegenArray[Life]"/>的生命值恢复速度和<d ref="Behavior,BUauI,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度。<n/>不能和邪恶光环同时使用。
+lgdh/Ubertip=增加附近单位<d ref="Behavior,BUauI,Modification.VitalRegenArray[Life]" precision="1"/>的生命值恢复速度和<d ref="Behavior,BUauI,Modification.MoveSpeedMultiplier - 1 * 100"/>%的移动速度。<n/>不能和邪恶光环同时使用。
 lhst/Ubertip=令周围的单位增加<d ref="Behavior,BHadI,Modification.LifeArmorBonus"/>点护甲值。<n/>不能和虔诚光环同时使用。
 lnrn/Description=增加英雄的敏捷和智力。
 lnrn/Ubertip=增加英雄1点敏捷和智力。
@@ -2223,26 +2226,16 @@ pmna/Ubertip=增加<d ref="Behavior,AIbm,Modification.VitalMaxArray[Energy]"/>�
 prvt/Ubertip=增加<d ref="Behavior,AIlf,Modification.VitalMaxArray[Life]"/>点生命值。
 rag1/Description=增加英雄的敏捷。
 ram4/Ubertip=一件强大的神器，上面还装饰有碎宝石。增加英雄3点智力，敏捷和力量。还能加快英雄周围单位每秒<d ref="Behavior,BHabI,Modification.VitalRegenArray[Energy]" precision="2"/>点的法力恢复速度。
-rat3/Description=增加<d ref="Behavior,AIat,Modification.DamageDealtScaled[Melee]"/>点攻击力。
-rat3/Name=攻击之爪 +<d ref="Behavior,AIat,Modification.DamageDealtScaled[Melee]"/>
-rat3/Tip=购买攻击之爪 +<d ref="Behavior,AIat,Modification.DamageDealtScaled[Melee]"/>
-rat3/Ubertip=增加<d ref="Behavior,AIat,Modification.DamageDealtScaled[Melee]"/>点攻击力。
-rat6/Description=增加英雄<d ref="Behavior,AIt6,Modification.DamageDealtScaled[Melee]"/>点攻击力。
-rat6/Name=攻击之爪 +<d ref="Behavior,AIt6,Modification.DamageDealtScaled[Melee]"/>
-rat6/Tip=购买攻击之爪 +<d ref="Behavior,AIt6,Modification.DamageDealtScaled[Melee]"/>
-rat6/Ubertip=增加<d ref="Behavior,AIt6,Modification.DamageDealtScaled[Melee]"/>点攻击力。
-rat9/Description=增加英雄<d ref="Behavior,AIt9,Modification.DamageDealtScaled[Melee]"/>点攻击力。
-rat9/Name=攻击之爪 +<d ref="Behavior,AIt9,Modification.DamageDealtScaled[Melee]"/>
-rat9/Tip=购买攻击之爪 +<d ref="Behavior,AIt9,Modification.DamageDealtScaled[Melee]"/>
-rat9/Ubertip=增加<d ref="Behavior,AIt9,Modification.DamageDealtScaled[Melee]"/>点攻击力。
-ratc/Description=增加英雄<d ref="Behavior,AItc,Modification.DamageDealtScaled[Melee]"/>点攻击力。
-ratc/Name=攻击之爪 +<d ref="Behavior,AItc,Modification.DamageDealtScaled[Melee]"/>
-ratc/Tip=购买攻击之爪 +<d ref="Behavior,AItc,Modification.DamageDealtScaled[Melee]"/>
-ratc/Ubertip=增加<d ref="Behavior,AItc,Modification.DamageDealtScaled[Melee]"/>点攻击力。
-ratf/Description=增加英雄<d ref="Behavior,AItf,Modification.DamageDealtScaled[Melee]"/>点攻击力。
-ratf/Name=攻击之爪 +<d ref="Behavior,AItf,Modification.DamageDealtScaled[Melee]"/>
-ratf/Tip=购买攻击之爪 +<d ref="Behavior,AItf,Modification.DamageDealtScaled[Melee]"/>
-ratf/Ubertip=增加<d ref="Behavior,AItf,Modification.DamageDealtScaled[Melee]"/>点攻击力。
+rat3/Description=增加攻击力。
+rat3/Ubertip=增加英雄<d ref="Behavior,AIat,Modification.DamageDealtScaled[Melee]"/>点攻击力和<d ref="Behavior,SpellDamageBonus1,Modification.DamageDealtScaled[Spell]"/>点法术伤害。
+rat6/Description=增加英雄的攻击力。
+rat6/Ubertip=增加英雄<d ref="Behavior,AIt6,Modification.DamageDealtScaled[Melee]"/>点攻击力和<d ref="Behavior,SpellDamageBonus2,Modification.DamageDealtScaled[Spell]"/>点法术伤害。
+rat9/Description=增加英雄的攻击力。
+rat9/Ubertip=增加英雄<d ref="Behavior,AIt9,Modification.DamageDealtScaled[Melee]"/>点攻击力和<d ref="Behavior,SpellDamageBonus3,Modification.DamageDealtScaled[Spell]"/>点法术伤害。
+ratc/Description=增加英雄的攻击力。
+ratc/Ubertip=增加英雄<d ref="Behavior,AItc,Modification.DamageDealtScaled[Melee]"/>点攻击力和<d ref="Behavior,SpellDamageBonus4,Modification.DamageDealtScaled[Spell]"/>点法术伤害。
+ratf/Description=增加英雄的攻击力。
+ratf/Ubertip=增加英雄<d ref="Behavior,AItf,Modification.DamageDealtScaled[Melee]"/>点攻击力和<d ref="Behavior,SpellDamageBonus5,Modification.DamageDealtScaled[Spell]"/>点法术伤害。
 rde0/Description=增加<d ref="Behavior,AId1,Modification.LifeArmorBonus"/>点护甲值。
 rde0/Tip=购买防护之戒 +<d ref="Behavior,AId1,Modification.LifeArmorBonus"/>
 rde0/Ubertip=增加<d ref="Behavior,AId1,Modification.LifeArmorBonus"/>点护甲值。
@@ -2262,6 +2255,7 @@ rhth/Ubertip=增加<d ref="Behavior,AIl2,Modification.VitalMaxArray[Life]"/>点�
 rin1/Description=增加英雄的智力。
 rlif/Ubertip=提高每秒<d ref="Behavior,Arel,Modification.VitalRegenArray[Life]"/>点生命值恢复速度。
 rnsp/Description=增加智力，敏捷和力量。
+rnsp/Ubertip=增加英雄4点智力，敏捷和力量。
 rots/Description=<c val="87ceeb">精良</c><n/>增加英雄的智力，敏捷和力量。能提高法力恢复速度。
 rots/Ubertip=<c val="87ceeb">精良</c><n/>能提高每秒<d ref="Behavior,AIrm,Modification.VitalRegenArray[Energy]" precision="2"/>法力恢复速度。同时能增加英雄2点智力，敏捷和力量。
 rst1/Description=增加英雄的力量。
