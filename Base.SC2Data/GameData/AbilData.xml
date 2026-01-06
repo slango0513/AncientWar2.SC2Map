@@ -277,6 +277,32 @@
         <AutoCastValidatorArray value="EnemiesNearby8"/>
         <AutoCastFilters value="Self,Visible;Neutral,Enemy"/>
     </CAbilEffectInstant>
+    <!--Arch Mage - Blizzard Buff=BHbd,BHbz effect=XHbz cast=1-->
+    <CAbilEffectTarget id="AHbz" parent="AW2_EffectTarget">
+        <EditorCategories value="Race:Human,AbilityorEffectType:Units"/>
+        <TargetFilters index="0" value="-;player,allies,neutral,wall,item,ward,invulnerable,immunity"/>
+        <Cost index="0">
+            <Vital index="Energy" value="60"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </Cost>
+        <Range value="10"/>
+        <PrepTime value="0.3"/>
+        <CastOutroTime value="6"/>
+        <Alignment value="Negative"/>
+        <CursorEffect value="AHbzSearch"/>
+        <ShowProgressArray index="Channel" value="1"/>
+        <ProgressButtonArray index="Channel" value="AHbz"/>
+        <CancelableArray index="Channel" value="1"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
+        </TargetSorts>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+        <AutoCastValidatorArray value="EnemiesNearby7"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <Effect index="0" value="AHbz1"/>
+    </CAbilEffectTarget>
     <!--Mountain King - Thunder Bolt Buff=BPSE-->
     <CAbilEffectTarget id="AHtb" parent="AW2_EffectTarget">
         <EditorCategories value="Race:ChaosOrc,AbilityorEffectType:Units"/>
@@ -3248,7 +3274,8 @@
         <EditorCategories value="Race:Undead,AbilityorEffectType:Unit"/>
         <TargetFilters index="0" value="-;neutral,enemies,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="15"/>
+            <Vital index="Energy" value="30"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <Range value="9"/>
         <Effect index="0" value="BUfa1"/>
