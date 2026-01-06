@@ -1962,6 +1962,9 @@
         <InfoArray index="Build10" Unit="nmgw">
             <Button DefaultButtonFace="nmgw" Requirements="BuildArmy"/>
         </InfoArray>
+        <InfoArray index="Build11" Unit="Ekgg">
+            <Button DefaultButtonFace="Ekgg" Requirements="BuildArmyFinal"/>
+        </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
     <CAbilBuild id="DragonBuild" parent="War3_PowerBuild">
@@ -3011,26 +3014,47 @@
     <CAbilEffectTarget id="AOcl" parent="AW2_EffectTarget">
         <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="9"/>
+            <Vital index="Energy" value="2"/>
+            <Cooldown Location="Unit" TimeUse="7"/>
         </Cost>
-        <Range value="5.4687"/>
-        <!--PrepTime value="0.3"/-->
+        <Range value="11"/>
         <Alignment value="Negative"/>
         <CastOutroTime value="1.07"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
+        </TargetSorts>
+        <AutoCastRange value="11"/>
         <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+        <AutoCastValidatorArray value="EnemiesNearby11"/>
+        <AutoCastValidatorArray value="noMarkers"/>
     </CAbilEffectTarget>
     <!--Farseer - Earthquake Buff=BOeq,BOea effect=XOeq-->
-    <CAbilEffectTarget id="AOeq">
+    <CAbilEffectTarget id="AOeq" parent="AW2_EffectTarget">
+        <Alignment value="Negative"/>
+        <EditorCategories value="Race:Orc,AbilityorEffectType:Hero"/>
         <Cost index="0">
-            <Vital index="Energy" value="50"/>
-            <Cooldown TimeUse="15"/>
+            <Vital index="Energy" value="30"/>
+            <Cooldown Location="Unit" TimeUse="30"/>
         </Cost>
-        <CmdButtonArray index="Execute" Requirements="">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
-        <CmdButtonArray index="Cancel">
-            <Flags index="IgnoreUser" value="1"/>
-        </CmdButtonArray>
+        <Range value="9"/>
+        <PrepTime value="0.3"/>
+        <CastOutroTime value="15"/>
+        <FinishTime value="1.07"/>
+        <ShowProgressArray index="Channel" value="1"/>
+        <CancelableArray index="Channel" value="1"/>
+        <CursorEffect value="AOeqSearch"/>
+        <ProgressButtonArray index="Channel" value="AOeq"/>
+        <AutoCastRange value="9"/>
+        <TargetFilters index="0" value="-;air,wall,tree,Missile,debris,item,structure,ward,dead,invulnerable,immunity"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSMarker"/>
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSKillResourceCustomLargestFirst"/>
+        </TargetSorts>
+        <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
+        <AutoCastValidatorArray value="NoEarthquake"/>
+        <AutoCastValidatorArray value="noMarkers"/>
     </CAbilEffectTarget>
     <!--Shadow Hunter - Hex Buff=BOhx-->
     <CAbilEffectTarget id="AOhx" parent="AW2_EffectTarget">
@@ -4536,6 +4560,9 @@
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToEkgg" parent="AW2_Upgrade" toUnit="Ekgg">
+        <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
+    </CAbilMorph>
+    <CAbilMorph id="UpgradeToEcen" parent="AW2_Upgrade" toUnit="Ecen">
         <CmdButtonArray index="Execute" Requirements="BuildArmy"/>
     </CAbilMorph>
     <CAbilMorph id="UpgradeToeshd" parent="AW2_Upgrade" toUnit="eshd">

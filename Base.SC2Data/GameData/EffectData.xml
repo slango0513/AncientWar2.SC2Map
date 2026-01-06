@@ -122,6 +122,26 @@
         <ValidatorArray value="IsNotElemental"/>
         <Amount value="75"/>
     </CEffectDamage>
+    <CEffectDamage id="AOcl1">
+        <ValidatorArray index="1" removed="1"/>
+        <Amount value="100"/>
+    </CEffectDamage>
+    <CEffectSet id="AOclMainmIpact">
+        <EffectArray index="1" removed="1"/>
+        <EffectArray index="2" removed="1"/>
+    </CEffectSet>
+    <!--Farseer - Earthquake Buff=BOeq,BOea effect=XOeq-->
+    <CEffectCreatePersistent id="AOeq">
+        <PeriodCount value="15"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="AOeqDamage">
+        <ValidatorArray index="0" removed="1"/>
+        <Amount value="25"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="AOeqSearch">
+        <SearchFilters value="-;player,allies,air,wall,RawResource,tree,Missile,item,ward,dead,Hidden,invulnerable"/>
+        <AreaArray index="0" Radius="3.9062"/>
+    </CEffectEnumArea>
     <CEffectApplyBehavior id="AUsl1Dur">
         <Duration value="30"/>
     </CEffectApplyBehavior>
@@ -175,6 +195,9 @@
     <CEffectEnumArea id="BmflSearch">
         <AreaArray index="0" Radius="12"/>
     </CEffectEnumArea>
+    <CEffectDamage id="Ecen1" parent="AW2_PierceDamage">
+        <Amount value="12"/>
+    </CEffectDamage>
     <CEffectSet id="SandHidingAuraSet">
         <ValidatorArray value="IsArthropod"/>
         <EffectArray value="SandHidingAura"/>
@@ -2262,9 +2285,6 @@
     <CEffectEnumArea id="ANhtSearch">
         <AreaArray index="0" Radius="7.0312"/>
     </CEffectEnumArea>
-    <CEffectDamage id="AOeqDamage">
-        <ValidatorArray index="0" removed="1"/>
-    </CEffectDamage>
     <CEffectSet id="AIpv">
         <EffectArray value="BIpv"/>
     </CEffectSet>
@@ -2543,8 +2563,8 @@
             <SortArray value="TSLifeLargestFirst"/>
         </TargetSorts>
     </CEffectEnumArea>
-    <CEffectDamage id="Ekgg1" parent="AW2_PierceDamage">
-        <Amount value="12"/>
+    <CEffectDamage id="Ekgg1" parent="AW2_MagicDamage">
+        <Amount value="96"/>
     </CEffectDamage>
     <CEffectSet id="Ekgg1MultishotSet">
         <EffectArray value="Ekgg1LM"/>
