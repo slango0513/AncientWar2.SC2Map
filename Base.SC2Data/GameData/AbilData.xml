@@ -299,7 +299,7 @@
         </TargetSorts>
         <AutoCastRange value="10"/>
         <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
-        <AutoCastValidatorArray value="EnemiesNearby7"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <Effect index="0" value="AHbz1"/>
     </CAbilEffectTarget>
@@ -3040,19 +3040,19 @@
     <CAbilEffectTarget id="AOcl" parent="AW2_EffectTarget">
         <TargetFilters index="0" value="-;player,allies,mechanical,wall,tree,debris,item,structure,ward,dead,invulnerable,immunity"/>
         <Cost index="0">
-            <Vital index="Energy" value="2"/>
-            <Cooldown Location="Unit" TimeUse="7"/>
+            <Vital index="Energy" value="60"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
-        <Range value="11"/>
+        <Range value="10"/>
         <Alignment value="Negative"/>
         <CastOutroTime value="1.07"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSLifeLargestFirst"/>
             <SortArray value="TSKillResourceCustomLargestFirst"/>
         </TargetSorts>
-        <AutoCastRange value="11"/>
+        <AutoCastRange value="10"/>
         <AutoCastValidatorArray value="AttackingOrInCombatWar3"/>
-        <AutoCastValidatorArray value="EnemiesNearby11"/>
+        <AutoCastValidatorArray value="EnemiesNearby5"/>
         <AutoCastValidatorArray value="noMarkers"/>
     </CAbilEffectTarget>
     <!--Farseer - Earthquake Buff=BOeq,BOea effect=XOeq-->
@@ -3107,7 +3107,8 @@
     <CAbilEffectInstant id="AOsf" parent="AW2_EffectInstant">
         <EditorCategories value="Race:Orc,AbilityorEffectType:Units"/>
         <Cost index="0">
-            <Cooldown Location="Unit" TimeUse="60"/>
+            <Vital index="Energy" value="60"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <PrepTime value="0.3"/>
         <CastOutroTime value="1.07"/>

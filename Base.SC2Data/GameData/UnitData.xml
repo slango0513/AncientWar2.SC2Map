@@ -511,6 +511,11 @@
         <EnergyMax value="60"/>
         <WeaponArray index="1" removed="1"/>
     </CUnit>
+    <!--Drek'Thar-->
+    <CUnit id="Odrt">
+        <!--ReviveDelay value="2.1"/-->
+        <CargoSize value="2"/>
+    </CUnit>
     <CUnit id="RitssynFlamescowl1LM" parent="War3_Missile"/>
     <CUnit id="Pelekeiki1LM" parent="War3_Missile"/>
     <!--Ancient Figurine-->
@@ -541,6 +546,11 @@
     <!--Circlet of Nobility-->
     <CUnit id="cnob" parent="AW2_Item">
         <CostResource index="gold" value="90"/>
+    </CUnit>
+    <!--DruidoftheTalonMorph-->
+    <CUnit id="edtm">
+        <!--AttackTargetPriority value="3"/-->
+        <SubgroupPriority value="1"/>
     </CUnit>
     <!--Treant-->
     <CUnit id="efon" parent="AW2_Army" defType="LARGE">
@@ -3224,13 +3234,17 @@
         <Mover value="horse"/>
         <GlossaryCategory value="Unit/Category/OrcUnits"/>
         <AbilArray Link="Aion"/>
+        <AbilArray Link="AOcl"/>
         <AbilArray Link="UpgradeToOthr"/>
         <CardLayouts index="0">
+            <LayoutButtons Face="AOcl" Type="AbilCmd" AbilCmd="AOcl,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="Othr" Type="AbilCmd" AbilCmd="UpgradeToOthr,Execute" Row="0" Column="0"/>
         </CardLayouts>
         <WeaponArray index="1" removed="1"/>
         <PlaneArray index="Ground" value="1"/>
         <LifeArmor value="10"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
     </CUnit>
     <!--Gul'dan-->
     <CUnit id="Ogld" parent="AW2_Army" defType="NONE">
@@ -3400,6 +3414,8 @@
         <PlaneArray index="Ground" value="1"/>
         <Name value="Othr/Propernames"/>
         <LifeArmor value="10"/>
+        <EnergyStart value="60"/>
+        <EnergyMax value="60"/>
     </CUnit>
     <!-- Unit Pathing Blockers do not perform as well as doodad Pathing Blockers, however, they can be dynamically turned on and off through triggers. -->
     <CUnit id="PathingBlocker1x1">

@@ -105,6 +105,9 @@
         <EffectArray index="2" removed="1"/>
         <EffectArray index="3" removed="1"/>
     </CEffectSet>
+    <CEffectEnumArea id="AHbzSearch">
+        <SearchFilters value="-;player,allies,wall,tree,Missile,debris,item,ward,dead,Hidden,invulnerable,immunity"/>
+    </CEffectEnumArea>
     <!--Orb of Lightning-->
     <CEffectSwitch id="AIllSphereEffect">
         <DamageModifierSource Value="Caster"/>
@@ -127,13 +130,24 @@
         <SearchFilters value="-;player,allies,air,mechanical,wall,tree,Missile,item,ward,dead,Hidden,invulnerable"/>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CEffectEnumArea>
+    <CEffectEnumArea id="ANvcAoESearch">
+        <SearchFilters value="-;self,player,allies,air,wall,Missile,item,ward,dead,Hidden,invulnerable"/>
+    </CEffectEnumArea>
     <CEffectDamage id="ANvcDamage">
         <ValidatorArray value="IsNotElemental"/>
         <Amount value="75"/>
     </CEffectDamage>
+    <CEffectCreatePersistent id="AOcl">
+        <ExpireDelay value="0"/>
+        <ExpireEffect value=""/>
+        <PeriodCount value="65535"/>
+        <PeriodicValidator value="CasterNotDead"/>
+        <PeriodicEffectArray value="AOclMainmIpact"/>
+        <PeriodicPeriodArray value="0.25"/>
+        <PeriodicPeriodArray value="20"/>
+    </CEffectCreatePersistent>
     <CEffectDamage id="AOcl1">
         <ValidatorArray index="1" removed="1"/>
-        <Amount value="100"/>
     </CEffectDamage>
     <CEffectSet id="AOclMainmIpact">
         <EffectArray index="1" removed="1"/>
